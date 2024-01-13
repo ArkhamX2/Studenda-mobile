@@ -20,11 +20,10 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         Uri.parse('http://88.210.3.137/api/security/login'),
         body: json.encode(request.toJson()),
         headers: {
-          'Content-type':'application/json; charset=UTF-8',
+          'Content-type': 'application/json; charset=UTF-8',
         },
       );
       if (response.statusCode == 200) {
-        
         final decoded = json.decode(response.body) as Map<String, dynamic>;
         final responseModel = SecurityResponseModel.fromJson(decoded);
         return responseModel;
@@ -32,8 +31,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         throw ServerException();
       }
     } catch (e) {
-      print(e);
+      throw ServerException();
     }
-    throw ServerException();
   }
 }

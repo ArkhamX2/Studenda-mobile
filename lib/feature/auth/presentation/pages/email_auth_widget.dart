@@ -1,17 +1,21 @@
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:studenda_mobile/core/presentation/studenda_default_label_widget.dart';
+import 'package:studenda_mobile/core/presentation/studenda_input_text_field_style.dart';
+import 'package:studenda_mobile/core/presentation/studenda_label_widget.dart';
+import 'package:studenda_mobile/core/utils/email_validator.dart';
 import 'package:studenda_mobile/feature/auth/presentation/pages/verification_auth_widget.dart';
+import 'package:studenda_mobile/feature/auth/presentation/widgets/auth_app_bar_widget.dart';
 import 'package:studenda_mobile/resources/UI/button_widget.dart';
 import 'package:studenda_mobile/resources/colors.dart';
 
-class EmailAuthWidget extends StatefulWidget {
-  const EmailAuthWidget({super.key});
+class EmailAuthPage extends StatefulWidget {
+  const EmailAuthPage({super.key});
 
   @override
-  State<EmailAuthWidget> createState() => _EmailAuthWidgetState();
+  State<EmailAuthPage> createState() => _EmailAuthPageState();
 }
 
-class _EmailAuthWidgetState extends State<EmailAuthWidget> {
+class _EmailAuthPageState extends State<EmailAuthPage> {
   final _emailTextController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
@@ -25,68 +29,64 @@ class _EmailAuthWidgetState extends State<EmailAuthWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: mainBackgroundColor,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.chevron_left_sharp,
-          color: Colors.white,),
-          onPressed: () => {Navigator.of(context).pop()},
-        ),
-        titleSpacing: 0,
-        centerTitle: true,
-        title: const Text(
-          'Вход',
-          style: TextStyle(color: Colors.white, fontSize: 25),
+      appBar: const AuthAppBarWidget(),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 17),
+        child: _EmailEnterFormWidget(
+          formKey: formKey,
+          emailTextController: _emailTextController,
         ),
       ),
-      body: Container(
-        alignment: AlignmentDirectional.center,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 17),
-          child: Form(
-            key: formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                const Text(
-                  "Введите свой email:",
-                  style: TextStyle(
-                    color: mainForegroundColor,
-                    fontSize: 20,
-                  ),
-                ),
-                const SizedBox(
-                  height: 23,
-                ),
-                _EmailFieldWidget(controller: _emailTextController),
-                const SizedBox(
-                  height: 23,
-                ),
-                Center(
-                  child: StudendaButton(
-                    title: "Подтвердить",
-                    event: () {
-                      //TODO: Get the code
-                      final form = formKey.currentState!;
-                      if (form.validate()) {
-                        final email = _emailTextController.text;
-                        Navigator.of(context).push(
-                          MaterialPageRoute<void>(
-                            builder: (context) =>
-                                VerificationAuthWidget(email: email),
-                          ),
-                        );
-                      }
-                    },
-                  ),
-                ),
-                const SizedBox(
-                  height: 34,
-                ),
-              ],
+    );
+  }
+}
+
+class _EmailEnterFormWidget extends StatelessWidget {
+  const _EmailEnterFormWidget({
+    required this.formKey,
+    required TextEditingController emailTextController,
+  }) : _emailTextController = emailTextController;
+
+  final GlobalKey<FormState> formKey;
+  final TextEditingController _emailTextController;
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: formKey,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const StudendaDefaultLabelWidget(
+            text: "Введите свой email:",
+            fontSize: 20,
+          ),
+          const SizedBox(
+            height: 23,
+          ),
+          _EmailFieldWidget(controller: _emailTextController),
+          const SizedBox(
+            height: 23,
+          ),
+          Center(
+            child: StudendaButton(
+              title: "Подтвердить",
+              event: () {
+                //TODO: Get the code
+                final form = formKey.currentState!;
+                if (form.validate()) {
+                  final email = _emailTextController.text;
+                  Navigator.of(context).push(
+                    MaterialPageRoute<void>(
+                      builder: (context) => VerificationAuthPage(email: email),
+                    ),
+                  );
+                }
+              },
             ),
           ),
-        ),
+        ],
       ),
     );
   }
@@ -125,14 +125,10 @@ class _EmailFieldWidgetState extends State<_EmailFieldWidget> {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: widget.controller,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
-      ),
+      decoration: studendaInputStyle,
       keyboardType: TextInputType.emailAddress,
       autofillHints: const [AutofillHints.email],
-      validator: (email) => email != null && !EmailValidator.validate(email)
-          ? "Введён некорректный email"
-          : null,
+      validator: studendaEmailValidator,
     );
   }
 }

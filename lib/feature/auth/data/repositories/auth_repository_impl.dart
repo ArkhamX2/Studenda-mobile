@@ -30,5 +30,4 @@ class AuthRepositoryImpl implements AuthRepository{
     }
     return const Left(AuthFailure(message: "Ошибка авторизации"));
   }
-  
 }

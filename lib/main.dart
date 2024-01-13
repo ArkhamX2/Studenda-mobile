@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       home: const MainNavigatorWidget(),
 
       routes: {
-        '/auth': (context) => const MainAuthWidget(),
+        '/auth': (context) => const MainAuthPage(),
         '/main_nav': (context) => const MainNavigatorWidget(),
         '/home': (context) => const HomeScreenWidget(),
         '/schedule': (context) => const ScheduleScreenWidget(),

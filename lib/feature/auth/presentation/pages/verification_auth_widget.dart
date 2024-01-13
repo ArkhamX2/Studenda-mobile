@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:studenda_mobile/core/presentation/studenda_aligned_label_widget.dart';
+import 'package:studenda_mobile/core/presentation/studenda_colored_label_widget.dart';
+import 'package:studenda_mobile/core/presentation/studenda_input_text_field_style.dart';
+import 'package:studenda_mobile/core/presentation/studenda_weighted_label_widget.dart';
+import 'package:studenda_mobile/core/utils/verification_code_validator.dart';
 import 'package:studenda_mobile/feature/auth/data/models/security_request_model.dart';
-import 'package:studenda_mobile/feature/auth/domain/entities/user_entity.dart';
 import 'package:studenda_mobile/feature/auth/presentation/bloc/bloc/auth_bloc.dart';
+import 'package:studenda_mobile/feature/auth/presentation/widgets/auth_app_bar_widget.dart';
 import 'package:studenda_mobile/injection_container.dart';
 import 'package:studenda_mobile/resources/UI/button_widget.dart';
-import 'package:studenda_mobile/resources/colors.dart';
 
-class VerificationAuthWidget extends StatefulWidget {
+class VerificationAuthPage extends StatefulWidget {
   final String email;
-  const VerificationAuthWidget({super.key, required this.email});
+  const VerificationAuthPage({super.key, required this.email});
 
   @override
-  State<VerificationAuthWidget> createState() => _VerificationAuthWidgetState();
+  State<VerificationAuthPage> createState() => _VerificationAuthPageState();
 }
 
-class _VerificationAuthWidgetState extends State<VerificationAuthWidget> {
+class _VerificationAuthPageState extends State<VerificationAuthPage> {
   final controller = TextEditingController();
 
   final formKey = GlobalKey<FormState>();
@@ -30,21 +34,7 @@ class _VerificationAuthWidgetState extends State<VerificationAuthWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 240, 241, 245),
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(
-            Icons.chevron_left_sharp,
-            color: Colors.white,
-          ),
-          onPressed: () => {Navigator.of(context).pop()},
-        ),
-        titleSpacing: 0,
-        centerTitle: true,
-        title: const Text(
-          'Вход',
-          style: TextStyle(color: Colors.white, fontSize: 25),
-        ),
-      ),
+      appBar: const AuthAppBarWidget(),
       body: buildBody(),
     );
   }
@@ -69,50 +59,22 @@ class _BodyWidget extends StatelessWidget {
   });
 
   final GlobalKey<FormState> formKey;
-  final VerificationAuthWidget widget;
+  final VerificationAuthPage widget;
   final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
     final state = context.watch<AuthBloc>().state;
 
-    return state.when(
-      initial: () => VerificationWidet(
-        formKey: formKey,
-        widget: widget,
-        controller: controller,
-      ),
-      authLoading: () => const Center(
-        child: CircularProgressIndicator(),
-      ),
-      authFail: (message) => AuthFailWidget(message: message),
-      authSuccess: (user) => AuthSuccessWidget(user: user),
-    );
-  }
-}
-
-class AuthSuccessWidget extends StatelessWidget {
-  final UserEntity user;
-  const AuthSuccessWidget({super.key, required this.user});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [Text("${user.id}"), Text(user.role.name)],
-    );
-  }
-}
-
-class AuthFailWidget extends StatelessWidget {
-  final String message;
-
-  const AuthFailWidget({super.key, required this.message});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(message),
-    );
+    return state == const AuthState.authLoading()
+        ? const Center(
+            child: CircularProgressIndicator(),
+          )
+        : VerificationWidet(
+            formKey: formKey,
+            widget: widget,
+            controller: controller,
+          );
   }
 }
 
@@ -125,100 +87,137 @@ class VerificationWidet extends StatelessWidget {
   });
 
   final GlobalKey<FormState> formKey;
-  final VerificationAuthWidget widget;
+  final VerificationAuthPage widget;
   final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: AlignmentDirectional.center,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 17),
-        child: Form(
-          key: formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                widget.email,
-                style: const TextStyle(
-                  color: mainForegroundColor,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(
-                height: 32,
-              ),
-              const Text(
-                "На почту был отправлен код из N цифр. Введите в поле ниже код из письма:",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: mainForegroundColor,
-                  fontSize: 18,
-                ),
-              ),
-              const SizedBox(
-                height: 17,
-              ),
-              TextFormField(
-                controller: controller,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                ),
-                keyboardType: TextInputType.emailAddress,
-                autofillHints: const [AutofillHints.email],
-                validator: (code) =>
-                    code != null && code.length != 5 ? "Неверный код" : null,
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              //TODO: Сделать каунтдаун на 2 минуты
-              const Text(
-                "Повторно код можно получить через",
-                style: TextStyle(
-                  color: Color.fromARGB(160, 101, 59, 159),
-                  fontSize: 20,
-                ),
-              ),
-              const SizedBox(
-                height: 23,
-              ),
-
-              StudendaButton(
-                title: "Получить код повторно",
-                event: () {
-                  //Повторный запрос с емейлом
-                },
-              ),
-              const SizedBox(
-                height: 17,
-              ),
-              StudendaButton(
-                title: "Подтвердить",
-                event: () {
-                  final form = formKey.currentState!;
-                  if (form.validate()) {
-                    final bloc = context.read<AuthBloc>();
-                    bloc.add(
-                      const AuthEvent.auth(
-                        authRequest: SecurityRequestModel(
-                          email: "test@test.ru",
-                          password: "Test-22222",
-                          roleName: "admin",
-                        ),
-                      ),
-                    );
-                  }
-                },
-              ),
-            ],
-          ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 17),
+      child: Form(
+        key: formKey,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _VerificationInfoWidget(widget: widget),
+            const SizedBox(
+              height: 17,
+            ),
+            _VerificationCodeInputWidget(controller: controller),
+            const SizedBox(
+              height: 23,
+            ),
+            _ButtonContainerWidget(formKey: formKey),
+          ],
         ),
       ),
+    );
+  }
+}
+
+class _ButtonContainerWidget extends StatelessWidget {
+  const _ButtonContainerWidget({
+    required this.formKey,
+  });
+
+  final GlobalKey<FormState> formKey;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        StudendaButton(
+          title: "Получить код повторно",
+          event: () {
+            //Повторный запрос с емейлом
+          },
+        ),
+        const SizedBox(
+          height: 17,
+        ),
+        StudendaButton(
+          title: "Подтвердить",
+          event: () {
+            final form = formKey.currentState!;
+            if (form.validate()) {
+              final bloc = context.read<AuthBloc>();
+              bloc.add(
+                const AuthEvent.auth(
+                  authRequest: SecurityRequestModel(
+                    email: "test@test.ru",
+                    password: "Test-22222",
+                    roleName: "admin",
+                  ),
+                ),
+              );
+              Navigator.of(context).pushNamed("/main_nav");
+            }
+          },
+        ),
+      ],
+    );
+  }
+}
+
+class _VerificationCodeInputWidget extends StatelessWidget {
+  const _VerificationCodeInputWidget({
+    required this.controller,
+  });
+
+  final TextEditingController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        TextFormField(
+          controller: controller,
+          decoration: studendaInputStyle,
+          keyboardType: TextInputType.number,
+          autofillHints: const [AutofillHints.oneTimeCode],
+          validator: verificationCodeValidator,
+        ),
+        const SizedBox(
+          height: 5,
+        ),
+        //TODO: Сделать каунтдаун на 2 минуты
+
+        const StudendaColoredLabelWidget(
+          text: "Повторно код можно получить через",
+          fontSize: 20,
+          color: Color.fromARGB(160, 101, 59, 159),
+        ),
+      ],
+    );
+  }
+}
+
+class _VerificationInfoWidget extends StatelessWidget {
+  const _VerificationInfoWidget({
+    required this.widget,
+  });
+
+  final VerificationAuthPage widget;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        StudendaWeightedLabelWidget(
+          text: widget.email,
+          fontSize: 20,
+          weight: FontWeight.bold,
+        ),
+        const SizedBox(
+          height: 32,
+        ),
+        const StudendaAlignedLabelWidget(
+          text:
+              "На почту был отправлен код из N цифр. Введите в поле ниже код из письма:",
+          fontSize: 18,
+          align: TextAlign.center,
+        ),
+      ],
     );
   }
 }
