@@ -24,7 +24,7 @@ abstract class StudendaLabelWidget extends StatelessWidget {
       style: TextStyle(
         color: color,
         fontSize: fontSize,
-        fontWeight: weight
+        fontWeight: weight,
       ),
     );
   }
