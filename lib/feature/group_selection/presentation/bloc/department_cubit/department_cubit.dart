@@ -16,7 +16,11 @@ class DepartmentCubit extends Cubit<DepartmentState> {
     final departments = await loadDepartments(() {});
     departments.fold(
       (l) => emit(DepartmentState.fail(l.message)),
-      (r) => emit(DepartmentState.success(r)),
+      (r) => emit(
+        DepartmentState.success(
+          r.map((element) => DepartmentEntity(name: element.name)).toList(),
+        ),
+      ),
     );
   }
 }

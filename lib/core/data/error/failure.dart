@@ -30,3 +30,7 @@ class LoadCoursesFailure extends Failure{
 class LoadGroupsFailure extends Failure{
   const LoadGroupsFailure({required super.message});
 }
+
+class LoadGroupSelectorFailure extends Failure{
+  const LoadGroupSelectorFailure({required super.message});
+}

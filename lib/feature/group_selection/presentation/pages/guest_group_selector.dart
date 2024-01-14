@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:studenda_mobile/core/data/error/failure.dart';
 import 'package:studenda_mobile/core/presentation/button_widget.dart';
 import 'package:studenda_mobile/core/presentation/dropdown_widget.dart';
 import 'package:studenda_mobile/core/presentation/label/studenda_default_label_widget.dart';
 import 'package:studenda_mobile/feature/group_selection/presentation/bloc/course_cubit/course_cubit.dart';
 import 'package:studenda_mobile/feature/group_selection/presentation/bloc/department_cubit/department_cubit.dart';
 import 'package:studenda_mobile/feature/group_selection/presentation/bloc/group_cubit/group_cubit.dart';
-import 'package:studenda_mobile/feature/group_selection/presentation/bloc/main_group_selection_cubit/main_group_selection_cubit.dart';
+import 'package:studenda_mobile/feature/group_selection/presentation/bloc/main_group_selection_bloc/main_group_selection_bloc.dart';
 import 'package:studenda_mobile/injection_container.dart';
 
 class GuestGroupSelectorPage extends StatefulWidget {
@@ -22,25 +23,73 @@ class _GuestGroupSelectorPageState extends State<GuestGroupSelectorPage> {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 240, 241, 245),
       appBar: const GroupSelectorAppBarWidget(),
-      body: Container(
+      body: MultiBlocProvider(
+        providers: [
+          BlocProvider<MainGroupSelectionBloc>(
+            create: (context) => sl<MainGroupSelectionBloc>(),
+          ),
+          BlocProvider<DepartmentCubit>(
+            create: (context) => sl<DepartmentCubit>(),
+          ),
+          BlocProvider<CourseCubit>(
+            create: (context) => sl<CourseCubit>(),
+          ),
+          BlocProvider<GroupCubit>(
+            create: (context) => sl<GroupCubit>(),
+          ),
+        ],
+        child: const _GroupSelectorWidget(),
+      ),
+    );
+  }
+}
+
+class _GroupSelectorWidget extends StatelessWidget {
+  const _GroupSelectorWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final mainCubit = context.watch<MainGroupSelectionBloc>();
+    final groupCubit = context.watch<GroupCubit>();
+    final courseCubit = context.watch<CourseCubit>();
+    final departmentCubit = context.watch<DepartmentCubit>();
+
+    groupCubit.load();
+    courseCubit.load();
+    departmentCubit.load();
+
+    if (groupCubit.state == const GroupState.loading() ||
+        courseCubit.state == const CourseState.loading() ||
+        departmentCubit.state == const DepartmentState.loading()) {
+      mainCubit.add(const MainGroupSelectionEvent.load());
+    } else if (groupCubit.state == const GroupState.fail() ||
+        courseCubit.state == const CourseState.fail() ||
+        departmentCubit.state == const DepartmentState.fail()) {
+      mainCubit.add(const MainGroupSelectionEvent.fail("Ошибка загрузки"));
+    } else {
+      mainCubit.add(const MainGroupSelectionEvent.success());
+    }
+
+    mainCubit.state.when(
+      initial: () => Container(),
+      loading: () => const Center(
+        child: CircularProgressIndicator(),
+      ),
+      success: () => Container(
         alignment: AlignmentDirectional.center,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 17),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              BlocProvider(
-                create: (context) => sl<DepartmentCubit>(),
-                child: const _DepartmentSelectionWidget(),
-              ),
-              BlocProvider(
-                create: (context) => sl<CourseCubit>(),
-                child: const _CourseSelectionWidget(),
-              ),
-              BlocProvider(
-                create: (context) => sl<GroupCubit>(),
-                child: const _GroupSelectionWidget(),
-              ),
+              _DepartmentSelectionWidget(
+                  mainCubit: mainCubit, departmentCubit: departmentCubit),
+              _CourseSelectionWidget(
+                  mainCubit: mainCubit, courseCubit: courseCubit),
+              _GroupSelectionWidget(
+                  mainCubit: mainCubit, groupCubit: groupCubit),
               StudendaButton(
                 title: "Подтвердить",
                 event: () {
@@ -51,28 +100,34 @@ class _GuestGroupSelectorPageState extends State<GuestGroupSelectorPage> {
           ),
         ),
       ),
+      fail: (errorMessage) => Center(child: Text(errorMessage)),
     );
+
+    throw const LoadGroupSelectorFailure(
+        message: "Непредвиденная ошибка загрузки");
   }
 }
 
 class _GroupSelectionWidget extends StatelessWidget {
-  const _GroupSelectionWidget();
+  final MainGroupSelectionBloc mainCubit;
+
+  final GroupCubit groupCubit;
+
+  const _GroupSelectionWidget(
+      {required this.mainCubit, required this.groupCubit});
 
   @override
   Widget build(BuildContext context) {
-    final groupCubit = context.watch<GroupCubit>();
-    final mainSelectorCubit = context.watch<MainGroupSelectionCubit>();
-    groupCubit.load();
-    final state = groupCubit.state;
-
-    return state.when(
+    return groupCubit.state.when(
       initial: () => Container(),
       loading: () => Container(),
       success: (groups) => StudendaDropdown(
         items: groups,
         model: groups[0],
         callback: (element) {
-          mainSelectorCubit.setGroup(element!);
+          mainCubit.add(
+            MainGroupSelectionEvent.setGroup(element!),
+          );
         },
       ),
       fail: (message) =>
@@ -82,23 +137,25 @@ class _GroupSelectionWidget extends StatelessWidget {
 }
 
 class _CourseSelectionWidget extends StatelessWidget {
-  const _CourseSelectionWidget();
+  final MainGroupSelectionBloc mainCubit;
+
+  final CourseCubit courseCubit;
+
+  const _CourseSelectionWidget(
+      {required this.mainCubit, required this.courseCubit});
 
   @override
   Widget build(BuildContext context) {
-    final courseCubit = context.watch<CourseCubit>();
-    final mainSelectorCubit = context.watch<MainGroupSelectionCubit>();
-    courseCubit.load();
-    final state = courseCubit.state;
-
-    return state.when(
+    return courseCubit.state.when(
       initial: () => Container(),
       loading: () => Container(),
       success: (courses) => StudendaDropdown(
         items: courses,
         model: courses[0],
         callback: (element) {
-          mainSelectorCubit.setCourse(element!);
+          mainCubit.add(
+            MainGroupSelectionEvent.setCourse(element!),
+          );
         },
       ),
       fail: (message) =>
@@ -108,23 +165,25 @@ class _CourseSelectionWidget extends StatelessWidget {
 }
 
 class _DepartmentSelectionWidget extends StatelessWidget {
-  const _DepartmentSelectionWidget();
+  final MainGroupSelectionBloc mainCubit;
+
+  final DepartmentCubit departmentCubit;
+
+  const _DepartmentSelectionWidget(
+      {required this.mainCubit, required this.departmentCubit});
 
   @override
   Widget build(BuildContext context) {
-    final departmentCubit = context.watch<DepartmentCubit>();
-    final mainSelectorCubit = context.watch<MainGroupSelectionCubit>();
-    departmentCubit.load();
-    final state = departmentCubit.state;
-
-    return state.when(
+    return departmentCubit.state.when(
       initial: () => Container(),
       loading: () => Container(),
       success: (departments) => StudendaDropdown(
         items: departments,
         model: departments[0],
         callback: (element) {
-          mainSelectorCubit.setDepartment(element!);
+          mainCubit.add(
+            MainGroupSelectionEvent.setDepartment(element!),
+          );
         },
       ),
       fail: (message) =>
@@ -152,7 +211,6 @@ class GroupSelectorAppBarWidget extends StatelessWidget
       titleSpacing: 0,
       centerTitle: true,
       title: const Text(
-        //TODO: Сделать чтобы отображалась текущая выбранная группа
         'Выбор группы',
         style: TextStyle(color: Colors.white, fontSize: 25),
       ),

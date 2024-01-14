@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:studenda_mobile/core/data/error/failure.dart';
-import 'package:studenda_mobile/feature/group_selection/domain/entities/group_entity.dart';
+import 'package:studenda_mobile/feature/group_selection/data/models/group_model.dart';
 
-abstract class GroupsRepository {
-  Future<Either<Failure,List<GroupEntity>>> load(void request);
+abstract class GroupRepository {
+  Future<Either<Failure,List<GroupModel>>> load(void request);
 }

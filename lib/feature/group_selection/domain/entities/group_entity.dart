@@ -9,4 +9,3 @@ class GroupEntity with _$GroupEntity{
     required String name,
   }) = _GroupEntity;
 }
-

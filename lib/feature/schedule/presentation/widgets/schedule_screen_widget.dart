@@ -73,6 +73,7 @@ class _ScheduleScreenWidgetState extends State<ScheduleScreenWidget> {
         automaticallyImplyLeading: false,
         centerTitle: true,
         title: const Text(
+        //TODO: Сделать чтобы отображалась текущая выбранная группа
           'Главная',
           style: TextStyle(color: Colors.white, fontSize: 25),
         ),
