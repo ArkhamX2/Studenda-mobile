@@ -17,7 +17,7 @@ class MainGroupSelectionBloc
   MainGroupSelectionBloc(
       {required this.selectedGroup,
       required this.selectedCourse,
-      required this.selectedDepartment})
+      required this.selectedDepartment,})
       : super(const _Initial()) {
     on<_setGroup>((event, emit) {
       selectedGroup = event.group;

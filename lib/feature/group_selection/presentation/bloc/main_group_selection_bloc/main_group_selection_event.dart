@@ -7,6 +7,9 @@ class MainGroupSelectionEvent with _$MainGroupSelectionEvent {
   const factory MainGroupSelectionEvent.fail(String errorMessage) = _LoadFail;
   const factory MainGroupSelectionEvent.success() = _LoadSuccess;
   const factory MainGroupSelectionEvent.setGroup(GroupEntity group) = _setGroup;
-  const factory MainGroupSelectionEvent.setCourse(CourseEntity course) = _setCourse;
-  const factory MainGroupSelectionEvent.setDepartment(DepartmentEntity department) = _setDepartment;
+  const factory MainGroupSelectionEvent.setCourse(CourseEntity course) =
+      _setCourse;
+  const factory MainGroupSelectionEvent.setDepartment(
+    DepartmentEntity department,
+  ) = _setDepartment;
 }

@@ -45,9 +45,7 @@ class _GuestGroupSelectorPageState extends State<GuestGroupSelectorPage> {
 }
 
 class _GroupSelectorWidget extends StatelessWidget {
-  const _GroupSelectorWidget({
-    super.key,
-  });
+  const _GroupSelectorWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -85,11 +83,11 @@ class _GroupSelectorWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _DepartmentSelectionWidget(
-                  mainCubit: mainCubit, departmentCubit: departmentCubit),
+                  mainCubit: mainCubit, departmentCubit: departmentCubit,),
               _CourseSelectionWidget(
-                  mainCubit: mainCubit, courseCubit: courseCubit),
+                  mainCubit: mainCubit, courseCubit: courseCubit,),
               _GroupSelectionWidget(
-                  mainCubit: mainCubit, groupCubit: groupCubit),
+                  mainCubit: mainCubit, groupCubit: groupCubit,),
               StudendaButton(
                 title: "Подтвердить",
                 event: () {
@@ -104,7 +102,7 @@ class _GroupSelectorWidget extends StatelessWidget {
     );
 
     throw const LoadGroupSelectorFailure(
-        message: "Непредвиденная ошибка загрузки");
+        message: "Непредвиденная ошибка загрузки",);
   }
 }
 
@@ -114,7 +112,7 @@ class _GroupSelectionWidget extends StatelessWidget {
   final GroupCubit groupCubit;
 
   const _GroupSelectionWidget(
-      {required this.mainCubit, required this.groupCubit});
+      {required this.mainCubit, required this.groupCubit,});
 
   @override
   Widget build(BuildContext context) {
@@ -142,7 +140,7 @@ class _CourseSelectionWidget extends StatelessWidget {
   final CourseCubit courseCubit;
 
   const _CourseSelectionWidget(
-      {required this.mainCubit, required this.courseCubit});
+      {required this.mainCubit, required this.courseCubit,});
 
   @override
   Widget build(BuildContext context) {
@@ -170,7 +168,7 @@ class _DepartmentSelectionWidget extends StatelessWidget {
   final DepartmentCubit departmentCubit;
 
   const _DepartmentSelectionWidget(
-      {required this.mainCubit, required this.departmentCubit});
+      {required this.mainCubit, required this.departmentCubit,});
 
   @override
   Widget build(BuildContext context) {
