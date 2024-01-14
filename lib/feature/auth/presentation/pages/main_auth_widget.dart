@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:studenda_mobile/feature/group_selection/presentation/pages/guest_group_selector.dart';
-import 'package:studenda_mobile/feature/auth/presentation/pages/email_auth_widget.dart';
 import 'package:studenda_mobile/core/presentation/button_widget.dart';
+import 'package:studenda_mobile/feature/auth/presentation/pages/email_auth_widget.dart';
+import 'package:studenda_mobile/feature/group_selection/presentation/pages/guest_group_selector.dart';
 import 'package:studenda_mobile/resources/colors.dart';
 
 class MainAuthPage extends StatefulWidget {
@@ -53,7 +53,7 @@ class _BodyWidget extends StatelessWidget {
             event: () {
               Navigator.of(context).push(
                 MaterialPageRoute<void>(
-                  builder: (context) => const GuestGroupSelectorWidget(),
+                  builder: (context) => const GuestGroupSelectorPage(),
                 ),
               );
             },
