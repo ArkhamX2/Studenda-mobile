@@ -1,7 +1,7 @@
 // ignore_for_file: overridden_fields
 
 import 'package:flutter/material.dart';
-import 'package:studenda_mobile/core/presentation/studenda_label_widget.dart';
+import 'package:studenda_mobile/core/presentation/label/studenda_label_widget.dart';
 import 'package:studenda_mobile/resources/colors.dart';
 
 class StudendaAlignedLabelWidget extends StudendaLabelWidget {

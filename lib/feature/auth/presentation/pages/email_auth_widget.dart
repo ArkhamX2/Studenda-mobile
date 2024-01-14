@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:studenda_mobile/core/presentation/studenda_default_label_widget.dart';
+import 'package:studenda_mobile/core/presentation/label/studenda_default_label_widget.dart';
 import 'package:studenda_mobile/core/presentation/studenda_input_text_field_style.dart';
-import 'package:studenda_mobile/core/presentation/studenda_label_widget.dart';
 import 'package:studenda_mobile/core/utils/email_validator.dart';
 import 'package:studenda_mobile/feature/auth/presentation/pages/verification_auth_widget.dart';
 import 'package:studenda_mobile/feature/auth/presentation/widgets/auth_app_bar_widget.dart';
-import 'package:studenda_mobile/resources/UI/button_widget.dart';
+import 'package:studenda_mobile/core/presentation/button_widget.dart';
 import 'package:studenda_mobile/resources/colors.dart';
 
 class EmailAuthPage extends StatefulWidget {

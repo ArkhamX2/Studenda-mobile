@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:studenda_mobile/core/presentation/studenda_aligned_label_widget.dart';
-import 'package:studenda_mobile/core/presentation/studenda_colored_label_widget.dart';
+import 'package:studenda_mobile/core/presentation/label/studenda_aligned_label_widget.dart';
+import 'package:studenda_mobile/core/presentation/label/studenda_colored_label_widget.dart';
+import 'package:studenda_mobile/core/presentation/label/studenda_weighted_label_widget.dart';
 import 'package:studenda_mobile/core/presentation/studenda_input_text_field_style.dart';
-import 'package:studenda_mobile/core/presentation/studenda_weighted_label_widget.dart';
 import 'package:studenda_mobile/core/utils/verification_code_validator.dart';
 import 'package:studenda_mobile/feature/auth/data/models/security_request_model.dart';
 import 'package:studenda_mobile/feature/auth/presentation/bloc/bloc/auth_bloc.dart';
 import 'package:studenda_mobile/feature/auth/presentation/widgets/auth_app_bar_widget.dart';
 import 'package:studenda_mobile/injection_container.dart';
-import 'package:studenda_mobile/resources/UI/button_widget.dart';
+import 'package:studenda_mobile/core/presentation/button_widget.dart';
 
 class VerificationAuthPage extends StatefulWidget {
   final String email;
