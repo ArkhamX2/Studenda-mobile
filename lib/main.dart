@@ -4,7 +4,7 @@ import 'package:studenda_mobile/feature/home/presentation/widgets/home_screen_wi
 import 'package:studenda_mobile/feature/journal/presentation/widgets/journal_main_screen_widget.dart';
 import 'package:studenda_mobile/feature/navigation/presentation/widgets/main_navigator_widget.dart';
 import 'package:studenda_mobile/feature/notification/presentation/widgets/notification_screen_widget.dart';
-import 'package:studenda_mobile/feature/schedule/presentation/widgets/schedule_screen_widget.dart';
+import 'package:studenda_mobile/feature/schedule/presentation/pages/schedule_screen_widget.dart';
 import 'package:studenda_mobile/injection_container.dart' as di;
 
 void main() async {

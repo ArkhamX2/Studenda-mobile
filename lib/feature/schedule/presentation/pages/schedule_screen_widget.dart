@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:studenda_mobile/feature/schedule/domain/entities/subject_entity.dart';
 import 'package:studenda_mobile/feature/schedule/presentation/widgets/date_carousel_widget.dart';
 import 'package:studenda_mobile/feature/schedule/presentation/widgets/week_schedule_widget.dart';
-import 'package:studenda_mobile/model/schedule/Management/day_schedule.dart';
+import 'package:studenda_mobile/feature/schedule/domain/entities/day_schedule.dart';
 import 'package:studenda_mobile/resources/colors.dart';
 
 final List<DaySchedule> schedule = <DaySchedule>[

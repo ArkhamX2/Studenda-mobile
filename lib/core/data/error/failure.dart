@@ -34,3 +34,8 @@ class LoadGroupsFailure extends Failure{
 class LoadGroupSelectorFailure extends Failure{
   const LoadGroupSelectorFailure({required super.message});
 }
+
+
+class LoadWeekTypeFailure extends Failure{
+  const LoadWeekTypeFailure({required super.message});
+}
