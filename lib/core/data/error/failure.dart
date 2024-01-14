@@ -18,3 +18,15 @@ class CacheFailure extends Failure{
 class AuthFailure extends Failure{
   const AuthFailure({required super.message});
 }
+
+class LoadDepartmentsFailure extends Failure{
+  const LoadDepartmentsFailure({required super.message});
+}
+
+class LoadCoursesFailure extends Failure{
+  const LoadCoursesFailure({required super.message});
+}
+
+class LoadGroupsFailure extends Failure{
+  const LoadGroupsFailure({required super.message});
+}
