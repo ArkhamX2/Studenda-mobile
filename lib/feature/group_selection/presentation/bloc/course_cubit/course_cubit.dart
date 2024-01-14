@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:studenda_mobile/feature/group_selection/domain/entities/course.dart';
+import 'package:studenda_mobile/feature/group_selection/domain/entities/course_entity.dart';
 import 'package:studenda_mobile/feature/group_selection/domain/usecases/load_courses.dart';
 
 part 'course_state.dart';

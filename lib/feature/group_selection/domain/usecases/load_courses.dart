@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:studenda_mobile/core/data/error/failure.dart';
 import 'package:studenda_mobile/core/data/usecases/usecase.dart';
-import 'package:studenda_mobile/feature/group_selection/domain/entities/course.dart';
+import 'package:studenda_mobile/feature/group_selection/domain/entities/course_entity.dart';
 import 'package:studenda_mobile/feature/group_selection/domain/repositories/course_repository.dart';
 
 class LoadCourses extends Usecase<List<CourseEntity>,void>{

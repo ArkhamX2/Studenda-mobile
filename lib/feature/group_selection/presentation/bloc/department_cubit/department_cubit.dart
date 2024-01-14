@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:studenda_mobile/feature/group_selection/domain/entities/department.dart';
+import 'package:studenda_mobile/feature/group_selection/domain/entities/department_entity.dart';
 import 'package:studenda_mobile/feature/group_selection/domain/usecases/load_departments.dart';
 
 part 'department_state.dart';
