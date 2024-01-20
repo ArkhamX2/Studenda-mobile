@@ -20,9 +20,9 @@ DisciplineModel _$DisciplineModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$DisciplineModel {
-  @JsonKey(name: 'Id')
+  @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'Name')
+  @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,7 +37,7 @@ abstract class $DisciplineModelCopyWith<$Res> {
           DisciplineModel value, $Res Function(DisciplineModel) then) =
       _$DisciplineModelCopyWithImpl<$Res, DisciplineModel>;
   @useResult
-  $Res call({@JsonKey(name: 'Id') int id, @JsonKey(name: 'Name') String name});
+  $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: 'name') String name});
 }
 
 /// @nodoc
@@ -77,7 +77,7 @@ abstract class _$$DisciplineModelImplCopyWith<$Res>
       __$$DisciplineModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'Id') int id, @JsonKey(name: 'Name') String name});
+  $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: 'name') String name});
 }
 
 /// @nodoc
@@ -111,17 +111,17 @@ class __$$DisciplineModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$DisciplineModelImpl implements _DisciplineModel {
   const _$DisciplineModelImpl(
-      {@JsonKey(name: 'Id') required this.id,
-      @JsonKey(name: 'Name') required this.name});
+      {@JsonKey(name: 'id') required this.id,
+      @JsonKey(name: 'name') required this.name});
 
   factory _$DisciplineModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$DisciplineModelImplFromJson(json);
 
   @override
-  @JsonKey(name: 'Id')
+  @JsonKey(name: 'id')
   final int id;
   @override
-  @JsonKey(name: 'Name')
+  @JsonKey(name: 'name')
   final String name;
 
   @override
@@ -159,18 +159,18 @@ class _$DisciplineModelImpl implements _DisciplineModel {
 
 abstract class _DisciplineModel implements DisciplineModel {
   const factory _DisciplineModel(
-          {@JsonKey(name: 'Id') required final int id,
-          @JsonKey(name: 'Name') required final String name}) =
+          {@JsonKey(name: 'id') required final int id,
+          @JsonKey(name: 'name') required final String name}) =
       _$DisciplineModelImpl;
 
   factory _DisciplineModel.fromJson(Map<String, dynamic> json) =
       _$DisciplineModelImpl.fromJson;
 
   @override
-  @JsonKey(name: 'Id')
+  @JsonKey(name: 'id')
   int get id;
   @override
-  @JsonKey(name: 'Name')
+  @JsonKey(name: 'name')
   String get name;
   @override
   @JsonKey(ignore: true)

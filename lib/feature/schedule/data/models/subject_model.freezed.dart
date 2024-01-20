@@ -20,17 +20,17 @@ SubjectModel _$SubjectModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SubjectModel {
-  @JsonKey(name: 'Id')
+  @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'Discipline')
-  DisciplineModel get discipline => throw _privateConstructorUsedError;
-  @JsonKey(name: 'User')
-  UserModel get user => throw _privateConstructorUsedError;
-  @JsonKey(name: 'Classroom')
+  @JsonKey(name: 'disciplineId')
+  int get disciplineId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'userId')
+  int get userId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'classroom')
   String get classroom => throw _privateConstructorUsedError;
-  @JsonKey(name: 'SubjectPositionId')
+  @JsonKey(name: 'subjectPositionId')
   int get subjectPositionId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'WeekPositionId')
+  @JsonKey(name: 'dayPositionId')
   int get weekPositionId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -46,15 +46,12 @@ abstract class $SubjectModelCopyWith<$Res> {
       _$SubjectModelCopyWithImpl<$Res, SubjectModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'Id') int id,
-      @JsonKey(name: 'Discipline') DisciplineModel discipline,
-      @JsonKey(name: 'User') UserModel user,
-      @JsonKey(name: 'Classroom') String classroom,
-      @JsonKey(name: 'SubjectPositionId') int subjectPositionId,
-      @JsonKey(name: 'WeekPositionId') int weekPositionId});
-
-  $DisciplineModelCopyWith<$Res> get discipline;
-  $UserModelCopyWith<$Res> get user;
+      {@JsonKey(name: 'id') int id,
+      @JsonKey(name: 'disciplineId') int disciplineId,
+      @JsonKey(name: 'userId') int userId,
+      @JsonKey(name: 'classroom') String classroom,
+      @JsonKey(name: 'subjectPositionId') int subjectPositionId,
+      @JsonKey(name: 'dayPositionId') int weekPositionId});
 }
 
 /// @nodoc
@@ -71,8 +68,8 @@ class _$SubjectModelCopyWithImpl<$Res, $Val extends SubjectModel>
   @override
   $Res call({
     Object? id = null,
-    Object? discipline = null,
-    Object? user = null,
+    Object? disciplineId = null,
+    Object? userId = null,
     Object? classroom = null,
     Object? subjectPositionId = null,
     Object? weekPositionId = null,
@@ -82,14 +79,14 @@ class _$SubjectModelCopyWithImpl<$Res, $Val extends SubjectModel>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      discipline: null == discipline
-          ? _value.discipline
-          : discipline // ignore: cast_nullable_to_non_nullable
-              as DisciplineModel,
-      user: null == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as UserModel,
+      disciplineId: null == disciplineId
+          ? _value.disciplineId
+          : disciplineId // ignore: cast_nullable_to_non_nullable
+              as int,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int,
       classroom: null == classroom
           ? _value.classroom
           : classroom // ignore: cast_nullable_to_non_nullable
@@ -104,22 +101,6 @@ class _$SubjectModelCopyWithImpl<$Res, $Val extends SubjectModel>
               as int,
     ) as $Val);
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $DisciplineModelCopyWith<$Res> get discipline {
-    return $DisciplineModelCopyWith<$Res>(_value.discipline, (value) {
-      return _then(_value.copyWith(discipline: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $UserModelCopyWith<$Res> get user {
-    return $UserModelCopyWith<$Res>(_value.user, (value) {
-      return _then(_value.copyWith(user: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -131,17 +112,12 @@ abstract class _$$SubjectModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'Id') int id,
-      @JsonKey(name: 'Discipline') DisciplineModel discipline,
-      @JsonKey(name: 'User') UserModel user,
-      @JsonKey(name: 'Classroom') String classroom,
-      @JsonKey(name: 'SubjectPositionId') int subjectPositionId,
-      @JsonKey(name: 'WeekPositionId') int weekPositionId});
-
-  @override
-  $DisciplineModelCopyWith<$Res> get discipline;
-  @override
-  $UserModelCopyWith<$Res> get user;
+      {@JsonKey(name: 'id') int id,
+      @JsonKey(name: 'disciplineId') int disciplineId,
+      @JsonKey(name: 'userId') int userId,
+      @JsonKey(name: 'classroom') String classroom,
+      @JsonKey(name: 'subjectPositionId') int subjectPositionId,
+      @JsonKey(name: 'dayPositionId') int weekPositionId});
 }
 
 /// @nodoc
@@ -156,8 +132,8 @@ class __$$SubjectModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? discipline = null,
-    Object? user = null,
+    Object? disciplineId = null,
+    Object? userId = null,
     Object? classroom = null,
     Object? subjectPositionId = null,
     Object? weekPositionId = null,
@@ -167,14 +143,14 @@ class __$$SubjectModelImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      discipline: null == discipline
-          ? _value.discipline
-          : discipline // ignore: cast_nullable_to_non_nullable
-              as DisciplineModel,
-      user: null == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as UserModel,
+      disciplineId: null == disciplineId
+          ? _value.disciplineId
+          : disciplineId // ignore: cast_nullable_to_non_nullable
+              as int,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int,
       classroom: null == classroom
           ? _value.classroom
           : classroom // ignore: cast_nullable_to_non_nullable
@@ -195,38 +171,38 @@ class __$$SubjectModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$SubjectModelImpl implements _SubjectModel {
   const _$SubjectModelImpl(
-      {@JsonKey(name: 'Id') required this.id,
-      @JsonKey(name: 'Discipline') required this.discipline,
-      @JsonKey(name: 'User') required this.user,
-      @JsonKey(name: 'Classroom') required this.classroom,
-      @JsonKey(name: 'SubjectPositionId') required this.subjectPositionId,
-      @JsonKey(name: 'WeekPositionId') required this.weekPositionId});
+      {@JsonKey(name: 'id') required this.id,
+      @JsonKey(name: 'disciplineId') required this.disciplineId,
+      @JsonKey(name: 'userId') required this.userId,
+      @JsonKey(name: 'classroom') required this.classroom,
+      @JsonKey(name: 'subjectPositionId') required this.subjectPositionId,
+      @JsonKey(name: 'dayPositionId') required this.weekPositionId});
 
   factory _$SubjectModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$SubjectModelImplFromJson(json);
 
   @override
-  @JsonKey(name: 'Id')
+  @JsonKey(name: 'id')
   final int id;
   @override
-  @JsonKey(name: 'Discipline')
-  final DisciplineModel discipline;
+  @JsonKey(name: 'disciplineId')
+  final int disciplineId;
   @override
-  @JsonKey(name: 'User')
-  final UserModel user;
+  @JsonKey(name: 'userId')
+  final int userId;
   @override
-  @JsonKey(name: 'Classroom')
+  @JsonKey(name: 'classroom')
   final String classroom;
   @override
-  @JsonKey(name: 'SubjectPositionId')
+  @JsonKey(name: 'subjectPositionId')
   final int subjectPositionId;
   @override
-  @JsonKey(name: 'WeekPositionId')
+  @JsonKey(name: 'dayPositionId')
   final int weekPositionId;
 
   @override
   String toString() {
-    return 'SubjectModel(id: $id, discipline: $discipline, user: $user, classroom: $classroom, subjectPositionId: $subjectPositionId, weekPositionId: $weekPositionId)';
+    return 'SubjectModel(id: $id, disciplineId: $disciplineId, userId: $userId, classroom: $classroom, subjectPositionId: $subjectPositionId, weekPositionId: $weekPositionId)';
   }
 
   @override
@@ -235,9 +211,9 @@ class _$SubjectModelImpl implements _SubjectModel {
         (other.runtimeType == runtimeType &&
             other is _$SubjectModelImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.discipline, discipline) ||
-                other.discipline == discipline) &&
-            (identical(other.user, user) || other.user == user) &&
+            (identical(other.disciplineId, disciplineId) ||
+                other.disciplineId == disciplineId) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.classroom, classroom) ||
                 other.classroom == classroom) &&
             (identical(other.subjectPositionId, subjectPositionId) ||
@@ -248,8 +224,8 @@ class _$SubjectModelImpl implements _SubjectModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, discipline, user, classroom,
-      subjectPositionId, weekPositionId);
+  int get hashCode => Object.hash(runtimeType, id, disciplineId, userId,
+      classroom, subjectPositionId, weekPositionId);
 
   @JsonKey(ignore: true)
   @override
@@ -267,34 +243,34 @@ class _$SubjectModelImpl implements _SubjectModel {
 
 abstract class _SubjectModel implements SubjectModel {
   const factory _SubjectModel(
-      {@JsonKey(name: 'Id') required final int id,
-      @JsonKey(name: 'Discipline') required final DisciplineModel discipline,
-      @JsonKey(name: 'User') required final UserModel user,
-      @JsonKey(name: 'Classroom') required final String classroom,
-      @JsonKey(name: 'SubjectPositionId') required final int subjectPositionId,
-      @JsonKey(name: 'WeekPositionId')
+      {@JsonKey(name: 'id') required final int id,
+      @JsonKey(name: 'disciplineId') required final int disciplineId,
+      @JsonKey(name: 'userId') required final int userId,
+      @JsonKey(name: 'classroom') required final String classroom,
+      @JsonKey(name: 'subjectPositionId') required final int subjectPositionId,
+      @JsonKey(name: 'dayPositionId')
       required final int weekPositionId}) = _$SubjectModelImpl;
 
   factory _SubjectModel.fromJson(Map<String, dynamic> json) =
       _$SubjectModelImpl.fromJson;
 
   @override
-  @JsonKey(name: 'Id')
+  @JsonKey(name: 'id')
   int get id;
   @override
-  @JsonKey(name: 'Discipline')
-  DisciplineModel get discipline;
+  @JsonKey(name: 'disciplineId')
+  int get disciplineId;
   @override
-  @JsonKey(name: 'User')
-  UserModel get user;
+  @JsonKey(name: 'userId')
+  int get userId;
   @override
-  @JsonKey(name: 'Classroom')
+  @JsonKey(name: 'classroom')
   String get classroom;
   @override
-  @JsonKey(name: 'SubjectPositionId')
+  @JsonKey(name: 'subjectPositionId')
   int get subjectPositionId;
   @override
-  @JsonKey(name: 'WeekPositionId')
+  @JsonKey(name: 'dayPositionId')
   int get weekPositionId;
   @override
   @JsonKey(ignore: true)

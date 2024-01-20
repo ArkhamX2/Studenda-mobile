@@ -8,8 +8,8 @@ part 'discipline_model.g.dart';
 
 class DisciplineModel with _$DisciplineModel{
   const factory DisciplineModel({
-    @JsonKey(name: 'Id') required int id,
-    @JsonKey(name: 'Name') required String name,
+    @JsonKey(name: 'id') required int id,
+    @JsonKey(name: 'name') required String name,
   }) = _DisciplineModel;
 
   

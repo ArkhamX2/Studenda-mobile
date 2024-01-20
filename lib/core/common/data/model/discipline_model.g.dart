@@ -9,13 +9,13 @@ part of 'discipline_model.dart';
 _$DisciplineModelImpl _$$DisciplineModelImplFromJson(
         Map<String, dynamic> json) =>
     _$DisciplineModelImpl(
-      id: json['Id'] as int,
-      name: json['Name'] as String,
+      id: json['id'] as int,
+      name: json['name'] as String,
     );
 
 Map<String, dynamic> _$$DisciplineModelImplToJson(
         _$DisciplineModelImpl instance) =>
     <String, dynamic>{
-      'Id': instance.id,
-      'Name': instance.name,
+      'id': instance.id,
+      'name': instance.name,
     };
