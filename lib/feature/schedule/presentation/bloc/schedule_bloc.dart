@@ -23,14 +23,17 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
       weekType = weekType?.index == 1
           ? WeekTypeEntity(id: weekType!.id + 1, name: weekType!.name, index: 2)
           : WeekTypeEntity(
-              id: weekType!.id - 1, name: weekType!.name, index: 1,);
+              id: weekType!.id - 1,
+              name: weekType!.name,
+              index: 1,
+            );
     });
 
     on<_Load>((event, emit) async {
       emit(const ScheduleState.loading());
       WeekTypeEntity weekType;
-      ScheduleEntity schedule;
-      final weekTypeCall = await getWeekType.call(() {}).then(
+      // ignore: void_checks
+      await getWeekType.call(() {}).then(
             (value) => value.fold(
               (l) => emit(ScheduleState.fail(l.message)),
               (r) async {
@@ -39,10 +42,12 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
                   name: r.name,
                   index: r.index,
                 );
-                final scheduleCall = await getSchedule
+                await getSchedule
                     .call(
                       ScheduleRequestModel(
-                          groupId: event.groupId, weekTypeId: weekType.id,),
+                        groupId: event.groupId,
+                        weekTypeId: weekType.id,
+                      ),
                     )
                     .then(
                       (value) => value.fold(
