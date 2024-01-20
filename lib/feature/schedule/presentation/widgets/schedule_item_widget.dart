@@ -115,7 +115,7 @@ class _MainSubjectInfoRowWidget extends StatelessWidget {
               width: 46,
               height: 46,
               child: Text(
-                dayPositionValues[widget.subject.dayPosition],
+                dayPositionValues[widget.subject.dayTime],
                 textAlign: TextAlign.right,
                 style: const TextStyle(
                   color: mainForegroundColor,
@@ -147,7 +147,7 @@ class _MainSubjectInfoRowWidget extends StatelessWidget {
                     Expanded(
                       child: Center(
                         child: Text(
-                          widget.subject.name,
+                          widget.subject.title,
                           style: const TextStyle(
                             color: mainForegroundColor,
                             fontSize: 16,
@@ -156,7 +156,7 @@ class _MainSubjectInfoRowWidget extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      widget.subject.place,
+                      widget.subject.classroom,
                       style: const TextStyle(
                         color: mainForegroundColor,
                         fontSize: 16,

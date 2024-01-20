@@ -8,9 +8,11 @@ part 'week_type_model.g.dart';
 
 @freezed
 class WeekTypeModel with _$WeekTypeModel{
+
   const factory WeekTypeModel({
-    @JsonKey(name: 'Id') required int id,
-    @JsonKey(name: 'Name') required String name,
+    @JsonKey(name: 'id') required int id,
+    @JsonKey(name: 'name') required String name,
+    @JsonKey(name: 'index') required int index,
   }) = _WeekTypeModel;
 
   

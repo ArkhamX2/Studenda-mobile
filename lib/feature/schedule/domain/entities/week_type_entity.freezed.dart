@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$WeekTypeEntity {
   int get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
+  int get index => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $WeekTypeEntityCopyWith<WeekTypeEntity> get copyWith =>
@@ -30,7 +31,7 @@ abstract class $WeekTypeEntityCopyWith<$Res> {
           WeekTypeEntity value, $Res Function(WeekTypeEntity) then) =
       _$WeekTypeEntityCopyWithImpl<$Res, WeekTypeEntity>;
   @useResult
-  $Res call({int id, String? name});
+  $Res call({int id, String? name, int index});
 }
 
 /// @nodoc
@@ -48,6 +49,7 @@ class _$WeekTypeEntityCopyWithImpl<$Res, $Val extends WeekTypeEntity>
   $Res call({
     Object? id = null,
     Object? name = freezed,
+    Object? index = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -58,6 +60,10 @@ class _$WeekTypeEntityCopyWithImpl<$Res, $Val extends WeekTypeEntity>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -70,7 +76,7 @@ abstract class _$$WeekTypeEntityImplCopyWith<$Res>
       __$$WeekTypeEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String? name});
+  $Res call({int id, String? name, int index});
 }
 
 /// @nodoc
@@ -86,6 +92,7 @@ class __$$WeekTypeEntityImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? name = freezed,
+    Object? index = null,
   }) {
     return _then(_$WeekTypeEntityImpl(
       id: null == id
@@ -96,6 +103,10 @@ class __$$WeekTypeEntityImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -103,16 +114,19 @@ class __$$WeekTypeEntityImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$WeekTypeEntityImpl implements _WeekTypeEntity {
-  const _$WeekTypeEntityImpl({required this.id, required this.name});
+  const _$WeekTypeEntityImpl(
+      {required this.id, required this.name, required this.index});
 
   @override
   final int id;
   @override
   final String? name;
+  @override
+  final int index;
 
   @override
   String toString() {
-    return 'WeekTypeEntity(id: $id, name: $name)';
+    return 'WeekTypeEntity(id: $id, name: $name, index: $index)';
   }
 
   @override
@@ -121,11 +135,12 @@ class _$WeekTypeEntityImpl implements _WeekTypeEntity {
         (other.runtimeType == runtimeType &&
             other is _$WeekTypeEntityImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.index, index) || other.index == index));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, name);
+  int get hashCode => Object.hash(runtimeType, id, name, index);
 
   @JsonKey(ignore: true)
   @override
@@ -138,12 +153,15 @@ class _$WeekTypeEntityImpl implements _WeekTypeEntity {
 abstract class _WeekTypeEntity implements WeekTypeEntity {
   const factory _WeekTypeEntity(
       {required final int id,
-      required final String? name}) = _$WeekTypeEntityImpl;
+      required final String? name,
+      required final int index}) = _$WeekTypeEntityImpl;
 
   @override
   int get id;
   @override
   String? get name;
+  @override
+  int get index;
   @override
   @JsonKey(ignore: true)
   _$$WeekTypeEntityImplCopyWith<_$WeekTypeEntityImpl> get copyWith =>

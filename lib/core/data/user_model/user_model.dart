@@ -11,6 +11,7 @@ class UserModel with _$UserModel{
   const factory UserModel({
     @JsonKey(name: 'Id') required int id,
     @JsonKey(name: 'Role') required RoleModel role,
+    @JsonKey(name: 'Name') required String name,
   }) = _UserModel;
 
   factory UserModel.fromJson(Map<String,dynamic> json) => _$UserModelFromJson(json);

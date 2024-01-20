@@ -35,7 +35,7 @@ class SubjectItemWidget extends StatelessWidget {
             ),
             child: Center(
               child: Text(
-                subject.name,
+                "Placeholder",
                 style: const TextStyle(
                   color: mainForegroundColor,
                   fontSize: 16,

@@ -8,13 +8,13 @@ part 'main_group_selection_event.dart';
 part 'main_group_selection_state.dart';
 part 'main_group_selection_bloc.freezed.dart';
 
-class MainGroupSelectionBloc
-    extends Bloc<MainGroupSelectionEvent, MainGroupSelectionState> {
+class GroupSelectorBloc
+    extends Bloc<GroupSelectorEvent, GroupSelectorState> {
   GroupEntity selectedGroup;
   CourseEntity selectedCourse;
   DepartmentEntity selectedDepartment;
 
-  MainGroupSelectionBloc(
+  GroupSelectorBloc(
       {required this.selectedGroup,
       required this.selectedCourse,
       required this.selectedDepartment,})
@@ -29,13 +29,13 @@ class MainGroupSelectionBloc
       selectedDepartment = event.department;
     });
     on<_Load>((event, emit) {
-      emit(const MainGroupSelectionState.loading());
+      emit(const GroupSelectorState.loading());
     });
     on<_LoadFail>((event, emit) {
-      emit(MainGroupSelectionState.fail(event.errorMessage));
+      emit(GroupSelectorState.fail(event.errorMessage));
     });
     on<_LoadSuccess>((event, emit) {
-      emit(const MainGroupSelectionState.success());
+      emit(const GroupSelectorState.success());
     });
   }
 }

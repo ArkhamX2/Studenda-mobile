@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$MainGroupSelectionEvent {
+mixin _$GroupSelectorEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
@@ -87,17 +87,16 @@ mixin _$MainGroupSelectionEvent {
 }
 
 /// @nodoc
-abstract class $MainGroupSelectionEventCopyWith<$Res> {
-  factory $MainGroupSelectionEventCopyWith(MainGroupSelectionEvent value,
-          $Res Function(MainGroupSelectionEvent) then) =
-      _$MainGroupSelectionEventCopyWithImpl<$Res, MainGroupSelectionEvent>;
+abstract class $GroupSelectorEventCopyWith<$Res> {
+  factory $GroupSelectorEventCopyWith(
+          GroupSelectorEvent value, $Res Function(GroupSelectorEvent) then) =
+      _$GroupSelectorEventCopyWithImpl<$Res, GroupSelectorEvent>;
 }
 
 /// @nodoc
-class _$MainGroupSelectionEventCopyWithImpl<$Res,
-        $Val extends MainGroupSelectionEvent>
-    implements $MainGroupSelectionEventCopyWith<$Res> {
-  _$MainGroupSelectionEventCopyWithImpl(this._value, this._then);
+class _$GroupSelectorEventCopyWithImpl<$Res, $Val extends GroupSelectorEvent>
+    implements $GroupSelectorEventCopyWith<$Res> {
+  _$GroupSelectorEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -114,7 +113,7 @@ abstract class _$$StartedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$StartedImplCopyWithImpl<$Res>
-    extends _$MainGroupSelectionEventCopyWithImpl<$Res, _$StartedImpl>
+    extends _$GroupSelectorEventCopyWithImpl<$Res, _$StartedImpl>
     implements _$$StartedImplCopyWith<$Res> {
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
@@ -128,7 +127,7 @@ class _$StartedImpl implements _Started {
 
   @override
   String toString() {
-    return 'MainGroupSelectionEvent.started()';
+    return 'GroupSelectorEvent.started()';
   }
 
   @override
@@ -233,7 +232,7 @@ class _$StartedImpl implements _Started {
   }
 }
 
-abstract class _Started implements MainGroupSelectionEvent {
+abstract class _Started implements GroupSelectorEvent {
   const factory _Started() = _$StartedImpl;
 }
 
@@ -246,7 +245,7 @@ abstract class _$$LoadImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadImplCopyWithImpl<$Res>
-    extends _$MainGroupSelectionEventCopyWithImpl<$Res, _$LoadImpl>
+    extends _$GroupSelectorEventCopyWithImpl<$Res, _$LoadImpl>
     implements _$$LoadImplCopyWith<$Res> {
   __$$LoadImplCopyWithImpl(_$LoadImpl _value, $Res Function(_$LoadImpl) _then)
       : super(_value, _then);
@@ -259,7 +258,7 @@ class _$LoadImpl implements _Load {
 
   @override
   String toString() {
-    return 'MainGroupSelectionEvent.load()';
+    return 'GroupSelectorEvent.load()';
   }
 
   @override
@@ -364,7 +363,7 @@ class _$LoadImpl implements _Load {
   }
 }
 
-abstract class _Load implements MainGroupSelectionEvent {
+abstract class _Load implements GroupSelectorEvent {
   const factory _Load() = _$LoadImpl;
 }
 
@@ -379,7 +378,7 @@ abstract class _$$LoadFailImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadFailImplCopyWithImpl<$Res>
-    extends _$MainGroupSelectionEventCopyWithImpl<$Res, _$LoadFailImpl>
+    extends _$GroupSelectorEventCopyWithImpl<$Res, _$LoadFailImpl>
     implements _$$LoadFailImplCopyWith<$Res> {
   __$$LoadFailImplCopyWithImpl(
       _$LoadFailImpl _value, $Res Function(_$LoadFailImpl) _then)
@@ -409,7 +408,7 @@ class _$LoadFailImpl implements _LoadFail {
 
   @override
   String toString() {
-    return 'MainGroupSelectionEvent.fail(errorMessage: $errorMessage)';
+    return 'GroupSelectorEvent.fail(errorMessage: $errorMessage)';
   }
 
   @override
@@ -523,7 +522,7 @@ class _$LoadFailImpl implements _LoadFail {
   }
 }
 
-abstract class _LoadFail implements MainGroupSelectionEvent {
+abstract class _LoadFail implements GroupSelectorEvent {
   const factory _LoadFail(final String errorMessage) = _$LoadFailImpl;
 
   String get errorMessage;
@@ -541,7 +540,7 @@ abstract class _$$LoadSuccessImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadSuccessImplCopyWithImpl<$Res>
-    extends _$MainGroupSelectionEventCopyWithImpl<$Res, _$LoadSuccessImpl>
+    extends _$GroupSelectorEventCopyWithImpl<$Res, _$LoadSuccessImpl>
     implements _$$LoadSuccessImplCopyWith<$Res> {
   __$$LoadSuccessImplCopyWithImpl(
       _$LoadSuccessImpl _value, $Res Function(_$LoadSuccessImpl) _then)
@@ -555,7 +554,7 @@ class _$LoadSuccessImpl implements _LoadSuccess {
 
   @override
   String toString() {
-    return 'MainGroupSelectionEvent.success()';
+    return 'GroupSelectorEvent.success()';
   }
 
   @override
@@ -660,7 +659,7 @@ class _$LoadSuccessImpl implements _LoadSuccess {
   }
 }
 
-abstract class _LoadSuccess implements MainGroupSelectionEvent {
+abstract class _LoadSuccess implements GroupSelectorEvent {
   const factory _LoadSuccess() = _$LoadSuccessImpl;
 }
 
@@ -677,7 +676,7 @@ abstract class _$$setGroupImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$setGroupImplCopyWithImpl<$Res>
-    extends _$MainGroupSelectionEventCopyWithImpl<$Res, _$setGroupImpl>
+    extends _$GroupSelectorEventCopyWithImpl<$Res, _$setGroupImpl>
     implements _$$setGroupImplCopyWith<$Res> {
   __$$setGroupImplCopyWithImpl(
       _$setGroupImpl _value, $Res Function(_$setGroupImpl) _then)
@@ -715,7 +714,7 @@ class _$setGroupImpl implements _setGroup {
 
   @override
   String toString() {
-    return 'MainGroupSelectionEvent.setGroup(group: $group)';
+    return 'GroupSelectorEvent.setGroup(group: $group)';
   }
 
   @override
@@ -828,7 +827,7 @@ class _$setGroupImpl implements _setGroup {
   }
 }
 
-abstract class _setGroup implements MainGroupSelectionEvent {
+abstract class _setGroup implements GroupSelectorEvent {
   const factory _setGroup(final GroupEntity group) = _$setGroupImpl;
 
   GroupEntity get group;
@@ -850,7 +849,7 @@ abstract class _$$setCourseImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$setCourseImplCopyWithImpl<$Res>
-    extends _$MainGroupSelectionEventCopyWithImpl<$Res, _$setCourseImpl>
+    extends _$GroupSelectorEventCopyWithImpl<$Res, _$setCourseImpl>
     implements _$$setCourseImplCopyWith<$Res> {
   __$$setCourseImplCopyWithImpl(
       _$setCourseImpl _value, $Res Function(_$setCourseImpl) _then)
@@ -888,7 +887,7 @@ class _$setCourseImpl implements _setCourse {
 
   @override
   String toString() {
-    return 'MainGroupSelectionEvent.setCourse(course: $course)';
+    return 'GroupSelectorEvent.setCourse(course: $course)';
   }
 
   @override
@@ -1001,7 +1000,7 @@ class _$setCourseImpl implements _setCourse {
   }
 }
 
-abstract class _setCourse implements MainGroupSelectionEvent {
+abstract class _setCourse implements GroupSelectorEvent {
   const factory _setCourse(final CourseEntity course) = _$setCourseImpl;
 
   CourseEntity get course;
@@ -1023,7 +1022,7 @@ abstract class _$$setDepartmentImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$setDepartmentImplCopyWithImpl<$Res>
-    extends _$MainGroupSelectionEventCopyWithImpl<$Res, _$setDepartmentImpl>
+    extends _$GroupSelectorEventCopyWithImpl<$Res, _$setDepartmentImpl>
     implements _$$setDepartmentImplCopyWith<$Res> {
   __$$setDepartmentImplCopyWithImpl(
       _$setDepartmentImpl _value, $Res Function(_$setDepartmentImpl) _then)
@@ -1061,7 +1060,7 @@ class _$setDepartmentImpl implements _setDepartment {
 
   @override
   String toString() {
-    return 'MainGroupSelectionEvent.setDepartment(department: $department)';
+    return 'GroupSelectorEvent.setDepartment(department: $department)';
   }
 
   @override
@@ -1175,7 +1174,7 @@ class _$setDepartmentImpl implements _setDepartment {
   }
 }
 
-abstract class _setDepartment implements MainGroupSelectionEvent {
+abstract class _setDepartment implements GroupSelectorEvent {
   const factory _setDepartment(final DepartmentEntity department) =
       _$setDepartmentImpl;
 
@@ -1186,7 +1185,7 @@ abstract class _setDepartment implements MainGroupSelectionEvent {
 }
 
 /// @nodoc
-mixin _$MainGroupSelectionState {
+mixin _$GroupSelectorState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -1240,17 +1239,16 @@ mixin _$MainGroupSelectionState {
 }
 
 /// @nodoc
-abstract class $MainGroupSelectionStateCopyWith<$Res> {
-  factory $MainGroupSelectionStateCopyWith(MainGroupSelectionState value,
-          $Res Function(MainGroupSelectionState) then) =
-      _$MainGroupSelectionStateCopyWithImpl<$Res, MainGroupSelectionState>;
+abstract class $GroupSelectorStateCopyWith<$Res> {
+  factory $GroupSelectorStateCopyWith(
+          GroupSelectorState value, $Res Function(GroupSelectorState) then) =
+      _$GroupSelectorStateCopyWithImpl<$Res, GroupSelectorState>;
 }
 
 /// @nodoc
-class _$MainGroupSelectionStateCopyWithImpl<$Res,
-        $Val extends MainGroupSelectionState>
-    implements $MainGroupSelectionStateCopyWith<$Res> {
-  _$MainGroupSelectionStateCopyWithImpl(this._value, this._then);
+class _$GroupSelectorStateCopyWithImpl<$Res, $Val extends GroupSelectorState>
+    implements $GroupSelectorStateCopyWith<$Res> {
+  _$GroupSelectorStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -1267,7 +1265,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$MainGroupSelectionStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$GroupSelectorStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -1281,7 +1279,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'MainGroupSelectionState.initial()';
+    return 'GroupSelectorState.initial()';
   }
 
   @override
@@ -1368,7 +1366,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements MainGroupSelectionState {
+abstract class _Initial implements GroupSelectorState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -1381,7 +1379,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$MainGroupSelectionStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$GroupSelectorStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -1395,7 +1393,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'MainGroupSelectionState.loading()';
+    return 'GroupSelectorState.loading()';
   }
 
   @override
@@ -1482,7 +1480,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements MainGroupSelectionState {
+abstract class _Loading implements GroupSelectorState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -1495,7 +1493,7 @@ abstract class _$$SuccessImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$MainGroupSelectionStateCopyWithImpl<$Res, _$SuccessImpl>
+    extends _$GroupSelectorStateCopyWithImpl<$Res, _$SuccessImpl>
     implements _$$SuccessImplCopyWith<$Res> {
   __$$SuccessImplCopyWithImpl(
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
@@ -1509,7 +1507,7 @@ class _$SuccessImpl implements _Success {
 
   @override
   String toString() {
-    return 'MainGroupSelectionState.success()';
+    return 'GroupSelectorState.success()';
   }
 
   @override
@@ -1596,7 +1594,7 @@ class _$SuccessImpl implements _Success {
   }
 }
 
-abstract class _Success implements MainGroupSelectionState {
+abstract class _Success implements GroupSelectorState {
   const factory _Success() = _$SuccessImpl;
 }
 
@@ -1611,7 +1609,7 @@ abstract class _$$FailImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$FailImplCopyWithImpl<$Res>
-    extends _$MainGroupSelectionStateCopyWithImpl<$Res, _$FailImpl>
+    extends _$GroupSelectorStateCopyWithImpl<$Res, _$FailImpl>
     implements _$$FailImplCopyWith<$Res> {
   __$$FailImplCopyWithImpl(_$FailImpl _value, $Res Function(_$FailImpl) _then)
       : super(_value, _then);
@@ -1640,7 +1638,7 @@ class _$FailImpl implements _Fail {
 
   @override
   String toString() {
-    return 'MainGroupSelectionState.fail(errorMessage: $errorMessage)';
+    return 'GroupSelectorState.fail(errorMessage: $errorMessage)';
   }
 
   @override
@@ -1736,7 +1734,7 @@ class _$FailImpl implements _Fail {
   }
 }
 
-abstract class _Fail implements MainGroupSelectionState {
+abstract class _Fail implements GroupSelectorState {
   const factory _Fail(final String errorMessage) = _$FailImpl;
 
   String get errorMessage;

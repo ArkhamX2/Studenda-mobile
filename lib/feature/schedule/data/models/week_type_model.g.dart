@@ -8,12 +8,14 @@ part of 'week_type_model.dart';
 
 _$WeekTypeModelImpl _$$WeekTypeModelImplFromJson(Map<String, dynamic> json) =>
     _$WeekTypeModelImpl(
-      id: json['Id'] as int,
-      name: json['Name'] as String,
+      id: json['id'] as int,
+      name: json['name'] as String,
+      index: json['index'] as int,
     );
 
 Map<String, dynamic> _$$WeekTypeModelImplToJson(_$WeekTypeModelImpl instance) =>
     <String, dynamic>{
-      'Id': instance.id,
-      'Name': instance.name,
+      'id': instance.id,
+      'name': instance.name,
+      'index': instance.index,
     };

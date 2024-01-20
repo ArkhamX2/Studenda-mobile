@@ -1,17 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:studenda_mobile/feature/notification/presentation/widgets/notification_consts.dart';
 import 'package:studenda_mobile/feature/notification/presentation/widgets/notification_list_widget.dart';
-import 'package:studenda_mobile/feature/schedule/domain/entities/subject_entity.dart';
 import 'package:studenda_mobile/feature/schedule/presentation/widgets/day_schedule_widget.dart';
 import 'package:studenda_mobile/model/common/notification.dart';
 import 'package:studenda_mobile/resources/colors.dart';
-
-final List<SubjectEntity> schedule = <SubjectEntity>[
-  SubjectEntity(0, "Математика", "ВЦ-315", "QWERTY"),
-  SubjectEntity(1, "Физкультура", "ВЦ-315", "QWERTY"),
-  SubjectEntity(2, "Базы данных", "ВЦ-315", "QWERTY"),
-  SubjectEntity(3, "Экономика", "ВЦ-315", "QWERTY"),
-];
 
 final List<StudendaNotification> notifications = <StudendaNotification>[
   StudendaNotification(
@@ -66,7 +58,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              DayScheduleWidget(dayTitle: "Сегодня",subjects: schedule, isTitleRequired: false),
+              //DayScheduleWidget(dayTitle: "Сегодня",subjects: schedule, isTitleRequired: false),
               const SizedBox(height: 25),
               const Text(
                 "Уведомления",

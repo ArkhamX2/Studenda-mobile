@@ -26,6 +26,15 @@ import 'package:studenda_mobile/feature/group_selection/presentation/bloc/course
 import 'package:studenda_mobile/feature/group_selection/presentation/bloc/department_cubit/department_cubit.dart';
 import 'package:studenda_mobile/feature/group_selection/presentation/bloc/group_cubit/group_cubit.dart';
 import 'package:studenda_mobile/feature/group_selection/presentation/bloc/main_group_selection_bloc/main_group_selection_bloc.dart';
+import 'package:studenda_mobile/feature/schedule/data/datasources/schedule_remote_data_source.dart';
+import 'package:studenda_mobile/feature/schedule/data/datasources/week_type_remote_data_source.dart';
+import 'package:studenda_mobile/feature/schedule/data/repositories/schedule_repository_impl.dart';
+import 'package:studenda_mobile/feature/schedule/data/repositories/week_type_repository_impl.dart';
+import 'package:studenda_mobile/feature/schedule/domain/repositories/schedule_repository.dart';
+import 'package:studenda_mobile/feature/schedule/domain/repositories/week_type_repository.dart';
+import 'package:studenda_mobile/feature/schedule/domain/usecases/get_schedule.dart';
+import 'package:studenda_mobile/feature/schedule/domain/usecases/get_week_type.dart';
+import 'package:studenda_mobile/feature/schedule/presentation/bloc/schedule_bloc.dart';
 
 final sl = GetIt.instance;
 
@@ -65,7 +74,7 @@ Future<void> init() async {
   //! Groupselection
   // Bloc
   sl.registerFactory(
-    () => MainGroupSelectionBloc(
+    () => GroupSelectorBloc(
       selectedGroup: const GroupEntity(id: -1, name: ""),
       selectedCourse: const CourseEntity(name: ""),
       selectedDepartment: const DepartmentEntity(name: ""),
@@ -144,6 +153,51 @@ Future<void> init() async {
       client: sl(),
     ),
   );
+
+  //! Auth
+  // Bloc
+
+  sl.registerFactory(
+    () => ScheduleBloc(getSchedule: sl() ,getWeekType: sl()),
+  );
+
+  // Use cases
+  sl.registerLazySingleton(
+    () => GetSchedule(scheduleRepository: sl()),
+  );
+  sl.registerLazySingleton(
+    () => GetWeekType(weekTypeRepository: sl()),
+  );
+
+  // Repository
+  sl.registerLazySingleton<ScheduleRepository>(
+    () => ScheduleRepositoryImpl(
+      remoteDataSource: sl(),
+      networkInfo: sl(),
+    ),
+  );
+
+  sl.registerLazySingleton<WeekTypeRepository>(
+    () => WeekTypeRepositoryImpl(
+      remoteDataSource: sl(),
+      networkInfo: sl(),
+    ),
+  );
+
+  //! Data sources
+
+  sl.registerLazySingleton<ScheduleRemoteDataSource>(
+    () => ScheduleRemoteDataSourceImpl(
+      client: sl(),
+    ),
+  );
+
+  sl.registerLazySingleton<WeekTypeRemoteDataSource>(
+    () => WeekTypeRemoteDataSourceImpl(
+      client: sl(),
+    ),
+  );
+
   //! Core
 
   sl.registerLazySingleton<NetworkInfo>(

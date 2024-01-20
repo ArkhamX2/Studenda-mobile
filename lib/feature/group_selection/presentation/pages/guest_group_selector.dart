@@ -25,8 +25,8 @@ class _GuestGroupSelectorPageState extends State<GuestGroupSelectorPage> {
       appBar: const GroupSelectorAppBarWidget(),
       body: MultiBlocProvider(
         providers: [
-          BlocProvider<MainGroupSelectionBloc>(
-            create: (context) => sl<MainGroupSelectionBloc>(),
+          BlocProvider<GroupSelectorBloc>(
+            create: (context) => sl<GroupSelectorBloc>(),
           ),
           BlocProvider<DepartmentCubit>(
             create: (context) => sl<DepartmentCubit>(),
@@ -49,7 +49,7 @@ class _GroupSelectorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mainCubit = context.watch<MainGroupSelectionBloc>();
+    final groupSelectorBloc = context.watch<GroupSelectorBloc>();
     final groupCubit = context.watch<GroupCubit>();
     final courseCubit = context.watch<CourseCubit>();
     final departmentCubit = context.watch<DepartmentCubit>();
@@ -61,16 +61,16 @@ class _GroupSelectorWidget extends StatelessWidget {
     if (groupCubit.state == const GroupState.loading() ||
         courseCubit.state == const CourseState.loading() ||
         departmentCubit.state == const DepartmentState.loading()) {
-      mainCubit.add(const MainGroupSelectionEvent.load());
+      groupSelectorBloc.add(const GroupSelectorEvent.load());
     } else if (groupCubit.state == const GroupState.fail() ||
         courseCubit.state == const CourseState.fail() ||
         departmentCubit.state == const DepartmentState.fail()) {
-      mainCubit.add(const MainGroupSelectionEvent.fail("Ошибка загрузки"));
+      groupSelectorBloc.add(const GroupSelectorEvent.fail("Ошибка загрузки"));
     } else {
-      mainCubit.add(const MainGroupSelectionEvent.success());
+      groupSelectorBloc.add(const GroupSelectorEvent.success());
     }
 
-    mainCubit.state.when(
+    groupSelectorBloc.state.when(
       initial: () => Container(),
       loading: () => const Center(
         child: CircularProgressIndicator(),
@@ -83,11 +83,11 @@ class _GroupSelectorWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _DepartmentSelectionWidget(
-                  mainCubit: mainCubit, departmentCubit: departmentCubit,),
+                  mainBloc: groupSelectorBloc, departmentCubit: departmentCubit,),
               _CourseSelectionWidget(
-                  mainCubit: mainCubit, courseCubit: courseCubit,),
+                  mainBloc: groupSelectorBloc, courseCubit: courseCubit,),
               _GroupSelectionWidget(
-                  mainCubit: mainCubit, groupCubit: groupCubit,),
+                  mainBloc: groupSelectorBloc, groupCubit: groupCubit,),
               StudendaButton(
                 title: "Подтвердить",
                 event: () {
@@ -107,12 +107,12 @@ class _GroupSelectorWidget extends StatelessWidget {
 }
 
 class _GroupSelectionWidget extends StatelessWidget {
-  final MainGroupSelectionBloc mainCubit;
+  final GroupSelectorBloc mainBloc;
 
   final GroupCubit groupCubit;
 
   const _GroupSelectionWidget(
-      {required this.mainCubit, required this.groupCubit,});
+      {required this.mainBloc, required this.groupCubit,});
 
   @override
   Widget build(BuildContext context) {
@@ -123,8 +123,8 @@ class _GroupSelectionWidget extends StatelessWidget {
         items: groups,
         model: groups[0],
         callback: (element) {
-          mainCubit.add(
-            MainGroupSelectionEvent.setGroup(element!),
+          mainBloc.add(
+            GroupSelectorEvent.setGroup(element!),
           );
         },
       ),
@@ -135,12 +135,12 @@ class _GroupSelectionWidget extends StatelessWidget {
 }
 
 class _CourseSelectionWidget extends StatelessWidget {
-  final MainGroupSelectionBloc mainCubit;
+  final GroupSelectorBloc mainBloc;
 
   final CourseCubit courseCubit;
 
   const _CourseSelectionWidget(
-      {required this.mainCubit, required this.courseCubit,});
+      {required this.mainBloc, required this.courseCubit,});
 
   @override
   Widget build(BuildContext context) {
@@ -151,8 +151,8 @@ class _CourseSelectionWidget extends StatelessWidget {
         items: courses,
         model: courses[0],
         callback: (element) {
-          mainCubit.add(
-            MainGroupSelectionEvent.setCourse(element!),
+          mainBloc.add(
+            GroupSelectorEvent.setCourse(element!),
           );
         },
       ),
@@ -163,12 +163,12 @@ class _CourseSelectionWidget extends StatelessWidget {
 }
 
 class _DepartmentSelectionWidget extends StatelessWidget {
-  final MainGroupSelectionBloc mainCubit;
+  final GroupSelectorBloc mainBloc;
 
   final DepartmentCubit departmentCubit;
 
   const _DepartmentSelectionWidget(
-      {required this.mainCubit, required this.departmentCubit,});
+      {required this.mainBloc, required this.departmentCubit,});
 
   @override
   Widget build(BuildContext context) {
@@ -179,8 +179,8 @@ class _DepartmentSelectionWidget extends StatelessWidget {
         items: departments,
         model: departments[0],
         callback: (element) {
-          mainCubit.add(
-            MainGroupSelectionEvent.setDepartment(element!),
+          mainBloc.add(
+            GroupSelectorEvent.setDepartment(element!),
           );
         },
       ),

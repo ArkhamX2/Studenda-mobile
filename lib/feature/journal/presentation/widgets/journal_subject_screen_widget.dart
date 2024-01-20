@@ -4,15 +4,6 @@ import 'package:studenda_mobile/feature/schedule/domain/entities/subject_entity.
 import 'package:studenda_mobile/model/common/task.dart';
 import 'package:studenda_mobile/resources/colors.dart';
 
-final tasks = <Task>[
-  Task(0, "Лабораторная работа №1", SubjectEntity(0, "qqq", "qq", "QWErty"), 5),
-  Task(1, "Практическое задание №2", SubjectEntity(0, "qqq", "qq", "QWErty"), 5),
-  Task(2, "Курсовая работа", SubjectEntity(0, "qqq", "qq", "QWErty"), 4),
-  Task(3, "Лабораторная работа №1", SubjectEntity(0, "qqq", "qq", "QWErty"), 3),
-  Task(4, "Лабораторная работа №1", SubjectEntity(0, "qqq", "qq", "QWErty"), 3),
-  Task(5, "Лабораторная работа №1", SubjectEntity(0, "qqq", "qq", "QWErty"), 4),
-  Task(6, "Лабораторная работа №1", SubjectEntity(0, "qqq", "qq", "QWErty"), 5),
-];
 
 class JournalSubjectScreenWidget extends StatelessWidget {
   final SubjectEntity subject;
@@ -32,7 +23,7 @@ class JournalSubjectScreenWidget extends StatelessWidget {
         titleSpacing: 0,
         centerTitle: true,
         title: Text(
-          subject.name,
+          "Placeholder",
           style: const TextStyle(color: Colors.white, fontSize: 25),
         ),
         actions: [
@@ -62,9 +53,9 @@ class JournalSubjectScreenWidget extends StatelessWidget {
                 },
               ),
               Column(
-                children: tasks
-                    .map((element) => _TaskItemWidget(task: element))
-                    .toList(),
+                // children: tasks
+                //     .map((element) => _TaskItemWidget(task: element))
+                //     .toList(),
               ),
             ],
           ),
