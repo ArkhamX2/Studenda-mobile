@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:studenda_mobile/feature/notification/presentation/widgets/notification_consts.dart';
 import 'package:studenda_mobile/feature/notification/presentation/widgets/notification_list_widget.dart';
-import 'package:studenda_mobile/feature/schedule/presentation/widgets/day_schedule_widget.dart';
 import 'package:studenda_mobile/model/common/notification.dart';
 import 'package:studenda_mobile/resources/colors.dart';
 

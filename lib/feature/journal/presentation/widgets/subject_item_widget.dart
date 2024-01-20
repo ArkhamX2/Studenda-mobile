@@ -33,10 +33,10 @@ class SubjectItemWidget extends StatelessWidget {
               color: Colors.white,
               borderRadius: const BorderRadius.all(Radius.circular(5)),
             ),
-            child: Center(
+            child: const Center(
               child: Text(
                 "Placeholder",
-                style: const TextStyle(
+                style: TextStyle(
                   color: mainForegroundColor,
                   fontSize: 16,
                 ),

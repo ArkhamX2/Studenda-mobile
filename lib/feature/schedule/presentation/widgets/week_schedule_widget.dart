@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:studenda_mobile/feature/schedule/domain/entities/day_schedule_entity.dart';
 import 'package:studenda_mobile/feature/schedule/presentation/widgets/day_schedule_widget.dart';
 import 'package:studenda_mobile/feature/schedule/presentation/widgets/position_values.dart';
-import 'package:studenda_mobile/feature/schedule/domain/entities/day_schedule_entity.dart';
 
 class WeekScheduleWidget extends StatelessWidget {
   final List<DayScheduleEntity> schedule;

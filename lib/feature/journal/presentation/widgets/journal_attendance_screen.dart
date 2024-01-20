@@ -29,9 +29,9 @@ class JournalAttendanceScreenWidget extends StatelessWidget {
         ),
         titleSpacing: 0,
         centerTitle: true,
-        title: Text(
+        title: const Text(
           "Placeholder",
-          style: const TextStyle(color: Colors.white, fontSize: 25),
+          style: TextStyle(color: Colors.white, fontSize: 25),
         ),
         actions: [
           IconButton(

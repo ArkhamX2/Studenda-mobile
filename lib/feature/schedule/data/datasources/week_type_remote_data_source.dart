@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:studenda_mobile/core/data/error/exception.dart';
@@ -27,7 +26,7 @@ class WeekTypeRemoteDataSourceImpl implements WeekTypeRemoteDataSource{
       //   return WeekTypeModel(id: 0, name: "Красная");
       // }
     
-      return WeekTypeModel(id: 0, name: "Красная", index: 1);
+      return const WeekTypeModel(id: 0, name: "Красная", index: 1);
     } catch (e) {
       throw ServerException();
     }

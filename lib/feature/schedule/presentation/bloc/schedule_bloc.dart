@@ -1,17 +1,16 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:studenda_mobile/core/utils/get_current_week_days.dart';
+import 'package:studenda_mobile/core/utils/map_subject_model_to_day_scehdule_list.dart';
 import 'package:studenda_mobile/feature/schedule/data/models/schedule_request_model.dart';
-import 'package:studenda_mobile/feature/schedule/data/models/subject_model.dart';
-import 'package:studenda_mobile/feature/schedule/domain/entities/day_schedule_entity.dart';
 import 'package:studenda_mobile/feature/schedule/domain/entities/schedule_entity.dart';
-import 'package:studenda_mobile/feature/schedule/domain/entities/subject_entity.dart';
 import 'package:studenda_mobile/feature/schedule/domain/entities/week_type_entity.dart';
 import 'package:studenda_mobile/feature/schedule/domain/usecases/get_schedule.dart';
 import 'package:studenda_mobile/feature/schedule/domain/usecases/get_week_type.dart';
 
+part 'schedule_bloc.freezed.dart';
 part 'schedule_event.dart';
 part 'schedule_state.dart';
-part 'schedule_bloc.freezed.dart';
 
 class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
   final GetSchedule getSchedule;
@@ -24,7 +23,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
       weekType = weekType?.index == 1
           ? WeekTypeEntity(id: weekType!.id + 1, name: weekType!.name, index: 2)
           : WeekTypeEntity(
-              id: weekType!.id - 1, name: weekType!.name, index: 1);
+              id: weekType!.id - 1, name: weekType!.name, index: 1,);
     });
 
     on<_Load>((event, emit) async {
@@ -43,7 +42,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
                 final scheduleCall = await getSchedule
                     .call(
                       ScheduleRequestModel(
-                          groupId: event.groupId, weekTypeId: weekType.id),
+                          groupId: event.groupId, weekTypeId: weekType.id,),
                     )
                     .then(
                       (value) => value.fold(
@@ -53,14 +52,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
                             ScheduleEntity(
                               schedule: mapSubjectModelToDayScehduleList(r),
                               weekType: weekType,
-                              weekDays: [
-                                "22",
-                                "23",
-                                "24",
-                                "25",
-                                "26",
-                                "27",
-                              ],
+                              weekDays: getCurrentWeekDays(),
                             ),
                           ),
                         ),
@@ -71,39 +63,4 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
           );
     });
   }
-}
-
-List<DayScheduleEntity> mapSubjectModelToDayScehduleList(List<SubjectModel> r) {
-  final Map<int, List<SubjectEntity>> dayScheduleEntityMap = {};
-
-  for (var i = 0; i < r.length; i++) {
-    if (dayScheduleEntityMap.containsKey(r[i].weekPositionId)) {
-      dayScheduleEntityMap[r[i].weekPositionId]!.add(
-        SubjectEntity(
-          id: r[i].id,
-          title: r[i].discipline.name,
-          classroom: r[i].classroom,
-          teacher: r[i].user.name,
-          dayTime: r[i].subjectPositionId,
-        ),
-      );
-    } else {
-      dayScheduleEntityMap[r[i].weekPositionId] = [
-        SubjectEntity(
-          id: r[i].id,
-          title: r[i].discipline.name,
-          classroom: r[i].classroom,
-          teacher: r[i].user.name,
-          dayTime: r[i].subjectPositionId,
-        ),
-      ];
-    }
-  }
-
-  final List<DayScheduleEntity> answer = dayScheduleEntityMap.entries.map(
-    (entry) {
-      return DayScheduleEntity(weekPosition: entry.key, subjects: entry.value);
-    },
-  ).toList();
-  return answer;
 }

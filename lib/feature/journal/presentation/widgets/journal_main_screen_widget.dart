@@ -31,8 +31,8 @@ class _JournalMainScreenWidgetState extends State<JournalMainScreenWidget> {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(14.0),
+      body: const Padding(
+        padding: EdgeInsets.all(14.0),
         child: SingleChildScrollView(
           child: Column(
             // crossAxisAlignment: CrossAxisAlignment.start,

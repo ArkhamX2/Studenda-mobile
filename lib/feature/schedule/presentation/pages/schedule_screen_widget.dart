@@ -34,9 +34,7 @@ class _ScheduleScreenWidgetState extends State<ScheduleScreenWidget> {
 }
 
 class _BodyBuilderWidget extends StatelessWidget {
-  const _BodyBuilderWidget({
-    super.key,
-  });
+  const _BodyBuilderWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -50,9 +48,7 @@ class _BodyBuilderWidget extends StatelessWidget {
 }
 
 class _ScheduleBodyWidget extends StatefulWidget {
-  const _ScheduleBodyWidget({
-    super.key,
-  });
+  const _ScheduleBodyWidget();
 
   @override
   State<_ScheduleBodyWidget> createState() => _ScheduleBodyWidgetState();
@@ -107,7 +103,6 @@ class _DateCarouselWrapperWidget extends StatelessWidget {
   final ScheduleBloc scheduleBloc;
 
   const _DateCarouselWrapperWidget({
-    super.key,
     required this.globalKeys,
     required this.weekType,
     required this.weekDays,
@@ -151,7 +146,6 @@ class _ScheduleScrollWidget extends StatelessWidget {
   final List<DayScheduleEntity> schedule;
 
   const _ScheduleScrollWidget({
-    super.key,
     required this.globalKeys,
     required this.schedule,
   });
@@ -172,9 +166,7 @@ class _ScheduleScrollWidget extends StatelessWidget {
 
 class _ScheduleAppBarWidget extends StatelessWidget
     implements PreferredSizeWidget {
-  const _ScheduleAppBarWidget({
-    super.key,
-  });
+  const _ScheduleAppBarWidget();
 
   @override
   Widget build(BuildContext context) {

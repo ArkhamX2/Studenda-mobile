@@ -2,10 +2,9 @@ import 'package:dartz/dartz.dart';
 import 'package:studenda_mobile/core/data/error/exception.dart';
 import 'package:studenda_mobile/core/data/error/failure.dart';
 import 'package:studenda_mobile/core/network/network_info.dart';
+import 'package:studenda_mobile/feature/schedule/data/datasources/week_type_remote_data_source.dart';
 import 'package:studenda_mobile/feature/schedule/data/models/week_type_model.dart';
 import 'package:studenda_mobile/feature/schedule/domain/repositories/week_type_repository.dart';
-
-import '../datasources/week_type_remote_data_source.dart';
 
 class WeekTypeRepositoryImpl implements WeekTypeRepository{
 
