@@ -1,6 +1,15 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
+import 'package:studenda_mobile/core/common/data/datasources/day_position_remote_data_source.dart';
+import 'package:studenda_mobile/core/common/data/datasources/subject_position_remote_data_source.dart';
+import 'package:studenda_mobile/core/common/data/repositories/day_position_repository_impl.dart';
+import 'package:studenda_mobile/core/common/data/repositories/subject_position_repository_impl.dart';
+import 'package:studenda_mobile/core/common/domain/repositories/day_position_repository.dart';
+import 'package:studenda_mobile/core/common/domain/repositories/subject_position_repository.dart';
+import 'package:studenda_mobile/core/common/domain/usecase/get_day_position.dart';
+import 'package:studenda_mobile/core/common/domain/usecase/get_subject_position.dart';
+import 'package:studenda_mobile/core/common/presentation/bloc/common_bloc.dart';
 import 'package:studenda_mobile/core/network/network_info.dart';
 import 'package:studenda_mobile/feature/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:studenda_mobile/feature/auth/data/repositories/auth_repository_impl.dart';
@@ -73,6 +82,56 @@ Future<void> init() async {
 
   sl.registerLazySingleton<AuthRemoteDataSource>(
     () => AuthRemoteDataSourceImpl(
+      client: sl(),
+    ),
+  );
+
+//! Common
+  // Bloc
+  sl.registerFactory(
+    () => CommonBloc(
+      getDayPosition: sl(),
+      getSubjectPosition: sl(),
+      dayPositionList: [],
+      subjectPositionList: [],
+    ),
+  );
+
+  // Use cases
+  sl.registerLazySingleton(
+    () => GetDayPositionList(
+      dayPositionRepository: sl(),
+    ),
+  );
+  sl.registerLazySingleton(
+    () => GetSubjectPositionList(
+      subjectPositionRepository: sl(),
+    ),
+  );
+
+  // Repository
+  sl.registerLazySingleton<DayPositionRepository>(
+    () => DayPositionRepositoryImpl(
+      remoteDataSource: sl(),
+      networkInfo: sl(),
+    ),
+  );
+  sl.registerLazySingleton<SubjectPositionRepository>(
+    () => SubjectPositionRepositoryImpl(
+      remoteDataSource: sl(),
+      networkInfo: sl(),
+    ),
+  );
+
+  //! Data sources
+
+  sl.registerLazySingleton<DayPositionRemoteDataSource>(
+    () => DayPositionRemoteDataSourceImpl(
+      client: sl(),
+    ),
+  );
+  sl.registerLazySingleton<SubjectPositionRemoteDataSource>(
+    () => SubjectPositionRemoteDataSourceImpl(
       client: sl(),
     ),
   );
@@ -164,7 +223,11 @@ Future<void> init() async {
   // Bloc
 
   sl.registerFactory(
-    () => ScheduleBloc(getSchedule: sl() ,getWeekType: sl(),getDisciplineList: sl(),getTeacherList: sl() ),
+    () => ScheduleBloc(
+        getSchedule: sl(),
+        getWeekType: sl(),
+        getDisciplineList: sl(),
+        getTeacherList: sl()),
   );
 
   // Use cases

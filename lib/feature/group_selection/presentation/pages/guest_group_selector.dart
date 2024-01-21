@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:studenda_mobile/core/common/presentation/bloc/common_bloc.dart';
 import 'package:studenda_mobile/core/data/error/failure.dart';
 import 'package:studenda_mobile/core/presentation/button_widget.dart';
 import 'package:studenda_mobile/core/presentation/dropdown_widget.dart';
@@ -25,6 +26,9 @@ class _GuestGroupSelectorPageState extends State<GuestGroupSelectorPage> {
       appBar: const GroupSelectorAppBarWidget(),
       body: MultiBlocProvider(
         providers: [
+          BlocProvider<CommonBloc>(
+            create: (context) => sl<CommonBloc>(),
+          ),
           BlocProvider<GroupSelectorBloc>(
             create: (context) => sl<GroupSelectorBloc>(),
           ),
@@ -49,11 +53,13 @@ class _GroupSelectorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final commonbloc = context.watch<CommonBloc>();
     final groupSelectorBloc = context.watch<GroupSelectorBloc>();
     final groupCubit = context.watch<GroupCubit>();
     final courseCubit = context.watch<CourseCubit>();
     final departmentCubit = context.watch<DepartmentCubit>();
 
+    commonbloc.add(const CommonEvent.load());
     groupCubit.load();
     courseCubit.load();
     departmentCubit.load();
@@ -70,7 +76,7 @@ class _GroupSelectorWidget extends StatelessWidget {
       groupSelectorBloc.add(const GroupSelectorEvent.success());
     }
 
-    groupSelectorBloc.state.when(
+    return groupSelectorBloc.state.when(
       initial: () => Container(),
       loading: () => const Center(
         child: CircularProgressIndicator(),
@@ -100,9 +106,6 @@ class _GroupSelectorWidget extends StatelessWidget {
       ),
       fail: (errorMessage) => Center(child: Text(errorMessage)),
     );
-
-    throw const LoadGroupSelectorFailure(
-        message: "Непредвиденная ошибка загрузки",);
   }
 }
 

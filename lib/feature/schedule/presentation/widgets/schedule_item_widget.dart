@@ -115,7 +115,7 @@ class _MainSubjectInfoRowWidget extends StatelessWidget {
               width: 46,
               height: 46,
               child: Text(
-                dayPositionValues[widget.subject.dayTime],
+                dayPositionValues[widget.subject.subjectPosition],
                 textAlign: TextAlign.right,
                 style: const TextStyle(
                   color: mainForegroundColor,

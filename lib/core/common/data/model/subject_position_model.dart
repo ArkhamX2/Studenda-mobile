@@ -6,7 +6,7 @@ part 'subject_position_model.g.dart';
 
 @freezed
 
-class SubjectPositionModel with $SubjectPositionModel{
+class SubjectPositionModel with _$SubjectPositionModel{
   const factory SubjectPositionModel({
     @JsonKey(name: 'id') required int id,
     @JsonKey(name: 'index') required int index,

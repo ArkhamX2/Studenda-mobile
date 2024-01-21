@@ -19,21 +19,29 @@ mixin _$ScheduleEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(int groupId) load,
+    required TResult Function(
+            int groupId,
+            List<DayPositionModel> dayPositionList,
+            List<SubjectPositionModel> subjectPositionList)
+        load,
     required TResult Function() changeWeekType,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(int groupId)? load,
+    TResult? Function(int groupId, List<DayPositionModel> dayPositionList,
+            List<SubjectPositionModel> subjectPositionList)?
+        load,
     TResult? Function()? changeWeekType,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(int groupId)? load,
+    TResult Function(int groupId, List<DayPositionModel> dayPositionList,
+            List<SubjectPositionModel> subjectPositionList)?
+        load,
     TResult Function()? changeWeekType,
     required TResult orElse(),
   }) =>
@@ -119,7 +127,11 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(int groupId) load,
+    required TResult Function(
+            int groupId,
+            List<DayPositionModel> dayPositionList,
+            List<SubjectPositionModel> subjectPositionList)
+        load,
     required TResult Function() changeWeekType,
   }) {
     return started();
@@ -129,7 +141,9 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(int groupId)? load,
+    TResult? Function(int groupId, List<DayPositionModel> dayPositionList,
+            List<SubjectPositionModel> subjectPositionList)?
+        load,
     TResult? Function()? changeWeekType,
   }) {
     return started?.call();
@@ -139,7 +153,9 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(int groupId)? load,
+    TResult Function(int groupId, List<DayPositionModel> dayPositionList,
+            List<SubjectPositionModel> subjectPositionList)?
+        load,
     TResult Function()? changeWeekType,
     required TResult orElse(),
   }) {
@@ -194,7 +210,10 @@ abstract class _$$LoadImplCopyWith<$Res> {
           _$LoadImpl value, $Res Function(_$LoadImpl) then) =
       __$$LoadImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int groupId});
+  $Res call(
+      {int groupId,
+      List<DayPositionModel> dayPositionList,
+      List<SubjectPositionModel> subjectPositionList});
 }
 
 /// @nodoc
@@ -208,12 +227,22 @@ class __$$LoadImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? groupId = null,
+    Object? dayPositionList = null,
+    Object? subjectPositionList = null,
   }) {
     return _then(_$LoadImpl(
       null == groupId
           ? _value.groupId
           : groupId // ignore: cast_nullable_to_non_nullable
               as int,
+      null == dayPositionList
+          ? _value._dayPositionList
+          : dayPositionList // ignore: cast_nullable_to_non_nullable
+              as List<DayPositionModel>,
+      null == subjectPositionList
+          ? _value._subjectPositionList
+          : subjectPositionList // ignore: cast_nullable_to_non_nullable
+              as List<SubjectPositionModel>,
     ));
   }
 }
@@ -221,14 +250,33 @@ class __$$LoadImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadImpl implements _Load {
-  const _$LoadImpl(this.groupId);
+  const _$LoadImpl(this.groupId, final List<DayPositionModel> dayPositionList,
+      final List<SubjectPositionModel> subjectPositionList)
+      : _dayPositionList = dayPositionList,
+        _subjectPositionList = subjectPositionList;
 
   @override
   final int groupId;
+  final List<DayPositionModel> _dayPositionList;
+  @override
+  List<DayPositionModel> get dayPositionList {
+    if (_dayPositionList is EqualUnmodifiableListView) return _dayPositionList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_dayPositionList);
+  }
+
+  final List<SubjectPositionModel> _subjectPositionList;
+  @override
+  List<SubjectPositionModel> get subjectPositionList {
+    if (_subjectPositionList is EqualUnmodifiableListView)
+      return _subjectPositionList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_subjectPositionList);
+  }
 
   @override
   String toString() {
-    return 'ScheduleEvent.load(groupId: $groupId)';
+    return 'ScheduleEvent.load(groupId: $groupId, dayPositionList: $dayPositionList, subjectPositionList: $subjectPositionList)';
   }
 
   @override
@@ -236,11 +284,19 @@ class _$LoadImpl implements _Load {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadImpl &&
-            (identical(other.groupId, groupId) || other.groupId == groupId));
+            (identical(other.groupId, groupId) || other.groupId == groupId) &&
+            const DeepCollectionEquality()
+                .equals(other._dayPositionList, _dayPositionList) &&
+            const DeepCollectionEquality()
+                .equals(other._subjectPositionList, _subjectPositionList));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, groupId);
+  int get hashCode => Object.hash(
+      runtimeType,
+      groupId,
+      const DeepCollectionEquality().hash(_dayPositionList),
+      const DeepCollectionEquality().hash(_subjectPositionList));
 
   @JsonKey(ignore: true)
   @override
@@ -252,32 +308,40 @@ class _$LoadImpl implements _Load {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(int groupId) load,
+    required TResult Function(
+            int groupId,
+            List<DayPositionModel> dayPositionList,
+            List<SubjectPositionModel> subjectPositionList)
+        load,
     required TResult Function() changeWeekType,
   }) {
-    return load(groupId);
+    return load(groupId, dayPositionList, subjectPositionList);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(int groupId)? load,
+    TResult? Function(int groupId, List<DayPositionModel> dayPositionList,
+            List<SubjectPositionModel> subjectPositionList)?
+        load,
     TResult? Function()? changeWeekType,
   }) {
-    return load?.call(groupId);
+    return load?.call(groupId, dayPositionList, subjectPositionList);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(int groupId)? load,
+    TResult Function(int groupId, List<DayPositionModel> dayPositionList,
+            List<SubjectPositionModel> subjectPositionList)?
+        load,
     TResult Function()? changeWeekType,
     required TResult orElse(),
   }) {
     if (load != null) {
-      return load(groupId);
+      return load(groupId, dayPositionList, subjectPositionList);
     }
     return orElse();
   }
@@ -318,9 +382,14 @@ class _$LoadImpl implements _Load {
 }
 
 abstract class _Load implements ScheduleEvent {
-  const factory _Load(final int groupId) = _$LoadImpl;
+  const factory _Load(
+      final int groupId,
+      final List<DayPositionModel> dayPositionList,
+      final List<SubjectPositionModel> subjectPositionList) = _$LoadImpl;
 
   int get groupId;
+  List<DayPositionModel> get dayPositionList;
+  List<SubjectPositionModel> get subjectPositionList;
   @JsonKey(ignore: true)
   _$$LoadImplCopyWith<_$LoadImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -365,7 +434,11 @@ class _$ChangeWeekTypeImpl implements _ChangeWeekType {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(int groupId) load,
+    required TResult Function(
+            int groupId,
+            List<DayPositionModel> dayPositionList,
+            List<SubjectPositionModel> subjectPositionList)
+        load,
     required TResult Function() changeWeekType,
   }) {
     return changeWeekType();
@@ -375,7 +448,9 @@ class _$ChangeWeekTypeImpl implements _ChangeWeekType {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(int groupId)? load,
+    TResult? Function(int groupId, List<DayPositionModel> dayPositionList,
+            List<SubjectPositionModel> subjectPositionList)?
+        load,
     TResult? Function()? changeWeekType,
   }) {
     return changeWeekType?.call();
@@ -385,7 +460,9 @@ class _$ChangeWeekTypeImpl implements _ChangeWeekType {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(int groupId)? load,
+    TResult Function(int groupId, List<DayPositionModel> dayPositionList,
+            List<SubjectPositionModel> subjectPositionList)?
+        load,
     TResult Function()? changeWeekType,
     required TResult orElse(),
   }) {

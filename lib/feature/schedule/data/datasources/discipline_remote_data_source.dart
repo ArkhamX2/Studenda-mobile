@@ -17,13 +17,13 @@ class DisciplineRemoteDataSourceImpl implements DisciplineRemoteDataSource {
     try {
       final response = await client.get(
         Uri.parse('http://88.210.3.137/api/schedule/discipline' +
-            '?ids=${request.toString().replaceAll('[', '').replaceAll(']', '').replaceAll(' ', '')}',),
+            '?ids=${request.toString().replaceAll('[', '').replaceAll(']', '').replaceAll(' ', '')}'),
       );
       if (response.statusCode == 200) {
         final decoded = json.decode(response.body) as List<dynamic>;
         final responseModel = decoded
             .map((dynamic value) =>
-                DisciplineModel.fromJson(value as Map<String, dynamic>),)
+                DisciplineModel.fromJson(value as Map<String, dynamic>))
             .toList();
         return responseModel;
       } else {

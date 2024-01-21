@@ -15,7 +15,7 @@ List<DayScheduleEntity> mapSubjectModelToDayScehduleList(List<SubjectModel> subj
           title: disciplines.firstWhere((element) => element.id == subjects[i].disciplineId).name,
           classroom: subjects[i].classroom,
           teacher: teachers.firstWhere((element) => element.id == subjects[i].userId).name,
-          dayTime: subjects[i].subjectPositionId,
+          subjectPosition: subjects[i].subjectPositionId,
         ),
       );
     } else {
@@ -25,7 +25,7 @@ List<DayScheduleEntity> mapSubjectModelToDayScehduleList(List<SubjectModel> subj
           title: disciplines.firstWhere((element) => element.id == subjects[i].disciplineId).name,
           classroom: subjects[i].classroom,
           teacher: teachers.firstWhere((element) => element.id == subjects[i].userId).name,
-          dayTime: subjects[i].subjectPositionId,
+          subjectPosition: subjects[i].subjectPositionId,
         ),
       ];
     }

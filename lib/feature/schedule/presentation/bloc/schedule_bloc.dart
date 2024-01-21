@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:studenda_mobile/core/common/data/model/day_position_model.dart';
+import 'package:studenda_mobile/core/common/data/model/subject_position_model.dart';
 import 'package:studenda_mobile/core/utils/get_current_academic_year.dart';
 import 'package:studenda_mobile/core/utils/get_current_week_days.dart';
 import 'package:studenda_mobile/core/utils/map_subject_model_to_day_scehdule_list.dart';
@@ -96,6 +98,8 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
                                                     succededSubjectList,
                                                     succededDisciplineList,
                                                     succededTeacherList,
+                                                    event.dayPositionList,
+                                                    event.subjectPositionList,
                                                   ),
                                                   weekType: WeekTypeEntity(
                                                     id: succededWeekType.id,

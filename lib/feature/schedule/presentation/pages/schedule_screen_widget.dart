@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:studenda_mobile/core/common/presentation/bloc/common_bloc.dart';
 import 'package:studenda_mobile/core/presentation/label/studenda_default_label_widget.dart';
 import 'package:studenda_mobile/feature/group_selection/presentation/bloc/main_group_selection_bloc/main_group_selection_bloc.dart';
 import 'package:studenda_mobile/feature/schedule/domain/entities/day_schedule_entity.dart';
@@ -25,8 +26,15 @@ class _ScheduleScreenWidgetState extends State<ScheduleScreenWidget> {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 240, 241, 245),
       appBar: const _ScheduleAppBarWidget(),
-      body: BlocProvider<GroupSelectorBloc>(
-        create: (context) => sl<GroupSelectorBloc>(),
+      body: MultiBlocProvider(
+        providers: [
+          BlocProvider<GroupSelectorBloc>(
+            create: (context) => sl<GroupSelectorBloc>(),
+          ),
+          BlocProvider(
+            create: (context) => sl<CommonBloc>(),
+          ),
+        ],
         child: const _BodyBuilderWidget(),
       ),
     );
@@ -38,10 +46,11 @@ class _BodyBuilderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final groupSelectorCubit = context.watch<GroupSelectorBloc>();
+    final groupSelectorBloc = context.watch<GroupSelectorBloc>();
+    final commonBloc = context.watch<CommonBloc>();
     return BlocProvider(
       create: (context) => sl<ScheduleBloc>()
-        ..add(ScheduleEvent.load(groupSelectorCubit.selectedGroup.id)),
+        ..add(ScheduleEvent.load(groupSelectorBloc.selectedGroup.id,commonBloc.dayPositionList,commonBloc.subjectPositionList)),
       child: const _ScheduleBodyWidget(),
     );
   }

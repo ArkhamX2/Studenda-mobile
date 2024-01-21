@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:studenda_mobile/feature/auth/presentation/pages/main_auth_widget.dart';
+import 'package:studenda_mobile/feature/group_selection/presentation/pages/guest_group_selector.dart';
 import 'package:studenda_mobile/feature/home/presentation/widgets/home_screen_widget.dart';
 import 'package:studenda_mobile/feature/journal/presentation/widgets/journal_main_screen_widget.dart';
 import 'package:studenda_mobile/feature/navigation/presentation/widgets/main_navigator_widget.dart';
@@ -33,8 +34,9 @@ class MyApp extends StatelessWidget {
         '/schedule': (context) => const ScheduleScreenWidget(),
         '/journal': (context) => const JournalMainScreenWidget(),
         '/notification': (context) => const NotificationScreenWidget(),
+        '/group_selection': (context) => const GuestGroupSelectorPage(),
       },
-      initialRoute: '/schedule',
+      initialRoute: '/group_selection',
     );
   }
 }

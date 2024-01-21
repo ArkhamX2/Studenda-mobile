@@ -20,7 +20,7 @@ mixin _$SubjectEntity {
   String get title => throw _privateConstructorUsedError;
   String get classroom => throw _privateConstructorUsedError;
   String get teacher => throw _privateConstructorUsedError;
-  int get dayTime => throw _privateConstructorUsedError;
+  int get subjectPosition => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SubjectEntityCopyWith<SubjectEntity> get copyWith =>
@@ -34,7 +34,11 @@ abstract class $SubjectEntityCopyWith<$Res> {
       _$SubjectEntityCopyWithImpl<$Res, SubjectEntity>;
   @useResult
   $Res call(
-      {int id, String title, String classroom, String teacher, int dayTime});
+      {int id,
+      String title,
+      String classroom,
+      String teacher,
+      int subjectPosition});
 }
 
 /// @nodoc
@@ -54,7 +58,7 @@ class _$SubjectEntityCopyWithImpl<$Res, $Val extends SubjectEntity>
     Object? title = null,
     Object? classroom = null,
     Object? teacher = null,
-    Object? dayTime = null,
+    Object? subjectPosition = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -73,9 +77,9 @@ class _$SubjectEntityCopyWithImpl<$Res, $Val extends SubjectEntity>
           ? _value.teacher
           : teacher // ignore: cast_nullable_to_non_nullable
               as String,
-      dayTime: null == dayTime
-          ? _value.dayTime
-          : dayTime // ignore: cast_nullable_to_non_nullable
+      subjectPosition: null == subjectPosition
+          ? _value.subjectPosition
+          : subjectPosition // ignore: cast_nullable_to_non_nullable
               as int,
     ) as $Val);
   }
@@ -90,7 +94,11 @@ abstract class _$$SubjectEntityImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id, String title, String classroom, String teacher, int dayTime});
+      {int id,
+      String title,
+      String classroom,
+      String teacher,
+      int subjectPosition});
 }
 
 /// @nodoc
@@ -108,7 +116,7 @@ class __$$SubjectEntityImplCopyWithImpl<$Res>
     Object? title = null,
     Object? classroom = null,
     Object? teacher = null,
-    Object? dayTime = null,
+    Object? subjectPosition = null,
   }) {
     return _then(_$SubjectEntityImpl(
       id: null == id
@@ -127,9 +135,9 @@ class __$$SubjectEntityImplCopyWithImpl<$Res>
           ? _value.teacher
           : teacher // ignore: cast_nullable_to_non_nullable
               as String,
-      dayTime: null == dayTime
-          ? _value.dayTime
-          : dayTime // ignore: cast_nullable_to_non_nullable
+      subjectPosition: null == subjectPosition
+          ? _value.subjectPosition
+          : subjectPosition // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -143,7 +151,7 @@ class _$SubjectEntityImpl implements _SubjectEntity {
       required this.title,
       required this.classroom,
       required this.teacher,
-      required this.dayTime});
+      required this.subjectPosition});
 
   @override
   final int id;
@@ -154,11 +162,11 @@ class _$SubjectEntityImpl implements _SubjectEntity {
   @override
   final String teacher;
   @override
-  final int dayTime;
+  final int subjectPosition;
 
   @override
   String toString() {
-    return 'SubjectEntity(id: $id, title: $title, classroom: $classroom, teacher: $teacher, dayTime: $dayTime)';
+    return 'SubjectEntity(id: $id, title: $title, classroom: $classroom, teacher: $teacher, subjectPosition: $subjectPosition)';
   }
 
   @override
@@ -171,12 +179,13 @@ class _$SubjectEntityImpl implements _SubjectEntity {
             (identical(other.classroom, classroom) ||
                 other.classroom == classroom) &&
             (identical(other.teacher, teacher) || other.teacher == teacher) &&
-            (identical(other.dayTime, dayTime) || other.dayTime == dayTime));
+            (identical(other.subjectPosition, subjectPosition) ||
+                other.subjectPosition == subjectPosition));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, title, classroom, teacher, dayTime);
+      Object.hash(runtimeType, id, title, classroom, teacher, subjectPosition);
 
   @JsonKey(ignore: true)
   @override
@@ -191,7 +200,7 @@ abstract class _SubjectEntity implements SubjectEntity {
       required final String title,
       required final String classroom,
       required final String teacher,
-      required final int dayTime}) = _$SubjectEntityImpl;
+      required final int subjectPosition}) = _$SubjectEntityImpl;
 
   @override
   int get id;
@@ -202,7 +211,7 @@ abstract class _SubjectEntity implements SubjectEntity {
   @override
   String get teacher;
   @override
-  int get dayTime;
+  int get subjectPosition;
   @override
   @JsonKey(ignore: true)
   _$$SubjectEntityImplCopyWith<_$SubjectEntityImpl> get copyWith =>
