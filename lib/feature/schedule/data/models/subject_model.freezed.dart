@@ -24,6 +24,8 @@ mixin _$SubjectModel {
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'disciplineId')
   int get disciplineId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'subjectTypeId')
+  int get subjectTypeId => throw _privateConstructorUsedError;
   @JsonKey(name: 'userId')
   int get userId => throw _privateConstructorUsedError;
   @JsonKey(name: 'classroom')
@@ -48,6 +50,7 @@ abstract class $SubjectModelCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id') int id,
       @JsonKey(name: 'disciplineId') int disciplineId,
+      @JsonKey(name: 'subjectTypeId') int subjectTypeId,
       @JsonKey(name: 'userId') int userId,
       @JsonKey(name: 'classroom') String classroom,
       @JsonKey(name: 'subjectPositionId') int subjectPositionId,
@@ -69,6 +72,7 @@ class _$SubjectModelCopyWithImpl<$Res, $Val extends SubjectModel>
   $Res call({
     Object? id = null,
     Object? disciplineId = null,
+    Object? subjectTypeId = null,
     Object? userId = null,
     Object? classroom = null,
     Object? subjectPositionId = null,
@@ -82,6 +86,10 @@ class _$SubjectModelCopyWithImpl<$Res, $Val extends SubjectModel>
       disciplineId: null == disciplineId
           ? _value.disciplineId
           : disciplineId // ignore: cast_nullable_to_non_nullable
+              as int,
+      subjectTypeId: null == subjectTypeId
+          ? _value.subjectTypeId
+          : subjectTypeId // ignore: cast_nullable_to_non_nullable
               as int,
       userId: null == userId
           ? _value.userId
@@ -114,6 +122,7 @@ abstract class _$$SubjectModelImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'id') int id,
       @JsonKey(name: 'disciplineId') int disciplineId,
+      @JsonKey(name: 'subjectTypeId') int subjectTypeId,
       @JsonKey(name: 'userId') int userId,
       @JsonKey(name: 'classroom') String classroom,
       @JsonKey(name: 'subjectPositionId') int subjectPositionId,
@@ -133,6 +142,7 @@ class __$$SubjectModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? disciplineId = null,
+    Object? subjectTypeId = null,
     Object? userId = null,
     Object? classroom = null,
     Object? subjectPositionId = null,
@@ -146,6 +156,10 @@ class __$$SubjectModelImplCopyWithImpl<$Res>
       disciplineId: null == disciplineId
           ? _value.disciplineId
           : disciplineId // ignore: cast_nullable_to_non_nullable
+              as int,
+      subjectTypeId: null == subjectTypeId
+          ? _value.subjectTypeId
+          : subjectTypeId // ignore: cast_nullable_to_non_nullable
               as int,
       userId: null == userId
           ? _value.userId
@@ -173,6 +187,7 @@ class _$SubjectModelImpl implements _SubjectModel {
   const _$SubjectModelImpl(
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'disciplineId') required this.disciplineId,
+      @JsonKey(name: 'subjectTypeId') required this.subjectTypeId,
       @JsonKey(name: 'userId') required this.userId,
       @JsonKey(name: 'classroom') required this.classroom,
       @JsonKey(name: 'subjectPositionId') required this.subjectPositionId,
@@ -188,6 +203,9 @@ class _$SubjectModelImpl implements _SubjectModel {
   @JsonKey(name: 'disciplineId')
   final int disciplineId;
   @override
+  @JsonKey(name: 'subjectTypeId')
+  final int subjectTypeId;
+  @override
   @JsonKey(name: 'userId')
   final int userId;
   @override
@@ -202,7 +220,7 @@ class _$SubjectModelImpl implements _SubjectModel {
 
   @override
   String toString() {
-    return 'SubjectModel(id: $id, disciplineId: $disciplineId, userId: $userId, classroom: $classroom, subjectPositionId: $subjectPositionId, weekPositionId: $weekPositionId)';
+    return 'SubjectModel(id: $id, disciplineId: $disciplineId, subjectTypeId: $subjectTypeId, userId: $userId, classroom: $classroom, subjectPositionId: $subjectPositionId, weekPositionId: $weekPositionId)';
   }
 
   @override
@@ -213,6 +231,8 @@ class _$SubjectModelImpl implements _SubjectModel {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.disciplineId, disciplineId) ||
                 other.disciplineId == disciplineId) &&
+            (identical(other.subjectTypeId, subjectTypeId) ||
+                other.subjectTypeId == subjectTypeId) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.classroom, classroom) ||
                 other.classroom == classroom) &&
@@ -224,8 +244,8 @@ class _$SubjectModelImpl implements _SubjectModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, disciplineId, userId,
-      classroom, subjectPositionId, weekPositionId);
+  int get hashCode => Object.hash(runtimeType, id, disciplineId, subjectTypeId,
+      userId, classroom, subjectPositionId, weekPositionId);
 
   @JsonKey(ignore: true)
   @override
@@ -245,6 +265,7 @@ abstract class _SubjectModel implements SubjectModel {
   const factory _SubjectModel(
       {@JsonKey(name: 'id') required final int id,
       @JsonKey(name: 'disciplineId') required final int disciplineId,
+      @JsonKey(name: 'subjectTypeId') required final int subjectTypeId,
       @JsonKey(name: 'userId') required final int userId,
       @JsonKey(name: 'classroom') required final String classroom,
       @JsonKey(name: 'subjectPositionId') required final int subjectPositionId,
@@ -260,6 +281,9 @@ abstract class _SubjectModel implements SubjectModel {
   @override
   @JsonKey(name: 'disciplineId')
   int get disciplineId;
+  @override
+  @JsonKey(name: 'subjectTypeId')
+  int get subjectTypeId;
   @override
   @JsonKey(name: 'userId')
   int get userId;

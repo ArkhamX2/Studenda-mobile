@@ -14,7 +14,7 @@ class CommonBloc extends Bloc<CommonEvent, CommonState> {
   List<SubjectPositionModel>? subjectPositions;
   List<DayPositionModel>? dayPositions;
 
-  CommonBloc() : super(_Initial()) {
+  CommonBloc() : super(const _Initial()) {
     on<CommonEvent>((event, emit) {
       // TODO: implement event handler
     });

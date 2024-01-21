@@ -1,29 +1,31 @@
+import 'package:studenda_mobile/core/common/data/model/discipline_model.dart';
+import 'package:studenda_mobile/core/data/user_model/user_model.dart';
 import 'package:studenda_mobile/feature/schedule/data/models/subject_model.dart';
 import 'package:studenda_mobile/feature/schedule/domain/entities/day_schedule_entity.dart';
 import 'package:studenda_mobile/feature/schedule/domain/entities/subject_entity.dart';
 
-List<DayScheduleEntity> mapSubjectModelToDayScehduleList(List<SubjectModel> r) {
+List<DayScheduleEntity> mapSubjectModelToDayScehduleList(List<SubjectModel> subjects, List<DisciplineModel> disciplines, List<UserModel> teachers) {
   final Map<int, List<SubjectEntity>> dayScheduleEntityMap = {};
 
-  for (var i = 0; i < r.length; i++) {
-    if (dayScheduleEntityMap.containsKey(r[i].weekPositionId)) {
-      dayScheduleEntityMap[r[i].weekPositionId]!.add(
+  for (var i = 0; i < subjects.length; i++) {
+    if (dayScheduleEntityMap.containsKey(subjects[i].weekPositionId)) {
+      dayScheduleEntityMap[subjects[i].weekPositionId]!.add(
         SubjectEntity(
-          id: r[i].id,
-          title: r[i].discipline.name,
-          classroom: r[i].classroom,
-          teacher: r[i].user.name,
-          dayTime: r[i].subjectPositionId,
+          id: subjects[i].id,
+          title: disciplines.firstWhere((element) => element.id == subjects[i].disciplineId).name,
+          classroom: subjects[i].classroom,
+          teacher: teachers.firstWhere((element) => element.id == subjects[i].userId).name,
+          dayTime: subjects[i].subjectPositionId,
         ),
       );
     } else {
-      dayScheduleEntityMap[r[i].weekPositionId] = [
+      dayScheduleEntityMap[subjects[i].weekPositionId] = [
         SubjectEntity(
-          id: r[i].id,
-          title: r[i].discipline.name,
-          classroom: r[i].classroom,
-          teacher: r[i].user.name,
-          dayTime: r[i].subjectPositionId,
+          id: subjects[i].id,
+          title: disciplines.firstWhere((element) => element.id == subjects[i].disciplineId).name,
+          classroom: subjects[i].classroom,
+          teacher: teachers.firstWhere((element) => element.id == subjects[i].userId).name,
+          dayTime: subjects[i].subjectPositionId,
         ),
       ];
     }

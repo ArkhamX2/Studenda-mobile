@@ -28,11 +28,17 @@ import 'package:studenda_mobile/feature/group_selection/presentation/bloc/group_
 import 'package:studenda_mobile/feature/group_selection/presentation/bloc/main_group_selection_bloc/main_group_selection_bloc.dart';
 import 'package:studenda_mobile/feature/schedule/data/datasources/schedule_remote_data_source.dart';
 import 'package:studenda_mobile/feature/schedule/data/datasources/week_type_remote_data_source.dart';
+import 'package:studenda_mobile/feature/schedule/data/repositories/discipline_repository_impl.dart';
 import 'package:studenda_mobile/feature/schedule/data/repositories/schedule_repository_impl.dart';
+import 'package:studenda_mobile/feature/schedule/data/repositories/teachert_repository_impl.dart';
 import 'package:studenda_mobile/feature/schedule/data/repositories/week_type_repository_impl.dart';
+import 'package:studenda_mobile/feature/schedule/domain/repositories/discipline_repository.dart';
 import 'package:studenda_mobile/feature/schedule/domain/repositories/schedule_repository.dart';
+import 'package:studenda_mobile/feature/schedule/domain/repositories/teacher_repository.dart';
 import 'package:studenda_mobile/feature/schedule/domain/repositories/week_type_repository.dart';
+import 'package:studenda_mobile/feature/schedule/domain/usecases/get_discipline_list.dart';
 import 'package:studenda_mobile/feature/schedule/domain/usecases/get_schedule.dart';
+import 'package:studenda_mobile/feature/schedule/domain/usecases/get_teacher_list.dart';
 import 'package:studenda_mobile/feature/schedule/domain/usecases/get_week_type.dart';
 import 'package:studenda_mobile/feature/schedule/presentation/bloc/schedule_bloc.dart';
 
@@ -158,7 +164,7 @@ Future<void> init() async {
   // Bloc
 
   sl.registerFactory(
-    () => ScheduleBloc(getSchedule: sl() ,getWeekType: sl()),
+    () => ScheduleBloc(getSchedule: sl() ,getWeekType: sl(),getDisciplineList: sl(),getTeacherList: sl() ),
   );
 
   // Use cases
@@ -167,6 +173,12 @@ Future<void> init() async {
   );
   sl.registerLazySingleton(
     () => GetWeekType(weekTypeRepository: sl()),
+  );
+  sl.registerLazySingleton(
+    () => GetDisciplineList(disciplineRepository: sl()),
+  );
+  sl.registerLazySingleton(
+    () => GetTeacherList(teacherRepository: sl()),
   );
 
   // Repository
@@ -179,6 +191,20 @@ Future<void> init() async {
 
   sl.registerLazySingleton<WeekTypeRepository>(
     () => WeekTypeRepositoryImpl(
+      remoteDataSource: sl(),
+      networkInfo: sl(),
+    ),
+  );
+
+  sl.registerLazySingleton<DisciplineRepository>(
+    () => DisciplineRepositoryImpl(
+      remoteDataSource: sl(),
+      networkInfo: sl(),
+    ),
+  );
+
+  sl.registerLazySingleton<TeacherRepository>(
+    () => TeacherRepositoryImpl(
       remoteDataSource: sl(),
       networkInfo: sl(),
     ),

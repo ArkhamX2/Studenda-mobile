@@ -43,3 +43,7 @@ class LoadWeekTypeFailure extends Failure{
 class LoadScheduleFailure extends Failure{
   const LoadScheduleFailure({required super.message});
 }
+
+class LoadDisciplineFailure extends Failure{
+  const LoadDisciplineFailure({required super.message});
+}
