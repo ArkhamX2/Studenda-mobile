@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CourseEntity {
+  int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -29,7 +30,7 @@ abstract class $CourseEntityCopyWith<$Res> {
           CourseEntity value, $Res Function(CourseEntity) then) =
       _$CourseEntityCopyWithImpl<$Res, CourseEntity>;
   @useResult
-  $Res call({String name});
+  $Res call({int id, String name});
 }
 
 /// @nodoc
@@ -45,9 +46,14 @@ class _$CourseEntityCopyWithImpl<$Res, $Val extends CourseEntity>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -64,7 +70,7 @@ abstract class _$$CourseEntityImplCopyWith<$Res>
       __$$CourseEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name});
+  $Res call({int id, String name});
 }
 
 /// @nodoc
@@ -78,9 +84,14 @@ class __$$CourseEntityImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
   }) {
     return _then(_$CourseEntityImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -92,14 +103,16 @@ class __$$CourseEntityImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CourseEntityImpl implements _CourseEntity {
-  const _$CourseEntityImpl({required this.name});
+  const _$CourseEntityImpl({required this.id, required this.name});
 
+  @override
+  final int id;
   @override
   final String name;
 
   @override
   String toString() {
-    return 'CourseEntity(name: $name)';
+    return 'CourseEntity(id: $id, name: $name)';
   }
 
   @override
@@ -107,11 +120,12 @@ class _$CourseEntityImpl implements _CourseEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CourseEntityImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name);
+  int get hashCode => Object.hash(runtimeType, id, name);
 
   @JsonKey(ignore: true)
   @override
@@ -121,9 +135,11 @@ class _$CourseEntityImpl implements _CourseEntity {
 }
 
 abstract class _CourseEntity implements CourseEntity {
-  const factory _CourseEntity({required final String name}) =
-      _$CourseEntityImpl;
+  const factory _CourseEntity(
+      {required final int id, required final String name}) = _$CourseEntityImpl;
 
+  @override
+  int get id;
   @override
   String get name;
   @override

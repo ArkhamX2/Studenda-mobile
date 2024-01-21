@@ -22,7 +22,7 @@ class SubjectPositionRemoteDataSourceImpl implements SubjectPositionRemoteDataSo
         final decoded = json.decode(response.body) as List<dynamic>;
         final responseModel = decoded
             .map((dynamic value) =>
-                SubjectPositionModel.fromJson(value as Map<String, dynamic>))
+                SubjectPositionModel.fromJson(value as Map<String, dynamic>),)
             .toList();
         return responseModel;
       } else {

@@ -8,8 +8,8 @@ part 'department_model.g.dart';
 @freezed
 class DepartmentModel with _$DepartmentModel {
   const factory DepartmentModel({
-    @JsonKey(name: 'Id') required int id,
-    @JsonKey(name: 'Name') required String name,
+    @JsonKey(name: 'id') required int id,
+    @JsonKey(name: 'name') required String name,
   }) = _DepartmentModel;
 
   

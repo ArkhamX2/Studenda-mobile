@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:studenda_mobile/core/common/presentation/bloc/common_bloc.dart';
-import 'package:studenda_mobile/core/data/error/failure.dart';
 import 'package:studenda_mobile/core/presentation/button_widget.dart';
 import 'package:studenda_mobile/core/presentation/dropdown_widget.dart';
 import 'package:studenda_mobile/core/presentation/label/studenda_default_label_widget.dart';
@@ -26,23 +25,17 @@ class _GuestGroupSelectorPageState extends State<GuestGroupSelectorPage> {
       appBar: const GroupSelectorAppBarWidget(),
       body: MultiBlocProvider(
         providers: [
-          BlocProvider<CommonBloc>(
-            create: (context) => sl<CommonBloc>(),
-          ),
-          BlocProvider<GroupSelectorBloc>(
-            create: (context) => sl<GroupSelectorBloc>(),
-          ),
           BlocProvider<DepartmentCubit>(
-            create: (context) => sl<DepartmentCubit>(),
+            create: (context) => sl<DepartmentCubit>()..load(),
           ),
           BlocProvider<CourseCubit>(
-            create: (context) => sl<CourseCubit>(),
+            create: (context) => sl<CourseCubit>()..load(),
           ),
           BlocProvider<GroupCubit>(
-            create: (context) => sl<GroupCubit>(),
+            create: (context) => sl<GroupCubit>()..load(),
           ),
         ],
-        child: const _GroupSelectorWidget(),
+        child: _GroupSelectorWidget(),
       ),
     );
   }
@@ -53,58 +46,95 @@ class _GroupSelectorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final commonbloc = context.watch<CommonBloc>();
     final groupSelectorBloc = context.watch<GroupSelectorBloc>();
+    final commonbloc = context.watch<CommonBloc>();
     final groupCubit = context.watch<GroupCubit>();
     final courseCubit = context.watch<CourseCubit>();
     final departmentCubit = context.watch<DepartmentCubit>();
 
-    commonbloc.add(const CommonEvent.load());
-    groupCubit.load();
-    courseCubit.load();
-    departmentCubit.load();
-
-    if (groupCubit.state == const GroupState.loading() ||
-        courseCubit.state == const CourseState.loading() ||
-        departmentCubit.state == const DepartmentState.loading()) {
-      groupSelectorBloc.add(const GroupSelectorEvent.load());
-    } else if (groupCubit.state == const GroupState.fail() ||
-        courseCubit.state == const CourseState.fail() ||
-        departmentCubit.state == const DepartmentState.fail()) {
-      groupSelectorBloc.add(const GroupSelectorEvent.fail("Ошибка загрузки"));
-    } else {
-      groupSelectorBloc.add(const GroupSelectorEvent.success());
-    }
-
-    return groupSelectorBloc.state.when(
-      initial: () => Container(),
-      loading: () => const Center(
-        child: CircularProgressIndicator(),
-      ),
-      success: () => Container(
-        alignment: AlignmentDirectional.center,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 17),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _DepartmentSelectionWidget(
-                  mainBloc: groupSelectorBloc, departmentCubit: departmentCubit,),
-              _CourseSelectionWidget(
-                  mainBloc: groupSelectorBloc, courseCubit: courseCubit,),
-              _GroupSelectionWidget(
-                  mainBloc: groupSelectorBloc, groupCubit: groupCubit,),
-              StudendaButton(
-                title: "Подтвердить",
-                event: () {
-                  Navigator.of(context).pushReplacementNamed('/main_nav');
-                },
+    return BlocProvider<GroupSelectorBloc>(
+      create: (context) {
+        if (groupCubit.groupList != null &&
+            departmentCubit.departmentList != null &&
+            courseCubit.courseList != null) {
+          groupSelectorBloc
+            ..add(
+              GroupSelectorEvent.setGroup(
+                groupCubit.groupList!.first,
               ),
-            ],
-          ),
-        ),
+            )
+            ..add(
+              GroupSelectorEvent.setDepartment(
+                departmentCubit.departmentList!.first,
+              ),
+            )
+            ..add(
+              GroupSelectorEvent.setCourse(
+                courseCubit.courseList!.first,
+              ),
+            );
+        }
+        return groupSelectorBloc;
+      },
+      child: Builder(
+        builder: (context) {
+          final groupsState = groupCubit.state;
+          final coursesState = courseCubit.state;
+          final departmentsState = departmentCubit.state;
+          final commonState = commonbloc.state;
+
+          if (groupsState == const GroupState.loading() ||
+              coursesState == const CourseState.loading() ||
+              departmentsState == const DepartmentState.loading() ||
+              commonState == const CommonState.loading()) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else {
+            return Container(
+              alignment: AlignmentDirectional.center,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 17),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    StudendaDefaultLabelWidget(
+                      fontSize: 16,
+                      text: groupSelectorBloc.selectedDepartment.name,
+                    ),
+                    StudendaDefaultLabelWidget(
+                      fontSize: 16,
+                      text: groupSelectorBloc.selectedCourse.name,
+                    ),
+                    StudendaDefaultLabelWidget(
+                      fontSize: 16,
+                      text: groupSelectorBloc.selectedGroup.name,
+                    ),
+                    _DepartmentSelectionWidget(
+                      mainBloc: groupSelectorBloc,
+                      departmentCubit: departmentCubit,
+                    ),
+                    _CourseSelectionWidget(
+                      mainBloc: groupSelectorBloc,
+                      courseCubit: courseCubit,
+                    ),
+                    _GroupSelectionWidget(
+                      mainBloc: groupSelectorBloc,
+                      groupCubit: groupCubit,
+                    ),
+                    StudendaButton(
+                      title: "Подтвердить",
+                      event: () {
+                        Navigator.of(context).pushReplacementNamed('/schedule');
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            );
+          }
+        },
       ),
-      fail: (errorMessage) => Center(child: Text(errorMessage)),
     );
   }
 }
@@ -114,8 +144,10 @@ class _GroupSelectionWidget extends StatelessWidget {
 
   final GroupCubit groupCubit;
 
-  const _GroupSelectionWidget(
-      {required this.mainBloc, required this.groupCubit,});
+  const _GroupSelectionWidget({
+    required this.mainBloc,
+    required this.groupCubit,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -142,8 +174,10 @@ class _CourseSelectionWidget extends StatelessWidget {
 
   final CourseCubit courseCubit;
 
-  const _CourseSelectionWidget(
-      {required this.mainBloc, required this.courseCubit,});
+  const _CourseSelectionWidget({
+    required this.mainBloc,
+    required this.courseCubit,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -170,8 +204,10 @@ class _DepartmentSelectionWidget extends StatelessWidget {
 
   final DepartmentCubit departmentCubit;
 
-  const _DepartmentSelectionWidget(
-      {required this.mainBloc, required this.departmentCubit,});
+  const _DepartmentSelectionWidget({
+    required this.mainBloc,
+    required this.departmentCubit,
+  });
 
   @override
   Widget build(BuildContext context) {

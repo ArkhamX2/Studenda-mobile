@@ -14,6 +14,7 @@ class TeacherRepositoryImpl implements TeacherRepository{
   TeacherRepositoryImpl({required this.remoteDataSource, required this.networkInfo});
   @override
   Future<Either<Failure, List<UserModel>>> load(List<int> request) async {
+    if(request.isEmpty) return const Right([]);
     if( await networkInfo.isConnected ){
       try{
         final remoteLoad = await remoteDataSource.load(request);

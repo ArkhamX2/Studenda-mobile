@@ -9,6 +9,8 @@ part 'course_cubit.freezed.dart';
 class CourseCubit extends Cubit<CourseState> {
   final LoadCourses loadCourses;
 
+  List<CourseEntity>? courseList;
+
   CourseCubit({required this.loadCourses}) : super(const CourseState.initial());
   Future<void> load() async {
     emit(const CourseState.loading());
@@ -17,7 +19,7 @@ class CourseCubit extends Cubit<CourseState> {
       (l) => emit(CourseState.fail(l.message)),
       (r) => emit(
         CourseState.success(
-          r.map((element) => CourseEntity(name: element.name)).toList(),
+          r.map((element) => CourseEntity(id: element.id,name: element.name)).toList(),
         ),
       ),
     );

@@ -14,7 +14,7 @@ _$SubjectModelImpl _$$SubjectModelImplFromJson(Map<String, dynamic> json) =>
       userId: json['userId'] as int,
       classroom: json['classroom'] as String,
       subjectPositionId: json['subjectPositionId'] as int,
-      weekPositionId: json['dayPositionId'] as int,
+      dayPositionId: json['dayPositionId'] as int,
     );
 
 Map<String, dynamic> _$$SubjectModelImplToJson(_$SubjectModelImpl instance) =>
@@ -25,5 +25,5 @@ Map<String, dynamic> _$$SubjectModelImplToJson(_$SubjectModelImpl instance) =>
       'userId': instance.userId,
       'classroom': instance.classroom,
       'subjectPositionId': instance.subjectPositionId,
-      'dayPositionId': instance.weekPositionId,
+      'dayPositionId': instance.dayPositionId,
     };

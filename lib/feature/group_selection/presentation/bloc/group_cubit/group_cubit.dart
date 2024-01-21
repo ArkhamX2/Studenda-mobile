@@ -8,20 +8,21 @@ part 'group_cubit.freezed.dart';
 
 class GroupCubit extends Cubit<GroupState> {
   final LoadGroups loadGroups;
+  List<GroupEntity>? groupList = [];
 
   GroupCubit({required this.loadGroups}) : super(const GroupState.initial());
   Future<void> load() async {
     emit(const GroupState.loading());
     final groups = await loadGroups(() {});
-    groups.fold(
-      (l) => emit(GroupState.fail(l.message)),
-      (r) => emit(
+    groups.fold((l) => emit(GroupState.fail(l.message)), (succededGroupList) {
+      groupList = succededGroupList.map((e) => GroupEntity(id: e.id, name: e.name)).toList();
+      emit(
         GroupState.success(
-          r
+          succededGroupList
               .map((element) => GroupEntity(id: element.id, name: element.name))
               .toList(),
         ),
-      ),
-    );
+      );
+    });
   }
 }

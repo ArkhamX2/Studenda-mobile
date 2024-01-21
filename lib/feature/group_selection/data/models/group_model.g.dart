@@ -8,12 +8,12 @@ part of 'group_model.dart';
 
 _$GroupModelImpl _$$GroupModelImplFromJson(Map<String, dynamic> json) =>
     _$GroupModelImpl(
-      id: json['Id'] as int,
-      name: json['Name'] as String,
+      id: json['id'] as int,
+      name: json['name'] as String,
     );
 
 Map<String, dynamic> _$$GroupModelImplToJson(_$GroupModelImpl instance) =>
     <String, dynamic>{
-      'Id': instance.id,
-      'Name': instance.name,
+      'id': instance.id,
+      'name': instance.name,
     };

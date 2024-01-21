@@ -11,6 +11,3 @@ class WeekTypeEntity with _$WeekTypeEntity{
     required int index,
   }) = _WeekTypeEntity;
 }
-
-
-

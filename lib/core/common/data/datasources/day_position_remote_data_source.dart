@@ -22,7 +22,7 @@ class DayPositionRemoteDataSourceImpl implements DayPositionRemoteDataSource {
         final decoded = json.decode(response.body) as List<dynamic>;
         final responseModel = decoded
             .map((dynamic value) =>
-                DayPositionModel.fromJson(value as Map<String, dynamic>))
+                DayPositionModel.fromJson(value as Map<String, dynamic>),)
             .toList();
         return responseModel;
       } else {

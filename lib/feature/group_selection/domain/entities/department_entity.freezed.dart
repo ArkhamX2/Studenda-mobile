@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$DepartmentEntity {
+  int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -29,7 +30,7 @@ abstract class $DepartmentEntityCopyWith<$Res> {
           DepartmentEntity value, $Res Function(DepartmentEntity) then) =
       _$DepartmentEntityCopyWithImpl<$Res, DepartmentEntity>;
   @useResult
-  $Res call({String name});
+  $Res call({int id, String name});
 }
 
 /// @nodoc
@@ -45,9 +46,14 @@ class _$DepartmentEntityCopyWithImpl<$Res, $Val extends DepartmentEntity>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -64,7 +70,7 @@ abstract class _$$DepartmentEntityImplCopyWith<$Res>
       __$$DepartmentEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name});
+  $Res call({int id, String name});
 }
 
 /// @nodoc
@@ -78,9 +84,14 @@ class __$$DepartmentEntityImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
   }) {
     return _then(_$DepartmentEntityImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -92,14 +103,16 @@ class __$$DepartmentEntityImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$DepartmentEntityImpl implements _DepartmentEntity {
-  const _$DepartmentEntityImpl({required this.name});
+  const _$DepartmentEntityImpl({required this.id, required this.name});
 
+  @override
+  final int id;
   @override
   final String name;
 
   @override
   String toString() {
-    return 'DepartmentEntity(name: $name)';
+    return 'DepartmentEntity(id: $id, name: $name)';
   }
 
   @override
@@ -107,11 +120,12 @@ class _$DepartmentEntityImpl implements _DepartmentEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DepartmentEntityImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name);
+  int get hashCode => Object.hash(runtimeType, id, name);
 
   @JsonKey(ignore: true)
   @override
@@ -122,9 +136,12 @@ class _$DepartmentEntityImpl implements _DepartmentEntity {
 }
 
 abstract class _DepartmentEntity implements DepartmentEntity {
-  const factory _DepartmentEntity({required final String name}) =
-      _$DepartmentEntityImpl;
+  const factory _DepartmentEntity(
+      {required final int id,
+      required final String name}) = _$DepartmentEntityImpl;
 
+  @override
+  int get id;
   @override
   String get name;
   @override

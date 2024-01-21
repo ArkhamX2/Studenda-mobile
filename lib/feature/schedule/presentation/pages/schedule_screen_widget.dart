@@ -23,20 +23,10 @@ class _ScheduleScreenWidgetState extends State<ScheduleScreenWidget> {
 //TODO: сделать чтобы вместо "главная бросало на выбор группы"
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 240, 241, 245),
-      appBar: const _ScheduleAppBarWidget(),
-      body: MultiBlocProvider(
-        providers: [
-          BlocProvider<GroupSelectorBloc>(
-            create: (context) => sl<GroupSelectorBloc>(),
-          ),
-          BlocProvider(
-            create: (context) => sl<CommonBloc>(),
-          ),
-        ],
-        child: const _BodyBuilderWidget(),
-      ),
+    return const Scaffold(
+      backgroundColor: Color.fromARGB(255, 240, 241, 245),
+      appBar: _ScheduleAppBarWidget(),
+      body: _BodyBuilderWidget(),
     );
   }
 }
@@ -50,7 +40,13 @@ class _BodyBuilderWidget extends StatelessWidget {
     final commonBloc = context.watch<CommonBloc>();
     return BlocProvider(
       create: (context) => sl<ScheduleBloc>()
-        ..add(ScheduleEvent.load(groupSelectorBloc.selectedGroup.id,commonBloc.dayPositionList,commonBloc.subjectPositionList)),
+        ..add(
+          ScheduleEvent.load(
+            groupSelectorBloc.selectedGroup.id,
+            commonBloc.dayPositionList,
+            commonBloc.subjectPositionList,
+          ),
+        ),
       child: const _ScheduleBodyWidget(),
     );
   }
@@ -161,6 +157,7 @@ class _ScheduleScrollWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if(schedule.isEmpty) return const Center(child: StudendaDefaultLabelWidget(fontSize: 18,text: "Занятий нет",));
     return Expanded(
       child: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),

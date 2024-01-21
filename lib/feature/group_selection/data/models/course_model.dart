@@ -9,8 +9,8 @@ part 'course_model.g.dart';
 @freezed
 class CourseModel with _$CourseModel {
   const factory CourseModel({
-    @JsonKey(name: 'Id') required int id,
-    @JsonKey(name: 'Name') required String name,
+    @JsonKey(name: 'id') required int id,
+    @JsonKey(name: 'name') required String name,
   }) = _CourseModel;
 
   

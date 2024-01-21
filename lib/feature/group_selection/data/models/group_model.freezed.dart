@@ -20,9 +20,9 @@ GroupModel _$GroupModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$GroupModel {
-  @JsonKey(name: 'Id')
+  @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'Name')
+  @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,7 +37,7 @@ abstract class $GroupModelCopyWith<$Res> {
           GroupModel value, $Res Function(GroupModel) then) =
       _$GroupModelCopyWithImpl<$Res, GroupModel>;
   @useResult
-  $Res call({@JsonKey(name: 'Id') int id, @JsonKey(name: 'Name') String name});
+  $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: 'name') String name});
 }
 
 /// @nodoc
@@ -77,7 +77,7 @@ abstract class _$$GroupModelImplCopyWith<$Res>
       __$$GroupModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'Id') int id, @JsonKey(name: 'Name') String name});
+  $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: 'name') String name});
 }
 
 /// @nodoc
@@ -111,17 +111,17 @@ class __$$GroupModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$GroupModelImpl implements _GroupModel {
   const _$GroupModelImpl(
-      {@JsonKey(name: 'Id') required this.id,
-      @JsonKey(name: 'Name') required this.name});
+      {@JsonKey(name: 'id') required this.id,
+      @JsonKey(name: 'name') required this.name});
 
   factory _$GroupModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$GroupModelImplFromJson(json);
 
   @override
-  @JsonKey(name: 'Id')
+  @JsonKey(name: 'id')
   final int id;
   @override
-  @JsonKey(name: 'Name')
+  @JsonKey(name: 'name')
   final String name;
 
   @override
@@ -158,17 +158,17 @@ class _$GroupModelImpl implements _GroupModel {
 
 abstract class _GroupModel implements GroupModel {
   const factory _GroupModel(
-      {@JsonKey(name: 'Id') required final int id,
-      @JsonKey(name: 'Name') required final String name}) = _$GroupModelImpl;
+      {@JsonKey(name: 'id') required final int id,
+      @JsonKey(name: 'name') required final String name}) = _$GroupModelImpl;
 
   factory _GroupModel.fromJson(Map<String, dynamic> json) =
       _$GroupModelImpl.fromJson;
 
   @override
-  @JsonKey(name: 'Id')
+  @JsonKey(name: 'id')
   int get id;
   @override
-  @JsonKey(name: 'Name')
+  @JsonKey(name: 'name')
   String get name;
   @override
   @JsonKey(ignore: true)

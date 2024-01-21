@@ -8,12 +8,12 @@ part of 'course_model.dart';
 
 _$CourseModelImpl _$$CourseModelImplFromJson(Map<String, dynamic> json) =>
     _$CourseModelImpl(
-      id: json['Id'] as int,
-      name: json['Name'] as String,
+      id: json['id'] as int,
+      name: json['name'] as String,
     );
 
 Map<String, dynamic> _$$CourseModelImplToJson(_$CourseModelImpl instance) =>
     <String, dynamic>{
-      'Id': instance.id,
-      'Name': instance.name,
+      'id': instance.id,
+      'name': instance.name,
     };

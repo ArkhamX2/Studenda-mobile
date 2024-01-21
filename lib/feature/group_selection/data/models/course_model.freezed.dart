@@ -20,9 +20,9 @@ CourseModel _$CourseModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CourseModel {
-  @JsonKey(name: 'Id')
+  @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'Name')
+  @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,7 +37,7 @@ abstract class $CourseModelCopyWith<$Res> {
           CourseModel value, $Res Function(CourseModel) then) =
       _$CourseModelCopyWithImpl<$Res, CourseModel>;
   @useResult
-  $Res call({@JsonKey(name: 'Id') int id, @JsonKey(name: 'Name') String name});
+  $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: 'name') String name});
 }
 
 /// @nodoc
@@ -77,7 +77,7 @@ abstract class _$$CourseModelImplCopyWith<$Res>
       __$$CourseModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'Id') int id, @JsonKey(name: 'Name') String name});
+  $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: 'name') String name});
 }
 
 /// @nodoc
@@ -111,17 +111,17 @@ class __$$CourseModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CourseModelImpl implements _CourseModel {
   const _$CourseModelImpl(
-      {@JsonKey(name: 'Id') required this.id,
-      @JsonKey(name: 'Name') required this.name});
+      {@JsonKey(name: 'id') required this.id,
+      @JsonKey(name: 'name') required this.name});
 
   factory _$CourseModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CourseModelImplFromJson(json);
 
   @override
-  @JsonKey(name: 'Id')
+  @JsonKey(name: 'id')
   final int id;
   @override
-  @JsonKey(name: 'Name')
+  @JsonKey(name: 'name')
   final String name;
 
   @override
@@ -158,17 +158,17 @@ class _$CourseModelImpl implements _CourseModel {
 
 abstract class _CourseModel implements CourseModel {
   const factory _CourseModel(
-      {@JsonKey(name: 'Id') required final int id,
-      @JsonKey(name: 'Name') required final String name}) = _$CourseModelImpl;
+      {@JsonKey(name: 'id') required final int id,
+      @JsonKey(name: 'name') required final String name}) = _$CourseModelImpl;
 
   factory _CourseModel.fromJson(Map<String, dynamic> json) =
       _$CourseModelImpl.fromJson;
 
   @override
-  @JsonKey(name: 'Id')
+  @JsonKey(name: 'id')
   int get id;
   @override
-  @JsonKey(name: 'Name')
+  @JsonKey(name: 'name')
   String get name;
   @override
   @JsonKey(ignore: true)

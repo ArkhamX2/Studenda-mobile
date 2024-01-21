@@ -33,7 +33,7 @@ mixin _$SubjectModel {
   @JsonKey(name: 'subjectPositionId')
   int get subjectPositionId => throw _privateConstructorUsedError;
   @JsonKey(name: 'dayPositionId')
-  int get weekPositionId => throw _privateConstructorUsedError;
+  int get dayPositionId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -54,7 +54,7 @@ abstract class $SubjectModelCopyWith<$Res> {
       @JsonKey(name: 'userId') int userId,
       @JsonKey(name: 'classroom') String classroom,
       @JsonKey(name: 'subjectPositionId') int subjectPositionId,
-      @JsonKey(name: 'dayPositionId') int weekPositionId});
+      @JsonKey(name: 'dayPositionId') int dayPositionId});
 }
 
 /// @nodoc
@@ -76,7 +76,7 @@ class _$SubjectModelCopyWithImpl<$Res, $Val extends SubjectModel>
     Object? userId = null,
     Object? classroom = null,
     Object? subjectPositionId = null,
-    Object? weekPositionId = null,
+    Object? dayPositionId = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -103,9 +103,9 @@ class _$SubjectModelCopyWithImpl<$Res, $Val extends SubjectModel>
           ? _value.subjectPositionId
           : subjectPositionId // ignore: cast_nullable_to_non_nullable
               as int,
-      weekPositionId: null == weekPositionId
-          ? _value.weekPositionId
-          : weekPositionId // ignore: cast_nullable_to_non_nullable
+      dayPositionId: null == dayPositionId
+          ? _value.dayPositionId
+          : dayPositionId // ignore: cast_nullable_to_non_nullable
               as int,
     ) as $Val);
   }
@@ -126,7 +126,7 @@ abstract class _$$SubjectModelImplCopyWith<$Res>
       @JsonKey(name: 'userId') int userId,
       @JsonKey(name: 'classroom') String classroom,
       @JsonKey(name: 'subjectPositionId') int subjectPositionId,
-      @JsonKey(name: 'dayPositionId') int weekPositionId});
+      @JsonKey(name: 'dayPositionId') int dayPositionId});
 }
 
 /// @nodoc
@@ -146,7 +146,7 @@ class __$$SubjectModelImplCopyWithImpl<$Res>
     Object? userId = null,
     Object? classroom = null,
     Object? subjectPositionId = null,
-    Object? weekPositionId = null,
+    Object? dayPositionId = null,
   }) {
     return _then(_$SubjectModelImpl(
       id: null == id
@@ -173,9 +173,9 @@ class __$$SubjectModelImplCopyWithImpl<$Res>
           ? _value.subjectPositionId
           : subjectPositionId // ignore: cast_nullable_to_non_nullable
               as int,
-      weekPositionId: null == weekPositionId
-          ? _value.weekPositionId
-          : weekPositionId // ignore: cast_nullable_to_non_nullable
+      dayPositionId: null == dayPositionId
+          ? _value.dayPositionId
+          : dayPositionId // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -191,7 +191,7 @@ class _$SubjectModelImpl implements _SubjectModel {
       @JsonKey(name: 'userId') required this.userId,
       @JsonKey(name: 'classroom') required this.classroom,
       @JsonKey(name: 'subjectPositionId') required this.subjectPositionId,
-      @JsonKey(name: 'dayPositionId') required this.weekPositionId});
+      @JsonKey(name: 'dayPositionId') required this.dayPositionId});
 
   factory _$SubjectModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$SubjectModelImplFromJson(json);
@@ -216,11 +216,11 @@ class _$SubjectModelImpl implements _SubjectModel {
   final int subjectPositionId;
   @override
   @JsonKey(name: 'dayPositionId')
-  final int weekPositionId;
+  final int dayPositionId;
 
   @override
   String toString() {
-    return 'SubjectModel(id: $id, disciplineId: $disciplineId, subjectTypeId: $subjectTypeId, userId: $userId, classroom: $classroom, subjectPositionId: $subjectPositionId, weekPositionId: $weekPositionId)';
+    return 'SubjectModel(id: $id, disciplineId: $disciplineId, subjectTypeId: $subjectTypeId, userId: $userId, classroom: $classroom, subjectPositionId: $subjectPositionId, dayPositionId: $dayPositionId)';
   }
 
   @override
@@ -238,14 +238,14 @@ class _$SubjectModelImpl implements _SubjectModel {
                 other.classroom == classroom) &&
             (identical(other.subjectPositionId, subjectPositionId) ||
                 other.subjectPositionId == subjectPositionId) &&
-            (identical(other.weekPositionId, weekPositionId) ||
-                other.weekPositionId == weekPositionId));
+            (identical(other.dayPositionId, dayPositionId) ||
+                other.dayPositionId == dayPositionId));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, disciplineId, subjectTypeId,
-      userId, classroom, subjectPositionId, weekPositionId);
+      userId, classroom, subjectPositionId, dayPositionId);
 
   @JsonKey(ignore: true)
   @override
@@ -270,7 +270,7 @@ abstract class _SubjectModel implements SubjectModel {
       @JsonKey(name: 'classroom') required final String classroom,
       @JsonKey(name: 'subjectPositionId') required final int subjectPositionId,
       @JsonKey(name: 'dayPositionId')
-      required final int weekPositionId}) = _$SubjectModelImpl;
+      required final int dayPositionId}) = _$SubjectModelImpl;
 
   factory _SubjectModel.fromJson(Map<String, dynamic> json) =
       _$SubjectModelImpl.fromJson;
@@ -295,7 +295,7 @@ abstract class _SubjectModel implements SubjectModel {
   int get subjectPositionId;
   @override
   @JsonKey(name: 'dayPositionId')
-  int get weekPositionId;
+  int get dayPositionId;
   @override
   @JsonKey(ignore: true)
   _$$SubjectModelImplCopyWith<_$SubjectModelImpl> get copyWith =>

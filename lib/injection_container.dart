@@ -35,11 +35,13 @@ import 'package:studenda_mobile/feature/group_selection/presentation/bloc/course
 import 'package:studenda_mobile/feature/group_selection/presentation/bloc/department_cubit/department_cubit.dart';
 import 'package:studenda_mobile/feature/group_selection/presentation/bloc/group_cubit/group_cubit.dart';
 import 'package:studenda_mobile/feature/group_selection/presentation/bloc/main_group_selection_bloc/main_group_selection_bloc.dart';
+import 'package:studenda_mobile/feature/schedule/data/datasources/discipline_remote_data_source.dart';
 import 'package:studenda_mobile/feature/schedule/data/datasources/schedule_remote_data_source.dart';
+import 'package:studenda_mobile/feature/schedule/data/datasources/teacher_remote_data_source.dart';
 import 'package:studenda_mobile/feature/schedule/data/datasources/week_type_remote_data_source.dart';
 import 'package:studenda_mobile/feature/schedule/data/repositories/discipline_repository_impl.dart';
 import 'package:studenda_mobile/feature/schedule/data/repositories/schedule_repository_impl.dart';
-import 'package:studenda_mobile/feature/schedule/data/repositories/teachert_repository_impl.dart';
+import 'package:studenda_mobile/feature/schedule/data/repositories/teacher_repository_impl.dart';
 import 'package:studenda_mobile/feature/schedule/data/repositories/week_type_repository_impl.dart';
 import 'package:studenda_mobile/feature/schedule/domain/repositories/discipline_repository.dart';
 import 'package:studenda_mobile/feature/schedule/domain/repositories/schedule_repository.dart';
@@ -141,8 +143,8 @@ Future<void> init() async {
   sl.registerFactory(
     () => GroupSelectorBloc(
       selectedGroup: const GroupEntity(id: -1, name: ""),
-      selectedCourse: const CourseEntity(name: ""),
-      selectedDepartment: const DepartmentEntity(name: ""),
+      selectedCourse: const CourseEntity(id: -1,name: ""),
+      selectedDepartment: const DepartmentEntity(id: -1,name: ""),
     ),
   );
 
@@ -227,7 +229,7 @@ Future<void> init() async {
         getSchedule: sl(),
         getWeekType: sl(),
         getDisciplineList: sl(),
-        getTeacherList: sl()),
+        getTeacherList: sl(),),
   );
 
   // Use cases
@@ -283,6 +285,17 @@ Future<void> init() async {
 
   sl.registerLazySingleton<WeekTypeRemoteDataSource>(
     () => WeekTypeRemoteDataSourceImpl(
+      client: sl(),
+    ),
+  );
+
+sl.registerLazySingleton<DisciplineRemoteDataSource>(
+    () => DisciplineRemoteDataSourceImpl(
+      client: sl(),
+    ),
+  );
+  sl.registerLazySingleton<TeacherRemoteDataSource>(
+    () => TeacherRemoteDataSourceImpl(
       client: sl(),
     ),
   );
