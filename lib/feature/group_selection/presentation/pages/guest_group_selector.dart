@@ -35,7 +35,7 @@ class _GuestGroupSelectorPageState extends State<GuestGroupSelectorPage> {
             create: (context) => sl<GroupCubit>()..load(),
           ),
         ],
-        child: _GroupSelectorWidget(),
+        child: const _GroupSelectorWidget(),
       ),
     );
   }
