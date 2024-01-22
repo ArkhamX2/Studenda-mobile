@@ -62,6 +62,7 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
   @override
   Widget build(BuildContext context) {
     final scheduleBloc = context.watch<ScheduleBloc>();
+    final groupSelectorBloc = context.watch<GroupSelectorBloc>();
 
     return scheduleBloc.state.when(
       initial: () => const Center(child: CircularProgressIndicator()),
@@ -85,6 +86,7 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
                 scheduleBloc: scheduleBloc,
                 weekType: schedule.weekType,
                 weekDays: schedule.weekDays,
+                groupId: groupSelectorBloc.selectedGroup.id,
               ),
               const SizedBox(height: 10),
               _ScheduleScrollWidget(
@@ -104,12 +106,14 @@ class _DateCarouselWrapperWidget extends StatelessWidget {
   final WeekTypeEntity weekType;
   final List<String> weekDays;
   final ScheduleBloc scheduleBloc;
+  final int groupId;
 
   const _DateCarouselWrapperWidget({
     required this.globalKeys,
     required this.weekType,
     required this.weekDays,
     required this.scheduleBloc,
+    required this.groupId,
   });
 
   @override
@@ -137,8 +141,8 @@ class _DateCarouselWrapperWidget extends StatelessWidget {
             );
         }
       },
-      onPrevTap: () => scheduleBloc.add(const ScheduleEvent.changeWeekType()),
-      onNextTap: () => scheduleBloc.add(const ScheduleEvent.changeWeekType()),
+      onPrevTap: () => scheduleBloc.add(ScheduleEvent.changeWeekType(groupId)),
+      onNextTap: () => scheduleBloc.add(ScheduleEvent.changeWeekType(groupId)),
     );
   }
 }
@@ -157,10 +161,11 @@ class _ScheduleScrollWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     if (schedule.isEmpty) {
       return const Center(
-          child: StudendaDefaultLabelWidget(
-        fontSize: 18,
-        text: "Занятий нет",
-      ),);
+        child: StudendaDefaultLabelWidget(
+          fontSize: 18,
+          text: "Занятий нет",
+        ),
+      );
     }
     return Expanded(
       child: SingleChildScrollView(

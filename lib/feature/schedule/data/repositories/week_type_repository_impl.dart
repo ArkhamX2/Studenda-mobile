@@ -13,10 +13,10 @@ class WeekTypeRepositoryImpl implements WeekTypeRepository{
 
   WeekTypeRepositoryImpl({required this.remoteDataSource, required this.networkInfo});
   @override
-  Future<Either<Failure, WeekTypeModel>> load(void request) async {
+  Future<Either<Failure, WeekTypeModel>> getCurrent(void request) async {
     if( await networkInfo.isConnected ){
       try{
-        final remoteLoad = await remoteDataSource.load(request);
+        final remoteLoad = await remoteDataSource.getCurrent(request);
         //TODO: localdatasource cache
         return Right(remoteLoad);
       } on ServerException{
@@ -25,7 +25,23 @@ class WeekTypeRepositoryImpl implements WeekTypeRepository{
     } else{
       //TODO: get data from cache
     }
-    return const Left(LoadWeekTypeFailure(message: "Ошибка загрузки списка курсов"));
+    return const Left(LoadWeekTypeFailure(message: "Ошибка загрузки текущего типа недели"));
+  }
+  
+  @override
+  Future<Either<Failure, List<WeekTypeModel>>> getAll(void request) async {
+    if( await networkInfo.isConnected ){
+      try{
+        final remoteLoad = await remoteDataSource.getAll(request);
+        //TODO: localdatasource cache
+        return Right(remoteLoad);
+      } on ServerException{
+        return const Left(ServerFailure(message: "Ошибка сервера"));
+      }
+    } else{
+      //TODO: get data from cache
+    }
+    return const Left(LoadWeekTypeFailure(message: "Ошибка загрузки типов недели"));
   }
 
 }

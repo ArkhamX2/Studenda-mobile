@@ -47,13 +47,14 @@ import 'package:studenda_mobile/feature/schedule/domain/repositories/subject_pos
 import 'package:studenda_mobile/feature/schedule/domain/repositories/subject_type_repository.dart';
 import 'package:studenda_mobile/feature/schedule/domain/repositories/teacher_repository.dart';
 import 'package:studenda_mobile/feature/schedule/domain/repositories/week_type_repository.dart';
+import 'package:studenda_mobile/feature/schedule/domain/usecases/get_all_week_type.dart';
+import 'package:studenda_mobile/feature/schedule/domain/usecases/get_current_week_type.dart';
 import 'package:studenda_mobile/feature/schedule/domain/usecases/get_day_position.dart';
 import 'package:studenda_mobile/feature/schedule/domain/usecases/get_discipline_list.dart';
 import 'package:studenda_mobile/feature/schedule/domain/usecases/get_schedule.dart';
 import 'package:studenda_mobile/feature/schedule/domain/usecases/get_subject_position.dart';
 import 'package:studenda_mobile/feature/schedule/domain/usecases/get_subject_type_list.dart';
 import 'package:studenda_mobile/feature/schedule/domain/usecases/get_teacher_list.dart';
-import 'package:studenda_mobile/feature/schedule/domain/usecases/get_week_type.dart';
 import 'package:studenda_mobile/feature/schedule/presentation/bloc/schedule_bloc.dart';
 
 final sl = GetIt.instance;
@@ -187,7 +188,8 @@ Future<void> init() async {
   sl.registerFactory(
     () => ScheduleBloc(
       getSchedule: sl(),
-      getWeekType: sl(),
+      getCurrentWeekType: sl(),
+      getAllWeekType: sl(),
       getDisciplineList: sl(),
       getTeacherList: sl(),
       getDayPosition: sl(),
@@ -219,7 +221,11 @@ Future<void> init() async {
   );
 
   sl.registerLazySingleton(
-    () => GetWeekType(weekTypeRepository: sl()),
+    () => GetCurrentWeekType(weekTypeRepository: sl()),
+  );
+
+  sl.registerLazySingleton(
+    () => GetAllWeekType(weekTypeRepository: sl()),
   );
 
   sl.registerLazySingleton(
