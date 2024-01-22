@@ -147,7 +147,7 @@ class _MainSubjectInfoRowWidget extends StatelessWidget {
                     Expanded(
                       child: Center(
                         child: Text(
-                          widget.subject.title,
+                          "${widget.subject.title} (${widget.subject.subjectTypeName})",
                           style: const TextStyle(
                             color: mainForegroundColor,
                             fontSize: 16,

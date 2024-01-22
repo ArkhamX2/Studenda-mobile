@@ -11,6 +11,7 @@ class SubjectEntity with _$SubjectEntity {
     required String title,
     required String classroom,
     required String teacher,
+    required String subjectTypeName,
     required int subjectPosition,
   }) = _SubjectEntity;
 

@@ -20,6 +20,7 @@ mixin _$SubjectEntity {
   String get title => throw _privateConstructorUsedError;
   String get classroom => throw _privateConstructorUsedError;
   String get teacher => throw _privateConstructorUsedError;
+  String get subjectTypeName => throw _privateConstructorUsedError;
   int get subjectPosition => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -38,6 +39,7 @@ abstract class $SubjectEntityCopyWith<$Res> {
       String title,
       String classroom,
       String teacher,
+      String subjectTypeName,
       int subjectPosition});
 }
 
@@ -58,6 +60,7 @@ class _$SubjectEntityCopyWithImpl<$Res, $Val extends SubjectEntity>
     Object? title = null,
     Object? classroom = null,
     Object? teacher = null,
+    Object? subjectTypeName = null,
     Object? subjectPosition = null,
   }) {
     return _then(_value.copyWith(
@@ -76,6 +79,10 @@ class _$SubjectEntityCopyWithImpl<$Res, $Val extends SubjectEntity>
       teacher: null == teacher
           ? _value.teacher
           : teacher // ignore: cast_nullable_to_non_nullable
+              as String,
+      subjectTypeName: null == subjectTypeName
+          ? _value.subjectTypeName
+          : subjectTypeName // ignore: cast_nullable_to_non_nullable
               as String,
       subjectPosition: null == subjectPosition
           ? _value.subjectPosition
@@ -98,6 +105,7 @@ abstract class _$$SubjectEntityImplCopyWith<$Res>
       String title,
       String classroom,
       String teacher,
+      String subjectTypeName,
       int subjectPosition});
 }
 
@@ -116,6 +124,7 @@ class __$$SubjectEntityImplCopyWithImpl<$Res>
     Object? title = null,
     Object? classroom = null,
     Object? teacher = null,
+    Object? subjectTypeName = null,
     Object? subjectPosition = null,
   }) {
     return _then(_$SubjectEntityImpl(
@@ -135,6 +144,10 @@ class __$$SubjectEntityImplCopyWithImpl<$Res>
           ? _value.teacher
           : teacher // ignore: cast_nullable_to_non_nullable
               as String,
+      subjectTypeName: null == subjectTypeName
+          ? _value.subjectTypeName
+          : subjectTypeName // ignore: cast_nullable_to_non_nullable
+              as String,
       subjectPosition: null == subjectPosition
           ? _value.subjectPosition
           : subjectPosition // ignore: cast_nullable_to_non_nullable
@@ -151,6 +164,7 @@ class _$SubjectEntityImpl implements _SubjectEntity {
       required this.title,
       required this.classroom,
       required this.teacher,
+      required this.subjectTypeName,
       required this.subjectPosition});
 
   @override
@@ -162,11 +176,13 @@ class _$SubjectEntityImpl implements _SubjectEntity {
   @override
   final String teacher;
   @override
+  final String subjectTypeName;
+  @override
   final int subjectPosition;
 
   @override
   String toString() {
-    return 'SubjectEntity(id: $id, title: $title, classroom: $classroom, teacher: $teacher, subjectPosition: $subjectPosition)';
+    return 'SubjectEntity(id: $id, title: $title, classroom: $classroom, teacher: $teacher, subjectTypeName: $subjectTypeName, subjectPosition: $subjectPosition)';
   }
 
   @override
@@ -179,13 +195,15 @@ class _$SubjectEntityImpl implements _SubjectEntity {
             (identical(other.classroom, classroom) ||
                 other.classroom == classroom) &&
             (identical(other.teacher, teacher) || other.teacher == teacher) &&
+            (identical(other.subjectTypeName, subjectTypeName) ||
+                other.subjectTypeName == subjectTypeName) &&
             (identical(other.subjectPosition, subjectPosition) ||
                 other.subjectPosition == subjectPosition));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, title, classroom, teacher, subjectPosition);
+  int get hashCode => Object.hash(runtimeType, id, title, classroom, teacher,
+      subjectTypeName, subjectPosition);
 
   @JsonKey(ignore: true)
   @override
@@ -200,6 +218,7 @@ abstract class _SubjectEntity implements SubjectEntity {
       required final String title,
       required final String classroom,
       required final String teacher,
+      required final String subjectTypeName,
       required final int subjectPosition}) = _$SubjectEntityImpl;
 
   @override
@@ -210,6 +229,8 @@ abstract class _SubjectEntity implements SubjectEntity {
   String get classroom;
   @override
   String get teacher;
+  @override
+  String get subjectTypeName;
   @override
   int get subjectPosition;
   @override

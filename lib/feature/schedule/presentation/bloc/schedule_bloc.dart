@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:studenda_mobile/core/common/domain/usecase/get_day_position.dart';
 import 'package:studenda_mobile/core/common/domain/usecase/get_subject_position.dart';
+import 'package:studenda_mobile/core/common/domain/usecase/get_subject_type_list.dart';
 import 'package:studenda_mobile/core/utils/get_current_academic_year.dart';
 import 'package:studenda_mobile/core/utils/get_current_week_days.dart';
 import 'package:studenda_mobile/core/utils/map_subject_model_to_day_scehdule_list.dart';
@@ -27,6 +28,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
   final GetTeacherList getTeacherList;
   final GetDayPositionList getDayPosition;
   final GetSubjectPositionList getSubjectPosition;
+  final GetSubjectTypeList getSubjectType;
   WeekTypeEntity? weekType;
 
   ScheduleBloc({
@@ -36,6 +38,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
     required this.getWeekType,
     required this.getDayPosition,
     required this.getSubjectPosition,
+    required this.getSubjectType,
   }) : super(const _Initial()) {
     on<_ChangeWeekType>((event, emit) {
       weekType = weekType?.index == 1
@@ -96,8 +99,11 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
                                               ),
                                             ),
                                             (succededTeacherList) async {
-                                              await getDayPosition
-                                                  .call(() {})
+                                              await getSubjectType
+                                                  .call(
+                                                    _getSubjectTypeIds(
+                                                        succededSubjectList),
+                                                  )
                                                   .then(
                                                     (value) => value.fold(
                                                       (error) => emit(
@@ -105,9 +111,11 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
                                                           error.message,
                                                         ),
                                                       ),
-                                                      (succededDayPositionList) async {
-                                                        await getSubjectPosition
-                                                            .call(() {})
+                                                      (succededSubjectTypeList) async {
+                                                        await getDayPosition
+                                                            .call(
+                                                              () {},
+                                                            )
                                                             .then(
                                                               (value) =>
                                                                   value.fold(
@@ -118,33 +126,44 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
                                                                         .message,
                                                                   ),
                                                                 ),
-                                                                (succededSubjectPositionList) =>
-                                                                    emit(
-                                                                  ScheduleState
-                                                                      .success(
-                                                                    ScheduleEntity(
-                                                                      schedule:
-                                                                          mapSubjectModelToDayScehduleList(
-                                                                        succededSubjectList,
-                                                                        succededDisciplineList,
-                                                                        succededTeacherList,
-                                                                        succededDayPositionList,
-                                                                        succededSubjectPositionList,
-                                                                      ),
-                                                                      weekType:
-                                                                          WeekTypeEntity(
-                                                                        id: succededWeekType
-                                                                            .id,
-                                                                        name: succededWeekType
-                                                                            .name,
-                                                                        index: succededWeekType
-                                                                            .index,
-                                                                      ),
-                                                                      weekDays:
-                                                                          getCurrentWeekDays(),
-                                                                    ),
-                                                                  ),
-                                                                ),
+                                                                (succededDayPositionList) async {
+                                                                  await getSubjectPosition
+                                                                      .call(
+                                                                        () {},
+                                                                      )
+                                                                      .then(
+                                                                        (value) =>
+                                                                            value.fold(
+                                                                          (error) =>
+                                                                              emit(
+                                                                            ScheduleState.fail(
+                                                                              error.message,
+                                                                            ),
+                                                                          ),
+                                                                          (succededSubjectPositionList) =>
+                                                                              emit(
+                                                                            ScheduleState.success(
+                                                                              ScheduleEntity(
+                                                                                schedule: mapSubjectModelToDayScehduleList(
+                                                                                  succededSubjectList,
+                                                                                  succededDisciplineList,
+                                                                                  succededTeacherList,
+                                                                                  succededDayPositionList,
+                                                                                  succededSubjectPositionList,
+                                                                                  succededSubjectTypeList,
+                                                                                ),
+                                                                                weekType: WeekTypeEntity(
+                                                                                  id: succededWeekType.id,
+                                                                                  name: succededWeekType.name,
+                                                                                  index: succededWeekType.index,
+                                                                                ),
+                                                                                weekDays: getCurrentWeekDays(),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      );
+                                                                },
                                                               ),
                                                             );
                                                       },
@@ -166,20 +185,30 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
   }
 }
 
-List<int> _getTeacherIds(List<SubjectModel> r) {
+List<int> _getSubjectTypeIds(List<SubjectModel> succededSubjectList) {
   final List<int> ids = [];
 
-  for (final element in r) {
+  for (final element in succededSubjectList) {
     ids.add(element.userId);
   }
 
   return ids;
 }
 
-List<int> _getDisciplineIds(List<SubjectModel> r) {
+List<int> _getTeacherIds(List<SubjectModel> succededSubjectList) {
   final List<int> ids = [];
 
-  for (final element in r) {
+  for (final element in succededSubjectList) {
+    ids.add(element.userId);
+  }
+
+  return ids;
+}
+
+List<int> _getDisciplineIds(List<SubjectModel> succededSubjectList) {
+  final List<int> ids = [];
+
+  for (final element in succededSubjectList) {
     ids.add(element.disciplineId);
   }
 

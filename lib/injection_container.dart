@@ -3,12 +3,16 @@ import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:studenda_mobile/core/common/data/datasources/day_position_remote_data_source.dart';
 import 'package:studenda_mobile/core/common/data/datasources/subject_position_remote_data_source.dart';
+import 'package:studenda_mobile/core/common/data/datasources/subject_type_remote_data_source.dart';
 import 'package:studenda_mobile/core/common/data/repositories/day_position_repository_impl.dart';
 import 'package:studenda_mobile/core/common/data/repositories/subject_position_repository_impl.dart';
+import 'package:studenda_mobile/core/common/data/repositories/subject_type_repository_impl.dart';
 import 'package:studenda_mobile/core/common/domain/repositories/day_position_repository.dart';
 import 'package:studenda_mobile/core/common/domain/repositories/subject_position_repository.dart';
+import 'package:studenda_mobile/core/common/domain/repositories/subject_type_repository.dart';
 import 'package:studenda_mobile/core/common/domain/usecase/get_day_position.dart';
 import 'package:studenda_mobile/core/common/domain/usecase/get_subject_position.dart';
+import 'package:studenda_mobile/core/common/domain/usecase/get_subject_type_list.dart';
 import 'package:studenda_mobile/core/network/network_info.dart';
 import 'package:studenda_mobile/feature/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:studenda_mobile/feature/auth/data/repositories/auth_repository_impl.dart';
@@ -102,7 +106,7 @@ Future<void> init() async {
       loadGroups: sl(),
     ),
   );
-  
+
   sl.registerFactory(
     () => CourseCubit(
       loadCourses: sl(),
@@ -188,9 +192,16 @@ Future<void> init() async {
       getTeacherList: sl(),
       getDayPosition: sl(),
       getSubjectPosition: sl(),
+      getSubjectType: sl(),
     ),
   );
   // Use cases
+  sl.registerLazySingleton(
+    () => GetSubjectTypeList(
+      subjectTypeRepository: sl(),
+    ),
+  );
+
   sl.registerLazySingleton(
     () => GetDayPositionList(
       dayPositionRepository: sl(),
@@ -210,7 +221,7 @@ Future<void> init() async {
   sl.registerLazySingleton(
     () => GetWeekType(weekTypeRepository: sl()),
   );
-  
+
   sl.registerLazySingleton(
     () => GetDisciplineList(disciplineRepository: sl()),
   );
@@ -220,6 +231,13 @@ Future<void> init() async {
   );
 
   // Repository
+  sl.registerLazySingleton<SubjectTypeRepository>(
+    () => SubjectTypeRepositoryImpl(
+      remoteDataSource: sl(),
+      networkInfo: sl(),
+    ),
+  );
+
   sl.registerLazySingleton<DayPositionRepository>(
     () => DayPositionRepositoryImpl(
       remoteDataSource: sl(),
@@ -263,6 +281,11 @@ Future<void> init() async {
   );
 
   //! Data sources
+  sl.registerLazySingleton<SubjectTypeRemoteDataSource>(
+    () => SubjectTypeRemoteDataSourceImpl(
+      client: sl(),
+    ),
+  );
 
   sl.registerLazySingleton<DayPositionRemoteDataSource>(
     () => DayPositionRemoteDataSourceImpl(

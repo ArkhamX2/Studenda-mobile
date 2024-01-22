@@ -6,12 +6,15 @@ import 'package:studenda_mobile/feature/schedule/data/models/subject_model.dart'
 import 'package:studenda_mobile/feature/schedule/domain/entities/day_schedule_entity.dart';
 import 'package:studenda_mobile/feature/schedule/domain/entities/subject_entity.dart';
 
+import '../common/data/model/subject_type_model.dart';
+
 List<DayScheduleEntity> mapSubjectModelToDayScehduleList(
   List<SubjectModel> subjects,
   List<DisciplineModel> disciplines,
   List<UserModel> teachers,
   List<DayPositionModel> dayPositionList,
   List<SubjectPositionModel> subjectPositionList,
+  List<SubjectTypeModel> subjectTypeList,
 ) {
   final Map<int, List<SubjectEntity>> dayScheduleEntityMap = {};
 
@@ -22,8 +25,10 @@ List<DayScheduleEntity> mapSubjectModelToDayScehduleList(
           .index,
     )) {
       dayScheduleEntityMap[dayPositionList
-              .firstWhere((element) => element.id == subjects[i].dayPositionId)
-              .index-1]!
+                  .firstWhere(
+                      (element) => element.id == subjects[i].dayPositionId)
+                  .index -
+              1]!
           .add(
         SubjectEntity(
           id: subjects[i].id,
@@ -35,16 +40,21 @@ List<DayScheduleEntity> mapSubjectModelToDayScehduleList(
               .firstWhere((element) => element.id == subjects[i].userId)
               .name,
           subjectPosition: subjectPositionList
-              .firstWhere(
-                (element) => element.id == subjects[i].subjectPositionId,
-              )
-              .index - 1,
+                  .firstWhere(
+                    (element) => element.id == subjects[i].subjectPositionId,
+                  )
+                  .index -
+              1,
+          subjectTypeName: subjectTypeList
+              .firstWhere((element) => element.id == subjects[i].subjectTypeId)
+              .name,
         ),
       );
     } else {
       dayScheduleEntityMap[dayPositionList
-          .firstWhere((element) => element.id == subjects[i].dayPositionId)
-          .index - 1] = [
+              .firstWhere((element) => element.id == subjects[i].dayPositionId)
+              .index -
+          1] = [
         SubjectEntity(
           id: subjects[i].id,
           title: disciplines
@@ -55,10 +65,14 @@ List<DayScheduleEntity> mapSubjectModelToDayScehduleList(
               .firstWhere((element) => element.id == subjects[i].userId)
               .name,
           subjectPosition: subjectPositionList
-              .firstWhere(
-                (element) => element.id == subjects[i].subjectPositionId,
-              )
-              .index - 1,
+                  .firstWhere(
+                    (element) => element.id == subjects[i].subjectPositionId,
+                  )
+                  .index -
+              1,
+          subjectTypeName: subjectTypeList
+              .firstWhere((element) => element.id == subjects[i].subjectTypeId)
+              .name,
         ),
       ];
     }
