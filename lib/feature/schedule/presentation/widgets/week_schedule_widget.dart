@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:studenda_mobile/core/utils/get_current_week_days.dart';
 import 'package:studenda_mobile/feature/schedule/domain/entities/day_schedule_entity.dart';
 import 'package:studenda_mobile/feature/schedule/presentation/widgets/day_schedule_widget.dart';
 import 'package:studenda_mobile/feature/schedule/presentation/widgets/position_values.dart';
@@ -14,6 +15,7 @@ class WeekScheduleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final weekDays = getCurrentWeekDaysWithMonth();
     return Column(
       children: schedule
           .asMap()
@@ -22,7 +24,7 @@ class WeekScheduleWidget extends StatelessWidget {
               key,
               DayScheduleWidget(
                 key: keys[key],
-                dayTitle: weekPositionFullValues[element.weekPosition],
+                dayTitle: "${weekDays[element.weekPosition]}, ${weekPositionValues[element.weekPosition]}",
                 subjects: element.subjects,
                 isTitleRequired: true,
               ),
