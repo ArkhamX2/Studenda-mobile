@@ -102,18 +102,14 @@ class __$$DepartmentEntityImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DepartmentEntityImpl implements _DepartmentEntity {
-  const _$DepartmentEntityImpl({required this.id, required this.name});
+class _$DepartmentEntityImpl extends _DepartmentEntity {
+  const _$DepartmentEntityImpl({required this.id, required this.name})
+      : super._();
 
   @override
   final int id;
   @override
   final String name;
-
-  @override
-  String toString() {
-    return 'DepartmentEntity(id: $id, name: $name)';
-  }
 
   @override
   bool operator ==(Object other) {
@@ -135,10 +131,11 @@ class _$DepartmentEntityImpl implements _DepartmentEntity {
           this, _$identity);
 }
 
-abstract class _DepartmentEntity implements DepartmentEntity {
+abstract class _DepartmentEntity extends DepartmentEntity {
   const factory _DepartmentEntity(
       {required final int id,
       required final String name}) = _$DepartmentEntityImpl;
+  const _DepartmentEntity._() : super._();
 
   @override
   int get id;

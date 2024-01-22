@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:studenda_mobile/feature/auth/data/models/security_request_model.dart';
-import 'package:studenda_mobile/feature/auth/domain/entities/role_entity.dart';
 import 'package:studenda_mobile/feature/auth/domain/entities/user_entity.dart';
 import 'package:studenda_mobile/feature/auth/domain/usecases/auth.dart';
 

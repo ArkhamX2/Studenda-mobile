@@ -102,18 +102,13 @@ class __$$GroupEntityImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GroupEntityImpl implements _GroupEntity {
-  const _$GroupEntityImpl({required this.id, required this.name});
+class _$GroupEntityImpl extends _GroupEntity {
+  const _$GroupEntityImpl({required this.id, required this.name}) : super._();
 
   @override
   final int id;
   @override
   final String name;
-
-  @override
-  String toString() {
-    return 'GroupEntity(id: $id, name: $name)';
-  }
 
   @override
   bool operator ==(Object other) {
@@ -134,9 +129,10 @@ class _$GroupEntityImpl implements _GroupEntity {
       __$$GroupEntityImplCopyWithImpl<_$GroupEntityImpl>(this, _$identity);
 }
 
-abstract class _GroupEntity implements GroupEntity {
+abstract class _GroupEntity extends GroupEntity {
   const factory _GroupEntity(
       {required final int id, required final String name}) = _$GroupEntityImpl;
+  const _GroupEntity._() : super._();
 
   @override
   int get id;

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:studenda_mobile/core/common/presentation/bloc/common_bloc.dart';
 import 'package:studenda_mobile/core/presentation/label/studenda_default_label_widget.dart';
 import 'package:studenda_mobile/feature/group_selection/presentation/bloc/main_group_selection_bloc/main_group_selection_bloc.dart';
 import 'package:studenda_mobile/feature/schedule/domain/entities/day_schedule_entity.dart';
@@ -156,12 +155,13 @@ class _ScheduleScrollWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (schedule.isEmpty)
+    if (schedule.isEmpty) {
       return const Center(
           child: StudendaDefaultLabelWidget(
         fontSize: 18,
         text: "Занятий нет",
-      ));
+      ),);
+    }
     return Expanded(
       child: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),

@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:studenda_mobile/feature/auth/domain/entities/role_entity.dart';
 
 part 'user_entity.freezed.dart';
 

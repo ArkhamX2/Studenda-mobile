@@ -9,7 +9,6 @@ import 'package:studenda_mobile/core/common/domain/repositories/day_position_rep
 import 'package:studenda_mobile/core/common/domain/repositories/subject_position_repository.dart';
 import 'package:studenda_mobile/core/common/domain/usecase/get_day_position.dart';
 import 'package:studenda_mobile/core/common/domain/usecase/get_subject_position.dart';
-import 'package:studenda_mobile/core/common/presentation/bloc/common_bloc.dart';
 import 'package:studenda_mobile/core/network/network_info.dart';
 import 'package:studenda_mobile/feature/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:studenda_mobile/feature/auth/data/repositories/auth_repository_impl.dart';

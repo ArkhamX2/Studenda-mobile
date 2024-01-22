@@ -102,18 +102,13 @@ class __$$CourseEntityImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CourseEntityImpl implements _CourseEntity {
-  const _$CourseEntityImpl({required this.id, required this.name});
+class _$CourseEntityImpl extends _CourseEntity {
+  const _$CourseEntityImpl({required this.id, required this.name}) : super._();
 
   @override
   final int id;
   @override
   final String name;
-
-  @override
-  String toString() {
-    return 'CourseEntity(id: $id, name: $name)';
-  }
 
   @override
   bool operator ==(Object other) {
@@ -134,9 +129,10 @@ class _$CourseEntityImpl implements _CourseEntity {
       __$$CourseEntityImplCopyWithImpl<_$CourseEntityImpl>(this, _$identity);
 }
 
-abstract class _CourseEntity implements CourseEntity {
+abstract class _CourseEntity extends CourseEntity {
   const factory _CourseEntity(
       {required final int id, required final String name}) = _$CourseEntityImpl;
+  const _CourseEntity._() : super._();
 
   @override
   int get id;

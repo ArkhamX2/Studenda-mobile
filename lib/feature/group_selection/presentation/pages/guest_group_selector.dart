@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:studenda_mobile/core/common/presentation/bloc/common_bloc.dart';
 import 'package:studenda_mobile/core/presentation/button_widget.dart';
 import 'package:studenda_mobile/core/presentation/dropdown_widget.dart';
 import 'package:studenda_mobile/core/presentation/label/studenda_default_label_widget.dart';
+import 'package:studenda_mobile/feature/group_selection/domain/entities/course_entity.dart';
+import 'package:studenda_mobile/feature/group_selection/domain/entities/department_entity.dart';
+import 'package:studenda_mobile/feature/group_selection/domain/entities/group_entity.dart';
 import 'package:studenda_mobile/feature/group_selection/presentation/bloc/course_cubit/course_cubit.dart';
 import 'package:studenda_mobile/feature/group_selection/presentation/bloc/department_cubit/department_cubit.dart';
 import 'package:studenda_mobile/feature/group_selection/presentation/bloc/group_cubit/group_cubit.dart';
@@ -95,18 +97,6 @@ class _GroupSelectorWidget extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    StudendaDefaultLabelWidget(
-                      fontSize: 16,
-                      text: groupSelectorBloc.selectedDepartment.name,
-                    ),
-                    StudendaDefaultLabelWidget(
-                      fontSize: 16,
-                      text: groupSelectorBloc.selectedCourse.name,
-                    ),
-                    StudendaDefaultLabelWidget(
-                      fontSize: 16,
-                      text: groupSelectorBloc.selectedGroup.name,
-                    ),
                     _DepartmentSelectionWidget(
                       mainBloc: groupSelectorBloc,
                       departmentCubit: departmentCubit,
@@ -151,7 +141,7 @@ class _GroupSelectionWidget extends StatelessWidget {
     return groupCubit.state.when(
       initial: () => Container(),
       loading: () => Container(),
-      success: (groups) => StudendaDropdown(
+      success: (groups) => StudendaDropdown<GroupEntity>(
         items: groups,
         model: groups[0],
         callback: (element) {
@@ -181,7 +171,7 @@ class _CourseSelectionWidget extends StatelessWidget {
     return courseCubit.state.when(
       initial: () => Container(),
       loading: () => Container(),
-      success: (courses) => StudendaDropdown(
+      success: (courses) => StudendaDropdown<CourseEntity>(
         items: courses,
         model: courses[0],
         callback: (element) {
@@ -211,7 +201,7 @@ class _DepartmentSelectionWidget extends StatelessWidget {
     return departmentCubit.state.when(
       initial: () => Container(),
       loading: () => Container(),
-      success: (departments) => StudendaDropdown(
+      success: (departments) => StudendaDropdown<DepartmentEntity>(
         items: departments,
         model: departments[0],
         callback: (element) {
