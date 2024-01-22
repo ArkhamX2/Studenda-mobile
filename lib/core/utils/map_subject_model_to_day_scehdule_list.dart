@@ -1,12 +1,11 @@
-import 'package:studenda_mobile/core/common/data/model/day_position_model.dart';
-import 'package:studenda_mobile/core/common/data/model/discipline_model.dart';
-import 'package:studenda_mobile/core/common/data/model/subject_position_model.dart';
 import 'package:studenda_mobile/core/data/user_model/user_model.dart';
+import 'package:studenda_mobile/feature/schedule/data/models/day_position_model.dart';
+import 'package:studenda_mobile/feature/schedule/data/models/discipline_model.dart';
 import 'package:studenda_mobile/feature/schedule/data/models/subject_model.dart';
+import 'package:studenda_mobile/feature/schedule/data/models/subject_position_model.dart';
+import 'package:studenda_mobile/feature/schedule/data/models/subject_type_model.dart';
 import 'package:studenda_mobile/feature/schedule/domain/entities/day_schedule_entity.dart';
 import 'package:studenda_mobile/feature/schedule/domain/entities/subject_entity.dart';
-
-import '../common/data/model/subject_type_model.dart';
 
 List<DayScheduleEntity> mapSubjectModelToDayScehduleList(
   List<SubjectModel> subjects,
@@ -26,7 +25,7 @@ List<DayScheduleEntity> mapSubjectModelToDayScehduleList(
     )) {
       dayScheduleEntityMap[dayPositionList
                   .firstWhere(
-                      (element) => element.id == subjects[i].dayPositionId)
+                      (element) => element.id == subjects[i].dayPositionId,)
                   .index -
               1]!
           .add(

@@ -2,9 +2,6 @@
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:studenda_mobile/core/common/domain/usecase/get_day_position.dart';
-import 'package:studenda_mobile/core/common/domain/usecase/get_subject_position.dart';
-import 'package:studenda_mobile/core/common/domain/usecase/get_subject_type_list.dart';
 import 'package:studenda_mobile/core/utils/get_current_academic_year.dart';
 import 'package:studenda_mobile/core/utils/get_current_week_days.dart';
 import 'package:studenda_mobile/core/utils/map_subject_model_to_day_scehdule_list.dart';
@@ -12,8 +9,11 @@ import 'package:studenda_mobile/feature/schedule/data/models/schedule_request_mo
 import 'package:studenda_mobile/feature/schedule/data/models/subject_model.dart';
 import 'package:studenda_mobile/feature/schedule/domain/entities/schedule_entity.dart';
 import 'package:studenda_mobile/feature/schedule/domain/entities/week_type_entity.dart';
+import 'package:studenda_mobile/feature/schedule/domain/usecases/get_day_position.dart';
 import 'package:studenda_mobile/feature/schedule/domain/usecases/get_discipline_list.dart';
 import 'package:studenda_mobile/feature/schedule/domain/usecases/get_schedule.dart';
+import 'package:studenda_mobile/feature/schedule/domain/usecases/get_subject_position.dart';
+import 'package:studenda_mobile/feature/schedule/domain/usecases/get_subject_type_list.dart';
 import 'package:studenda_mobile/feature/schedule/domain/usecases/get_teacher_list.dart';
 import 'package:studenda_mobile/feature/schedule/domain/usecases/get_week_type.dart';
 
@@ -102,7 +102,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
                                               await getSubjectType
                                                   .call(
                                                     _getSubjectTypeIds(
-                                                        succededSubjectList),
+                                                        succededSubjectList,),
                                                   )
                                                   .then(
                                                     (value) => value.fold(

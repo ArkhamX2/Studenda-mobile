@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
-import 'package:studenda_mobile/core/common/data/datasources/subject_position_remote_data_source.dart';
-import 'package:studenda_mobile/core/common/data/model/subject_position_model.dart';
-import 'package:studenda_mobile/core/common/domain/repositories/subject_position_repository.dart';
 import 'package:studenda_mobile/core/data/error/exception.dart';
 import 'package:studenda_mobile/core/data/error/failure.dart';
 import 'package:studenda_mobile/core/network/network_info.dart';
+import 'package:studenda_mobile/feature/schedule/data/datasources/subject_position_remote_data_source.dart';
+import 'package:studenda_mobile/feature/schedule/data/models/subject_position_model.dart';
+import 'package:studenda_mobile/feature/schedule/domain/repositories/subject_position_repository.dart';
 
 class SubjectPositionRepositoryImpl implements SubjectPositionRepository{
 

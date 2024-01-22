@@ -1,7 +1,8 @@
 import 'dart:convert';
+
 import 'package:http/http.dart' as http;
-import 'package:studenda_mobile/core/common/data/model/discipline_model.dart';
 import 'package:studenda_mobile/core/data/error/exception.dart';
+import 'package:studenda_mobile/feature/schedule/data/models/discipline_model.dart';
 
 abstract class DisciplineRemoteDataSource {
   Future<List<DisciplineModel>> load(List<int> request);
