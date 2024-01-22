@@ -37,16 +37,15 @@ class _BodyBuilderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final groupSelectorBloc = context.watch<GroupSelectorBloc>();
-    final commonBloc = context.watch<CommonBloc>();
     return BlocProvider(
-      create: (context) => sl<ScheduleBloc>()
-        ..add(
-          ScheduleEvent.load(
-            groupSelectorBloc.selectedGroup.id,
-            commonBloc.dayPositionList,
-            commonBloc.subjectPositionList,
-          ),
-        ),
+      create: (context) {
+        return sl<ScheduleBloc>()
+          ..add(
+            ScheduleEvent.load(
+              groupSelectorBloc.selectedGroup.id,
+            ),
+          );
+      },
       child: const _ScheduleBodyWidget(),
     );
   }
@@ -157,7 +156,12 @@ class _ScheduleScrollWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if(schedule.isEmpty) return const Center(child: StudendaDefaultLabelWidget(fontSize: 18,text: "Занятий нет",));
+    if (schedule.isEmpty)
+      return const Center(
+          child: StudendaDefaultLabelWidget(
+        fontSize: 18,
+        text: "Занятий нет",
+      ));
     return Expanded(
       child: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),

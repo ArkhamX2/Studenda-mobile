@@ -88,63 +88,13 @@ Future<void> init() async {
     ),
   );
 
-//! Common
-  // Bloc
-  sl.registerFactory(
-    () => CommonBloc(
-      getDayPosition: sl(),
-      getSubjectPosition: sl(),
-      dayPositionList: [],
-      subjectPositionList: [],
-    ),
-  );
-
-  // Use cases
-  sl.registerLazySingleton(
-    () => GetDayPositionList(
-      dayPositionRepository: sl(),
-    ),
-  );
-  sl.registerLazySingleton(
-    () => GetSubjectPositionList(
-      subjectPositionRepository: sl(),
-    ),
-  );
-
-  // Repository
-  sl.registerLazySingleton<DayPositionRepository>(
-    () => DayPositionRepositoryImpl(
-      remoteDataSource: sl(),
-      networkInfo: sl(),
-    ),
-  );
-  sl.registerLazySingleton<SubjectPositionRepository>(
-    () => SubjectPositionRepositoryImpl(
-      remoteDataSource: sl(),
-      networkInfo: sl(),
-    ),
-  );
-
-  //! Data sources
-
-  sl.registerLazySingleton<DayPositionRemoteDataSource>(
-    () => DayPositionRemoteDataSourceImpl(
-      client: sl(),
-    ),
-  );
-  sl.registerLazySingleton<SubjectPositionRemoteDataSource>(
-    () => SubjectPositionRemoteDataSourceImpl(
-      client: sl(),
-    ),
-  );
-
   //! Groupselection
   // Bloc
   sl.registerFactory(
     () => GroupSelectorBloc(
       selectedGroup: const GroupEntity(id: -1, name: ""),
-      selectedCourse: const CourseEntity(id: -1,name: ""),
-      selectedDepartment: const DepartmentEntity(id: -1,name: ""),
+      selectedCourse: const CourseEntity(id: -1, name: ""),
+      selectedDepartment: const DepartmentEntity(id: -1, name: ""),
     ),
   );
 
@@ -153,11 +103,13 @@ Future<void> init() async {
       loadGroups: sl(),
     ),
   );
+  
   sl.registerFactory(
     () => CourseCubit(
       loadCourses: sl(),
     ),
   );
+
   sl.registerFactory(
     () => DepartmentCubit(
       loadDepartments: sl(),
@@ -170,11 +122,13 @@ Future<void> init() async {
       groupRepository: sl(),
     ),
   );
+
   sl.registerLazySingleton(
     () => LoadCourses(
       courseRepository: sl(),
     ),
   );
+
   sl.registerLazySingleton(
     () => LoadDepartments(
       departmentRepository: sl(),
@@ -182,18 +136,21 @@ Future<void> init() async {
   );
 
   // Repository
+
   sl.registerLazySingleton<GroupRepository>(
     () => GroupRepositoryImpl(
       remoteDataSource: sl(),
       networkInfo: sl(),
     ),
   );
+
   sl.registerLazySingleton<CourseRepository>(
     () => CourseRepositoryImpl(
       remoteDataSource: sl(),
       networkInfo: sl(),
     ),
   );
+
   sl.registerLazySingleton<DepartmentRepository>(
     () => DepartmentRepositoryImpl(
       remoteDataSource: sl(),
@@ -226,27 +183,58 @@ Future<void> init() async {
 
   sl.registerFactory(
     () => ScheduleBloc(
-        getSchedule: sl(),
-        getWeekType: sl(),
-        getDisciplineList: sl(),
-        getTeacherList: sl(),),
+      getSchedule: sl(),
+      getWeekType: sl(),
+      getDisciplineList: sl(),
+      getTeacherList: sl(),
+      getDayPosition: sl(),
+      getSubjectPosition: sl(),
+    ),
+  );
+  // Use cases
+  sl.registerLazySingleton(
+    () => GetDayPositionList(
+      dayPositionRepository: sl(),
+    ),
   );
 
-  // Use cases
+  sl.registerLazySingleton(
+    () => GetSubjectPositionList(
+      subjectPositionRepository: sl(),
+    ),
+  );
+
   sl.registerLazySingleton(
     () => GetSchedule(scheduleRepository: sl()),
   );
+
   sl.registerLazySingleton(
     () => GetWeekType(weekTypeRepository: sl()),
   );
+  
   sl.registerLazySingleton(
     () => GetDisciplineList(disciplineRepository: sl()),
   );
+
   sl.registerLazySingleton(
     () => GetTeacherList(teacherRepository: sl()),
   );
 
   // Repository
+  sl.registerLazySingleton<DayPositionRepository>(
+    () => DayPositionRepositoryImpl(
+      remoteDataSource: sl(),
+      networkInfo: sl(),
+    ),
+  );
+
+  sl.registerLazySingleton<SubjectPositionRepository>(
+    () => SubjectPositionRepositoryImpl(
+      remoteDataSource: sl(),
+      networkInfo: sl(),
+    ),
+  );
+
   sl.registerLazySingleton<ScheduleRepository>(
     () => ScheduleRepositoryImpl(
       remoteDataSource: sl(),
@@ -277,6 +265,18 @@ Future<void> init() async {
 
   //! Data sources
 
+  sl.registerLazySingleton<DayPositionRemoteDataSource>(
+    () => DayPositionRemoteDataSourceImpl(
+      client: sl(),
+    ),
+  );
+
+  sl.registerLazySingleton<SubjectPositionRemoteDataSource>(
+    () => SubjectPositionRemoteDataSourceImpl(
+      client: sl(),
+    ),
+  );
+
   sl.registerLazySingleton<ScheduleRemoteDataSource>(
     () => ScheduleRemoteDataSourceImpl(
       client: sl(),
@@ -289,11 +289,12 @@ Future<void> init() async {
     ),
   );
 
-sl.registerLazySingleton<DisciplineRemoteDataSource>(
+  sl.registerLazySingleton<DisciplineRemoteDataSource>(
     () => DisciplineRemoteDataSourceImpl(
       client: sl(),
     ),
   );
+
   sl.registerLazySingleton<TeacherRemoteDataSource>(
     () => TeacherRemoteDataSourceImpl(
       client: sl(),
@@ -313,6 +314,7 @@ sl.registerLazySingleton<DisciplineRemoteDataSource>(
   // final sharedPreferences = await SgaredPreferences.getInstance();
   // sl.registerLazySingleton(() => sharedPreferences);
   sl.registerLazySingleton(() => http.Client());
+
   sl.registerLazySingleton(
     () => Connectivity(),
   );

@@ -8,12 +8,12 @@ part of 'role_model.dart';
 
 _$RoleModelImpl _$$RoleModelImplFromJson(Map<String, dynamic> json) =>
     _$RoleModelImpl(
-      id: json['Id'] as int,
-      name: json['Name'] as String,
+      id: json['id'] as int,
+      name: json['name'] as String,
     );
 
 Map<String, dynamic> _$$RoleModelImplToJson(_$RoleModelImpl instance) =>
     <String, dynamic>{
-      'Id': instance.id,
-      'Name': instance.name,
+      'id': instance.id,
+      'name': instance.name,
     };

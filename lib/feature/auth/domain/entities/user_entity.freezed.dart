@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$UserEntity {
   int get id => throw _privateConstructorUsedError;
-  RoleEntity get role => throw _privateConstructorUsedError;
+  int get roleId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserEntityCopyWith<UserEntity> get copyWith =>
@@ -30,9 +30,7 @@ abstract class $UserEntityCopyWith<$Res> {
           UserEntity value, $Res Function(UserEntity) then) =
       _$UserEntityCopyWithImpl<$Res, UserEntity>;
   @useResult
-  $Res call({int id, RoleEntity role});
-
-  $RoleEntityCopyWith<$Res> get role;
+  $Res call({int id, int roleId});
 }
 
 /// @nodoc
@@ -49,26 +47,18 @@ class _$UserEntityCopyWithImpl<$Res, $Val extends UserEntity>
   @override
   $Res call({
     Object? id = null,
-    Object? role = null,
+    Object? roleId = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      role: null == role
-          ? _value.role
-          : role // ignore: cast_nullable_to_non_nullable
-              as RoleEntity,
+      roleId: null == roleId
+          ? _value.roleId
+          : roleId // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $RoleEntityCopyWith<$Res> get role {
-    return $RoleEntityCopyWith<$Res>(_value.role, (value) {
-      return _then(_value.copyWith(role: value) as $Val);
-    });
   }
 }
 
@@ -80,10 +70,7 @@ abstract class _$$UserEntityImplCopyWith<$Res>
       __$$UserEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, RoleEntity role});
-
-  @override
-  $RoleEntityCopyWith<$Res> get role;
+  $Res call({int id, int roleId});
 }
 
 /// @nodoc
@@ -98,17 +85,17 @@ class __$$UserEntityImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? role = null,
+    Object? roleId = null,
   }) {
     return _then(_$UserEntityImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      role: null == role
-          ? _value.role
-          : role // ignore: cast_nullable_to_non_nullable
-              as RoleEntity,
+      roleId: null == roleId
+          ? _value.roleId
+          : roleId // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -116,16 +103,16 @@ class __$$UserEntityImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UserEntityImpl implements _UserEntity {
-  const _$UserEntityImpl({required this.id, required this.role});
+  const _$UserEntityImpl({required this.id, required this.roleId});
 
   @override
   final int id;
   @override
-  final RoleEntity role;
+  final int roleId;
 
   @override
   String toString() {
-    return 'UserEntity(id: $id, role: $role)';
+    return 'UserEntity(id: $id, roleId: $roleId)';
   }
 
   @override
@@ -134,11 +121,11 @@ class _$UserEntityImpl implements _UserEntity {
         (other.runtimeType == runtimeType &&
             other is _$UserEntityImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.role, role) || other.role == role));
+            (identical(other.roleId, roleId) || other.roleId == roleId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, role);
+  int get hashCode => Object.hash(runtimeType, id, roleId);
 
   @JsonKey(ignore: true)
   @override
@@ -149,13 +136,12 @@ class _$UserEntityImpl implements _UserEntity {
 
 abstract class _UserEntity implements UserEntity {
   const factory _UserEntity(
-      {required final int id,
-      required final RoleEntity role}) = _$UserEntityImpl;
+      {required final int id, required final int roleId}) = _$UserEntityImpl;
 
   @override
   int get id;
   @override
-  RoleEntity get role;
+  int get roleId;
   @override
   @JsonKey(ignore: true)
   _$$UserEntityImplCopyWith<_$UserEntityImpl> get copyWith =>

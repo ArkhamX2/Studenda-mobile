@@ -8,8 +8,8 @@ part 'permission_model.g.dart';
 @freezed
 class PermissionModel with _$PermissionModel{
   const factory PermissionModel({
-    @JsonKey(name: 'Id') required int id,
-    @JsonKey(name: 'Name') required String name,
+    @JsonKey(name: 'id') required int id,
+    @JsonKey(name: 'name') required String name,
   }) = _PermissionModel;
   
   factory PermissionModel.fromJson(Map<String,dynamic> json) => _$PermissionModelFromJson(json);

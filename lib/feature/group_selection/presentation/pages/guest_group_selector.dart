@@ -47,7 +47,6 @@ class _GroupSelectorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final groupSelectorBloc = context.watch<GroupSelectorBloc>();
-    final commonbloc = context.watch<CommonBloc>();
     final groupCubit = context.watch<GroupCubit>();
     final courseCubit = context.watch<CourseCubit>();
     final departmentCubit = context.watch<DepartmentCubit>();
@@ -81,12 +80,10 @@ class _GroupSelectorWidget extends StatelessWidget {
           final groupsState = groupCubit.state;
           final coursesState = courseCubit.state;
           final departmentsState = departmentCubit.state;
-          final commonState = commonbloc.state;
 
           if (groupsState == const GroupState.loading() ||
               coursesState == const CourseState.loading() ||
-              departmentsState == const DepartmentState.loading() ||
-              commonState == const CommonState.loading()) {
+              departmentsState == const DepartmentState.loading()) {
             return const Center(
               child: CircularProgressIndicator(),
             );

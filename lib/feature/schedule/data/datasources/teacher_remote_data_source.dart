@@ -17,7 +17,7 @@ class TeacherRemoteDataSourceImpl implements TeacherRemoteDataSource {
     try {
       //TODO: Заменить на корректный роут для преподавателей
       final response = await client.get(
-        Uri.parse('http://88.210.3.137/api/schedule/discipline' +
+        Uri.parse('http://88.210.3.137/api/security/user' +
             '?ids=${request.toString().replaceAll('[', '').replaceAll(']', '').replaceAll(' ', '')}',),
       );
       if (response.statusCode == 200) {

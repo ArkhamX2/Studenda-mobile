@@ -20,9 +20,9 @@ RoleModel _$RoleModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$RoleModel {
-  @JsonKey(name: 'Id')
+  @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'Name')
+  @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ abstract class $RoleModelCopyWith<$Res> {
   factory $RoleModelCopyWith(RoleModel value, $Res Function(RoleModel) then) =
       _$RoleModelCopyWithImpl<$Res, RoleModel>;
   @useResult
-  $Res call({@JsonKey(name: 'Id') int id, @JsonKey(name: 'Name') String name});
+  $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: 'name') String name});
 }
 
 /// @nodoc
@@ -76,7 +76,7 @@ abstract class _$$RoleModelImplCopyWith<$Res>
       __$$RoleModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'Id') int id, @JsonKey(name: 'Name') String name});
+  $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: 'name') String name});
 }
 
 /// @nodoc
@@ -110,17 +110,17 @@ class __$$RoleModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$RoleModelImpl implements _RoleModel {
   const _$RoleModelImpl(
-      {@JsonKey(name: 'Id') required this.id,
-      @JsonKey(name: 'Name') required this.name});
+      {@JsonKey(name: 'id') required this.id,
+      @JsonKey(name: 'name') required this.name});
 
   factory _$RoleModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$RoleModelImplFromJson(json);
 
   @override
-  @JsonKey(name: 'Id')
+  @JsonKey(name: 'id')
   final int id;
   @override
-  @JsonKey(name: 'Name')
+  @JsonKey(name: 'name')
   final String name;
 
   @override
@@ -157,17 +157,17 @@ class _$RoleModelImpl implements _RoleModel {
 
 abstract class _RoleModel implements RoleModel {
   const factory _RoleModel(
-      {@JsonKey(name: 'Id') required final int id,
-      @JsonKey(name: 'Name') required final String name}) = _$RoleModelImpl;
+      {@JsonKey(name: 'id') required final int id,
+      @JsonKey(name: 'name') required final String name}) = _$RoleModelImpl;
 
   factory _RoleModel.fromJson(Map<String, dynamic> json) =
       _$RoleModelImpl.fromJson;
 
   @override
-  @JsonKey(name: 'Id')
+  @JsonKey(name: 'id')
   int get id;
   @override
-  @JsonKey(name: 'Name')
+  @JsonKey(name: 'name')
   String get name;
   @override
   @JsonKey(ignore: true)

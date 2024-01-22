@@ -9,9 +9,9 @@ part 'role_permission_link_model.g.dart';
 @freezed
 class RolePermissionLinkModel with _$RolePermissionLinkModel{
   const factory RolePermissionLinkModel({
-    @JsonKey(name: 'Id') required int id,
-    @JsonKey(name: 'RoleId') required int roleId,
-    @JsonKey(name: 'PermissionId') required PermissionModel permissionId,
+    @JsonKey(name: 'id') required int id,
+    @JsonKey(name: 'roleId') required int roleId,
+    @JsonKey(name: 'permissionId') required PermissionModel permissionId,
   }) = _RolePermisisonLinkModel;
   
   factory RolePermissionLinkModel.fromJson(Map<String,dynamic> json) => _$RolePermissionLinkModelFromJson(json);

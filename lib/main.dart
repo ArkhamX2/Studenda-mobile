@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:studenda_mobile/core/common/presentation/bloc/common_bloc.dart';
 import 'package:studenda_mobile/feature/auth/presentation/pages/main_auth_widget.dart';
 import 'package:studenda_mobile/feature/group_selection/presentation/bloc/main_group_selection_bloc/main_group_selection_bloc.dart';
 import 'package:studenda_mobile/feature/group_selection/presentation/pages/guest_group_selector.dart';
@@ -27,9 +26,6 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider<GroupSelectorBloc>(
           create: (context) => sl<GroupSelectorBloc>(),
-        ),
-        BlocProvider(
-          create: (context) => sl<CommonBloc>(),
         ),
       ],
       child: MaterialApp(

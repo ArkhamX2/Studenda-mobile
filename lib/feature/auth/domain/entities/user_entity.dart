@@ -8,7 +8,7 @@ class UserEntity with _$UserEntity {
   const factory UserEntity(
     {
       required int id,
-      required RoleEntity role,
+      required int roleId,
     }
   ) = _UserEntity;
 }

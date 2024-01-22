@@ -24,10 +24,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           AuthState.authSuccess(
             UserEntity(
               id: r.user.id,
-              role: RoleEntity(
-                id: r.user.role.id,
-                name: r.user.role.name,
-              ),
+              roleId: r.user.roleId,
             ),
           ),
         ),

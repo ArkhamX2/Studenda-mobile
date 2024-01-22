@@ -11,7 +11,7 @@ List<DayScheduleEntity> mapSubjectModelToDayScehduleList(
   List<DisciplineModel> disciplines,
   List<UserModel> teachers,
   List<DayPositionModel> dayPositionList,
-  List<SubjectPositionModel> subjecyPositionList,
+  List<SubjectPositionModel> subjectPositionList,
 ) {
   final Map<int, List<SubjectEntity>> dayScheduleEntityMap = {};
 
@@ -23,7 +23,7 @@ List<DayScheduleEntity> mapSubjectModelToDayScehduleList(
     )) {
       dayScheduleEntityMap[dayPositionList
               .firstWhere((element) => element.id == subjects[i].dayPositionId)
-              .index]!
+              .index-1]!
           .add(
         SubjectEntity(
           id: subjects[i].id,
@@ -34,17 +34,17 @@ List<DayScheduleEntity> mapSubjectModelToDayScehduleList(
           teacher: teachers
               .firstWhere((element) => element.id == subjects[i].userId)
               .name,
-          subjectPosition: subjecyPositionList
+          subjectPosition: subjectPositionList
               .firstWhere(
                 (element) => element.id == subjects[i].subjectPositionId,
               )
-              .index,
+              .index - 1,
         ),
       );
     } else {
       dayScheduleEntityMap[dayPositionList
           .firstWhere((element) => element.id == subjects[i].dayPositionId)
-          .index] = [
+          .index - 1] = [
         SubjectEntity(
           id: subjects[i].id,
           title: disciplines
@@ -54,11 +54,11 @@ List<DayScheduleEntity> mapSubjectModelToDayScehduleList(
           teacher: teachers
               .firstWhere((element) => element.id == subjects[i].userId)
               .name,
-          subjectPosition: subjecyPositionList
+          subjectPosition: subjectPositionList
               .firstWhere(
                 (element) => element.id == subjects[i].subjectPositionId,
               )
-              .index,
+              .index - 1,
         ),
       ];
     }
