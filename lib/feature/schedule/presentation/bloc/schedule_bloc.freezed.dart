@@ -20,21 +20,24 @@ mixin _$ScheduleEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int groupId) load,
-    required TResult Function(int groupId) changeWeekType,
+    required TResult Function(int groupId) addWeekType,
+    required TResult Function(int groupId) subtractWeekType,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(int groupId)? load,
-    TResult? Function(int groupId)? changeWeekType,
+    TResult? Function(int groupId)? addWeekType,
+    TResult? Function(int groupId)? subtractWeekType,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int groupId)? load,
-    TResult Function(int groupId)? changeWeekType,
+    TResult Function(int groupId)? addWeekType,
+    TResult Function(int groupId)? subtractWeekType,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -42,21 +45,24 @@ mixin _$ScheduleEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Load value) load,
-    required TResult Function(_ChangeWeekType value) changeWeekType,
+    required TResult Function(_AddWeekType value) addWeekType,
+    required TResult Function(_SubtractWeekType value) subtractWeekType,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Load value)? load,
-    TResult? Function(_ChangeWeekType value)? changeWeekType,
+    TResult? Function(_AddWeekType value)? addWeekType,
+    TResult? Function(_SubtractWeekType value)? subtractWeekType,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Load value)? load,
-    TResult Function(_ChangeWeekType value)? changeWeekType,
+    TResult Function(_AddWeekType value)? addWeekType,
+    TResult Function(_SubtractWeekType value)? subtractWeekType,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -120,7 +126,8 @@ class _$StartedImpl implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int groupId) load,
-    required TResult Function(int groupId) changeWeekType,
+    required TResult Function(int groupId) addWeekType,
+    required TResult Function(int groupId) subtractWeekType,
   }) {
     return started();
   }
@@ -130,7 +137,8 @@ class _$StartedImpl implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(int groupId)? load,
-    TResult? Function(int groupId)? changeWeekType,
+    TResult? Function(int groupId)? addWeekType,
+    TResult? Function(int groupId)? subtractWeekType,
   }) {
     return started?.call();
   }
@@ -140,7 +148,8 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int groupId)? load,
-    TResult Function(int groupId)? changeWeekType,
+    TResult Function(int groupId)? addWeekType,
+    TResult Function(int groupId)? subtractWeekType,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -154,7 +163,8 @@ class _$StartedImpl implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Load value) load,
-    required TResult Function(_ChangeWeekType value) changeWeekType,
+    required TResult Function(_AddWeekType value) addWeekType,
+    required TResult Function(_SubtractWeekType value) subtractWeekType,
   }) {
     return started(this);
   }
@@ -164,7 +174,8 @@ class _$StartedImpl implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Load value)? load,
-    TResult? Function(_ChangeWeekType value)? changeWeekType,
+    TResult? Function(_AddWeekType value)? addWeekType,
+    TResult? Function(_SubtractWeekType value)? subtractWeekType,
   }) {
     return started?.call(this);
   }
@@ -174,7 +185,8 @@ class _$StartedImpl implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Load value)? load,
-    TResult Function(_ChangeWeekType value)? changeWeekType,
+    TResult Function(_AddWeekType value)? addWeekType,
+    TResult Function(_SubtractWeekType value)? subtractWeekType,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -253,7 +265,8 @@ class _$LoadImpl implements _Load {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int groupId) load,
-    required TResult Function(int groupId) changeWeekType,
+    required TResult Function(int groupId) addWeekType,
+    required TResult Function(int groupId) subtractWeekType,
   }) {
     return load(groupId);
   }
@@ -263,7 +276,8 @@ class _$LoadImpl implements _Load {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(int groupId)? load,
-    TResult? Function(int groupId)? changeWeekType,
+    TResult? Function(int groupId)? addWeekType,
+    TResult? Function(int groupId)? subtractWeekType,
   }) {
     return load?.call(groupId);
   }
@@ -273,7 +287,8 @@ class _$LoadImpl implements _Load {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int groupId)? load,
-    TResult Function(int groupId)? changeWeekType,
+    TResult Function(int groupId)? addWeekType,
+    TResult Function(int groupId)? subtractWeekType,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -287,7 +302,8 @@ class _$LoadImpl implements _Load {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Load value) load,
-    required TResult Function(_ChangeWeekType value) changeWeekType,
+    required TResult Function(_AddWeekType value) addWeekType,
+    required TResult Function(_SubtractWeekType value) subtractWeekType,
   }) {
     return load(this);
   }
@@ -297,7 +313,8 @@ class _$LoadImpl implements _Load {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Load value)? load,
-    TResult? Function(_ChangeWeekType value)? changeWeekType,
+    TResult? Function(_AddWeekType value)? addWeekType,
+    TResult? Function(_SubtractWeekType value)? subtractWeekType,
   }) {
     return load?.call(this);
   }
@@ -307,7 +324,8 @@ class _$LoadImpl implements _Load {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Load value)? load,
-    TResult Function(_ChangeWeekType value)? changeWeekType,
+    TResult Function(_AddWeekType value)? addWeekType,
+    TResult Function(_SubtractWeekType value)? subtractWeekType,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -327,20 +345,20 @@ abstract class _Load implements ScheduleEvent {
 }
 
 /// @nodoc
-abstract class _$$ChangeWeekTypeImplCopyWith<$Res> {
-  factory _$$ChangeWeekTypeImplCopyWith(_$ChangeWeekTypeImpl value,
-          $Res Function(_$ChangeWeekTypeImpl) then) =
-      __$$ChangeWeekTypeImplCopyWithImpl<$Res>;
+abstract class _$$AddWeekTypeImplCopyWith<$Res> {
+  factory _$$AddWeekTypeImplCopyWith(
+          _$AddWeekTypeImpl value, $Res Function(_$AddWeekTypeImpl) then) =
+      __$$AddWeekTypeImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int groupId});
 }
 
 /// @nodoc
-class __$$ChangeWeekTypeImplCopyWithImpl<$Res>
-    extends _$ScheduleEventCopyWithImpl<$Res, _$ChangeWeekTypeImpl>
-    implements _$$ChangeWeekTypeImplCopyWith<$Res> {
-  __$$ChangeWeekTypeImplCopyWithImpl(
-      _$ChangeWeekTypeImpl _value, $Res Function(_$ChangeWeekTypeImpl) _then)
+class __$$AddWeekTypeImplCopyWithImpl<$Res>
+    extends _$ScheduleEventCopyWithImpl<$Res, _$AddWeekTypeImpl>
+    implements _$$AddWeekTypeImplCopyWith<$Res> {
+  __$$AddWeekTypeImplCopyWithImpl(
+      _$AddWeekTypeImpl _value, $Res Function(_$AddWeekTypeImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -348,7 +366,7 @@ class __$$ChangeWeekTypeImplCopyWithImpl<$Res>
   $Res call({
     Object? groupId = null,
   }) {
-    return _then(_$ChangeWeekTypeImpl(
+    return _then(_$AddWeekTypeImpl(
       null == groupId
           ? _value.groupId
           : groupId // ignore: cast_nullable_to_non_nullable
@@ -359,22 +377,22 @@ class __$$ChangeWeekTypeImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ChangeWeekTypeImpl implements _ChangeWeekType {
-  const _$ChangeWeekTypeImpl(this.groupId);
+class _$AddWeekTypeImpl implements _AddWeekType {
+  const _$AddWeekTypeImpl(this.groupId);
 
   @override
   final int groupId;
 
   @override
   String toString() {
-    return 'ScheduleEvent.changeWeekType(groupId: $groupId)';
+    return 'ScheduleEvent.addWeekType(groupId: $groupId)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ChangeWeekTypeImpl &&
+            other is _$AddWeekTypeImpl &&
             (identical(other.groupId, groupId) || other.groupId == groupId));
   }
 
@@ -384,18 +402,18 @@ class _$ChangeWeekTypeImpl implements _ChangeWeekType {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ChangeWeekTypeImplCopyWith<_$ChangeWeekTypeImpl> get copyWith =>
-      __$$ChangeWeekTypeImplCopyWithImpl<_$ChangeWeekTypeImpl>(
-          this, _$identity);
+  _$$AddWeekTypeImplCopyWith<_$AddWeekTypeImpl> get copyWith =>
+      __$$AddWeekTypeImplCopyWithImpl<_$AddWeekTypeImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int groupId) load,
-    required TResult Function(int groupId) changeWeekType,
+    required TResult Function(int groupId) addWeekType,
+    required TResult Function(int groupId) subtractWeekType,
   }) {
-    return changeWeekType(groupId);
+    return addWeekType(groupId);
   }
 
   @override
@@ -403,9 +421,10 @@ class _$ChangeWeekTypeImpl implements _ChangeWeekType {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(int groupId)? load,
-    TResult? Function(int groupId)? changeWeekType,
+    TResult? Function(int groupId)? addWeekType,
+    TResult? Function(int groupId)? subtractWeekType,
   }) {
-    return changeWeekType?.call(groupId);
+    return addWeekType?.call(groupId);
   }
 
   @override
@@ -413,11 +432,12 @@ class _$ChangeWeekTypeImpl implements _ChangeWeekType {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int groupId)? load,
-    TResult Function(int groupId)? changeWeekType,
+    TResult Function(int groupId)? addWeekType,
+    TResult Function(int groupId)? subtractWeekType,
     required TResult orElse(),
   }) {
-    if (changeWeekType != null) {
-      return changeWeekType(groupId);
+    if (addWeekType != null) {
+      return addWeekType(groupId);
     }
     return orElse();
   }
@@ -427,9 +447,10 @@ class _$ChangeWeekTypeImpl implements _ChangeWeekType {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Load value) load,
-    required TResult Function(_ChangeWeekType value) changeWeekType,
+    required TResult Function(_AddWeekType value) addWeekType,
+    required TResult Function(_SubtractWeekType value) subtractWeekType,
   }) {
-    return changeWeekType(this);
+    return addWeekType(this);
   }
 
   @override
@@ -437,9 +458,10 @@ class _$ChangeWeekTypeImpl implements _ChangeWeekType {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Load value)? load,
-    TResult? Function(_ChangeWeekType value)? changeWeekType,
+    TResult? Function(_AddWeekType value)? addWeekType,
+    TResult? Function(_SubtractWeekType value)? subtractWeekType,
   }) {
-    return changeWeekType?.call(this);
+    return addWeekType?.call(this);
   }
 
   @override
@@ -447,22 +469,169 @@ class _$ChangeWeekTypeImpl implements _ChangeWeekType {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Load value)? load,
-    TResult Function(_ChangeWeekType value)? changeWeekType,
+    TResult Function(_AddWeekType value)? addWeekType,
+    TResult Function(_SubtractWeekType value)? subtractWeekType,
     required TResult orElse(),
   }) {
-    if (changeWeekType != null) {
-      return changeWeekType(this);
+    if (addWeekType != null) {
+      return addWeekType(this);
     }
     return orElse();
   }
 }
 
-abstract class _ChangeWeekType implements ScheduleEvent {
-  const factory _ChangeWeekType(final int groupId) = _$ChangeWeekTypeImpl;
+abstract class _AddWeekType implements ScheduleEvent {
+  const factory _AddWeekType(final int groupId) = _$AddWeekTypeImpl;
 
   int get groupId;
   @JsonKey(ignore: true)
-  _$$ChangeWeekTypeImplCopyWith<_$ChangeWeekTypeImpl> get copyWith =>
+  _$$AddWeekTypeImplCopyWith<_$AddWeekTypeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SubtractWeekTypeImplCopyWith<$Res> {
+  factory _$$SubtractWeekTypeImplCopyWith(_$SubtractWeekTypeImpl value,
+          $Res Function(_$SubtractWeekTypeImpl) then) =
+      __$$SubtractWeekTypeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int groupId});
+}
+
+/// @nodoc
+class __$$SubtractWeekTypeImplCopyWithImpl<$Res>
+    extends _$ScheduleEventCopyWithImpl<$Res, _$SubtractWeekTypeImpl>
+    implements _$$SubtractWeekTypeImplCopyWith<$Res> {
+  __$$SubtractWeekTypeImplCopyWithImpl(_$SubtractWeekTypeImpl _value,
+      $Res Function(_$SubtractWeekTypeImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? groupId = null,
+  }) {
+    return _then(_$SubtractWeekTypeImpl(
+      null == groupId
+          ? _value.groupId
+          : groupId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SubtractWeekTypeImpl implements _SubtractWeekType {
+  const _$SubtractWeekTypeImpl(this.groupId);
+
+  @override
+  final int groupId;
+
+  @override
+  String toString() {
+    return 'ScheduleEvent.subtractWeekType(groupId: $groupId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SubtractWeekTypeImpl &&
+            (identical(other.groupId, groupId) || other.groupId == groupId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, groupId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SubtractWeekTypeImplCopyWith<_$SubtractWeekTypeImpl> get copyWith =>
+      __$$SubtractWeekTypeImplCopyWithImpl<_$SubtractWeekTypeImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(int groupId) load,
+    required TResult Function(int groupId) addWeekType,
+    required TResult Function(int groupId) subtractWeekType,
+  }) {
+    return subtractWeekType(groupId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(int groupId)? load,
+    TResult? Function(int groupId)? addWeekType,
+    TResult? Function(int groupId)? subtractWeekType,
+  }) {
+    return subtractWeekType?.call(groupId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(int groupId)? load,
+    TResult Function(int groupId)? addWeekType,
+    TResult Function(int groupId)? subtractWeekType,
+    required TResult orElse(),
+  }) {
+    if (subtractWeekType != null) {
+      return subtractWeekType(groupId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_Load value) load,
+    required TResult Function(_AddWeekType value) addWeekType,
+    required TResult Function(_SubtractWeekType value) subtractWeekType,
+  }) {
+    return subtractWeekType(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_Load value)? load,
+    TResult? Function(_AddWeekType value)? addWeekType,
+    TResult? Function(_SubtractWeekType value)? subtractWeekType,
+  }) {
+    return subtractWeekType?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Load value)? load,
+    TResult Function(_AddWeekType value)? addWeekType,
+    TResult Function(_SubtractWeekType value)? subtractWeekType,
+    required TResult orElse(),
+  }) {
+    if (subtractWeekType != null) {
+      return subtractWeekType(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SubtractWeekType implements ScheduleEvent {
+  const factory _SubtractWeekType(final int groupId) = _$SubtractWeekTypeImpl;
+
+  int get groupId;
+  @JsonKey(ignore: true)
+  _$$SubtractWeekTypeImplCopyWith<_$SubtractWeekTypeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

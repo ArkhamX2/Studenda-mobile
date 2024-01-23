@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:studenda_mobile/core/presentation/label/studenda_default_label_widget.dart';
+import 'package:studenda_mobile/core/utils/get_current_week_days.dart';
 import 'package:studenda_mobile/feature/group_selection/presentation/bloc/main_group_selection_bloc/main_group_selection_bloc.dart';
 import 'package:studenda_mobile/feature/schedule/domain/entities/day_schedule_entity.dart';
 import 'package:studenda_mobile/feature/schedule/domain/entities/week_type_entity.dart';
@@ -85,7 +86,6 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
                 globalKeys: keys,
                 scheduleBloc: scheduleBloc,
                 weekType: schedule.weekType,
-                weekDays: schedule.weekDays,
                 groupId: groupSelectorBloc.selectedGroup.id,
               ),
               const SizedBox(height: 10),
@@ -104,14 +104,12 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
 class _DateCarouselWrapperWidget extends StatelessWidget {
   final List<GlobalObjectKey> globalKeys;
   final WeekTypeEntity weekType;
-  final List<String> weekDays;
   final ScheduleBloc scheduleBloc;
   final int groupId;
 
   const _DateCarouselWrapperWidget({
     required this.globalKeys,
     required this.weekType,
-    required this.weekDays,
     required this.scheduleBloc,
     required this.groupId,
   });
@@ -119,7 +117,7 @@ class _DateCarouselWrapperWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DateCarouselWidget(
-      dates: weekDays,
+      dates: getCurrentWeekDays(scheduleBloc.datePointer),
       onDateTap: (int index) {
         final destination = globalKeys.where((key) => key.value == index);
         if (destination.isNotEmpty) {
@@ -141,8 +139,8 @@ class _DateCarouselWrapperWidget extends StatelessWidget {
             );
         }
       },
-      onPrevTap: () => scheduleBloc.add(ScheduleEvent.changeWeekType(groupId)),
-      onNextTap: () => scheduleBloc.add(ScheduleEvent.changeWeekType(groupId)),
+      onPrevTap: () => scheduleBloc.add(ScheduleEvent.addWeekType(groupId)),
+      onNextTap: () => scheduleBloc.add(ScheduleEvent.subtractWeekType(groupId)),
     );
   }
 }

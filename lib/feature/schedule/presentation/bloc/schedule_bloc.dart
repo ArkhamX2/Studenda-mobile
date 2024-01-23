@@ -2,11 +2,15 @@
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:studenda_mobile/core/data/user_model/user_model.dart';
 import 'package:studenda_mobile/core/utils/get_current_academic_year.dart';
 import 'package:studenda_mobile/core/utils/get_current_week_days.dart';
 import 'package:studenda_mobile/core/utils/map_subject_model_to_day_scehdule_list.dart';
+import 'package:studenda_mobile/feature/schedule/data/models/day_position_model.dart';
+import 'package:studenda_mobile/feature/schedule/data/models/discipline_model.dart';
 import 'package:studenda_mobile/feature/schedule/data/models/schedule_request_model.dart';
 import 'package:studenda_mobile/feature/schedule/data/models/subject_model.dart';
+import 'package:studenda_mobile/feature/schedule/data/models/subject_type_model.dart';
 import 'package:studenda_mobile/feature/schedule/domain/entities/schedule_entity.dart';
 import 'package:studenda_mobile/feature/schedule/domain/entities/week_type_entity.dart';
 import 'package:studenda_mobile/feature/schedule/domain/usecases/get_all_week_type.dart';
@@ -31,8 +35,10 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
   final GetDayPositionList getDayPosition;
   final GetSubjectPositionList getSubjectPosition;
   final GetSubjectTypeList getSubjectType;
-  WeekTypeEntity? currentWeekType = const WeekTypeEntity(id: -1, name: "name", index: -1);
+  WeekTypeEntity? currentWeekType =
+      const WeekTypeEntity(id: -1, name: "name", index: -1);
   List<WeekTypeEntity>? weekTypeList = [];
+  DateTime datePointer = DateTime.now();
 
   ScheduleBloc({
     required this.getDisciplineList,
@@ -44,12 +50,36 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
     required this.getSubjectPosition,
     required this.getSubjectType,
   }) : super(const _Initial()) {
-    on<_ChangeWeekType>((event, emit) async {
+    on<_AddWeekType>((event, emit) async {
       emit(const ScheduleState.loading());
+
       currentWeekType = currentWeekType!.index == 1
           ? weekTypeList!.last
           : weekTypeList!.first;
-       await loadSchedule(event.groupId, currentWeekType!, emit);
+          
+      datePointer.add(const Duration(days: 7));
+      await loadSchedule(
+        event.groupId,
+        currentWeekType!,
+        emit,
+        datePointer,
+      );
+    });
+
+    on<_SubtractWeekType>((event, emit) async {
+      emit(const ScheduleState.loading());
+
+      currentWeekType = currentWeekType!.index == 1
+          ? weekTypeList!.last
+          : weekTypeList!.first;
+
+      datePointer.subtract(const Duration(days: 7));
+      await loadSchedule(
+        event.groupId,
+        currentWeekType!,
+        emit,
+        datePointer,
+      );
     });
 
     on<_Load>((event, emit) async {
@@ -59,8 +89,20 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
             (value) => value.fold(
               (error) => emit(ScheduleState.fail(error.message)),
               (succededWeekType) async {
-                weekTypeList = succededWeekType.map((e) => WeekTypeEntity(id: e.id, name: e.name, index: e.index)).toList();
-                if(weekTypeList!.isNotEmpty) weekTypeList!.sort((a, b) => a.index.compareTo(b.index),);
+                weekTypeList = succededWeekType
+                    .map(
+                      (e) => WeekTypeEntity(
+                        id: e.id,
+                        name: e.name,
+                        index: e.index,
+                      ),
+                    )
+                    .toList();
+                if (weekTypeList!.isNotEmpty) {
+                  weekTypeList!.sort(
+                    (a, b) => a.index.compareTo(b.index),
+                  );
+                }
               },
             ),
           );
@@ -74,15 +116,24 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
                   name: succededWeekType.name,
                   index: succededWeekType.index,
                 );
-                await loadSchedule(event.groupId,currentWeekType!, emit);
+                await loadSchedule(
+                  event.groupId,
+                  currentWeekType!,
+                  emit,
+                  DateTime.now(),
+                );
               },
             ),
           );
     });
   }
 
-  Future<void> loadSchedule(int groupId, WeekTypeEntity currentWeekType,
-      Emitter<ScheduleState> emit,) async {
+  Future<void> loadSchedule(
+    int groupId,
+    WeekTypeEntity currentWeekType,
+    Emitter<ScheduleState> emit,
+    DateTime currentDate,
+  ) async {
     await getSchedule
         .call(
           ScheduleRequestModel(
@@ -95,106 +146,190 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
           (value) => value.fold(
             (error) => emit(ScheduleState.fail(error.message)),
             (succededSubjectList) async {
-              await getDisciplineList
-                  .call(
-                    _getDisciplineIds(
-                      succededSubjectList,
-                    ),
-                  )
-                  .then(
-                    (value) => value.fold(
-                      (error) => emit(
-                        ScheduleState.fail(
-                          error.message,
-                        ),
-                      ),
-                      (succededDisciplineList) async {
-                        await getTeacherList
-                            .call(
-                              _getTeacherIds(succededSubjectList),
-                            )
-                            .then(
-                              (value) => value.fold(
-                                (error) => emit(
-                                  ScheduleState.fail(
-                                    error.message,
-                                  ),
-                                ),
-                                (succededTeacherList) async {
-                                  await getSubjectType
-                                      .call(
-                                        _getSubjectTypeIds(
-                                          succededSubjectList,
-                                        ),
-                                      )
-                                      .then(
-                                        (value) => value.fold(
-                                          (error) => emit(
-                                            ScheduleState.fail(
-                                              error.message,
-                                            ),
-                                          ),
-                                          (succededSubjectTypeList) async {
-                                            await getDayPosition
-                                                .call(
-                                                  () {},
-                                                )
-                                                .then(
-                                                  (value) => value.fold(
-                                                    (error) => emit(
-                                                      ScheduleState.fail(
-                                                        error.message,
-                                                      ),
-                                                    ),
-                                                    (succededDayPositionList) async {
-                                                      await getSubjectPosition
-                                                          .call(
-                                                            () {},
-                                                          )
-                                                          .then(
-                                                            (value) =>
-                                                                value.fold(
-                                                              (error) => emit(
-                                                                ScheduleState
-                                                                    .fail(
-                                                                  error.message,
-                                                                ),
-                                                              ),
-                                                              (succededSubjectPositionList) =>
-                                                                  emit(
-                                                                ScheduleState
-                                                                    .success(
-                                                                  ScheduleEntity(
-                                                                    schedule:
-                                                                        mapSubjectModelToDayScehduleList(
-                                                                      succededSubjectList,
-                                                                      succededDisciplineList,
-                                                                      succededTeacherList,
-                                                                      succededDayPositionList,
-                                                                      succededSubjectPositionList,
-                                                                      succededSubjectTypeList,
-                                                                    ),
-                                                                    weekType: currentWeekType,
-                                                                    weekDays:
-                                                                        getCurrentWeekDays(),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          );
-                                                    },
-                                                  ),
-                                                );
-                                          },
-                                        ),
-                                      );
-                                },
-                              ),
-                            );
-                      },
-                    ),
-                  );
+              await _getDiscipline(
+                succededSubjectList,
+                emit,
+                currentWeekType,
+                currentDate,
+              );
             },
+          ),
+        );
+  }
+
+  Future<void> _getDiscipline(
+    List<SubjectModel> succededSubjectList,
+    Emitter<ScheduleState> emit,
+    WeekTypeEntity currentWeekType,
+    DateTime currentDate,
+  ) async {
+    await getDisciplineList
+        .call(
+          _getDisciplineIds(
+            succededSubjectList,
+          ),
+        )
+        .then(
+          (value) => value.fold(
+            (error) => emit(
+              ScheduleState.fail(
+                error.message,
+              ),
+            ),
+            (succededDisciplineList) async {
+              await _getTeacher(
+                succededSubjectList,
+                emit,
+                succededDisciplineList,
+                currentWeekType,
+                currentDate,
+              );
+            },
+          ),
+        );
+  }
+
+  Future<void> _getTeacher(
+    List<SubjectModel> succededSubjectList,
+    Emitter<ScheduleState> emit,
+    List<DisciplineModel> succededDisciplineList,
+    WeekTypeEntity currentWeekType,
+    DateTime currentDate,
+  ) async {
+    await getTeacherList
+        .call(
+          _getTeacherIds(succededSubjectList),
+        )
+        .then(
+          (value) => value.fold(
+            (error) => emit(
+              ScheduleState.fail(
+                error.message,
+              ),
+            ),
+            (succededTeacherList) async {
+              await _getSubjectType(
+                succededSubjectList,
+                emit,
+                succededDisciplineList,
+                succededTeacherList,
+                currentWeekType,
+                currentDate,
+              );
+            },
+          ),
+        );
+  }
+
+  Future<void> _getSubjectType(
+    List<SubjectModel> succededSubjectList,
+    Emitter<ScheduleState> emit,
+    List<DisciplineModel> succededDisciplineList,
+    List<UserModel> succededTeacherList,
+    WeekTypeEntity currentWeekType,
+    DateTime currentDate,
+  ) async {
+    await getSubjectType
+        .call(
+          _getSubjectTypeIds(
+            succededSubjectList,
+          ),
+        )
+        .then(
+          (value) => value.fold(
+            (error) => emit(
+              ScheduleState.fail(
+                error.message,
+              ),
+            ),
+            (succededSubjectTypeList) async {
+              await _getDayPosition(
+                emit,
+                succededSubjectList,
+                succededDisciplineList,
+                succededTeacherList,
+                succededSubjectTypeList,
+                currentWeekType,
+                currentDate,
+              );
+            },
+          ),
+        );
+  }
+
+  Future<void> _getDayPosition(
+    Emitter<ScheduleState> emit,
+    List<SubjectModel> succededSubjectList,
+    List<DisciplineModel> succededDisciplineList,
+    List<UserModel> succededTeacherList,
+    List<SubjectTypeModel> succededSubjectTypeList,
+    WeekTypeEntity currentWeekType,
+    DateTime currentDate,
+  ) async {
+    await getDayPosition
+        .call(
+          () {},
+        )
+        .then(
+          (value) => value.fold(
+            (error) => emit(
+              ScheduleState.fail(
+                error.message,
+              ),
+            ),
+            (succededDayPositionList) async {
+              await _getSubjectPosition(
+                emit,
+                succededSubjectList,
+                succededDisciplineList,
+                succededTeacherList,
+                succededDayPositionList,
+                succededSubjectTypeList,
+                currentWeekType,
+                currentDate,
+              );
+            },
+          ),
+        );
+  }
+
+  Future<void> _getSubjectPosition(
+    Emitter<ScheduleState> emit,
+    List<SubjectModel> succededSubjectList,
+    List<DisciplineModel> succededDisciplineList,
+    List<UserModel> succededTeacherList,
+    List<DayPositionModel> succededDayPositionList,
+    List<SubjectTypeModel> succededSubjectTypeList,
+    WeekTypeEntity currentWeekType,
+    DateTime currentDate,
+  ) async {
+    await getSubjectPosition
+        .call(
+          () {},
+        )
+        .then(
+          (value) => value.fold(
+            (error) => emit(
+              ScheduleState.fail(
+                error.message,
+              ),
+            ),
+            (succededSubjectPositionList) => emit(
+              ScheduleState.success(
+                ScheduleEntity(
+                  schedule: mapSubjectModelToDayScehduleList(
+                    succededSubjectList,
+                    succededDisciplineList,
+                    succededTeacherList,
+                    succededDayPositionList,
+                    succededSubjectPositionList,
+                    succededSubjectTypeList,
+                  ),
+                  weekType: currentWeekType,
+                  weekDays: getCurrentWeekDays(currentDate),
+                ),
+              ),
+            ),
           ),
         );
   }

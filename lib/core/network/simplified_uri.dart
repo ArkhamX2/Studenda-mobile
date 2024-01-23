@@ -17,7 +17,7 @@ class SimplifiedUri{
       return "";
     }
     //keep the list of parameters to transform
-    List<String> queries = [];
+    final List<String> queries = [];
     //lets handle map params
     if(json is Map){
       //we loop through all the map properties by their keys

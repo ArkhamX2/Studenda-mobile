@@ -1,11 +1,11 @@
-List<String> getCurrentWeekDays() {
-  final DateTime now = DateTime.now();
-  final int monOffset = now.weekday - 1;
+List<String> getCurrentWeekDays(DateTime date) {
+
+  final int monOffset = date.weekday - 1;
 
   return List.generate(
     6,
     (index) {
-      return (now.day - monOffset + index).toString();
+      return (date.day - monOffset + index).toString();
     },
   );
 }
@@ -25,16 +25,15 @@ const monthNames =[
   'декабря',
 ];
 
-List<String> getCurrentWeekDaysWithMonth() {
-  final DateTime now = DateTime.now();
-  final int monOffset = now.weekday - 1;
+List<String> getCurrentWeekDaysWithMonth(DateTime date) {
+  final int monOffset = date.weekday - 1;
 
   final daysDates = List.generate(
     6,
     (index) {
-      return index - monOffset > 0
-          ? now.add(Duration(days: index - monOffset))
-          : now.subtract(Duration(days: index - monOffset));
+      return index - monOffset >= 0
+          ? date.add(Duration(days: index - monOffset))
+          : date.subtract(Duration(days: index + monOffset));
     },
   );
 

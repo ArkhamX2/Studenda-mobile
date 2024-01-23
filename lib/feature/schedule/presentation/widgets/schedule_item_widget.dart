@@ -55,7 +55,7 @@ class _TeacherSubjectInfoRowWidget extends StatelessWidget {
       child: Row(
         children: [
           const SizedBox(
-            width: 62,
+            width: 64,
           ),
           Expanded(
             child: Container(
@@ -112,11 +112,11 @@ class _MainSubjectInfoRowWidget extends StatelessWidget {
         child: Row(
           children: [
             SizedBox(
-              width: 46,
-              height: 46,
+              width: 48,
+              height: 48,
               child: Text(
                 dayPositionValues[widget.subject.subjectPosition],
-                textAlign: TextAlign.right,
+                textAlign: TextAlign.left,
                 style: const TextStyle(
                   color: mainForegroundColor,
                   fontSize: 16,
@@ -145,12 +145,15 @@ class _MainSubjectInfoRowWidget extends StatelessWidget {
                 child: Row(
                   children: [
                     Expanded(
-                      child: Center(
-                        child: Text(
-                          "${widget.subject.title} (${widget.subject.subjectTypeName})",
-                          style: const TextStyle(
-                            color: mainForegroundColor,
-                            fontSize: 16,
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Center(
+                          child: Text(
+                            "${widget.subject.title} (${widget.subject.subjectTypeName})",
+                            style: const TextStyle(
+                              color: mainForegroundColor,
+                              fontSize: 16,
+                            ),
                           ),
                         ),
                       ),

@@ -21,7 +21,7 @@ List<DayScheduleEntity> mapSubjectModelToDayScehduleList(
     if (dayScheduleEntityMap.containsKey(
       dayPositionList
           .firstWhere((element) => element.id == subjects[i].dayPositionId)
-          .index,
+          .index - 1,
     )) {
       dayScheduleEntityMap[dayPositionList
                   .firstWhere(
