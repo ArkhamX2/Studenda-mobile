@@ -19,8 +19,6 @@ class ScheduleScreenWidget extends StatefulWidget {
 }
 
 class _ScheduleScreenWidgetState extends State<ScheduleScreenWidget> {
-//TODO: сделать чтобы кнопки влево вправо меняли неделю
-//TODO: сделать чтобы вместо "главная бросало на выбор группы"
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
@@ -139,7 +137,8 @@ class _DateCarouselWrapperWidget extends StatelessWidget {
             );
         }
       },
-      onPrevTap: () => scheduleBloc.add(ScheduleEvent.subtractWeekType(groupId)),
+      onPrevTap: () =>
+          scheduleBloc.add(ScheduleEvent.subtractWeekType(groupId)),
       onNextTap: () => scheduleBloc.add(ScheduleEvent.addWeekType(groupId)),
     );
   }
@@ -183,24 +182,26 @@ class _ScheduleAppBarWidget extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => sl<GroupSelectorBloc>(),
-      child: AppBar(
-        titleSpacing: 0,
-        automaticallyImplyLeading: false,
-        centerTitle: true,
-        title: const Text(
-          //TODO: Сделать чтобы отображалась текущая выбранная группа
-          'Главная',
-          style: TextStyle(color: Colors.white, fontSize: 25),
+    final groupBloc = context.watch<GroupSelectorBloc>();
+    return AppBar(
+      titleSpacing: 0,
+      automaticallyImplyLeading: false,
+      centerTitle: true,
+      title: GestureDetector(
+        child: Text(
+          groupBloc.selectedGroup.name.isEmpty ? "Выберите группу" : groupBloc.selectedGroup.name,
+          style: const TextStyle(color: Colors.white, fontSize: 25),
         ),
-        actions: [
-          IconButton(
-            onPressed: () => {Navigator.of(context).pushNamed('/notification')},
-            icon: const Icon(Icons.notifications, color: Colors.white),
-          ),
-        ],
+        onTap: () {
+          Navigator.of(context).pushNamed('/group_selection');
+        },
       ),
+      actions: [
+        IconButton(
+          onPressed: () => {Navigator.of(context).pushNamed('/notification')},
+          icon: const Icon(Icons.notifications, color: Colors.white),
+        ),
+      ],
     );
   }
 
