@@ -23,6 +23,7 @@ class StudendaDropdownState<T> extends State<StudendaDropdown<T>> {
 
   @override
   Widget build(BuildContext context) {
+    //TODO: Вёрстка выборов по макету
     return DropdownButton<T>(
       value: item,
       items: widget.items.map((T? value) {

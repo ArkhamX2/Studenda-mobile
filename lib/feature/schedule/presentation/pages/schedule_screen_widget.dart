@@ -188,9 +188,10 @@ class _ScheduleAppBarWidget extends StatelessWidget
       automaticallyImplyLeading: false,
       centerTitle: true,
       title: GestureDetector(
+        //TODO: Добавить иконку лупы
         child: Text(
           groupBloc.selectedGroup.name.isEmpty ? "Выберите группу" : groupBloc.selectedGroup.name,
-          style: const TextStyle(color: Colors.white, fontSize: 25),
+          style: const TextStyle(color: Colors.white, fontSize: 25, decoration: TextDecoration.underline, decorationColor: Colors.white),
         ),
         onTap: () {
           Navigator.of(context).pushNamed('/group_selection');

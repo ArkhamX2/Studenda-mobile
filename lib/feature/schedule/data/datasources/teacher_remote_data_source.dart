@@ -22,9 +22,6 @@ class TeacherRemoteDataSourceImpl implements TeacherRemoteDataSource {
       };
       final uri = 
         SimplifiedUri.uri('http://88.210.3.137/api/security/user', queryParameters);
-        
-
-      //TODO: Заменить на корректный роут для преподавателей
       final response = await client.get(uri);
       if (response.statusCode == 200) {
         final decoded = json.decode(response.body) as List<dynamic>;
