@@ -139,8 +139,8 @@ class _DateCarouselWrapperWidget extends StatelessWidget {
             );
         }
       },
-      onPrevTap: () => scheduleBloc.add(ScheduleEvent.addWeekType(groupId)),
-      onNextTap: () => scheduleBloc.add(ScheduleEvent.subtractWeekType(groupId)),
+      onPrevTap: () => scheduleBloc.add(ScheduleEvent.subtractWeekType(groupId)),
+      onNextTap: () => scheduleBloc.add(ScheduleEvent.addWeekType(groupId)),
     );
   }
 }
