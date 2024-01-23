@@ -9,7 +9,7 @@ part 'course_cubit.freezed.dart';
 class CourseCubit extends Cubit<CourseState> {
   final LoadCourses loadCourses;
 
-  List<CourseEntity>? courseList;
+  List<CourseEntity> courseList = [];
 
   CourseCubit({required this.loadCourses}) : super(const CourseState.initial());
   Future<void> load() async {

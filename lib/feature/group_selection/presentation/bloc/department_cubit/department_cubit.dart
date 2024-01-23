@@ -9,7 +9,7 @@ part 'department_cubit.freezed.dart';
 class DepartmentCubit extends Cubit<DepartmentState> {
   final LoadDepartments loadDepartments;
 
-  List<DepartmentEntity>? departmentList;
+  List<DepartmentEntity> departmentList=[];
 
   DepartmentCubit({required this.loadDepartments})
       : super(const DepartmentState.initial());

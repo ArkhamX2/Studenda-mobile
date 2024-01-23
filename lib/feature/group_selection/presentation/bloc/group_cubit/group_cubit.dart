@@ -8,7 +8,7 @@ part 'group_cubit.freezed.dart';
 
 class GroupCubit extends Cubit<GroupState> {
   final LoadGroups loadGroups;
-  List<GroupEntity>? groupList = [];
+  List<GroupEntity> groupList = [];
 
   GroupCubit({required this.loadGroups}) : super(const GroupState.initial());
   Future<void> load() async {

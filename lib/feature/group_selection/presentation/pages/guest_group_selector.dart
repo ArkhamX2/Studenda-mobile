@@ -53,75 +53,50 @@ class _GroupSelectorWidget extends StatelessWidget {
     final courseCubit = context.watch<CourseCubit>();
     final departmentCubit = context.watch<DepartmentCubit>();
 
-    return BlocProvider<GroupSelectorBloc>(
-      create: (context) {
-        if (groupCubit.groupList != null &&
-            departmentCubit.departmentList != null &&
-            courseCubit.courseList != null) {
-          groupSelectorBloc
-            ..add(
-              GroupSelectorEvent.setGroup(
-                groupCubit.groupList!.first,
-              ),
-            )
-            ..add(
-              GroupSelectorEvent.setDepartment(
-                departmentCubit.departmentList!.first,
-              ),
-            )
-            ..add(
-              GroupSelectorEvent.setCourse(
-                courseCubit.courseList!.first,
-              ),
-            );
-        }
-        return groupSelectorBloc;
-      },
-      child: Builder(
-        builder: (context) {
-          final groupsState = groupCubit.state;
-          final coursesState = courseCubit.state;
-          final departmentsState = departmentCubit.state;
+    return Builder(
+      builder: (context) {
+        final groupsState = groupCubit.state;
+        final coursesState = courseCubit.state;
+        final departmentsState = departmentCubit.state;
 
-          if (groupsState == const GroupState.loading() ||
-              coursesState == const CourseState.loading() ||
-              departmentsState == const DepartmentState.loading()) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          } else {
-            return Container(
-              alignment: AlignmentDirectional.center,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 17),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    _DepartmentSelectionWidget(
-                      mainBloc: groupSelectorBloc,
-                      departmentCubit: departmentCubit,
-                    ),
-                    _CourseSelectionWidget(
-                      mainBloc: groupSelectorBloc,
-                      courseCubit: courseCubit,
-                    ),
-                    _GroupSelectionWidget(
-                      mainBloc: groupSelectorBloc,
-                      groupCubit: groupCubit,
-                    ),
-                    StudendaButton(
-                      title: "Подтвердить",
-                      event: () {
-                        Navigator.of(context).pushReplacementNamed('/schedule');
-                      },
-                    ),
-                  ],
-                ),
+        if (groupsState == const GroupState.loading() ||
+            coursesState == const CourseState.loading() ||
+            departmentsState == const DepartmentState.loading()) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        } else {
+          return Container(
+            alignment: AlignmentDirectional.center,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 17),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _DepartmentSelectionWidget(
+                    mainBloc: groupSelectorBloc,
+                    departmentCubit: departmentCubit,
+                  ),
+                  _CourseSelectionWidget(
+                    mainBloc: groupSelectorBloc,
+                    courseCubit: courseCubit,
+                  ),
+                  _GroupSelectionWidget(
+                    mainBloc: groupSelectorBloc,
+                    groupCubit: groupCubit,
+                  ),
+                  StudendaButton(
+                    title: "Подтвердить",
+                    event: () {
+                      Navigator.of(context).pushReplacementNamed('/schedule');
+                    },
+                  ),
+                ],
               ),
-            );
-          }
-        },
-      ),
+            ),
+          );
+        }
+      },
     );
   }
 }
@@ -141,7 +116,14 @@ class _GroupSelectionWidget extends StatelessWidget {
     return groupCubit.state.when(
       initial: () => Container(),
       loading: () => Container(),
-      success: (groups) => StudendaDropdown<GroupEntity>(
+      success: (groups) {
+        
+        mainBloc.add(
+                GroupSelectorEvent.setGroup(
+                  groups.first,
+                ),
+              );
+        return StudendaDropdown<GroupEntity>(
         items: groups,
         model: groups[0],
         callback: (element) {
@@ -149,7 +131,7 @@ class _GroupSelectionWidget extends StatelessWidget {
             GroupSelectorEvent.setGroup(element!),
           );
         },
-      ),
+      );},
       fail: (message) =>
           StudendaDefaultLabelWidget(text: message, fontSize: 16),
     );
@@ -171,7 +153,13 @@ class _CourseSelectionWidget extends StatelessWidget {
     return courseCubit.state.when(
       initial: () => Container(),
       loading: () => Container(),
-      success: (courses) => StudendaDropdown<CourseEntity>(
+      success: (courses){
+        mainBloc.add(
+                GroupSelectorEvent.setCourse(
+                  courses.first,
+                ),
+              );
+        return StudendaDropdown<CourseEntity>(
         items: courses,
         model: courses[0],
         callback: (element) {
@@ -179,7 +167,7 @@ class _CourseSelectionWidget extends StatelessWidget {
             GroupSelectorEvent.setCourse(element!),
           );
         },
-      ),
+      );},
       fail: (message) =>
           StudendaDefaultLabelWidget(text: message, fontSize: 16),
     );
@@ -201,7 +189,13 @@ class _DepartmentSelectionWidget extends StatelessWidget {
     return departmentCubit.state.when(
       initial: () => Container(),
       loading: () => Container(),
-      success: (departments) => StudendaDropdown<DepartmentEntity>(
+      success: (departments) {
+        mainBloc.add(
+                GroupSelectorEvent.setDepartment(
+                  departments.first,
+                ),
+              );
+        return StudendaDropdown<DepartmentEntity>(
         items: departments,
         model: departments[0],
         callback: (element) {
@@ -209,7 +203,7 @@ class _DepartmentSelectionWidget extends StatelessWidget {
             GroupSelectorEvent.setDepartment(element!),
           );
         },
-      ),
+      );},
       fail: (message) =>
           StudendaDefaultLabelWidget(text: message, fontSize: 16),
     );
