@@ -19,7 +19,7 @@ class WeekTypeRemoteDataSourceImpl implements WeekTypeRemoteDataSource{
   Future<WeekTypeModel> getCurrent(void request) async {
     try {
       final response = await client.get(
-        Uri.parse('http://88.210.3.137/api/week_type/current'),
+        Uri.parse('http://88.210.3.137/api/schedule/week-type/current'),
       );
       if (response.statusCode == 200) {
         final decoded = json.decode(response.body) as Map<String,dynamic>;
@@ -36,7 +36,7 @@ class WeekTypeRemoteDataSourceImpl implements WeekTypeRemoteDataSource{
   @override
   Future<List<WeekTypeModel>> getAll(void request) async {try {
       final response = await client.get(
-        Uri.parse('http://88.210.3.137/api/week_type/all'),
+        Uri.parse('http://88.210.3.137/api/schedule/week-type/all'),
       );
       if (response.statusCode == 200) {
         final decoded = json.decode(response.body) as List<dynamic>;

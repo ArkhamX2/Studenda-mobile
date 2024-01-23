@@ -87,7 +87,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
         .call(
           ScheduleRequestModel(
             groupId: groupId,
-            weekTypeId: currentWeekType.id,
+            weekTypeId: currentWeekType.index,
             academicYear: getCurrentAcademicYear(),
           ),
         )

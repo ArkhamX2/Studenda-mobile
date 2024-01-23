@@ -18,7 +18,7 @@ class ScheduleRemoteDataSourceImpl implements ScheduleRemoteDataSource {
   Future<List<SubjectModel>> load(ScheduleRequestModel request) async {
     try {
       final response = await client.get(
-        Uri.parse('http://88.210.3.137/api/schedule/subject'+'?groupId=${request.groupId}&weekTypeId=${request.weekTypeId}&year=${request.academicYear}'),
+        Uri.parse('http://88.210.3.137/api/schedule/subject/group'+'?groupId=${request.groupId}&weekTypeId=${request.weekTypeId}&year=${request.academicYear}'),
       );
       if (response.statusCode == 200) {
         final decoded = json.decode(response.body) as List<dynamic>;
