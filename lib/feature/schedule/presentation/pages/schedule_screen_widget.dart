@@ -34,13 +34,12 @@ class _BodyBuilderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final groupSelectorBloc = context.watch<GroupSelectorBloc>();
     return BlocProvider(
       create: (context) {
         return sl<ScheduleBloc>()
           ..add(
-            ScheduleEvent.load(
-              groupSelectorBloc.selectedGroup.id,
+            const ScheduleEvent.load(
+              1,
             ),
           );
       },
@@ -187,15 +186,10 @@ class _ScheduleAppBarWidget extends StatelessWidget
       titleSpacing: 0,
       automaticallyImplyLeading: false,
       centerTitle: true,
-      title: GestureDetector(
-        //TODO: Добавить иконку лупы
-        child: Text(
-          groupBloc.selectedGroup.name.isEmpty ? "Выберите группу" : groupBloc.selectedGroup.name,
-          style: const TextStyle(color: Colors.white, fontSize: 25, decoration: TextDecoration.underline, decorationColor: Colors.white),
-        ),
-        onTap: () {
-          Navigator.of(context).pushNamed('/group_selection');
-        },
+      title: const Text(
+        // groupBloc.selectedGroup.name.isEmpty ? "Выберите группу" : groupBloc.selectedGroup.name,
+        "Б.ПИН.РИС.2106",
+        style: TextStyle(color: Colors.white, fontSize: 25, decoration: TextDecoration.underline, decorationColor: Colors.white),
       ),
       actions: [
         IconButton(
