@@ -181,7 +181,7 @@ class _ScheduleAppBarWidget extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    final groupBloc = context.watch<GroupSelectorBloc>();
+    //final groupBloc = context.watch<GroupSelectorBloc>();
     return AppBar(
       titleSpacing: 0,
       automaticallyImplyLeading: false,
