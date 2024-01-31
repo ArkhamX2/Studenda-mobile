@@ -56,7 +56,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
       currentWeekType = currentWeekType!.index == 1
           ? weekTypeList!.last
           : weekTypeList!.first;
-          
+
       datePointer = datePointer.add(const Duration(days: 7));
       await loadSchedule(
         event.groupId,
