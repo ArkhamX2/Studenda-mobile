@@ -2,7 +2,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:studenda_mobile_student/core/network/network_info.dart';
-import 'package:studenda_mobile_student/feature/auth/data/datasources/auth_remote_datasource.dart';
+import 'package:studenda_mobile_student/feature/auth/data/datasources/auth_remote_data_source.dart';
 import 'package:studenda_mobile_student/feature/auth/data/repositories/auth_repository_impl.dart';
 import 'package:studenda_mobile_student/feature/auth/domain/repositories/auth_repository.dart';
 import 'package:studenda_mobile_student/feature/auth/domain/usecases/auth.dart';
