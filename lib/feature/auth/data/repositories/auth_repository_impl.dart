@@ -33,12 +33,7 @@ class AuthRepositoryImpl implements AuthRepository {
         return const Left(ServerFailure(message: "Ошибка сервера"));
       }
     } else {
-      try {
-        final remoteAuth = await localDataSource.load();
-        return Right(remoteAuth);
-      } on CacheException {
-        return const Left(CacheFailure(message: "Ошибка локального хранилища"));
-      }
+        return const Left(CacheFailure(message: "Отсутствует подключение к сети"));
     }
   }
 
@@ -47,14 +42,13 @@ class AuthRepositoryImpl implements AuthRepository {
     if (await networkInfo.isConnected) {
       try {
         final token = await remoteDataSource.refreshToken(request);
-        //TODO: localdatasource cache
+        localDataSource.updateToken(token);
         return Right(token);
       } on ServerException {
         return const Left(ServerFailure(message: "Ошибка сервера"));
       }
     } else {
-      //TODO: get data from cache
+      return const Left(CacheFailure(message: "Отсутствует подключение к сети"));
     }
-    return const Left(AuthFailure(message: "Ошибка авторизации"));
   }
 }

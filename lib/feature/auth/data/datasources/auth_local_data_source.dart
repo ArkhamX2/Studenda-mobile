@@ -1,12 +1,13 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:hive/hive.dart';
 import 'package:studenda_mobile_student/core/data/error/exception.dart';
-import 'package:studenda_mobile_student/core/data/user_model/user_model.dart';
+import 'package:studenda_mobile_student/feature/auth/data/models/user_model/user_model.dart';
 import 'package:studenda_mobile_student/feature/auth/data/models/security_response_model.dart';
+import 'package:studenda_mobile_student/feature/auth/data/models/token_model.dart';
 
 abstract class AuthLocalDataSource {
   Future<void> add(SecurityResponseModel remoteAuth);
-  Future<SecurityResponseModel> load();
+  Future<void> updateToken(TokenModel token);
 }
 
 class AuthLocalDataSourceImpl implements AuthLocalDataSource {
@@ -45,26 +46,15 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
       throw CacheException();
     }
   }
-
+  
   @override
-  Future<SecurityResponseModel> load() async {
+  Future<void> updateToken(TokenModel token) async {
     try {
-      final token = await tokenStorage.read(key: 'jwt_access_token');
-      final refreshToken = await tokenStorage.read(key: 'jwt_refresh_token');
-      if (token != null && refreshToken != null) {
-        final user = userBox.get(userBox.values.first);
-        if (user != null) {
-          return SecurityResponseModel(
-            user: user,
-            token: token,
-            refreshToken: refreshToken,
-          );
-        } else {
-          throw CacheException();
-        }
-      } else {
-        throw CacheException();
-      }
+      await tokenStorage.write(key: 'jwt_access_token', value: token.token);
+      await tokenStorage.write(
+        key: 'jwt_refresh_token',
+        value: token.refreshToken,
+      );
     } catch (e) {
       throw CacheException();
     }

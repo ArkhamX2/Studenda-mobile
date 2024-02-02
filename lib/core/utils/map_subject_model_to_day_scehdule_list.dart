@@ -1,5 +1,5 @@
 
-import 'package:studenda_mobile_student/core/data/user_model/user_model.dart';
+import 'package:studenda_mobile_student/feature/auth/data/models/user_model/user_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/day_position_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/discipline_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/subject_model.dart';
