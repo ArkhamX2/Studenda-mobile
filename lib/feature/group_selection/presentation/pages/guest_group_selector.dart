@@ -9,7 +9,7 @@ import 'package:studenda_mobile_student/feature/group_selection/domain/entities/
 import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/course_cubit/course_cubit.dart';
 import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/department_cubit/department_cubit.dart';
 import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/group_cubit/group_cubit.dart';
-import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/main_group_selection_bloc/main_group_selection_bloc.dart';
+import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/main_group_selection_bloc/main_group_selector_bloc.dart';
 import 'package:studenda_mobile_student/injection_container.dart';
 
 class GuestGroupSelectorPage extends StatefulWidget {
@@ -48,7 +48,7 @@ class _GroupSelectorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final groupSelectorBloc = context.watch<GroupSelectorBloc>();
+    final groupSelectorBloc = context.watch<MainGroupSelectorBloc>();
     final groupCubit = context.watch<GroupCubit>();
     final courseCubit = context.watch<CourseCubit>();
     final departmentCubit = context.watch<DepartmentCubit>();
@@ -102,7 +102,7 @@ class _GroupSelectorWidget extends StatelessWidget {
 }
 
 class _GroupSelectionWidget extends StatelessWidget {
-  final GroupSelectorBloc mainBloc;
+  final MainGroupSelectorBloc mainBloc;
 
   final GroupCubit groupCubit;
 
@@ -119,7 +119,7 @@ class _GroupSelectionWidget extends StatelessWidget {
       success: (groups) {
         
         mainBloc.add(
-                GroupSelectorEvent.setGroup(
+                MainGroupSelectorEvent.setGroup(
                   groups.first,
                 ),
               );
@@ -128,7 +128,7 @@ class _GroupSelectionWidget extends StatelessWidget {
         model: groups[0],
         callback: (element) {
           mainBloc.add(
-            GroupSelectorEvent.setGroup(element!),
+            MainGroupSelectorEvent.setGroup(element!),
           );
         },
       );},
@@ -139,7 +139,7 @@ class _GroupSelectionWidget extends StatelessWidget {
 }
 
 class _CourseSelectionWidget extends StatelessWidget {
-  final GroupSelectorBloc mainBloc;
+  final MainGroupSelectorBloc mainBloc;
 
   final CourseCubit courseCubit;
 
@@ -155,7 +155,7 @@ class _CourseSelectionWidget extends StatelessWidget {
       loading: () => Container(),
       success: (courses){
         mainBloc.add(
-                GroupSelectorEvent.setCourse(
+                MainGroupSelectorEvent.setCourse(
                   courses.first,
                 ),
               );
@@ -164,7 +164,7 @@ class _CourseSelectionWidget extends StatelessWidget {
         model: courses[0],
         callback: (element) {
           mainBloc.add(
-            GroupSelectorEvent.setCourse(element!),
+            MainGroupSelectorEvent.setCourse(element!),
           );
         },
       );},
@@ -175,7 +175,7 @@ class _CourseSelectionWidget extends StatelessWidget {
 }
 
 class _DepartmentSelectionWidget extends StatelessWidget {
-  final GroupSelectorBloc mainBloc;
+  final MainGroupSelectorBloc mainBloc;
 
   final DepartmentCubit departmentCubit;
 
@@ -191,7 +191,7 @@ class _DepartmentSelectionWidget extends StatelessWidget {
       loading: () => Container(),
       success: (departments) {
         mainBloc.add(
-                GroupSelectorEvent.setDepartment(
+                MainGroupSelectorEvent.setDepartment(
                   departments.first,
                 ),
               );
@@ -200,7 +200,7 @@ class _DepartmentSelectionWidget extends StatelessWidget {
         model: departments[0],
         callback: (element) {
           mainBloc.add(
-            GroupSelectorEvent.setDepartment(element!),
+            MainGroupSelectorEvent.setDepartment(element!),
           );
         },
       );},

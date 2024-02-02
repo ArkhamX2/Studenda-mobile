@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:studenda_mobile_student/core/data/error/exception.dart';
 import 'package:studenda_mobile_student/core/data/error/failure.dart';
 import 'package:studenda_mobile_student/core/network/network_info.dart';
+import 'package:studenda_mobile_student/feature/group_selection/data/datasources/department_local_data_source.dart';
 import 'package:studenda_mobile_student/feature/group_selection/data/datasources/department_remote_data_source.dart';
 import 'package:studenda_mobile_student/feature/group_selection/data/models/department_model.dart';
 import 'package:studenda_mobile_student/feature/group_selection/domain/repositories/department_repository.dart';
@@ -9,9 +10,10 @@ import 'package:studenda_mobile_student/feature/group_selection/domain/repositor
 class DepartmentRepositoryImpl implements DepartmentRepository{
 
   final DepartmentRemoteDataSource remoteDataSource;
+  final DepartmentLocalDataSource localDataSource;
   final NetworkInfo networkInfo;
 
-  DepartmentRepositoryImpl({required this.remoteDataSource, required this.networkInfo});
+  DepartmentRepositoryImpl({required this.remoteDataSource, required this.localDataSource, required this.networkInfo});
 
   @override
   Future<Either<Failure, List<DepartmentModel>>> load(void request) async {

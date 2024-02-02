@@ -3,6 +3,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:studenda_mobile_student/core/network/network_info.dart';
 import 'package:studenda_mobile_student/feature/auth/data/datasources/auth_local_data_source.dart';
 import 'package:studenda_mobile_student/feature/auth/data/datasources/auth_remote_data_source.dart';
@@ -11,25 +12,40 @@ import 'package:studenda_mobile_student/feature/auth/data/repositories/auth_repo
 import 'package:studenda_mobile_student/feature/auth/domain/repositories/auth_repository.dart';
 import 'package:studenda_mobile_student/feature/auth/domain/usecases/auth.dart';
 import 'package:studenda_mobile_student/feature/auth/presentation/bloc/bloc/auth_bloc.dart';
+import 'package:studenda_mobile_student/feature/group_selection/data/datasources/course_local_data_source.dart';
 import 'package:studenda_mobile_student/feature/group_selection/data/datasources/course_remote_data_source.dart';
+import 'package:studenda_mobile_student/feature/group_selection/data/datasources/department_local_data_source.dart';
 import 'package:studenda_mobile_student/feature/group_selection/data/datasources/department_remote_data_source.dart';
+import 'package:studenda_mobile_student/feature/group_selection/data/datasources/group_local_data_source.dart';
 import 'package:studenda_mobile_student/feature/group_selection/data/datasources/group_remote_data_source.dart';
+import 'package:studenda_mobile_student/feature/group_selection/data/datasources/selected_items_datasource.dart';
+import 'package:studenda_mobile_student/feature/group_selection/data/models/course_model.dart';
+import 'package:studenda_mobile_student/feature/group_selection/data/models/department_model.dart';
+import 'package:studenda_mobile_student/feature/group_selection/data/models/group_model.dart';
 import 'package:studenda_mobile_student/feature/group_selection/data/repositories/course_repository_impl.dart';
 import 'package:studenda_mobile_student/feature/group_selection/data/repositories/department_repository_impl.dart';
 import 'package:studenda_mobile_student/feature/group_selection/data/repositories/group_repository_impl.dart';
+import 'package:studenda_mobile_student/feature/group_selection/data/repositories/selected_items_repository_impl.dart';
 import 'package:studenda_mobile_student/feature/group_selection/domain/entities/course_entity.dart';
 import 'package:studenda_mobile_student/feature/group_selection/domain/entities/department_entity.dart';
 import 'package:studenda_mobile_student/feature/group_selection/domain/entities/group_entity.dart';
 import 'package:studenda_mobile_student/feature/group_selection/domain/repositories/course_repository.dart';
 import 'package:studenda_mobile_student/feature/group_selection/domain/repositories/department_repository.dart';
 import 'package:studenda_mobile_student/feature/group_selection/domain/repositories/groups_repository.dart';
+import 'package:studenda_mobile_student/feature/group_selection/domain/repositories/selected_items_repository.dart';
 import 'package:studenda_mobile_student/feature/group_selection/domain/usecases/load_courses.dart';
 import 'package:studenda_mobile_student/feature/group_selection/domain/usecases/load_departments.dart';
 import 'package:studenda_mobile_student/feature/group_selection/domain/usecases/load_groups.dart';
+import 'package:studenda_mobile_student/feature/group_selection/domain/usecases/selected_items/get_selected_course.dart';
+import 'package:studenda_mobile_student/feature/group_selection/domain/usecases/selected_items/get_selected_department.dart';
+import 'package:studenda_mobile_student/feature/group_selection/domain/usecases/selected_items/get_selected_group.dart';
+import 'package:studenda_mobile_student/feature/group_selection/domain/usecases/selected_items/set_selected_course.dart';
+import 'package:studenda_mobile_student/feature/group_selection/domain/usecases/selected_items/set_selected_department.dart';
+import 'package:studenda_mobile_student/feature/group_selection/domain/usecases/selected_items/set_selected_group.dart';
 import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/course_cubit/course_cubit.dart';
 import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/department_cubit/department_cubit.dart';
 import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/group_cubit/group_cubit.dart';
-import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/main_group_selection_bloc/main_group_selection_bloc.dart';
+import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/main_group_selection_bloc/main_group_selector_bloc.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/datasources/day_position_remote_data_source.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/datasources/discipline_remote_data_source.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/datasources/schedule_remote_data_source.dart';
@@ -66,6 +82,7 @@ const secureStorage = FlutterSecureStorage();
 
 Future<void> init() async {
   Hive.registerAdapter(UserModelAdapter());
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
 
   //! Features
   //! Auth
@@ -109,7 +126,13 @@ Future<void> init() async {
   //! Groupselection
   // Bloc
   sl.registerFactory(
-    () => GroupSelectorBloc(
+    () => MainGroupSelectorBloc(
+      getSelectedDepartment: sl(),
+      getSelectedCourse: sl(),
+      getSelectedGroup: sl(),
+      setSelectedDepartment: sl(),
+      setSelectedCourse: sl(),
+      setSelectedGroup: sl(),
       selectedGroup: const GroupEntity(id: -1, name: ""),
       selectedCourse: const CourseEntity(id: -1, name: ""),
       selectedDepartment: const DepartmentEntity(id: -1, name: ""),
@@ -153,11 +176,54 @@ Future<void> init() async {
     ),
   );
 
+  sl.registerLazySingleton(
+    () => GetSelectedGroup(
+      itemsRepository: sl(),
+    ),
+  );
+
+  sl.registerLazySingleton(
+    () => GetSelectedCourse(
+      itemsRepository: sl(),
+    ),
+  );
+
+  sl.registerLazySingleton(
+    () => GetSelectedDepartment(
+      itemsRepository: sl(),
+    ),
+  );
+
+  sl.registerLazySingleton(
+    () => SetSelectedGroup(
+      itemsRepository: sl(),
+    ),
+  );
+
+  sl.registerLazySingleton(
+    () => SetSelectedCourse(
+      itemsRepository: sl(),
+    ),
+  );
+
+  sl.registerLazySingleton(
+    () => SetSelectedDepartment(
+      itemsRepository: sl(),
+    ),
+  );
+
   // Repository
+
+  sl.registerLazySingleton<SelectedItemsRepository>(
+    () => SelectedItemsRepositoryImpl(
+      localDataSource: sl(),
+    ),
+  );
 
   sl.registerLazySingleton<GroupRepository>(
     () => GroupRepositoryImpl(
       remoteDataSource: sl(),
+      localDataSource: sl(),
       networkInfo: sl(),
     ),
   );
@@ -165,6 +231,7 @@ Future<void> init() async {
   sl.registerLazySingleton<CourseRepository>(
     () => CourseRepositoryImpl(
       remoteDataSource: sl(),
+      localDataSource: sl(),
       networkInfo: sl(),
     ),
   );
@@ -172,11 +239,18 @@ Future<void> init() async {
   sl.registerLazySingleton<DepartmentRepository>(
     () => DepartmentRepositoryImpl(
       remoteDataSource: sl(),
+      localDataSource: sl(),
       networkInfo: sl(),
     ),
   );
 
   //! Data sources
+
+  sl.registerLazySingleton<SelectedItemsDataSource>(
+    () => SelectedItemsDataSourceImpl(
+      prefs: prefs,
+    ),
+  );
 
   sl.registerLazySingleton<GroupRemoteDataSource>(
     () => GroupRemoteDataSourceImpl(
@@ -195,6 +269,24 @@ Future<void> init() async {
       client: sl(),
     ),
   );
+
+  sl.registerLazySingletonAsync<GroupLocalDataSource>(() async {
+    return GroupLocalDataSourceImpl(
+      groupBox: await Hive.openBox<GroupModel>('GroupBox'),
+    );
+  });
+
+  sl.registerLazySingletonAsync<CourseLocalDataSource>(() async {
+    return CourseLocalDataSourceImpl(
+      courseBox: await Hive.openBox<CourseModel>('CourseBox'),
+    );
+  });
+
+  sl.registerLazySingletonAsync<DepartmentLocalDataSource>(() async {
+    return DepartmentLocalDataSourceImpl(
+      deaprtmentBox: await Hive.openBox<DepartmentModel>('DepartmentBox'),
+    );
+  });
 
   //! Auth
   // Bloc

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:studenda_mobile_student/core/presentation/label/studenda_default_label_widget.dart';
 import 'package:studenda_mobile_student/core/utils/get_current_week_days.dart';
-import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/main_group_selection_bloc/main_group_selection_bloc.dart';
+import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/main_group_selection_bloc/main_group_selector_bloc.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/entities/day_schedule_entity.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/entities/week_type_entity.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/schedule_bloc.dart';
@@ -34,7 +34,7 @@ class _BodyBuilderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final groupSelectorBloc = context.watch<GroupSelectorBloc>();
+    final groupSelectorBloc = context.watch<MainGroupSelectorBloc>();
     return BlocProvider(
       create: (context) {
         return sl<ScheduleBloc>()
@@ -61,7 +61,7 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
   @override
   Widget build(BuildContext context) {
     final scheduleBloc = context.watch<ScheduleBloc>();
-    final groupSelectorBloc = context.watch<GroupSelectorBloc>();
+    final groupSelectorBloc = context.watch<MainGroupSelectorBloc>();
 
     return scheduleBloc.state.when(
       initial: () => const Center(child: CircularProgressIndicator()),
@@ -182,7 +182,7 @@ class _ScheduleAppBarWidget extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    final groupBloc = context.watch<GroupSelectorBloc>();
+    final groupBloc = context.watch<MainGroupSelectorBloc>();
     return AppBar(
       titleSpacing: 0,
       automaticallyImplyLeading: false,
