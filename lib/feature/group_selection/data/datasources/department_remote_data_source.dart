@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:studenda_mobile_student/core/data/error/exception.dart';
+import 'package:studenda_mobile_student/core/network/api_config.dart';
 import 'package:studenda_mobile_student/feature/group_selection/data/models/department_model.dart';
 
 abstract class DepartmentRemoteDataSource {
@@ -16,7 +17,7 @@ class DepartmentRemoteDataSourceImpl implements DepartmentRemoteDataSource{
   Future<List<DepartmentModel>> load(void request) async {
     try {
       final response = await client.get(
-        Uri.parse('http://88.210.3.137/api/department'),
+        Uri.parse('$BASE_URL/department'),
       );
       if (response.statusCode == 200) {
         final decoded = json.decode(response.body) as List<dynamic>;

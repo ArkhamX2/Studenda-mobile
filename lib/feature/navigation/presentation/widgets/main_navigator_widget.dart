@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:studenda_mobile_student/feature/home/presentation/widgets/home_screen_widget.dart';
 import 'package:studenda_mobile_student/feature/journal/presentation/widgets/journal_main_screen_widget.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/pages/schedule_screen_widget.dart';
 
@@ -14,7 +13,6 @@ class MainNavigatorWidget extends StatefulWidget {
 class _MainNavigatorWidgetState extends State<MainNavigatorWidget> {
   int _selectedIndex = 0;
   final List<Widget> _widgetOptions = <Widget>[
-    const HomeScreenWidget(),
     const ScheduleScreenWidget(),
     const JournalMainScreenWidget(),
   ];
@@ -34,10 +32,6 @@ class _MainNavigatorWidgetState extends State<MainNavigatorWidget> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Главная",
-          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.schedule),
             label: "Расписание",

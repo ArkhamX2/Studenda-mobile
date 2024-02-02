@@ -4,7 +4,6 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:studenda_mobile_student/feature/auth/presentation/pages/main_auth_widget.dart';
 import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/main_group_selection_bloc/main_group_selection_bloc.dart';
 import 'package:studenda_mobile_student/feature/group_selection/presentation/pages/guest_group_selector.dart';
-import 'package:studenda_mobile_student/feature/home/presentation/widgets/home_screen_widget.dart';
 import 'package:studenda_mobile_student/feature/journal/presentation/widgets/journal_main_screen_widget.dart';
 import 'package:studenda_mobile_student/feature/navigation/presentation/widgets/main_navigator_widget.dart';
 import 'package:studenda_mobile_student/feature/notification/presentation/widgets/notification_screen_widget.dart';
@@ -42,7 +41,6 @@ class MyApp extends StatelessWidget {
         routes: {
           '/auth': (context) => const MainAuthPage(),
           '/main_nav': (context) => const MainNavigatorWidget(),
-          '/home': (context) => const HomeScreenWidget(),
           '/schedule': (context) => const ScheduleScreenWidget(),
           '/journal': (context) => const JournalMainScreenWidget(),
           '/notification': (context) => const NotificationScreenWidget(),

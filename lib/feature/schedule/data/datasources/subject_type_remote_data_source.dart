@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:studenda_mobile_student/core/data/error/exception.dart';
+import 'package:studenda_mobile_student/core/network/api_config.dart';
 import 'package:studenda_mobile_student/core/network/simplified_uri.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/subject_type_model.dart';
 
@@ -22,7 +23,7 @@ class SubjectTypeRemoteDataSourceImpl implements SubjectTypeRemoteDataSource {
         'ids' : request,
       };
       final uri = 
-        SimplifiedUri.uri('http://88.210.3.137/api/schedule/subject-type', queryParameters);
+        SimplifiedUri.uri('$BASE_URL/schedule/subject-type', queryParameters);
         
       final response = await client.get(uri);
       if (response.statusCode == 200) {

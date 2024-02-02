@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:studenda_mobile_student/core/data/error/exception.dart';
+import 'package:studenda_mobile_student/core/network/api_config.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/schedule_request_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/subject_model.dart';
 
@@ -18,7 +19,7 @@ class ScheduleRemoteDataSourceImpl implements ScheduleRemoteDataSource {
   Future<List<SubjectModel>> load(ScheduleRequestModel request) async {
     try {
       final response = await client.get(
-        Uri.parse('http://88.210.3.137/api/schedule/subject/group'+'?groupId=${request.groupId}&weekTypeId=${request.weekTypeId}&year=${request.academicYear}'),
+        Uri.parse('$BASE_URL/schedule/subject/group'+'?groupId=${request.groupId}&weekTypeId=${request.weekTypeId}&year=${request.academicYear}'),
       );
       if (response.statusCode == 200) {
         final decoded = json.decode(response.body) as List<dynamic>;
