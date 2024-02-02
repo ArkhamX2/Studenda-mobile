@@ -14,4 +14,3 @@ class TokenModel with _$TokenModel{
   
   factory TokenModel.fromJson(Map<String,dynamic> json) => _$TokenModelFromJson(json);
 }
-

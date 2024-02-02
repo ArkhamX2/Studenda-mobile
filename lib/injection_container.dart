@@ -1,7 +1,11 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:http/http.dart' as http;
+import 'package:studenda_mobile_student/core/data/user_model/user_model.dart';
 import 'package:studenda_mobile_student/core/network/network_info.dart';
+import 'package:studenda_mobile_student/feature/auth/data/datasources/auth_local_data_source.dart';
 import 'package:studenda_mobile_student/feature/auth/data/datasources/auth_remote_data_source.dart';
 import 'package:studenda_mobile_student/feature/auth/data/repositories/auth_repository_impl.dart';
 import 'package:studenda_mobile_student/feature/auth/domain/repositories/auth_repository.dart';
@@ -80,6 +84,7 @@ Future<void> init() async {
   sl.registerLazySingleton<AuthRepository>(
     () => AuthRepositoryImpl(
       remoteDataSource: sl(),
+      localDataSource: sl(),
       networkInfo: sl(),
     ),
   );
@@ -91,6 +96,13 @@ Future<void> init() async {
       client: sl(),
     ),
   );
+  sl.registerLazySingletonAsync<AuthLocalDataSource>(() async {
+    Hive.registerAdapter(UserModelAdapter());
+    return AuthLocalDataSourceImpl(
+      tokenStorage: const FlutterSecureStorage(),
+      userBox: await Hive.openBox<UserModel>('UserBox'),
+    );
+  });
 
   //! Groupselection
   // Bloc

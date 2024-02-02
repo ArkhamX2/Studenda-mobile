@@ -21,10 +21,13 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$UserModel {
   @JsonKey(name: 'id')
+  @HiveField(0)
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'roleId')
+  @HiveField(1)
   int get roleId => throw _privateConstructorUsedError;
   @JsonKey(name: 'name')
+  @HiveField(2)
   String get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,9 +42,9 @@ abstract class $UserModelCopyWith<$Res> {
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'id') int id,
-      @JsonKey(name: 'roleId') int roleId,
-      @JsonKey(name: 'name') String name});
+      {@JsonKey(name: 'id') @HiveField(0) int id,
+      @JsonKey(name: 'roleId') @HiveField(1) int roleId,
+      @JsonKey(name: 'name') @HiveField(2) String name});
 }
 
 /// @nodoc
@@ -87,9 +90,9 @@ abstract class _$$UserModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'id') int id,
-      @JsonKey(name: 'roleId') int roleId,
-      @JsonKey(name: 'name') String name});
+      {@JsonKey(name: 'id') @HiveField(0) int id,
+      @JsonKey(name: 'roleId') @HiveField(1) int roleId,
+      @JsonKey(name: 'name') @HiveField(2) String name});
 }
 
 /// @nodoc
@@ -126,23 +129,28 @@ class __$$UserModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$UserModelImpl implements _UserModel {
-  const _$UserModelImpl(
-      {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'roleId') required this.roleId,
-      @JsonKey(name: 'name') required this.name});
+@HiveType(typeId: 0, adapterName: 'UserModelAdapter')
+class _$UserModelImpl extends _UserModel {
+  _$UserModelImpl(
+      {@JsonKey(name: 'id') @HiveField(0) required this.id,
+      @JsonKey(name: 'roleId') @HiveField(1) required this.roleId,
+      @JsonKey(name: 'name') @HiveField(2) required this.name})
+      : super._();
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserModelImplFromJson(json);
 
   @override
   @JsonKey(name: 'id')
+  @HiveField(0)
   final int id;
   @override
   @JsonKey(name: 'roleId')
+  @HiveField(1)
   final int roleId;
   @override
   @JsonKey(name: 'name')
+  @HiveField(2)
   final String name;
 
   @override
@@ -178,23 +186,28 @@ class _$UserModelImpl implements _UserModel {
   }
 }
 
-abstract class _UserModel implements UserModel {
-  const factory _UserModel(
-      {@JsonKey(name: 'id') required final int id,
-      @JsonKey(name: 'roleId') required final int roleId,
-      @JsonKey(name: 'name') required final String name}) = _$UserModelImpl;
+abstract class _UserModel extends UserModel {
+  factory _UserModel(
+          {@JsonKey(name: 'id') @HiveField(0) required final int id,
+          @JsonKey(name: 'roleId') @HiveField(1) required final int roleId,
+          @JsonKey(name: 'name') @HiveField(2) required final String name}) =
+      _$UserModelImpl;
+  _UserModel._() : super._();
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$UserModelImpl.fromJson;
 
   @override
   @JsonKey(name: 'id')
+  @HiveField(0)
   int get id;
   @override
   @JsonKey(name: 'roleId')
+  @HiveField(1)
   int get roleId;
   @override
   @JsonKey(name: 'name')
+  @HiveField(2)
   String get name;
   @override
   @JsonKey(ignore: true)

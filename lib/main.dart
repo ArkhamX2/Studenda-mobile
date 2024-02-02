@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:studenda_mobile_student/feature/auth/presentation/pages/main_auth_widget.dart';
 import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/main_group_selection_bloc/main_group_selection_bloc.dart';
 import 'package:studenda_mobile_student/feature/group_selection/presentation/pages/guest_group_selector.dart';
@@ -12,6 +13,7 @@ import 'package:studenda_mobile_student/injection_container.dart' as di;
 import 'package:studenda_mobile_student/injection_container.dart';
 
 void main() async {
+  await Hive.initFlutter();
   await di.init();
   runApp(const MyApp());
 }
