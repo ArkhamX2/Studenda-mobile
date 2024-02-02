@@ -2,10 +2,10 @@
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:studenda_mobile_student/feature/auth/data/models/user_model/user_model.dart';
 import 'package:studenda_mobile_student/core/utils/get_current_academic_year.dart';
 import 'package:studenda_mobile_student/core/utils/get_current_week_days.dart';
 import 'package:studenda_mobile_student/core/utils/map_subject_model_to_day_scehdule_list.dart';
+import 'package:studenda_mobile_student/feature/auth/data/models/user_model/user_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/day_position_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/discipline_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/schedule_request_model.dart';

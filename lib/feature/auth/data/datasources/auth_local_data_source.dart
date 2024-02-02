@@ -1,9 +1,9 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:hive/hive.dart';
 import 'package:studenda_mobile_student/core/data/error/exception.dart';
-import 'package:studenda_mobile_student/feature/auth/data/models/user_model/user_model.dart';
 import 'package:studenda_mobile_student/feature/auth/data/models/security_response_model.dart';
 import 'package:studenda_mobile_student/feature/auth/data/models/token_model.dart';
+import 'package:studenda_mobile_student/feature/auth/data/models/user_model/user_model.dart';
 
 abstract class AuthLocalDataSource {
   Future<void> add(SecurityResponseModel remoteAuth);
