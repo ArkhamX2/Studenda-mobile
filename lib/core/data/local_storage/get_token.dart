@@ -17,6 +17,7 @@ Future<Either<Failure, TokenModel>> getTokenFromLocalStorage(
     }
   } on CacheException {
     return const Left(
-        CacheFailure(message: "Ошибка локального хранилища данных"),);
+      CacheFailure(message: "Ошибка локального хранилища данных"),
+    );
   }
 }
