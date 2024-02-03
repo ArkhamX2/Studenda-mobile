@@ -126,6 +126,50 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
             ),
           );
     });
+
+    on<_LoadLocal>((event, emit) async {
+      emit(const ScheduleState.loading());
+      await getAllWeekType.call(() {}).then(
+            (value) => value.fold(
+              (error) => emit(ScheduleState.fail(error.message)),
+              (succededWeekType) async {
+                weekTypeList = succededWeekType
+                    .map(
+                      (e) => WeekTypeEntity(
+                        id: e.id,
+                        name: e.name,
+                        index: e.index,
+                      ),
+                    )
+                    .toList();
+                if (weekTypeList!.isNotEmpty) {
+                  weekTypeList!.sort(
+                    (a, b) => a.index.compareTo(b.index),
+                  );
+                }
+              },
+            ),
+          );
+
+      await getCurrentWeekType.call(() {}).then(
+            (value) => value.fold(
+              (error) => emit(ScheduleState.fail(error.message)),
+              (succededWeekType) async {
+                currentWeekType = WeekTypeEntity(
+                  id: succededWeekType.id,
+                  name: succededWeekType.name,
+                  index: succededWeekType.index,
+                );
+                await loadSchedule(
+                  event.groupId,
+                  currentWeekType!,
+                  emit,
+                  DateTime.now(),
+                );
+              },
+            ),
+          );
+    });
   }
 
   Future<void> loadSchedule(

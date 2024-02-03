@@ -10,7 +10,7 @@ class GetCurrentWeekType extends Usecase<WeekTypeModel,void>{
   GetCurrentWeekType({required this.weekTypeRepository});
 
   @override
-  Future<Either<Failure,WeekTypeModel>> call(void request) async{
-    return await weekTypeRepository.getCurrent(request);
+  Future<Either<Failure,WeekTypeModel>> call(void request, [bool remote = true]) async{
+    return await weekTypeRepository.getCurrent(request,remote);
   }
 }

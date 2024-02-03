@@ -11,7 +11,7 @@ class GetSubjectTypeList extends Usecase<List<SubjectTypeModel>,List<int>>{
   GetSubjectTypeList({required this.subjectTypeRepository});
 
   @override
-  Future<Either<Failure,List<SubjectTypeModel>>> call(List<int> request) async{
-    return await subjectTypeRepository.load(request);
+  Future<Either<Failure,List<SubjectTypeModel>>> call(List<int> request, [bool remote = true]) async{
+    return await subjectTypeRepository.load(request,remote);
   }
 }

@@ -10,7 +10,7 @@ class GetAllWeekType extends Usecase<List<WeekTypeModel>,void>{
   GetAllWeekType({required this.weekTypeRepository});
 
   @override
-  Future<Either<Failure,List<WeekTypeModel>>> call(void request) async{
-    return await weekTypeRepository.getAll(request);
+  Future<Either<Failure,List<WeekTypeModel>>> call(void request, [bool remote = true]) async{
+    return await weekTypeRepository.getAll(request,remote);
   }
 }

@@ -12,20 +12,33 @@ class TeacherRepositoryImpl implements TeacherRepository {
   final TeacherLocalDataSource localDataSource;
   final NetworkInfo networkInfo;
 
-  TeacherRepositoryImpl(
-      {required this.remoteDataSource,
-      required this.localDataSource,
-      required this.networkInfo,});
+  TeacherRepositoryImpl({
+    required this.remoteDataSource,
+    required this.localDataSource,
+    required this.networkInfo,
+  });
   @override
-  Future<Either<Failure, List<UserModel>>> load(List<int> request) async {
+  Future<Either<Failure, List<UserModel>>> load(
+    List<int> request, [
+    bool remote = true,
+  ]) async {
     if (request.isEmpty) return const Right([]);
-    if (await networkInfo.isConnected) {
-      try {
-        final remoteLoad = await remoteDataSource.load(request);
-        localDataSource.add(remoteLoad);
-        return Right(remoteLoad);
-      } on ServerException {
-        return const Left(ServerFailure(message: "Ошибка сервера"));
+    if (remote) {
+      if (await networkInfo.isConnected) {
+        try {
+          final remoteLoad = await remoteDataSource.load(request);
+          localDataSource.add(remoteLoad);
+          return Right(remoteLoad);
+        } on ServerException {
+          return const Left(ServerFailure(message: "Ошибка сервера"));
+        }
+      } else {
+        try {
+          return Right(await localDataSource.load(request));
+        } on CacheException {
+          return const Left(
+              CacheFailure(message: "Ошибка локального хранилища"),);
+        }
       }
     } else {
       try {

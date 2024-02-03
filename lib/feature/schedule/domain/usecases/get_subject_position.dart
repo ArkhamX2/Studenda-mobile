@@ -10,7 +10,7 @@ class GetSubjectPositionList extends Usecase<List<SubjectPositionModel>,void>{
   GetSubjectPositionList({required this.subjectPositionRepository});
 
   @override
-  Future<Either<Failure,List<SubjectPositionModel>>> call(void request) async{
-    return await subjectPositionRepository.load(request);
+  Future<Either<Failure,List<SubjectPositionModel>>> call(void request, [bool remote = true]) async{
+    return await subjectPositionRepository.load(request,remote);
   }
 }

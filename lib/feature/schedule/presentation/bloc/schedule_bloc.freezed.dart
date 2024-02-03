@@ -20,6 +20,7 @@ mixin _$ScheduleEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int groupId) load,
+    required TResult Function(int groupId) loadLocal,
     required TResult Function(int groupId) addWeekType,
     required TResult Function(int groupId) subtractWeekType,
   }) =>
@@ -28,6 +29,7 @@ mixin _$ScheduleEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(int groupId)? load,
+    TResult? Function(int groupId)? loadLocal,
     TResult? Function(int groupId)? addWeekType,
     TResult? Function(int groupId)? subtractWeekType,
   }) =>
@@ -36,6 +38,7 @@ mixin _$ScheduleEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int groupId)? load,
+    TResult Function(int groupId)? loadLocal,
     TResult Function(int groupId)? addWeekType,
     TResult Function(int groupId)? subtractWeekType,
     required TResult orElse(),
@@ -45,6 +48,7 @@ mixin _$ScheduleEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Load value) load,
+    required TResult Function(_LoadLocal value) loadLocal,
     required TResult Function(_AddWeekType value) addWeekType,
     required TResult Function(_SubtractWeekType value) subtractWeekType,
   }) =>
@@ -53,6 +57,7 @@ mixin _$ScheduleEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Load value)? load,
+    TResult? Function(_LoadLocal value)? loadLocal,
     TResult? Function(_AddWeekType value)? addWeekType,
     TResult? Function(_SubtractWeekType value)? subtractWeekType,
   }) =>
@@ -61,6 +66,7 @@ mixin _$ScheduleEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Load value)? load,
+    TResult Function(_LoadLocal value)? loadLocal,
     TResult Function(_AddWeekType value)? addWeekType,
     TResult Function(_SubtractWeekType value)? subtractWeekType,
     required TResult orElse(),
@@ -126,6 +132,7 @@ class _$StartedImpl implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int groupId) load,
+    required TResult Function(int groupId) loadLocal,
     required TResult Function(int groupId) addWeekType,
     required TResult Function(int groupId) subtractWeekType,
   }) {
@@ -137,6 +144,7 @@ class _$StartedImpl implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(int groupId)? load,
+    TResult? Function(int groupId)? loadLocal,
     TResult? Function(int groupId)? addWeekType,
     TResult? Function(int groupId)? subtractWeekType,
   }) {
@@ -148,6 +156,7 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int groupId)? load,
+    TResult Function(int groupId)? loadLocal,
     TResult Function(int groupId)? addWeekType,
     TResult Function(int groupId)? subtractWeekType,
     required TResult orElse(),
@@ -163,6 +172,7 @@ class _$StartedImpl implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Load value) load,
+    required TResult Function(_LoadLocal value) loadLocal,
     required TResult Function(_AddWeekType value) addWeekType,
     required TResult Function(_SubtractWeekType value) subtractWeekType,
   }) {
@@ -174,6 +184,7 @@ class _$StartedImpl implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Load value)? load,
+    TResult? Function(_LoadLocal value)? loadLocal,
     TResult? Function(_AddWeekType value)? addWeekType,
     TResult? Function(_SubtractWeekType value)? subtractWeekType,
   }) {
@@ -185,6 +196,7 @@ class _$StartedImpl implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Load value)? load,
+    TResult Function(_LoadLocal value)? loadLocal,
     TResult Function(_AddWeekType value)? addWeekType,
     TResult Function(_SubtractWeekType value)? subtractWeekType,
     required TResult orElse(),
@@ -265,6 +277,7 @@ class _$LoadImpl implements _Load {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int groupId) load,
+    required TResult Function(int groupId) loadLocal,
     required TResult Function(int groupId) addWeekType,
     required TResult Function(int groupId) subtractWeekType,
   }) {
@@ -276,6 +289,7 @@ class _$LoadImpl implements _Load {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(int groupId)? load,
+    TResult? Function(int groupId)? loadLocal,
     TResult? Function(int groupId)? addWeekType,
     TResult? Function(int groupId)? subtractWeekType,
   }) {
@@ -287,6 +301,7 @@ class _$LoadImpl implements _Load {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int groupId)? load,
+    TResult Function(int groupId)? loadLocal,
     TResult Function(int groupId)? addWeekType,
     TResult Function(int groupId)? subtractWeekType,
     required TResult orElse(),
@@ -302,6 +317,7 @@ class _$LoadImpl implements _Load {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Load value) load,
+    required TResult Function(_LoadLocal value) loadLocal,
     required TResult Function(_AddWeekType value) addWeekType,
     required TResult Function(_SubtractWeekType value) subtractWeekType,
   }) {
@@ -313,6 +329,7 @@ class _$LoadImpl implements _Load {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Load value)? load,
+    TResult? Function(_LoadLocal value)? loadLocal,
     TResult? Function(_AddWeekType value)? addWeekType,
     TResult? Function(_SubtractWeekType value)? subtractWeekType,
   }) {
@@ -324,6 +341,7 @@ class _$LoadImpl implements _Load {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Load value)? load,
+    TResult Function(_LoadLocal value)? loadLocal,
     TResult Function(_AddWeekType value)? addWeekType,
     TResult Function(_SubtractWeekType value)? subtractWeekType,
     required TResult orElse(),
@@ -341,6 +359,157 @@ abstract class _Load implements ScheduleEvent {
   int get groupId;
   @JsonKey(ignore: true)
   _$$LoadImplCopyWith<_$LoadImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoadLocalImplCopyWith<$Res> {
+  factory _$$LoadLocalImplCopyWith(
+          _$LoadLocalImpl value, $Res Function(_$LoadLocalImpl) then) =
+      __$$LoadLocalImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int groupId});
+}
+
+/// @nodoc
+class __$$LoadLocalImplCopyWithImpl<$Res>
+    extends _$ScheduleEventCopyWithImpl<$Res, _$LoadLocalImpl>
+    implements _$$LoadLocalImplCopyWith<$Res> {
+  __$$LoadLocalImplCopyWithImpl(
+      _$LoadLocalImpl _value, $Res Function(_$LoadLocalImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? groupId = null,
+  }) {
+    return _then(_$LoadLocalImpl(
+      null == groupId
+          ? _value.groupId
+          : groupId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoadLocalImpl implements _LoadLocal {
+  const _$LoadLocalImpl(this.groupId);
+
+  @override
+  final int groupId;
+
+  @override
+  String toString() {
+    return 'ScheduleEvent.loadLocal(groupId: $groupId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadLocalImpl &&
+            (identical(other.groupId, groupId) || other.groupId == groupId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, groupId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadLocalImplCopyWith<_$LoadLocalImpl> get copyWith =>
+      __$$LoadLocalImplCopyWithImpl<_$LoadLocalImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(int groupId) load,
+    required TResult Function(int groupId) loadLocal,
+    required TResult Function(int groupId) addWeekType,
+    required TResult Function(int groupId) subtractWeekType,
+  }) {
+    return loadLocal(groupId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(int groupId)? load,
+    TResult? Function(int groupId)? loadLocal,
+    TResult? Function(int groupId)? addWeekType,
+    TResult? Function(int groupId)? subtractWeekType,
+  }) {
+    return loadLocal?.call(groupId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(int groupId)? load,
+    TResult Function(int groupId)? loadLocal,
+    TResult Function(int groupId)? addWeekType,
+    TResult Function(int groupId)? subtractWeekType,
+    required TResult orElse(),
+  }) {
+    if (loadLocal != null) {
+      return loadLocal(groupId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_Load value) load,
+    required TResult Function(_LoadLocal value) loadLocal,
+    required TResult Function(_AddWeekType value) addWeekType,
+    required TResult Function(_SubtractWeekType value) subtractWeekType,
+  }) {
+    return loadLocal(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_Load value)? load,
+    TResult? Function(_LoadLocal value)? loadLocal,
+    TResult? Function(_AddWeekType value)? addWeekType,
+    TResult? Function(_SubtractWeekType value)? subtractWeekType,
+  }) {
+    return loadLocal?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Load value)? load,
+    TResult Function(_LoadLocal value)? loadLocal,
+    TResult Function(_AddWeekType value)? addWeekType,
+    TResult Function(_SubtractWeekType value)? subtractWeekType,
+    required TResult orElse(),
+  }) {
+    if (loadLocal != null) {
+      return loadLocal(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadLocal implements ScheduleEvent {
+  const factory _LoadLocal(final int groupId) = _$LoadLocalImpl;
+
+  int get groupId;
+  @JsonKey(ignore: true)
+  _$$LoadLocalImplCopyWith<_$LoadLocalImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -410,6 +579,7 @@ class _$AddWeekTypeImpl implements _AddWeekType {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int groupId) load,
+    required TResult Function(int groupId) loadLocal,
     required TResult Function(int groupId) addWeekType,
     required TResult Function(int groupId) subtractWeekType,
   }) {
@@ -421,6 +591,7 @@ class _$AddWeekTypeImpl implements _AddWeekType {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(int groupId)? load,
+    TResult? Function(int groupId)? loadLocal,
     TResult? Function(int groupId)? addWeekType,
     TResult? Function(int groupId)? subtractWeekType,
   }) {
@@ -432,6 +603,7 @@ class _$AddWeekTypeImpl implements _AddWeekType {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int groupId)? load,
+    TResult Function(int groupId)? loadLocal,
     TResult Function(int groupId)? addWeekType,
     TResult Function(int groupId)? subtractWeekType,
     required TResult orElse(),
@@ -447,6 +619,7 @@ class _$AddWeekTypeImpl implements _AddWeekType {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Load value) load,
+    required TResult Function(_LoadLocal value) loadLocal,
     required TResult Function(_AddWeekType value) addWeekType,
     required TResult Function(_SubtractWeekType value) subtractWeekType,
   }) {
@@ -458,6 +631,7 @@ class _$AddWeekTypeImpl implements _AddWeekType {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Load value)? load,
+    TResult? Function(_LoadLocal value)? loadLocal,
     TResult? Function(_AddWeekType value)? addWeekType,
     TResult? Function(_SubtractWeekType value)? subtractWeekType,
   }) {
@@ -469,6 +643,7 @@ class _$AddWeekTypeImpl implements _AddWeekType {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Load value)? load,
+    TResult Function(_LoadLocal value)? loadLocal,
     TResult Function(_AddWeekType value)? addWeekType,
     TResult Function(_SubtractWeekType value)? subtractWeekType,
     required TResult orElse(),
@@ -556,6 +731,7 @@ class _$SubtractWeekTypeImpl implements _SubtractWeekType {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int groupId) load,
+    required TResult Function(int groupId) loadLocal,
     required TResult Function(int groupId) addWeekType,
     required TResult Function(int groupId) subtractWeekType,
   }) {
@@ -567,6 +743,7 @@ class _$SubtractWeekTypeImpl implements _SubtractWeekType {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(int groupId)? load,
+    TResult? Function(int groupId)? loadLocal,
     TResult? Function(int groupId)? addWeekType,
     TResult? Function(int groupId)? subtractWeekType,
   }) {
@@ -578,6 +755,7 @@ class _$SubtractWeekTypeImpl implements _SubtractWeekType {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int groupId)? load,
+    TResult Function(int groupId)? loadLocal,
     TResult Function(int groupId)? addWeekType,
     TResult Function(int groupId)? subtractWeekType,
     required TResult orElse(),
@@ -593,6 +771,7 @@ class _$SubtractWeekTypeImpl implements _SubtractWeekType {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Load value) load,
+    required TResult Function(_LoadLocal value) loadLocal,
     required TResult Function(_AddWeekType value) addWeekType,
     required TResult Function(_SubtractWeekType value) subtractWeekType,
   }) {
@@ -604,6 +783,7 @@ class _$SubtractWeekTypeImpl implements _SubtractWeekType {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Load value)? load,
+    TResult? Function(_LoadLocal value)? loadLocal,
     TResult? Function(_AddWeekType value)? addWeekType,
     TResult? Function(_SubtractWeekType value)? subtractWeekType,
   }) {
@@ -615,6 +795,7 @@ class _$SubtractWeekTypeImpl implements _SubtractWeekType {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Load value)? load,
+    TResult Function(_LoadLocal value)? loadLocal,
     TResult Function(_AddWeekType value)? addWeekType,
     TResult Function(_SubtractWeekType value)? subtractWeekType,
     required TResult orElse(),

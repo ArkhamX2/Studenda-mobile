@@ -11,7 +11,7 @@ class GetSchedule extends Usecase<List<SubjectModel>,ScheduleRequestModel>{
   GetSchedule({required this.scheduleRepository});
 
   @override
-  Future<Either<Failure,List<SubjectModel>>> call(ScheduleRequestModel request) async{
-    return await scheduleRepository.load(request);
+  Future<Either<Failure,List<SubjectModel>>> call(ScheduleRequestModel request, [bool remote = true]) async{
+    return await scheduleRepository.load(request,remote);
   }
 }
