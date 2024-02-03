@@ -53,7 +53,7 @@ class _BodyWidget extends StatelessWidget {
             event: () {
               Navigator.of(context).push(
                 MaterialPageRoute<void>(
-                  builder: (context) => const GuestGroupSelectorPage(),
+                  builder: (context) => const GroupSelectorPage(),
                 ),
               );
             },

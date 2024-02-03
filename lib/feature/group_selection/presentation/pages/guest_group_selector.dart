@@ -12,14 +12,14 @@ import 'package:studenda_mobile_student/feature/group_selection/presentation/blo
 import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/main_group_selection_bloc/main_group_selector_bloc.dart';
 import 'package:studenda_mobile_student/injection_container.dart';
 
-class GuestGroupSelectorPage extends StatefulWidget {
-  const GuestGroupSelectorPage({super.key});
+class GroupSelectorPage extends StatefulWidget {
+  const GroupSelectorPage({super.key});
 
   @override
-  State<GuestGroupSelectorPage> createState() => _GuestGroupSelectorPageState();
+  State<GroupSelectorPage> createState() => _GroupSelectorPageState();
 }
 
-class _GuestGroupSelectorPageState extends State<GuestGroupSelectorPage> {
+class _GroupSelectorPageState extends State<GroupSelectorPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
