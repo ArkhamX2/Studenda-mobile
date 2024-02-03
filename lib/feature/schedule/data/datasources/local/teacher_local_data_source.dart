@@ -5,7 +5,7 @@ import 'package:studenda_mobile_student/feature/auth/data/models/user_model/user
 abstract class TeacherLocalDataSource {
   Future<void> add(List<UserModel> remoteLoad);
 
-  Future<List<UserModel>> load();
+  Future<List<UserModel>> load(List<int> request);
 }
 
 class TeacherLocalDataSourceImpl implements TeacherLocalDataSource {
@@ -23,9 +23,9 @@ class TeacherLocalDataSourceImpl implements TeacherLocalDataSource {
   }
 
   @override
-  Future<List<UserModel>> load() async {
+  Future<List<UserModel>> load(List<int> request) async {
     try {
-      return userBox.values.toList();
+      return userBox.values.where((element) => request.contains(element.id)).toList();
     } catch (e) {
       throw CacheException();
     }

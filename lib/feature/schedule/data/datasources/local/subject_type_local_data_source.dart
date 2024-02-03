@@ -5,7 +5,7 @@ import 'package:studenda_mobile_student/feature/schedule/data/models/subject_typ
 abstract class SubjectTypeLocalDataSource {
   Future<void> add(List<SubjectTypeModel> remoteLoad);
 
-  Future<List<SubjectTypeModel>> load();
+  Future<List<SubjectTypeModel>> load(List<int> request);
 }
 
 class SubjectTypeLocalDataSourceImpl implements SubjectTypeLocalDataSource {
@@ -23,9 +23,9 @@ class SubjectTypeLocalDataSourceImpl implements SubjectTypeLocalDataSource {
   }
 
   @override
-  Future<List<SubjectTypeModel>> load() async {
+  Future<List<SubjectTypeModel>> load(List<int> request) async {
     try {
-      return subjectTypeBox.values.toList();
+      return subjectTypeBox.values.where((element) => request.contains(element.id)).toList();
     } catch (e) {
       throw CacheException();
     }

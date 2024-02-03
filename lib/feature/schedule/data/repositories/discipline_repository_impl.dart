@@ -2,8 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:studenda_mobile_student/core/data/error/exception.dart';
 import 'package:studenda_mobile_student/core/data/error/failure.dart';
 import 'package:studenda_mobile_student/core/network/network_info.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/datasources/discipline_local_data_source.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/datasources/discipline_remote_data_source.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/datasources/local/discipline_local_data_source.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/datasources/remote/discipline_remote_data_source.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/discipline_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/repositories/discipline_repository.dart';
 
@@ -29,7 +29,7 @@ class DisciplineRepositoryImpl implements DisciplineRepository {
       }
     } else {
       try {
-        return Right(await localDataSource.load());
+        return Right(await localDataSource.load(request));
       } on CacheException {
         return const Left(CacheFailure(message: "Ошибка локального хранилища"));
       }

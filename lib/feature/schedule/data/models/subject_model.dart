@@ -15,6 +15,9 @@ class SubjectModel with _$SubjectModel {
     @JsonKey(name: 'classroom') required String classroom,
     @JsonKey(name: 'subjectPositionId') required int subjectPositionId,
     @JsonKey(name: 'dayPositionId') required int dayPositionId,
+    @JsonKey(name: 'groupId') required int groupId,
+    @JsonKey(name: 'weekTypeId') required int weekTypeId,
+
   }) = _SubjectModel;
 
   
