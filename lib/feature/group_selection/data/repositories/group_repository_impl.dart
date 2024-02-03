@@ -7,28 +7,32 @@ import 'package:studenda_mobile_student/feature/group_selection/data/datasources
 import 'package:studenda_mobile_student/feature/group_selection/data/models/group_model.dart';
 import 'package:studenda_mobile_student/feature/group_selection/domain/repositories/groups_repository.dart';
 
-class GroupRepositoryImpl implements GroupRepository{
-
+class GroupRepositoryImpl implements GroupRepository {
   final GroupRemoteDataSource remoteDataSource;
   final GroupLocalDataSource localDataSource;
   final NetworkInfo networkInfo;
 
-  GroupRepositoryImpl({required this.remoteDataSource, required this.localDataSource, required this.networkInfo});
+  GroupRepositoryImpl(
+      {required this.remoteDataSource,
+      required this.localDataSource,
+      required this.networkInfo});
 
   @override
   Future<Either<Failure, List<GroupModel>>> load(void request) async {
-    if( await networkInfo.isConnected ){
-      try{
+    if (await networkInfo.isConnected) {
+      try {
         final remoteLoad = await remoteDataSource.load(request);
-        //TODO: localdatasource cache
+        localDataSource.add(remoteLoad);
         return Right(remoteLoad);
-      } on ServerException{
+      } on ServerException {
         return const Left(ServerFailure(message: "Ошибка сервера"));
       }
-    } else{
-      //TODO: get data from cache
+    } else {
+      try {
+        return Right(await localDataSource.get());
+      } on CacheException {
+        return const Left(CacheFailure(message: "Ошибка локального хранилища"));
+      }
     }
-    return const Left(LoadGroupsFailure(message: "Ошибка загрузки списка курсов"));
   }
-  
 }

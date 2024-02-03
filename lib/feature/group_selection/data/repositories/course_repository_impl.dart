@@ -20,15 +20,18 @@ class CourseRepositoryImpl implements CourseRepository{
     if( await networkInfo.isConnected ){
       try{
         final remoteLoad = await remoteDataSource.load(request);
-        //TODO: localdatasource cache
+        localDataSource.add(remoteLoad);
         return Right(remoteLoad);
       } on ServerException{
         return const Left(ServerFailure(message: "Ошибка сервера"));
       }
     } else{
-      //TODO: get data from cache
+      try{
+        return Right(await localDataSource.get());
+      } on CacheException{
+        return const Left(CacheFailure(message: "Ошибка локального хранилища"));
+      }
     }
-    return const Left(LoadCoursesFailure(message: "Ошибка загрузки списка курсов"));
   }
   
 }

@@ -46,13 +46,26 @@ import 'package:studenda_mobile_student/feature/group_selection/presentation/blo
 import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/department_cubit/department_cubit.dart';
 import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/group_cubit/group_cubit.dart';
 import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/main_group_selection_bloc/main_group_selector_bloc.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/datasources/day_position_local_data_source.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/datasources/day_position_remote_data_source.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/datasources/discipline_local_data_source.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/datasources/discipline_remote_data_source.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/datasources/schedule_local_data_source.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/datasources/schedule_remote_data_source.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/datasources/subject_position_local_data_source.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/datasources/subject_position_remote_data_source.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/datasources/subject_type_local_data_source.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/datasources/subject_type_remote_data_source.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/datasources/teacher_local_data_source.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/datasources/teacher_remote_data_source.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/datasources/week_type_local_data_source.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/datasources/week_type_remote_data_source.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/day_position_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/discipline_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/subject_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/subject_position_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/subject_type_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/week_type_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/repositories/day_position_repository_impl.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/repositories/discipline_repository_impl.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/repositories/schedule_repository_impl.dart';
@@ -346,6 +359,7 @@ Future<void> init() async {
   sl.registerLazySingleton<SubjectTypeRepository>(
     () => SubjectTypeRepositoryImpl(
       remoteDataSource: sl(),
+      localDataSource: sl(),
       networkInfo: sl(),
     ),
   );
@@ -353,6 +367,7 @@ Future<void> init() async {
   sl.registerLazySingleton<DayPositionRepository>(
     () => DayPositionRepositoryImpl(
       remoteDataSource: sl(),
+      localDataSource: sl(),
       networkInfo: sl(),
     ),
   );
@@ -360,6 +375,7 @@ Future<void> init() async {
   sl.registerLazySingleton<SubjectPositionRepository>(
     () => SubjectPositionRepositoryImpl(
       remoteDataSource: sl(),
+      localDataSource: sl(),
       networkInfo: sl(),
     ),
   );
@@ -367,6 +383,7 @@ Future<void> init() async {
   sl.registerLazySingleton<ScheduleRepository>(
     () => ScheduleRepositoryImpl(
       remoteDataSource: sl(),
+      localDataSource: sl(),
       networkInfo: sl(),
     ),
   );
@@ -374,6 +391,7 @@ Future<void> init() async {
   sl.registerLazySingleton<WeekTypeRepository>(
     () => WeekTypeRepositoryImpl(
       remoteDataSource: sl(),
+      localDataSource: sl(),
       networkInfo: sl(),
     ),
   );
@@ -381,6 +399,7 @@ Future<void> init() async {
   sl.registerLazySingleton<DisciplineRepository>(
     () => DisciplineRepositoryImpl(
       remoteDataSource: sl(),
+      localDataSource: sl(),
       networkInfo: sl(),
     ),
   );
@@ -388,6 +407,7 @@ Future<void> init() async {
   sl.registerLazySingleton<TeacherRepository>(
     () => TeacherRepositoryImpl(
       remoteDataSource: sl(),
+      localDataSource: sl(),
       networkInfo: sl(),
     ),
   );
@@ -435,6 +455,63 @@ Future<void> init() async {
     ),
   );
 
+  sl.registerLazySingletonAsync<SubjectTypeLocalDataSource>(
+    () async {
+      return SubjectTypeLocalDataSourceImpl(
+        subjectTypeBox: await Hive.openBox<SubjectTypeModel>('SubjectTypeBox'),
+      );
+    },
+  );
+
+  sl.registerLazySingletonAsync<DayPositionLocalDataSource>(
+    () async {
+      return DayPositionLocalDataSourceImpl(
+        dayPositionBox: await Hive.openBox<DayPositionModel>('DayPositionBox'),
+      );
+    },
+  );
+
+  sl.registerLazySingletonAsync<SubjectPositionLocalDataSource>(
+    () async {
+      return SubjectPositionLocalDataSourceImpl(
+        subjectPositionBox:
+            await Hive.openBox<SubjectPositionModel>('SubjectPositionBox'),
+      );
+    },
+  );
+
+  sl.registerLazySingletonAsync<ScheduleLocalDataSource>(
+    () async {
+      return ScheduleLocalDataSourceImpl(
+        subjectBox: await Hive.openBox<SubjectModel>("ScheduleBox"),
+      );
+    },
+  );
+
+  sl.registerLazySingletonAsync<WeekTypeLocalDataSource>(
+    () async {
+      return WeekTypeLocalDataSourceImpl(
+        prefs: prefs,
+        weekTypeBox: await Hive.openBox<WeekTypeModel>("WeekTypeBox"),
+      );
+    },
+  );
+
+  sl.registerLazySingletonAsync<DisciplineLocalDataSource>(
+    () async {
+      return DisciplineLocalDataSourceImpl(
+        disciplineBox: await Hive.openBox<DisciplineModel>("DisciplineBox"),
+      );
+    },
+  );
+
+  sl.registerLazySingletonAsync<TeacherLocalDataSource>(
+    () async {
+      return TeacherLocalDataSourceImpl(
+        userBox: await Hive.openBox<UserModel>("TeacherBox"),
+      );
+    },
+  );
   //! Core
 
   sl.registerLazySingleton<NetworkInfo>(
