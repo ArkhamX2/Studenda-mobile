@@ -1,11 +1,10 @@
+// ignore_for_file: void_checks
+
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:studenda_mobile_student/feature/group_selection/domain/entities/course_entity.dart';
 import 'package:studenda_mobile_student/feature/group_selection/domain/entities/department_entity.dart';
 import 'package:studenda_mobile_student/feature/group_selection/domain/entities/group_entity.dart';
-import 'package:studenda_mobile_student/feature/group_selection/domain/usecases/load_courses.dart';
-import 'package:studenda_mobile_student/feature/group_selection/domain/usecases/load_departments.dart';
-import 'package:studenda_mobile_student/feature/group_selection/domain/usecases/load_groups.dart';
 import 'package:studenda_mobile_student/feature/group_selection/domain/usecases/selected_items/get_selected_course.dart';
 import 'package:studenda_mobile_student/feature/group_selection/domain/usecases/selected_items/get_selected_department.dart';
 import 'package:studenda_mobile_student/feature/group_selection/domain/usecases/selected_items/get_selected_group.dart';

@@ -78,9 +78,9 @@ import 'package:studenda_mobile_student/feature/schedule/domain/usecases/get_tea
 import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/schedule_bloc.dart';
 
 final sl = GetIt.instance;
-const secureStorage = FlutterSecureStorage();
 
 Future<void> init() async {
+  const secureStorage = FlutterSecureStorage();
   Hive.registerAdapter(UserModelAdapter());
   final SharedPreferences prefs = await SharedPreferences.getInstance();
 

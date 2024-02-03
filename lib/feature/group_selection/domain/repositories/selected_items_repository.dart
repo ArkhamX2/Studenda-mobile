@@ -3,7 +3,6 @@ import 'package:studenda_mobile_student/core/data/error/failure.dart';
 import 'package:studenda_mobile_student/feature/group_selection/data/models/course_model.dart';
 import 'package:studenda_mobile_student/feature/group_selection/data/models/department_model.dart';
 import 'package:studenda_mobile_student/feature/group_selection/data/models/group_model.dart';
-import 'package:studenda_mobile_student/feature/group_selection/domain/entities/group_entity.dart';
 
 abstract class SelectedItemsRepository {
   Future<Either<Failure,CourseModel>> getCourse(void request);

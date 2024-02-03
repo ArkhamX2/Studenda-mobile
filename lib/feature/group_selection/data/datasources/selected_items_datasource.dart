@@ -4,12 +4,11 @@ import 'package:studenda_mobile_student/core/data/error/exception.dart';
 import 'package:studenda_mobile_student/feature/group_selection/data/models/course_model.dart';
 import 'package:studenda_mobile_student/feature/group_selection/data/models/department_model.dart';
 import 'package:studenda_mobile_student/feature/group_selection/data/models/group_model.dart';
-import 'package:studenda_mobile_student/feature/group_selection/domain/entities/group_entity.dart';
 
 abstract class SelectedItemsDataSource {
   Future<void> setDepartment(DepartmentModel departmentModel);
   Future<void> setCourse(CourseModel courseModel);
-  Future<void> setGroup(GroupEntity groupModel);
+  Future<void> setGroup(GroupModel groupModel);
   Future<DepartmentModel> getDepartment();
   Future<CourseModel> getCourse();
   Future<GroupModel> getGroup();

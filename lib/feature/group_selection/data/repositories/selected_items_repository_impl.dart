@@ -5,7 +5,6 @@ import 'package:studenda_mobile_student/feature/group_selection/data/datasources
 import 'package:studenda_mobile_student/feature/group_selection/data/models/course_model.dart';
 import 'package:studenda_mobile_student/feature/group_selection/data/models/department_model.dart';
 import 'package:studenda_mobile_student/feature/group_selection/data/models/group_model.dart';
-import 'package:studenda_mobile_student/feature/group_selection/domain/entities/group_entity.dart';
 import 'package:studenda_mobile_student/feature/group_selection/domain/repositories/selected_items_repository.dart';
 
 class SelectedItemsRepositoryImpl implements SelectedItemsRepository {
