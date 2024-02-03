@@ -129,7 +129,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
 
     on<_LoadLocal>((event, emit) async {
       emit(const ScheduleState.loading());
-      await getAllWeekType.call(() {}).then(
+      await getAllWeekType.call(() {}, false).then(
             (value) => value.fold(
               (error) => emit(ScheduleState.fail(error.message)),
               (succededWeekType) async {
@@ -151,7 +151,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
             ),
           );
 
-      await getCurrentWeekType.call(() {}).then(
+      await getCurrentWeekType.call(() {}, false).then(
             (value) => value.fold(
               (error) => emit(ScheduleState.fail(error.message)),
               (succededWeekType) async {
@@ -165,6 +165,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
                   currentWeekType!,
                   emit,
                   DateTime.now(),
+                  false,
                 );
               },
             ),
@@ -176,8 +177,9 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
     int groupId,
     WeekTypeEntity currentWeekType,
     Emitter<ScheduleState> emit,
-    DateTime currentDate,
-  ) async {
+    DateTime currentDate, [
+    bool remote = true,
+  ]) async {
     await getSchedule
         .call(
           ScheduleRequestModel(
@@ -185,6 +187,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
             weekTypeId: currentWeekType.index,
             academicYear: getCurrentAcademicYear(),
           ),
+          remote,
         )
         .then(
           (value) => value.fold(
@@ -195,6 +198,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
                 emit,
                 currentWeekType,
                 currentDate,
+                remote,
               );
             },
           ),
@@ -205,13 +209,15 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
     List<SubjectModel> succededSubjectList,
     Emitter<ScheduleState> emit,
     WeekTypeEntity currentWeekType,
-    DateTime currentDate,
-  ) async {
+    DateTime currentDate, [
+    bool remote = true,
+  ]) async {
     await getDisciplineList
         .call(
           _getDisciplineIds(
             succededSubjectList,
           ),
+          remote,
         )
         .then(
           (value) => value.fold(
@@ -227,6 +233,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
                 succededDisciplineList,
                 currentWeekType,
                 currentDate,
+                remote,
               );
             },
           ),
@@ -238,11 +245,13 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
     Emitter<ScheduleState> emit,
     List<DisciplineModel> succededDisciplineList,
     WeekTypeEntity currentWeekType,
-    DateTime currentDate,
-  ) async {
+    DateTime currentDate, [
+    bool remote = true,
+  ]) async {
     await getTeacherList
         .call(
           _getTeacherIds(succededSubjectList),
+          remote,
         )
         .then(
           (value) => value.fold(
@@ -259,6 +268,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
                 succededTeacherList,
                 currentWeekType,
                 currentDate,
+                remote,
               );
             },
           ),
@@ -271,13 +281,15 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
     List<DisciplineModel> succededDisciplineList,
     List<UserModel> succededTeacherList,
     WeekTypeEntity currentWeekType,
-    DateTime currentDate,
-  ) async {
+    DateTime currentDate, [
+    bool remote = true,
+  ]) async {
     await getSubjectType
         .call(
           _getSubjectTypeIds(
             succededSubjectList,
           ),
+          remote,
         )
         .then(
           (value) => value.fold(
@@ -295,6 +307,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
                 succededSubjectTypeList,
                 currentWeekType,
                 currentDate,
+                remote,
               );
             },
           ),
@@ -308,11 +321,13 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
     List<UserModel> succededTeacherList,
     List<SubjectTypeModel> succededSubjectTypeList,
     WeekTypeEntity currentWeekType,
-    DateTime currentDate,
-  ) async {
+    DateTime currentDate, [
+    bool remote = true,
+  ]) async {
     await getDayPosition
         .call(
           () {},
+          remote,
         )
         .then(
           (value) => value.fold(
@@ -331,6 +346,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
                 succededSubjectTypeList,
                 currentWeekType,
                 currentDate,
+                remote,
               );
             },
           ),
@@ -345,11 +361,13 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
     List<DayPositionModel> succededDayPositionList,
     List<SubjectTypeModel> succededSubjectTypeList,
     WeekTypeEntity currentWeekType,
-    DateTime currentDate,
-  ) async {
+    DateTime currentDate, [
+    bool remote = true,
+  ]) async {
     await getSubjectPosition
         .call(
           () {},
+          remote,
         )
         .then(
           (value) => value.fold(
