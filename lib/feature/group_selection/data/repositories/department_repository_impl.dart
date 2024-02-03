@@ -15,7 +15,7 @@ class DepartmentRepositoryImpl implements DepartmentRepository {
   DepartmentRepositoryImpl(
       {required this.remoteDataSource,
       required this.localDataSource,
-      required this.networkInfo});
+      required this.networkInfo,});
 
   @override
   Future<Either<Failure, List<DepartmentModel>>> load(void request) async {
@@ -34,7 +34,5 @@ class DepartmentRepositoryImpl implements DepartmentRepository {
         return const Left(CacheFailure(message: "Ошибка локального хранилища"));
       }
     }
-    return const Left(
-        LoadDepartmentsFailure(message: "Ошибка загрузки списка курсов"));
   }
 }

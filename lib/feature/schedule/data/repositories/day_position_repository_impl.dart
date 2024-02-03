@@ -15,7 +15,7 @@ class DayPositionRepositoryImpl implements DayPositionRepository {
   DayPositionRepositoryImpl(
       {required this.remoteDataSource,
       required this.localDataSource,
-      required this.networkInfo});
+      required this.networkInfo,});
   @override
   Future<Either<Failure, List<DayPositionModel>>> load(void request) async {
     if (await networkInfo.isConnected) {

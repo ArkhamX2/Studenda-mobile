@@ -15,10 +15,10 @@ class SubjectTypeRepositoryImpl implements SubjectTypeRepository {
   SubjectTypeRepositoryImpl(
       {required this.remoteDataSource,
       required this.localDataSource,
-      required this.networkInfo});
+      required this.networkInfo,});
   @override
   Future<Either<Failure, List<SubjectTypeModel>>> load(
-      List<int> request) async {
+      List<int> request,) async {
     if (await networkInfo.isConnected) {
       try {
         final remoteLoad = await remoteDataSource.load(request);

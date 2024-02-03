@@ -15,7 +15,7 @@ class GroupRepositoryImpl implements GroupRepository {
   GroupRepositoryImpl(
       {required this.remoteDataSource,
       required this.localDataSource,
-      required this.networkInfo});
+      required this.networkInfo,});
 
   @override
   Future<Either<Failure, List<GroupModel>>> load(void request) async {

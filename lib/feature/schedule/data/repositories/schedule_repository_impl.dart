@@ -16,10 +16,10 @@ class ScheduleRepositoryImpl implements ScheduleRepository {
   ScheduleRepositoryImpl(
       {required this.remoteDataSource,
       required this.localDataSource,
-      required this.networkInfo});
+      required this.networkInfo,});
   @override
   Future<Either<Failure, List<SubjectModel>>> load(
-      ScheduleRequestModel request) async {
+      ScheduleRequestModel request,) async {
     if (await networkInfo.isConnected) {
       try {
         final remoteLoad = await remoteDataSource.load(request);
