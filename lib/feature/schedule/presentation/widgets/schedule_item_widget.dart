@@ -76,7 +76,7 @@ class _TeacherSubjectInfoRowWidget extends StatelessWidget {
                   ),
                   Expanded(
                     child: Text(
-                      widget.subject.teacher,
+                      widget.subject.teacher == null ? "" : widget.subject.teacher!,
                       style: const TextStyle(
                         color: mainForegroundColor,
                         fontSize: 16,

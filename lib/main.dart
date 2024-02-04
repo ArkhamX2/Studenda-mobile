@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
           '/notification': (context) => const NotificationScreenWidget(),
           '/group_selection': (context) => const GroupSelectorPage(),
         },
-        initialRoute: '/group_selection',
+        initialRoute: '/schedule',
       ),
     );
   }

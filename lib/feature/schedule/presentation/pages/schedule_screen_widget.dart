@@ -39,8 +39,8 @@ class _BodyBuilderWidget extends StatelessWidget {
       create: (context) {
         return sl<ScheduleBloc>()
           ..add(
-            ScheduleEvent.load(
-              groupSelectorBloc.selectedGroup.id,
+            const ScheduleEvent.load(
+              1,
             ),
           );
       },
@@ -138,8 +138,8 @@ class _DateCarouselWrapperWidget extends StatelessWidget {
         }
       },
       onPrevTap: () =>
-          scheduleBloc.add(ScheduleEvent.subtractWeekType(groupId)),
-      onNextTap: () => scheduleBloc.add(ScheduleEvent.addWeekType(groupId)),
+          scheduleBloc.add(const ScheduleEvent.subtractWeekType(1)),
+      onNextTap: () => scheduleBloc.add(const ScheduleEvent.addWeekType(1)),
     );
   }
 }
@@ -187,15 +187,10 @@ class _ScheduleAppBarWidget extends StatelessWidget
       titleSpacing: 0,
       automaticallyImplyLeading: false,
       centerTitle: true,
-      title: GestureDetector(
-        //TODO: Добавить иконку лупы
-        child: Text(
-          groupBloc.selectedGroup.name.isEmpty ? "Выберите группу" : groupBloc.selectedGroup.name,
-          style: const TextStyle(color: Colors.white, fontSize: 25, decoration: TextDecoration.underline, decorationColor: Colors.white),
-        ),
-        onTap: () {
-          Navigator.of(context).pushNamed('/group_selection');
-        },
+      title: const Text(
+        // groupBloc.selectedGroup.name.isEmpty ? "Выберите группу" : groupBloc.selectedGroup.name,
+        "Б.ПИН.РИС.2106",
+        style: TextStyle(color: Colors.white, fontSize: 25, decoration: TextDecoration.underline, decorationColor: Colors.white),
       ),
       actions: [
         IconButton(

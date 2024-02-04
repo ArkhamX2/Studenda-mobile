@@ -184,7 +184,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
         .call(
           ScheduleRequestModel(
             groupId: groupId,
-            weekTypeId: currentWeekType.index,
+            weekTypeId: currentWeekType.id,
             academicYear: getCurrentAcademicYear(),
           ),
           remote,
@@ -401,19 +401,14 @@ List<int> _getSubjectTypeIds(List<SubjectModel> succededSubjectList) {
   final List<int> ids = [];
 
   for (final element in succededSubjectList) {
-    ids.add(element.userId);
+    ids.add(element.subjectTypeId);
   }
 
   return ids;
 }
 
 List<int> _getTeacherIds(List<SubjectModel> succededSubjectList) {
-  final List<int> ids = [];
-
-  for (final element in succededSubjectList) {
-    ids.add(element.userId);
-  }
-
+  final List<int> ids = succededSubjectList.map((e) => e.userId).toSet().toList();
   return ids;
 }
 
