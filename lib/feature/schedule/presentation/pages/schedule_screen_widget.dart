@@ -191,12 +191,6 @@ class _ScheduleAppBarWidget extends StatelessWidget
         "Б.ПИН.РИС.2106",
         style: TextStyle(color: Colors.white, fontSize: 25, decoration: TextDecoration.underline, decorationColor: Colors.white),
       ),
-      actions: [
-        IconButton(
-          onPressed: () => {Navigator.of(context).pushNamed('/notification')},
-          icon: const Icon(Icons.notifications, color: Colors.white),
-        ),
-      ],
     );
   }
 
