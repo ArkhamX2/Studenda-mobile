@@ -95,6 +95,15 @@ final sl = GetIt.instance;
 Future<void> init() async {
   const secureStorage = FlutterSecureStorage();
   Hive.registerAdapter(UserModelAdapter());
+  Hive.registerAdapter(GroupModelAdapter());
+  Hive.registerAdapter(CourseModelAdapter());
+  Hive.registerAdapter(DepartmentModelAdapter());
+  Hive.registerAdapter(DayPositionModelAdapter());
+  Hive.registerAdapter(DisciplineModelAdapter());
+  Hive.registerAdapter(SubjectModelAdapter());
+  Hive.registerAdapter(SubjectPositionModelAdapter());
+  Hive.registerAdapter(SubjectTypeModelAdapter());
+  Hive.registerAdapter(WeekTypeModelAdapter());
   final SharedPreferences prefs = await SharedPreferences.getInstance();
 
   //! Features
@@ -289,11 +298,15 @@ Future<void> init() async {
     );
   });
 
+  await sl.isReady<GroupLocalDataSource>();
+
   sl.registerLazySingletonAsync<CourseLocalDataSource>(() async {
     return CourseLocalDataSourceImpl(
       courseBox: await Hive.openBox<CourseModel>('CourseBox'),
     );
   });
+
+  await sl.isReady<CourseLocalDataSource>();
 
   sl.registerLazySingletonAsync<DepartmentLocalDataSource>(() async {
     return DepartmentLocalDataSourceImpl(
@@ -301,6 +314,7 @@ Future<void> init() async {
     );
   });
 
+  await sl.isReady<DepartmentLocalDataSource>();
   //! Auth
   // Bloc
 
@@ -463,6 +477,8 @@ Future<void> init() async {
     },
   );
 
+  await sl.isReady<SubjectTypeLocalDataSource>();
+
   sl.registerLazySingletonAsync<DayPositionLocalDataSource>(
     () async {
       return DayPositionLocalDataSourceImpl(
@@ -470,6 +486,8 @@ Future<void> init() async {
       );
     },
   );
+
+  await sl.isReady<DayPositionLocalDataSource>();
 
   sl.registerLazySingletonAsync<SubjectPositionLocalDataSource>(
     () async {
@@ -480,6 +498,8 @@ Future<void> init() async {
     },
   );
 
+  await sl.isReady<SubjectPositionLocalDataSource>();
+
   sl.registerLazySingletonAsync<ScheduleLocalDataSource>(
     () async {
       return ScheduleLocalDataSourceImpl(
@@ -487,6 +507,8 @@ Future<void> init() async {
       );
     },
   );
+
+  await sl.isReady<ScheduleLocalDataSource>();
 
   sl.registerLazySingletonAsync<WeekTypeLocalDataSource>(
     () async {
@@ -497,6 +519,8 @@ Future<void> init() async {
     },
   );
 
+  await sl.isReady<WeekTypeLocalDataSource>();
+
   sl.registerLazySingletonAsync<DisciplineLocalDataSource>(
     () async {
       return DisciplineLocalDataSourceImpl(
@@ -505,6 +529,9 @@ Future<void> init() async {
     },
   );
 
+  await sl.isReady<DisciplineLocalDataSource>();
+
+
   sl.registerLazySingletonAsync<TeacherLocalDataSource>(
     () async {
       return TeacherLocalDataSourceImpl(
@@ -512,6 +539,8 @@ Future<void> init() async {
       );
     },
   );
+
+  await sl.isReady<TeacherLocalDataSource>();
   //! Core
 
   sl.registerLazySingleton<NetworkInfo>(

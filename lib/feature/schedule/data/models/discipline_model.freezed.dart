@@ -21,8 +21,10 @@ DisciplineModel _$DisciplineModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$DisciplineModel {
   @JsonKey(name: 'id')
+  @HiveField(0)
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'name')
+  @HiveField(1)
   String get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,7 +39,9 @@ abstract class $DisciplineModelCopyWith<$Res> {
           DisciplineModel value, $Res Function(DisciplineModel) then) =
       _$DisciplineModelCopyWithImpl<$Res, DisciplineModel>;
   @useResult
-  $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: 'name') String name});
+  $Res call(
+      {@JsonKey(name: 'id') @HiveField(0) int id,
+      @JsonKey(name: 'name') @HiveField(1) String name});
 }
 
 /// @nodoc
@@ -77,7 +81,9 @@ abstract class _$$DisciplineModelImplCopyWith<$Res>
       __$$DisciplineModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: 'name') String name});
+  $Res call(
+      {@JsonKey(name: 'id') @HiveField(0) int id,
+      @JsonKey(name: 'name') @HiveField(1) String name});
 }
 
 /// @nodoc
@@ -109,19 +115,23 @@ class __$$DisciplineModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$DisciplineModelImpl implements _DisciplineModel {
-  const _$DisciplineModelImpl(
-      {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'name') required this.name});
+@HiveType(typeId: 5, adapterName: 'DisciplineModelAdapter')
+class _$DisciplineModelImpl extends _DisciplineModel {
+  _$DisciplineModelImpl(
+      {@JsonKey(name: 'id') @HiveField(0) required this.id,
+      @JsonKey(name: 'name') @HiveField(1) required this.name})
+      : super._();
 
   factory _$DisciplineModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$DisciplineModelImplFromJson(json);
 
   @override
   @JsonKey(name: 'id')
+  @HiveField(0)
   final int id;
   @override
   @JsonKey(name: 'name')
+  @HiveField(1)
   final String name;
 
   @override
@@ -157,20 +167,23 @@ class _$DisciplineModelImpl implements _DisciplineModel {
   }
 }
 
-abstract class _DisciplineModel implements DisciplineModel {
-  const factory _DisciplineModel(
-          {@JsonKey(name: 'id') required final int id,
-          @JsonKey(name: 'name') required final String name}) =
+abstract class _DisciplineModel extends DisciplineModel {
+  factory _DisciplineModel(
+          {@JsonKey(name: 'id') @HiveField(0) required final int id,
+          @JsonKey(name: 'name') @HiveField(1) required final String name}) =
       _$DisciplineModelImpl;
+  _DisciplineModel._() : super._();
 
   factory _DisciplineModel.fromJson(Map<String, dynamic> json) =
       _$DisciplineModelImpl.fromJson;
 
   @override
   @JsonKey(name: 'id')
+  @HiveField(0)
   int get id;
   @override
   @JsonKey(name: 'name')
+  @HiveField(1)
   String get name;
   @override
   @JsonKey(ignore: true)

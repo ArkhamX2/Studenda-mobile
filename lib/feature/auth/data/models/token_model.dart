@@ -7,6 +7,7 @@ part 'token_model.g.dart';
 
 @freezed
 class TokenModel with _$TokenModel{
+  
   const factory TokenModel({
     @JsonKey(name: 'accessToken') required String token,
     @JsonKey(name: 'RefreshToken') required String refreshToken,

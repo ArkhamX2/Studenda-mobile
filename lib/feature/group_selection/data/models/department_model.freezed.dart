@@ -21,8 +21,10 @@ DepartmentModel _$DepartmentModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$DepartmentModel {
   @JsonKey(name: 'id')
+  @HiveField(0)
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'name')
+  @HiveField(1)
   String get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,7 +39,9 @@ abstract class $DepartmentModelCopyWith<$Res> {
           DepartmentModel value, $Res Function(DepartmentModel) then) =
       _$DepartmentModelCopyWithImpl<$Res, DepartmentModel>;
   @useResult
-  $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: 'name') String name});
+  $Res call(
+      {@JsonKey(name: 'id') @HiveField(0) int id,
+      @JsonKey(name: 'name') @HiveField(1) String name});
 }
 
 /// @nodoc
@@ -77,7 +81,9 @@ abstract class _$$DepartmentModelImplCopyWith<$Res>
       __$$DepartmentModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: 'name') String name});
+  $Res call(
+      {@JsonKey(name: 'id') @HiveField(0) int id,
+      @JsonKey(name: 'name') @HiveField(1) String name});
 }
 
 /// @nodoc
@@ -109,19 +115,23 @@ class __$$DepartmentModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$DepartmentModelImpl implements _DepartmentModel {
-  const _$DepartmentModelImpl(
-      {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'name') required this.name});
+@HiveType(typeId: 2, adapterName: 'DepartmentModelAdapter')
+class _$DepartmentModelImpl extends _DepartmentModel {
+  _$DepartmentModelImpl(
+      {@JsonKey(name: 'id') @HiveField(0) required this.id,
+      @JsonKey(name: 'name') @HiveField(1) required this.name})
+      : super._();
 
   factory _$DepartmentModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$DepartmentModelImplFromJson(json);
 
   @override
   @JsonKey(name: 'id')
+  @HiveField(0)
   final int id;
   @override
   @JsonKey(name: 'name')
+  @HiveField(1)
   final String name;
 
   @override
@@ -157,20 +167,23 @@ class _$DepartmentModelImpl implements _DepartmentModel {
   }
 }
 
-abstract class _DepartmentModel implements DepartmentModel {
-  const factory _DepartmentModel(
-          {@JsonKey(name: 'id') required final int id,
-          @JsonKey(name: 'name') required final String name}) =
+abstract class _DepartmentModel extends DepartmentModel {
+  factory _DepartmentModel(
+          {@JsonKey(name: 'id') @HiveField(0) required final int id,
+          @JsonKey(name: 'name') @HiveField(1) required final String name}) =
       _$DepartmentModelImpl;
+  _DepartmentModel._() : super._();
 
   factory _DepartmentModel.fromJson(Map<String, dynamic> json) =
       _$DepartmentModelImpl.fromJson;
 
   @override
   @JsonKey(name: 'id')
+  @HiveField(0)
   int get id;
   @override
   @JsonKey(name: 'name')
+  @HiveField(1)
   String get name;
   @override
   @JsonKey(ignore: true)

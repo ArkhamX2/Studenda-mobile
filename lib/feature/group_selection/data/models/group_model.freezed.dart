@@ -21,8 +21,10 @@ GroupModel _$GroupModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$GroupModel {
   @JsonKey(name: 'id')
+  @HiveField(0)
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'name')
+  @HiveField(1)
   String get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,7 +39,9 @@ abstract class $GroupModelCopyWith<$Res> {
           GroupModel value, $Res Function(GroupModel) then) =
       _$GroupModelCopyWithImpl<$Res, GroupModel>;
   @useResult
-  $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: 'name') String name});
+  $Res call(
+      {@JsonKey(name: 'id') @HiveField(0) int id,
+      @JsonKey(name: 'name') @HiveField(1) String name});
 }
 
 /// @nodoc
@@ -77,7 +81,9 @@ abstract class _$$GroupModelImplCopyWith<$Res>
       __$$GroupModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: 'name') String name});
+  $Res call(
+      {@JsonKey(name: 'id') @HiveField(0) int id,
+      @JsonKey(name: 'name') @HiveField(1) String name});
 }
 
 /// @nodoc
@@ -109,19 +115,23 @@ class __$$GroupModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$GroupModelImpl implements _GroupModel {
-  const _$GroupModelImpl(
-      {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'name') required this.name});
+@HiveType(typeId: 3, adapterName: 'GroupModelAdapter')
+class _$GroupModelImpl extends _GroupModel {
+  _$GroupModelImpl(
+      {@JsonKey(name: 'id') @HiveField(0) required this.id,
+      @JsonKey(name: 'name') @HiveField(1) required this.name})
+      : super._();
 
   factory _$GroupModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$GroupModelImplFromJson(json);
 
   @override
   @JsonKey(name: 'id')
+  @HiveField(0)
   final int id;
   @override
   @JsonKey(name: 'name')
+  @HiveField(1)
   final String name;
 
   @override
@@ -156,19 +166,23 @@ class _$GroupModelImpl implements _GroupModel {
   }
 }
 
-abstract class _GroupModel implements GroupModel {
-  const factory _GroupModel(
-      {@JsonKey(name: 'id') required final int id,
-      @JsonKey(name: 'name') required final String name}) = _$GroupModelImpl;
+abstract class _GroupModel extends GroupModel {
+  factory _GroupModel(
+          {@JsonKey(name: 'id') @HiveField(0) required final int id,
+          @JsonKey(name: 'name') @HiveField(1) required final String name}) =
+      _$GroupModelImpl;
+  _GroupModel._() : super._();
 
   factory _GroupModel.fromJson(Map<String, dynamic> json) =
       _$GroupModelImpl.fromJson;
 
   @override
   @JsonKey(name: 'id')
+  @HiveField(0)
   int get id;
   @override
   @JsonKey(name: 'name')
+  @HiveField(1)
   String get name;
   @override
   @JsonKey(ignore: true)

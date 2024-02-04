@@ -21,10 +21,13 @@ WeekTypeModel _$WeekTypeModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$WeekTypeModel {
   @JsonKey(name: 'id')
+  @HiveField(0)
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'name')
+  @HiveField(1)
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'index')
+  @HiveField(2)
   int get index => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,9 +43,9 @@ abstract class $WeekTypeModelCopyWith<$Res> {
       _$WeekTypeModelCopyWithImpl<$Res, WeekTypeModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'id') int id,
-      @JsonKey(name: 'name') String name,
-      @JsonKey(name: 'index') int index});
+      {@JsonKey(name: 'id') @HiveField(0) int id,
+      @JsonKey(name: 'name') @HiveField(1) String name,
+      @JsonKey(name: 'index') @HiveField(2) int index});
 }
 
 /// @nodoc
@@ -88,9 +91,9 @@ abstract class _$$WeekTypeModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'id') int id,
-      @JsonKey(name: 'name') String name,
-      @JsonKey(name: 'index') int index});
+      {@JsonKey(name: 'id') @HiveField(0) int id,
+      @JsonKey(name: 'name') @HiveField(1) String name,
+      @JsonKey(name: 'index') @HiveField(2) int index});
 }
 
 /// @nodoc
@@ -127,23 +130,28 @@ class __$$WeekTypeModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$WeekTypeModelImpl implements _WeekTypeModel {
-  const _$WeekTypeModelImpl(
-      {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'name') required this.name,
-      @JsonKey(name: 'index') required this.index});
+@HiveType(typeId: 9, adapterName: 'WeekTypeModelAdapter')
+class _$WeekTypeModelImpl extends _WeekTypeModel {
+  _$WeekTypeModelImpl(
+      {@JsonKey(name: 'id') @HiveField(0) required this.id,
+      @JsonKey(name: 'name') @HiveField(1) required this.name,
+      @JsonKey(name: 'index') @HiveField(2) required this.index})
+      : super._();
 
   factory _$WeekTypeModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$WeekTypeModelImplFromJson(json);
 
   @override
   @JsonKey(name: 'id')
+  @HiveField(0)
   final int id;
   @override
   @JsonKey(name: 'name')
+  @HiveField(1)
   final String name;
   @override
   @JsonKey(name: 'index')
+  @HiveField(2)
   final int index;
 
   @override
@@ -179,23 +187,28 @@ class _$WeekTypeModelImpl implements _WeekTypeModel {
   }
 }
 
-abstract class _WeekTypeModel implements WeekTypeModel {
-  const factory _WeekTypeModel(
-      {@JsonKey(name: 'id') required final int id,
-      @JsonKey(name: 'name') required final String name,
-      @JsonKey(name: 'index') required final int index}) = _$WeekTypeModelImpl;
+abstract class _WeekTypeModel extends WeekTypeModel {
+  factory _WeekTypeModel(
+          {@JsonKey(name: 'id') @HiveField(0) required final int id,
+          @JsonKey(name: 'name') @HiveField(1) required final String name,
+          @JsonKey(name: 'index') @HiveField(2) required final int index}) =
+      _$WeekTypeModelImpl;
+  _WeekTypeModel._() : super._();
 
   factory _WeekTypeModel.fromJson(Map<String, dynamic> json) =
       _$WeekTypeModelImpl.fromJson;
 
   @override
   @JsonKey(name: 'id')
+  @HiveField(0)
   int get id;
   @override
   @JsonKey(name: 'name')
+  @HiveField(1)
   String get name;
   @override
   @JsonKey(name: 'index')
+  @HiveField(2)
   int get index;
   @override
   @JsonKey(ignore: true)

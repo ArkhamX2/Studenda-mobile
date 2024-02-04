@@ -205,7 +205,7 @@ class _ScheduleAppBarWidget extends StatelessWidget
               color: Colors.white,
               fontSize: 25,
               decoration: TextDecoration.underline,
-              decorationColor: Colors.white),
+              decorationColor: Colors.white,),
         ),
         onTap: () {
           Navigator.of(context).pushNamed('/group_selection');

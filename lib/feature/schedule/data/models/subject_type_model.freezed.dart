@@ -21,8 +21,10 @@ SubjectTypeModel _$SubjectTypeModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$SubjectTypeModel {
   @JsonKey(name: 'id')
+  @HiveField(0)
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'name')
+  @HiveField(1)
   String get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,7 +39,9 @@ abstract class $SubjectTypeModelCopyWith<$Res> {
           SubjectTypeModel value, $Res Function(SubjectTypeModel) then) =
       _$SubjectTypeModelCopyWithImpl<$Res, SubjectTypeModel>;
   @useResult
-  $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: 'name') String name});
+  $Res call(
+      {@JsonKey(name: 'id') @HiveField(0) int id,
+      @JsonKey(name: 'name') @HiveField(1) String name});
 }
 
 /// @nodoc
@@ -77,7 +81,9 @@ abstract class _$$SubjectTypeModelImplCopyWith<$Res>
       __$$SubjectTypeModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: 'name') String name});
+  $Res call(
+      {@JsonKey(name: 'id') @HiveField(0) int id,
+      @JsonKey(name: 'name') @HiveField(1) String name});
 }
 
 /// @nodoc
@@ -109,19 +115,23 @@ class __$$SubjectTypeModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$SubjectTypeModelImpl implements _SubjectTypeModel {
-  const _$SubjectTypeModelImpl(
-      {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'name') required this.name});
+@HiveType(typeId: 8, adapterName: 'SubjectTypeModelAdapter')
+class _$SubjectTypeModelImpl extends _SubjectTypeModel {
+  _$SubjectTypeModelImpl(
+      {@JsonKey(name: 'id') @HiveField(0) required this.id,
+      @JsonKey(name: 'name') @HiveField(1) required this.name})
+      : super._();
 
   factory _$SubjectTypeModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$SubjectTypeModelImplFromJson(json);
 
   @override
   @JsonKey(name: 'id')
+  @HiveField(0)
   final int id;
   @override
   @JsonKey(name: 'name')
+  @HiveField(1)
   final String name;
 
   @override
@@ -157,20 +167,23 @@ class _$SubjectTypeModelImpl implements _SubjectTypeModel {
   }
 }
 
-abstract class _SubjectTypeModel implements SubjectTypeModel {
-  const factory _SubjectTypeModel(
-          {@JsonKey(name: 'id') required final int id,
-          @JsonKey(name: 'name') required final String name}) =
+abstract class _SubjectTypeModel extends SubjectTypeModel {
+  factory _SubjectTypeModel(
+          {@JsonKey(name: 'id') @HiveField(0) required final int id,
+          @JsonKey(name: 'name') @HiveField(1) required final String name}) =
       _$SubjectTypeModelImpl;
+  _SubjectTypeModel._() : super._();
 
   factory _SubjectTypeModel.fromJson(Map<String, dynamic> json) =
       _$SubjectTypeModelImpl.fromJson;
 
   @override
   @JsonKey(name: 'id')
+  @HiveField(0)
   int get id;
   @override
   @JsonKey(name: 'name')
+  @HiveField(1)
   String get name;
   @override
   @JsonKey(ignore: true)

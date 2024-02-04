@@ -21,8 +21,10 @@ DayPositionModel _$DayPositionModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$DayPositionModel {
   @JsonKey(name: 'id')
+  @HiveField(0)
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'index')
+  @HiveField(1)
   int get index => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,7 +39,9 @@ abstract class $DayPositionModelCopyWith<$Res> {
           DayPositionModel value, $Res Function(DayPositionModel) then) =
       _$DayPositionModelCopyWithImpl<$Res, DayPositionModel>;
   @useResult
-  $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: 'index') int index});
+  $Res call(
+      {@JsonKey(name: 'id') @HiveField(0) int id,
+      @JsonKey(name: 'index') @HiveField(1) int index});
 }
 
 /// @nodoc
@@ -77,7 +81,9 @@ abstract class _$$DayPositionModelImplCopyWith<$Res>
       __$$DayPositionModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: 'index') int index});
+  $Res call(
+      {@JsonKey(name: 'id') @HiveField(0) int id,
+      @JsonKey(name: 'index') @HiveField(1) int index});
 }
 
 /// @nodoc
@@ -109,19 +115,23 @@ class __$$DayPositionModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$DayPositionModelImpl implements _DayPositionModel {
-  const _$DayPositionModelImpl(
-      {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'index') required this.index});
+@HiveType(typeId: 4, adapterName: 'DayPositionModelAdapter')
+class _$DayPositionModelImpl extends _DayPositionModel {
+  _$DayPositionModelImpl(
+      {@JsonKey(name: 'id') @HiveField(0) required this.id,
+      @JsonKey(name: 'index') @HiveField(1) required this.index})
+      : super._();
 
   factory _$DayPositionModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$DayPositionModelImplFromJson(json);
 
   @override
   @JsonKey(name: 'id')
+  @HiveField(0)
   final int id;
   @override
   @JsonKey(name: 'index')
+  @HiveField(1)
   final int index;
 
   @override
@@ -157,20 +167,23 @@ class _$DayPositionModelImpl implements _DayPositionModel {
   }
 }
 
-abstract class _DayPositionModel implements DayPositionModel {
-  const factory _DayPositionModel(
-          {@JsonKey(name: 'id') required final int id,
-          @JsonKey(name: 'index') required final int index}) =
+abstract class _DayPositionModel extends DayPositionModel {
+  factory _DayPositionModel(
+          {@JsonKey(name: 'id') @HiveField(0) required final int id,
+          @JsonKey(name: 'index') @HiveField(1) required final int index}) =
       _$DayPositionModelImpl;
+  _DayPositionModel._() : super._();
 
   factory _DayPositionModel.fromJson(Map<String, dynamic> json) =
       _$DayPositionModelImpl.fromJson;
 
   @override
   @JsonKey(name: 'id')
+  @HiveField(0)
   int get id;
   @override
   @JsonKey(name: 'index')
+  @HiveField(1)
   int get index;
   @override
   @JsonKey(ignore: true)

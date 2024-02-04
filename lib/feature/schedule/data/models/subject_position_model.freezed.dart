@@ -21,8 +21,10 @@ SubjectPositionModel _$SubjectPositionModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$SubjectPositionModel {
   @JsonKey(name: 'id')
+  @HiveField(0)
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'index')
+  @HiveField(1)
   int get index => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,7 +39,9 @@ abstract class $SubjectPositionModelCopyWith<$Res> {
           $Res Function(SubjectPositionModel) then) =
       _$SubjectPositionModelCopyWithImpl<$Res, SubjectPositionModel>;
   @useResult
-  $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: 'index') int index});
+  $Res call(
+      {@JsonKey(name: 'id') @HiveField(0) int id,
+      @JsonKey(name: 'index') @HiveField(1) int index});
 }
 
 /// @nodoc
@@ -78,7 +82,9 @@ abstract class _$$SubjectPositionModelImplCopyWith<$Res>
       __$$SubjectPositionModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: 'index') int index});
+  $Res call(
+      {@JsonKey(name: 'id') @HiveField(0) int id,
+      @JsonKey(name: 'index') @HiveField(1) int index});
 }
 
 /// @nodoc
@@ -110,19 +116,23 @@ class __$$SubjectPositionModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$SubjectPositionModelImpl implements _SubjectPositionModel {
-  const _$SubjectPositionModelImpl(
-      {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'index') required this.index});
+@HiveType(typeId: 7, adapterName: 'SubjectPositionModelAdapter')
+class _$SubjectPositionModelImpl extends _SubjectPositionModel {
+  _$SubjectPositionModelImpl(
+      {@JsonKey(name: 'id') @HiveField(0) required this.id,
+      @JsonKey(name: 'index') @HiveField(1) required this.index})
+      : super._();
 
   factory _$SubjectPositionModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$SubjectPositionModelImplFromJson(json);
 
   @override
   @JsonKey(name: 'id')
+  @HiveField(0)
   final int id;
   @override
   @JsonKey(name: 'index')
+  @HiveField(1)
   final int index;
 
   @override
@@ -159,20 +169,23 @@ class _$SubjectPositionModelImpl implements _SubjectPositionModel {
   }
 }
 
-abstract class _SubjectPositionModel implements SubjectPositionModel {
-  const factory _SubjectPositionModel(
-          {@JsonKey(name: 'id') required final int id,
-          @JsonKey(name: 'index') required final int index}) =
+abstract class _SubjectPositionModel extends SubjectPositionModel {
+  factory _SubjectPositionModel(
+          {@JsonKey(name: 'id') @HiveField(0) required final int id,
+          @JsonKey(name: 'index') @HiveField(1) required final int index}) =
       _$SubjectPositionModelImpl;
+  _SubjectPositionModel._() : super._();
 
   factory _SubjectPositionModel.fromJson(Map<String, dynamic> json) =
       _$SubjectPositionModelImpl.fromJson;
 
   @override
   @JsonKey(name: 'id')
+  @HiveField(0)
   int get id;
   @override
   @JsonKey(name: 'index')
+  @HiveField(1)
   int get index;
   @override
   @JsonKey(ignore: true)

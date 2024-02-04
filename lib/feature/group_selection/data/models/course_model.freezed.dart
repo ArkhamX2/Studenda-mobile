@@ -21,8 +21,10 @@ CourseModel _$CourseModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$CourseModel {
   @JsonKey(name: 'id')
+  @HiveField(0)
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'name')
+  @HiveField(1)
   String get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,7 +39,9 @@ abstract class $CourseModelCopyWith<$Res> {
           CourseModel value, $Res Function(CourseModel) then) =
       _$CourseModelCopyWithImpl<$Res, CourseModel>;
   @useResult
-  $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: 'name') String name});
+  $Res call(
+      {@JsonKey(name: 'id') @HiveField(0) int id,
+      @JsonKey(name: 'name') @HiveField(1) String name});
 }
 
 /// @nodoc
@@ -77,7 +81,9 @@ abstract class _$$CourseModelImplCopyWith<$Res>
       __$$CourseModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'id') int id, @JsonKey(name: 'name') String name});
+  $Res call(
+      {@JsonKey(name: 'id') @HiveField(0) int id,
+      @JsonKey(name: 'name') @HiveField(1) String name});
 }
 
 /// @nodoc
@@ -109,19 +115,23 @@ class __$$CourseModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$CourseModelImpl implements _CourseModel {
-  const _$CourseModelImpl(
-      {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'name') required this.name});
+@HiveType(typeId: 1, adapterName: 'CourseModelAdapter')
+class _$CourseModelImpl extends _CourseModel {
+  _$CourseModelImpl(
+      {@JsonKey(name: 'id') @HiveField(0) required this.id,
+      @JsonKey(name: 'name') @HiveField(1) required this.name})
+      : super._();
 
   factory _$CourseModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CourseModelImplFromJson(json);
 
   @override
   @JsonKey(name: 'id')
+  @HiveField(0)
   final int id;
   @override
   @JsonKey(name: 'name')
+  @HiveField(1)
   final String name;
 
   @override
@@ -156,19 +166,23 @@ class _$CourseModelImpl implements _CourseModel {
   }
 }
 
-abstract class _CourseModel implements CourseModel {
-  const factory _CourseModel(
-      {@JsonKey(name: 'id') required final int id,
-      @JsonKey(name: 'name') required final String name}) = _$CourseModelImpl;
+abstract class _CourseModel extends CourseModel {
+  factory _CourseModel(
+          {@JsonKey(name: 'id') @HiveField(0) required final int id,
+          @JsonKey(name: 'name') @HiveField(1) required final String name}) =
+      _$CourseModelImpl;
+  _CourseModel._() : super._();
 
   factory _CourseModel.fromJson(Map<String, dynamic> json) =
       _$CourseModelImpl.fromJson;
 
   @override
   @JsonKey(name: 'id')
+  @HiveField(0)
   int get id;
   @override
   @JsonKey(name: 'name')
+  @HiveField(1)
   String get name;
   @override
   @JsonKey(ignore: true)

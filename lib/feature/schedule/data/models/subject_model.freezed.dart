@@ -21,22 +21,31 @@ SubjectModel _$SubjectModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$SubjectModel {
   @JsonKey(name: 'id')
+  @HiveField(0)
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'disciplineId')
+  @HiveField(1)
   int get disciplineId => throw _privateConstructorUsedError;
   @JsonKey(name: 'subjectTypeId')
+  @HiveField(2)
   int get subjectTypeId => throw _privateConstructorUsedError;
   @JsonKey(name: 'userId')
+  @HiveField(3)
   int get userId => throw _privateConstructorUsedError;
   @JsonKey(name: 'classroom')
+  @HiveField(4)
   String get classroom => throw _privateConstructorUsedError;
   @JsonKey(name: 'subjectPositionId')
+  @HiveField(5)
   int get subjectPositionId => throw _privateConstructorUsedError;
   @JsonKey(name: 'dayPositionId')
+  @HiveField(6)
   int get dayPositionId => throw _privateConstructorUsedError;
   @JsonKey(name: 'groupId')
+  @HiveField(7)
   int get groupId => throw _privateConstructorUsedError;
   @JsonKey(name: 'weekTypeId')
+  @HiveField(8)
   int get weekTypeId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -52,15 +61,15 @@ abstract class $SubjectModelCopyWith<$Res> {
       _$SubjectModelCopyWithImpl<$Res, SubjectModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'id') int id,
-      @JsonKey(name: 'disciplineId') int disciplineId,
-      @JsonKey(name: 'subjectTypeId') int subjectTypeId,
-      @JsonKey(name: 'userId') int userId,
-      @JsonKey(name: 'classroom') String classroom,
-      @JsonKey(name: 'subjectPositionId') int subjectPositionId,
-      @JsonKey(name: 'dayPositionId') int dayPositionId,
-      @JsonKey(name: 'groupId') int groupId,
-      @JsonKey(name: 'weekTypeId') int weekTypeId});
+      {@JsonKey(name: 'id') @HiveField(0) int id,
+      @JsonKey(name: 'disciplineId') @HiveField(1) int disciplineId,
+      @JsonKey(name: 'subjectTypeId') @HiveField(2) int subjectTypeId,
+      @JsonKey(name: 'userId') @HiveField(3) int userId,
+      @JsonKey(name: 'classroom') @HiveField(4) String classroom,
+      @JsonKey(name: 'subjectPositionId') @HiveField(5) int subjectPositionId,
+      @JsonKey(name: 'dayPositionId') @HiveField(6) int dayPositionId,
+      @JsonKey(name: 'groupId') @HiveField(7) int groupId,
+      @JsonKey(name: 'weekTypeId') @HiveField(8) int weekTypeId});
 }
 
 /// @nodoc
@@ -136,15 +145,15 @@ abstract class _$$SubjectModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'id') int id,
-      @JsonKey(name: 'disciplineId') int disciplineId,
-      @JsonKey(name: 'subjectTypeId') int subjectTypeId,
-      @JsonKey(name: 'userId') int userId,
-      @JsonKey(name: 'classroom') String classroom,
-      @JsonKey(name: 'subjectPositionId') int subjectPositionId,
-      @JsonKey(name: 'dayPositionId') int dayPositionId,
-      @JsonKey(name: 'groupId') int groupId,
-      @JsonKey(name: 'weekTypeId') int weekTypeId});
+      {@JsonKey(name: 'id') @HiveField(0) int id,
+      @JsonKey(name: 'disciplineId') @HiveField(1) int disciplineId,
+      @JsonKey(name: 'subjectTypeId') @HiveField(2) int subjectTypeId,
+      @JsonKey(name: 'userId') @HiveField(3) int userId,
+      @JsonKey(name: 'classroom') @HiveField(4) String classroom,
+      @JsonKey(name: 'subjectPositionId') @HiveField(5) int subjectPositionId,
+      @JsonKey(name: 'dayPositionId') @HiveField(6) int dayPositionId,
+      @JsonKey(name: 'groupId') @HiveField(7) int groupId,
+      @JsonKey(name: 'weekTypeId') @HiveField(8) int weekTypeId});
 }
 
 /// @nodoc
@@ -211,47 +220,60 @@ class __$$SubjectModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$SubjectModelImpl implements _SubjectModel {
-  const _$SubjectModelImpl(
-      {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'disciplineId') required this.disciplineId,
-      @JsonKey(name: 'subjectTypeId') required this.subjectTypeId,
-      @JsonKey(name: 'userId') required this.userId,
-      @JsonKey(name: 'classroom') required this.classroom,
-      @JsonKey(name: 'subjectPositionId') required this.subjectPositionId,
-      @JsonKey(name: 'dayPositionId') required this.dayPositionId,
-      @JsonKey(name: 'groupId') required this.groupId,
-      @JsonKey(name: 'weekTypeId') required this.weekTypeId});
+@HiveType(typeId: 6, adapterName: 'SubjectModelAdapter')
+class _$SubjectModelImpl extends _SubjectModel {
+  _$SubjectModelImpl(
+      {@JsonKey(name: 'id') @HiveField(0) required this.id,
+      @JsonKey(name: 'disciplineId') @HiveField(1) required this.disciplineId,
+      @JsonKey(name: 'subjectTypeId') @HiveField(2) required this.subjectTypeId,
+      @JsonKey(name: 'userId') @HiveField(3) required this.userId,
+      @JsonKey(name: 'classroom') @HiveField(4) required this.classroom,
+      @JsonKey(name: 'subjectPositionId')
+      @HiveField(5)
+      required this.subjectPositionId,
+      @JsonKey(name: 'dayPositionId') @HiveField(6) required this.dayPositionId,
+      @JsonKey(name: 'groupId') @HiveField(7) required this.groupId,
+      @JsonKey(name: 'weekTypeId') @HiveField(8) required this.weekTypeId})
+      : super._();
 
   factory _$SubjectModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$SubjectModelImplFromJson(json);
 
   @override
   @JsonKey(name: 'id')
+  @HiveField(0)
   final int id;
   @override
   @JsonKey(name: 'disciplineId')
+  @HiveField(1)
   final int disciplineId;
   @override
   @JsonKey(name: 'subjectTypeId')
+  @HiveField(2)
   final int subjectTypeId;
   @override
   @JsonKey(name: 'userId')
+  @HiveField(3)
   final int userId;
   @override
   @JsonKey(name: 'classroom')
+  @HiveField(4)
   final String classroom;
   @override
   @JsonKey(name: 'subjectPositionId')
+  @HiveField(5)
   final int subjectPositionId;
   @override
   @JsonKey(name: 'dayPositionId')
+  @HiveField(6)
   final int dayPositionId;
   @override
   @JsonKey(name: 'groupId')
+  @HiveField(7)
   final int groupId;
   @override
   @JsonKey(name: 'weekTypeId')
+  @HiveField(8)
   final int weekTypeId;
 
   @override
@@ -300,48 +322,67 @@ class _$SubjectModelImpl implements _SubjectModel {
   }
 }
 
-abstract class _SubjectModel implements SubjectModel {
-  const factory _SubjectModel(
-      {@JsonKey(name: 'id') required final int id,
-      @JsonKey(name: 'disciplineId') required final int disciplineId,
-      @JsonKey(name: 'subjectTypeId') required final int subjectTypeId,
-      @JsonKey(name: 'userId') required final int userId,
-      @JsonKey(name: 'classroom') required final String classroom,
-      @JsonKey(name: 'subjectPositionId') required final int subjectPositionId,
-      @JsonKey(name: 'dayPositionId') required final int dayPositionId,
-      @JsonKey(name: 'groupId') required final int groupId,
+abstract class _SubjectModel extends SubjectModel {
+  factory _SubjectModel(
+      {@JsonKey(name: 'id') @HiveField(0) required final int id,
+      @JsonKey(name: 'disciplineId')
+      @HiveField(1)
+      required final int disciplineId,
+      @JsonKey(name: 'subjectTypeId')
+      @HiveField(2)
+      required final int subjectTypeId,
+      @JsonKey(name: 'userId') @HiveField(3) required final int userId,
+      @JsonKey(name: 'classroom') @HiveField(4) required final String classroom,
+      @JsonKey(name: 'subjectPositionId')
+      @HiveField(5)
+      required final int subjectPositionId,
+      @JsonKey(name: 'dayPositionId')
+      @HiveField(6)
+      required final int dayPositionId,
+      @JsonKey(name: 'groupId') @HiveField(7) required final int groupId,
       @JsonKey(name: 'weekTypeId')
+      @HiveField(8)
       required final int weekTypeId}) = _$SubjectModelImpl;
+  _SubjectModel._() : super._();
 
   factory _SubjectModel.fromJson(Map<String, dynamic> json) =
       _$SubjectModelImpl.fromJson;
 
   @override
   @JsonKey(name: 'id')
+  @HiveField(0)
   int get id;
   @override
   @JsonKey(name: 'disciplineId')
+  @HiveField(1)
   int get disciplineId;
   @override
   @JsonKey(name: 'subjectTypeId')
+  @HiveField(2)
   int get subjectTypeId;
   @override
   @JsonKey(name: 'userId')
+  @HiveField(3)
   int get userId;
   @override
   @JsonKey(name: 'classroom')
+  @HiveField(4)
   String get classroom;
   @override
   @JsonKey(name: 'subjectPositionId')
+  @HiveField(5)
   int get subjectPositionId;
   @override
   @JsonKey(name: 'dayPositionId')
+  @HiveField(6)
   int get dayPositionId;
   @override
   @JsonKey(name: 'groupId')
+  @HiveField(7)
   int get groupId;
   @override
   @JsonKey(name: 'weekTypeId')
+  @HiveField(8)
   int get weekTypeId;
   @override
   @JsonKey(ignore: true)
