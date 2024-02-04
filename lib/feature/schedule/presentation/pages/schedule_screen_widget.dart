@@ -39,8 +39,8 @@ class _BodyBuilderWidget extends StatelessWidget {
       create: (context) {
         return sl<ScheduleBloc>()
           ..add(
-            const ScheduleEvent.load(
-              1,
+            ScheduleEvent.loadLocal(
+              groupSelectorBloc.selectedGroup.id,
             ),
           );
       },
@@ -66,10 +66,18 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
     return scheduleBloc.state.when(
       initial: () => const Center(child: CircularProgressIndicator()),
       loading: () => const Center(child: CircularProgressIndicator()),
-      fail: (message) => Center(
-        child: StudendaDefaultLabelWidget(text: message, fontSize: 18),
-      ),
+      fail: (message) {
+        scheduleBloc
+            .add(ScheduleEvent.load(groupSelectorBloc.selectedGroup.id));
+        return Center(
+          child: StudendaDefaultLabelWidget(text: message, fontSize: 18),
+        );
+      },
       success: (schedule) {
+        if (schedule.schedule.isEmpty) {
+          scheduleBloc
+              .add(ScheduleEvent.load(groupSelectorBloc.selectedGroup.id));
+        }
         keys = List.generate(
           schedule.schedule.length,
           (index) => GlobalObjectKey(schedule.schedule[index].weekPosition),
@@ -187,10 +195,21 @@ class _ScheduleAppBarWidget extends StatelessWidget
       titleSpacing: 0,
       automaticallyImplyLeading: false,
       centerTitle: true,
-      title: const Text(
-        // groupBloc.selectedGroup.name.isEmpty ? "Выберите группу" : groupBloc.selectedGroup.name,
-        "Б.ПИН.РИС.2106",
-        style: TextStyle(color: Colors.white, fontSize: 25, decoration: TextDecoration.underline, decorationColor: Colors.white),
+      title: GestureDetector(
+        //TODO: Добавить иконку лупы
+        child: Text(
+          groupBloc.selectedGroup.name.isEmpty
+              ? "Выберите группу"
+              : groupBloc.selectedGroup.name,
+          style: const TextStyle(
+              color: Colors.white,
+              fontSize: 25,
+              decoration: TextDecoration.underline,
+              decorationColor: Colors.white),
+        ),
+        onTap: () {
+          Navigator.of(context).pushNamed('/group_selection');
+        },
       ),
       actions: [
         IconButton(
