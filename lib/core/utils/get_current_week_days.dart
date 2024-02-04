@@ -5,9 +5,10 @@ List<String> getCurrentWeekDays(DateTime date) {
   return List.generate(
     6,
     (index) {
-      return index - monOffset >= 0
-          ? date.add(Duration(days: index - monOffset)).day.toString()
-          : date.subtract(Duration(days: index + monOffset)).day.toString();
+      final day = index - monOffset >= 0
+          ? date.add(Duration(days: (index - monOffset).abs())).day.toString()
+          : date.subtract(Duration(days: (index - monOffset).abs())).day.toString();
+      return day;
     },
   );
 }
@@ -34,8 +35,8 @@ List<String> getCurrentWeekDaysWithMonth(DateTime date) {
     6,
     (index) {
       return index - monOffset >= 0
-          ? date.add(Duration(days: index - monOffset))
-          : date.subtract(Duration(days: index + monOffset));
+          ? date.add(Duration(days: (index - monOffset).abs()))
+          : date.subtract(Duration(days: (index - monOffset).abs()));
     },
   );
 

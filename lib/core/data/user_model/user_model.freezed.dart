@@ -25,7 +25,7 @@ mixin _$UserModel {
   @JsonKey(name: 'roleId')
   int get roleId => throw _privateConstructorUsedError;
   @JsonKey(name: 'name')
-  String get name => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,7 +41,7 @@ abstract class $UserModelCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id') int id,
       @JsonKey(name: 'roleId') int roleId,
-      @JsonKey(name: 'name') String name});
+      @JsonKey(name: 'name') String? name});
 }
 
 /// @nodoc
@@ -59,7 +59,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
   $Res call({
     Object? id = null,
     Object? roleId = null,
-    Object? name = null,
+    Object? name = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -70,10 +70,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.roleId
           : roleId // ignore: cast_nullable_to_non_nullable
               as int,
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -89,7 +89,7 @@ abstract class _$$UserModelImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'id') int id,
       @JsonKey(name: 'roleId') int roleId,
-      @JsonKey(name: 'name') String name});
+      @JsonKey(name: 'name') String? name});
 }
 
 /// @nodoc
@@ -105,7 +105,7 @@ class __$$UserModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? roleId = null,
-    Object? name = null,
+    Object? name = freezed,
   }) {
     return _then(_$UserModelImpl(
       id: null == id
@@ -116,10 +116,10 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value.roleId
           : roleId // ignore: cast_nullable_to_non_nullable
               as int,
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -143,7 +143,7 @@ class _$UserModelImpl implements _UserModel {
   final int roleId;
   @override
   @JsonKey(name: 'name')
-  final String name;
+  final String? name;
 
   @override
   String toString() {
@@ -182,7 +182,7 @@ abstract class _UserModel implements UserModel {
   const factory _UserModel(
       {@JsonKey(name: 'id') required final int id,
       @JsonKey(name: 'roleId') required final int roleId,
-      @JsonKey(name: 'name') required final String name}) = _$UserModelImpl;
+      @JsonKey(name: 'name') required final String? name}) = _$UserModelImpl;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$UserModelImpl.fromJson;
@@ -195,7 +195,7 @@ abstract class _UserModel implements UserModel {
   int get roleId;
   @override
   @JsonKey(name: 'name')
-  String get name;
+  String? get name;
   @override
   @JsonKey(ignore: true)
   _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith =>

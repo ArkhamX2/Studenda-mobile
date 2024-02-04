@@ -19,7 +19,7 @@ mixin _$SubjectEntity {
   int get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get classroom => throw _privateConstructorUsedError;
-  String get teacher => throw _privateConstructorUsedError;
+  String? get teacher => throw _privateConstructorUsedError;
   String get subjectTypeName => throw _privateConstructorUsedError;
   int get subjectPosition => throw _privateConstructorUsedError;
 
@@ -38,7 +38,7 @@ abstract class $SubjectEntityCopyWith<$Res> {
       {int id,
       String title,
       String classroom,
-      String teacher,
+      String? teacher,
       String subjectTypeName,
       int subjectPosition});
 }
@@ -59,7 +59,7 @@ class _$SubjectEntityCopyWithImpl<$Res, $Val extends SubjectEntity>
     Object? id = null,
     Object? title = null,
     Object? classroom = null,
-    Object? teacher = null,
+    Object? teacher = freezed,
     Object? subjectTypeName = null,
     Object? subjectPosition = null,
   }) {
@@ -76,10 +76,10 @@ class _$SubjectEntityCopyWithImpl<$Res, $Val extends SubjectEntity>
           ? _value.classroom
           : classroom // ignore: cast_nullable_to_non_nullable
               as String,
-      teacher: null == teacher
+      teacher: freezed == teacher
           ? _value.teacher
           : teacher // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       subjectTypeName: null == subjectTypeName
           ? _value.subjectTypeName
           : subjectTypeName // ignore: cast_nullable_to_non_nullable
@@ -104,7 +104,7 @@ abstract class _$$SubjectEntityImplCopyWith<$Res>
       {int id,
       String title,
       String classroom,
-      String teacher,
+      String? teacher,
       String subjectTypeName,
       int subjectPosition});
 }
@@ -123,7 +123,7 @@ class __$$SubjectEntityImplCopyWithImpl<$Res>
     Object? id = null,
     Object? title = null,
     Object? classroom = null,
-    Object? teacher = null,
+    Object? teacher = freezed,
     Object? subjectTypeName = null,
     Object? subjectPosition = null,
   }) {
@@ -140,10 +140,10 @@ class __$$SubjectEntityImplCopyWithImpl<$Res>
           ? _value.classroom
           : classroom // ignore: cast_nullable_to_non_nullable
               as String,
-      teacher: null == teacher
+      teacher: freezed == teacher
           ? _value.teacher
           : teacher // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       subjectTypeName: null == subjectTypeName
           ? _value.subjectTypeName
           : subjectTypeName // ignore: cast_nullable_to_non_nullable
@@ -174,7 +174,7 @@ class _$SubjectEntityImpl implements _SubjectEntity {
   @override
   final String classroom;
   @override
-  final String teacher;
+  final String? teacher;
   @override
   final String subjectTypeName;
   @override
@@ -217,7 +217,7 @@ abstract class _SubjectEntity implements SubjectEntity {
       {required final int id,
       required final String title,
       required final String classroom,
-      required final String teacher,
+      required final String? teacher,
       required final String subjectTypeName,
       required final int subjectPosition}) = _$SubjectEntityImpl;
 
@@ -228,7 +228,7 @@ abstract class _SubjectEntity implements SubjectEntity {
   @override
   String get classroom;
   @override
-  String get teacher;
+  String? get teacher;
   @override
   String get subjectTypeName;
   @override

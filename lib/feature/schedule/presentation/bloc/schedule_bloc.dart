@@ -56,7 +56,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
       currentWeekType = currentWeekType!.index == 1
           ? weekTypeList!.last
           : weekTypeList!.first;
-          
+
       datePointer = datePointer.add(const Duration(days: 7));
       await loadSchedule(
         event.groupId,
@@ -138,7 +138,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
         .call(
           ScheduleRequestModel(
             groupId: groupId,
-            weekTypeId: currentWeekType.index,
+            weekTypeId: currentWeekType.id,
             academicYear: getCurrentAcademicYear(),
           ),
         )
@@ -339,19 +339,14 @@ List<int> _getSubjectTypeIds(List<SubjectModel> succededSubjectList) {
   final List<int> ids = [];
 
   for (final element in succededSubjectList) {
-    ids.add(element.userId);
+    ids.add(element.subjectTypeId);
   }
 
   return ids;
 }
 
 List<int> _getTeacherIds(List<SubjectModel> succededSubjectList) {
-  final List<int> ids = [];
-
-  for (final element in succededSubjectList) {
-    ids.add(element.userId);
-  }
-
+  final List<int> ids = succededSubjectList.map((e) => e.userId).toSet().toList();
   return ids;
 }
 
