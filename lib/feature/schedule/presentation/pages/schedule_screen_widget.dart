@@ -212,6 +212,7 @@ class _ScheduleScrollWidgetState extends State<_ScheduleScrollWidget> {
         child: WeekScheduleWidget(
           schedule: widget.schedule,
           keys: widget.globalKeys,
+          needHighlight: widget.needScroll,
         ),
       ),
     );
