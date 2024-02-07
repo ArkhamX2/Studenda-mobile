@@ -45,3 +45,7 @@ List<String> getCurrentWeekDaysWithMonth(DateTime date) {
       (index) =>
           "${daysDates[index].day} ${monthNames[daysDates[index].month-1]}",);
 }
+
+int getCurrentWeekDay(){
+  return DateTime.now().weekday;
+}

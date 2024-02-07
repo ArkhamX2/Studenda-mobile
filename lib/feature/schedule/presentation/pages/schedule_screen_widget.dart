@@ -73,6 +73,8 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
           schedule.schedule.length,
           (index) => GlobalObjectKey(schedule.schedule[index].weekPosition),
         );
+        final weekDay = getCurrentWeekDay();
+        if (weekDay != 7) {}
         return Padding(
           padding: const EdgeInsets.all(14.0),
           child: Column(
@@ -89,6 +91,7 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
               _ScheduleScrollWidget(
                 schedule: schedule.schedule,
                 globalKeys: keys,
+                currentWeekDay: weekDay,
               ),
             ],
           ),
@@ -143,19 +146,42 @@ class _DateCarouselWrapperWidget extends StatelessWidget {
   }
 }
 
-class _ScheduleScrollWidget extends StatelessWidget {
+class _ScheduleScrollWidget extends StatefulWidget {
   final List<GlobalObjectKey> globalKeys;
 
   final List<DayScheduleEntity> schedule;
 
+  final int currentWeekDay;
+
   const _ScheduleScrollWidget({
     required this.globalKeys,
     required this.schedule,
+    required this.currentWeekDay,
   });
 
   @override
+  State<_ScheduleScrollWidget> createState() => _ScheduleScrollWidgetState();
+}
+
+class _ScheduleScrollWidgetState extends State<_ScheduleScrollWidget> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final destination =
+          widget.globalKeys.where((key) => key.value == widget.currentWeekDay-1);
+      if (destination.first.currentContext != null) {
+        Scrollable.ensureVisible(
+          destination.first.currentContext!,
+          duration: const Duration(seconds: 1),
+        );
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    if (schedule.isEmpty) {
+    if (widget.schedule.isEmpty) {
       return const Center(
         child: StudendaDefaultLabelWidget(
           fontSize: 18,
@@ -167,8 +193,8 @@ class _ScheduleScrollWidget extends StatelessWidget {
       child: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: WeekScheduleWidget(
-          schedule: schedule,
-          keys: globalKeys,
+          schedule: widget.schedule,
+          keys: widget.globalKeys,
         ),
       ),
     );
@@ -189,7 +215,11 @@ class _ScheduleAppBarWidget extends StatelessWidget
       title: const Text(
         // groupBloc.selectedGroup.name.isEmpty ? "Выберите группу" : groupBloc.selectedGroup.name,
         "Б.ПИН.РИС.2106",
-        style: TextStyle(color: Colors.white, fontSize: 25, decoration: TextDecoration.underline, decorationColor: Colors.white),
+        style: TextStyle(
+            color: Colors.white,
+            fontSize: 25,
+            decoration: TextDecoration.underline,
+            decorationColor: Colors.white),
       ),
     );
   }
