@@ -73,8 +73,7 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
           schedule.schedule.length,
           (index) => GlobalObjectKey(schedule.schedule[index].weekPosition),
         );
-        final weekDay = getCurrentWeekDay();
-        if (weekDay != 7) {}
+
         return Padding(
           padding: const EdgeInsets.all(14.0),
           child: Column(
@@ -91,7 +90,9 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
               _ScheduleScrollWidget(
                 schedule: schedule.schedule,
                 globalKeys: keys,
-                currentWeekDay: weekDay,
+                currentWeekDay: getCurrentWeekDay(),
+                needScroll: getCurrentWeekDays(scheduleBloc.datePointer)
+                    .any((element) => int.parse(element) == DateTime.now().day),
               ),
             ],
           ),
@@ -152,11 +153,13 @@ class _ScheduleScrollWidget extends StatefulWidget {
   final List<DayScheduleEntity> schedule;
 
   final int currentWeekDay;
+  final bool needScroll;
 
   const _ScheduleScrollWidget({
     required this.globalKeys,
     required this.schedule,
     required this.currentWeekDay,
+    required this.needScroll,
   });
 
   @override
@@ -168,13 +171,15 @@ class _ScheduleScrollWidgetState extends State<_ScheduleScrollWidget> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final destination =
-          widget.globalKeys.where((key) => key.value == widget.currentWeekDay-1);
-      if (destination.first.currentContext != null) {
-        Scrollable.ensureVisible(
-          destination.first.currentContext!,
-          duration: const Duration(seconds: 1),
-        );
+      if (widget.needScroll) {
+        final destination = widget.globalKeys
+            .where((key) => key.value == widget.currentWeekDay - 1);
+        if (destination.first.currentContext != null) {
+          Scrollable.ensureVisible(
+            destination.first.currentContext!,
+            duration: const Duration(seconds: 1),
+          );
+        }
       }
     });
   }
@@ -216,10 +221,11 @@ class _ScheduleAppBarWidget extends StatelessWidget
         // groupBloc.selectedGroup.name.isEmpty ? "Выберите группу" : groupBloc.selectedGroup.name,
         "Б.ПИН.РИС.2106",
         style: TextStyle(
-            color: Colors.white,
-            fontSize: 25,
-            decoration: TextDecoration.underline,
-            decorationColor: Colors.white),
+          color: Colors.white,
+          fontSize: 25,
+          decoration: TextDecoration.underline,
+          decorationColor: Colors.white,
+        ),
       ),
     );
   }
