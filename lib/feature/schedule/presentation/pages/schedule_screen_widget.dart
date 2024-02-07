@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:studenda_mobile_student/core/presentation/label/studenda_aligned_label_widget.dart';
 import 'package:studenda_mobile_student/core/presentation/label/studenda_default_label_widget.dart';
+import 'package:studenda_mobile_student/core/presentation/label/studenda_label_widget.dart';
+import 'package:studenda_mobile_student/core/presentation/label/studenda_weighted_label_widget.dart';
 import 'package:studenda_mobile_student/core/utils/get_current_week_days.dart';
 import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/main_group_selection_bloc/main_group_selection_bloc.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/entities/day_schedule_entity.dart';
@@ -79,7 +82,16 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 17),
+              Center(
+                child: StudendaWeightedLabelWidget(
+                  text: scheduleBloc.currentWeekType == null
+                      ? ""
+                      : "${scheduleBloc.currentWeekType!.name!.toUpperCase()} НЕДЕЛЯ",
+                      fontSize: 16,
+                      weight: FontWeight.w500,
+                ),
+              ),
+              const SizedBox(height: 10),
               _DateCarouselWrapperWidget(
                 globalKeys: keys,
                 scheduleBloc: scheduleBloc,
