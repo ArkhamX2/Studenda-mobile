@@ -18,7 +18,7 @@ class DateCarouselWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-        color: Color.fromARGB(255, 211, 201, 253),
+        color: Color.fromRGBO(211, 201, 253, 0.4),
         borderRadius: BorderRadius.all(Radius.circular(5)),
       ),
       child: Row(

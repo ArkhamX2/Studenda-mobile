@@ -18,6 +18,8 @@ List<DayScheduleEntity> mapSubjectModelToDayScehduleList(
 ) {
   final Map<int, List<SubjectEntity>> dayScheduleEntityMap = {};
 
+  subjects.sort((a, b) => a.dayPositionId.compareTo(b.dayPositionId));
+
   for (var i = 0; i < subjects.length; i++) {
     if (dayScheduleEntityMap.containsKey(
       dayPositionList

@@ -103,7 +103,7 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
                 schedule: schedule.schedule,
                 globalKeys: keys,
                 currentWeekDay: getCurrentWeekDay(),
-                needScroll: getCurrentWeekDays(scheduleBloc.datePointer)
+                needHighlight: getCurrentWeekDays(scheduleBloc.datePointer)
                     .any((element) => int.parse(element) == DateTime.now().day),
               ),
             ],
@@ -165,13 +165,13 @@ class _ScheduleScrollWidget extends StatefulWidget {
   final List<DayScheduleEntity> schedule;
 
   final int currentWeekDay;
-  final bool needScroll;
+  final bool needHighlight;
 
   const _ScheduleScrollWidget({
     required this.globalKeys,
     required this.schedule,
     required this.currentWeekDay,
-    required this.needScroll,
+    required this.needHighlight,
   });
 
   @override
@@ -183,7 +183,7 @@ class _ScheduleScrollWidgetState extends State<_ScheduleScrollWidget> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (widget.needScroll) {
+      if (widget.needHighlight) {
         final destination = widget.globalKeys
             .where((key) => key.value == widget.currentWeekDay - 1);
         if (destination.first.currentContext != null) {
@@ -212,7 +212,8 @@ class _ScheduleScrollWidgetState extends State<_ScheduleScrollWidget> {
         child: WeekScheduleWidget(
           schedule: widget.schedule,
           keys: widget.globalKeys,
-          needHighlight: widget.needScroll,
+          currentWeekDay: widget.currentWeekDay,
+          needHighlight: widget.needHighlight,
         ),
       ),
     );

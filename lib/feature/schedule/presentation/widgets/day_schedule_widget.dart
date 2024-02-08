@@ -1,4 +1,5 @@
-import 'package:blurrycontainer/blurrycontainer.dart';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/entities/subject_entity.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/widgets/schedule_item_widget.dart';
@@ -29,16 +30,38 @@ class DayScheduleWidget extends StatelessWidget {
           const SizedBox(
             height: 17,
           ),
-          BlurryContainer(
-            color: highlight ? const Color(0xff643B9F) : Colors.white,
-            blur: 5,
-            borderRadius: const BorderRadius.all(Radius.circular(5)),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: subjects
-                  .map((element) => ScheduleItemWidget(subject: element))
-                  .toList(),
+          //  Color.fromRGBO(211, 201, 253, 1),
+          Container(
+            decoration: highlight
+                ? const BoxDecoration(
+                    color:Color.fromARGB(255, 172, 152, 216),
+                    borderRadius: BorderRadius.all(Radius.circular(8.2)),
+                  )
+                : null,
+            child: ClipRRect(
+              borderRadius: const BorderRadius.all(Radius.circular(8)),
+              child: BackdropFilter(
+                filter: ImageFilter.blur(
+                    sigmaX: highlight ? 20.0 : 0.0,
+                    sigmaY: highlight ? 16.0 : 0.0,
+                    tileMode: TileMode.decal,),
+                child: Padding(
+                  padding: const EdgeInsets.all(2.8),
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(5.8)),
+                      color: Colors.white,
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: subjects
+                          .map((element) => ScheduleItemWidget(subject: element))
+                          .toList(),
+                    ),
+                  ),
+                ),
+              ),
             ),
           ),
         ],
