@@ -17,7 +17,11 @@ class ScheduleLocalDataSourceImpl implements ScheduleLocalDataSource {
   @override
   Future<void> add(List<SubjectModel> remoteLoad) async {
     try {
-      await subjectBox.putAll(remoteLoad.asMap());
+      final List<SubjectModel> subjects = [];
+      subjects.addAll(subjectBox.values.toList());
+      subjects.addAll(remoteLoad);
+      subjects.toSet(); // This removes duplicates
+      await subjectBox.addAll(subjects);
     } catch (e) {
       throw CacheException();
     }
@@ -26,6 +30,7 @@ class ScheduleLocalDataSourceImpl implements ScheduleLocalDataSource {
   @override
   Future<List<SubjectModel>> load(ScheduleRequestModel request) async {
     try {
+      final subjects = subjectBox.values.toList();
       return subjectBox.values
           .where(
             (element) =>
