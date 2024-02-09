@@ -16,7 +16,11 @@ class TeacherLocalDataSourceImpl implements TeacherLocalDataSource {
   @override
   Future<void> add(List<UserModel> remoteLoad) async {
     try {
-      await userBox.putAll(remoteLoad.asMap());
+      final List<UserModel> teachers = [];
+      teachers.addAll(userBox.values.toList());
+      teachers.addAll(remoteLoad);
+      teachers.toSet();
+      await userBox.putAll(teachers.asMap());
     } catch (e) {
       throw CacheException();
     }

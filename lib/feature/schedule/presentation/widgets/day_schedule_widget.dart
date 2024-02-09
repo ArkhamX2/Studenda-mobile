@@ -58,7 +58,8 @@ class DayScheduleWidget extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: subjects
                           .map(
-                              (element) => ScheduleItemWidget(subject: element))
+                            (element) => ScheduleItemWidget(subject: element),
+                          )
                           .toList(),
                     ),
                   ),

@@ -16,7 +16,11 @@ class SubjectPositionLocalDataSourceImpl implements SubjectPositionLocalDataSour
   @override
   Future<void> add(List<SubjectPositionModel> remoteLoad) async {
     try {
-      await subjectPositionBox.putAll(remoteLoad.asMap());
+      final List<SubjectPositionModel> subjectPositions = [];
+      subjectPositions.addAll(subjectPositionBox.values.toList());
+      subjectPositions.addAll(remoteLoad);
+      subjectPositions.toSet();
+      await subjectPositionBox.putAll(subjectPositions.asMap());
     } catch (e) {
       throw CacheException();
     }

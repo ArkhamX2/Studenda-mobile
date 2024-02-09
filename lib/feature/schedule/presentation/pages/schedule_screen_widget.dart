@@ -36,7 +36,7 @@ class _BodyBuilderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final groupSelectorBloc = context.watch<MainGroupSelectorBloc>();
+    //final groupSelectorBloc = context.watch<MainGroupSelectorBloc>();
     return BlocProvider(
       create: (context) {
         return sl<ScheduleBloc>()
@@ -113,7 +113,6 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
 
 class _SuccessBodyWidget extends StatelessWidget {
   const _SuccessBodyWidget({
-    super.key,
     required this.scheduleBloc,
     required this.keys,
     required this.groupSelectorBloc,
@@ -232,6 +231,25 @@ class _ScheduleScrollWidgetState extends State<_ScheduleScrollWidget> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (widget.needHighlight) {
+        final destination = widget.globalKeys
+            .where((key) => key.value == widget.currentWeekDay - 1);
+        if (destination.isNotEmpty) {
+          if (destination.first.currentContext != null) {
+            Scrollable.ensureVisible(
+              destination.first.currentContext!,
+              duration: const Duration(seconds: 1),
+            );
+          }
+        }
+      }
+    });
+  }
+
+  @override
+  void didUpdateWidget(covariant _ScheduleScrollWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (widget.needHighlight) {
         final destination = widget.globalKeys

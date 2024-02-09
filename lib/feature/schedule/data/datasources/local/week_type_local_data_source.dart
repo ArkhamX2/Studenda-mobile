@@ -24,7 +24,12 @@ class WeekTypeLocalDataSourceImpl implements WeekTypeLocalDataSource {
   @override
   Future<void> add(List<WeekTypeModel> remoteLoad) async {
     try {
-      await weekTypeBox.putAll(remoteLoad.asMap());
+      
+      final List<WeekTypeModel> weekTypes = [];
+      weekTypes.addAll(weekTypeBox.values.toList());
+      weekTypes.addAll(remoteLoad);
+      weekTypes.toSet();
+      await weekTypeBox.putAll(weekTypes.asMap());
     } catch (e) {
       throw CacheException();
     }
@@ -44,10 +49,10 @@ class WeekTypeLocalDataSourceImpl implements WeekTypeLocalDataSource {
     try {
       final result = prefs.getString('currentWeek');
       if (result != null) {
-        final group = WeekTypeModel.fromJson(
+        final weekType = WeekTypeModel.fromJson(
           json.decode(result) as Map<String, dynamic>,
         );
-        return group;
+        return weekType;
       } else {
         throw CacheException();
       }

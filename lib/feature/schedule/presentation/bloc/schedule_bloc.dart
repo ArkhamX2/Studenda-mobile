@@ -85,7 +85,6 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
     });
 
     on<_Load>((event, emit) async {
-
       await getAllWeekType.call(() {}).then(
             (value) => value.fold(
               (error) => emit(ScheduleState.fail(error.message)),
@@ -108,24 +107,33 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
             ),
           );
 
-      await getCurrentWeekType.call(() {}).then(
-            (value) => value.fold(
-              (error) => emit(ScheduleState.fail(error.message)),
-              (succededWeekType) async {
-                currentWeekType = WeekTypeEntity(
-                  id: succededWeekType.id,
-                  name: succededWeekType.name,
-                  index: succededWeekType.index,
-                );
-                await loadSchedule(
-                  event.groupId,
-                  currentWeekType!,
-                  emit,
-                  DateTime.now(),
-                );
-              },
-            ),
-          );
+      if (currentWeekType!.id != -1) {
+        await loadSchedule(
+          event.groupId,
+          currentWeekType!,
+          emit,
+          DateTime.now(),
+        );
+      } else {
+        await getCurrentWeekType.call(() {}).then(
+              (value) => value.fold(
+                (error) => emit(ScheduleState.fail(error.message)),
+                (succededWeekType) async {
+                  currentWeekType = WeekTypeEntity(
+                    id: succededWeekType.id,
+                    name: succededWeekType.name,
+                    index: succededWeekType.index,
+                  );
+                  await loadSchedule(
+                    event.groupId,
+                    currentWeekType!,
+                    emit,
+                    DateTime.now(),
+                  );
+                },
+              ),
+            );
+      }
     });
 
     on<_LoadLocal>((event, emit) async {
@@ -151,26 +159,34 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
               },
             ),
           );
-
-      await getCurrentWeekType.call(() {}, false).then(
-            (value) => value.fold(
-              (error) => emit(ScheduleState.localLoadingFail(error.message)),
-              (succededWeekType) async {
-                currentWeekType = WeekTypeEntity(
-                  id: succededWeekType.id,
-                  name: succededWeekType.name,
-                  index: succededWeekType.index,
-                );
-                await loadSchedule(
-                  event.groupId,
-                  currentWeekType!,
-                  emit,
-                  DateTime.now(),
-                  false,
-                );
-              },
-            ),
-          );
+      if (currentWeekType!.id != -1) {
+        await loadSchedule(
+          event.groupId,
+          currentWeekType!,
+          emit,
+          DateTime.now(),
+        );
+      } else {
+        await getCurrentWeekType.call(() {}, false).then(
+              (value) => value.fold(
+                (error) => emit(ScheduleState.localLoadingFail(error.message)),
+                (succededWeekType) async {
+                  currentWeekType = WeekTypeEntity(
+                    id: succededWeekType.id,
+                    name: succededWeekType.name,
+                    index: succededWeekType.index,
+                  );
+                  await loadSchedule(
+                    event.groupId,
+                    currentWeekType!,
+                    emit,
+                    DateTime.now(),
+                    false,
+                  );
+                },
+              ),
+            );
+      }
     });
   }
 
@@ -369,22 +385,39 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
             (error) => remote
                 ? emit(ScheduleState.fail(error.message))
                 : emit(ScheduleState.localLoadingFail(error.message)),
-            (succededSubjectPositionList) => emit(
-              ScheduleState.success(
-                ScheduleEntity(
-                  schedule: mapSubjectModelToDayScehduleList(
-                    succededSubjectList,
-                    succededDisciplineList,
-                    succededTeacherList,
-                    succededDayPositionList,
-                    succededSubjectPositionList,
-                    succededSubjectTypeList,
+            (succededSubjectPositionList) => remote
+                ? emit(
+                    ScheduleState.success(
+                      ScheduleEntity(
+                        schedule: mapSubjectModelToDayScehduleList(
+                          succededSubjectList,
+                          succededDisciplineList,
+                          succededTeacherList,
+                          succededDayPositionList,
+                          succededSubjectPositionList,
+                          succededSubjectTypeList,
+                        ),
+                        weekType: currentWeekType,
+                        weekDays: getCurrentWeekDays(currentDate),
+                      ),
+                    ),
+                  )
+                : emit(
+                    ScheduleState.localLoadingSuccess(
+                      ScheduleEntity(
+                        schedule: mapSubjectModelToDayScehduleList(
+                          succededSubjectList,
+                          succededDisciplineList,
+                          succededTeacherList,
+                          succededDayPositionList,
+                          succededSubjectPositionList,
+                          succededSubjectTypeList,
+                        ),
+                        weekType: currentWeekType,
+                        weekDays: getCurrentWeekDays(currentDate),
+                      ),
+                    ),
                   ),
-                  weekType: currentWeekType,
-                  weekDays: getCurrentWeekDays(currentDate),
-                ),
-              ),
-            ),
           ),
         );
   }

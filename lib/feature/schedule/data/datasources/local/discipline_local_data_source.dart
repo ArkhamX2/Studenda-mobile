@@ -25,7 +25,11 @@ class DisciplineLocalDataSourceImpl implements DisciplineLocalDataSource {
   @override
   Future<void> add(List<DisciplineModel> disciplineList) async {
     try {
-      await disciplineBox.putAll(disciplineList.asMap());
+      final List<DisciplineModel> disciplines = [];
+      disciplines.addAll(disciplineBox.values.toList());
+      disciplines.addAll(disciplineList);
+      disciplines.toSet();
+      await disciplineBox.putAll(disciplines.asMap());
     } catch (e) {
       throw CacheException();
     }

@@ -16,7 +16,11 @@ class SubjectTypeLocalDataSourceImpl implements SubjectTypeLocalDataSource {
   @override
   Future<void> add(List<SubjectTypeModel> remoteLoad) async {
     try {
-      await subjectTypeBox.putAll(remoteLoad.asMap());
+      final List<SubjectTypeModel> subjectTypes = [];
+      subjectTypes.addAll(subjectTypeBox.values.toList());
+      subjectTypes.addAll(remoteLoad);
+      subjectTypes.toSet();
+      await subjectTypeBox.putAll(subjectTypes.asMap());
     } catch (e) {
       throw CacheException();
     }

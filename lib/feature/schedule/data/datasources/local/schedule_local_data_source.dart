@@ -21,7 +21,7 @@ class ScheduleLocalDataSourceImpl implements ScheduleLocalDataSource {
       subjects.addAll(subjectBox.values.toList());
       subjects.addAll(remoteLoad);
       subjects.toSet(); // This removes duplicates
-      await subjectBox.addAll(subjects);
+      await subjectBox.putAll(subjects.asMap());
     } catch (e) {
       throw CacheException();
     }
@@ -30,7 +30,8 @@ class ScheduleLocalDataSourceImpl implements ScheduleLocalDataSource {
   @override
   Future<List<SubjectModel>> load(ScheduleRequestModel request) async {
     try {
-      final subjects = subjectBox.values.toList();
+      final bluesubjects = subjectBox.values.where((element) => element.weekTypeId == 5).toList();
+      final redsubjects = subjectBox.values.where((element) => element.weekTypeId == 3).toList();
       return subjectBox.values
           .where(
             (element) =>
@@ -40,6 +41,6 @@ class ScheduleLocalDataSourceImpl implements ScheduleLocalDataSource {
           .toList();
     } catch (e) {
       throw CacheException();
-    }
+    } 
   }
 }
