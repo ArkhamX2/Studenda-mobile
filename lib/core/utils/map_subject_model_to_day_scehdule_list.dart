@@ -1,4 +1,3 @@
-
 import 'package:studenda_mobile_student/feature/auth/data/models/user_model/user_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/day_position_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/discipline_model.dart';
@@ -16,6 +15,13 @@ List<DayScheduleEntity> mapSubjectModelToDayScehduleList(
   List<SubjectPositionModel> subjectPositionList,
   List<SubjectTypeModel> subjectTypeList,
 ) {
+  if (subjects.isEmpty ||
+      disciplines.isEmpty ||
+      teachers.isEmpty ||
+      dayPositionList.isEmpty ||
+      subjectPositionList.isEmpty ||
+      subjectTypeList.isEmpty) return [];
+
   final Map<int, List<SubjectEntity>> dayScheduleEntityMap = {};
 
   subjects.sort((a, b) => a.dayPositionId.compareTo(b.dayPositionId));
@@ -23,12 +29,14 @@ List<DayScheduleEntity> mapSubjectModelToDayScehduleList(
   for (var i = 0; i < subjects.length; i++) {
     if (dayScheduleEntityMap.containsKey(
       dayPositionList
-          .firstWhere((element) => element.id == subjects[i].dayPositionId)
-          .index - 1,
+              .firstWhere((element) => element.id == subjects[i].dayPositionId)
+              .index -
+          1,
     )) {
       dayScheduleEntityMap[dayPositionList
                   .firstWhere(
-                      (element) => element.id == subjects[i].dayPositionId,)
+                    (element) => element.id == subjects[i].dayPositionId,
+                  )
                   .index -
               1]!
           .add(

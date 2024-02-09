@@ -13,7 +13,7 @@ class UserModel extends HiveObject with _$UserModel{
   factory UserModel({
     @JsonKey(name: 'id') @HiveField(0) required int id,
     @JsonKey(name: 'roleId') @HiveField(1) required int roleId,
-    @JsonKey(name: 'name') @HiveField(2) required String name,
+    @JsonKey(name: 'name') @HiveField(2) required String? name,
   }) = _UserModel;
 
   UserModel._();

@@ -19,7 +19,7 @@ class UserModelAdapter extends TypeAdapter<_$UserModelImpl> {
     return _$UserModelImpl(
       id: fields[0] as int,
       roleId: fields[1] as int,
-      name: fields[2] as String,
+      name: fields[2] as String?,
     );
   }
 
@@ -54,7 +54,7 @@ _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
     _$UserModelImpl(
       id: json['id'] as int,
       roleId: json['roleId'] as int,
-      name: json['name'] as String,
+      name: json['name'] as String?,
     );
 
 Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>

@@ -5,6 +5,7 @@ import 'package:studenda_mobile_student/core/presentation/label/studenda_weighte
 import 'package:studenda_mobile_student/core/utils/get_current_week_days.dart';
 import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/main_group_selection_bloc/main_group_selector_bloc.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/entities/day_schedule_entity.dart';
+import 'package:studenda_mobile_student/feature/schedule/domain/entities/schedule_entity.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/entities/week_type_entity.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/schedule_bloc.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/widgets/date_carousel_widget.dart';
@@ -40,8 +41,8 @@ class _BodyBuilderWidget extends StatelessWidget {
       create: (context) {
         return sl<ScheduleBloc>()
           ..add(
-            ScheduleEvent.loadLocal(
-              groupSelectorBloc.selectedGroup.id,
+            const ScheduleEvent.loadLocal(
+              1,
             ),
           );
       },
@@ -67,56 +68,98 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
     return scheduleBloc.state.when(
       initial: () => const Center(child: CircularProgressIndicator()),
       loading: () => const Center(child: CircularProgressIndicator()),
-      fail: (message) {
-        scheduleBloc
-            .add(ScheduleEvent.load(groupSelectorBloc.selectedGroup.id));
+      localLoadingFail: (message) {
+        scheduleBloc.add(const ScheduleEvent.load(1));
         return Center(
           child: StudendaDefaultLabelWidget(text: message, fontSize: 18),
         );
       },
-      success: (schedule) {
+      fail: (message) {
+        return Center(
+          child: StudendaDefaultLabelWidget(text: message, fontSize: 18),
+        );
+      },
+      localLoadingSuccess: (schedule) {
         if (schedule.schedule.isEmpty) {
-          scheduleBloc
-              .add(ScheduleEvent.load(groupSelectorBloc.selectedGroup.id));
+          scheduleBloc.add(const ScheduleEvent.load(1));
         }
         keys = List.generate(
           schedule.schedule.length,
           (index) => GlobalObjectKey(schedule.schedule[index].weekPosition),
         );
-
-        return Padding(
-          padding: const EdgeInsets.all(14.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Center(
-                child: StudendaWeightedLabelWidget(
-                  text: scheduleBloc.currentWeekType == null
-                      ? ""
-                      : "${scheduleBloc.currentWeekType!.name!.toUpperCase()} НЕДЕЛЯ",
-                  fontSize: 16,
-                  weight: FontWeight.w500,
-                ),
-              ),
-              const SizedBox(height: 10),
-              _DateCarouselWrapperWidget(
-                globalKeys: keys,
-                scheduleBloc: scheduleBloc,
-                weekType: schedule.weekType,
-                groupId: groupSelectorBloc.selectedGroup.id,
-              ),
-              const SizedBox(height: 10),
-              _ScheduleScrollWidget(
-                schedule: schedule.schedule,
-                globalKeys: keys,
-                currentWeekDay: getCurrentWeekDay(),
-                needHighlight: getCurrentWeekDays(scheduleBloc.datePointer)
-                    .any((element) => int.parse(element) == DateTime.now().day),
-              ),
-            ],
-          ),
+        return _SuccessBodyWidget(
+          scheduleBloc: scheduleBloc,
+          keys: keys,
+          groupSelectorBloc: groupSelectorBloc,
+          schedule: schedule,
         );
       },
+      success: (schedule) {
+        keys = List.generate(
+          schedule.schedule.length,
+          (index) => GlobalObjectKey(schedule.schedule[index].weekPosition),
+        );
+
+        return _SuccessBodyWidget(
+          scheduleBloc: scheduleBloc,
+          keys: keys,
+          groupSelectorBloc: groupSelectorBloc,
+          schedule: schedule,
+        );
+      },
+    );
+  }
+}
+
+class _SuccessBodyWidget extends StatelessWidget {
+  const _SuccessBodyWidget({
+    super.key,
+    required this.scheduleBloc,
+    required this.keys,
+    required this.groupSelectorBloc,
+    required this.schedule,
+  });
+
+  final ScheduleBloc scheduleBloc;
+  final List<GlobalObjectKey<State<StatefulWidget>>> keys;
+  final MainGroupSelectorBloc groupSelectorBloc;
+  final ScheduleEntity schedule;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(14.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Center(
+            child: StudendaWeightedLabelWidget(
+              text: scheduleBloc.currentWeekType == null
+                  ? ""
+                  : "${scheduleBloc.currentWeekType!.name!.toUpperCase()} НЕДЕЛЯ",
+              fontSize: 16,
+              weight: FontWeight.w500,
+            ),
+          ),
+          const SizedBox(height: 10),
+          _DateCarouselWrapperWidget(
+            globalKeys: keys,
+            scheduleBloc: scheduleBloc,
+            weekType: schedule.weekType,
+            groupId: groupSelectorBloc.selectedGroup.id,
+          ),
+          const SizedBox(height: 10),
+          Expanded(
+            child: _ScheduleScrollWidget(
+              schedule: schedule.schedule,
+              globalKeys: keys,
+              currentWeekDay: getCurrentWeekDay(),
+              needHighlight: getCurrentWeekDays(scheduleBloc.datePointer)
+                  .any((element) => int.parse(element) == DateTime.now().day),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -208,26 +251,21 @@ class _ScheduleScrollWidgetState extends State<_ScheduleScrollWidget> {
   @override
   Widget build(BuildContext context) {
     final scheduleBloc = context.watch<ScheduleBloc>();
-    if (widget.schedule.isEmpty) {
-      return const Center(
-        child: StudendaDefaultLabelWidget(
-          fontSize: 18,
-          text: "Занятий нет",
-        ),
-      );
-    }
-    return Expanded(
-      child: RefreshIndicator(
+    return LayoutBuilder(
+      builder: (context, constraints) => RefreshIndicator(
         onRefresh: () async {
           scheduleBloc.add(const ScheduleEvent.load(1));
         },
         child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: WeekScheduleWidget(
-            schedule: widget.schedule,
-            keys: widget.globalKeys,
-            currentWeekDay: widget.currentWeekDay,
-            needHighlight: widget.needHighlight,
+          physics: const AlwaysScrollableScrollPhysics(),
+          child: ConstrainedBox(
+            constraints: BoxConstraints(minHeight: constraints.maxHeight),
+            child: WeekScheduleWidget(
+              schedule: widget.schedule,
+              keys: widget.globalKeys,
+              currentWeekDay: widget.currentWeekDay,
+              needHighlight: widget.needHighlight,
+            ),
           ),
         ),
       ),
@@ -246,29 +284,17 @@ class _ScheduleAppBarWidget extends StatelessWidget
       titleSpacing: 0,
       automaticallyImplyLeading: false,
       centerTitle: true,
-      title: GestureDetector(
-        //TODO: Добавить иконку лупы
-        child: Text(
-          groupBloc.selectedGroup.name.isEmpty
-              ? "Выберите группу"
-              : groupBloc.selectedGroup.name,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 25,
-            decoration: TextDecoration.underline,
-            decorationColor: Colors.white,
-          ),
+      title: Text(
+        groupBloc.selectedGroup.name.isEmpty
+            ? "Б.ПИН.РИС.2106"
+            : groupBloc.selectedGroup.name,
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 25,
+          decoration: TextDecoration.underline,
+          decorationColor: Colors.white,
         ),
-        onTap: () {
-          Navigator.of(context).pushNamed('/group_selection');
-        },
       ),
-      actions: [
-        IconButton(
-          onPressed: () => {Navigator.of(context).pushNamed('/notification')},
-          icon: const Icon(Icons.notifications, color: Colors.white),
-        ),
-      ],
     );
   }
 

@@ -28,7 +28,7 @@ mixin _$UserModel {
   int get roleId => throw _privateConstructorUsedError;
   @JsonKey(name: 'name')
   @HiveField(2)
-  String get name => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,7 +44,7 @@ abstract class $UserModelCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id') @HiveField(0) int id,
       @JsonKey(name: 'roleId') @HiveField(1) int roleId,
-      @JsonKey(name: 'name') @HiveField(2) String name});
+      @JsonKey(name: 'name') @HiveField(2) String? name});
 }
 
 /// @nodoc
@@ -62,7 +62,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
   $Res call({
     Object? id = null,
     Object? roleId = null,
-    Object? name = null,
+    Object? name = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -73,10 +73,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.roleId
           : roleId // ignore: cast_nullable_to_non_nullable
               as int,
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -92,7 +92,7 @@ abstract class _$$UserModelImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'id') @HiveField(0) int id,
       @JsonKey(name: 'roleId') @HiveField(1) int roleId,
-      @JsonKey(name: 'name') @HiveField(2) String name});
+      @JsonKey(name: 'name') @HiveField(2) String? name});
 }
 
 /// @nodoc
@@ -108,7 +108,7 @@ class __$$UserModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? roleId = null,
-    Object? name = null,
+    Object? name = freezed,
   }) {
     return _then(_$UserModelImpl(
       id: null == id
@@ -119,10 +119,10 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value.roleId
           : roleId // ignore: cast_nullable_to_non_nullable
               as int,
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -151,7 +151,7 @@ class _$UserModelImpl extends _UserModel {
   @override
   @JsonKey(name: 'name')
   @HiveField(2)
-  final String name;
+  final String? name;
 
   @override
   String toString() {
@@ -190,7 +190,7 @@ abstract class _UserModel extends UserModel {
   factory _UserModel(
           {@JsonKey(name: 'id') @HiveField(0) required final int id,
           @JsonKey(name: 'roleId') @HiveField(1) required final int roleId,
-          @JsonKey(name: 'name') @HiveField(2) required final String name}) =
+          @JsonKey(name: 'name') @HiveField(2) required final String? name}) =
       _$UserModelImpl;
   _UserModel._() : super._();
 
@@ -208,7 +208,7 @@ abstract class _UserModel extends UserModel {
   @override
   @JsonKey(name: 'name')
   @HiveField(2)
-  String get name;
+  String? get name;
   @override
   @JsonKey(ignore: true)
   _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith =>

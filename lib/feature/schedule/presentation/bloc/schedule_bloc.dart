@@ -63,6 +63,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
         currentWeekType!,
         emit,
         datePointer,
+        false,
       );
     });
 
@@ -79,11 +80,11 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
         currentWeekType!,
         emit,
         datePointer,
+        false,
       );
     });
 
     on<_Load>((event, emit) async {
-      emit(const ScheduleState.loading());
 
       await getAllWeekType.call(() {}).then(
             (value) => value.fold(
@@ -131,7 +132,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
       emit(const ScheduleState.loading());
       await getAllWeekType.call(() {}, false).then(
             (value) => value.fold(
-              (error) => emit(ScheduleState.fail(error.message)),
+              (error) => emit(ScheduleState.localLoadingFail(error.message)),
               (succededWeekType) async {
                 weekTypeList = succededWeekType
                     .map(
@@ -153,7 +154,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
 
       await getCurrentWeekType.call(() {}, false).then(
             (value) => value.fold(
-              (error) => emit(ScheduleState.fail(error.message)),
+              (error) => emit(ScheduleState.localLoadingFail(error.message)),
               (succededWeekType) async {
                 currentWeekType = WeekTypeEntity(
                   id: succededWeekType.id,
@@ -191,7 +192,9 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
         )
         .then(
           (value) => value.fold(
-            (error) => emit(ScheduleState.fail(error.message)),
+            (error) => remote
+                ? emit(ScheduleState.fail(error.message))
+                : emit(ScheduleState.localLoadingFail(error.message)),
             (succededSubjectList) async {
               await _getDiscipline(
                 succededSubjectList,
@@ -221,11 +224,9 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
         )
         .then(
           (value) => value.fold(
-            (error) => emit(
-              ScheduleState.fail(
-                error.message,
-              ),
-            ),
+            (error) => remote
+                ? emit(ScheduleState.fail(error.message))
+                : emit(ScheduleState.localLoadingFail(error.message)),
             (succededDisciplineList) async {
               await _getTeacher(
                 succededSubjectList,
@@ -255,11 +256,9 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
         )
         .then(
           (value) => value.fold(
-            (error) => emit(
-              ScheduleState.fail(
-                error.message,
-              ),
-            ),
+            (error) => remote
+                ? emit(ScheduleState.fail(error.message))
+                : emit(ScheduleState.localLoadingFail(error.message)),
             (succededTeacherList) async {
               await _getSubjectType(
                 succededSubjectList,
@@ -293,11 +292,9 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
         )
         .then(
           (value) => value.fold(
-            (error) => emit(
-              ScheduleState.fail(
-                error.message,
-              ),
-            ),
+            (error) => remote
+                ? emit(ScheduleState.fail(error.message))
+                : emit(ScheduleState.localLoadingFail(error.message)),
             (succededSubjectTypeList) async {
               await _getDayPosition(
                 emit,
@@ -331,11 +328,9 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
         )
         .then(
           (value) => value.fold(
-            (error) => emit(
-              ScheduleState.fail(
-                error.message,
-              ),
-            ),
+            (error) => remote
+                ? emit(ScheduleState.fail(error.message))
+                : emit(ScheduleState.localLoadingFail(error.message)),
             (succededDayPositionList) async {
               await _getSubjectPosition(
                 emit,
@@ -371,11 +366,9 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
         )
         .then(
           (value) => value.fold(
-            (error) => emit(
-              ScheduleState.fail(
-                error.message,
-              ),
-            ),
+            (error) => remote
+                ? emit(ScheduleState.fail(error.message))
+                : emit(ScheduleState.localLoadingFail(error.message)),
             (succededSubjectPositionList) => emit(
               ScheduleState.success(
                 ScheduleEntity(
@@ -398,26 +391,13 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
 }
 
 List<int> _getSubjectTypeIds(List<SubjectModel> succededSubjectList) {
-  final List<int> ids = [];
-
-  for (final element in succededSubjectList) {
-    ids.add(element.subjectTypeId);
-  }
-
-  return ids;
+  return succededSubjectList.map((e) => e.subjectTypeId).toSet().toList();
 }
 
 List<int> _getTeacherIds(List<SubjectModel> succededSubjectList) {
-  final List<int> ids = succededSubjectList.map((e) => e.userId).toSet().toList();
-  return ids;
+  return succededSubjectList.map((e) => e.userId).toSet().toList();
 }
 
 List<int> _getDisciplineIds(List<SubjectModel> succededSubjectList) {
-  final List<int> ids = [];
-
-  for (final element in succededSubjectList) {
-    ids.add(element.disciplineId);
-  }
-
-  return ids;
+  return succededSubjectList.map((e) => e.disciplineId).toSet().toList();
 }

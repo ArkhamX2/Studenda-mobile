@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:studenda_mobile_student/core/presentation/label/studenda_default_label_widget.dart';
 import 'package:studenda_mobile_student/core/utils/get_current_week_days.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/entities/day_schedule_entity.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/schedule_bloc.dart';
@@ -22,6 +23,7 @@ class WeekScheduleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final scheduleBloc = context.watch<ScheduleBloc>();
     final weekDays = getCurrentWeekDaysWithMonth(scheduleBloc.datePointer);
+    if(schedule.isEmpty) return Center(child: const StudendaDefaultLabelWidget(text: "Занятий нет", fontSize: 20));
     return Column(
       children: schedule
           .asMap()

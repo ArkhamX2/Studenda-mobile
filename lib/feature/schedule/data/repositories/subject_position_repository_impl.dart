@@ -26,7 +26,8 @@ class SubjectPositionRepositoryImpl implements SubjectPositionRepository {
       if (await networkInfo.isConnected) {
         try {
           final remoteLoad = await remoteDataSource.load(request);
-          localDataSource.add(remoteLoad);
+          await localDataSource.add(remoteLoad);
+          final tmp =await localDataSource.load();
           return Right(remoteLoad);
         } on ServerException {
           return const Left(ServerFailure(message: "Ошибка сервера"));

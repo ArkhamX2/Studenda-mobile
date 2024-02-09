@@ -3,7 +3,7 @@ import 'package:studenda_mobile_student/core/data/error/exception.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/discipline_model.dart';
 
 abstract class DisciplineLocalDataSource {
-  Future<List<DisciplineModel>> load(List<int> request);
+  Future<List<DisciplineModel>> load([List<int> request = const []]);
   Future<void> add(List<DisciplineModel> remoteLoad);
 }
 
@@ -13,8 +13,9 @@ class DisciplineLocalDataSourceImpl implements DisciplineLocalDataSource {
   DisciplineLocalDataSourceImpl({required this.disciplineBox});
 
   @override
-  Future<List<DisciplineModel>> load(List<int> request) async {
+  Future<List<DisciplineModel>> load([List<int> request = const []]) async {
     try {
+      if(request.isEmpty) return disciplineBox.values.toList();
       return disciplineBox.values.where((element) => request.contains(element.id)).toList();
     } catch (e) {
       throw CacheException();
@@ -22,9 +23,9 @@ class DisciplineLocalDataSourceImpl implements DisciplineLocalDataSource {
   }
 
   @override
-  Future<void> add(List<DisciplineModel> courseList) async {
+  Future<void> add(List<DisciplineModel> disciplineList) async {
     try {
-      await disciplineBox.putAll(courseList.asMap());
+      await disciplineBox.putAll(disciplineList.asMap());
     } catch (e) {
       throw CacheException();
     }
