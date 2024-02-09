@@ -30,8 +30,6 @@ class ScheduleLocalDataSourceImpl implements ScheduleLocalDataSource {
   @override
   Future<List<SubjectModel>> load(ScheduleRequestModel request) async {
     try {
-      final bluesubjects = subjectBox.values.where((element) => element.weekTypeId == 5).toList();
-      final redsubjects = subjectBox.values.where((element) => element.weekTypeId == 3).toList();
       return subjectBox.values
           .where(
             (element) =>

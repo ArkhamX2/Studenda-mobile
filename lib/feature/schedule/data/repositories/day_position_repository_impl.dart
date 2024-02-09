@@ -27,7 +27,6 @@ class DayPositionRepositoryImpl implements DayPositionRepository {
         try {
           final remoteLoad = await remoteDataSource.load(request);
           await localDataSource.add(remoteLoad);
-          final tmp = await localDataSource.load();
           return Right(remoteLoad);
         } on ServerException {
           return const Left(ServerFailure(message: "Ошибка сервера"));

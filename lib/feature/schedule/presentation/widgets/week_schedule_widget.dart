@@ -23,7 +23,7 @@ class WeekScheduleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final scheduleBloc = context.watch<ScheduleBloc>();
     final weekDays = getCurrentWeekDaysWithMonth(scheduleBloc.datePointer);
-    if(schedule.isEmpty) return Center(child: const StudendaDefaultLabelWidget(text: "Занятий нет", fontSize: 20));
+    if(schedule.isEmpty) return const Center(child: StudendaDefaultLabelWidget(text: "Занятий нет", fontSize: 20));
     return Column(
       children: schedule
           .asMap()
