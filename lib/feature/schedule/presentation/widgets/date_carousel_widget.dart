@@ -1,41 +1,42 @@
-
 import 'package:flutter/material.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/widgets/position_values.dart';
 import 'package:studenda_mobile_student/resources/colors.dart';
 
 class DateCarouselWidget extends StatelessWidget {
   final List<String> dates;
-  
+
   final Function(int) onDateTap;
   final Function() onPrevTap;
   final Function() onNextTap;
 
   const DateCarouselWidget({
-    super.key, required this.dates, required this.onDateTap, required this.onPrevTap, required this.onNextTap,
+    super.key,
+    required this.dates,
+    required this.onDateTap,
+    required this.onPrevTap,
+    required this.onNextTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.white,
-        ),
-        color: const Color.fromARGB(255, 211, 201, 253),
-        borderRadius: const BorderRadius.all(Radius.circular(5)),
+      decoration: const BoxDecoration(
+        color: Color.fromRGBO(211, 201, 253, 0.4),
+        borderRadius: BorderRadius.all(Radius.circular(5)),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          IconButton(
-            icon: const Icon(
-              Icons.chevron_left_outlined,
-              color: Colors.white,
-            ),
-            onPressed: onPrevTap,
-          ),
-          Expanded(
+      child: Expanded(
+        child: GestureDetector(
+          onHorizontalDragEnd: (details) {
+            if (details.primaryVelocity! < 0) {
+              onNextTap();
+            }
+            if (details.primaryVelocity! > 0) {
+              onPrevTap();
+            }
+          },
+          child: Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 26, vertical: 5),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: dates
@@ -44,7 +45,9 @@ class DateCarouselWidget extends StatelessWidget {
                     (key, value) => MapEntry(
                       key,
                       GestureDetector(
-                        onTap: (){onDateTap(key);},
+                        onTap: () {
+                          onDateTap(key);
+                        },
                         child: _DateCarouselItemWidget(
                           day: key,
                           date: value,
@@ -56,14 +59,7 @@ class DateCarouselWidget extends StatelessWidget {
                   .toList(),
             ),
           ),
-          IconButton(
-            icon: const Icon(
-              Icons.chevron_right_outlined,
-              color: Colors.white,
-            ),
-            onPressed: onNextTap,
-          ),
-        ],
+        ),
       ),
     );
   }

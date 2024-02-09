@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:studenda_mobile_student/core/presentation/label/studenda_default_label_widget.dart';
+import 'package:studenda_mobile_student/core/presentation/label/studenda_weighted_label_widget.dart';
 import 'package:studenda_mobile_student/core/utils/get_current_week_days.dart';
 import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/main_group_selection_bloc/main_group_selector_bloc.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/entities/day_schedule_entity.dart';
@@ -82,12 +83,22 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
           schedule.schedule.length,
           (index) => GlobalObjectKey(schedule.schedule[index].weekPosition),
         );
+
         return Padding(
           padding: const EdgeInsets.all(14.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 17),
+              Center(
+                child: StudendaWeightedLabelWidget(
+                  text: scheduleBloc.currentWeekType == null
+                      ? ""
+                      : "${scheduleBloc.currentWeekType!.name!.toUpperCase()} НЕДЕЛЯ",
+                  fontSize: 16,
+                  weight: FontWeight.w500,
+                ),
+              ),
+              const SizedBox(height: 10),
               _DateCarouselWrapperWidget(
                 globalKeys: keys,
                 scheduleBloc: scheduleBloc,
@@ -98,6 +109,9 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
               _ScheduleScrollWidget(
                 schedule: schedule.schedule,
                 globalKeys: keys,
+                currentWeekDay: getCurrentWeekDay(),
+                needHighlight: getCurrentWeekDays(scheduleBloc.datePointer)
+                    .any((element) => int.parse(element) == DateTime.now().day),
               ),
             ],
           ),
@@ -152,19 +166,49 @@ class _DateCarouselWrapperWidget extends StatelessWidget {
   }
 }
 
-class _ScheduleScrollWidget extends StatelessWidget {
+class _ScheduleScrollWidget extends StatefulWidget {
   final List<GlobalObjectKey> globalKeys;
 
   final List<DayScheduleEntity> schedule;
 
+  final int currentWeekDay;
+  final bool needHighlight;
+
   const _ScheduleScrollWidget({
     required this.globalKeys,
     required this.schedule,
+    required this.currentWeekDay,
+    required this.needHighlight,
   });
 
   @override
+  State<_ScheduleScrollWidget> createState() => _ScheduleScrollWidgetState();
+}
+
+class _ScheduleScrollWidgetState extends State<_ScheduleScrollWidget> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (widget.needHighlight) {
+        final destination = widget.globalKeys
+            .where((key) => key.value == widget.currentWeekDay - 1);
+        if (destination.isNotEmpty) {
+          if (destination.first.currentContext != null) {
+            Scrollable.ensureVisible(
+              destination.first.currentContext!,
+              duration: const Duration(seconds: 1),
+            );
+          }
+        }
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    if (schedule.isEmpty) {
+    final scheduleBloc = context.watch<ScheduleBloc>();
+    if (widget.schedule.isEmpty) {
       return const Center(
         child: StudendaDefaultLabelWidget(
           fontSize: 18,
@@ -173,11 +217,18 @@ class _ScheduleScrollWidget extends StatelessWidget {
       );
     }
     return Expanded(
-      child: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: WeekScheduleWidget(
-          schedule: schedule,
-          keys: globalKeys,
+      child: RefreshIndicator(
+        onRefresh: () async {
+          scheduleBloc.add(const ScheduleEvent.load(1));
+        },
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: WeekScheduleWidget(
+            schedule: widget.schedule,
+            keys: widget.globalKeys,
+            currentWeekDay: widget.currentWeekDay,
+            needHighlight: widget.needHighlight,
+          ),
         ),
       ),
     );
@@ -202,10 +253,11 @@ class _ScheduleAppBarWidget extends StatelessWidget
               ? "Выберите группу"
               : groupBloc.selectedGroup.name,
           style: const TextStyle(
-              color: Colors.white,
-              fontSize: 25,
-              decoration: TextDecoration.underline,
-              decorationColor: Colors.white,),
+            color: Colors.white,
+            fontSize: 25,
+            decoration: TextDecoration.underline,
+            decorationColor: Colors.white,
+          ),
         ),
         onTap: () {
           Navigator.of(context).pushNamed('/group_selection');

@@ -9,10 +9,13 @@ import 'package:studenda_mobile_student/feature/schedule/presentation/widgets/po
 class WeekScheduleWidget extends StatelessWidget {
   final List<DayScheduleEntity> schedule;
   final List<GlobalKey<State<StatefulWidget>>> keys;
+  final int currentWeekDay;
+  final bool needHighlight;
   const WeekScheduleWidget({
     super.key,
     required this.schedule,
     required this.keys,
+    required this.currentWeekDay, required this.needHighlight,
   });
 
   @override
@@ -27,9 +30,11 @@ class WeekScheduleWidget extends StatelessWidget {
               key,
               DayScheduleWidget(
                 key: keys[key],
-                dayTitle: "${weekDays[element.weekPosition]}, ${weekPositionValues[element.weekPosition]}",
+                dayTitle:
+                    "${weekDays[element.weekPosition]}, ${weekPositionValues[element.weekPosition]}",
                 subjects: element.subjects,
                 isTitleRequired: true,
+                highlight: currentWeekDay-1 == element.weekPosition && needHighlight, 
               ),
             ),
           )
