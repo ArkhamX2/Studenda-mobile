@@ -87,8 +87,8 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
                   text: scheduleBloc.currentWeekType == null
                       ? ""
                       : "${scheduleBloc.currentWeekType!.name!.toUpperCase()} НЕДЕЛЯ",
-                      fontSize: 16,
-                      weight: FontWeight.w500,
+                  fontSize: 16,
+                  weight: FontWeight.w500,
                 ),
               ),
               const SizedBox(height: 10),
@@ -186,11 +186,13 @@ class _ScheduleScrollWidgetState extends State<_ScheduleScrollWidget> {
       if (widget.needHighlight) {
         final destination = widget.globalKeys
             .where((key) => key.value == widget.currentWeekDay - 1);
-        if (destination.first.currentContext != null) {
-          Scrollable.ensureVisible(
-            destination.first.currentContext!,
-            duration: const Duration(seconds: 1),
-          );
+        if (destination.isNotEmpty) {
+          if (destination.first.currentContext != null) {
+            Scrollable.ensureVisible(
+              destination.first.currentContext!,
+              duration: const Duration(seconds: 1),
+            );
+          }
         }
       }
     });
@@ -198,6 +200,7 @@ class _ScheduleScrollWidgetState extends State<_ScheduleScrollWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final scheduleBloc = context.watch<ScheduleBloc>();
     if (widget.schedule.isEmpty) {
       return const Center(
         child: StudendaDefaultLabelWidget(
@@ -207,13 +210,18 @@ class _ScheduleScrollWidgetState extends State<_ScheduleScrollWidget> {
       );
     }
     return Expanded(
-      child: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: WeekScheduleWidget(
-          schedule: widget.schedule,
-          keys: widget.globalKeys,
-          currentWeekDay: widget.currentWeekDay,
-          needHighlight: widget.needHighlight,
+      child: RefreshIndicator(
+        onRefresh: () async {
+          scheduleBloc.add(const ScheduleEvent.load(1));
+        },
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: WeekScheduleWidget(
+            schedule: widget.schedule,
+            keys: widget.globalKeys,
+            currentWeekDay: widget.currentWeekDay,
+            needHighlight: widget.needHighlight,
+          ),
         ),
       ),
     );

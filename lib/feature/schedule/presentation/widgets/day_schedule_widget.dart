@@ -34,7 +34,7 @@ class DayScheduleWidget extends StatelessWidget {
           Container(
             decoration: highlight
                 ? const BoxDecoration(
-                    color:Color.fromARGB(255, 172, 152, 216),
+                    color: Color.fromARGB(255, 172, 152, 216),
                     borderRadius: BorderRadius.all(Radius.circular(8.2)),
                   )
                 : null,
@@ -42,9 +42,10 @@ class DayScheduleWidget extends StatelessWidget {
               borderRadius: const BorderRadius.all(Radius.circular(8)),
               child: BackdropFilter(
                 filter: ImageFilter.blur(
-                    sigmaX: highlight ? 20.0 : 0.0,
-                    sigmaY: highlight ? 16.0 : 0.0,
-                    tileMode: TileMode.decal,),
+                  sigmaX: highlight ? 20.0 : 0.0,
+                  sigmaY: highlight ? 16.0 : 0.0,
+                  tileMode: TileMode.decal,
+                ),
                 child: Padding(
                   padding: const EdgeInsets.all(2.8),
                   child: Container(
@@ -56,7 +57,8 @@ class DayScheduleWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       mainAxisSize: MainAxisSize.min,
                       children: subjects
-                          .map((element) => ScheduleItemWidget(subject: element))
+                          .map(
+                              (element) => ScheduleItemWidget(subject: element))
                           .toList(),
                     ),
                   ),
