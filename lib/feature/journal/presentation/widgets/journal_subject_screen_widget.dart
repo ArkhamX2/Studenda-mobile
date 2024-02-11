@@ -4,7 +4,6 @@ import 'package:studenda_mobile_student/feature/schedule/domain/entities/subject
 import 'package:studenda_mobile_student/model/common/task.dart';
 import 'package:studenda_mobile_student/resources/colors.dart';
 
-
 class JournalSubjectScreenWidget extends StatelessWidget {
   final SubjectEntity subject;
 
@@ -52,11 +51,7 @@ class JournalSubjectScreenWidget extends StatelessWidget {
                   );
                 },
               ),
-              const Column(
-                // children: tasks
-                //     .map((element) => _TaskItemWidget(task: element))
-                //     .toList(),
-              ),
+              _TaskItemWidget(task: Task(1, "123", subject, 1)),
             ],
           ),
         ),
@@ -124,16 +119,18 @@ class _AttendanceButtonWidget extends StatelessWidget {
     return ElevatedButton(
       onPressed: navigateTo,
       style: ButtonStyle(
-          shape: MaterialStatePropertyAll(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(5),
-            ),
+        shape: MaterialStatePropertyAll(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5),
           ),
-          backgroundColor: const MaterialStatePropertyAll(
-            mainButtonBackgroundColor,
-          ),
-          padding: const MaterialStatePropertyAll(
-              EdgeInsets.symmetric(horizontal: 16),),),
+        ),
+        backgroundColor: const MaterialStatePropertyAll(
+          mainButtonBackgroundColor,
+        ),
+        padding: const MaterialStatePropertyAll(
+          EdgeInsets.symmetric(horizontal: 16),
+        ),
+      ),
       child: const Row(
         children: [
           Expanded(

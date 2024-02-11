@@ -14,6 +14,8 @@ class UserModel extends HiveObject with _$UserModel{
     @JsonKey(name: 'id') @HiveField(0) required int id,
     @JsonKey(name: 'roleId') @HiveField(1) required int roleId,
     @JsonKey(name: 'name') @HiveField(2) required String? name,
+    @JsonKey(name: 'surname') @HiveField(3) required String? surname,
+    @JsonKey(name: 'patronymic') @HiveField(4) required String? patronymic,
   }) = _UserModel;
 
   UserModel._();

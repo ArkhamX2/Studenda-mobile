@@ -29,6 +29,12 @@ mixin _$UserModel {
   @JsonKey(name: 'name')
   @HiveField(2)
   String? get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'surname')
+  @HiveField(3)
+  String? get surname => throw _privateConstructorUsedError;
+  @JsonKey(name: 'patronymic')
+  @HiveField(4)
+  String? get patronymic => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,7 +50,9 @@ abstract class $UserModelCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id') @HiveField(0) int id,
       @JsonKey(name: 'roleId') @HiveField(1) int roleId,
-      @JsonKey(name: 'name') @HiveField(2) String? name});
+      @JsonKey(name: 'name') @HiveField(2) String? name,
+      @JsonKey(name: 'surname') @HiveField(3) String? surname,
+      @JsonKey(name: 'patronymic') @HiveField(4) String? patronymic});
 }
 
 /// @nodoc
@@ -63,6 +71,8 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? id = null,
     Object? roleId = null,
     Object? name = freezed,
+    Object? surname = freezed,
+    Object? patronymic = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -76,6 +86,14 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      surname: freezed == surname
+          ? _value.surname
+          : surname // ignore: cast_nullable_to_non_nullable
+              as String?,
+      patronymic: freezed == patronymic
+          ? _value.patronymic
+          : patronymic // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -92,7 +110,9 @@ abstract class _$$UserModelImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'id') @HiveField(0) int id,
       @JsonKey(name: 'roleId') @HiveField(1) int roleId,
-      @JsonKey(name: 'name') @HiveField(2) String? name});
+      @JsonKey(name: 'name') @HiveField(2) String? name,
+      @JsonKey(name: 'surname') @HiveField(3) String? surname,
+      @JsonKey(name: 'patronymic') @HiveField(4) String? patronymic});
 }
 
 /// @nodoc
@@ -109,6 +129,8 @@ class __$$UserModelImplCopyWithImpl<$Res>
     Object? id = null,
     Object? roleId = null,
     Object? name = freezed,
+    Object? surname = freezed,
+    Object? patronymic = freezed,
   }) {
     return _then(_$UserModelImpl(
       id: null == id
@@ -123,6 +145,14 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
+      surname: freezed == surname
+          ? _value.surname
+          : surname // ignore: cast_nullable_to_non_nullable
+              as String?,
+      patronymic: freezed == patronymic
+          ? _value.patronymic
+          : patronymic // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -134,7 +164,9 @@ class _$UserModelImpl extends _UserModel {
   _$UserModelImpl(
       {@JsonKey(name: 'id') @HiveField(0) required this.id,
       @JsonKey(name: 'roleId') @HiveField(1) required this.roleId,
-      @JsonKey(name: 'name') @HiveField(2) required this.name})
+      @JsonKey(name: 'name') @HiveField(2) required this.name,
+      @JsonKey(name: 'surname') @HiveField(3) required this.surname,
+      @JsonKey(name: 'patronymic') @HiveField(4) required this.patronymic})
       : super._();
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -152,10 +184,18 @@ class _$UserModelImpl extends _UserModel {
   @JsonKey(name: 'name')
   @HiveField(2)
   final String? name;
+  @override
+  @JsonKey(name: 'surname')
+  @HiveField(3)
+  final String? surname;
+  @override
+  @JsonKey(name: 'patronymic')
+  @HiveField(4)
+  final String? patronymic;
 
   @override
   String toString() {
-    return 'UserModel(id: $id, roleId: $roleId, name: $name)';
+    return 'UserModel(id: $id, roleId: $roleId, name: $name, surname: $surname, patronymic: $patronymic)';
   }
 
   @override
@@ -165,12 +205,16 @@ class _$UserModelImpl extends _UserModel {
             other is _$UserModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.roleId, roleId) || other.roleId == roleId) &&
-            (identical(other.name, name) || other.name == name));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.surname, surname) || other.surname == surname) &&
+            (identical(other.patronymic, patronymic) ||
+                other.patronymic == patronymic));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, roleId, name);
+  int get hashCode =>
+      Object.hash(runtimeType, id, roleId, name, surname, patronymic);
 
   @JsonKey(ignore: true)
   @override
@@ -188,10 +232,13 @@ class _$UserModelImpl extends _UserModel {
 
 abstract class _UserModel extends UserModel {
   factory _UserModel(
-          {@JsonKey(name: 'id') @HiveField(0) required final int id,
-          @JsonKey(name: 'roleId') @HiveField(1) required final int roleId,
-          @JsonKey(name: 'name') @HiveField(2) required final String? name}) =
-      _$UserModelImpl;
+      {@JsonKey(name: 'id') @HiveField(0) required final int id,
+      @JsonKey(name: 'roleId') @HiveField(1) required final int roleId,
+      @JsonKey(name: 'name') @HiveField(2) required final String? name,
+      @JsonKey(name: 'surname') @HiveField(3) required final String? surname,
+      @JsonKey(name: 'patronymic')
+      @HiveField(4)
+      required final String? patronymic}) = _$UserModelImpl;
   _UserModel._() : super._();
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
@@ -209,6 +256,14 @@ abstract class _UserModel extends UserModel {
   @JsonKey(name: 'name')
   @HiveField(2)
   String? get name;
+  @override
+  @JsonKey(name: 'surname')
+  @HiveField(3)
+  String? get surname;
+  @override
+  @JsonKey(name: 'patronymic')
+  @HiveField(4)
+  String? get patronymic;
   @override
   @JsonKey(ignore: true)
   _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith =>

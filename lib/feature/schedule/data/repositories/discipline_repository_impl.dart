@@ -19,32 +19,24 @@ class DisciplineRepositoryImpl implements DisciplineRepository {
   });
   @override
   Future<Either<Failure, List<DisciplineModel>>> load(
-    List<int> request, [
-    bool remote = true,
-  ]) async {
+    List<int> request,
+  ) async {
     if (request.isEmpty) return const Right([]);
-    if (remote) {
-      if (await networkInfo.isConnected) {
-        try {
-          final remoteLoad = await remoteDataSource.load(request);
-          await localDataSource.add(remoteLoad);
-          return Right(remoteLoad);
-        } on ServerException {
-          return const Left(ServerFailure(message: "Ошибка сервера"));
-        }
-      } else {
-        try {
-          return Right(await localDataSource.load(request));
-        } on CacheException {
-          return const Left(
-              CacheFailure(message: "Ошибка локального хранилища"),);
-        }
+    if (await networkInfo.isConnected) {
+      try {
+        final remoteLoad = await remoteDataSource.load(request);
+        await localDataSource.add(remoteLoad);
+        return Right(remoteLoad);
+      } on ServerException {
+        return const Left(ServerFailure(message: "Ошибка сервера"));
       }
     } else {
       try {
-        return Right(await localDataSource.load(request));
+        return Right(localDataSource.load(request));
       } on CacheException {
-        return const Left(CacheFailure(message: "Ошибка локального хранилища"));
+        return const Left(
+          CacheFailure(message: "Ошибка локального хранилища"),
+        );
       }
     }
   }

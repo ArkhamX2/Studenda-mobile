@@ -4,5 +4,5 @@ import 'package:studenda_mobile_student/feature/schedule/data/models/schedule_re
 import 'package:studenda_mobile_student/feature/schedule/data/models/subject_model.dart';
 
 abstract class ScheduleRepository {
-  Future<Either<Failure,List<SubjectModel>>> load(ScheduleRequestModel request, [bool remote = true]);
+  Future<Either<Failure,List<SubjectModel>>> load(ScheduleRequestModel request);
 }

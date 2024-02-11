@@ -3,7 +3,7 @@ import 'package:studenda_mobile_student/core/data/error/exception.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/day_position_model.dart';
 
 abstract class DayPositionLocalDataSource {
-  Future<List<DayPositionModel>> load();
+  List<DayPositionModel> load();
   Future<void> add(List<DayPositionModel> remoteLoad);
 }
 
@@ -13,7 +13,7 @@ class DayPositionLocalDataSourceImpl implements DayPositionLocalDataSource {
   DayPositionLocalDataSourceImpl({required this.dayPositionBox});
 
   @override
-  Future<List<DayPositionModel>> load() async {
+  List<DayPositionModel> load() {
     try {
       return dayPositionBox.values.toList();
     } catch (e) {

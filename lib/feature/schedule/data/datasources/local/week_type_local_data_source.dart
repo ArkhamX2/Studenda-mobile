@@ -8,11 +8,11 @@ import 'package:studenda_mobile_student/feature/schedule/data/models/week_type_m
 abstract class WeekTypeLocalDataSource {
   Future<void> add(List<WeekTypeModel> remoteLoad);
 
-  Future<List<WeekTypeModel>> load();
+  List<WeekTypeModel> load();
 
   Future<void> setCurrent(WeekTypeModel remoteLoad);
 
-  Future<WeekTypeModel> getCurrent();
+  WeekTypeModel getCurrent();
 }
 
 class WeekTypeLocalDataSourceImpl implements WeekTypeLocalDataSource {
@@ -41,7 +41,7 @@ class WeekTypeLocalDataSourceImpl implements WeekTypeLocalDataSource {
   }
 
   @override
-  Future<List<WeekTypeModel>> load() async {
+  List<WeekTypeModel> load() {
     try {
       return weekTypeBox.values.toList();
     } catch (e) {
@@ -50,7 +50,7 @@ class WeekTypeLocalDataSourceImpl implements WeekTypeLocalDataSource {
   }
 
   @override
-  Future<WeekTypeModel> getCurrent() async {
+  WeekTypeModel getCurrent() {
     try {
       final result = prefs.getString('currentWeek');
       if (result != null) {

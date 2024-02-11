@@ -5,7 +5,7 @@ import 'package:studenda_mobile_student/feature/auth/data/models/user_model/user
 abstract class TeacherLocalDataSource {
   Future<void> add(List<UserModel> remoteLoad);
 
-  Future<List<UserModel>> load([List<int> request = const []]);
+  List<UserModel> load([List<int> request = const []]);
 }
 
 class TeacherLocalDataSourceImpl implements TeacherLocalDataSource {
@@ -33,7 +33,7 @@ class TeacherLocalDataSourceImpl implements TeacherLocalDataSource {
   }
 
   @override
-  Future<List<UserModel>> load([List<int> request = const []]) async {
+  List<UserModel> load([List<int> request = const []]) {
     try {
       if (request.isEmpty) return userBox.values.toList();
       return userBox.values

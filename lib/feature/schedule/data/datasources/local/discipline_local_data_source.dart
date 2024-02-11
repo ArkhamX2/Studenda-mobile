@@ -3,7 +3,7 @@ import 'package:studenda_mobile_student/core/data/error/exception.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/discipline_model.dart';
 
 abstract class DisciplineLocalDataSource {
-  Future<List<DisciplineModel>> load([List<int> request = const []]);
+  List<DisciplineModel> load([List<int> request = const []]);
   Future<void> add(List<DisciplineModel> remoteLoad);
 }
 
@@ -13,7 +13,7 @@ class DisciplineLocalDataSourceImpl implements DisciplineLocalDataSource {
   DisciplineLocalDataSourceImpl({required this.disciplineBox});
 
   @override
-  Future<List<DisciplineModel>> load([List<int> request = const []]) async {
+  List<DisciplineModel> load([List<int> request = const []]) {
     try {
       if (request.isEmpty) return disciplineBox.values.toList();
       return disciplineBox.values

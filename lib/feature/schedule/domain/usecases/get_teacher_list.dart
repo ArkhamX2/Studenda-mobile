@@ -10,7 +10,7 @@ class GetTeacherList extends Usecase<List<UserModel>,List<int>>{
   GetTeacherList({required this.teacherRepository});
 
   @override
-  Future<Either<Failure,List<UserModel>>> call(List<int> request, [bool remote = true]) async{
-    return await teacherRepository.load(request,remote);
+  Future<Either<Failure,List<UserModel>>> call(List<int> request,) async{
+    return await teacherRepository.load(request);
   }
 }

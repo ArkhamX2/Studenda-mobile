@@ -19,62 +19,46 @@ class WeekTypeRepositoryImpl implements WeekTypeRepository {
   });
   @override
   Future<Either<Failure, WeekTypeModel>> getCurrent(
-    void request, [
-    bool remote = true,
-  ]) async {
-    if (remote) {
-      if (await networkInfo.isConnected) {
-        try {
-          final remoteLoad = await remoteDataSource.getCurrent(request);
-          await localDataSource.setCurrent(remoteLoad);
-          return Right(remoteLoad);
-        } on ServerException {
-          return const Left(ServerFailure(message: "Ошибка сервера"));
-        }
-      } else {
-        try {
-          return Right(await localDataSource.getCurrent());
-        } on CacheException {
-          return const Left(
-              CacheFailure(message: "Ошибка локального хранилища"),);
-        }
+    void request,
+  ) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final remoteLoad = await remoteDataSource.getCurrent(request);
+        await localDataSource.setCurrent(remoteLoad);
+        return Right(remoteLoad);
+      } on ServerException {
+        return const Left(ServerFailure(message: "Ошибка сервера"));
       }
     } else {
       try {
-        return Right(await localDataSource.getCurrent());
+        return Right(localDataSource.getCurrent());
       } on CacheException {
-        return const Left(CacheFailure(message: "Ошибка локального хранилища"));
+        return const Left(
+          CacheFailure(message: "Ошибка локального хранилища"),
+        );
       }
     }
   }
 
   @override
   Future<Either<Failure, List<WeekTypeModel>>> getAll(
-    void request, [
-    bool remote = true,
-  ]) async {
-    if (remote) {
-      if (await networkInfo.isConnected) {
-        try {
-          final remoteLoad = await remoteDataSource.getAll(request);
-          await localDataSource.add(remoteLoad);
-          return Right(remoteLoad);
-        } on ServerException {
-          return const Left(ServerFailure(message: "Ошибка сервера"));
-        }
-      } else {
-        try {
-          return Right(await localDataSource.load());
-        } on CacheException {
-          return const Left(
-              CacheFailure(message: "Ошибка локального хранилища"),);
-        }
+    void request,
+  ) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final remoteLoad = await remoteDataSource.getAll(request);
+        await localDataSource.add(remoteLoad);
+        return Right(remoteLoad);
+      } on ServerException {
+        return const Left(ServerFailure(message: "Ошибка сервера"));
       }
     } else {
       try {
-        return Right(await localDataSource.load());
+        return Right(localDataSource.load());
       } on CacheException {
-        return const Left(CacheFailure(message: "Ошибка локального хранилища"));
+        return const Left(
+          CacheFailure(message: "Ошибка локального хранилища"),
+        );
       }
     }
   }

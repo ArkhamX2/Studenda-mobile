@@ -20,19 +20,25 @@ class UserModelAdapter extends TypeAdapter<_$UserModelImpl> {
       id: fields[0] as int,
       roleId: fields[1] as int,
       name: fields[2] as String?,
+      surname: fields[3] as String?,
+      patronymic: fields[4] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, _$UserModelImpl obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
       ..write(obj.roleId)
       ..writeByte(2)
-      ..write(obj.name);
+      ..write(obj.name)
+      ..writeByte(3)
+      ..write(obj.surname)
+      ..writeByte(4)
+      ..write(obj.patronymic);
   }
 
   @override
@@ -55,6 +61,8 @@ _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
       id: json['id'] as int,
       roleId: json['roleId'] as int,
       name: json['name'] as String?,
+      surname: json['surname'] as String?,
+      patronymic: json['patronymic'] as String?,
     );
 
 Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>
@@ -62,4 +70,6 @@ Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>
       'id': instance.id,
       'roleId': instance.roleId,
       'name': instance.name,
+      'surname': instance.surname,
+      'patronymic': instance.patronymic,
     };

@@ -36,6 +36,8 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
               id: response.user.id,
               roleId: response.user.roleId,
               name: response.user.name,
+              patronymic: response.user.patronymic,
+              surname: response.user.surname,
             ),
           );
         } on Exception {
@@ -46,7 +48,7 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
       throw CacheException();
     }
   }
-  
+
   @override
   Future<void> updateToken(TokenModel token) async {
     try {

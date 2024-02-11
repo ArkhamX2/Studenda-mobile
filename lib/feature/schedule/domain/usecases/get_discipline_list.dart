@@ -10,7 +10,7 @@ class GetDisciplineList extends Usecase<List<DisciplineModel>,List<int>>{
   GetDisciplineList({required this.disciplineRepository});
 
   @override
-  Future<Either<Failure,List<DisciplineModel>>> call(List<int> request, [bool remote = true]) async{
-    return await disciplineRepository.load(request,remote);
+  Future<Either<Failure,List<DisciplineModel>>> call(List<int> request) async{
+    return await disciplineRepository.load(request);
   }
 }

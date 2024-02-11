@@ -80,7 +80,6 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
         currentWeekType!,
         emit,
         datePointer,
-        false,
       );
     });
 
@@ -138,7 +137,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
 
     on<_LoadLocal>((event, emit) async {
       emit(const ScheduleState.loading());
-      await getAllWeekType.call(() {}, false).then(
+      await getAllWeekType.call(() {}).then(
             (value) => value.fold(
               (error) => emit(ScheduleState.localLoadingFail(error.message)),
               (succededWeekType) async {
@@ -165,9 +164,10 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
           currentWeekType!,
           emit,
           DateTime.now(),
+          false,
         );
       } else {
-        await getCurrentWeekType.call(() {}, false).then(
+        await getCurrentWeekType.call(() {}).then(
               (value) => value.fold(
                 (error) => emit(ScheduleState.localLoadingFail(error.message)),
                 (succededWeekType) async {
@@ -204,7 +204,6 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
             weekTypeId: currentWeekType.id,
             academicYear: getCurrentAcademicYear(),
           ),
-          remote,
         )
         .then(
           (value) => value.fold(
@@ -236,7 +235,6 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
           _getDisciplineIds(
             succededSubjectList,
           ),
-          remote,
         )
         .then(
           (value) => value.fold(
@@ -268,7 +266,6 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
     await getTeacherList
         .call(
           _getTeacherIds(succededSubjectList),
-          remote,
         )
         .then(
           (value) => value.fold(
@@ -304,7 +301,6 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
           _getSubjectTypeIds(
             succededSubjectList,
           ),
-          remote,
         )
         .then(
           (value) => value.fold(
@@ -340,7 +336,6 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
     await getDayPosition
         .call(
           () {},
-          remote,
         )
         .then(
           (value) => value.fold(
@@ -378,7 +373,6 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
     await getSubjectPosition
         .call(
           () {},
-          remote,
         )
         .then(
           (value) => value.fold(

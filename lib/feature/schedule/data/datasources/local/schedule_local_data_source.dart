@@ -6,7 +6,7 @@ import 'package:studenda_mobile_student/feature/schedule/data/models/subject_mod
 abstract class ScheduleLocalDataSource {
   Future<void> add(List<SubjectModel> remoteLoad);
 
-  Future<List<SubjectModel>> load(ScheduleRequestModel request);
+  List<SubjectModel> load(ScheduleRequestModel request);
 }
 
 class ScheduleLocalDataSourceImpl implements ScheduleLocalDataSource {
@@ -34,7 +34,7 @@ class ScheduleLocalDataSourceImpl implements ScheduleLocalDataSource {
   }
 
   @override
-  Future<List<SubjectModel>> load(ScheduleRequestModel request) async {
+  List<SubjectModel> load(ScheduleRequestModel request) {
     try {
       return subjectBox.values
           .where(

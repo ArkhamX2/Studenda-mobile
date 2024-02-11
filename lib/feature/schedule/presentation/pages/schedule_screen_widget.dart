@@ -5,8 +5,6 @@ import 'package:studenda_mobile_student/core/presentation/label/studenda_weighte
 import 'package:studenda_mobile_student/core/utils/get_current_week_days.dart';
 import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/main_group_selection_bloc/main_group_selector_bloc.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/entities/day_schedule_entity.dart';
-import 'package:studenda_mobile_student/feature/schedule/domain/entities/schedule_entity.dart';
-import 'package:studenda_mobile_student/feature/schedule/domain/entities/week_type_entity.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/schedule_bloc.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/widgets/date_carousel_widget.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/widgets/week_schedule_widget.dart';
@@ -59,11 +57,13 @@ class _ScheduleBodyWidget extends StatefulWidget {
 }
 
 class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
-  List<GlobalObjectKey> keys = [];
+  List<GlobalObjectKey> keys = List.generate(
+    7,
+    (index) => GlobalObjectKey(index),
+  );
   @override
   Widget build(BuildContext context) {
     final scheduleBloc = context.watch<ScheduleBloc>();
-    final groupSelectorBloc = context.watch<MainGroupSelectorBloc>();
 
     return Padding(
       padding: const EdgeInsets.all(14.0),
@@ -83,12 +83,20 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
           _DateCarouselWrapperWidget(
             globalKeys: keys,
             scheduleBloc: scheduleBloc,
-            groupId: groupSelectorBloc.selectedGroup.id,
+            groupId: 1,
           ),
           const SizedBox(height: 10),
           scheduleBloc.state.when(
-            initial: () => const Center(child: CircularProgressIndicator()),
-            loading: () => const Center(child: CircularProgressIndicator()),
+            initial: () => const Expanded(
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+            ),
+            loading: () => const Expanded(
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+            ),
             localLoadingFail: (message) {
               scheduleBloc.add(const ScheduleEvent.load(1));
               return Center(
@@ -104,19 +112,15 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
               if (schedule.schedule.isEmpty) {
                 scheduleBloc.add(const ScheduleEvent.load(1));
               }
-              keys = List.generate(
-                schedule.schedule.length,
-                (index) =>
-                    GlobalObjectKey(schedule.schedule[index].weekPosition),
-              );
               return Expanded(
                 child: _ScheduleScrollWidget(
                   schedule: schedule.schedule,
                   globalKeys: keys,
                   currentWeekDay: getCurrentWeekDay(),
-                  needHighlight: getCurrentWeekDays(scheduleBloc.datePointer)
-                      .any((element) =>
-                          int.parse(element) == DateTime.now().day),
+                  needHighlight:
+                      getCurrentWeekDays(scheduleBloc.datePointer).any(
+                    (element) => int.parse(element) == DateTime.now().day,
+                  ),
                 ),
               );
             },
@@ -132,9 +136,10 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
                   schedule: schedule.schedule,
                   globalKeys: keys,
                   currentWeekDay: getCurrentWeekDay(),
-                  needHighlight: getCurrentWeekDays(scheduleBloc.datePointer)
-                      .any((element) =>
-                          int.parse(element) == DateTime.now().day),
+                  needHighlight:
+                      getCurrentWeekDays(scheduleBloc.datePointer).any(
+                    (element) => int.parse(element) == DateTime.now().day,
+                  ),
                 ),
               );
             },
@@ -159,7 +164,6 @@ class _DateCarouselWrapperWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DateCarouselWidget(
-      dates: getCurrentWeekDays(scheduleBloc.datePointer),
       onDateTap: (int index) {
         final destination = globalKeys.where((key) => key.value == index);
         if (destination.isNotEmpty) {

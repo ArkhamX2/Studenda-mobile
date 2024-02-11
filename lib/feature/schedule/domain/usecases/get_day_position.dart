@@ -10,7 +10,7 @@ class GetDayPositionList extends Usecase<List<DayPositionModel>,void>{
   GetDayPositionList({required this.dayPositionRepository});
 
   @override
-  Future<Either<Failure,List<DayPositionModel>>> call(void request, [bool remote = true]) async{
-    return await dayPositionRepository.load(request,remote);
+  Future<Either<Failure,List<DayPositionModel>>> call(void request) async{
+    return await dayPositionRepository.load(request);
   }
 }

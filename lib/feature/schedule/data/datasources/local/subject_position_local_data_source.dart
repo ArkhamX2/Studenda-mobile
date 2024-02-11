@@ -5,7 +5,7 @@ import 'package:studenda_mobile_student/feature/schedule/data/models/subject_pos
 abstract class SubjectPositionLocalDataSource {
   Future<void> add(List<SubjectPositionModel> remoteLoad);
 
-  Future<List<SubjectPositionModel>> load();
+  List<SubjectPositionModel> load();
 }
 
 class SubjectPositionLocalDataSourceImpl
@@ -34,7 +34,7 @@ class SubjectPositionLocalDataSourceImpl
   }
 
   @override
-  Future<List<SubjectPositionModel>> load() async {
+  List<SubjectPositionModel> load() {
     try {
       return subjectPositionBox.values.toList();
     } catch (e) {

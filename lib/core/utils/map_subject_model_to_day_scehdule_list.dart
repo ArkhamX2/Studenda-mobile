@@ -33,6 +33,8 @@ List<DayScheduleEntity> mapSubjectModelToDayScehduleList(
   });
 
   for (var i = 0; i < subjects.length; i++) {
+    final teacher =
+        teachers.firstWhere((element) => element.id == subjects[i].userId);
     if (dayScheduleEntityMap.containsKey(
       dayPositionList
               .firstWhere((element) => element.id == subjects[i].dayPositionId)
@@ -52,9 +54,8 @@ List<DayScheduleEntity> mapSubjectModelToDayScehduleList(
               .firstWhere((element) => element.id == subjects[i].disciplineId)
               .name,
           classroom: subjects[i].classroom,
-          teacher: teachers
-              .firstWhere((element) => element.id == subjects[i].userId)
-              .name,
+          teacher:
+              "${teacher.surname ?? ""} ${teacher.name ?? ""} ${teacher.patronymic ?? ""}",
           subjectPosition: subjectPositionList
                   .firstWhere(
                     (element) => element.id == subjects[i].subjectPositionId,
@@ -77,9 +78,8 @@ List<DayScheduleEntity> mapSubjectModelToDayScehduleList(
               .firstWhere((element) => element.id == subjects[i].disciplineId)
               .name,
           classroom: subjects[i].classroom,
-          teacher: teachers
-              .firstWhere((element) => element.id == subjects[i].userId)
-              .name,
+          teacher:
+              "${teacher.surname ?? ""} ${teacher.name ?? ""} ${teacher.patronymic ?? ""}",
           subjectPosition: subjectPositionList
                   .firstWhere(
                     (element) => element.id == subjects[i].subjectPositionId,
