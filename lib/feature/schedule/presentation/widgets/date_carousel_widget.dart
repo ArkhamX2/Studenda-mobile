@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/widgets/position_values.dart';
 import 'package:studenda_mobile_student/resources/colors.dart';
 
-class DateCarouselWidget extends StatelessWidget {
+class DateCarouselWidget extends StatefulWidget {
   final List<String> dates;
 
   final Function(int) onDateTap;
@@ -18,35 +18,49 @@ class DateCarouselWidget extends StatelessWidget {
   });
 
   @override
+  State<DateCarouselWidget> createState() => _DateCarouselWidgetState();
+}
+
+class _DateCarouselWidgetState extends State<DateCarouselWidget> {
+  int curIndex = 99;
+  final PageController _controller = PageController(initialPage: 99);
+  
+  @override
   Widget build(BuildContext context) {
     return Container(
+      height: 80,
       decoration: const BoxDecoration(
         color: Color.fromRGBO(211, 201, 253, 0.4),
         borderRadius: BorderRadius.all(Radius.circular(5)),
       ),
-      child: Expanded(
-        child: GestureDetector(
-          onHorizontalDragEnd: (details) {
-            if (details.primaryVelocity! < 0) {
-              onNextTap();
+        child: PageView.builder(
+          controller: _controller,
+          onPageChanged: (value) {
+            if(value > curIndex){
+              setState(() {
+                curIndex++;
+              });
+              widget.onNextTap();
             }
-            if (details.primaryVelocity! > 0) {
-              onPrevTap();
+            else{
+              setState(() {
+                curIndex--;
+              });
+              widget.onPrevTap();
             }
           },
-          child: Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 26, vertical: 5),
+          itemBuilder: (context, index) => Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 5),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: dates
+              children: widget.dates
                   .asMap()
                   .map(
                     (key, value) => MapEntry(
                       key,
                       GestureDetector(
                         onTap: () {
-                          onDateTap(key);
+                          widget.onDateTap(key);
                         },
                         child: _DateCarouselItemWidget(
                           day: key,
@@ -58,9 +72,8 @@ class DateCarouselWidget extends StatelessWidget {
                   .values
                   .toList(),
             ),
-          ),
+          )
         ),
-      ),
     );
   }
 }

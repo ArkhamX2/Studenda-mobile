@@ -65,67 +65,6 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
     final scheduleBloc = context.watch<ScheduleBloc>();
     final groupSelectorBloc = context.watch<MainGroupSelectorBloc>();
 
-    return scheduleBloc.state.when(
-      initial: () => const Center(child: CircularProgressIndicator()),
-      loading: () => const Center(child: CircularProgressIndicator()),
-      localLoadingFail: (message) {
-        scheduleBloc.add(const ScheduleEvent.load(1));
-        return Center(
-          child: StudendaDefaultLabelWidget(text: message, fontSize: 18),
-        );
-      },
-      fail: (message) {
-        return Center(
-          child: StudendaDefaultLabelWidget(text: message, fontSize: 18),
-        );
-      },
-      localLoadingSuccess: (schedule) {
-        if (schedule.schedule.isEmpty) {
-          scheduleBloc.add(const ScheduleEvent.load(1));
-        }
-        keys = List.generate(
-          schedule.schedule.length,
-          (index) => GlobalObjectKey(schedule.schedule[index].weekPosition),
-        );
-        return _SuccessBodyWidget(
-          scheduleBloc: scheduleBloc,
-          keys: keys,
-          groupSelectorBloc: groupSelectorBloc,
-          schedule: schedule,
-        );
-      },
-      success: (schedule) {
-        keys = List.generate(
-          schedule.schedule.length,
-          (index) => GlobalObjectKey(schedule.schedule[index].weekPosition),
-        );
-
-        return _SuccessBodyWidget(
-          scheduleBloc: scheduleBloc,
-          keys: keys,
-          groupSelectorBloc: groupSelectorBloc,
-          schedule: schedule,
-        );
-      },
-    );
-  }
-}
-
-class _SuccessBodyWidget extends StatelessWidget {
-  const _SuccessBodyWidget({
-    required this.scheduleBloc,
-    required this.keys,
-    required this.groupSelectorBloc,
-    required this.schedule,
-  });
-
-  final ScheduleBloc scheduleBloc;
-  final List<GlobalObjectKey<State<StatefulWidget>>> keys;
-  final MainGroupSelectorBloc groupSelectorBloc;
-  final ScheduleEntity schedule;
-
-  @override
-  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(14.0),
       child: Column(
@@ -144,18 +83,61 @@ class _SuccessBodyWidget extends StatelessWidget {
           _DateCarouselWrapperWidget(
             globalKeys: keys,
             scheduleBloc: scheduleBloc,
-            weekType: schedule.weekType,
             groupId: groupSelectorBloc.selectedGroup.id,
           ),
           const SizedBox(height: 10),
-          Expanded(
-            child: _ScheduleScrollWidget(
-              schedule: schedule.schedule,
-              globalKeys: keys,
-              currentWeekDay: getCurrentWeekDay(),
-              needHighlight: getCurrentWeekDays(scheduleBloc.datePointer)
-                  .any((element) => int.parse(element) == DateTime.now().day),
-            ),
+          scheduleBloc.state.when(
+            initial: () => const Center(child: CircularProgressIndicator()),
+            loading: () => const Center(child: CircularProgressIndicator()),
+            localLoadingFail: (message) {
+              scheduleBloc.add(const ScheduleEvent.load(1));
+              return Center(
+                child: StudendaDefaultLabelWidget(text: message, fontSize: 18),
+              );
+            },
+            fail: (message) {
+              return Center(
+                child: StudendaDefaultLabelWidget(text: message, fontSize: 18),
+              );
+            },
+            localLoadingSuccess: (schedule) {
+              if (schedule.schedule.isEmpty) {
+                scheduleBloc.add(const ScheduleEvent.load(1));
+              }
+              keys = List.generate(
+                schedule.schedule.length,
+                (index) =>
+                    GlobalObjectKey(schedule.schedule[index].weekPosition),
+              );
+              return Expanded(
+                child: _ScheduleScrollWidget(
+                  schedule: schedule.schedule,
+                  globalKeys: keys,
+                  currentWeekDay: getCurrentWeekDay(),
+                  needHighlight: getCurrentWeekDays(scheduleBloc.datePointer)
+                      .any((element) =>
+                          int.parse(element) == DateTime.now().day),
+                ),
+              );
+            },
+            success: (schedule) {
+              keys = List.generate(
+                schedule.schedule.length,
+                (index) =>
+                    GlobalObjectKey(schedule.schedule[index].weekPosition),
+              );
+
+              return Expanded(
+                child: _ScheduleScrollWidget(
+                  schedule: schedule.schedule,
+                  globalKeys: keys,
+                  currentWeekDay: getCurrentWeekDay(),
+                  needHighlight: getCurrentWeekDays(scheduleBloc.datePointer)
+                      .any((element) =>
+                          int.parse(element) == DateTime.now().day),
+                ),
+              );
+            },
           ),
         ],
       ),
@@ -165,13 +147,11 @@ class _SuccessBodyWidget extends StatelessWidget {
 
 class _DateCarouselWrapperWidget extends StatelessWidget {
   final List<GlobalObjectKey> globalKeys;
-  final WeekTypeEntity weekType;
   final ScheduleBloc scheduleBloc;
   final int groupId;
 
   const _DateCarouselWrapperWidget({
     required this.globalKeys,
-    required this.weekType,
     required this.scheduleBloc,
     required this.groupId,
   });
@@ -202,8 +182,8 @@ class _DateCarouselWrapperWidget extends StatelessWidget {
         }
       },
       onPrevTap: () =>
-          scheduleBloc.add(const ScheduleEvent.subtractWeekType(1)),
-      onNextTap: () => scheduleBloc.add(const ScheduleEvent.addWeekType(1)),
+          scheduleBloc.add(ScheduleEvent.subtractWeekType(groupId)),
+      onNextTap: () => scheduleBloc.add(ScheduleEvent.addWeekType(groupId)),
     );
   }
 }
