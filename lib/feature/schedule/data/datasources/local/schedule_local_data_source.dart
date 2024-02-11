@@ -15,14 +15,19 @@ class ScheduleLocalDataSourceImpl implements ScheduleLocalDataSource {
   ScheduleLocalDataSourceImpl({required this.subjectBox});
 
   @override
-  Future<void> add(List<SubjectModel> remoteLoad) async {
+  Future<void> add(List<SubjectModel> subjectList) async {
     try {
       final List<int> subjects = [];
       subjects.addAll(subjectBox.values.map((e) => e.id));
-      subjects.addAll(remoteLoad.map((e) => e.id));
-      subjects.toSet().toList();
-      final ids = subjects;
-      await subjectBox.putAll(remoteLoad.where((element) => subjects.contains(element.id)).toList().asMap());
+      subjects.addAll(subjectList.map((e) => e.id));
+      final ids = {...subjects};
+      await subjectBox.putAll(
+        {
+          for (final element
+              in subjectList.where((element) => ids.contains(element.id)))
+            element.id: element,
+        },
+      );
     } catch (e) {
       throw CacheException();
     }
@@ -40,6 +45,6 @@ class ScheduleLocalDataSourceImpl implements ScheduleLocalDataSource {
           .toList();
     } catch (e) {
       throw CacheException();
-    } 
+    }
   }
 }

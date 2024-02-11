@@ -8,19 +8,26 @@ abstract class SubjectPositionLocalDataSource {
   Future<List<SubjectPositionModel>> load();
 }
 
-class SubjectPositionLocalDataSourceImpl implements SubjectPositionLocalDataSource {
+class SubjectPositionLocalDataSourceImpl
+    implements SubjectPositionLocalDataSource {
   Box<SubjectPositionModel> subjectPositionBox;
 
   SubjectPositionLocalDataSourceImpl({required this.subjectPositionBox});
 
   @override
-  Future<void> add(List<SubjectPositionModel> remoteLoad) async {
+  Future<void> add(List<SubjectPositionModel> subjectPositionList) async {
     try {
-      final List<SubjectPositionModel> subjectPositions = [];
-      subjectPositions.addAll(subjectPositionBox.values.toList());
-      subjectPositions.addAll(remoteLoad);
-      subjectPositions.toSet();
-      await subjectPositionBox.putAll(subjectPositions.asMap());
+      final List<int> subjectPositions = [];
+      subjectPositions.addAll(subjectPositionBox.values.map((e) => e.id));
+      subjectPositions.addAll(subjectPositionList.map((e) => e.id));
+      final ids = {...subjectPositions};
+      await subjectPositionBox.putAll(
+        {
+          for (final element
+              in subjectPositionList.where((element) => ids.contains(element.id)))
+            element.id: element,
+        },
+      );
     } catch (e) {
       throw CacheException();
     }

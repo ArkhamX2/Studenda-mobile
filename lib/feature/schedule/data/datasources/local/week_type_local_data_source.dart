@@ -22,14 +22,19 @@ class WeekTypeLocalDataSourceImpl implements WeekTypeLocalDataSource {
   WeekTypeLocalDataSourceImpl({required this.weekTypeBox, required this.prefs});
 
   @override
-  Future<void> add(List<WeekTypeModel> remoteLoad) async {
+  Future<void> add(List<WeekTypeModel> weekTypeList) async {
     try {
-      
-      final List<WeekTypeModel> weekTypes = [];
-      weekTypes.addAll(weekTypeBox.values.toList());
-      weekTypes.addAll(remoteLoad);
-      weekTypes.toSet();
-      await weekTypeBox.putAll(weekTypes.asMap());
+      final List<int> weekTypes = [];
+      weekTypes.addAll(weekTypeBox.values.toList().map((e) => e.id));
+      weekTypes.addAll(weekTypeList.map((e) => e.id));
+      final ids = {...weekTypes};
+      await weekTypeBox.putAll(
+        {
+          for (final element
+              in weekTypeList.where((element) => ids.contains(element.id)))
+            element.id: element,
+        },
+      );
     } catch (e) {
       throw CacheException();
     }
@@ -43,7 +48,7 @@ class WeekTypeLocalDataSourceImpl implements WeekTypeLocalDataSource {
       throw CacheException();
     }
   }
-  
+
   @override
   Future<WeekTypeModel> getCurrent() async {
     try {
@@ -60,7 +65,7 @@ class WeekTypeLocalDataSourceImpl implements WeekTypeLocalDataSource {
       throw CacheException();
     }
   }
-  
+
   @override
   Future<void> setCurrent(WeekTypeModel remoteLoad) async {
     try {

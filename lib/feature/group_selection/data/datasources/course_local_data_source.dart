@@ -25,7 +25,17 @@ class CourseLocalDataSourceImpl implements CourseLocalDataSource {
   @override
   Future<void> add(List<CourseModel> courseList) async {
     try {
-      await courseBox.putAll(courseList.asMap());
+      final List<int> courses = [];
+      courses.addAll(courseBox.values.map((e) => e.id));
+      courses.addAll(courseList.map((e) => e.id));
+      final ids = {...courses};
+      await courseBox.putAll(
+        {
+          for (final element
+              in courseList.where((element) => ids.contains(element.id)))
+            element.id: element,
+        },
+      );
     } catch (e) {
       throw CacheException();
     }

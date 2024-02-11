@@ -14,13 +14,19 @@ class TeacherLocalDataSourceImpl implements TeacherLocalDataSource {
   TeacherLocalDataSourceImpl({required this.userBox});
 
   @override
-  Future<void> add(List<UserModel> remoteLoad) async {
+  Future<void> add(List<UserModel> teacherList) async {
     try {
-      final List<UserModel> teachers = [];
-      teachers.addAll(userBox.values.toList());
-      teachers.addAll(remoteLoad);
-      teachers.toSet();
-      await userBox.putAll(teachers.asMap());
+      final List<int> teachers = [];
+      teachers.addAll(userBox.values.map((e) => e.id));
+      teachers.addAll(teacherList.map((e) => e.id));
+      final ids = {...teachers};
+      await userBox.putAll(
+        {
+          for (final element
+              in teacherList.where((element) => ids.contains(element.id)))
+            element.id: element,
+        },
+      );
     } catch (e) {
       throw CacheException();
     }
@@ -29,8 +35,10 @@ class TeacherLocalDataSourceImpl implements TeacherLocalDataSource {
   @override
   Future<List<UserModel>> load([List<int> request = const []]) async {
     try {
-      if(request.isEmpty) return userBox.values.toList();
-      return userBox.values.where((element) => request.contains(element.id)).toList();
+      if (request.isEmpty) return userBox.values.toList();
+      return userBox.values
+          .where((element) => request.contains(element.id))
+          .toList();
     } catch (e) {
       throw CacheException();
     }

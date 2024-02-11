@@ -24,10 +24,19 @@ class DayPositionLocalDataSourceImpl implements DayPositionLocalDataSource {
   @override
   Future<void> add(List<DayPositionModel> courseList) async {
     try {
-      await dayPositionBox.putAll(courseList.asMap());
+      final List<int> dayPositions = [];
+      dayPositions.addAll(dayPositionBox.values.map((e) => e.id));
+      dayPositions.addAll(courseList.map((e) => e.id));
+      final ids = {...dayPositions};
+      await dayPositionBox.putAll(
+        {
+          for (final element
+              in courseList.where((element) => ids.contains(element.id)))
+            element.id: element,
+        },
+      );
     } catch (e) {
       throw CacheException();
     }
   }
- 
 }

@@ -22,9 +22,20 @@ class DepartmentLocalDataSourceImpl implements DepartmentLocalDataSource {
   }
 
   @override
-  Future<void> add(List<DepartmentModel> courseList) async {
+  Future<void> add(List<DepartmentModel> departmentList) async {
     try {
-      await deaprtmentBox.putAll(courseList.asMap());
+      final List<int> departments = [];
+      departments.addAll(deaprtmentBox.values.map((e) => e.id));
+      departments.addAll(departmentList.map((e) => e.id));
+      final ids = {...departments};
+      await deaprtmentBox.putAll(
+        {
+          for (final element
+              in departmentList.where((element) => ids.contains(element.id)))
+            element.id: element,
+        },
+      );
+
     } catch (e) {
       throw CacheException();
     }

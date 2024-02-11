@@ -14,13 +14,19 @@ class SubjectTypeLocalDataSourceImpl implements SubjectTypeLocalDataSource {
   SubjectTypeLocalDataSourceImpl({required this.subjectTypeBox});
 
   @override
-  Future<void> add(List<SubjectTypeModel> remoteLoad) async {
+  Future<void> add(List<SubjectTypeModel> subjectTypeList) async {
     try {
-      final List<SubjectTypeModel> subjectTypes = [];
-      subjectTypes.addAll(subjectTypeBox.values.toList());
-      subjectTypes.addAll(remoteLoad);
-      subjectTypes.toSet();
-      await subjectTypeBox.putAll(subjectTypes.asMap());
+      final List<int> subjectTypes = [];
+      subjectTypes.addAll(subjectTypeBox.values.map((e) => e.id));
+      subjectTypes.addAll(subjectTypeList.map((e) => e.id));
+      final ids = {...subjectTypes};
+      await subjectTypeBox.putAll(
+        {
+          for (final element
+              in subjectTypeList.where((element) => ids.contains(element.id)))
+            element.id: element,
+        },
+      );
     } catch (e) {
       throw CacheException();
     }
@@ -29,8 +35,10 @@ class SubjectTypeLocalDataSourceImpl implements SubjectTypeLocalDataSource {
   @override
   Future<List<SubjectTypeModel>> load([List<int> request = const []]) async {
     try {
-      if(request.isEmpty) return subjectTypeBox.values.toList();
-      return subjectTypeBox.values.where((element) => request.contains(element.id)).toList();
+      if (request.isEmpty) return subjectTypeBox.values.toList();
+      return subjectTypeBox.values
+          .where((element) => request.contains(element.id))
+          .toList();
     } catch (e) {
       throw CacheException();
     }
