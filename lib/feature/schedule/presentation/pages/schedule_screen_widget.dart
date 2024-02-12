@@ -61,6 +61,7 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
     7,
     (index) => GlobalObjectKey(index),
   );
+
   @override
   Widget build(BuildContext context) {
     final scheduleBloc = context.watch<ScheduleBloc>();
@@ -72,7 +73,7 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
         children: [
           Center(
             child: StudendaWeightedLabelWidget(
-              text: scheduleBloc.currentWeekType == null
+              text: scheduleBloc.currentWeekType!.name! == "name"
                   ? ""
                   : "${scheduleBloc.currentWeekType!.name!.toUpperCase()} НЕДЕЛЯ",
               fontSize: 16,
@@ -118,8 +119,8 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
                   globalKeys: keys,
                   currentWeekDay: getCurrentWeekDay(),
                   needHighlight:
-                      getCurrentWeekDays(scheduleBloc.datePointer).any(
-                    (element) => int.parse(element) == DateTime.now().day,
+                      getCurrentWeekDaysWithMonth(scheduleBloc.datePointer).any(
+                    (element) => element == "${DateTime.now().day} ${monthNames[DateTime.now().month-1]}",
                   ),
                 ),
               );
@@ -130,7 +131,6 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
                 (index) =>
                     GlobalObjectKey(schedule.schedule[index].weekPosition),
               );
-
               return Expanded(
                 child: _ScheduleScrollWidget(
                   schedule: schedule.schedule,
