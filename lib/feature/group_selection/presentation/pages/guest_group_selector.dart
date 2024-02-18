@@ -69,26 +69,36 @@ class _GroupSelectorWidget extends StatelessWidget {
           return Container(
             alignment: AlignmentDirectional.center,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 17),
+              padding: const EdgeInsets.symmetric(horizontal: 57),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   _DepartmentSelectionWidget(
                     mainBloc: groupSelectorBloc,
                     departmentCubit: departmentCubit,
                   ),
+                  const SizedBox(
+                    height: 41,
+                  ),
                   _CourseSelectionWidget(
                     mainBloc: groupSelectorBloc,
                     courseCubit: courseCubit,
+                  ),
+                  const SizedBox(
+                    height: 41,
                   ),
                   _GroupSelectionWidget(
                     mainBloc: groupSelectorBloc,
                     groupCubit: groupCubit,
                   ),
+                  const SizedBox(
+                    height: 184,
+                  ),
                   StudendaButton(
                     title: "Подтвердить",
                     event: () {
-                      Navigator.of(context).pushReplacementNamed('/schedule');
+                      Navigator.of(context).pushReplacementNamed('/main');
                     },
                   ),
                 ],

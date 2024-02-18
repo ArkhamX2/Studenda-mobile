@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class JournalMainScreenWidget extends StatefulWidget {
-  const JournalMainScreenWidget({super.key});
+class JournalMainScreenPage extends StatefulWidget {
+  const JournalMainScreenPage({super.key});
 
   @override
-  State<JournalMainScreenWidget> createState() =>
-      _JournalMainScreenWidgetState();
+  State<JournalMainScreenPage> createState() =>
+      _JournalMainScreenPageState();
 }
 
-class _JournalMainScreenWidgetState extends State<JournalMainScreenWidget> {
+class _JournalMainScreenPageState extends State<JournalMainScreenPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -11,14 +11,14 @@ import 'package:studenda_mobile_student/feature/schedule/presentation/widgets/we
 import 'package:studenda_mobile_student/injection_container.dart';
 import 'package:studenda_mobile_student/resources/colors.dart';
 
-class ScheduleScreenWidget extends StatefulWidget {
-  const ScheduleScreenWidget({super.key});
+class ScheduleScreenPage extends StatefulWidget {
+  const ScheduleScreenPage({super.key});
 
   @override
-  State<ScheduleScreenWidget> createState() => _ScheduleScreenWidgetState();
+  State<ScheduleScreenPage> createState() => _ScheduleScreenPageState();
 }
 
-class _ScheduleScreenWidgetState extends State<ScheduleScreenWidget> {
+class _ScheduleScreenPageState extends State<ScheduleScreenPage> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
