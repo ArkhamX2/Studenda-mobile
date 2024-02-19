@@ -25,4 +25,16 @@ class DepartmentCubit extends Cubit<DepartmentState> {
       ),
     );
   }
+  Future<void> loadLocally() async {
+    emit(const DepartmentState.loading());
+    final departments = await loadDepartments(() {});
+    departments.fold(
+      (l) => emit(DepartmentState.localLoadingFail(l.message)),
+      (r) => emit(
+        DepartmentState.localLoadingSuccess(
+          r.map((element) => DepartmentEntity(id: element.id,name: element.name)).toList(),
+        ),
+      ),
+    );
+  }
 }

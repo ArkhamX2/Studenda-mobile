@@ -156,7 +156,7 @@ Future<void> init() async {
       setSelectedCourse: sl(),
       setSelectedGroup: sl(),
       selectedGroup: const GroupEntity(id: -1, name: ""),
-      selectedCourse: const CourseEntity(id: -1, name: ""),
+      selectedCourse: const CourseEntity(id: -1, name: "", grade: 0),
       selectedDepartment: const DepartmentEntity(id: -1, name: ""),
     ),
   );

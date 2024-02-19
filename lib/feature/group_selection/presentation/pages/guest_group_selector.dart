@@ -28,13 +28,13 @@ class _GroupSelectorPageState extends State<GroupSelectorPage> {
       body: MultiBlocProvider(
         providers: [
           BlocProvider<DepartmentCubit>(
-            create: (context) => sl<DepartmentCubit>()..load(),
+            create: (context) => sl<DepartmentCubit>()..loadLocally(),
           ),
           BlocProvider<CourseCubit>(
-            create: (context) => sl<CourseCubit>()..load(),
+            create: (context) => sl<CourseCubit>()..loadLocally(),
           ),
           BlocProvider<GroupCubit>(
-            create: (context) => sl<GroupCubit>()..load(),
+            create: (context) => sl<GroupCubit>()..loadLocally(),
           ),
         ],
         child: const _GroupSelectorWidget(),
@@ -126,22 +126,50 @@ class _GroupSelectionWidget extends StatelessWidget {
     return groupCubit.state.when(
       initial: () => Container(),
       loading: () => Container(),
-      success: (groups) {
-        
-        mainBloc.add(
-                MainGroupSelectorEvent.setGroup(
-                  groups.first,
-                ),
-              );
-        return StudendaDropdown<GroupEntity>(
-        items: groups,
-        model: groups[0],
-        callback: (element) {
+      localLoadingFail: (message) {
+        groupCubit.load();
+        return Center(
+          child: StudendaDefaultLabelWidget(text: message, fontSize: 18),
+        );
+      },
+      localLoadingSuccess: (groups) {
+        if (groups.isEmpty) {
+          groupCubit.load();
+        } else {
           mainBloc.add(
-            MainGroupSelectorEvent.setGroup(element!),
+            MainGroupSelectorEvent.setGroup(
+              groups.first,
+            ),
           );
-        },
-      );},
+        }
+        return StudendaDropdown<GroupEntity>(
+          items: groups,
+          model: groups.isEmpty ? null : groups.first,
+          callback: (element) {
+            mainBloc.add(
+              MainGroupSelectorEvent.setGroup(element!),
+            );
+          },
+        );
+      },
+      success: (groups) {
+        if (groups.isNotEmpty) {
+          mainBloc.add(
+            MainGroupSelectorEvent.setGroup(
+              groups.first,
+            ),
+          );
+        }
+        return StudendaDropdown<GroupEntity>(
+          items: groups,
+          model: groups.isEmpty ? null : groups.first,
+          callback: (element) {
+            mainBloc.add(
+              MainGroupSelectorEvent.setGroup(element!),
+            );
+          },
+        );
+      },
       fail: (message) =>
           StudendaDefaultLabelWidget(text: message, fontSize: 16),
     );
@@ -163,21 +191,51 @@ class _CourseSelectionWidget extends StatelessWidget {
     return courseCubit.state.when(
       initial: () => Container(),
       loading: () => Container(),
-      success: (courses){
-        mainBloc.add(
-                MainGroupSelectorEvent.setCourse(
-                  courses.first,
-                ),
-              );
-        return StudendaDropdown<CourseEntity>(
-        items: courses,
-        model: courses[0],
-        callback: (element) {
+      localLoadingFail: (message) {
+        courseCubit.load();
+        return Center(
+          child: StudendaDefaultLabelWidget(text: message, fontSize: 18),
+        );
+      },
+      localLoadingSuccess: (courses) {
+        if (courses.isEmpty) {
+          courseCubit.load();
+        } else {
           mainBloc.add(
-            MainGroupSelectorEvent.setCourse(element!),
+            MainGroupSelectorEvent.setCourse(
+              courses.first,
+            ),
           );
-        },
-      );},
+        }
+
+        return StudendaDropdown<CourseEntity>(
+          items: courses,
+          model: courses.isEmpty ? null : courses.first,
+          callback: (element) {
+            mainBloc.add(
+              MainGroupSelectorEvent.setCourse(element!),
+            );
+          },
+        );
+      },
+      success: (courses) {
+        if (courses.isNotEmpty) {
+          mainBloc.add(
+            MainGroupSelectorEvent.setCourse(
+              courses.first,
+            ),
+          );
+        }
+        return StudendaDropdown<CourseEntity>(
+          items: courses,
+          model: courses.isEmpty ? null : courses.first,
+          callback: (element) {
+            mainBloc.add(
+              MainGroupSelectorEvent.setCourse(element!),
+            );
+          },
+        );
+      },
       fail: (message) =>
           StudendaDefaultLabelWidget(text: message, fontSize: 16),
     );
@@ -199,23 +257,56 @@ class _DepartmentSelectionWidget extends StatelessWidget {
     return departmentCubit.state.when(
       initial: () => Container(),
       loading: () => Container(),
-      success: (departments) {
-        mainBloc.add(
-                MainGroupSelectorEvent.setDepartment(
-                  departments.first,
-                ),
-              );
-        return StudendaDropdown<DepartmentEntity>(
-        items: departments,
-        model: departments[0],
-        callback: (element) {
+      localLoadingFail: (message) {
+        departmentCubit.load();
+        return Center(
+          child: StudendaDefaultLabelWidget(text: message, fontSize: 18),
+        );
+      },
+      fail: (message) {
+        return Center(
+          child: StudendaDefaultLabelWidget(text: message, fontSize: 18),
+        );
+      },
+      localLoadingSuccess: (departments) {
+        if (departments.isEmpty) {
+          departmentCubit.load();
+        } else {
           mainBloc.add(
-            MainGroupSelectorEvent.setDepartment(element!),
+            MainGroupSelectorEvent.setDepartment(
+              departments.first,
+            ),
           );
-        },
-      );},
-      fail: (message) =>
-          StudendaDefaultLabelWidget(text: message, fontSize: 16),
+        }
+
+        return StudendaDropdown<DepartmentEntity>(
+          items: departments,
+          model: departments.isEmpty ? null : departments.first,
+          callback: (element) {
+            mainBloc.add(
+              MainGroupSelectorEvent.setDepartment(element!),
+            );
+          },
+        );
+      },
+      success: (departments) {
+        if (departments.isNotEmpty) {
+          mainBloc.add(
+            MainGroupSelectorEvent.setDepartment(
+              departments.first,
+            ),
+          );
+        }
+        return StudendaDropdown<DepartmentEntity>(
+          items: departments,
+          model: departments.isEmpty ? null : departments.first,
+          callback: (element) {
+            mainBloc.add(
+              MainGroupSelectorEvent.setDepartment(element!),
+            );
+          },
+        );
+      },
     );
   }
 }

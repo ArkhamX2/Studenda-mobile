@@ -72,6 +72,7 @@ class MainGroupSelectorBloc
             CourseEntity(
               id: r.id,
               name: r.name,
+              grade: r.grade,
             ),
           ),
         ),

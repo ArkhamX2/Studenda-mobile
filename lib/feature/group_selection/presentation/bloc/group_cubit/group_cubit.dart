@@ -25,4 +25,18 @@ class GroupCubit extends Cubit<GroupState> {
       );
     });
   }
+  Future<void> loadLocally() async {
+    emit(const GroupState.loading());
+    final groups = await loadGroups(() {});
+    groups.fold((l) => emit(GroupState.localLoadingFail(l.message)), (succededGroupList) {
+      groupList = succededGroupList.map((e) => GroupEntity(id: e.id, name: e.name)).toList();
+      emit(
+        GroupState.localLoadingSuccess(
+          succededGroupList
+              .map((element) => GroupEntity(id: element.id, name: element.name))
+              .toList(),
+        ),
+      );
+    });
+  }
 }

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:studenda_mobile_student/core/presentation/label/studenda_aligned_label_widget.dart';
-import 'package:studenda_mobile_student/core/presentation/label/studenda_default_label_widget.dart';
 
 class StudendaDropdown<T> extends StatefulWidget {
   final List<T?> items;
@@ -36,37 +34,38 @@ class StudendaDropdownState<T> extends State<StudendaDropdown<T>> {
         borderRadius: const BorderRadius.all(Radius.circular(5)),
         color: Colors.white,
       ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 5),
-        child: DropdownMenu<T>(
-          enableFilter: true,
-          requestFocusOnTap: true,
-          inputDecorationTheme: const InputDecorationTheme(
-            filled: true,
-            fillColor: Colors.white,
+      child: Theme(
+        data: Theme.of(context).copyWith(
+          canvasColor: Colors.white,
+        ),
+        child: DropdownButtonHideUnderline(
+          child: ButtonTheme(
+            alignedDropdown: true,
+            child: DropdownButton<T>(
+              onChanged: (T? value) {
+                widget.callback(value);
+                setState(() {
+                  item = value;
+                });
+              },
+              value: item,
+              padding: const EdgeInsets.only(left: 12),
+              isExpanded: true,
+              // menuStyle: const MenuStyle(
+              //   side: MaterialStatePropertyAll(BorderSide(color: Color(0xFFAA8DD3))),
+              //   backgroundColor: MaterialStatePropertyAll(Colors.white),
+              //   surfaceTintColor: MaterialStatePropertyAll(Colors.white),
+              // ),
+              items: widget.items.map<DropdownMenuItem<T>>(
+                (T? item) {
+                  return DropdownMenuItem<T>(
+                    value: item as T,
+                    child: Center(child: Text(item.toString())),
+                  );
+                },
+              ).toList(),
+            ),
           ),
-          expandedInsets: const EdgeInsets.all(0),
-          onSelected: (T? value) {
-            widget.callback(value);
-            setState(() {
-              item = value;
-            });
-          },
-          menuStyle: MenuStyle(
-            backgroundColor: MaterialStateProperty.resolveWith((states) {
-              return Colors.green; //your desired selected background color
-            }),
-          ),
-          dropdownMenuEntries:
-              widget.items.map<DropdownMenuEntry<T>>(
-            (T? item) {
-              return DropdownMenuEntry<T>(
-                style: MenuItemButton.styleFrom(backgroundColor: Colors.white, ),
-                value: item!,
-                label: item.toString(),
-              );
-            },
-          ).toList(),
         ),
       ),
     );

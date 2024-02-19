@@ -6,13 +6,14 @@ part 'course_entity.freezed.dart';
 class CourseEntity with _$CourseEntity{
   const factory CourseEntity({
     required int id,
-    required String name,
+    required String? name,
+    required int grade,
   }) = _CourseEntity;
 
   const CourseEntity._();
 
   @override
   String toString() {
-    return name;
+    return grade.toString();
   }
 }

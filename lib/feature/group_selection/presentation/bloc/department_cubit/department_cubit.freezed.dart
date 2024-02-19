@@ -22,6 +22,9 @@ mixin _$DepartmentState {
     required TResult Function() loading,
     required TResult Function(List<DepartmentEntity> departments) success,
     required TResult Function(String message) fail,
+    required TResult Function(String message) localLoadingFail,
+    required TResult Function(List<DepartmentEntity> departments)
+        localLoadingSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +33,8 @@ mixin _$DepartmentState {
     TResult? Function()? loading,
     TResult? Function(List<DepartmentEntity> departments)? success,
     TResult? Function(String message)? fail,
+    TResult? Function(String message)? localLoadingFail,
+    TResult? Function(List<DepartmentEntity> departments)? localLoadingSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +43,8 @@ mixin _$DepartmentState {
     TResult Function()? loading,
     TResult Function(List<DepartmentEntity> departments)? success,
     TResult Function(String message)? fail,
+    TResult Function(String message)? localLoadingFail,
+    TResult Function(List<DepartmentEntity> departments)? localLoadingSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +54,8 @@ mixin _$DepartmentState {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Fail value) fail,
+    required TResult Function(_LocalLoadingFail value) localLoadingFail,
+    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +64,8 @@ mixin _$DepartmentState {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Fail value)? fail,
+    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
+    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +74,8 @@ mixin _$DepartmentState {
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Fail value)? fail,
+    TResult Function(_LocalLoadingFail value)? localLoadingFail,
+    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -128,6 +141,9 @@ class _$InitialImpl implements _Initial {
     required TResult Function() loading,
     required TResult Function(List<DepartmentEntity> departments) success,
     required TResult Function(String message) fail,
+    required TResult Function(String message) localLoadingFail,
+    required TResult Function(List<DepartmentEntity> departments)
+        localLoadingSuccess,
   }) {
     return initial();
   }
@@ -139,6 +155,8 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? loading,
     TResult? Function(List<DepartmentEntity> departments)? success,
     TResult? Function(String message)? fail,
+    TResult? Function(String message)? localLoadingFail,
+    TResult? Function(List<DepartmentEntity> departments)? localLoadingSuccess,
   }) {
     return initial?.call();
   }
@@ -150,6 +168,8 @@ class _$InitialImpl implements _Initial {
     TResult Function()? loading,
     TResult Function(List<DepartmentEntity> departments)? success,
     TResult Function(String message)? fail,
+    TResult Function(String message)? localLoadingFail,
+    TResult Function(List<DepartmentEntity> departments)? localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -165,6 +185,8 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Fail value) fail,
+    required TResult Function(_LocalLoadingFail value) localLoadingFail,
+    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
   }) {
     return initial(this);
   }
@@ -176,6 +198,8 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Fail value)? fail,
+    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
+    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
   }) {
     return initial?.call(this);
   }
@@ -187,6 +211,8 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Fail value)? fail,
+    TResult Function(_LocalLoadingFail value)? localLoadingFail,
+    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -242,6 +268,9 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() loading,
     required TResult Function(List<DepartmentEntity> departments) success,
     required TResult Function(String message) fail,
+    required TResult Function(String message) localLoadingFail,
+    required TResult Function(List<DepartmentEntity> departments)
+        localLoadingSuccess,
   }) {
     return loading();
   }
@@ -253,6 +282,8 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? loading,
     TResult? Function(List<DepartmentEntity> departments)? success,
     TResult? Function(String message)? fail,
+    TResult? Function(String message)? localLoadingFail,
+    TResult? Function(List<DepartmentEntity> departments)? localLoadingSuccess,
   }) {
     return loading?.call();
   }
@@ -264,6 +295,8 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? loading,
     TResult Function(List<DepartmentEntity> departments)? success,
     TResult Function(String message)? fail,
+    TResult Function(String message)? localLoadingFail,
+    TResult Function(List<DepartmentEntity> departments)? localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -279,6 +312,8 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Fail value) fail,
+    required TResult Function(_LocalLoadingFail value) localLoadingFail,
+    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
   }) {
     return loading(this);
   }
@@ -290,6 +325,8 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Fail value)? fail,
+    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
+    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
   }) {
     return loading?.call(this);
   }
@@ -301,6 +338,8 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Fail value)? fail,
+    TResult Function(_LocalLoadingFail value)? localLoadingFail,
+    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -390,6 +429,9 @@ class _$SuccessImpl implements _Success {
     required TResult Function() loading,
     required TResult Function(List<DepartmentEntity> departments) success,
     required TResult Function(String message) fail,
+    required TResult Function(String message) localLoadingFail,
+    required TResult Function(List<DepartmentEntity> departments)
+        localLoadingSuccess,
   }) {
     return success(departments);
   }
@@ -401,6 +443,8 @@ class _$SuccessImpl implements _Success {
     TResult? Function()? loading,
     TResult? Function(List<DepartmentEntity> departments)? success,
     TResult? Function(String message)? fail,
+    TResult? Function(String message)? localLoadingFail,
+    TResult? Function(List<DepartmentEntity> departments)? localLoadingSuccess,
   }) {
     return success?.call(departments);
   }
@@ -412,6 +456,8 @@ class _$SuccessImpl implements _Success {
     TResult Function()? loading,
     TResult Function(List<DepartmentEntity> departments)? success,
     TResult Function(String message)? fail,
+    TResult Function(String message)? localLoadingFail,
+    TResult Function(List<DepartmentEntity> departments)? localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -427,6 +473,8 @@ class _$SuccessImpl implements _Success {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Fail value) fail,
+    required TResult Function(_LocalLoadingFail value) localLoadingFail,
+    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
   }) {
     return success(this);
   }
@@ -438,6 +486,8 @@ class _$SuccessImpl implements _Success {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Fail value)? fail,
+    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
+    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
   }) {
     return success?.call(this);
   }
@@ -449,6 +499,8 @@ class _$SuccessImpl implements _Success {
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Fail value)? fail,
+    TResult Function(_LocalLoadingFail value)? localLoadingFail,
+    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -536,6 +588,9 @@ class _$FailImpl implements _Fail {
     required TResult Function() loading,
     required TResult Function(List<DepartmentEntity> departments) success,
     required TResult Function(String message) fail,
+    required TResult Function(String message) localLoadingFail,
+    required TResult Function(List<DepartmentEntity> departments)
+        localLoadingSuccess,
   }) {
     return fail(message);
   }
@@ -547,6 +602,8 @@ class _$FailImpl implements _Fail {
     TResult? Function()? loading,
     TResult? Function(List<DepartmentEntity> departments)? success,
     TResult? Function(String message)? fail,
+    TResult? Function(String message)? localLoadingFail,
+    TResult? Function(List<DepartmentEntity> departments)? localLoadingSuccess,
   }) {
     return fail?.call(message);
   }
@@ -558,6 +615,8 @@ class _$FailImpl implements _Fail {
     TResult Function()? loading,
     TResult Function(List<DepartmentEntity> departments)? success,
     TResult Function(String message)? fail,
+    TResult Function(String message)? localLoadingFail,
+    TResult Function(List<DepartmentEntity> departments)? localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (fail != null) {
@@ -573,6 +632,8 @@ class _$FailImpl implements _Fail {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Fail value) fail,
+    required TResult Function(_LocalLoadingFail value) localLoadingFail,
+    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
   }) {
     return fail(this);
   }
@@ -584,6 +645,8 @@ class _$FailImpl implements _Fail {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Fail value)? fail,
+    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
+    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
   }) {
     return fail?.call(this);
   }
@@ -595,6 +658,8 @@ class _$FailImpl implements _Fail {
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Fail value)? fail,
+    TResult Function(_LocalLoadingFail value)? localLoadingFail,
+    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (fail != null) {
@@ -610,5 +675,334 @@ abstract class _Fail implements DepartmentState {
   String get message;
   @JsonKey(ignore: true)
   _$$FailImplCopyWith<_$FailImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LocalLoadingFailImplCopyWith<$Res> {
+  factory _$$LocalLoadingFailImplCopyWith(_$LocalLoadingFailImpl value,
+          $Res Function(_$LocalLoadingFailImpl) then) =
+      __$$LocalLoadingFailImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$LocalLoadingFailImplCopyWithImpl<$Res>
+    extends _$DepartmentStateCopyWithImpl<$Res, _$LocalLoadingFailImpl>
+    implements _$$LocalLoadingFailImplCopyWith<$Res> {
+  __$$LocalLoadingFailImplCopyWithImpl(_$LocalLoadingFailImpl _value,
+      $Res Function(_$LocalLoadingFailImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$LocalLoadingFailImpl(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LocalLoadingFailImpl implements _LocalLoadingFail {
+  const _$LocalLoadingFailImpl([this.message = "Unknown error"]);
+
+  @override
+  @JsonKey()
+  final String message;
+
+  @override
+  String toString() {
+    return 'DepartmentState.localLoadingFail(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LocalLoadingFailImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LocalLoadingFailImplCopyWith<_$LocalLoadingFailImpl> get copyWith =>
+      __$$LocalLoadingFailImplCopyWithImpl<_$LocalLoadingFailImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<DepartmentEntity> departments) success,
+    required TResult Function(String message) fail,
+    required TResult Function(String message) localLoadingFail,
+    required TResult Function(List<DepartmentEntity> departments)
+        localLoadingSuccess,
+  }) {
+    return localLoadingFail(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<DepartmentEntity> departments)? success,
+    TResult? Function(String message)? fail,
+    TResult? Function(String message)? localLoadingFail,
+    TResult? Function(List<DepartmentEntity> departments)? localLoadingSuccess,
+  }) {
+    return localLoadingFail?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<DepartmentEntity> departments)? success,
+    TResult Function(String message)? fail,
+    TResult Function(String message)? localLoadingFail,
+    TResult Function(List<DepartmentEntity> departments)? localLoadingSuccess,
+    required TResult orElse(),
+  }) {
+    if (localLoadingFail != null) {
+      return localLoadingFail(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Fail value) fail,
+    required TResult Function(_LocalLoadingFail value) localLoadingFail,
+    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
+  }) {
+    return localLoadingFail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Fail value)? fail,
+    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
+    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+  }) {
+    return localLoadingFail?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Fail value)? fail,
+    TResult Function(_LocalLoadingFail value)? localLoadingFail,
+    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    required TResult orElse(),
+  }) {
+    if (localLoadingFail != null) {
+      return localLoadingFail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LocalLoadingFail implements DepartmentState {
+  const factory _LocalLoadingFail([final String message]) =
+      _$LocalLoadingFailImpl;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$LocalLoadingFailImplCopyWith<_$LocalLoadingFailImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LocalLoadingSuccessImplCopyWith<$Res> {
+  factory _$$LocalLoadingSuccessImplCopyWith(_$LocalLoadingSuccessImpl value,
+          $Res Function(_$LocalLoadingSuccessImpl) then) =
+      __$$LocalLoadingSuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<DepartmentEntity> departments});
+}
+
+/// @nodoc
+class __$$LocalLoadingSuccessImplCopyWithImpl<$Res>
+    extends _$DepartmentStateCopyWithImpl<$Res, _$LocalLoadingSuccessImpl>
+    implements _$$LocalLoadingSuccessImplCopyWith<$Res> {
+  __$$LocalLoadingSuccessImplCopyWithImpl(_$LocalLoadingSuccessImpl _value,
+      $Res Function(_$LocalLoadingSuccessImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? departments = null,
+  }) {
+    return _then(_$LocalLoadingSuccessImpl(
+      null == departments
+          ? _value._departments
+          : departments // ignore: cast_nullable_to_non_nullable
+              as List<DepartmentEntity>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
+  const _$LocalLoadingSuccessImpl(final List<DepartmentEntity> departments)
+      : _departments = departments;
+
+  final List<DepartmentEntity> _departments;
+  @override
+  List<DepartmentEntity> get departments {
+    if (_departments is EqualUnmodifiableListView) return _departments;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_departments);
+  }
+
+  @override
+  String toString() {
+    return 'DepartmentState.localLoadingSuccess(departments: $departments)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LocalLoadingSuccessImpl &&
+            const DeepCollectionEquality()
+                .equals(other._departments, _departments));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_departments));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LocalLoadingSuccessImplCopyWith<_$LocalLoadingSuccessImpl> get copyWith =>
+      __$$LocalLoadingSuccessImplCopyWithImpl<_$LocalLoadingSuccessImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<DepartmentEntity> departments) success,
+    required TResult Function(String message) fail,
+    required TResult Function(String message) localLoadingFail,
+    required TResult Function(List<DepartmentEntity> departments)
+        localLoadingSuccess,
+  }) {
+    return localLoadingSuccess(departments);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<DepartmentEntity> departments)? success,
+    TResult? Function(String message)? fail,
+    TResult? Function(String message)? localLoadingFail,
+    TResult? Function(List<DepartmentEntity> departments)? localLoadingSuccess,
+  }) {
+    return localLoadingSuccess?.call(departments);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<DepartmentEntity> departments)? success,
+    TResult Function(String message)? fail,
+    TResult Function(String message)? localLoadingFail,
+    TResult Function(List<DepartmentEntity> departments)? localLoadingSuccess,
+    required TResult orElse(),
+  }) {
+    if (localLoadingSuccess != null) {
+      return localLoadingSuccess(departments);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Fail value) fail,
+    required TResult Function(_LocalLoadingFail value) localLoadingFail,
+    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
+  }) {
+    return localLoadingSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Fail value)? fail,
+    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
+    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+  }) {
+    return localLoadingSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Fail value)? fail,
+    TResult Function(_LocalLoadingFail value)? localLoadingFail,
+    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    required TResult orElse(),
+  }) {
+    if (localLoadingSuccess != null) {
+      return localLoadingSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LocalLoadingSuccess implements DepartmentState {
+  const factory _LocalLoadingSuccess(final List<DepartmentEntity> departments) =
+      _$LocalLoadingSuccessImpl;
+
+  List<DepartmentEntity> get departments;
+  @JsonKey(ignore: true)
+  _$$LocalLoadingSuccessImplCopyWith<_$LocalLoadingSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

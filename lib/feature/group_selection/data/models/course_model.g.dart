@@ -18,18 +18,21 @@ class CourseModelAdapter extends TypeAdapter<_$CourseModelImpl> {
     };
     return _$CourseModelImpl(
       id: fields[0] as int,
-      name: fields[1] as String,
+      name: fields[1] as String?,
+      grade: fields[2] as int,
     );
   }
 
   @override
   void write(BinaryWriter writer, _$CourseModelImpl obj) {
     writer
-      ..writeByte(2)
+      ..writeByte(3)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.name);
+      ..write(obj.name)
+      ..writeByte(2)
+      ..write(obj.grade);
   }
 
   @override
@@ -50,11 +53,13 @@ class CourseModelAdapter extends TypeAdapter<_$CourseModelImpl> {
 _$CourseModelImpl _$$CourseModelImplFromJson(Map<String, dynamic> json) =>
     _$CourseModelImpl(
       id: json['id'] as int,
-      name: json['name'] as String,
+      name: json['name'] as String?,
+      grade: json['grade'] as int,
     );
 
 Map<String, dynamic> _$$CourseModelImplToJson(_$CourseModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
+      'grade': instance.grade,
     };

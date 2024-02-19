@@ -12,6 +12,6 @@ class SetSelectedCourse extends Usecase<void,CourseEntity>{
 
   @override
   Future<Either<Failure,void>> call(CourseEntity request) async{
-    return await itemsRepository.setCourse(CourseModel(id: request.id, name: request.name));
+    return await itemsRepository.setCourse(CourseModel(id: request.id, name: request.name, grade: request.grade));
   }
 }

@@ -17,7 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$CourseEntity {
   int get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  int get grade => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CourseEntityCopyWith<CourseEntity> get copyWith =>
@@ -30,7 +31,7 @@ abstract class $CourseEntityCopyWith<$Res> {
           CourseEntity value, $Res Function(CourseEntity) then) =
       _$CourseEntityCopyWithImpl<$Res, CourseEntity>;
   @useResult
-  $Res call({int id, String name});
+  $Res call({int id, String? name, int grade});
 }
 
 /// @nodoc
@@ -47,17 +48,22 @@ class _$CourseEntityCopyWithImpl<$Res, $Val extends CourseEntity>
   @override
   $Res call({
     Object? id = null,
-    Object? name = null,
+    Object? name = freezed,
+    Object? grade = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      grade: null == grade
+          ? _value.grade
+          : grade // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -70,7 +76,7 @@ abstract class _$$CourseEntityImplCopyWith<$Res>
       __$$CourseEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String name});
+  $Res call({int id, String? name, int grade});
 }
 
 /// @nodoc
@@ -85,17 +91,22 @@ class __$$CourseEntityImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? name = null,
+    Object? name = freezed,
+    Object? grade = null,
   }) {
     return _then(_$CourseEntityImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      grade: null == grade
+          ? _value.grade
+          : grade // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -103,12 +114,16 @@ class __$$CourseEntityImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CourseEntityImpl extends _CourseEntity {
-  const _$CourseEntityImpl({required this.id, required this.name}) : super._();
+  const _$CourseEntityImpl(
+      {required this.id, required this.name, required this.grade})
+      : super._();
 
   @override
   final int id;
   @override
-  final String name;
+  final String? name;
+  @override
+  final int grade;
 
   @override
   bool operator ==(Object other) {
@@ -116,11 +131,12 @@ class _$CourseEntityImpl extends _CourseEntity {
         (other.runtimeType == runtimeType &&
             other is _$CourseEntityImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.grade, grade) || other.grade == grade));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, name);
+  int get hashCode => Object.hash(runtimeType, id, name, grade);
 
   @JsonKey(ignore: true)
   @override
@@ -131,13 +147,17 @@ class _$CourseEntityImpl extends _CourseEntity {
 
 abstract class _CourseEntity extends CourseEntity {
   const factory _CourseEntity(
-      {required final int id, required final String name}) = _$CourseEntityImpl;
+      {required final int id,
+      required final String? name,
+      required final int grade}) = _$CourseEntityImpl;
   const _CourseEntity._() : super._();
 
   @override
   int get id;
   @override
-  String get name;
+  String? get name;
+  @override
+  int get grade;
   @override
   @JsonKey(ignore: true)
   _$$CourseEntityImplCopyWith<_$CourseEntityImpl> get copyWith =>

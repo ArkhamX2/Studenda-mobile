@@ -10,7 +10,8 @@ class CourseModel extends HiveObject with _$CourseModel {
   @HiveType(typeId: 1, adapterName: 'CourseModelAdapter')
   factory CourseModel({
     @JsonKey(name: 'id') @HiveField(0) required int id,
-    @JsonKey(name: 'name') @HiveField(1) required String name,
+    @JsonKey(name: 'name') @HiveField(1) required String? name,
+    @JsonKey(name: 'grade') @HiveField(2) required int grade,
   }) = _CourseModel;
 
   CourseModel._();

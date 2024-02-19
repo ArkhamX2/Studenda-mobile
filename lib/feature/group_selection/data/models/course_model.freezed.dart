@@ -25,7 +25,10 @@ mixin _$CourseModel {
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'name')
   @HiveField(1)
-  String get name => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'grade')
+  @HiveField(2)
+  int get grade => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,7 +44,8 @@ abstract class $CourseModelCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'id') @HiveField(0) int id,
-      @JsonKey(name: 'name') @HiveField(1) String name});
+      @JsonKey(name: 'name') @HiveField(1) String? name,
+      @JsonKey(name: 'grade') @HiveField(2) int grade});
 }
 
 /// @nodoc
@@ -58,17 +62,22 @@ class _$CourseModelCopyWithImpl<$Res, $Val extends CourseModel>
   @override
   $Res call({
     Object? id = null,
-    Object? name = null,
+    Object? name = freezed,
+    Object? grade = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      grade: null == grade
+          ? _value.grade
+          : grade // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -83,7 +92,8 @@ abstract class _$$CourseModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'id') @HiveField(0) int id,
-      @JsonKey(name: 'name') @HiveField(1) String name});
+      @JsonKey(name: 'name') @HiveField(1) String? name,
+      @JsonKey(name: 'grade') @HiveField(2) int grade});
 }
 
 /// @nodoc
@@ -98,17 +108,22 @@ class __$$CourseModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? name = null,
+    Object? name = freezed,
+    Object? grade = null,
   }) {
     return _then(_$CourseModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      grade: null == grade
+          ? _value.grade
+          : grade // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -119,7 +134,8 @@ class __$$CourseModelImplCopyWithImpl<$Res>
 class _$CourseModelImpl extends _CourseModel {
   _$CourseModelImpl(
       {@JsonKey(name: 'id') @HiveField(0) required this.id,
-      @JsonKey(name: 'name') @HiveField(1) required this.name})
+      @JsonKey(name: 'name') @HiveField(1) required this.name,
+      @JsonKey(name: 'grade') @HiveField(2) required this.grade})
       : super._();
 
   factory _$CourseModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -132,11 +148,15 @@ class _$CourseModelImpl extends _CourseModel {
   @override
   @JsonKey(name: 'name')
   @HiveField(1)
-  final String name;
+  final String? name;
+  @override
+  @JsonKey(name: 'grade')
+  @HiveField(2)
+  final int grade;
 
   @override
   String toString() {
-    return 'CourseModel(id: $id, name: $name)';
+    return 'CourseModel(id: $id, name: $name, grade: $grade)';
   }
 
   @override
@@ -145,12 +165,13 @@ class _$CourseModelImpl extends _CourseModel {
         (other.runtimeType == runtimeType &&
             other is _$CourseModelImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.grade, grade) || other.grade == grade));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name);
+  int get hashCode => Object.hash(runtimeType, id, name, grade);
 
   @JsonKey(ignore: true)
   @override
@@ -169,7 +190,8 @@ class _$CourseModelImpl extends _CourseModel {
 abstract class _CourseModel extends CourseModel {
   factory _CourseModel(
           {@JsonKey(name: 'id') @HiveField(0) required final int id,
-          @JsonKey(name: 'name') @HiveField(1) required final String name}) =
+          @JsonKey(name: 'name') @HiveField(1) required final String? name,
+          @JsonKey(name: 'grade') @HiveField(2) required final int grade}) =
       _$CourseModelImpl;
   _CourseModel._() : super._();
 
@@ -183,7 +205,11 @@ abstract class _CourseModel extends CourseModel {
   @override
   @JsonKey(name: 'name')
   @HiveField(1)
-  String get name;
+  String? get name;
+  @override
+  @JsonKey(name: 'grade')
+  @HiveField(2)
+  int get grade;
   @override
   @JsonKey(ignore: true)
   _$$CourseModelImplCopyWith<_$CourseModelImpl> get copyWith =>
