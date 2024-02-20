@@ -42,54 +42,82 @@ class MainGroupSelectorBloc
   }) : super(const _Initial()) {
     on<_setGroup>((event, emit) async {
       await setSelectedGroup.call(event.group);
+      selectedGroup = GroupEntity(
+        id: event.group.id,
+        name: event.group.name,
+      );
     });
     on<_setCourse>((event, emit) async {
       await setSelectedCourse.call(event.course);
+      selectedCourse = CourseEntity(
+        id: event.course.id,
+        name: event.course.name,
+        grade: event.course.grade,
+      );
     });
     on<_setDepartment>((event, emit) async {
       await setSelectedDepartment.call(event.department);
+      selectedDepartment = DepartmentEntity(
+        id: event.department.id,
+        name: event.department.name,
+      );
     });
     on<_getGroup>((event, emit) async {
       final result = await getSelectedGroup.call(() {});
       result.fold(
         (l) => emit(MainGroupSelectorState.fail(l.message)),
-        (r) => emit(
-          MainGroupSelectorState.groupSucces(
-            GroupEntity(
-              id: r.id,
-              name: r.name,
+        (r) {
+          selectedGroup = GroupEntity(
+            id: r.id,
+            name: r.name,
+          );
+          emit(
+            MainGroupSelectorState.groupSuccess(
+              GroupEntity(
+                id: r.id,
+                name: r.name,
+              ),
             ),
-          ),
-        ),
+          );
+        },
       );
     });
     on<_getCourse>((event, emit) async {
       final result = await getSelectedCourse.call(() {});
       result.fold(
         (l) => emit(MainGroupSelectorState.fail(l.message)),
-        (r) => emit(
-          MainGroupSelectorState.courseSucces(
-            CourseEntity(
-              id: r.id,
-              name: r.name,
-              grade: r.grade,
+        (r) {
+          selectedCourse = CourseEntity(
+            id: r.id,
+            name: r.name,
+            grade: r.grade,
+          );
+          emit(
+            MainGroupSelectorState.courseSuccess(
+              CourseEntity(id: r.id, name: r.name, grade: r.grade),
             ),
-          ),
-        ),
+          );
+        },
       );
     });
     on<_getDepartment>((event, emit) async {
       final result = await getSelectedDepartment.call(() {});
       result.fold(
         (l) => emit(MainGroupSelectorState.fail(l.message)),
-        (r) => emit(
-          MainGroupSelectorState.departmentSucces(
-            DepartmentEntity(
-              id: r.id,
-              name: r.name,
+        (r) {
+          selectedDepartment = DepartmentEntity(
+            id: r.id,
+            name: r.name,
+          );
+          emit(
+            MainGroupSelectorState.departmentSuccess(
+              DepartmentEntity(
+                id: r.id,
+                name: r.name,
+              ),
             ),
-          ),
-        ),
+          );
+        },
       );
     });
   }

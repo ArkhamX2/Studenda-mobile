@@ -1160,9 +1160,9 @@ mixin _$MainGroupSelectorState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(GroupEntity group) groupSucces,
-    required TResult Function(CourseEntity course) courseSucces,
-    required TResult Function(DepartmentEntity department) departmentSucces,
+    required TResult Function(GroupEntity group) groupSuccess,
+    required TResult Function(CourseEntity course) courseSuccess,
+    required TResult Function(DepartmentEntity department) departmentSuccess,
     required TResult Function(String errorMessage) fail,
   }) =>
       throw _privateConstructorUsedError;
@@ -1170,9 +1170,9 @@ mixin _$MainGroupSelectorState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(GroupEntity group)? groupSucces,
-    TResult? Function(CourseEntity course)? courseSucces,
-    TResult? Function(DepartmentEntity department)? departmentSucces,
+    TResult? Function(GroupEntity group)? groupSuccess,
+    TResult? Function(CourseEntity course)? courseSuccess,
+    TResult? Function(DepartmentEntity department)? departmentSuccess,
     TResult? Function(String errorMessage)? fail,
   }) =>
       throw _privateConstructorUsedError;
@@ -1180,9 +1180,9 @@ mixin _$MainGroupSelectorState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(GroupEntity group)? groupSucces,
-    TResult Function(CourseEntity course)? courseSucces,
-    TResult Function(DepartmentEntity department)? departmentSucces,
+    TResult Function(GroupEntity group)? groupSuccess,
+    TResult Function(CourseEntity course)? courseSuccess,
+    TResult Function(DepartmentEntity department)? departmentSuccess,
     TResult Function(String errorMessage)? fail,
     required TResult orElse(),
   }) =>
@@ -1191,9 +1191,9 @@ mixin _$MainGroupSelectorState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_GroupSucces value) groupSucces,
-    required TResult Function(_CourseSucces value) courseSucces,
-    required TResult Function(_DepartmentSucces value) departmentSucces,
+    required TResult Function(_GroupSuccess value) groupSuccess,
+    required TResult Function(_CourseSuccess value) courseSuccess,
+    required TResult Function(_DepartmentSuccess value) departmentSuccess,
     required TResult Function(_Fail value) fail,
   }) =>
       throw _privateConstructorUsedError;
@@ -1201,9 +1201,9 @@ mixin _$MainGroupSelectorState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_GroupSucces value)? groupSucces,
-    TResult? Function(_CourseSucces value)? courseSucces,
-    TResult? Function(_DepartmentSucces value)? departmentSucces,
+    TResult? Function(_GroupSuccess value)? groupSuccess,
+    TResult? Function(_CourseSuccess value)? courseSuccess,
+    TResult? Function(_DepartmentSuccess value)? departmentSuccess,
     TResult? Function(_Fail value)? fail,
   }) =>
       throw _privateConstructorUsedError;
@@ -1211,9 +1211,9 @@ mixin _$MainGroupSelectorState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_GroupSucces value)? groupSucces,
-    TResult Function(_CourseSucces value)? courseSucces,
-    TResult Function(_DepartmentSucces value)? departmentSucces,
+    TResult Function(_GroupSuccess value)? groupSuccess,
+    TResult Function(_CourseSuccess value)? courseSuccess,
+    TResult Function(_DepartmentSuccess value)? departmentSuccess,
     TResult Function(_Fail value)? fail,
     required TResult orElse(),
   }) =>
@@ -1279,9 +1279,9 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(GroupEntity group) groupSucces,
-    required TResult Function(CourseEntity course) courseSucces,
-    required TResult Function(DepartmentEntity department) departmentSucces,
+    required TResult Function(GroupEntity group) groupSuccess,
+    required TResult Function(CourseEntity course) courseSuccess,
+    required TResult Function(DepartmentEntity department) departmentSuccess,
     required TResult Function(String errorMessage) fail,
   }) {
     return initial();
@@ -1292,9 +1292,9 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(GroupEntity group)? groupSucces,
-    TResult? Function(CourseEntity course)? courseSucces,
-    TResult? Function(DepartmentEntity department)? departmentSucces,
+    TResult? Function(GroupEntity group)? groupSuccess,
+    TResult? Function(CourseEntity course)? courseSuccess,
+    TResult? Function(DepartmentEntity department)? departmentSuccess,
     TResult? Function(String errorMessage)? fail,
   }) {
     return initial?.call();
@@ -1305,9 +1305,9 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(GroupEntity group)? groupSucces,
-    TResult Function(CourseEntity course)? courseSucces,
-    TResult Function(DepartmentEntity department)? departmentSucces,
+    TResult Function(GroupEntity group)? groupSuccess,
+    TResult Function(CourseEntity course)? courseSuccess,
+    TResult Function(DepartmentEntity department)? departmentSuccess,
     TResult Function(String errorMessage)? fail,
     required TResult orElse(),
   }) {
@@ -1322,9 +1322,9 @@ class _$InitialImpl implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_GroupSucces value) groupSucces,
-    required TResult Function(_CourseSucces value) courseSucces,
-    required TResult Function(_DepartmentSucces value) departmentSucces,
+    required TResult Function(_GroupSuccess value) groupSuccess,
+    required TResult Function(_CourseSuccess value) courseSuccess,
+    required TResult Function(_DepartmentSuccess value) departmentSuccess,
     required TResult Function(_Fail value) fail,
   }) {
     return initial(this);
@@ -1335,9 +1335,9 @@ class _$InitialImpl implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_GroupSucces value)? groupSucces,
-    TResult? Function(_CourseSucces value)? courseSucces,
-    TResult? Function(_DepartmentSucces value)? departmentSucces,
+    TResult? Function(_GroupSuccess value)? groupSuccess,
+    TResult? Function(_CourseSuccess value)? courseSuccess,
+    TResult? Function(_DepartmentSuccess value)? departmentSuccess,
     TResult? Function(_Fail value)? fail,
   }) {
     return initial?.call(this);
@@ -1348,9 +1348,9 @@ class _$InitialImpl implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_GroupSucces value)? groupSucces,
-    TResult Function(_CourseSucces value)? courseSucces,
-    TResult Function(_DepartmentSucces value)? departmentSucces,
+    TResult Function(_GroupSuccess value)? groupSuccess,
+    TResult Function(_CourseSuccess value)? courseSuccess,
+    TResult Function(_DepartmentSuccess value)? departmentSuccess,
     TResult Function(_Fail value)? fail,
     required TResult orElse(),
   }) {
@@ -1405,9 +1405,9 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(GroupEntity group) groupSucces,
-    required TResult Function(CourseEntity course) courseSucces,
-    required TResult Function(DepartmentEntity department) departmentSucces,
+    required TResult Function(GroupEntity group) groupSuccess,
+    required TResult Function(CourseEntity course) courseSuccess,
+    required TResult Function(DepartmentEntity department) departmentSuccess,
     required TResult Function(String errorMessage) fail,
   }) {
     return loading();
@@ -1418,9 +1418,9 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(GroupEntity group)? groupSucces,
-    TResult? Function(CourseEntity course)? courseSucces,
-    TResult? Function(DepartmentEntity department)? departmentSucces,
+    TResult? Function(GroupEntity group)? groupSuccess,
+    TResult? Function(CourseEntity course)? courseSuccess,
+    TResult? Function(DepartmentEntity department)? departmentSuccess,
     TResult? Function(String errorMessage)? fail,
   }) {
     return loading?.call();
@@ -1431,9 +1431,9 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(GroupEntity group)? groupSucces,
-    TResult Function(CourseEntity course)? courseSucces,
-    TResult Function(DepartmentEntity department)? departmentSucces,
+    TResult Function(GroupEntity group)? groupSuccess,
+    TResult Function(CourseEntity course)? courseSuccess,
+    TResult Function(DepartmentEntity department)? departmentSuccess,
     TResult Function(String errorMessage)? fail,
     required TResult orElse(),
   }) {
@@ -1448,9 +1448,9 @@ class _$LoadingImpl implements _Loading {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_GroupSucces value) groupSucces,
-    required TResult Function(_CourseSucces value) courseSucces,
-    required TResult Function(_DepartmentSucces value) departmentSucces,
+    required TResult Function(_GroupSuccess value) groupSuccess,
+    required TResult Function(_CourseSuccess value) courseSuccess,
+    required TResult Function(_DepartmentSuccess value) departmentSuccess,
     required TResult Function(_Fail value) fail,
   }) {
     return loading(this);
@@ -1461,9 +1461,9 @@ class _$LoadingImpl implements _Loading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_GroupSucces value)? groupSucces,
-    TResult? Function(_CourseSucces value)? courseSucces,
-    TResult? Function(_DepartmentSucces value)? departmentSucces,
+    TResult? Function(_GroupSuccess value)? groupSuccess,
+    TResult? Function(_CourseSuccess value)? courseSuccess,
+    TResult? Function(_DepartmentSuccess value)? departmentSuccess,
     TResult? Function(_Fail value)? fail,
   }) {
     return loading?.call(this);
@@ -1474,9 +1474,9 @@ class _$LoadingImpl implements _Loading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_GroupSucces value)? groupSucces,
-    TResult Function(_CourseSucces value)? courseSucces,
-    TResult Function(_DepartmentSucces value)? departmentSucces,
+    TResult Function(_GroupSuccess value)? groupSuccess,
+    TResult Function(_CourseSuccess value)? courseSuccess,
+    TResult Function(_DepartmentSuccess value)? departmentSuccess,
     TResult Function(_Fail value)? fail,
     required TResult orElse(),
   }) {
@@ -1492,10 +1492,10 @@ abstract class _Loading implements MainGroupSelectorState {
 }
 
 /// @nodoc
-abstract class _$$GroupSuccesImplCopyWith<$Res> {
-  factory _$$GroupSuccesImplCopyWith(
-          _$GroupSuccesImpl value, $Res Function(_$GroupSuccesImpl) then) =
-      __$$GroupSuccesImplCopyWithImpl<$Res>;
+abstract class _$$GroupSuccessImplCopyWith<$Res> {
+  factory _$$GroupSuccessImplCopyWith(
+          _$GroupSuccessImpl value, $Res Function(_$GroupSuccessImpl) then) =
+      __$$GroupSuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({GroupEntity group});
 
@@ -1503,11 +1503,11 @@ abstract class _$$GroupSuccesImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$GroupSuccesImplCopyWithImpl<$Res>
-    extends _$MainGroupSelectorStateCopyWithImpl<$Res, _$GroupSuccesImpl>
-    implements _$$GroupSuccesImplCopyWith<$Res> {
-  __$$GroupSuccesImplCopyWithImpl(
-      _$GroupSuccesImpl _value, $Res Function(_$GroupSuccesImpl) _then)
+class __$$GroupSuccessImplCopyWithImpl<$Res>
+    extends _$MainGroupSelectorStateCopyWithImpl<$Res, _$GroupSuccessImpl>
+    implements _$$GroupSuccessImplCopyWith<$Res> {
+  __$$GroupSuccessImplCopyWithImpl(
+      _$GroupSuccessImpl _value, $Res Function(_$GroupSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1515,7 +1515,7 @@ class __$$GroupSuccesImplCopyWithImpl<$Res>
   $Res call({
     Object? group = null,
   }) {
-    return _then(_$GroupSuccesImpl(
+    return _then(_$GroupSuccessImpl(
       null == group
           ? _value.group
           : group // ignore: cast_nullable_to_non_nullable
@@ -1534,22 +1534,22 @@ class __$$GroupSuccesImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GroupSuccesImpl implements _GroupSucces {
-  const _$GroupSuccesImpl(this.group);
+class _$GroupSuccessImpl implements _GroupSuccess {
+  const _$GroupSuccessImpl(this.group);
 
   @override
   final GroupEntity group;
 
   @override
   String toString() {
-    return 'MainGroupSelectorState.groupSucces(group: $group)';
+    return 'MainGroupSelectorState.groupSuccess(group: $group)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GroupSuccesImpl &&
+            other is _$GroupSuccessImpl &&
             (identical(other.group, group) || other.group == group));
   }
 
@@ -1559,20 +1559,20 @@ class _$GroupSuccesImpl implements _GroupSucces {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GroupSuccesImplCopyWith<_$GroupSuccesImpl> get copyWith =>
-      __$$GroupSuccesImplCopyWithImpl<_$GroupSuccesImpl>(this, _$identity);
+  _$$GroupSuccessImplCopyWith<_$GroupSuccessImpl> get copyWith =>
+      __$$GroupSuccessImplCopyWithImpl<_$GroupSuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(GroupEntity group) groupSucces,
-    required TResult Function(CourseEntity course) courseSucces,
-    required TResult Function(DepartmentEntity department) departmentSucces,
+    required TResult Function(GroupEntity group) groupSuccess,
+    required TResult Function(CourseEntity course) courseSuccess,
+    required TResult Function(DepartmentEntity department) departmentSuccess,
     required TResult Function(String errorMessage) fail,
   }) {
-    return groupSucces(group);
+    return groupSuccess(group);
   }
 
   @override
@@ -1580,12 +1580,12 @@ class _$GroupSuccesImpl implements _GroupSucces {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(GroupEntity group)? groupSucces,
-    TResult? Function(CourseEntity course)? courseSucces,
-    TResult? Function(DepartmentEntity department)? departmentSucces,
+    TResult? Function(GroupEntity group)? groupSuccess,
+    TResult? Function(CourseEntity course)? courseSuccess,
+    TResult? Function(DepartmentEntity department)? departmentSuccess,
     TResult? Function(String errorMessage)? fail,
   }) {
-    return groupSucces?.call(group);
+    return groupSuccess?.call(group);
   }
 
   @override
@@ -1593,14 +1593,14 @@ class _$GroupSuccesImpl implements _GroupSucces {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(GroupEntity group)? groupSucces,
-    TResult Function(CourseEntity course)? courseSucces,
-    TResult Function(DepartmentEntity department)? departmentSucces,
+    TResult Function(GroupEntity group)? groupSuccess,
+    TResult Function(CourseEntity course)? courseSuccess,
+    TResult Function(DepartmentEntity department)? departmentSuccess,
     TResult Function(String errorMessage)? fail,
     required TResult orElse(),
   }) {
-    if (groupSucces != null) {
-      return groupSucces(group);
+    if (groupSuccess != null) {
+      return groupSuccess(group);
     }
     return orElse();
   }
@@ -1610,12 +1610,12 @@ class _$GroupSuccesImpl implements _GroupSucces {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_GroupSucces value) groupSucces,
-    required TResult Function(_CourseSucces value) courseSucces,
-    required TResult Function(_DepartmentSucces value) departmentSucces,
+    required TResult Function(_GroupSuccess value) groupSuccess,
+    required TResult Function(_CourseSuccess value) courseSuccess,
+    required TResult Function(_DepartmentSuccess value) departmentSuccess,
     required TResult Function(_Fail value) fail,
   }) {
-    return groupSucces(this);
+    return groupSuccess(this);
   }
 
   @override
@@ -1623,12 +1623,12 @@ class _$GroupSuccesImpl implements _GroupSucces {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_GroupSucces value)? groupSucces,
-    TResult? Function(_CourseSucces value)? courseSucces,
-    TResult? Function(_DepartmentSucces value)? departmentSucces,
+    TResult? Function(_GroupSuccess value)? groupSuccess,
+    TResult? Function(_CourseSuccess value)? courseSuccess,
+    TResult? Function(_DepartmentSuccess value)? departmentSuccess,
     TResult? Function(_Fail value)? fail,
   }) {
-    return groupSucces?.call(this);
+    return groupSuccess?.call(this);
   }
 
   @override
@@ -1636,33 +1636,33 @@ class _$GroupSuccesImpl implements _GroupSucces {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_GroupSucces value)? groupSucces,
-    TResult Function(_CourseSucces value)? courseSucces,
-    TResult Function(_DepartmentSucces value)? departmentSucces,
+    TResult Function(_GroupSuccess value)? groupSuccess,
+    TResult Function(_CourseSuccess value)? courseSuccess,
+    TResult Function(_DepartmentSuccess value)? departmentSuccess,
     TResult Function(_Fail value)? fail,
     required TResult orElse(),
   }) {
-    if (groupSucces != null) {
-      return groupSucces(this);
+    if (groupSuccess != null) {
+      return groupSuccess(this);
     }
     return orElse();
   }
 }
 
-abstract class _GroupSucces implements MainGroupSelectorState {
-  const factory _GroupSucces(final GroupEntity group) = _$GroupSuccesImpl;
+abstract class _GroupSuccess implements MainGroupSelectorState {
+  const factory _GroupSuccess(final GroupEntity group) = _$GroupSuccessImpl;
 
   GroupEntity get group;
   @JsonKey(ignore: true)
-  _$$GroupSuccesImplCopyWith<_$GroupSuccesImpl> get copyWith =>
+  _$$GroupSuccessImplCopyWith<_$GroupSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$CourseSuccesImplCopyWith<$Res> {
-  factory _$$CourseSuccesImplCopyWith(
-          _$CourseSuccesImpl value, $Res Function(_$CourseSuccesImpl) then) =
-      __$$CourseSuccesImplCopyWithImpl<$Res>;
+abstract class _$$CourseSuccessImplCopyWith<$Res> {
+  factory _$$CourseSuccessImplCopyWith(
+          _$CourseSuccessImpl value, $Res Function(_$CourseSuccessImpl) then) =
+      __$$CourseSuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({CourseEntity course});
 
@@ -1670,11 +1670,11 @@ abstract class _$$CourseSuccesImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$CourseSuccesImplCopyWithImpl<$Res>
-    extends _$MainGroupSelectorStateCopyWithImpl<$Res, _$CourseSuccesImpl>
-    implements _$$CourseSuccesImplCopyWith<$Res> {
-  __$$CourseSuccesImplCopyWithImpl(
-      _$CourseSuccesImpl _value, $Res Function(_$CourseSuccesImpl) _then)
+class __$$CourseSuccessImplCopyWithImpl<$Res>
+    extends _$MainGroupSelectorStateCopyWithImpl<$Res, _$CourseSuccessImpl>
+    implements _$$CourseSuccessImplCopyWith<$Res> {
+  __$$CourseSuccessImplCopyWithImpl(
+      _$CourseSuccessImpl _value, $Res Function(_$CourseSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1682,7 +1682,7 @@ class __$$CourseSuccesImplCopyWithImpl<$Res>
   $Res call({
     Object? course = null,
   }) {
-    return _then(_$CourseSuccesImpl(
+    return _then(_$CourseSuccessImpl(
       null == course
           ? _value.course
           : course // ignore: cast_nullable_to_non_nullable
@@ -1701,22 +1701,22 @@ class __$$CourseSuccesImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CourseSuccesImpl implements _CourseSucces {
-  const _$CourseSuccesImpl(this.course);
+class _$CourseSuccessImpl implements _CourseSuccess {
+  const _$CourseSuccessImpl(this.course);
 
   @override
   final CourseEntity course;
 
   @override
   String toString() {
-    return 'MainGroupSelectorState.courseSucces(course: $course)';
+    return 'MainGroupSelectorState.courseSuccess(course: $course)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CourseSuccesImpl &&
+            other is _$CourseSuccessImpl &&
             (identical(other.course, course) || other.course == course));
   }
 
@@ -1726,20 +1726,20 @@ class _$CourseSuccesImpl implements _CourseSucces {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CourseSuccesImplCopyWith<_$CourseSuccesImpl> get copyWith =>
-      __$$CourseSuccesImplCopyWithImpl<_$CourseSuccesImpl>(this, _$identity);
+  _$$CourseSuccessImplCopyWith<_$CourseSuccessImpl> get copyWith =>
+      __$$CourseSuccessImplCopyWithImpl<_$CourseSuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(GroupEntity group) groupSucces,
-    required TResult Function(CourseEntity course) courseSucces,
-    required TResult Function(DepartmentEntity department) departmentSucces,
+    required TResult Function(GroupEntity group) groupSuccess,
+    required TResult Function(CourseEntity course) courseSuccess,
+    required TResult Function(DepartmentEntity department) departmentSuccess,
     required TResult Function(String errorMessage) fail,
   }) {
-    return courseSucces(course);
+    return courseSuccess(course);
   }
 
   @override
@@ -1747,12 +1747,12 @@ class _$CourseSuccesImpl implements _CourseSucces {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(GroupEntity group)? groupSucces,
-    TResult? Function(CourseEntity course)? courseSucces,
-    TResult? Function(DepartmentEntity department)? departmentSucces,
+    TResult? Function(GroupEntity group)? groupSuccess,
+    TResult? Function(CourseEntity course)? courseSuccess,
+    TResult? Function(DepartmentEntity department)? departmentSuccess,
     TResult? Function(String errorMessage)? fail,
   }) {
-    return courseSucces?.call(course);
+    return courseSuccess?.call(course);
   }
 
   @override
@@ -1760,14 +1760,14 @@ class _$CourseSuccesImpl implements _CourseSucces {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(GroupEntity group)? groupSucces,
-    TResult Function(CourseEntity course)? courseSucces,
-    TResult Function(DepartmentEntity department)? departmentSucces,
+    TResult Function(GroupEntity group)? groupSuccess,
+    TResult Function(CourseEntity course)? courseSuccess,
+    TResult Function(DepartmentEntity department)? departmentSuccess,
     TResult Function(String errorMessage)? fail,
     required TResult orElse(),
   }) {
-    if (courseSucces != null) {
-      return courseSucces(course);
+    if (courseSuccess != null) {
+      return courseSuccess(course);
     }
     return orElse();
   }
@@ -1777,12 +1777,12 @@ class _$CourseSuccesImpl implements _CourseSucces {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_GroupSucces value) groupSucces,
-    required TResult Function(_CourseSucces value) courseSucces,
-    required TResult Function(_DepartmentSucces value) departmentSucces,
+    required TResult Function(_GroupSuccess value) groupSuccess,
+    required TResult Function(_CourseSuccess value) courseSuccess,
+    required TResult Function(_DepartmentSuccess value) departmentSuccess,
     required TResult Function(_Fail value) fail,
   }) {
-    return courseSucces(this);
+    return courseSuccess(this);
   }
 
   @override
@@ -1790,12 +1790,12 @@ class _$CourseSuccesImpl implements _CourseSucces {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_GroupSucces value)? groupSucces,
-    TResult? Function(_CourseSucces value)? courseSucces,
-    TResult? Function(_DepartmentSucces value)? departmentSucces,
+    TResult? Function(_GroupSuccess value)? groupSuccess,
+    TResult? Function(_CourseSuccess value)? courseSuccess,
+    TResult? Function(_DepartmentSuccess value)? departmentSuccess,
     TResult? Function(_Fail value)? fail,
   }) {
-    return courseSucces?.call(this);
+    return courseSuccess?.call(this);
   }
 
   @override
@@ -1803,33 +1803,33 @@ class _$CourseSuccesImpl implements _CourseSucces {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_GroupSucces value)? groupSucces,
-    TResult Function(_CourseSucces value)? courseSucces,
-    TResult Function(_DepartmentSucces value)? departmentSucces,
+    TResult Function(_GroupSuccess value)? groupSuccess,
+    TResult Function(_CourseSuccess value)? courseSuccess,
+    TResult Function(_DepartmentSuccess value)? departmentSuccess,
     TResult Function(_Fail value)? fail,
     required TResult orElse(),
   }) {
-    if (courseSucces != null) {
-      return courseSucces(this);
+    if (courseSuccess != null) {
+      return courseSuccess(this);
     }
     return orElse();
   }
 }
 
-abstract class _CourseSucces implements MainGroupSelectorState {
-  const factory _CourseSucces(final CourseEntity course) = _$CourseSuccesImpl;
+abstract class _CourseSuccess implements MainGroupSelectorState {
+  const factory _CourseSuccess(final CourseEntity course) = _$CourseSuccessImpl;
 
   CourseEntity get course;
   @JsonKey(ignore: true)
-  _$$CourseSuccesImplCopyWith<_$CourseSuccesImpl> get copyWith =>
+  _$$CourseSuccessImplCopyWith<_$CourseSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DepartmentSuccesImplCopyWith<$Res> {
-  factory _$$DepartmentSuccesImplCopyWith(_$DepartmentSuccesImpl value,
-          $Res Function(_$DepartmentSuccesImpl) then) =
-      __$$DepartmentSuccesImplCopyWithImpl<$Res>;
+abstract class _$$DepartmentSuccessImplCopyWith<$Res> {
+  factory _$$DepartmentSuccessImplCopyWith(_$DepartmentSuccessImpl value,
+          $Res Function(_$DepartmentSuccessImpl) then) =
+      __$$DepartmentSuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({DepartmentEntity department});
 
@@ -1837,11 +1837,11 @@ abstract class _$$DepartmentSuccesImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$DepartmentSuccesImplCopyWithImpl<$Res>
-    extends _$MainGroupSelectorStateCopyWithImpl<$Res, _$DepartmentSuccesImpl>
-    implements _$$DepartmentSuccesImplCopyWith<$Res> {
-  __$$DepartmentSuccesImplCopyWithImpl(_$DepartmentSuccesImpl _value,
-      $Res Function(_$DepartmentSuccesImpl) _then)
+class __$$DepartmentSuccessImplCopyWithImpl<$Res>
+    extends _$MainGroupSelectorStateCopyWithImpl<$Res, _$DepartmentSuccessImpl>
+    implements _$$DepartmentSuccessImplCopyWith<$Res> {
+  __$$DepartmentSuccessImplCopyWithImpl(_$DepartmentSuccessImpl _value,
+      $Res Function(_$DepartmentSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1849,7 +1849,7 @@ class __$$DepartmentSuccesImplCopyWithImpl<$Res>
   $Res call({
     Object? department = null,
   }) {
-    return _then(_$DepartmentSuccesImpl(
+    return _then(_$DepartmentSuccessImpl(
       null == department
           ? _value.department
           : department // ignore: cast_nullable_to_non_nullable
@@ -1868,22 +1868,22 @@ class __$$DepartmentSuccesImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DepartmentSuccesImpl implements _DepartmentSucces {
-  const _$DepartmentSuccesImpl(this.department);
+class _$DepartmentSuccessImpl implements _DepartmentSuccess {
+  const _$DepartmentSuccessImpl(this.department);
 
   @override
   final DepartmentEntity department;
 
   @override
   String toString() {
-    return 'MainGroupSelectorState.departmentSucces(department: $department)';
+    return 'MainGroupSelectorState.departmentSuccess(department: $department)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DepartmentSuccesImpl &&
+            other is _$DepartmentSuccessImpl &&
             (identical(other.department, department) ||
                 other.department == department));
   }
@@ -1894,8 +1894,8 @@ class _$DepartmentSuccesImpl implements _DepartmentSucces {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DepartmentSuccesImplCopyWith<_$DepartmentSuccesImpl> get copyWith =>
-      __$$DepartmentSuccesImplCopyWithImpl<_$DepartmentSuccesImpl>(
+  _$$DepartmentSuccessImplCopyWith<_$DepartmentSuccessImpl> get copyWith =>
+      __$$DepartmentSuccessImplCopyWithImpl<_$DepartmentSuccessImpl>(
           this, _$identity);
 
   @override
@@ -1903,12 +1903,12 @@ class _$DepartmentSuccesImpl implements _DepartmentSucces {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(GroupEntity group) groupSucces,
-    required TResult Function(CourseEntity course) courseSucces,
-    required TResult Function(DepartmentEntity department) departmentSucces,
+    required TResult Function(GroupEntity group) groupSuccess,
+    required TResult Function(CourseEntity course) courseSuccess,
+    required TResult Function(DepartmentEntity department) departmentSuccess,
     required TResult Function(String errorMessage) fail,
   }) {
-    return departmentSucces(department);
+    return departmentSuccess(department);
   }
 
   @override
@@ -1916,12 +1916,12 @@ class _$DepartmentSuccesImpl implements _DepartmentSucces {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(GroupEntity group)? groupSucces,
-    TResult? Function(CourseEntity course)? courseSucces,
-    TResult? Function(DepartmentEntity department)? departmentSucces,
+    TResult? Function(GroupEntity group)? groupSuccess,
+    TResult? Function(CourseEntity course)? courseSuccess,
+    TResult? Function(DepartmentEntity department)? departmentSuccess,
     TResult? Function(String errorMessage)? fail,
   }) {
-    return departmentSucces?.call(department);
+    return departmentSuccess?.call(department);
   }
 
   @override
@@ -1929,14 +1929,14 @@ class _$DepartmentSuccesImpl implements _DepartmentSucces {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(GroupEntity group)? groupSucces,
-    TResult Function(CourseEntity course)? courseSucces,
-    TResult Function(DepartmentEntity department)? departmentSucces,
+    TResult Function(GroupEntity group)? groupSuccess,
+    TResult Function(CourseEntity course)? courseSuccess,
+    TResult Function(DepartmentEntity department)? departmentSuccess,
     TResult Function(String errorMessage)? fail,
     required TResult orElse(),
   }) {
-    if (departmentSucces != null) {
-      return departmentSucces(department);
+    if (departmentSuccess != null) {
+      return departmentSuccess(department);
     }
     return orElse();
   }
@@ -1946,12 +1946,12 @@ class _$DepartmentSuccesImpl implements _DepartmentSucces {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_GroupSucces value) groupSucces,
-    required TResult Function(_CourseSucces value) courseSucces,
-    required TResult Function(_DepartmentSucces value) departmentSucces,
+    required TResult Function(_GroupSuccess value) groupSuccess,
+    required TResult Function(_CourseSuccess value) courseSuccess,
+    required TResult Function(_DepartmentSuccess value) departmentSuccess,
     required TResult Function(_Fail value) fail,
   }) {
-    return departmentSucces(this);
+    return departmentSuccess(this);
   }
 
   @override
@@ -1959,12 +1959,12 @@ class _$DepartmentSuccesImpl implements _DepartmentSucces {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_GroupSucces value)? groupSucces,
-    TResult? Function(_CourseSucces value)? courseSucces,
-    TResult? Function(_DepartmentSucces value)? departmentSucces,
+    TResult? Function(_GroupSuccess value)? groupSuccess,
+    TResult? Function(_CourseSuccess value)? courseSuccess,
+    TResult? Function(_DepartmentSuccess value)? departmentSuccess,
     TResult? Function(_Fail value)? fail,
   }) {
-    return departmentSucces?.call(this);
+    return departmentSuccess?.call(this);
   }
 
   @override
@@ -1972,26 +1972,26 @@ class _$DepartmentSuccesImpl implements _DepartmentSucces {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_GroupSucces value)? groupSucces,
-    TResult Function(_CourseSucces value)? courseSucces,
-    TResult Function(_DepartmentSucces value)? departmentSucces,
+    TResult Function(_GroupSuccess value)? groupSuccess,
+    TResult Function(_CourseSuccess value)? courseSuccess,
+    TResult Function(_DepartmentSuccess value)? departmentSuccess,
     TResult Function(_Fail value)? fail,
     required TResult orElse(),
   }) {
-    if (departmentSucces != null) {
-      return departmentSucces(this);
+    if (departmentSuccess != null) {
+      return departmentSuccess(this);
     }
     return orElse();
   }
 }
 
-abstract class _DepartmentSucces implements MainGroupSelectorState {
-  const factory _DepartmentSucces(final DepartmentEntity department) =
-      _$DepartmentSuccesImpl;
+abstract class _DepartmentSuccess implements MainGroupSelectorState {
+  const factory _DepartmentSuccess(final DepartmentEntity department) =
+      _$DepartmentSuccessImpl;
 
   DepartmentEntity get department;
   @JsonKey(ignore: true)
-  _$$DepartmentSuccesImplCopyWith<_$DepartmentSuccesImpl> get copyWith =>
+  _$$DepartmentSuccessImplCopyWith<_$DepartmentSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -2061,9 +2061,9 @@ class _$FailImpl implements _Fail {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(GroupEntity group) groupSucces,
-    required TResult Function(CourseEntity course) courseSucces,
-    required TResult Function(DepartmentEntity department) departmentSucces,
+    required TResult Function(GroupEntity group) groupSuccess,
+    required TResult Function(CourseEntity course) courseSuccess,
+    required TResult Function(DepartmentEntity department) departmentSuccess,
     required TResult Function(String errorMessage) fail,
   }) {
     return fail(errorMessage);
@@ -2074,9 +2074,9 @@ class _$FailImpl implements _Fail {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(GroupEntity group)? groupSucces,
-    TResult? Function(CourseEntity course)? courseSucces,
-    TResult? Function(DepartmentEntity department)? departmentSucces,
+    TResult? Function(GroupEntity group)? groupSuccess,
+    TResult? Function(CourseEntity course)? courseSuccess,
+    TResult? Function(DepartmentEntity department)? departmentSuccess,
     TResult? Function(String errorMessage)? fail,
   }) {
     return fail?.call(errorMessage);
@@ -2087,9 +2087,9 @@ class _$FailImpl implements _Fail {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(GroupEntity group)? groupSucces,
-    TResult Function(CourseEntity course)? courseSucces,
-    TResult Function(DepartmentEntity department)? departmentSucces,
+    TResult Function(GroupEntity group)? groupSuccess,
+    TResult Function(CourseEntity course)? courseSuccess,
+    TResult Function(DepartmentEntity department)? departmentSuccess,
     TResult Function(String errorMessage)? fail,
     required TResult orElse(),
   }) {
@@ -2104,9 +2104,9 @@ class _$FailImpl implements _Fail {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_GroupSucces value) groupSucces,
-    required TResult Function(_CourseSucces value) courseSucces,
-    required TResult Function(_DepartmentSucces value) departmentSucces,
+    required TResult Function(_GroupSuccess value) groupSuccess,
+    required TResult Function(_CourseSuccess value) courseSuccess,
+    required TResult Function(_DepartmentSuccess value) departmentSuccess,
     required TResult Function(_Fail value) fail,
   }) {
     return fail(this);
@@ -2117,9 +2117,9 @@ class _$FailImpl implements _Fail {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_GroupSucces value)? groupSucces,
-    TResult? Function(_CourseSucces value)? courseSucces,
-    TResult? Function(_DepartmentSucces value)? departmentSucces,
+    TResult? Function(_GroupSuccess value)? groupSuccess,
+    TResult? Function(_CourseSuccess value)? courseSuccess,
+    TResult? Function(_DepartmentSuccess value)? departmentSuccess,
     TResult? Function(_Fail value)? fail,
   }) {
     return fail?.call(this);
@@ -2130,9 +2130,9 @@ class _$FailImpl implements _Fail {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_GroupSucces value)? groupSucces,
-    TResult Function(_CourseSucces value)? courseSucces,
-    TResult Function(_DepartmentSucces value)? departmentSucces,
+    TResult Function(_GroupSuccess value)? groupSuccess,
+    TResult Function(_CourseSuccess value)? courseSuccess,
+    TResult Function(_DepartmentSuccess value)? departmentSuccess,
     TResult Function(_Fail value)? fail,
     required TResult orElse(),
   }) {

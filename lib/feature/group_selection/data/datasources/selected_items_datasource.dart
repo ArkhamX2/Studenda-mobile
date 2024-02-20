@@ -56,7 +56,7 @@ class SelectedItemsDataSourceImpl implements SelectedItemsDataSource {
   @override
   Future<GroupModel> getGroup() async {
     try {
-      final result = prefs.getString('department');
+      final result = prefs.getString('group');
       if (result != null) {
         final group = GroupModel.fromJson(
           json.decode(result) as Map<String, dynamic>,

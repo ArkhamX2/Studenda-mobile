@@ -7,6 +7,7 @@ import 'package:studenda_mobile_student/feature/group_selection/presentation/blo
 import 'package:studenda_mobile_student/feature/schedule/domain/entities/day_schedule_entity.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/schedule_bloc.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/widgets/date_carousel_widget.dart';
+import 'package:studenda_mobile_student/feature/schedule/presentation/widgets/group_selector_text_style.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/widgets/week_schedule_widget.dart';
 import 'package:studenda_mobile_student/injection_container.dart';
 import 'package:studenda_mobile_student/resources/colors.dart';
@@ -21,30 +22,23 @@ class ScheduleScreenPage extends StatefulWidget {
 class _ScheduleScreenPageState extends State<ScheduleScreenPage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Color.fromARGB(255, 240, 241, 245),
-      appBar: _ScheduleAppBarWidget(),
-      body: _BodyBuilderWidget(),
-    );
-  }
-}
-
-class _BodyBuilderWidget extends StatelessWidget {
-  const _BodyBuilderWidget();
-
-  @override
-  Widget build(BuildContext context) {
-    //final groupSelectorBloc = context.watch<MainGroupSelectorBloc>();
-    return BlocProvider(
+    final groupSelectorBloc = context.watch<MainGroupSelectorBloc>();
+    return BlocProvider<ScheduleBloc>(
       create: (context) {
+        sl<MainGroupSelectorBloc>()
+            .add(const MainGroupSelectorEvent.getGroup());
         return sl<ScheduleBloc>()
           ..add(
-            const ScheduleEvent.loadLocal(
-              1,
+            ScheduleEvent.loadLocal(
+              groupSelectorBloc.selectedGroup.id,
             ),
           );
       },
-      child: const _ScheduleBodyWidget(),
+      child: const Scaffold(
+        backgroundColor: Color.fromARGB(255, 240, 241, 245),
+        appBar: _ScheduleAppBarWidget(),
+        body: _ScheduleBodyWidget(),
+      ),
     );
   }
 }
@@ -65,11 +59,11 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
   @override
   Widget build(BuildContext context) {
     final scheduleBloc = context.watch<ScheduleBloc>();
-
+    final groupSelectorBloc = context.watch<MainGroupSelectorBloc>();
     return Padding(
       padding: const EdgeInsets.all(14.0),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
             child: StudendaWeightedLabelWidget(
@@ -84,65 +78,68 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
           _DateCarouselWrapperWidget(
             globalKeys: keys,
             scheduleBloc: scheduleBloc,
-            groupId: 1,
+            groupId: groupSelectorBloc.selectedGroup.id,
           ),
           const SizedBox(height: 10),
-          scheduleBloc.state.when(
-            initial: () => const Expanded(
-              child: Center(
+          Expanded(
+            child: scheduleBloc.state.when(
+              initial: () => const Center(
                 child: CircularProgressIndicator(),
               ),
-            ),
-            loading: () => const Expanded(
-              child: Center(
+              loading: () => const Center(
                 child: CircularProgressIndicator(),
               ),
-            ),
-            localLoadingFail: (message) {
-              scheduleBloc.add(const ScheduleEvent.load(1));
-              return Center(
-                child: StudendaDefaultLabelWidget(text: message, fontSize: 18),
-              );
-            },
-            fail: (message) {
-              return Center(
-                child: StudendaDefaultLabelWidget(text: message, fontSize: 18),
-              );
-            },
-            localLoadingSuccess: (schedule) {
-              if (schedule.schedule.isEmpty) {
-                scheduleBloc.add(const ScheduleEvent.load(1));
-              }
-              return Expanded(
-                child: _ScheduleScrollWidget(
+              localLoadingFail: (message) {
+                scheduleBloc.add(
+                  ScheduleEvent.load(
+                    groupSelectorBloc.selectedGroup.id,
+                  ),
+                );
+                return Center(
+                  child:
+                      StudendaDefaultLabelWidget(text: message, fontSize: 18),
+                );
+              },
+              fail: (message) {
+                return Center(
+                  child:
+                      StudendaDefaultLabelWidget(text: message, fontSize: 18),
+                );
+              },
+              localLoadingSuccess: (schedule) {
+                if (schedule.schedule.isEmpty) {
+                  scheduleBloc.add(
+                    ScheduleEvent.load(
+                      groupSelectorBloc.selectedGroup.id,
+                    ),
+                  );
+                }
+                return _ScheduleScrollWidget(
                   schedule: schedule.schedule,
                   globalKeys: keys,
                   currentWeekDay: getCurrentWeekDay(),
                   needHighlight:
                       getCurrentWeekDaysWithMonth(scheduleBloc.datePointer).any(
-                    (element) => element == "${DateTime.now().day} ${monthNames[DateTime.now().month-1]}",
+                    (element) =>
+                        element ==
+                        "${DateTime.now().day} ${monthNames[DateTime.now().month - 1]}",
                   ),
-                ),
-              );
-            },
-            success: (schedule) {
-              keys = List.generate(
-                schedule.schedule.length,
-                (index) =>
-                    GlobalObjectKey(schedule.schedule[index].weekPosition),
-              );
-              return Expanded(
-                child: _ScheduleScrollWidget(
-                  schedule: schedule.schedule,
-                  globalKeys: keys,
-                  currentWeekDay: getCurrentWeekDay(),
-                  needHighlight:
-                      getCurrentWeekDays(scheduleBloc.datePointer).any(
-                    (element) => int.parse(element) == DateTime.now().day,
+                );
+              },
+              success: (schedule) {
+                return Expanded(
+                  child: _ScheduleScrollWidget(
+                    schedule: schedule.schedule,
+                    globalKeys: keys,
+                    currentWeekDay: getCurrentWeekDay(),
+                    needHighlight:
+                        getCurrentWeekDays(scheduleBloc.datePointer).any(
+                      (element) => int.parse(element) == DateTime.now().day,
+                    ),
                   ),
-                ),
-              );
-            },
+                );
+              },
+            ),
           ),
         ],
       ),
@@ -166,7 +163,8 @@ class _DateCarouselWrapperWidget extends StatelessWidget {
     return DateCarouselWidget(
       onDateTap: (int index) {
         final destination = globalKeys.where((key) => key.value == index);
-        if (destination.isNotEmpty) {
+        if (destination.isNotEmpty &&
+            destination.first.currentContext != null) {
           Scrollable.ensureVisible(
             destination.first.currentContext!,
             duration: const Duration(seconds: 1),
@@ -219,13 +217,12 @@ class _ScheduleScrollWidgetState extends State<_ScheduleScrollWidget> {
       if (widget.needHighlight) {
         final destination = widget.globalKeys
             .where((key) => key.value == widget.currentWeekDay - 1);
-        if (destination.isNotEmpty) {
-          if (destination.first.currentContext != null) {
-            Scrollable.ensureVisible(
-              destination.first.currentContext!,
-              duration: const Duration(seconds: 1),
-            );
-          }
+        if (destination.isNotEmpty &&
+            destination.first.currentContext != null) {
+          Scrollable.ensureVisible(
+            destination.first.currentContext!,
+            duration: const Duration(seconds: 1),
+          );
         }
       }
     });
@@ -238,13 +235,12 @@ class _ScheduleScrollWidgetState extends State<_ScheduleScrollWidget> {
       if (widget.needHighlight) {
         final destination = widget.globalKeys
             .where((key) => key.value == widget.currentWeekDay - 1);
-        if (destination.isNotEmpty) {
-          if (destination.first.currentContext != null) {
-            Scrollable.ensureVisible(
-              destination.first.currentContext!,
-              duration: const Duration(seconds: 1),
-            );
-          }
+        if (destination.isNotEmpty &&
+            destination.first.currentContext != null) {
+          Scrollable.ensureVisible(
+            destination.first.currentContext!,
+            duration: const Duration(seconds: 1),
+          );
         }
       }
     });
@@ -252,22 +248,20 @@ class _ScheduleScrollWidgetState extends State<_ScheduleScrollWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final groupSelectorBloc = context.watch<MainGroupSelectorBloc>();
     final scheduleBloc = context.watch<ScheduleBloc>();
     return LayoutBuilder(
       builder: (context, constraints) => RefreshIndicator(
         onRefresh: () async {
-          scheduleBloc.add(const ScheduleEvent.load(1));
+          scheduleBloc.add(ScheduleEvent.load(groupSelectorBloc.selectedGroup.id));
         },
         child: SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
-          child: ConstrainedBox(
-            constraints: BoxConstraints(minHeight: constraints.maxHeight),
-            child: WeekScheduleWidget(
-              schedule: widget.schedule,
-              keys: widget.globalKeys,
-              currentWeekDay: widget.currentWeekDay,
-              needHighlight: widget.needHighlight,
-            ),
+          child: WeekScheduleWidget(
+            schedule: widget.schedule,
+            keys: widget.globalKeys,
+            currentWeekDay: widget.currentWeekDay,
+            needHighlight: widget.needHighlight,
           ),
         ),
       ),
@@ -275,31 +269,34 @@ class _ScheduleScrollWidgetState extends State<_ScheduleScrollWidget> {
   }
 }
 
-class _ScheduleAppBarWidget extends StatelessWidget
+class _ScheduleAppBarWidget extends StatefulWidget
     implements PreferredSizeWidget {
   const _ScheduleAppBarWidget();
 
   @override
+  State<_ScheduleAppBarWidget> createState() => _ScheduleAppBarWidgetState();
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+}
+
+class _ScheduleAppBarWidgetState extends State<_ScheduleAppBarWidget> {
+  @override
   Widget build(BuildContext context) {
-    final groupBloc = context.watch<MainGroupSelectorBloc>();
+    final groupBlock = context.watch<MainGroupSelectorBloc>();
     return AppBar(
       titleSpacing: 0,
       automaticallyImplyLeading: false,
       centerTitle: true,
-      title: Text(
-        groupBloc.selectedGroup.name.isEmpty
-            ? "Б.ПИН.РИС.2106"
-            : groupBloc.selectedGroup.name,
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 25,
-          decoration: TextDecoration.underline,
-          decorationColor: Colors.white,
+      title: GestureDetector(
+        onTap: () => Navigator.of(context).pushReplacementNamed('/selector'),
+        child: Text(
+          groupBlock.selectedGroup.name.isEmpty
+              ? "Выберите группу"
+              : groupBlock.selectedGroup.name,
+          style: groupSelectionTextStyle,
         ),
       ),
     );
   }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

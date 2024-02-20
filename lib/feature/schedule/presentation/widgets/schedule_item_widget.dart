@@ -52,42 +52,45 @@ class _TeacherSubjectInfoRowWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
-      child: Row(
-        children: [
-          const SizedBox(
-            width: 64,
-          ),
-          Expanded(
-            child: Container(
-              height: 46,
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(5),
-                  bottomRight: Radius.circular(5),
-                ),
-                border: Border.all(
-                  color: const Color.fromARGB(60, 0, 0, 0),
-                ),
-              ),
-              child: Row(
-                children: [
-                  const SizedBox(
-                    width: 15,
+      child: IntrinsicHeight(
+        child: Row(
+          children: [
+            const SizedBox(
+              width: 64,
+            ),
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.only(
+                    bottomLeft: Radius.circular(5),
+                    bottomRight: Radius.circular(5),
                   ),
-                  Expanded(
-                    child: Text(
-                      widget.subject.teacher == null ? "" : widget.subject.teacher!,
-                      style: const TextStyle(
-                        color: mainForegroundColor,
-                        fontSize: 16,
+                  border: Border.all(
+                    color: const Color.fromARGB(60, 0, 0, 0),
+                  ),
+                ),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Center(
+                          child: Text(
+                            widget.subject.teacher == null ? "" : widget.subject.teacher!,
+                            style: const TextStyle(
+                              color: mainForegroundColor,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

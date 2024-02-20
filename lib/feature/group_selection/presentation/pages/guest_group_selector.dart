@@ -49,6 +49,9 @@ class _GroupSelectorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final groupSelectorBloc = context.watch<MainGroupSelectorBloc>();
+    groupSelectorBloc.add(const MainGroupSelectorEvent.getGroup());
+    groupSelectorBloc.add(const MainGroupSelectorEvent.getCourse());
+    groupSelectorBloc.add(const MainGroupSelectorEvent.getDepartment());
     final groupCubit = context.watch<GroupCubit>();
     final courseCubit = context.watch<CourseCubit>();
     final departmentCubit = context.watch<DepartmentCubit>();
@@ -69,31 +72,33 @@ class _GroupSelectorWidget extends StatelessWidget {
           return Container(
             alignment: AlignmentDirectional.center,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 57),
+              padding: const EdgeInsets.symmetric(horizontal: 57, vertical: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  _DepartmentSelectionWidget(
-                    mainBloc: groupSelectorBloc,
-                    departmentCubit: departmentCubit,
-                  ),
-                  const SizedBox(
-                    height: 41,
-                  ),
-                  _CourseSelectionWidget(
-                    mainBloc: groupSelectorBloc,
-                    courseCubit: courseCubit,
-                  ),
-                  const SizedBox(
-                    height: 41,
-                  ),
-                  _GroupSelectionWidget(
-                    mainBloc: groupSelectorBloc,
-                    groupCubit: groupCubit,
-                  ),
-                  const SizedBox(
-                    height: 184,
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      _DepartmentSelectionWidget(
+                        mainBloc: groupSelectorBloc,
+                        departmentCubit: departmentCubit,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      _CourseSelectionWidget(
+                        mainBloc: groupSelectorBloc,
+                        courseCubit: courseCubit,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      _GroupSelectionWidget(
+                        mainBloc: groupSelectorBloc,
+                        groupCubit: groupCubit,
+                      ),
+                    ],
                   ),
                   StudendaButton(
                     title: "Подтвердить",
@@ -123,6 +128,7 @@ class _GroupSelectionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final groupSelectorBloc = context.watch<MainGroupSelectorBloc>();
     return groupCubit.state.when(
       initial: () => Container(),
       loading: () => Container(),
@@ -136,15 +142,19 @@ class _GroupSelectionWidget extends StatelessWidget {
         if (groups.isEmpty) {
           groupCubit.load();
         } else {
-          mainBloc.add(
-            MainGroupSelectorEvent.setGroup(
-              groups.first,
-            ),
-          );
+          if (groupSelectorBloc.selectedGroup.id == -1) {
+            mainBloc.add(
+              MainGroupSelectorEvent.setGroup(
+                groups.first,
+              ),
+            );
+          }
         }
         return StudendaDropdown<GroupEntity>(
           items: groups,
-          model: groups.isEmpty ? null : groups.first,
+          model: groupSelectorBloc.selectedGroup.id == -1
+              ? groups.first
+              : groupSelectorBloc.selectedGroup,
           callback: (element) {
             mainBloc.add(
               MainGroupSelectorEvent.setGroup(element!),
@@ -154,15 +164,19 @@ class _GroupSelectionWidget extends StatelessWidget {
       },
       success: (groups) {
         if (groups.isNotEmpty) {
-          mainBloc.add(
-            MainGroupSelectorEvent.setGroup(
-              groups.first,
-            ),
-          );
+          if (groupSelectorBloc.selectedGroup.id == -1) {
+            mainBloc.add(
+              MainGroupSelectorEvent.setGroup(
+                groups.first,
+              ),
+            );
+          }
         }
         return StudendaDropdown<GroupEntity>(
           items: groups,
-          model: groups.isEmpty ? null : groups.first,
+          model: groupSelectorBloc.selectedGroup.id == -1
+              ? groups.first
+              : groupSelectorBloc.selectedGroup,
           callback: (element) {
             mainBloc.add(
               MainGroupSelectorEvent.setGroup(element!),
@@ -188,6 +202,7 @@ class _CourseSelectionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final groupSelectorBloc = context.watch<MainGroupSelectorBloc>();
     return courseCubit.state.when(
       initial: () => Container(),
       loading: () => Container(),
@@ -201,16 +216,19 @@ class _CourseSelectionWidget extends StatelessWidget {
         if (courses.isEmpty) {
           courseCubit.load();
         } else {
-          mainBloc.add(
-            MainGroupSelectorEvent.setCourse(
-              courses.first,
-            ),
-          );
+          if (groupSelectorBloc.selectedCourse.id == -1) {
+            mainBloc.add(
+              MainGroupSelectorEvent.setCourse(
+                courses.first,
+              ),
+            );
+          }
         }
-
         return StudendaDropdown<CourseEntity>(
           items: courses,
-          model: courses.isEmpty ? null : courses.first,
+          model: groupSelectorBloc.selectedCourse.id == -1
+              ? courses.first
+              : groupSelectorBloc.selectedCourse,
           callback: (element) {
             mainBloc.add(
               MainGroupSelectorEvent.setCourse(element!),
@@ -220,15 +238,19 @@ class _CourseSelectionWidget extends StatelessWidget {
       },
       success: (courses) {
         if (courses.isNotEmpty) {
-          mainBloc.add(
-            MainGroupSelectorEvent.setCourse(
-              courses.first,
-            ),
-          );
+          if (groupSelectorBloc.selectedCourse.id == -1) {
+            mainBloc.add(
+              MainGroupSelectorEvent.setCourse(
+                courses.first,
+              ),
+            );
+          }
         }
         return StudendaDropdown<CourseEntity>(
           items: courses,
-          model: courses.isEmpty ? null : courses.first,
+          model: groupSelectorBloc.selectedCourse.id == -1
+              ? courses.first
+              : groupSelectorBloc.selectedCourse,
           callback: (element) {
             mainBloc.add(
               MainGroupSelectorEvent.setCourse(element!),
@@ -254,6 +276,7 @@ class _DepartmentSelectionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final groupSelectorBloc = context.watch<MainGroupSelectorBloc>();
     return departmentCubit.state.when(
       initial: () => Container(),
       loading: () => Container(),
@@ -272,16 +295,19 @@ class _DepartmentSelectionWidget extends StatelessWidget {
         if (departments.isEmpty) {
           departmentCubit.load();
         } else {
-          mainBloc.add(
-            MainGroupSelectorEvent.setDepartment(
-              departments.first,
-            ),
-          );
+          if (groupSelectorBloc.selectedDepartment.id == -1) {
+            mainBloc.add(
+              MainGroupSelectorEvent.setDepartment(
+                departments.first,
+              ),
+            );
+          }
         }
-
         return StudendaDropdown<DepartmentEntity>(
           items: departments,
-          model: departments.isEmpty ? null : departments.first,
+          model:  groupSelectorBloc.selectedDepartment.id == -1
+              ? departments.first
+              : groupSelectorBloc.selectedDepartment,
           callback: (element) {
             mainBloc.add(
               MainGroupSelectorEvent.setDepartment(element!),
@@ -291,15 +317,19 @@ class _DepartmentSelectionWidget extends StatelessWidget {
       },
       success: (departments) {
         if (departments.isNotEmpty) {
-          mainBloc.add(
-            MainGroupSelectorEvent.setDepartment(
-              departments.first,
-            ),
-          );
+          if (groupSelectorBloc.selectedDepartment.id == -1) {
+            mainBloc.add(
+              MainGroupSelectorEvent.setDepartment(
+                departments.first,
+              ),
+            );
+          }
         }
         return StudendaDropdown<DepartmentEntity>(
           items: departments,
-          model: departments.isEmpty ? null : departments.first,
+          model: groupSelectorBloc.selectedDepartment.id == -1
+              ? departments.first
+              : groupSelectorBloc.selectedDepartment,
           callback: (element) {
             mainBloc.add(
               MainGroupSelectorEvent.setDepartment(element!),
@@ -320,14 +350,8 @@ class GroupSelectorAppBarWidget extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: IconButton(
-        icon: const Icon(
-          Icons.chevron_left_sharp,
-          color: Colors.white,
-        ),
-        onPressed: () => {Navigator.of(context).pop()},
-      ),
       titleSpacing: 0,
+      automaticallyImplyLeading: false,
       centerTitle: true,
       title: const Text(
         'Выбор группы',
