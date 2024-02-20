@@ -8,4 +8,3 @@ const groupSelectionTextStyle = TextStyle(
                 decoration: TextDecoration.underline,
                 decorationColor: Colors.white,
               );
-  

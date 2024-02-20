@@ -31,7 +31,7 @@ class WeekScheduleWidget extends StatelessWidget {
             (key, element) => MapEntry(
               key,
               DayScheduleWidget(
-                key: keys[key],
+                key: keys[element.weekPosition],
                 dayTitle:
                     "${weekDays[element.weekPosition]}, ${weekPositionValues[element.weekPosition]}",
                 subjects: element.subjects,
