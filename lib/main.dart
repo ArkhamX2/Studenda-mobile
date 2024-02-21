@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<MainGroupSelectorBloc>(
-          create: (context) => sl<MainGroupSelectorBloc>(),
+          create: (context) => sl<MainGroupSelectorBloc>()..add(MainGroupSelectorEvent.getGroup()),
         ),
       ],
       child: MaterialApp(
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Inter',
         ),
         home: const MainNavigatorWidget(),
-        initialRoute: '/selector',
+        initialRoute: '/main',
         routes: {
           '/main' : (context) => const MainNavigatorWidget(),
           '/schedule': (context) => const ScheduleScreenPage(),

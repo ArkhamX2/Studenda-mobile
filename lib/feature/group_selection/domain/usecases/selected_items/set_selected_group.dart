@@ -12,6 +12,6 @@ class SetSelectedGroup extends Usecase<void,GroupEntity>{
 
   @override
   Future<Either<Failure,void>> call(GroupEntity request) async{
-    return await itemsRepository.setGroup(GroupModel(id: request.id, name: request.name));
+    return await itemsRepository.setGroup(GroupModel(id: request.id, name: request.name, courseId: request.courseId, departmentId: request.departmentId));
   }
 }

@@ -12,6 +12,8 @@ abstract class GroupModel extends HiveObject with _$GroupModel {
   factory GroupModel({
     @JsonKey(name: 'id') @HiveField(0) required int id,
     @JsonKey(name: 'name') @HiveField(1) required String name,
+    @JsonKey(name: 'courseId') @HiveField(2) required int courseId,
+    @JsonKey(name: 'departmentId') @HiveField(3) required int departmentId,
   }) = _GroupModel;
 
   GroupModel._();

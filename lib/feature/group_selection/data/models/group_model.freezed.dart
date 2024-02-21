@@ -12,7 +12,7 @@ part of 'group_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 GroupModel _$GroupModelFromJson(Map<String, dynamic> json) {
   return _GroupModel.fromJson(json);
@@ -26,6 +26,12 @@ mixin _$GroupModel {
   @JsonKey(name: 'name')
   @HiveField(1)
   String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'courseId')
+  @HiveField(2)
+  int get courseId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'departmentId')
+  @HiveField(3)
+  int get departmentId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,7 +47,9 @@ abstract class $GroupModelCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'id') @HiveField(0) int id,
-      @JsonKey(name: 'name') @HiveField(1) String name});
+      @JsonKey(name: 'name') @HiveField(1) String name,
+      @JsonKey(name: 'courseId') @HiveField(2) int courseId,
+      @JsonKey(name: 'departmentId') @HiveField(3) int departmentId});
 }
 
 /// @nodoc
@@ -59,6 +67,8 @@ class _$GroupModelCopyWithImpl<$Res, $Val extends GroupModel>
   $Res call({
     Object? id = null,
     Object? name = null,
+    Object? courseId = null,
+    Object? departmentId = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -69,6 +79,14 @@ class _$GroupModelCopyWithImpl<$Res, $Val extends GroupModel>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      courseId: null == courseId
+          ? _value.courseId
+          : courseId // ignore: cast_nullable_to_non_nullable
+              as int,
+      departmentId: null == departmentId
+          ? _value.departmentId
+          : departmentId // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -83,7 +101,9 @@ abstract class _$$GroupModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'id') @HiveField(0) int id,
-      @JsonKey(name: 'name') @HiveField(1) String name});
+      @JsonKey(name: 'name') @HiveField(1) String name,
+      @JsonKey(name: 'courseId') @HiveField(2) int courseId,
+      @JsonKey(name: 'departmentId') @HiveField(3) int departmentId});
 }
 
 /// @nodoc
@@ -99,6 +119,8 @@ class __$$GroupModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? name = null,
+    Object? courseId = null,
+    Object? departmentId = null,
   }) {
     return _then(_$GroupModelImpl(
       id: null == id
@@ -109,6 +131,14 @@ class __$$GroupModelImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      courseId: null == courseId
+          ? _value.courseId
+          : courseId // ignore: cast_nullable_to_non_nullable
+              as int,
+      departmentId: null == departmentId
+          ? _value.departmentId
+          : departmentId // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -119,7 +149,9 @@ class __$$GroupModelImplCopyWithImpl<$Res>
 class _$GroupModelImpl extends _GroupModel {
   _$GroupModelImpl(
       {@JsonKey(name: 'id') @HiveField(0) required this.id,
-      @JsonKey(name: 'name') @HiveField(1) required this.name})
+      @JsonKey(name: 'name') @HiveField(1) required this.name,
+      @JsonKey(name: 'courseId') @HiveField(2) required this.courseId,
+      @JsonKey(name: 'departmentId') @HiveField(3) required this.departmentId})
       : super._();
 
   factory _$GroupModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -133,10 +165,18 @@ class _$GroupModelImpl extends _GroupModel {
   @JsonKey(name: 'name')
   @HiveField(1)
   final String name;
+  @override
+  @JsonKey(name: 'courseId')
+  @HiveField(2)
+  final int courseId;
+  @override
+  @JsonKey(name: 'departmentId')
+  @HiveField(3)
+  final int departmentId;
 
   @override
   String toString() {
-    return 'GroupModel(id: $id, name: $name)';
+    return 'GroupModel(id: $id, name: $name, courseId: $courseId, departmentId: $departmentId)';
   }
 
   @override
@@ -145,12 +185,17 @@ class _$GroupModelImpl extends _GroupModel {
         (other.runtimeType == runtimeType &&
             other is _$GroupModelImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.courseId, courseId) ||
+                other.courseId == courseId) &&
+            (identical(other.departmentId, departmentId) ||
+                other.departmentId == departmentId));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name);
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, courseId, departmentId);
 
   @JsonKey(ignore: true)
   @override
@@ -168,9 +213,12 @@ class _$GroupModelImpl extends _GroupModel {
 
 abstract class _GroupModel extends GroupModel {
   factory _GroupModel(
-          {@JsonKey(name: 'id') @HiveField(0) required final int id,
-          @JsonKey(name: 'name') @HiveField(1) required final String name}) =
-      _$GroupModelImpl;
+      {@JsonKey(name: 'id') @HiveField(0) required final int id,
+      @JsonKey(name: 'name') @HiveField(1) required final String name,
+      @JsonKey(name: 'courseId') @HiveField(2) required final int courseId,
+      @JsonKey(name: 'departmentId')
+      @HiveField(3)
+      required final int departmentId}) = _$GroupModelImpl;
   _GroupModel._() : super._();
 
   factory _GroupModel.fromJson(Map<String, dynamic> json) =
@@ -184,6 +232,14 @@ abstract class _GroupModel extends GroupModel {
   @JsonKey(name: 'name')
   @HiveField(1)
   String get name;
+  @override
+  @JsonKey(name: 'courseId')
+  @HiveField(2)
+  int get courseId;
+  @override
+  @JsonKey(name: 'departmentId')
+  @HiveField(3)
+  int get departmentId;
   @override
   @JsonKey(ignore: true)
   _$$GroupModelImplCopyWith<_$GroupModelImpl> get copyWith =>

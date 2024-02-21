@@ -14,29 +14,46 @@ class GroupCubit extends Cubit<GroupState> {
   Future<void> load() async {
     emit(const GroupState.loading());
     final groups = await loadGroups(() {});
-    groups.fold((l) => emit(GroupState.fail(l.message)), (succededGroupList) {
-      groupList = succededGroupList.map((e) => GroupEntity(id: e.id, name: e.name)).toList();
-      emit(
-        GroupState.success(
-          succededGroupList
-              .map((element) => GroupEntity(id: element.id, name: element.name))
-              .toList(),
-        ),
-      );
-    });
+    groups.fold(
+      (l) => emit(GroupState.fail(l.message)),
+      (succededGroupList) {
+        groupList = succededGroupList
+            .map(
+              (e) => GroupEntity(
+                id: e.id,
+                name: e.name,
+                courseId: e.courseId,
+                departmentId: e.departmentId,
+              ),
+            )
+            .toList();
+        emit(
+          GroupState.success(groupList),
+        );
+      },
+    );
   }
+
   Future<void> loadLocally() async {
     emit(const GroupState.loading());
     final groups = await loadGroups(() {});
-    groups.fold((l) => emit(GroupState.localLoadingFail(l.message)), (succededGroupList) {
-      groupList = succededGroupList.map((e) => GroupEntity(id: e.id, name: e.name)).toList();
-      emit(
-        GroupState.localLoadingSuccess(
-          succededGroupList
-              .map((element) => GroupEntity(id: element.id, name: element.name))
-              .toList(),
-        ),
-      );
-    });
+    groups.fold(
+      (l) => emit(GroupState.localLoadingFail(l.message)),
+      (succededGroupList) {
+        groupList = succededGroupList
+            .map(
+              (e) => GroupEntity(
+                id: e.id,
+                name: e.name,
+                courseId: e.courseId,
+                departmentId: e.departmentId,
+              ),
+            )
+            .toList();
+        emit(
+          GroupState.localLoadingSuccess(groupList),
+        );
+      },
+    );
   }
 }

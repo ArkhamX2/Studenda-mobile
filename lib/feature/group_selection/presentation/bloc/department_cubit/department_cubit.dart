@@ -9,7 +9,7 @@ part 'department_cubit.freezed.dart';
 class DepartmentCubit extends Cubit<DepartmentState> {
   final LoadDepartments loadDepartments;
 
-  List<DepartmentEntity> departmentList=[];
+  List<DepartmentEntity> departmentList = [];
 
   DepartmentCubit({required this.loadDepartments})
       : super(const DepartmentState.initial());
@@ -18,23 +18,44 @@ class DepartmentCubit extends Cubit<DepartmentState> {
     final departments = await loadDepartments(() {});
     departments.fold(
       (l) => emit(DepartmentState.fail(l.message)),
-      (r) => emit(
-        DepartmentState.success(
-          r.map((element) => DepartmentEntity(id: element.id,name: element.name)).toList(),
-        ),
-      ),
+      (r) {
+        departmentList = r
+            .map(
+              (element) => DepartmentEntity(
+                id: element.id,
+                name: element.name,
+              ),
+            )
+            .toList();
+        emit(
+          DepartmentState.success(
+            departmentList,
+          ),
+        );
+      },
     );
   }
+
   Future<void> loadLocally() async {
     emit(const DepartmentState.loading());
     final departments = await loadDepartments(() {});
     departments.fold(
-      (l) => emit(DepartmentState.localLoadingFail(l.message)),
-      (r) => emit(
-        DepartmentState.localLoadingSuccess(
-          r.map((element) => DepartmentEntity(id: element.id,name: element.name)).toList(),
-        ),
-      ),
+      (l) => emit(DepartmentState.fail(l.message)),
+      (r) {
+        departmentList = r
+            .map(
+              (element) => DepartmentEntity(
+                id: element.id,
+                name: element.name,
+              ),
+            )
+            .toList();
+        emit(
+          DepartmentState.success(
+            departmentList,
+          ),
+        );
+      },
     );
   }
 }

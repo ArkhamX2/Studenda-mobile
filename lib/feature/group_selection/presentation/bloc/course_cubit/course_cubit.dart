@@ -17,23 +17,46 @@ class CourseCubit extends Cubit<CourseState> {
     final courses = await loadCourses(() {});
     courses.fold(
       (l) => emit(CourseState.fail(l.message)),
-      (r) => emit(
-        CourseState.success(
-          r.map((element) => CourseEntity(id: element.id,name: element.name, grade: element.grade)).toList(),
-        ),
-      ),
+      (r) {
+        courseList = r
+            .map(
+              (element) => CourseEntity(
+                id: element.id,
+                name: element.name,
+                grade: element.grade,
+              ),
+            )
+            .toList();
+        emit(
+          CourseState.success(
+            courseList,
+          ),
+        );
+      },
     );
   }
+
   Future<void> loadLocally() async {
     emit(const CourseState.loading());
     final courses = await loadCourses(() {});
     courses.fold(
-      (l) => emit(CourseState.localLoadingFail(l.message)),
-      (r) => emit(
-        CourseState.localLoadingSuccess(
-          r.map((element) => CourseEntity(id: element.id,name: element.name, grade: element.grade)).toList(),
-        ),
-      ),
+      (l) => emit(CourseState.fail(l.message)),
+      (r) {
+        courseList = r
+            .map(
+              (element) => CourseEntity(
+                id: element.id,
+                name: element.name,
+                grade: element.grade,
+              ),
+            )
+            .toList();
+        emit(
+          CourseState.success(
+            courseList,
+          ),
+        );
+      },
     );
   }
 }

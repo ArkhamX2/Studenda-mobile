@@ -8,6 +8,8 @@ class GroupEntity with _$GroupEntity{
   const factory GroupEntity({
     required int id,
     required String name,
+    required int courseId,
+    required int departmentId,
   }) = _GroupEntity;
 
   const GroupEntity._();

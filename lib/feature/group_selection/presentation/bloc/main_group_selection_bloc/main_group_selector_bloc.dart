@@ -45,6 +45,8 @@ class MainGroupSelectorBloc
       selectedGroup = GroupEntity(
         id: event.group.id,
         name: event.group.name,
+        courseId: event.group.courseId,
+        departmentId: event.group.departmentId,
       );
     });
     on<_setCourse>((event, emit) async {
@@ -70,12 +72,16 @@ class MainGroupSelectorBloc
           selectedGroup = GroupEntity(
             id: r.id,
             name: r.name,
+            courseId: r.courseId,
+            departmentId: r.departmentId,
           );
           emit(
             MainGroupSelectorState.groupSuccess(
               GroupEntity(
                 id: r.id,
                 name: r.name,
+                courseId: r.courseId,
+                departmentId: r.departmentId,
               ),
             ),
           );
