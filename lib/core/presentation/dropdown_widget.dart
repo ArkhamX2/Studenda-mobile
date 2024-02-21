@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:studenda_mobile_student/feature/group_selection/presentation/pages/guest_group_selector.dart';
 
 class StudendaDropdown<T> extends StatefulWidget {
   final List<T?> items;
@@ -29,11 +30,7 @@ class StudendaDropdownState<T> extends State<StudendaDropdown<T>> {
   Widget build(BuildContext context) {
     //TODO: Вёрстка выборов по макету
     return Container(
-      decoration: BoxDecoration(
-        border: Border.all(color: const Color(0xFFAA8DD3)),
-        borderRadius: const BorderRadius.all(Radius.circular(5)),
-        color: Colors.white,
-      ),
+      decoration: dropdownBoxDecoration,
       child: Theme(
         data: Theme.of(context).copyWith(
           canvasColor: Colors.white,
@@ -51,11 +48,7 @@ class StudendaDropdownState<T> extends State<StudendaDropdown<T>> {
               value: item,
               padding: const EdgeInsets.only(left: 12),
               isExpanded: true,
-              // menuStyle: const MenuStyle(
-              //   side: MaterialStatePropertyAll(BorderSide(color: Color(0xFFAA8DD3))),
-              //   backgroundColor: MaterialStatePropertyAll(Colors.white),
-              //   surfaceTintColor: MaterialStatePropertyAll(Colors.white),
-              // ),
+            
               items: widget.items.map<DropdownMenuItem<T>>(
                 (T? item) {
                   return DropdownMenuItem<T>(

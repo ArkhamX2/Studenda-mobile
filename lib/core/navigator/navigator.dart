@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/main_group_selection_bloc/main_group_selector_bloc.dart';
 import 'package:studenda_mobile_student/feature/journal/presentation/widgets/journal_main_screen_widget.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/pages/schedule_screen_widget.dart';
 
@@ -23,15 +21,6 @@ class _MainNavigatorWidgetState extends State<MainNavigatorWidget> {
     setState(() {
       _selectedIndex = index;
     });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    final groupSelectorBloc = context.watch<MainGroupSelectorBloc>();
-    if(groupSelectorBloc.selectedGroup.id == -1){
-      Navigator.of(context).pushReplacementNamed('/selector');
-    }
   }
 
   @override

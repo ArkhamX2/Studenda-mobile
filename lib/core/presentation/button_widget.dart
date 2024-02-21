@@ -20,6 +20,7 @@ class StudendaButton extends StatelessWidget {
         backgroundColor: const MaterialStatePropertyAll(
           mainButtonBackgroundColor,
         ),
+        elevation: const MaterialStatePropertyAll(0),
       ),
       child: Text(
         title,

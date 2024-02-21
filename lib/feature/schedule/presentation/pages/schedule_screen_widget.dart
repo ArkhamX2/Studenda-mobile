@@ -61,7 +61,7 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
     final scheduleBloc = context.watch<ScheduleBloc>();
     final groupSelectorBloc = context.watch<MainGroupSelectorBloc>();
     return Padding(
-      padding: const EdgeInsets.all(14.0),
+      padding: const EdgeInsets.fromLTRB(14.0,14.0,14.0,0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

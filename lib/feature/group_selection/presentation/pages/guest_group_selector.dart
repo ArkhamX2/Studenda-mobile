@@ -13,7 +13,7 @@ import 'package:studenda_mobile_student/feature/group_selection/presentation/blo
 import 'package:studenda_mobile_student/injection_container.dart';
 
 final dropdownBoxDecoration = BoxDecoration(
-  border: Border.all(color: const Color(0xFFAA8DD3)),
+  border: Border.all(color: const Color(0xFFAA8DD3),width: 1.5),
   borderRadius: const BorderRadius.all(Radius.circular(5)),
   color: Colors.white,
 );
@@ -158,7 +158,8 @@ class __GroupDropdownWidgetState extends State<_GroupDropdownWidget> {
           element.courseId == groupSelectorBloc.selectedCourse.id &&
           element.departmentId == groupSelectorBloc.selectedDepartment.id,
     );
-    groupSelectorBloc.add(MainGroupSelectorEvent.setGroup(filteredGroups.first));
+    groupSelectorBloc
+        .add(MainGroupSelectorEvent.setGroup(filteredGroups.first));
 
     return Container(
       decoration: dropdownBoxDecoration,
@@ -196,7 +197,6 @@ class __GroupDropdownWidgetState extends State<_GroupDropdownWidget> {
 }
 
 class _CourseSelectionWidget extends StatelessWidget {
-
   const _CourseSelectionWidget();
 
   @override
@@ -226,7 +226,9 @@ class _CourseSelectionWidget extends StatelessWidget {
         }
         return StudendaDropdown<CourseEntity>(
           items: courses,
-          model: groupSelectorBloc.selectedCourse,
+          model: groupSelectorBloc.selectedCourse.id == -1
+              ? courses.first
+              : groupSelectorBloc.selectedCourse,
           callback: (element) {
             groupSelectorBloc.add(
               MainGroupSelectorEvent.setCourse(element!),
@@ -246,7 +248,9 @@ class _CourseSelectionWidget extends StatelessWidget {
         }
         return StudendaDropdown<CourseEntity>(
           items: courses,
-          model: groupSelectorBloc.selectedCourse,
+          model: groupSelectorBloc.selectedCourse.id == -1
+              ? courses.first
+              : groupSelectorBloc.selectedCourse,
           callback: (element) {
             groupSelectorBloc.add(
               MainGroupSelectorEvent.setCourse(element!),
@@ -295,7 +299,9 @@ class _DepartmentSelectionWidget extends StatelessWidget {
         }
         return StudendaDropdown<DepartmentEntity>(
           items: departments,
-          model: groupSelectorBloc.selectedDepartment,
+          model: groupSelectorBloc.selectedDepartment.id == -1
+              ? departments.first
+              : groupSelectorBloc.selectedDepartment,
           callback: (element) {
             groupSelectorBloc.add(
               MainGroupSelectorEvent.setDepartment(element!),
@@ -315,7 +321,9 @@ class _DepartmentSelectionWidget extends StatelessWidget {
         }
         return StudendaDropdown<DepartmentEntity>(
           items: departments,
-          model: groupSelectorBloc.selectedDepartment,
+          model: groupSelectorBloc.selectedDepartment.id == -1
+              ? departments.first
+              : groupSelectorBloc.selectedDepartment,
           callback: (element) {
             groupSelectorBloc.add(
               MainGroupSelectorEvent.setDepartment(element!),
