@@ -80,6 +80,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
         currentWeekType!,
         emit,
         datePointer,
+        false,
       );
     });
 
