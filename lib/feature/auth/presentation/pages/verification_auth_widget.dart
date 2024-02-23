@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:studenda_mobile_student/core/presentation/UI/studenda_loading_widget.dart';
 import 'package:studenda_mobile_student/core/presentation/button_widget.dart';
 import 'package:studenda_mobile_student/core/presentation/label/studenda_aligned_label_widget.dart';
 import 'package:studenda_mobile_student/core/presentation/label/studenda_colored_label_widget.dart';
@@ -67,7 +68,7 @@ class _BodyWidget extends StatelessWidget {
 
     return state == const AuthState.authLoading()
         ? const Center(
-            child: CircularProgressIndicator(),
+            child: StudendaLoadingWidget(),
           )
         : VerificationWidet(
             formKey: formKey,

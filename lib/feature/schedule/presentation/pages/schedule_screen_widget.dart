@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:studenda_mobile_student/core/constant_values/presentation_const_values.dart';
 import 'package:studenda_mobile_student/core/constant_values/routes.dart';
+import 'package:studenda_mobile_student/core/presentation/UI/studenda_loading_widget.dart';
 import 'package:studenda_mobile_student/core/presentation/label/studenda_default_label_widget.dart';
 import 'package:studenda_mobile_student/core/presentation/label/studenda_weighted_label_widget.dart';
 import 'package:studenda_mobile_student/core/utils/get_current_week_days.dart';
@@ -86,10 +87,10 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
           Expanded(
             child: scheduleBloc.state.when(
               initial: () => const Center(
-                child: CircularProgressIndicator(),
+                child: StudendaLoadingWidget(),
               ),
               loading: () => const Center(
-                child: CircularProgressIndicator(),
+                child: StudendaLoadingWidget(),
               ),
               localLoadingFail: (message) {
                 scheduleBloc.add(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:studenda_mobile_student/core/constant_values/routes.dart';
+import 'package:studenda_mobile_student/core/presentation/UI/studenda_loading_widget.dart';
 import 'package:studenda_mobile_student/core/presentation/button_widget.dart';
 import 'package:studenda_mobile_student/core/presentation/dropdown_widget.dart';
 import 'package:studenda_mobile_student/core/presentation/label/studenda_default_label_widget.dart';
@@ -73,7 +74,7 @@ class _GroupSelectorWidget extends StatelessWidget {
             coursesState == const CourseState.loading() ||
             departmentsState == const DepartmentState.loading()) {
           return const Center(
-            child: CircularProgressIndicator(),
+            child: StudendaLoadingWidget(),
           );
         } else {
           return Container(
