@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:studenda_mobile_student/feature/journal/presentation/widgets/journal_main_screen_widget.dart';
+import 'package:studenda_mobile_student/feature/journal/presentation/page/journal_main_screen_widget.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/pages/schedule_screen_widget.dart';
 
 class MainNavigatorWidget extends StatefulWidget {

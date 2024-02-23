@@ -18,8 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$GroupEntity {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  int get courseId => throw _privateConstructorUsedError;
-  int get departmentId => throw _privateConstructorUsedError;
+  int? get courseId => throw _privateConstructorUsedError;
+  int? get departmentId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GroupEntityCopyWith<GroupEntity> get copyWith =>
@@ -32,7 +32,7 @@ abstract class $GroupEntityCopyWith<$Res> {
           GroupEntity value, $Res Function(GroupEntity) then) =
       _$GroupEntityCopyWithImpl<$Res, GroupEntity>;
   @useResult
-  $Res call({int id, String name, int courseId, int departmentId});
+  $Res call({int id, String name, int? courseId, int? departmentId});
 }
 
 /// @nodoc
@@ -50,8 +50,8 @@ class _$GroupEntityCopyWithImpl<$Res, $Val extends GroupEntity>
   $Res call({
     Object? id = null,
     Object? name = null,
-    Object? courseId = null,
-    Object? departmentId = null,
+    Object? courseId = freezed,
+    Object? departmentId = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -62,14 +62,14 @@ class _$GroupEntityCopyWithImpl<$Res, $Val extends GroupEntity>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      courseId: null == courseId
+      courseId: freezed == courseId
           ? _value.courseId
           : courseId // ignore: cast_nullable_to_non_nullable
-              as int,
-      departmentId: null == departmentId
+              as int?,
+      departmentId: freezed == departmentId
           ? _value.departmentId
           : departmentId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ) as $Val);
   }
 }
@@ -82,7 +82,7 @@ abstract class _$$GroupEntityImplCopyWith<$Res>
       __$$GroupEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String name, int courseId, int departmentId});
+  $Res call({int id, String name, int? courseId, int? departmentId});
 }
 
 /// @nodoc
@@ -98,8 +98,8 @@ class __$$GroupEntityImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? name = null,
-    Object? courseId = null,
-    Object? departmentId = null,
+    Object? courseId = freezed,
+    Object? departmentId = freezed,
   }) {
     return _then(_$GroupEntityImpl(
       id: null == id
@@ -110,14 +110,14 @@ class __$$GroupEntityImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      courseId: null == courseId
+      courseId: freezed == courseId
           ? _value.courseId
           : courseId // ignore: cast_nullable_to_non_nullable
-              as int,
-      departmentId: null == departmentId
+              as int?,
+      departmentId: freezed == departmentId
           ? _value.departmentId
           : departmentId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -137,9 +137,9 @@ class _$GroupEntityImpl extends _GroupEntity {
   @override
   final String name;
   @override
-  final int courseId;
+  final int? courseId;
   @override
-  final int departmentId;
+  final int? departmentId;
 
   @override
   bool operator ==(Object other) {
@@ -169,8 +169,8 @@ abstract class _GroupEntity extends GroupEntity {
   const factory _GroupEntity(
       {required final int id,
       required final String name,
-      required final int courseId,
-      required final int departmentId}) = _$GroupEntityImpl;
+      required final int? courseId,
+      required final int? departmentId}) = _$GroupEntityImpl;
   const _GroupEntity._() : super._();
 
   @override
@@ -178,9 +178,9 @@ abstract class _GroupEntity extends GroupEntity {
   @override
   String get name;
   @override
-  int get courseId;
+  int? get courseId;
   @override
-  int get departmentId;
+  int? get departmentId;
   @override
   @JsonKey(ignore: true)
   _$$GroupEntityImplCopyWith<_$GroupEntityImpl> get copyWith =>

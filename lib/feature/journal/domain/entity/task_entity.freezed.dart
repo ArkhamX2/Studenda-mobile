@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'role_entity.dart';
+part of 'task_entity.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,28 +15,28 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$RoleEntity {
-  int get id => throw _privateConstructorUsedError;
+mixin _$TaskEntity {
   String get name => throw _privateConstructorUsedError;
+  int get value => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $RoleEntityCopyWith<RoleEntity> get copyWith =>
+  $TaskEntityCopyWith<TaskEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $RoleEntityCopyWith<$Res> {
-  factory $RoleEntityCopyWith(
-          RoleEntity value, $Res Function(RoleEntity) then) =
-      _$RoleEntityCopyWithImpl<$Res, RoleEntity>;
+abstract class $TaskEntityCopyWith<$Res> {
+  factory $TaskEntityCopyWith(
+          TaskEntity value, $Res Function(TaskEntity) then) =
+      _$TaskEntityCopyWithImpl<$Res, TaskEntity>;
   @useResult
-  $Res call({int id, String name});
+  $Res call({String name, int value});
 }
 
 /// @nodoc
-class _$RoleEntityCopyWithImpl<$Res, $Val extends RoleEntity>
-    implements $RoleEntityCopyWith<$Res> {
-  _$RoleEntityCopyWithImpl(this._value, this._then);
+class _$TaskEntityCopyWithImpl<$Res, $Val extends TaskEntity>
+    implements $TaskEntityCopyWith<$Res> {
+  _$TaskEntityCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -46,104 +46,105 @@ class _$RoleEntityCopyWithImpl<$Res, $Val extends RoleEntity>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? name = null,
+    Object? value = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$RoleEntityImplCopyWith<$Res>
-    implements $RoleEntityCopyWith<$Res> {
-  factory _$$RoleEntityImplCopyWith(
-          _$RoleEntityImpl value, $Res Function(_$RoleEntityImpl) then) =
-      __$$RoleEntityImplCopyWithImpl<$Res>;
+abstract class _$$TaskEntityImplCopyWith<$Res>
+    implements $TaskEntityCopyWith<$Res> {
+  factory _$$TaskEntityImplCopyWith(
+          _$TaskEntityImpl value, $Res Function(_$TaskEntityImpl) then) =
+      __$$TaskEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String name});
+  $Res call({String name, int value});
 }
 
 /// @nodoc
-class __$$RoleEntityImplCopyWithImpl<$Res>
-    extends _$RoleEntityCopyWithImpl<$Res, _$RoleEntityImpl>
-    implements _$$RoleEntityImplCopyWith<$Res> {
-  __$$RoleEntityImplCopyWithImpl(
-      _$RoleEntityImpl _value, $Res Function(_$RoleEntityImpl) _then)
+class __$$TaskEntityImplCopyWithImpl<$Res>
+    extends _$TaskEntityCopyWithImpl<$Res, _$TaskEntityImpl>
+    implements _$$TaskEntityImplCopyWith<$Res> {
+  __$$TaskEntityImplCopyWithImpl(
+      _$TaskEntityImpl _value, $Res Function(_$TaskEntityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? name = null,
+    Object? value = null,
   }) {
-    return _then(_$RoleEntityImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
+    return _then(_$TaskEntityImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
 
 /// @nodoc
 
-class _$RoleEntityImpl implements _RoleEntity {
-  const _$RoleEntityImpl({required this.id, required this.name});
+class _$TaskEntityImpl implements _TaskEntity {
+  const _$TaskEntityImpl({required this.name, required this.value});
 
   @override
-  final int id;
-  @override
   final String name;
+  @override
+  final int value;
 
   @override
   String toString() {
-    return 'RoleEntity(id: $id, name: $name)';
+    return 'TaskEntity(name: $name, value: $value)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RoleEntityImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name));
+            other is _$TaskEntityImpl &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.value, value) || other.value == value));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, name);
+  int get hashCode => Object.hash(runtimeType, name, value);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$RoleEntityImplCopyWith<_$RoleEntityImpl> get copyWith =>
-      __$$RoleEntityImplCopyWithImpl<_$RoleEntityImpl>(this, _$identity);
+  _$$TaskEntityImplCopyWith<_$TaskEntityImpl> get copyWith =>
+      __$$TaskEntityImplCopyWithImpl<_$TaskEntityImpl>(this, _$identity);
 }
 
-abstract class _RoleEntity implements RoleEntity {
-  const factory _RoleEntity(
-      {required final int id, required final String name}) = _$RoleEntityImpl;
+abstract class _TaskEntity implements TaskEntity {
+  const factory _TaskEntity(
+      {required final String name,
+      required final int value}) = _$TaskEntityImpl;
 
-  @override
-  int get id;
   @override
   String get name;
   @override
+  int get value;
+  @override
   @JsonKey(ignore: true)
-  _$$RoleEntityImplCopyWith<_$RoleEntityImpl> get copyWith =>
+  _$$TaskEntityImplCopyWith<_$TaskEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

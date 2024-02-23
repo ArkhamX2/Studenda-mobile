@@ -19,8 +19,8 @@ class GroupModelAdapter extends TypeAdapter<_$GroupModelImpl> {
     return _$GroupModelImpl(
       id: fields[0] as int,
       name: fields[1] as String,
-      courseId: fields[2] as int,
-      departmentId: fields[3] as int,
+      courseId: fields[2] as int?,
+      departmentId: fields[3] as int?,
     );
   }
 
@@ -57,8 +57,8 @@ _$GroupModelImpl _$$GroupModelImplFromJson(Map<String, dynamic> json) =>
     _$GroupModelImpl(
       id: json['id'] as int,
       name: json['name'] as String,
-      courseId: json['courseId'] as int,
-      departmentId: json['departmentId'] as int,
+      courseId: json['courseId'] as int?,
+      departmentId: json['departmentId'] as int?,
     );
 
 Map<String, dynamic> _$$GroupModelImplToJson(_$GroupModelImpl instance) =>

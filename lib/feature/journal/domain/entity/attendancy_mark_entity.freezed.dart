@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'day_schedule_entity.dart';
+part of 'attendancy_mark_entity.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,28 +15,29 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$DayScheduleEntity {
+mixin _$AttendancyMartEntity {
   int get weekPosition => throw _privateConstructorUsedError;
   List<SubjectEntity> get subjects => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $DayScheduleEntityCopyWith<DayScheduleEntity> get copyWith =>
+  $AttendancyMartEntityCopyWith<AttendancyMartEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $DayScheduleEntityCopyWith<$Res> {
-  factory $DayScheduleEntityCopyWith(
-          DayScheduleEntity value, $Res Function(DayScheduleEntity) then) =
-      _$DayScheduleEntityCopyWithImpl<$Res, DayScheduleEntity>;
+abstract class $AttendancyMartEntityCopyWith<$Res> {
+  factory $AttendancyMartEntityCopyWith(AttendancyMartEntity value,
+          $Res Function(AttendancyMartEntity) then) =
+      _$AttendancyMartEntityCopyWithImpl<$Res, AttendancyMartEntity>;
   @useResult
   $Res call({int weekPosition, List<SubjectEntity> subjects});
 }
 
 /// @nodoc
-class _$DayScheduleEntityCopyWithImpl<$Res, $Val extends DayScheduleEntity>
-    implements $DayScheduleEntityCopyWith<$Res> {
-  _$DayScheduleEntityCopyWithImpl(this._value, this._then);
+class _$AttendancyMartEntityCopyWithImpl<$Res,
+        $Val extends AttendancyMartEntity>
+    implements $AttendancyMartEntityCopyWith<$Res> {
+  _$AttendancyMartEntityCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -63,22 +64,22 @@ class _$DayScheduleEntityCopyWithImpl<$Res, $Val extends DayScheduleEntity>
 }
 
 /// @nodoc
-abstract class _$$DayScheduleEntityImplCopyWith<$Res>
-    implements $DayScheduleEntityCopyWith<$Res> {
-  factory _$$DayScheduleEntityImplCopyWith(_$DayScheduleEntityImpl value,
-          $Res Function(_$DayScheduleEntityImpl) then) =
-      __$$DayScheduleEntityImplCopyWithImpl<$Res>;
+abstract class _$$AttendancyMartEntityImplCopyWith<$Res>
+    implements $AttendancyMartEntityCopyWith<$Res> {
+  factory _$$AttendancyMartEntityImplCopyWith(_$AttendancyMartEntityImpl value,
+          $Res Function(_$AttendancyMartEntityImpl) then) =
+      __$$AttendancyMartEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int weekPosition, List<SubjectEntity> subjects});
 }
 
 /// @nodoc
-class __$$DayScheduleEntityImplCopyWithImpl<$Res>
-    extends _$DayScheduleEntityCopyWithImpl<$Res, _$DayScheduleEntityImpl>
-    implements _$$DayScheduleEntityImplCopyWith<$Res> {
-  __$$DayScheduleEntityImplCopyWithImpl(_$DayScheduleEntityImpl _value,
-      $Res Function(_$DayScheduleEntityImpl) _then)
+class __$$AttendancyMartEntityImplCopyWithImpl<$Res>
+    extends _$AttendancyMartEntityCopyWithImpl<$Res, _$AttendancyMartEntityImpl>
+    implements _$$AttendancyMartEntityImplCopyWith<$Res> {
+  __$$AttendancyMartEntityImplCopyWithImpl(_$AttendancyMartEntityImpl _value,
+      $Res Function(_$AttendancyMartEntityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +88,7 @@ class __$$DayScheduleEntityImplCopyWithImpl<$Res>
     Object? weekPosition = null,
     Object? subjects = null,
   }) {
-    return _then(_$DayScheduleEntityImpl(
+    return _then(_$AttendancyMartEntityImpl(
       weekPosition: null == weekPosition
           ? _value.weekPosition
           : weekPosition // ignore: cast_nullable_to_non_nullable
@@ -102,8 +103,8 @@ class __$$DayScheduleEntityImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DayScheduleEntityImpl implements _DayScheduleEntity {
-  const _$DayScheduleEntityImpl(
+class _$AttendancyMartEntityImpl implements _AttendancyMartEntity {
+  const _$AttendancyMartEntityImpl(
       {required this.weekPosition, required final List<SubjectEntity> subjects})
       : _subjects = subjects;
 
@@ -119,14 +120,14 @@ class _$DayScheduleEntityImpl implements _DayScheduleEntity {
 
   @override
   String toString() {
-    return 'DayScheduleEntity(weekPosition: $weekPosition, subjects: $subjects)';
+    return 'AttendancyMartEntity(weekPosition: $weekPosition, subjects: $subjects)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DayScheduleEntityImpl &&
+            other is _$AttendancyMartEntityImpl &&
             (identical(other.weekPosition, weekPosition) ||
                 other.weekPosition == weekPosition) &&
             const DeepCollectionEquality().equals(other._subjects, _subjects));
@@ -139,15 +140,17 @@ class _$DayScheduleEntityImpl implements _DayScheduleEntity {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DayScheduleEntityImplCopyWith<_$DayScheduleEntityImpl> get copyWith =>
-      __$$DayScheduleEntityImplCopyWithImpl<_$DayScheduleEntityImpl>(
-          this, _$identity);
+  _$$AttendancyMartEntityImplCopyWith<_$AttendancyMartEntityImpl>
+      get copyWith =>
+          __$$AttendancyMartEntityImplCopyWithImpl<_$AttendancyMartEntityImpl>(
+              this, _$identity);
 }
 
-abstract class _DayScheduleEntity implements DayScheduleEntity {
-  const factory _DayScheduleEntity(
-      {required final int weekPosition,
-      required final List<SubjectEntity> subjects}) = _$DayScheduleEntityImpl;
+abstract class _AttendancyMartEntity implements AttendancyMartEntity {
+  const factory _AttendancyMartEntity(
+          {required final int weekPosition,
+          required final List<SubjectEntity> subjects}) =
+      _$AttendancyMartEntityImpl;
 
   @override
   int get weekPosition;
@@ -155,6 +158,6 @@ abstract class _DayScheduleEntity implements DayScheduleEntity {
   List<SubjectEntity> get subjects;
   @override
   @JsonKey(ignore: true)
-  _$$DayScheduleEntityImplCopyWith<_$DayScheduleEntityImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$AttendancyMartEntityImplCopyWith<_$AttendancyMartEntityImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
