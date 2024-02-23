@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:studenda_mobile_student/core/constant_values/presentation_const_values.dart';
+import 'package:studenda_mobile_student/core/constant_values/routes.dart';
 import 'package:studenda_mobile_student/core/presentation/label/studenda_default_label_widget.dart';
 import 'package:studenda_mobile_student/core/presentation/label/studenda_weighted_label_widget.dart';
 import 'package:studenda_mobile_student/core/utils/get_current_week_days.dart';
@@ -61,7 +63,7 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
     final scheduleBloc = context.watch<ScheduleBloc>();
     final groupSelectorBloc = context.watch<MainGroupSelectorBloc>();
     return Padding(
-      padding: const EdgeInsets.fromLTRB(14.0,14.0,14.0,0),
+      padding: const EdgeInsets.fromLTRB(14.0, 14.0, 14.0, 0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -170,17 +172,7 @@ class _DateCarouselWrapperWidget extends StatelessWidget {
             duration: const Duration(seconds: 1),
           );
         } else {
-          ScaffoldMessenger.of(context)
-            ..removeCurrentSnackBar()
-            ..showSnackBar(
-              const SnackBar(
-                content: Text(
-                  'В этот день занятий нет',
-                  style: TextStyle(color: mainForegroundColor),
-                ),
-                backgroundColor: mainButtonBackgroundColor,
-              ),
-            );
+          noLessonsTodayMessage(context, noLessonOnChosenDay);
         }
       },
       onPrevTap: () =>
@@ -223,6 +215,8 @@ class _ScheduleScrollWidgetState extends State<_ScheduleScrollWidget> {
             destination.first.currentContext!,
             duration: const Duration(seconds: 1),
           );
+        } else {
+          noLessonsTodayMessage(context, noLessonForTodayMessage);
         }
       }
     });
@@ -241,6 +235,8 @@ class _ScheduleScrollWidgetState extends State<_ScheduleScrollWidget> {
             destination.first.currentContext!,
             duration: const Duration(seconds: 1),
           );
+        } else {
+          noLessonsTodayMessage(context, noLessonForTodayMessage);
         }
       }
     });
@@ -253,7 +249,8 @@ class _ScheduleScrollWidgetState extends State<_ScheduleScrollWidget> {
     return LayoutBuilder(
       builder: (context, constraints) => RefreshIndicator(
         onRefresh: () async {
-          scheduleBloc.add(ScheduleEvent.load(groupSelectorBloc.selectedGroup.id));
+          scheduleBloc
+              .add(ScheduleEvent.load(groupSelectorBloc.selectedGroup.id));
         },
         child: SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
@@ -289,14 +286,34 @@ class _ScheduleAppBarWidgetState extends State<_ScheduleAppBarWidget> {
       automaticallyImplyLeading: false,
       centerTitle: true,
       title: GestureDetector(
-        onTap: () => Navigator.of(context).pushReplacementNamed('/selector'),
-        child: Text(
-          groupBlock.selectedGroup.name.isEmpty
-              ? "Выберите группу"
-              : groupBlock.selectedGroup.name,
-          style: groupSelectionTextStyle,
+        onTap: () => Navigator.of(context).pushReplacementNamed(selectorRoute),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              groupBlock.selectedGroup.name.isEmpty
+                  ? chooseGroupMessage
+                  : groupBlock.selectedGroup.name,
+              style: groupSelectionTextStyle,
+            ),
+            const Icon(Icons.search, color: Colors.white, size: 27),
+          ],
         ),
       ),
     );
   }
+}
+
+void noLessonsTodayMessage(BuildContext context, String message) {
+  ScaffoldMessenger.of(context)
+    ..removeCurrentSnackBar()
+    ..showSnackBar(
+      SnackBar(
+        content: Text(
+          message,
+          style: const TextStyle(color: mainForegroundColor),
+        ),
+        backgroundColor: mainButtonBackgroundColor,
+      ),
+    );
 }

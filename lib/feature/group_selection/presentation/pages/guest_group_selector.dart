@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:studenda_mobile_student/core/constant_values/routes.dart';
 import 'package:studenda_mobile_student/core/presentation/button_widget.dart';
 import 'package:studenda_mobile_student/core/presentation/dropdown_widget.dart';
 import 'package:studenda_mobile_student/core/presentation/label/studenda_default_label_widget.dart';
@@ -100,7 +101,7 @@ class _GroupSelectorWidget extends StatelessWidget {
                   StudendaButton(
                     title: "Подтвердить",
                     event: () {
-                      Navigator.of(context).pushReplacementNamed('/main');
+                      Navigator.of(context).pushReplacementNamed(mainRoute);
                     },
                   ),
                 ],
@@ -153,7 +154,9 @@ class __GroupDropdownWidgetState extends State<_GroupDropdownWidget> {
   Widget build(BuildContext context) {
     final groupSelectorBloc = context.watch<MainGroupSelectorBloc>();
     final groupCubit = context.watch<GroupCubit>();
-    final filteredGroups = groupCubit.groupList.where(
+    final filteredGroups = groupSelectorBloc.selectedCourse.id == -1 || groupSelectorBloc.selectedDepartment.id == -1 ?
+    groupCubit.groupList:
+     groupCubit.groupList.where(
       (element) =>
           element.courseId == groupSelectorBloc.selectedCourse.id &&
           element.departmentId == groupSelectorBloc.selectedDepartment.id,
