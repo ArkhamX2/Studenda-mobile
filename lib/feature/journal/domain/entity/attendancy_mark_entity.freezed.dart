@@ -15,29 +15,31 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$AttendancyMartEntity {
-  int get weekPosition => throw _privateConstructorUsedError;
-  List<SubjectEntity> get subjects => throw _privateConstructorUsedError;
+mixin _$AttendancyMarkEntity {
+  int get id => throw _privateConstructorUsedError;
+  String get markDateName => throw _privateConstructorUsedError;
+  String get weekTypeName => throw _privateConstructorUsedError;
+  bool get value => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $AttendancyMartEntityCopyWith<AttendancyMartEntity> get copyWith =>
+  $AttendancyMarkEntityCopyWith<AttendancyMarkEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AttendancyMartEntityCopyWith<$Res> {
-  factory $AttendancyMartEntityCopyWith(AttendancyMartEntity value,
-          $Res Function(AttendancyMartEntity) then) =
-      _$AttendancyMartEntityCopyWithImpl<$Res, AttendancyMartEntity>;
+abstract class $AttendancyMarkEntityCopyWith<$Res> {
+  factory $AttendancyMarkEntityCopyWith(AttendancyMarkEntity value,
+          $Res Function(AttendancyMarkEntity) then) =
+      _$AttendancyMarkEntityCopyWithImpl<$Res, AttendancyMarkEntity>;
   @useResult
-  $Res call({int weekPosition, List<SubjectEntity> subjects});
+  $Res call({int id, String markDateName, String weekTypeName, bool value});
 }
 
 /// @nodoc
-class _$AttendancyMartEntityCopyWithImpl<$Res,
-        $Val extends AttendancyMartEntity>
-    implements $AttendancyMartEntityCopyWith<$Res> {
-  _$AttendancyMartEntityCopyWithImpl(this._value, this._then);
+class _$AttendancyMarkEntityCopyWithImpl<$Res,
+        $Val extends AttendancyMarkEntity>
+    implements $AttendancyMarkEntityCopyWith<$Res> {
+  _$AttendancyMarkEntityCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -47,117 +49,146 @@ class _$AttendancyMartEntityCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? weekPosition = null,
-    Object? subjects = null,
+    Object? id = null,
+    Object? markDateName = null,
+    Object? weekTypeName = null,
+    Object? value = null,
   }) {
     return _then(_value.copyWith(
-      weekPosition: null == weekPosition
-          ? _value.weekPosition
-          : weekPosition // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as int,
-      subjects: null == subjects
-          ? _value.subjects
-          : subjects // ignore: cast_nullable_to_non_nullable
-              as List<SubjectEntity>,
+      markDateName: null == markDateName
+          ? _value.markDateName
+          : markDateName // ignore: cast_nullable_to_non_nullable
+              as String,
+      weekTypeName: null == weekTypeName
+          ? _value.weekTypeName
+          : weekTypeName // ignore: cast_nullable_to_non_nullable
+              as String,
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$AttendancyMartEntityImplCopyWith<$Res>
-    implements $AttendancyMartEntityCopyWith<$Res> {
-  factory _$$AttendancyMartEntityImplCopyWith(_$AttendancyMartEntityImpl value,
-          $Res Function(_$AttendancyMartEntityImpl) then) =
-      __$$AttendancyMartEntityImplCopyWithImpl<$Res>;
+abstract class _$$AttendancyMarkEntityImplCopyWith<$Res>
+    implements $AttendancyMarkEntityCopyWith<$Res> {
+  factory _$$AttendancyMarkEntityImplCopyWith(_$AttendancyMarkEntityImpl value,
+          $Res Function(_$AttendancyMarkEntityImpl) then) =
+      __$$AttendancyMarkEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int weekPosition, List<SubjectEntity> subjects});
+  $Res call({int id, String markDateName, String weekTypeName, bool value});
 }
 
 /// @nodoc
-class __$$AttendancyMartEntityImplCopyWithImpl<$Res>
-    extends _$AttendancyMartEntityCopyWithImpl<$Res, _$AttendancyMartEntityImpl>
-    implements _$$AttendancyMartEntityImplCopyWith<$Res> {
-  __$$AttendancyMartEntityImplCopyWithImpl(_$AttendancyMartEntityImpl _value,
-      $Res Function(_$AttendancyMartEntityImpl) _then)
+class __$$AttendancyMarkEntityImplCopyWithImpl<$Res>
+    extends _$AttendancyMarkEntityCopyWithImpl<$Res, _$AttendancyMarkEntityImpl>
+    implements _$$AttendancyMarkEntityImplCopyWith<$Res> {
+  __$$AttendancyMarkEntityImplCopyWithImpl(_$AttendancyMarkEntityImpl _value,
+      $Res Function(_$AttendancyMarkEntityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? weekPosition = null,
-    Object? subjects = null,
+    Object? id = null,
+    Object? markDateName = null,
+    Object? weekTypeName = null,
+    Object? value = null,
   }) {
-    return _then(_$AttendancyMartEntityImpl(
-      weekPosition: null == weekPosition
-          ? _value.weekPosition
-          : weekPosition // ignore: cast_nullable_to_non_nullable
+    return _then(_$AttendancyMarkEntityImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as int,
-      subjects: null == subjects
-          ? _value._subjects
-          : subjects // ignore: cast_nullable_to_non_nullable
-              as List<SubjectEntity>,
+      markDateName: null == markDateName
+          ? _value.markDateName
+          : markDateName // ignore: cast_nullable_to_non_nullable
+              as String,
+      weekTypeName: null == weekTypeName
+          ? _value.weekTypeName
+          : weekTypeName // ignore: cast_nullable_to_non_nullable
+              as String,
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
 /// @nodoc
 
-class _$AttendancyMartEntityImpl implements _AttendancyMartEntity {
-  const _$AttendancyMartEntityImpl(
-      {required this.weekPosition, required final List<SubjectEntity> subjects})
-      : _subjects = subjects;
+class _$AttendancyMarkEntityImpl implements _AttendancyMarkEntity {
+  const _$AttendancyMarkEntityImpl(
+      {required this.id,
+      required this.markDateName,
+      required this.weekTypeName,
+      required this.value});
 
   @override
-  final int weekPosition;
-  final List<SubjectEntity> _subjects;
+  final int id;
   @override
-  List<SubjectEntity> get subjects {
-    if (_subjects is EqualUnmodifiableListView) return _subjects;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_subjects);
-  }
+  final String markDateName;
+  @override
+  final String weekTypeName;
+  @override
+  final bool value;
 
   @override
   String toString() {
-    return 'AttendancyMartEntity(weekPosition: $weekPosition, subjects: $subjects)';
+    return 'AttendancyMarkEntity(id: $id, markDateName: $markDateName, weekTypeName: $weekTypeName, value: $value)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AttendancyMartEntityImpl &&
-            (identical(other.weekPosition, weekPosition) ||
-                other.weekPosition == weekPosition) &&
-            const DeepCollectionEquality().equals(other._subjects, _subjects));
+            other is _$AttendancyMarkEntityImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.markDateName, markDateName) ||
+                other.markDateName == markDateName) &&
+            (identical(other.weekTypeName, weekTypeName) ||
+                other.weekTypeName == weekTypeName) &&
+            (identical(other.value, value) || other.value == value));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, weekPosition,
-      const DeepCollectionEquality().hash(_subjects));
+  int get hashCode =>
+      Object.hash(runtimeType, id, markDateName, weekTypeName, value);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$AttendancyMartEntityImplCopyWith<_$AttendancyMartEntityImpl>
+  _$$AttendancyMarkEntityImplCopyWith<_$AttendancyMarkEntityImpl>
       get copyWith =>
-          __$$AttendancyMartEntityImplCopyWithImpl<_$AttendancyMartEntityImpl>(
+          __$$AttendancyMarkEntityImplCopyWithImpl<_$AttendancyMarkEntityImpl>(
               this, _$identity);
 }
 
-abstract class _AttendancyMartEntity implements AttendancyMartEntity {
-  const factory _AttendancyMartEntity(
-          {required final int weekPosition,
-          required final List<SubjectEntity> subjects}) =
-      _$AttendancyMartEntityImpl;
+abstract class _AttendancyMarkEntity implements AttendancyMarkEntity {
+  const factory _AttendancyMarkEntity(
+      {required final int id,
+      required final String markDateName,
+      required final String weekTypeName,
+      required final bool value}) = _$AttendancyMarkEntityImpl;
 
   @override
-  int get weekPosition;
+  int get id;
   @override
-  List<SubjectEntity> get subjects;
+  String get markDateName;
+  @override
+  String get weekTypeName;
+  @override
+  bool get value;
   @override
   @JsonKey(ignore: true)
-  _$$AttendancyMartEntityImplCopyWith<_$AttendancyMartEntityImpl>
+  _$$AttendancyMarkEntityImplCopyWith<_$AttendancyMarkEntityImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

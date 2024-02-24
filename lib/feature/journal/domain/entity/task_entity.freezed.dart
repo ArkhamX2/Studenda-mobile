@@ -16,8 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TaskEntity {
+  int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  int get value => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  String get endDateName => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TaskEntityCopyWith<TaskEntity> get copyWith =>
@@ -30,7 +32,7 @@ abstract class $TaskEntityCopyWith<$Res> {
           TaskEntity value, $Res Function(TaskEntity) then) =
       _$TaskEntityCopyWithImpl<$Res, TaskEntity>;
   @useResult
-  $Res call({String name, int value});
+  $Res call({int id, String name, String description, String endDateName});
 }
 
 /// @nodoc
@@ -46,18 +48,28 @@ class _$TaskEntityCopyWithImpl<$Res, $Val extends TaskEntity>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
-    Object? value = null,
+    Object? description = null,
+    Object? endDateName = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      value: null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as int,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      endDateName: null == endDateName
+          ? _value.endDateName
+          : endDateName // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -70,7 +82,7 @@ abstract class _$$TaskEntityImplCopyWith<$Res>
       __$$TaskEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, int value});
+  $Res call({int id, String name, String description, String endDateName});
 }
 
 /// @nodoc
@@ -84,18 +96,28 @@ class __$$TaskEntityImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
-    Object? value = null,
+    Object? description = null,
+    Object? endDateName = null,
   }) {
     return _then(_$TaskEntityImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      value: null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as int,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      endDateName: null == endDateName
+          ? _value.endDateName
+          : endDateName // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -103,16 +125,24 @@ class __$$TaskEntityImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$TaskEntityImpl implements _TaskEntity {
-  const _$TaskEntityImpl({required this.name, required this.value});
+  const _$TaskEntityImpl(
+      {required this.id,
+      required this.name,
+      required this.description,
+      required this.endDateName});
 
+  @override
+  final int id;
   @override
   final String name;
   @override
-  final int value;
+  final String description;
+  @override
+  final String endDateName;
 
   @override
   String toString() {
-    return 'TaskEntity(name: $name, value: $value)';
+    return 'TaskEntity(id: $id, name: $name, description: $description, endDateName: $endDateName)';
   }
 
   @override
@@ -120,12 +150,17 @@ class _$TaskEntityImpl implements _TaskEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TaskEntityImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.value, value) || other.value == value));
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.endDateName, endDateName) ||
+                other.endDateName == endDateName));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, value);
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, description, endDateName);
 
   @JsonKey(ignore: true)
   @override
@@ -136,13 +171,19 @@ class _$TaskEntityImpl implements _TaskEntity {
 
 abstract class _TaskEntity implements TaskEntity {
   const factory _TaskEntity(
-      {required final String name,
-      required final int value}) = _$TaskEntityImpl;
+      {required final int id,
+      required final String name,
+      required final String description,
+      required final String endDateName}) = _$TaskEntityImpl;
 
+  @override
+  int get id;
   @override
   String get name;
   @override
-  int get value;
+  String get description;
+  @override
+  String get endDateName;
   @override
   @JsonKey(ignore: true)
   _$$TaskEntityImplCopyWith<_$TaskEntityImpl> get copyWith =>
