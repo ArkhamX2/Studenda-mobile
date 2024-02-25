@@ -19,13 +19,14 @@ class SubjectPositionRepositoryImpl implements SubjectPositionRepository {
   });
   @override
   Future<Either<Failure, List<SubjectPositionModel>>> load(
-    void request,
-  ) async {
-    if (await networkInfo.isConnected) {
+    void request, [
+    bool remote = true,
+  ]) async {
+    if (await networkInfo.isConnected && remote) {
       try {
         final remoteLoad = await remoteDataSource.load(request);
         await localDataSource.add(remoteLoad);
-        return Right(remoteLoad);
+        return Right(localDataSource.load());
       } on ServerException {
         return const Left(ServerFailure(message: "Ошибка сервера"));
       }

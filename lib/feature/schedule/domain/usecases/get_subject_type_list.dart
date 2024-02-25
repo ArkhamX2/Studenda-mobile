@@ -5,13 +5,16 @@ import 'package:studenda_mobile_student/core/data/usecases/usecase.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/subject_type_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/repositories/subject_type_repository.dart';
 
-class GetSubjectTypeList extends Usecase<List<SubjectTypeModel>,List<int>>{
+class GetSubjectTypeList extends Usecase<List<SubjectTypeModel>, List<int>> {
   final SubjectTypeRepository subjectTypeRepository;
 
   GetSubjectTypeList({required this.subjectTypeRepository});
 
   @override
-  Future<Either<Failure,List<SubjectTypeModel>>> call(List<int> request) async{
-    return await subjectTypeRepository.load(request);
+  Future<Either<Failure, List<SubjectTypeModel>>> call(
+    List<int> request, [
+    bool remote = true,
+  ]) async {
+    return await subjectTypeRepository.load(request, remote);
   }
 }

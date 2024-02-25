@@ -15,7 +15,7 @@ import 'package:studenda_mobile_student/feature/group_selection/presentation/blo
 import 'package:studenda_mobile_student/injection_container.dart';
 
 final dropdownBoxDecoration = BoxDecoration(
-  border: Border.all(color: const Color(0xFFAA8DD3),width: 1.5),
+  border: Border.all(color: const Color(0xFFAA8DD3), width: 1.5),
   borderRadius: const BorderRadius.all(Radius.circular(5)),
   color: Colors.white,
 );
@@ -155,16 +155,18 @@ class __GroupDropdownWidgetState extends State<_GroupDropdownWidget> {
   Widget build(BuildContext context) {
     final groupSelectorBloc = context.watch<MainGroupSelectorBloc>();
     final groupCubit = context.watch<GroupCubit>();
-    final filteredGroups = groupSelectorBloc.selectedCourse.id == -1 || groupSelectorBloc.selectedDepartment.id == -1 ?
-    groupCubit.groupList:
-     groupCubit.groupList.where(
-      (element) =>
-          element.courseId == groupSelectorBloc.selectedCourse.id &&
-          element.departmentId == groupSelectorBloc.selectedDepartment.id,
-    );
-    groupSelectorBloc
-        .add(MainGroupSelectorEvent.setGroup(filteredGroups.first));
-
+    final filteredGroups = groupSelectorBloc.selectedCourse.id == -1 ||
+            groupSelectorBloc.selectedDepartment.id == -1
+        ? groupCubit.groupList
+        : groupCubit.groupList.where(
+            (element) =>
+                element.courseId == groupSelectorBloc.selectedCourse.id &&
+                element.departmentId == groupSelectorBloc.selectedDepartment.id,
+          );
+    if (filteredGroups.isNotEmpty) {
+      groupSelectorBloc
+          .add(MainGroupSelectorEvent.setGroup(filteredGroups.first));
+    }
     return Container(
       decoration: dropdownBoxDecoration,
       child: Theme(
@@ -181,7 +183,7 @@ class __GroupDropdownWidgetState extends State<_GroupDropdownWidget> {
                       .add(MainGroupSelectorEvent.setGroup(value!));
                 });
               },
-              value: filteredGroups.first,
+              value: filteredGroups.isNotEmpty? filteredGroups.first : groupSelectorBloc.selectedGroup ,
               padding: const EdgeInsets.only(left: 12),
               isExpanded: true,
               items: filteredGroups.map<DropdownMenuItem<GroupEntity>>(

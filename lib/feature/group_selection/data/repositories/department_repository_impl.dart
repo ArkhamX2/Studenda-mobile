@@ -12,18 +12,22 @@ class DepartmentRepositoryImpl implements DepartmentRepository {
   final DepartmentLocalDataSource localDataSource;
   final NetworkInfo networkInfo;
 
-  DepartmentRepositoryImpl(
-      {required this.remoteDataSource,
-      required this.localDataSource,
-      required this.networkInfo,});
+  DepartmentRepositoryImpl({
+    required this.remoteDataSource,
+    required this.localDataSource,
+    required this.networkInfo,
+  });
 
   @override
-  Future<Either<Failure, List<DepartmentModel>>> load(void request) async {
-    if (await networkInfo.isConnected) {
+  Future<Either<Failure, List<DepartmentModel>>> load(
+    void request, [
+    bool remote = true,
+  ]) async {
+    if (await networkInfo.isConnected && remote) {
       try {
         final remoteLoad = await remoteDataSource.load(request);
-        localDataSource.add(remoteLoad);
-        return Right(remoteLoad);
+        await localDataSource.add(remoteLoad);
+        return Right(await localDataSource.get());
       } on ServerException {
         return const Left(ServerFailure(message: "Ошибка сервера"));
       }

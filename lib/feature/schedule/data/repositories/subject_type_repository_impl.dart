@@ -19,13 +19,14 @@ class SubjectTypeRepositoryImpl implements SubjectTypeRepository {
   });
   @override
   Future<Either<Failure, List<SubjectTypeModel>>> load(
-    List<int> request,
-  ) async {
-    if (await networkInfo.isConnected) {
+    List<int> request, [
+    bool remote = true,
+  ]) async {
+    if (await networkInfo.isConnected && remote) {
       try {
         final remoteLoad = await remoteDataSource.load(request);
         await localDataSource.add(remoteLoad);
-        return Right(remoteLoad);
+        return Right(localDataSource.load(request));
       } on ServerException {
         return const Left(ServerFailure(message: "Ошибка сервера"));
       }

@@ -104,6 +104,11 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
                 );
               },
               fail: (message) {
+                scheduleBloc.add(
+                  ScheduleEvent.loadLocal(
+                    groupSelectorBloc.selectedGroup.id,
+                  ),
+                );
                 return Center(
                   child:
                       StudendaDefaultLabelWidget(text: message, fontSize: 18),
@@ -173,7 +178,7 @@ class _DateCarouselWrapperWidget extends StatelessWidget {
             duration: const Duration(seconds: 1),
           );
         } else {
-          noLessonsTodayMessage(context, noLessonOnChosenDay);
+          snackMessage(context, noLessonOnChosenDay);
         }
       },
       onPrevTap: () =>
@@ -217,7 +222,7 @@ class _ScheduleScrollWidgetState extends State<_ScheduleScrollWidget> {
             duration: const Duration(seconds: 1),
           );
         } else {
-          noLessonsTodayMessage(context, noLessonForTodayMessage);
+          snackMessage(context, noLessonForTodayMessage);
         }
       }
     });
@@ -237,7 +242,7 @@ class _ScheduleScrollWidgetState extends State<_ScheduleScrollWidget> {
             duration: const Duration(seconds: 1),
           );
         } else {
-          noLessonsTodayMessage(context, noLessonForTodayMessage);
+          snackMessage(context, noLessonForTodayMessage);
         }
       }
     });
@@ -305,7 +310,7 @@ class _ScheduleAppBarWidgetState extends State<_ScheduleAppBarWidget> {
   }
 }
 
-void noLessonsTodayMessage(BuildContext context, String message) {
+void snackMessage(BuildContext context, String message) {
   ScaffoldMessenger.of(context)
     ..removeCurrentSnackBar()
     ..showSnackBar(

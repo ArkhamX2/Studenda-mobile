@@ -20,13 +20,14 @@ class ScheduleRepositoryImpl implements ScheduleRepository {
   });
   @override
   Future<Either<Failure, List<SubjectModel>>> load(
-    ScheduleRequestModel request,
-  ) async {
-    if (await networkInfo.isConnected) {
+    ScheduleRequestModel request, [
+    bool remote = true,
+  ]) async {
+    if (await networkInfo.isConnected && remote) {
       try {
         final remoteLoad = await remoteDataSource.load(request);
         await localDataSource.add(remoteLoad);
-        return Right(remoteLoad);
+        return Right(localDataSource.load(request));
       } on ServerException {
         return const Left(ServerFailure(message: "Ошибка сервера"));
       }

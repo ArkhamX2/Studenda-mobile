@@ -19,13 +19,14 @@ class WeekTypeRepositoryImpl implements WeekTypeRepository {
   });
   @override
   Future<Either<Failure, WeekTypeModel>> getCurrent(
-    void request,
-  ) async {
-    if (await networkInfo.isConnected) {
+    void request, [
+    bool remote = true,
+  ]) async {
+    if (await networkInfo.isConnected && remote) {
       try {
         final remoteLoad = await remoteDataSource.getCurrent(request);
         await localDataSource.setCurrent(remoteLoad);
-        return Right(remoteLoad);
+        return Right(localDataSource.getCurrent());
       } on ServerException {
         return const Left(ServerFailure(message: "Ошибка сервера"));
       }
@@ -42,13 +43,14 @@ class WeekTypeRepositoryImpl implements WeekTypeRepository {
 
   @override
   Future<Either<Failure, List<WeekTypeModel>>> getAll(
-    void request,
-  ) async {
-    if (await networkInfo.isConnected) {
+    void request, [
+    bool remote = true,
+  ]) async {
+    if (await networkInfo.isConnected && remote) {
       try {
         final remoteLoad = await remoteDataSource.getAll(request);
         await localDataSource.add(remoteLoad);
-        return Right(remoteLoad);
+        return Right(localDataSource.load());
       } on ServerException {
         return const Left(ServerFailure(message: "Ошибка сервера"));
       }
