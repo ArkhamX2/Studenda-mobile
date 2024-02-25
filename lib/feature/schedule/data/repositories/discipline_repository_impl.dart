@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:studenda_mobile_student/core/data/error/exception.dart';
 import 'package:studenda_mobile_student/core/data/error/failure.dart';
+import 'package:studenda_mobile_student/core/data/repository/repository.dart';
 import 'package:studenda_mobile_student/core/network/network_info.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/datasources/local/discipline_local_data_source.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/datasources/remote/discipline_remote_data_source.dart';
@@ -19,26 +19,13 @@ class DisciplineRepositoryImpl implements DisciplineRepository {
   });
   @override
   Future<Either<Failure, List<DisciplineModel>>> load(
-    List<int> request, [
+    void request, [
     bool remote = true,
   ]) async {
-    if (request.isEmpty) return const Right([]);
-    if (await networkInfo.isConnected && remote) {
-      try {
-        final remoteLoad = await remoteDataSource.load(request);
-        await localDataSource.add(remoteLoad);
-        return Right(localDataSource.load(request));
-      } on ServerException {
-        return const Left(ServerFailure(message: "Ошибка сервера"));
-      }
-    } else {
-      try {
-        return Right(localDataSource.load(request));
-      } on CacheException {
-        return const Left(
-          CacheFailure(message: "Ошибка локального хранилища"),
-        );
-      }
-    }
+    return await loadData<
+        DisciplineLocalDataSource,
+        DisciplineRemoteDataSource,
+        List<DisciplineModel>,
+        void>(localDataSource, remoteDataSource, remote, request, networkInfo);
   }
 }

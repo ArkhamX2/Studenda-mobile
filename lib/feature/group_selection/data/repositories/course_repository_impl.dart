@@ -27,13 +27,13 @@ class CourseRepositoryImpl implements CourseRepository {
       try {
         final remoteLoad = await remoteDataSource.load(request);
         await localDataSource.add(remoteLoad);
-        return Right(await localDataSource.get());
+        return Right(await localDataSource.load(request));
       } on ServerException {
         return const Left(ServerFailure(message: "Ошибка сервера"));
       }
     } else {
       try {
-        return Right(await localDataSource.get());
+        return Right(await localDataSource.load(request));
       } on CacheException {
         return const Left(CacheFailure(message: "Ошибка локального хранилища"));
       }

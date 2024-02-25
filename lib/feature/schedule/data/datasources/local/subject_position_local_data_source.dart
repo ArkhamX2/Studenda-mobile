@@ -1,18 +1,13 @@
 import 'package:hive/hive.dart';
+import 'package:studenda_mobile_student/core/data/datasource/datasource.dart';
 import 'package:studenda_mobile_student/core/data/error/exception.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/subject_position_model.dart';
 
-abstract class SubjectPositionLocalDataSource {
-  Future<void> add(List<SubjectPositionModel> remoteLoad);
 
-  List<SubjectPositionModel> load();
-}
-
-class SubjectPositionLocalDataSourceImpl
-    implements SubjectPositionLocalDataSource {
+class SubjectPositionLocalDataSource extends LocalDataSource<List<SubjectPositionModel>,void>{
   Box<SubjectPositionModel> subjectPositionBox;
 
-  SubjectPositionLocalDataSourceImpl({required this.subjectPositionBox});
+  SubjectPositionLocalDataSource({required this.subjectPositionBox});
 
   @override
   Future<void> add(List<SubjectPositionModel> subjectPositionList) async {
@@ -34,7 +29,7 @@ class SubjectPositionLocalDataSourceImpl
   }
 
   @override
-  List<SubjectPositionModel> load() {
+  Future<List<SubjectPositionModel>> load(void request) async {
     try {
       return subjectPositionBox.values.toList();
     } catch (e) {

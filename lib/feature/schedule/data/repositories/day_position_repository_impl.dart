@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:studenda_mobile_student/core/data/error/exception.dart';
 import 'package:studenda_mobile_student/core/data/error/failure.dart';
+import 'package:studenda_mobile_student/core/data/repository/repository.dart';
 import 'package:studenda_mobile_student/core/network/network_info.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/datasources/local/day_position_local_data_source.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/datasources/remote/day_position_remote_data_source.dart';
@@ -22,22 +22,10 @@ class DayPositionRepositoryImpl implements DayPositionRepository {
     void request, [
     bool remote = true,
   ]) async {
-    if (await networkInfo.isConnected && remote) {
-      try {
-        final remoteLoad = await remoteDataSource.load(request);
-        await localDataSource.add(remoteLoad);
-        return Right(localDataSource.load());
-      } on ServerException {
-        return const Left(ServerFailure(message: "Ошибка сервера"));
-      }
-    } else {
-      try {
-        return Right(localDataSource.load());
-      } on CacheException {
-        return const Left(
-          CacheFailure(message: "Ошибка локального хранилища"),
-        );
-      }
-    }
+    return await loadData<
+        DayPositionLocalDataSource,
+        DayPositionRemoteDataSource,
+        List<DayPositionModel>,
+        void>(localDataSource, remoteDataSource, remote, request, networkInfo);
   }
 }

@@ -7,6 +7,6 @@ class StudendaLoadingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset('assets/gif/studenda_loading3.apng',width: width, height: height,);
+    return Image.asset('assets/gif/studenda_loading.apng',width: width, height: height,);
   }
 }

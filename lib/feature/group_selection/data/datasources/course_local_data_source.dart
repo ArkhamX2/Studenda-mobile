@@ -1,26 +1,12 @@
-
 import 'package:hive/hive.dart';
+import 'package:studenda_mobile_student/core/data/datasource/datasource.dart';
 import 'package:studenda_mobile_student/core/data/error/exception.dart';
 import 'package:studenda_mobile_student/feature/group_selection/data/models/course_model.dart';
 
-abstract class CourseLocalDataSource {
-  Future<void> add(List<CourseModel> courseList);
-  Future<List<CourseModel>> get();
-}
-
-class CourseLocalDataSourceImpl implements CourseLocalDataSource {
+class CourseLocalDataSource extends LocalDataSource<List<CourseModel>,void> {
   Box<CourseModel> courseBox;
 
-  CourseLocalDataSourceImpl({required this.courseBox});
-
-  @override
-  Future<List<CourseModel>> get() async {
-    try {
-      return courseBox.values.toList();
-    } catch (e) {
-      throw CacheException();
-    }
-  }
+  CourseLocalDataSource({required this.courseBox});
 
   @override
   Future<void> add(List<CourseModel> courseList) async {
@@ -41,5 +27,13 @@ class CourseLocalDataSourceImpl implements CourseLocalDataSource {
     }
   }
   
-  
+  @override
+  Future<List<CourseModel>> load(void request) async {
+    try {
+      return courseBox.values.toList();
+    } catch (e) {
+      throw CacheException();
+    }
+  }
+
 }

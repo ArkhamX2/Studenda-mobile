@@ -1,19 +1,16 @@
 import 'package:hive/hive.dart';
+import 'package:studenda_mobile_student/core/data/datasource/datasource.dart';
 import 'package:studenda_mobile_student/core/data/error/exception.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/day_position_model.dart';
 
-abstract class DayPositionLocalDataSource {
-  List<DayPositionModel> load();
-  Future<void> add(List<DayPositionModel> remoteLoad);
-}
-
-class DayPositionLocalDataSourceImpl implements DayPositionLocalDataSource {
+class DayPositionLocalDataSource
+    extends LocalDataSource<List<DayPositionModel>, void> {
   Box<DayPositionModel> dayPositionBox;
 
-  DayPositionLocalDataSourceImpl({required this.dayPositionBox});
+  DayPositionLocalDataSource({required this.dayPositionBox});
 
   @override
-  List<DayPositionModel> load() {
+  Future<List<DayPositionModel>> load(void request) async {
     try {
       return dayPositionBox.values.toList();
     } catch (e) {

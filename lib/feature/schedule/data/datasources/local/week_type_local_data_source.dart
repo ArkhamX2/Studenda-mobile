@@ -2,24 +2,15 @@ import 'dart:convert';
 
 import 'package:hive/hive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:studenda_mobile_student/core/data/datasource/datasource.dart';
 import 'package:studenda_mobile_student/core/data/error/exception.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/week_type_model.dart';
 
-abstract class WeekTypeLocalDataSource {
-  Future<void> add(List<WeekTypeModel> remoteLoad);
-
-  List<WeekTypeModel> load();
-
-  Future<void> setCurrent(WeekTypeModel remoteLoad);
-
-  WeekTypeModel getCurrent();
-}
-
-class WeekTypeLocalDataSourceImpl implements WeekTypeLocalDataSource {
+class WeekTypeLocalDataSource extends LocalDataSource<List<WeekTypeModel>,void> {
   Box<WeekTypeModel> weekTypeBox;
   SharedPreferences prefs;
 
-  WeekTypeLocalDataSourceImpl({required this.weekTypeBox, required this.prefs});
+  WeekTypeLocalDataSource({required this.weekTypeBox, required this.prefs});
 
   @override
   Future<void> add(List<WeekTypeModel> weekTypeList) async {
@@ -41,7 +32,7 @@ class WeekTypeLocalDataSourceImpl implements WeekTypeLocalDataSource {
   }
 
   @override
-  List<WeekTypeModel> load() {
+  Future<List<WeekTypeModel>> load(void request) async {
     try {
       return weekTypeBox.values.toList();
     } catch (e) {
@@ -49,7 +40,6 @@ class WeekTypeLocalDataSourceImpl implements WeekTypeLocalDataSource {
     }
   }
 
-  @override
   WeekTypeModel getCurrent() {
     try {
       final result = prefs.getString('currentWeek');
@@ -66,7 +56,6 @@ class WeekTypeLocalDataSourceImpl implements WeekTypeLocalDataSource {
     }
   }
 
-  @override
   Future<void> setCurrent(WeekTypeModel remoteLoad) async {
     try {
       prefs.setString(

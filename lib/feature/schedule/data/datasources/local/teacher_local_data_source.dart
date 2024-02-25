@@ -1,17 +1,12 @@
 import 'package:hive/hive.dart';
+import 'package:studenda_mobile_student/core/data/datasource/datasource.dart';
 import 'package:studenda_mobile_student/core/data/error/exception.dart';
 import 'package:studenda_mobile_student/feature/auth/data/models/user_model/user_model.dart';
 
-abstract class TeacherLocalDataSource {
-  Future<void> add(List<UserModel> remoteLoad);
-
-  List<UserModel> load([List<int> request = const []]);
-}
-
-class TeacherLocalDataSourceImpl implements TeacherLocalDataSource {
+class TeacherLocalDataSource extends LocalDataSource<List<UserModel>,List<int>> {
   Box<UserModel> userBox;
 
-  TeacherLocalDataSourceImpl({required this.userBox});
+  TeacherLocalDataSource({required this.userBox});
 
   @override
   Future<void> add(List<UserModel> teacherList) async {
@@ -33,7 +28,7 @@ class TeacherLocalDataSourceImpl implements TeacherLocalDataSource {
   }
 
   @override
-  List<UserModel> load([List<int> request = const []]) {
+  Future<List<UserModel>> load(List<int> request) async{
     try {
       if (request.isEmpty) return userBox.values.toList();
       return userBox.values

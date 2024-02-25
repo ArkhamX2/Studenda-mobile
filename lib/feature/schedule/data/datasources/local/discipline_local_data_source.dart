@@ -1,19 +1,16 @@
 import 'package:hive/hive.dart';
+import 'package:studenda_mobile_student/core/data/datasource/datasource.dart';
 import 'package:studenda_mobile_student/core/data/error/exception.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/discipline_model.dart';
 
-abstract class DisciplineLocalDataSource {
-  List<DisciplineModel> load([List<int> request = const []]);
-  Future<void> add(List<DisciplineModel> remoteLoad);
-}
-
-class DisciplineLocalDataSourceImpl implements DisciplineLocalDataSource {
+class DisciplineLocalDataSource
+    extends LocalDataSource<List<DisciplineModel>, List<int>> {
   Box<DisciplineModel> disciplineBox;
 
-  DisciplineLocalDataSourceImpl({required this.disciplineBox});
+  DisciplineLocalDataSource({required this.disciplineBox});
 
   @override
-  List<DisciplineModel> load([List<int> request = const []]) {
+  Future<List<DisciplineModel>> load(List<int> request) async {
     try {
       if (request.isEmpty) return disciplineBox.values.toList();
       return disciplineBox.values

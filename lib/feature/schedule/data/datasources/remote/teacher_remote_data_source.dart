@@ -1,19 +1,17 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:studenda_mobile_student/core/data/datasource/datasource.dart';
 import 'package:studenda_mobile_student/core/data/error/exception.dart';
 import 'package:studenda_mobile_student/core/network/api_config.dart';
 import 'package:studenda_mobile_student/core/network/simplified_uri.dart';
 import 'package:studenda_mobile_student/feature/auth/data/models/user_model/user_model.dart';
 
-abstract class TeacherRemoteDataSource {
-  Future<List<UserModel>> load(List<int> request);
-}
 
-class TeacherRemoteDataSourceImpl implements TeacherRemoteDataSource {
+class TeacherRemoteDataSource extends RemoteDataSource<List<UserModel>,List<int>>{
   final http.Client client;
 
-  TeacherRemoteDataSourceImpl({required this.client});
+  TeacherRemoteDataSource({required this.client});
 
   @override
   Future<List<UserModel>> load(List<int> request) async {

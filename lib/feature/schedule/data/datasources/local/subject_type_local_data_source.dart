@@ -1,17 +1,12 @@
 import 'package:hive/hive.dart';
+import 'package:studenda_mobile_student/core/data/datasource/datasource.dart';
 import 'package:studenda_mobile_student/core/data/error/exception.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/subject_type_model.dart';
 
-abstract class SubjectTypeLocalDataSource {
-  Future<void> add(List<SubjectTypeModel> remoteLoad);
-
-  List<SubjectTypeModel> load([List<int> request = const []]);
-}
-
-class SubjectTypeLocalDataSourceImpl implements SubjectTypeLocalDataSource {
+class SubjectTypeLocalDataSource extends LocalDataSource<List<SubjectTypeModel>,List<int>> {
   Box<SubjectTypeModel> subjectTypeBox;
 
-  SubjectTypeLocalDataSourceImpl({required this.subjectTypeBox});
+  SubjectTypeLocalDataSource({required this.subjectTypeBox});
 
   @override
   Future<void> add(List<SubjectTypeModel> subjectTypeList) async {
@@ -33,7 +28,7 @@ class SubjectTypeLocalDataSourceImpl implements SubjectTypeLocalDataSource {
   }
 
   @override
-  List<SubjectTypeModel> load([List<int> request = const []]) {
+  Future<List<SubjectTypeModel>> load(List<int> request) async {
     try {
       if (request.isEmpty) return subjectTypeBox.values.toList();
       return subjectTypeBox.values

@@ -275,25 +275,25 @@ Future<void> init() async {
   );
 
   sl.registerLazySingleton<GroupRemoteDataSource>(
-    () => GroupRemoteDataSourceImpl(
+    () => GroupRemoteDataSource(
       client: sl(),
     ),
   );
 
   sl.registerLazySingleton<CourseRemoteDataSource>(
-    () => CourseRemoteDataSourceImpl(
+    () => CourseRemoteDataSource(
       client: sl(),
     ),
   );
 
   sl.registerLazySingleton<DepartmentRemoteDataSource>(
-    () => DepartmentRemoteDataSourceImpl(
+    () => DepartmentRemoteDataSource(
       client: sl(),
     ),
   );
 
   sl.registerLazySingletonAsync<GroupLocalDataSource>(() async {
-    return GroupLocalDataSourceImpl(
+    return GroupLocalDataSource(
       groupBox: await Hive.openBox<GroupModel>('GroupBox'),
     );
   });
@@ -301,7 +301,7 @@ Future<void> init() async {
   await sl.isReady<GroupLocalDataSource>();
 
   sl.registerLazySingletonAsync<CourseLocalDataSource>(() async {
-    return CourseLocalDataSourceImpl(
+    return CourseLocalDataSource(
       courseBox: await Hive.openBox<CourseModel>('CourseBox'),
     );
   });
@@ -309,7 +309,7 @@ Future<void> init() async {
   await sl.isReady<CourseLocalDataSource>();
 
   sl.registerLazySingletonAsync<DepartmentLocalDataSource>(() async {
-    return DepartmentLocalDataSourceImpl(
+    return DepartmentLocalDataSource(
       deaprtmentBox: await Hive.openBox<DepartmentModel>('DepartmentBox'),
     );
   });
@@ -428,50 +428,50 @@ Future<void> init() async {
 
   //! Data sources
   sl.registerLazySingleton<SubjectTypeRemoteDataSource>(
-    () => SubjectTypeRemoteDataSourceImpl(
+    () => SubjectTypeRemoteDataSource(
       client: sl(),
     ),
   );
 
   sl.registerLazySingleton<DayPositionRemoteDataSource>(
-    () => DayPositionRemoteDataSourceImpl(
+    () => DayPositionRemoteDataSource(
       client: sl(),
     ),
   );
 
   sl.registerLazySingleton<SubjectPositionRemoteDataSource>(
-    () => SubjectPositionRemoteDataSourceImpl(
+    () => SubjectPositionRemoteDataSource(
       client: sl(),
     ),
   );
 
   sl.registerLazySingleton<ScheduleRemoteDataSource>(
-    () => ScheduleRemoteDataSourceImpl(
+    () => ScheduleRemoteDataSource(
       client: sl(),
     ),
   );
 
   sl.registerLazySingleton<WeekTypeRemoteDataSource>(
-    () => WeekTypeRemoteDataSourceImpl(
+    () => WeekTypeRemoteDataSource(
       client: sl(),
     ),
   );
 
   sl.registerLazySingleton<DisciplineRemoteDataSource>(
-    () => DisciplineRemoteDataSourceImpl(
+    () => DisciplineRemoteDataSource(
       client: sl(),
     ),
   );
 
   sl.registerLazySingleton<TeacherRemoteDataSource>(
-    () => TeacherRemoteDataSourceImpl(
+    () => TeacherRemoteDataSource(
       client: sl(),
     ),
   );
 
   sl.registerLazySingletonAsync<SubjectTypeLocalDataSource>(
     () async {
-      return SubjectTypeLocalDataSourceImpl(
+      return SubjectTypeLocalDataSource(
         subjectTypeBox: await Hive.openBox<SubjectTypeModel>('SubjectTypeBox'),
       );
     },
@@ -481,7 +481,7 @@ Future<void> init() async {
 
   sl.registerLazySingletonAsync<DayPositionLocalDataSource>(
     () async {
-      return DayPositionLocalDataSourceImpl(
+      return DayPositionLocalDataSource(
         dayPositionBox: await Hive.openBox<DayPositionModel>('DayPositionBox'),
       );
     },
@@ -491,7 +491,7 @@ Future<void> init() async {
 
   sl.registerLazySingletonAsync<SubjectPositionLocalDataSource>(
     () async {
-      return SubjectPositionLocalDataSourceImpl(
+      return SubjectPositionLocalDataSource(
         subjectPositionBox:
             await Hive.openBox<SubjectPositionModel>('SubjectPositionBox'),
       );
@@ -502,7 +502,7 @@ Future<void> init() async {
 
   sl.registerLazySingletonAsync<ScheduleLocalDataSource>(
     () async {
-      return ScheduleLocalDataSourceImpl(
+      return ScheduleLocalDataSource(
         subjectBox: await Hive.openBox<SubjectModel>("ScheduleBox"),
       );
     },
@@ -512,7 +512,7 @@ Future<void> init() async {
 
   sl.registerLazySingletonAsync<WeekTypeLocalDataSource>(
     () async {
-      return WeekTypeLocalDataSourceImpl(
+      return WeekTypeLocalDataSource(
         prefs: prefs,
         weekTypeBox: await Hive.openBox<WeekTypeModel>("WeekTypeBox"),
       );
@@ -523,7 +523,7 @@ Future<void> init() async {
 
   sl.registerLazySingletonAsync<DisciplineLocalDataSource>(
     () async {
-      return DisciplineLocalDataSourceImpl(
+      return DisciplineLocalDataSource(
         disciplineBox: await Hive.openBox<DisciplineModel>("DisciplineBox"),
       );
     },
@@ -534,7 +534,7 @@ Future<void> init() async {
 
   sl.registerLazySingletonAsync<TeacherLocalDataSource>(
     () async {
-      return TeacherLocalDataSourceImpl(
+      return TeacherLocalDataSource(
         userBox: await Hive.openBox<UserModel>("TeacherBox"),
       );
     },

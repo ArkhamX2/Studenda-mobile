@@ -154,6 +154,7 @@ class __GroupDropdownWidgetState extends State<_GroupDropdownWidget> {
   @override
   Widget build(BuildContext context) {
     final groupSelectorBloc = context.watch<MainGroupSelectorBloc>();
+    //TODO: Посмотреть что не так с id
     final groupCubit = context.watch<GroupCubit>();
     final filteredGroups = groupSelectorBloc.selectedCourse.id == -1 ||
             groupSelectorBloc.selectedDepartment.id == -1
@@ -183,7 +184,9 @@ class __GroupDropdownWidgetState extends State<_GroupDropdownWidget> {
                       .add(MainGroupSelectorEvent.setGroup(value!));
                 });
               },
-              value: filteredGroups.isNotEmpty? filteredGroups.first : groupSelectorBloc.selectedGroup ,
+              value: filteredGroups.isNotEmpty
+                  ? filteredGroups.first
+                  : groupSelectorBloc.selectedGroup,
               padding: const EdgeInsets.only(left: 12),
               isExpanded: true,
               items: filteredGroups.map<DropdownMenuItem<GroupEntity>>(
@@ -232,7 +235,9 @@ class _CourseSelectionWidget extends StatelessWidget {
         }
         return StudendaDropdown<CourseEntity>(
           items: courses,
-          model: groupSelectorBloc.selectedCourse.id == -1
+          model: groupSelectorBloc.selectedCourse.id == -1 ||
+                  !courses.any(
+                      (element) => element == groupSelectorBloc.selectedCourse)
               ? courses.first
               : groupSelectorBloc.selectedCourse,
           callback: (element) {
@@ -254,7 +259,9 @@ class _CourseSelectionWidget extends StatelessWidget {
         }
         return StudendaDropdown<CourseEntity>(
           items: courses,
-          model: groupSelectorBloc.selectedCourse.id == -1
+          model: groupSelectorBloc.selectedCourse.id == -1 ||
+                  !courses.any(
+                      (element) => element == groupSelectorBloc.selectedCourse)
               ? courses.first
               : groupSelectorBloc.selectedCourse,
           callback: (element) {
@@ -305,7 +312,9 @@ class _DepartmentSelectionWidget extends StatelessWidget {
         }
         return StudendaDropdown<DepartmentEntity>(
           items: departments,
-          model: groupSelectorBloc.selectedDepartment.id == -1
+          model: groupSelectorBloc.selectedDepartment.id == -1 ||
+                  !departments.any((element) =>
+                      element == groupSelectorBloc.selectedDepartment)
               ? departments.first
               : groupSelectorBloc.selectedDepartment,
           callback: (element) {
@@ -327,7 +336,9 @@ class _DepartmentSelectionWidget extends StatelessWidget {
         }
         return StudendaDropdown<DepartmentEntity>(
           items: departments,
-          model: groupSelectorBloc.selectedDepartment.id == -1
+          model: groupSelectorBloc.selectedDepartment.id == -1 ||
+                  !departments.any((element) =>
+                      element == groupSelectorBloc.selectedDepartment)
               ? departments.first
               : groupSelectorBloc.selectedDepartment,
           callback: (element) {

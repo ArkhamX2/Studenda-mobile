@@ -1,18 +1,14 @@
 import 'package:hive/hive.dart';
+import 'package:studenda_mobile_student/core/data/datasource/datasource.dart';
 import 'package:studenda_mobile_student/core/data/error/exception.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/schedule_request_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/subject_model.dart';
 
-abstract class ScheduleLocalDataSource {
-  Future<void> add(List<SubjectModel> remoteLoad);
-
-  List<SubjectModel> load(ScheduleRequestModel request);
-}
-
-class ScheduleLocalDataSourceImpl implements ScheduleLocalDataSource {
+class ScheduleLocalDataSource
+    extends LocalDataSource<List<SubjectModel>, ScheduleRequestModel> {
   Box<SubjectModel> subjectBox;
 
-  ScheduleLocalDataSourceImpl({required this.subjectBox});
+  ScheduleLocalDataSource({required this.subjectBox});
 
   @override
   Future<void> add(List<SubjectModel> subjectList) async {
@@ -35,7 +31,7 @@ class ScheduleLocalDataSourceImpl implements ScheduleLocalDataSource {
   }
 
   @override
-  List<SubjectModel> load(ScheduleRequestModel request) {
+  Future<List<SubjectModel>> load(ScheduleRequestModel request) async {
     try {
       return subjectBox.values
           .where(
