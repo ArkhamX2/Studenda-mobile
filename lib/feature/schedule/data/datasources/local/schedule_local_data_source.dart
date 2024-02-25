@@ -17,6 +17,7 @@ class ScheduleLocalDataSourceImpl implements ScheduleLocalDataSource {
   @override
   Future<void> add(List<SubjectModel> subjectList) async {
     try {
+      //TODO: Что если из расписания убирается какой-то предмет? Сравнивать то, что пришло и то, что есть, обновляя то, что есть и удаляя, то что было удалено
       final List<int> subjects = [];
       subjects.addAll(subjectBox.values.map((e) => e.id));
       subjects.addAll(subjectList.map((e) => e.id));
