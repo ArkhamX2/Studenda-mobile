@@ -1,24 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'assessment_model.dart';
+part of 'mark_model.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class AssessmentModelAdapter extends TypeAdapter<_$AssessmentModelImpl> {
+class MarkModelAdapter extends TypeAdapter<_$MarkModelImpl> {
   @override
   final int typeId = 12;
 
   @override
-  _$AssessmentModelImpl read(BinaryReader reader) {
+  _$MarkModelImpl read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$AssessmentModelImpl(
+    return _$MarkModelImpl(
       id: fields[0] as int,
-      assessmentTypeId: fields[1] as int,
+      markTypeId: fields[1] as int,
       taskId: fields[2] as int,
       value: fields[3] as int,
       createdAt: fields[4] as DateTime,
@@ -27,13 +27,13 @@ class AssessmentModelAdapter extends TypeAdapter<_$AssessmentModelImpl> {
   }
 
   @override
-  void write(BinaryWriter writer, _$AssessmentModelImpl obj) {
+  void write(BinaryWriter writer, _$MarkModelImpl obj) {
     writer
       ..writeByte(6)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.assessmentTypeId)
+      ..write(obj.markTypeId)
       ..writeByte(2)
       ..write(obj.taskId)
       ..writeByte(3)
@@ -50,7 +50,7 @@ class AssessmentModelAdapter extends TypeAdapter<_$AssessmentModelImpl> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is AssessmentModelAdapter &&
+      other is MarkModelAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
@@ -59,22 +59,20 @@ class AssessmentModelAdapter extends TypeAdapter<_$AssessmentModelImpl> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AssessmentModelImpl _$$AssessmentModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$AssessmentModelImpl(
+_$MarkModelImpl _$$MarkModelImplFromJson(Map<String, dynamic> json) =>
+    _$MarkModelImpl(
       id: json['id'] as int,
-      assessmentTypeId: json['assessmentTypeId'] as int,
+      markTypeId: json['markTypeId'] as int,
       taskId: json['taskId'] as int,
       value: json['value'] as int,
       createdAt: DateTime.parse(json['createdAt'] as String),
       updatedAt: DateTime.parse(json['updatedAt'] as String),
     );
 
-Map<String, dynamic> _$$AssessmentModelImplToJson(
-        _$AssessmentModelImpl instance) =>
+Map<String, dynamic> _$$MarkModelImplToJson(_$MarkModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'assessmentTypeId': instance.assessmentTypeId,
+      'markTypeId': instance.markTypeId,
       'taskId': instance.taskId,
       'value': instance.value,
       'createdAt': instance.createdAt.toIso8601String(),

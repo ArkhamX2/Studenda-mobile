@@ -1,23 +1,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'assessment_type_model.dart';
+part of 'mark_type_model.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class AssessmentTypeModelAdapter
-    extends TypeAdapter<_$AssessmentTypeModelImpl> {
+class AssessmentTypeModelAdapter extends TypeAdapter<_$MarkTypeModelImpl> {
   @override
   final int typeId = 11;
 
   @override
-  _$AssessmentTypeModelImpl read(BinaryReader reader) {
+  _$MarkTypeModelImpl read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$AssessmentTypeModelImpl(
+    return _$MarkTypeModelImpl(
       id: fields[0] as int,
       name: fields[1] as String,
       minValue: fields[2] as int,
@@ -28,7 +27,7 @@ class AssessmentTypeModelAdapter
   }
 
   @override
-  void write(BinaryWriter writer, _$AssessmentTypeModelImpl obj) {
+  void write(BinaryWriter writer, _$MarkTypeModelImpl obj) {
     writer
       ..writeByte(6)
       ..writeByte(0)
@@ -60,9 +59,8 @@ class AssessmentTypeModelAdapter
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AssessmentTypeModelImpl _$$AssessmentTypeModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$AssessmentTypeModelImpl(
+_$MarkTypeModelImpl _$$MarkTypeModelImplFromJson(Map<String, dynamic> json) =>
+    _$MarkTypeModelImpl(
       id: json['id'] as int,
       name: json['name'] as String,
       minValue: json['minValue'] as int,
@@ -71,8 +69,7 @@ _$AssessmentTypeModelImpl _$$AssessmentTypeModelImplFromJson(
       updatedAt: DateTime.parse(json['updatedAt'] as String),
     );
 
-Map<String, dynamic> _$$AssessmentTypeModelImplToJson(
-        _$AssessmentTypeModelImpl instance) =>
+Map<String, dynamic> _$$MarkTypeModelImplToJson(_$MarkTypeModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

@@ -2,14 +2,14 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 
-part 'assessment_type_model.freezed.dart';
-part 'assessment_type_model.g.dart';
+part 'mark_type_model.freezed.dart';
+part 'mark_type_model.g.dart';
 
 @freezed
 
-class AssessmentTypeModel extends HiveObject with _$AssessmentTypeModel {
+class MarkTypeModel extends HiveObject with _$MarkTypeModel {
   @HiveType(typeId: 11, adapterName: 'AssessmentTypeModelAdapter')
-  factory AssessmentTypeModel({
+  factory MarkTypeModel({
     @JsonKey(name: 'id') @HiveField(0) required int id,
     @JsonKey(name: 'name') @HiveField(1) required String name,
     @JsonKey(name: 'minValue') @HiveField(2) required int minValue,
@@ -17,9 +17,9 @@ class AssessmentTypeModel extends HiveObject with _$AssessmentTypeModel {
     @JsonKey(name: 'createdAt') @HiveField(4) required DateTime createdAt,
     @JsonKey(name: 'updatedAt') @HiveField(5) required DateTime updatedAt,
 
-  }) = _AssessmentTypeModel;
+  }) = _MarkTypeModel;
 
-  AssessmentTypeModel._();
+  MarkTypeModel._();
 
-  factory AssessmentTypeModel.fromJson(Map<String,dynamic> json) => _$AssessmentTypeModelFromJson(json);
+  factory MarkTypeModel.fromJson(Map<String,dynamic> json) => _$MarkTypeModelFromJson(json);
 }

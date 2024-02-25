@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'assessment_type_model.dart';
+part of 'mark_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,24 +14,24 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-AssessmentTypeModel _$AssessmentTypeModelFromJson(Map<String, dynamic> json) {
-  return _AssessmentTypeModel.fromJson(json);
+MarkModel _$MarkModelFromJson(Map<String, dynamic> json) {
+  return _MarkModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$AssessmentTypeModel {
+mixin _$MarkModel {
   @JsonKey(name: 'id')
   @HiveField(0)
   int get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'name')
+  @JsonKey(name: 'markTypeId')
   @HiveField(1)
-  String get name => throw _privateConstructorUsedError;
-  @JsonKey(name: 'minValue')
+  int get markTypeId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'taskId')
   @HiveField(2)
-  int get minValue => throw _privateConstructorUsedError;
-  @JsonKey(name: 'maxValue')
+  int get taskId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'value')
   @HiveField(3)
-  int get maxValue => throw _privateConstructorUsedError;
+  int get value => throw _privateConstructorUsedError;
   @JsonKey(name: 'createdAt')
   @HiveField(4)
   DateTime get createdAt => throw _privateConstructorUsedError;
@@ -41,29 +41,28 @@ mixin _$AssessmentTypeModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $AssessmentTypeModelCopyWith<AssessmentTypeModel> get copyWith =>
+  $MarkModelCopyWith<MarkModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AssessmentTypeModelCopyWith<$Res> {
-  factory $AssessmentTypeModelCopyWith(
-          AssessmentTypeModel value, $Res Function(AssessmentTypeModel) then) =
-      _$AssessmentTypeModelCopyWithImpl<$Res, AssessmentTypeModel>;
+abstract class $MarkModelCopyWith<$Res> {
+  factory $MarkModelCopyWith(MarkModel value, $Res Function(MarkModel) then) =
+      _$MarkModelCopyWithImpl<$Res, MarkModel>;
   @useResult
   $Res call(
       {@JsonKey(name: 'id') @HiveField(0) int id,
-      @JsonKey(name: 'name') @HiveField(1) String name,
-      @JsonKey(name: 'minValue') @HiveField(2) int minValue,
-      @JsonKey(name: 'maxValue') @HiveField(3) int maxValue,
+      @JsonKey(name: 'markTypeId') @HiveField(1) int markTypeId,
+      @JsonKey(name: 'taskId') @HiveField(2) int taskId,
+      @JsonKey(name: 'value') @HiveField(3) int value,
       @JsonKey(name: 'createdAt') @HiveField(4) DateTime createdAt,
       @JsonKey(name: 'updatedAt') @HiveField(5) DateTime updatedAt});
 }
 
 /// @nodoc
-class _$AssessmentTypeModelCopyWithImpl<$Res, $Val extends AssessmentTypeModel>
-    implements $AssessmentTypeModelCopyWith<$Res> {
-  _$AssessmentTypeModelCopyWithImpl(this._value, this._then);
+class _$MarkModelCopyWithImpl<$Res, $Val extends MarkModel>
+    implements $MarkModelCopyWith<$Res> {
+  _$MarkModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -74,9 +73,9 @@ class _$AssessmentTypeModelCopyWithImpl<$Res, $Val extends AssessmentTypeModel>
   @override
   $Res call({
     Object? id = null,
-    Object? name = null,
-    Object? minValue = null,
-    Object? maxValue = null,
+    Object? markTypeId = null,
+    Object? taskId = null,
+    Object? value = null,
     Object? createdAt = null,
     Object? updatedAt = null,
   }) {
@@ -85,17 +84,17 @@ class _$AssessmentTypeModelCopyWithImpl<$Res, $Val extends AssessmentTypeModel>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      minValue: null == minValue
-          ? _value.minValue
-          : minValue // ignore: cast_nullable_to_non_nullable
+      markTypeId: null == markTypeId
+          ? _value.markTypeId
+          : markTypeId // ignore: cast_nullable_to_non_nullable
               as int,
-      maxValue: null == maxValue
-          ? _value.maxValue
-          : maxValue // ignore: cast_nullable_to_non_nullable
+      taskId: null == taskId
+          ? _value.taskId
+          : taskId // ignore: cast_nullable_to_non_nullable
+              as int,
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
               as int,
       createdAt: null == createdAt
           ? _value.createdAt
@@ -110,56 +109,56 @@ class _$AssessmentTypeModelCopyWithImpl<$Res, $Val extends AssessmentTypeModel>
 }
 
 /// @nodoc
-abstract class _$$AssessmentTypeModelImplCopyWith<$Res>
-    implements $AssessmentTypeModelCopyWith<$Res> {
-  factory _$$AssessmentTypeModelImplCopyWith(_$AssessmentTypeModelImpl value,
-          $Res Function(_$AssessmentTypeModelImpl) then) =
-      __$$AssessmentTypeModelImplCopyWithImpl<$Res>;
+abstract class _$$MarkModelImplCopyWith<$Res>
+    implements $MarkModelCopyWith<$Res> {
+  factory _$$MarkModelImplCopyWith(
+          _$MarkModelImpl value, $Res Function(_$MarkModelImpl) then) =
+      __$$MarkModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {@JsonKey(name: 'id') @HiveField(0) int id,
-      @JsonKey(name: 'name') @HiveField(1) String name,
-      @JsonKey(name: 'minValue') @HiveField(2) int minValue,
-      @JsonKey(name: 'maxValue') @HiveField(3) int maxValue,
+      @JsonKey(name: 'markTypeId') @HiveField(1) int markTypeId,
+      @JsonKey(name: 'taskId') @HiveField(2) int taskId,
+      @JsonKey(name: 'value') @HiveField(3) int value,
       @JsonKey(name: 'createdAt') @HiveField(4) DateTime createdAt,
       @JsonKey(name: 'updatedAt') @HiveField(5) DateTime updatedAt});
 }
 
 /// @nodoc
-class __$$AssessmentTypeModelImplCopyWithImpl<$Res>
-    extends _$AssessmentTypeModelCopyWithImpl<$Res, _$AssessmentTypeModelImpl>
-    implements _$$AssessmentTypeModelImplCopyWith<$Res> {
-  __$$AssessmentTypeModelImplCopyWithImpl(_$AssessmentTypeModelImpl _value,
-      $Res Function(_$AssessmentTypeModelImpl) _then)
+class __$$MarkModelImplCopyWithImpl<$Res>
+    extends _$MarkModelCopyWithImpl<$Res, _$MarkModelImpl>
+    implements _$$MarkModelImplCopyWith<$Res> {
+  __$$MarkModelImplCopyWithImpl(
+      _$MarkModelImpl _value, $Res Function(_$MarkModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = null,
-    Object? name = null,
-    Object? minValue = null,
-    Object? maxValue = null,
+    Object? markTypeId = null,
+    Object? taskId = null,
+    Object? value = null,
     Object? createdAt = null,
     Object? updatedAt = null,
   }) {
-    return _then(_$AssessmentTypeModelImpl(
+    return _then(_$MarkModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      minValue: null == minValue
-          ? _value.minValue
-          : minValue // ignore: cast_nullable_to_non_nullable
+      markTypeId: null == markTypeId
+          ? _value.markTypeId
+          : markTypeId // ignore: cast_nullable_to_non_nullable
               as int,
-      maxValue: null == maxValue
-          ? _value.maxValue
-          : maxValue // ignore: cast_nullable_to_non_nullable
+      taskId: null == taskId
+          ? _value.taskId
+          : taskId // ignore: cast_nullable_to_non_nullable
+              as int,
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
               as int,
       createdAt: null == createdAt
           ? _value.createdAt
@@ -175,36 +174,36 @@ class __$$AssessmentTypeModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-@HiveType(typeId: 11, adapterName: 'AssessmentTypeModelAdapter')
-class _$AssessmentTypeModelImpl extends _AssessmentTypeModel {
-  _$AssessmentTypeModelImpl(
+@HiveType(typeId: 12, adapterName: 'MarkModelAdapter')
+class _$MarkModelImpl extends _MarkModel {
+  _$MarkModelImpl(
       {@JsonKey(name: 'id') @HiveField(0) required this.id,
-      @JsonKey(name: 'name') @HiveField(1) required this.name,
-      @JsonKey(name: 'minValue') @HiveField(2) required this.minValue,
-      @JsonKey(name: 'maxValue') @HiveField(3) required this.maxValue,
+      @JsonKey(name: 'markTypeId') @HiveField(1) required this.markTypeId,
+      @JsonKey(name: 'taskId') @HiveField(2) required this.taskId,
+      @JsonKey(name: 'value') @HiveField(3) required this.value,
       @JsonKey(name: 'createdAt') @HiveField(4) required this.createdAt,
       @JsonKey(name: 'updatedAt') @HiveField(5) required this.updatedAt})
       : super._();
 
-  factory _$AssessmentTypeModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AssessmentTypeModelImplFromJson(json);
+  factory _$MarkModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MarkModelImplFromJson(json);
 
   @override
   @JsonKey(name: 'id')
   @HiveField(0)
   final int id;
   @override
-  @JsonKey(name: 'name')
+  @JsonKey(name: 'markTypeId')
   @HiveField(1)
-  final String name;
+  final int markTypeId;
   @override
-  @JsonKey(name: 'minValue')
+  @JsonKey(name: 'taskId')
   @HiveField(2)
-  final int minValue;
+  final int taskId;
   @override
-  @JsonKey(name: 'maxValue')
+  @JsonKey(name: 'value')
   @HiveField(3)
-  final int maxValue;
+  final int value;
   @override
   @JsonKey(name: 'createdAt')
   @HiveField(4)
@@ -216,20 +215,19 @@ class _$AssessmentTypeModelImpl extends _AssessmentTypeModel {
 
   @override
   String toString() {
-    return 'AssessmentTypeModel(id: $id, name: $name, minValue: $minValue, maxValue: $maxValue, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'MarkModel(id: $id, markTypeId: $markTypeId, taskId: $taskId, value: $value, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AssessmentTypeModelImpl &&
+            other is _$MarkModelImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.minValue, minValue) ||
-                other.minValue == minValue) &&
-            (identical(other.maxValue, maxValue) ||
-                other.maxValue == maxValue) &&
+            (identical(other.markTypeId, markTypeId) ||
+                other.markTypeId == markTypeId) &&
+            (identical(other.taskId, taskId) || other.taskId == taskId) &&
+            (identical(other.value, value) || other.value == value) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
@@ -239,56 +237,55 @@ class _$AssessmentTypeModelImpl extends _AssessmentTypeModel {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, name, minValue, maxValue, createdAt, updatedAt);
+      runtimeType, id, markTypeId, taskId, value, createdAt, updatedAt);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$AssessmentTypeModelImplCopyWith<_$AssessmentTypeModelImpl> get copyWith =>
-      __$$AssessmentTypeModelImplCopyWithImpl<_$AssessmentTypeModelImpl>(
-          this, _$identity);
+  _$$MarkModelImplCopyWith<_$MarkModelImpl> get copyWith =>
+      __$$MarkModelImplCopyWithImpl<_$MarkModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$AssessmentTypeModelImplToJson(
+    return _$$MarkModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _AssessmentTypeModel extends AssessmentTypeModel {
-  factory _AssessmentTypeModel(
+abstract class _MarkModel extends MarkModel {
+  factory _MarkModel(
       {@JsonKey(name: 'id') @HiveField(0) required final int id,
-      @JsonKey(name: 'name') @HiveField(1) required final String name,
-      @JsonKey(name: 'minValue') @HiveField(2) required final int minValue,
-      @JsonKey(name: 'maxValue') @HiveField(3) required final int maxValue,
+      @JsonKey(name: 'markTypeId') @HiveField(1) required final int markTypeId,
+      @JsonKey(name: 'taskId') @HiveField(2) required final int taskId,
+      @JsonKey(name: 'value') @HiveField(3) required final int value,
       @JsonKey(name: 'createdAt')
       @HiveField(4)
       required final DateTime createdAt,
       @JsonKey(name: 'updatedAt')
       @HiveField(5)
-      required final DateTime updatedAt}) = _$AssessmentTypeModelImpl;
-  _AssessmentTypeModel._() : super._();
+      required final DateTime updatedAt}) = _$MarkModelImpl;
+  _MarkModel._() : super._();
 
-  factory _AssessmentTypeModel.fromJson(Map<String, dynamic> json) =
-      _$AssessmentTypeModelImpl.fromJson;
+  factory _MarkModel.fromJson(Map<String, dynamic> json) =
+      _$MarkModelImpl.fromJson;
 
   @override
   @JsonKey(name: 'id')
   @HiveField(0)
   int get id;
   @override
-  @JsonKey(name: 'name')
+  @JsonKey(name: 'markTypeId')
   @HiveField(1)
-  String get name;
+  int get markTypeId;
   @override
-  @JsonKey(name: 'minValue')
+  @JsonKey(name: 'taskId')
   @HiveField(2)
-  int get minValue;
+  int get taskId;
   @override
-  @JsonKey(name: 'maxValue')
+  @JsonKey(name: 'value')
   @HiveField(3)
-  int get maxValue;
+  int get value;
   @override
   @JsonKey(name: 'createdAt')
   @HiveField(4)
@@ -299,6 +296,6 @@ abstract class _AssessmentTypeModel extends AssessmentTypeModel {
   DateTime get updatedAt;
   @override
   @JsonKey(ignore: true)
-  _$$AssessmentTypeModelImplCopyWith<_$AssessmentTypeModelImpl> get copyWith =>
+  _$$MarkModelImplCopyWith<_$MarkModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
