@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 class StudendaLoadingWidget extends StatelessWidget {
   final double? width;
   final double? height;
-  const StudendaLoadingWidget([this.width = 40, this.height = 40]);
+  const StudendaLoadingWidget([this.width = 100, this.height = 100]);
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset('assets/gif/studenda_loading.gif',width: width, height: height,);
+    return Image.asset('assets/gif/studenda_loading3.apng',width: width, height: height,);
   }
 }

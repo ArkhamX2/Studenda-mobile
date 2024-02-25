@@ -62,8 +62,11 @@ dev_dependencies:
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 flutter_native_splash:
-  image: assets/gif/studenda_loading.gif
+  image: assets/gif/studenda_loading.apng
   color: "#ffffff"
+  android_12:
+    image: assets/gif/studenda_loading.apng
+    color: "#ffffff"
   android: true
   ios: true
 
