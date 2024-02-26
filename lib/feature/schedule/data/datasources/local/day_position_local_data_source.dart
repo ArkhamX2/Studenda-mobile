@@ -27,11 +27,18 @@ class DayPositionLocalDataSource
       final ids = {...dayPositions};
       await dayPositionBox.putAll(
         {
-          for (final element
-              in dayPositionList.where((element) => ids.contains(element.id)))
+          for (final element in dayPositionList.where(
+            (element) => ids.contains(element.id),
+          ))
             element.id: element,
         },
       );
+      await dayPositionBox.deleteAll([
+        for (final id in dayPositionList.where(
+          (element) => !dayPositionList.map((e) => e.id).contains(element.id),
+        ))
+          id,
+      ]);
     } catch (e) {
       throw CacheException();
     }

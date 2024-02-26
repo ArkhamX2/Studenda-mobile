@@ -26,6 +26,14 @@ class WeekTypeLocalDataSource extends LocalDataSource<List<WeekTypeModel>,void> 
             element.id: element,
         },
       );
+      
+      await weekTypeBox.deleteAll([
+        for (final id in weekTypeList.where(
+          (element) =>
+              !weekTypeList.map((e) => e.id).contains(element.id),
+        ))
+          id,
+      ]);
     } catch (e) {
       throw CacheException();
     }

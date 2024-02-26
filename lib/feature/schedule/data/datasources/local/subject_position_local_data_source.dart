@@ -3,8 +3,8 @@ import 'package:studenda_mobile_student/core/data/datasource/datasource.dart';
 import 'package:studenda_mobile_student/core/data/error/exception.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/subject_position_model.dart';
 
-
-class SubjectPositionLocalDataSource extends LocalDataSource<List<SubjectPositionModel>,void>{
+class SubjectPositionLocalDataSource
+    extends LocalDataSource<List<SubjectPositionModel>, void> {
   Box<SubjectPositionModel> subjectPositionBox;
 
   SubjectPositionLocalDataSource({required this.subjectPositionBox});
@@ -18,11 +18,19 @@ class SubjectPositionLocalDataSource extends LocalDataSource<List<SubjectPositio
       final ids = {...subjectPositions};
       await subjectPositionBox.putAll(
         {
-          for (final element
-              in subjectPositionList.where((element) => ids.contains(element.id)))
+          for (final element in subjectPositionList
+              .where((element) => ids.contains(element.id)))
             element.id: element,
         },
       );
+
+      await subjectPositionBox.deleteAll([
+        for (final id in subjectPositionList.where(
+          (element) =>
+              !subjectPositionList.map((e) => e.id).contains(element.id),
+        ))
+          id,
+      ]);
     } catch (e) {
       throw CacheException();
     }

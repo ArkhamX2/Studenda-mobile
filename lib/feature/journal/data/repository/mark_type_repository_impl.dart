@@ -4,7 +4,7 @@ import 'package:studenda_mobile_student/core/data/repository/repository.dart';
 import 'package:studenda_mobile_student/core/network/network_info.dart';
 import 'package:studenda_mobile_student/feature/journal/data/datasource/local/mark_type_local_data_source.dart';
 import 'package:studenda_mobile_student/feature/journal/data/datasource/remote/mark_type_remote_data_source.dart';
-import 'package:studenda_mobile_student/feature/journal/data/model/mark_type_model.dart';
+import 'package:studenda_mobile_student/feature/journal/data/model/task/mark_type_model.dart';
 import 'package:studenda_mobile_student/feature/journal/domain/repository/mark_type_repository.dart';
 
 class MarkTypeRepositoryImpl implements MarkTypeRepository {

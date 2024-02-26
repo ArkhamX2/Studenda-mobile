@@ -3,7 +3,7 @@ import 'package:studenda_mobile_student/core/data/datasource/datasource.dart';
 import 'package:studenda_mobile_student/core/data/error/exception.dart';
 import 'package:studenda_mobile_student/feature/group_selection/data/models/course_model.dart';
 
-class CourseLocalDataSource extends LocalDataSource<List<CourseModel>,void> {
+class CourseLocalDataSource extends LocalDataSource<List<CourseModel>, void> {
   Box<CourseModel> courseBox;
 
   CourseLocalDataSource({required this.courseBox});
@@ -22,11 +22,18 @@ class CourseLocalDataSource extends LocalDataSource<List<CourseModel>,void> {
             element.id: element,
         },
       );
+
+      await courseBox.deleteAll([
+        for (final id in courseList.where(
+          (element) => !courseList.map((e) => e.id).contains(element.id),
+        ))
+          id,
+      ]);
     } catch (e) {
       throw CacheException();
     }
   }
-  
+
   @override
   Future<List<CourseModel>> load(void request) async {
     try {
@@ -35,5 +42,4 @@ class CourseLocalDataSource extends LocalDataSource<List<CourseModel>,void> {
       throw CacheException();
     }
   }
-
 }

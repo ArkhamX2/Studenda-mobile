@@ -25,6 +25,13 @@ class ScheduleLocalDataSource
             element.id: element,
         },
       );
+
+      await subjectBox.deleteAll([
+        for (final id in subjectList.where(
+          (element) => !subjectList.map((e) => e.id).contains(element.id),
+        ))
+          id,
+      ]);
     } catch (e) {
       throw CacheException();
     }

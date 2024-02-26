@@ -22,6 +22,14 @@ class SubjectTypeLocalDataSource extends LocalDataSource<List<SubjectTypeModel>,
             element.id: element,
         },
       );
+      
+      await subjectTypeBox.deleteAll([
+        for (final id in subjectTypeList.where(
+          (element) =>
+              !subjectTypeList.map((e) => e.id).contains(element.id),
+        ))
+          id,
+      ]);
     } catch (e) {
       throw CacheException();
     }

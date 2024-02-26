@@ -22,6 +22,14 @@ class TeacherLocalDataSource extends LocalDataSource<List<UserModel>,List<int>> 
             element.id: element,
         },
       );
+      
+      await userBox.deleteAll([
+        for (final id in teacherList.where(
+          (element) =>
+              !teacherList.map((e) => e.id).contains(element.id),
+        ))
+          id,
+      ]);
     } catch (e) {
       throw CacheException();
     }

@@ -35,6 +35,12 @@ class DisciplineLocalDataSource
             element.id: element,
         },
       );
+      await disciplineBox.deleteAll([
+        for (final id in disciplineList.where(
+          (element) => !disciplineList.map((e) => e.id).contains(element.id),
+        ))
+          id,
+      ]);
     } catch (e) {
       throw CacheException();
     }

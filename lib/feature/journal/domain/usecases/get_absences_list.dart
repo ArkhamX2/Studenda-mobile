@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:studenda_mobile_student/core/data/error/failure.dart';
 import 'package:studenda_mobile_student/core/data/usecases/usecase.dart';
-import 'package:studenda_mobile_student/feature/journal/data/model/absence_model.dart';
-import 'package:studenda_mobile_student/feature/journal/data/model/absence_request_model.dart';
+import 'package:studenda_mobile_student/feature/journal/data/model/api/absence_request_model.dart';
+import 'package:studenda_mobile_student/feature/journal/data/model/attendancy/absence_model.dart';
 import 'package:studenda_mobile_student/feature/journal/domain/repository/absence_repository.dart';
 
 class GetAbsenceList extends Usecase<List<AbsenceModel>, AbsenceRequestModel> {

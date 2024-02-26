@@ -310,7 +310,7 @@ Future<void> init() async {
 
   sl.registerLazySingletonAsync<DepartmentLocalDataSource>(() async {
     return DepartmentLocalDataSource(
-      deaprtmentBox: await Hive.openBox<DepartmentModel>('DepartmentBox'),
+      departmentBox: await Hive.openBox<DepartmentModel>('DepartmentBox'),
     );
   });
 

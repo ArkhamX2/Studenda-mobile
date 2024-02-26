@@ -4,8 +4,8 @@ import 'package:studenda_mobile_student/core/data/repository/repository.dart';
 import 'package:studenda_mobile_student/core/network/network_info.dart';
 import 'package:studenda_mobile_student/feature/journal/data/datasource/local/task_local_data_source.dart';
 import 'package:studenda_mobile_student/feature/journal/data/datasource/remote/task_remote_data_source.dart';
-import 'package:studenda_mobile_student/feature/journal/data/model/task_model.dart';
-import 'package:studenda_mobile_student/feature/journal/data/model/task_student_request_model.dart';
+import 'package:studenda_mobile_student/feature/journal/data/model/api/task_student_request_model.dart';
+import 'package:studenda_mobile_student/feature/journal/data/model/task/task_model.dart';
 import 'package:studenda_mobile_student/feature/journal/domain/repository/task_repository.dart';
 
 class TaskRepositoryImpl implements TaskRepository {

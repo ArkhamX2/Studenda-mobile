@@ -22,6 +22,13 @@ class GroupLocalDataSource extends LocalDataSource<List<GroupModel>, void> {
             element.id: element,
         },
       );
+
+      await groupBox.deleteAll([
+        for (final id in groupList.where(
+          (element) => !groupList.map((e) => e.id).contains(element.id),
+        ))
+          id,
+      ]);
     } catch (e) {
       throw CacheException();
     }

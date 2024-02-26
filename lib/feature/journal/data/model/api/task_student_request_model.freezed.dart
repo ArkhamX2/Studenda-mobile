@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'task_issuer_request_model.dart';
+part of 'task_student_request_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -12,40 +12,38 @@ part of 'task_issuer_request_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$TaskIssuerRequestModel {
-  int get issuerId => throw _privateConstructorUsedError;
-  List<int> get groupIds => throw _privateConstructorUsedError;
+mixin _$TaskStudentRequestModel {
+  List<int> get asigneeUserIds => throw _privateConstructorUsedError;
   int? get disciplineId => throw _privateConstructorUsedError;
   int? get subjectTypeId => throw _privateConstructorUsedError;
   int? get academicYear => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $TaskIssuerRequestModelCopyWith<TaskIssuerRequestModel> get copyWith =>
+  $TaskStudentRequestModelCopyWith<TaskStudentRequestModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TaskIssuerRequestModelCopyWith<$Res> {
-  factory $TaskIssuerRequestModelCopyWith(TaskIssuerRequestModel value,
-          $Res Function(TaskIssuerRequestModel) then) =
-      _$TaskIssuerRequestModelCopyWithImpl<$Res, TaskIssuerRequestModel>;
+abstract class $TaskStudentRequestModelCopyWith<$Res> {
+  factory $TaskStudentRequestModelCopyWith(TaskStudentRequestModel value,
+          $Res Function(TaskStudentRequestModel) then) =
+      _$TaskStudentRequestModelCopyWithImpl<$Res, TaskStudentRequestModel>;
   @useResult
   $Res call(
-      {int issuerId,
-      List<int> groupIds,
+      {List<int> asigneeUserIds,
       int? disciplineId,
       int? subjectTypeId,
       int? academicYear});
 }
 
 /// @nodoc
-class _$TaskIssuerRequestModelCopyWithImpl<$Res,
-        $Val extends TaskIssuerRequestModel>
-    implements $TaskIssuerRequestModelCopyWith<$Res> {
-  _$TaskIssuerRequestModelCopyWithImpl(this._value, this._then);
+class _$TaskStudentRequestModelCopyWithImpl<$Res,
+        $Val extends TaskStudentRequestModel>
+    implements $TaskStudentRequestModelCopyWith<$Res> {
+  _$TaskStudentRequestModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -55,20 +53,15 @@ class _$TaskIssuerRequestModelCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? issuerId = null,
-    Object? groupIds = null,
+    Object? asigneeUserIds = null,
     Object? disciplineId = freezed,
     Object? subjectTypeId = freezed,
     Object? academicYear = freezed,
   }) {
     return _then(_value.copyWith(
-      issuerId: null == issuerId
-          ? _value.issuerId
-          : issuerId // ignore: cast_nullable_to_non_nullable
-              as int,
-      groupIds: null == groupIds
-          ? _value.groupIds
-          : groupIds // ignore: cast_nullable_to_non_nullable
+      asigneeUserIds: null == asigneeUserIds
+          ? _value.asigneeUserIds
+          : asigneeUserIds // ignore: cast_nullable_to_non_nullable
               as List<int>,
       disciplineId: freezed == disciplineId
           ? _value.disciplineId
@@ -87,49 +80,43 @@ class _$TaskIssuerRequestModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$TaskIssuerRequestModelImplCopyWith<$Res>
-    implements $TaskIssuerRequestModelCopyWith<$Res> {
-  factory _$$TaskIssuerRequestModelImplCopyWith(
-          _$TaskIssuerRequestModelImpl value,
-          $Res Function(_$TaskIssuerRequestModelImpl) then) =
-      __$$TaskIssuerRequestModelImplCopyWithImpl<$Res>;
+abstract class _$$TaskStudentRequestModelImplCopyWith<$Res>
+    implements $TaskStudentRequestModelCopyWith<$Res> {
+  factory _$$TaskStudentRequestModelImplCopyWith(
+          _$TaskStudentRequestModelImpl value,
+          $Res Function(_$TaskStudentRequestModelImpl) then) =
+      __$$TaskStudentRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {int issuerId,
-      List<int> groupIds,
+      {List<int> asigneeUserIds,
       int? disciplineId,
       int? subjectTypeId,
       int? academicYear});
 }
 
 /// @nodoc
-class __$$TaskIssuerRequestModelImplCopyWithImpl<$Res>
-    extends _$TaskIssuerRequestModelCopyWithImpl<$Res,
-        _$TaskIssuerRequestModelImpl>
-    implements _$$TaskIssuerRequestModelImplCopyWith<$Res> {
-  __$$TaskIssuerRequestModelImplCopyWithImpl(
-      _$TaskIssuerRequestModelImpl _value,
-      $Res Function(_$TaskIssuerRequestModelImpl) _then)
+class __$$TaskStudentRequestModelImplCopyWithImpl<$Res>
+    extends _$TaskStudentRequestModelCopyWithImpl<$Res,
+        _$TaskStudentRequestModelImpl>
+    implements _$$TaskStudentRequestModelImplCopyWith<$Res> {
+  __$$TaskStudentRequestModelImplCopyWithImpl(
+      _$TaskStudentRequestModelImpl _value,
+      $Res Function(_$TaskStudentRequestModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? issuerId = null,
-    Object? groupIds = null,
+    Object? asigneeUserIds = null,
     Object? disciplineId = freezed,
     Object? subjectTypeId = freezed,
     Object? academicYear = freezed,
   }) {
-    return _then(_$TaskIssuerRequestModelImpl(
-      issuerId: null == issuerId
-          ? _value.issuerId
-          : issuerId // ignore: cast_nullable_to_non_nullable
-              as int,
-      groupIds: null == groupIds
-          ? _value._groupIds
-          : groupIds // ignore: cast_nullable_to_non_nullable
+    return _then(_$TaskStudentRequestModelImpl(
+      asigneeUserIds: null == asigneeUserIds
+          ? _value._asigneeUserIds
+          : asigneeUserIds // ignore: cast_nullable_to_non_nullable
               as List<int>,
       disciplineId: freezed == disciplineId
           ? _value.disciplineId
@@ -149,23 +136,20 @@ class __$$TaskIssuerRequestModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$TaskIssuerRequestModelImpl implements _TaskIssuerRequestModel {
-  const _$TaskIssuerRequestModelImpl(
-      {required this.issuerId,
-      required final List<int> groupIds,
+class _$TaskStudentRequestModelImpl implements _TaskStudentRequestModel {
+  const _$TaskStudentRequestModelImpl(
+      {required final List<int> asigneeUserIds,
       required this.disciplineId,
       required this.subjectTypeId,
       required this.academicYear})
-      : _groupIds = groupIds;
+      : _asigneeUserIds = asigneeUserIds;
 
+  final List<int> _asigneeUserIds;
   @override
-  final int issuerId;
-  final List<int> _groupIds;
-  @override
-  List<int> get groupIds {
-    if (_groupIds is EqualUnmodifiableListView) return _groupIds;
+  List<int> get asigneeUserIds {
+    if (_asigneeUserIds is EqualUnmodifiableListView) return _asigneeUserIds;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_groupIds);
+    return EqualUnmodifiableListView(_asigneeUserIds);
   }
 
   @override
@@ -177,17 +161,16 @@ class _$TaskIssuerRequestModelImpl implements _TaskIssuerRequestModel {
 
   @override
   String toString() {
-    return 'TaskIssuerRequestModel(issuerId: $issuerId, groupIds: $groupIds, disciplineId: $disciplineId, subjectTypeId: $subjectTypeId, academicYear: $academicYear)';
+    return 'TaskStudentRequestModel(asigneeUserIds: $asigneeUserIds, disciplineId: $disciplineId, subjectTypeId: $subjectTypeId, academicYear: $academicYear)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TaskIssuerRequestModelImpl &&
-            (identical(other.issuerId, issuerId) ||
-                other.issuerId == issuerId) &&
-            const DeepCollectionEquality().equals(other._groupIds, _groupIds) &&
+            other is _$TaskStudentRequestModelImpl &&
+            const DeepCollectionEquality()
+                .equals(other._asigneeUserIds, _asigneeUserIds) &&
             (identical(other.disciplineId, disciplineId) ||
                 other.disciplineId == disciplineId) &&
             (identical(other.subjectTypeId, subjectTypeId) ||
@@ -199,8 +182,7 @@ class _$TaskIssuerRequestModelImpl implements _TaskIssuerRequestModel {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      issuerId,
-      const DeepCollectionEquality().hash(_groupIds),
+      const DeepCollectionEquality().hash(_asigneeUserIds),
       disciplineId,
       subjectTypeId,
       academicYear);
@@ -208,23 +190,20 @@ class _$TaskIssuerRequestModelImpl implements _TaskIssuerRequestModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$TaskIssuerRequestModelImplCopyWith<_$TaskIssuerRequestModelImpl>
-      get copyWith => __$$TaskIssuerRequestModelImplCopyWithImpl<
-          _$TaskIssuerRequestModelImpl>(this, _$identity);
+  _$$TaskStudentRequestModelImplCopyWith<_$TaskStudentRequestModelImpl>
+      get copyWith => __$$TaskStudentRequestModelImplCopyWithImpl<
+          _$TaskStudentRequestModelImpl>(this, _$identity);
 }
 
-abstract class _TaskIssuerRequestModel implements TaskIssuerRequestModel {
-  const factory _TaskIssuerRequestModel(
-      {required final int issuerId,
-      required final List<int> groupIds,
+abstract class _TaskStudentRequestModel implements TaskStudentRequestModel {
+  const factory _TaskStudentRequestModel(
+      {required final List<int> asigneeUserIds,
       required final int? disciplineId,
       required final int? subjectTypeId,
-      required final int? academicYear}) = _$TaskIssuerRequestModelImpl;
+      required final int? academicYear}) = _$TaskStudentRequestModelImpl;
 
   @override
-  int get issuerId;
-  @override
-  List<int> get groupIds;
+  List<int> get asigneeUserIds;
   @override
   int? get disciplineId;
   @override
@@ -233,6 +212,6 @@ abstract class _TaskIssuerRequestModel implements TaskIssuerRequestModel {
   int? get academicYear;
   @override
   @JsonKey(ignore: true)
-  _$$TaskIssuerRequestModelImplCopyWith<_$TaskIssuerRequestModelImpl>
+  _$$TaskStudentRequestModelImplCopyWith<_$TaskStudentRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

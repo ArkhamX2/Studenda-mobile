@@ -237,7 +237,7 @@ class _CourseSelectionWidget extends StatelessWidget {
           items: courses,
           model: groupSelectorBloc.selectedCourse.id == -1 ||
                   !courses.any(
-                      (element) => element == groupSelectorBloc.selectedCourse)
+                      (element) => element == groupSelectorBloc.selectedCourse,)
               ? courses.first
               : groupSelectorBloc.selectedCourse,
           callback: (element) {
@@ -261,7 +261,7 @@ class _CourseSelectionWidget extends StatelessWidget {
           items: courses,
           model: groupSelectorBloc.selectedCourse.id == -1 ||
                   !courses.any(
-                      (element) => element == groupSelectorBloc.selectedCourse)
+                      (element) => element == groupSelectorBloc.selectedCourse,)
               ? courses.first
               : groupSelectorBloc.selectedCourse,
           callback: (element) {
@@ -314,7 +314,7 @@ class _DepartmentSelectionWidget extends StatelessWidget {
           items: departments,
           model: groupSelectorBloc.selectedDepartment.id == -1 ||
                   !departments.any((element) =>
-                      element == groupSelectorBloc.selectedDepartment)
+                      element == groupSelectorBloc.selectedDepartment,)
               ? departments.first
               : groupSelectorBloc.selectedDepartment,
           callback: (element) {
@@ -338,7 +338,7 @@ class _DepartmentSelectionWidget extends StatelessWidget {
           items: departments,
           model: groupSelectorBloc.selectedDepartment.id == -1 ||
                   !departments.any((element) =>
-                      element == groupSelectorBloc.selectedDepartment)
+                      element == groupSelectorBloc.selectedDepartment,)
               ? departments.first
               : groupSelectorBloc.selectedDepartment,
           callback: (element) {
