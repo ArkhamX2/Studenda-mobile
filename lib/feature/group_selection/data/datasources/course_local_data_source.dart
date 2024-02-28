@@ -11,24 +11,11 @@ class CourseLocalDataSource extends LocalDataSource<List<CourseModel>, void> {
   @override
   Future<void> add(List<CourseModel> courseList) async {
     try {
-      final List<int> courses = [];
-      courses.addAll(courseBox.values.map((e) => e.id));
-      courses.addAll(courseList.map((e) => e.id));
-      final ids = {...courses};
-      await courseBox.putAll(
-        {
-          for (final element
-              in courseList.where((element) => ids.contains(element.id)))
-            element.id: element,
-        },
+      await updateBox<CourseModel>(
+        {for (final item in courseList) item.id: item},
+        courseBox.values.map((e) => e.id).toList(),
+        courseBox,
       );
-
-      await courseBox.deleteAll([
-        for (final id in courseList.where(
-          (element) => !courseList.map((e) => e.id).contains(element.id),
-        ))
-          id,
-      ]);
     } catch (e) {
       throw CacheException();
     }

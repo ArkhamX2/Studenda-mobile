@@ -12,24 +12,11 @@ class DepartmentLocalDataSource
   @override
   Future<void> add(List<DepartmentModel> departmentList) async {
     try {
-      final List<int> departments = [];
-      departments.addAll(departmentBox.values.map((e) => e.id));
-      departments.addAll(departmentList.map((e) => e.id));
-      final ids = {...departments};
-      await departmentBox.putAll(
-        {
-          for (final element
-              in departmentList.where((element) => ids.contains(element.id)))
-            element.id: element,
-        },
+      await updateBox<DepartmentModel>(
+        {for (final item in departmentList) item.id: item},
+        departmentBox.values.map((e) => e.id).toList(),
+        departmentBox,
       );
-
-      await departmentBox.deleteAll([
-        for (final id in departmentList.where(
-          (element) => !departmentList.map((e) => e.id).contains(element.id),
-        ))
-          id,
-      ]);
     } catch (e) {
       throw CacheException();
     }

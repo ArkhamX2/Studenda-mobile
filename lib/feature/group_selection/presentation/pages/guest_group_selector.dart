@@ -51,25 +51,36 @@ class _GroupSelectorPageState extends State<GroupSelectorPage> {
   }
 }
 
-class _GroupSelectorWidget extends StatelessWidget {
+class _GroupSelectorWidget extends StatefulWidget {
   const _GroupSelectorWidget();
 
   @override
+  State<_GroupSelectorWidget> createState() => _GroupSelectorWidgetState();
+}
+
+class _GroupSelectorWidgetState extends State<_GroupSelectorWidget> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      BlocProvider.of<GroupCubit>(context).load();
+      BlocProvider.of<CourseCubit>(context).load();
+      BlocProvider.of<DepartmentCubit>(context).load();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final groupSelectorBloc = context.watch<MainGroupSelectorBloc>();
-    groupSelectorBloc.add(const MainGroupSelectorEvent.getGroup());
-    groupSelectorBloc.add(const MainGroupSelectorEvent.getCourse());
-    groupSelectorBloc.add(const MainGroupSelectorEvent.getDepartment());
-    final groupCubit = context.watch<GroupCubit>();
-    final courseCubit = context.watch<CourseCubit>();
-    final departmentCubit = context.watch<DepartmentCubit>();
+    context.watch<MainGroupSelectorBloc>()
+      ..add(const MainGroupSelectorEvent.getGroup())
+      ..add(const MainGroupSelectorEvent.getCourse())
+      ..add(const MainGroupSelectorEvent.getDepartment());
+    final groupsState = context.watch<GroupCubit>().state;
+    final coursesState = context.watch<CourseCubit>().state;
+    final departmentsState = context.watch<DepartmentCubit>().state;
 
     return Builder(
       builder: (context) {
-        final groupsState = groupCubit.state;
-        final coursesState = courseCubit.state;
-        final departmentsState = departmentCubit.state;
-
         if (groupsState == const GroupState.loading() ||
             coursesState == const CourseState.loading() ||
             departmentsState == const DepartmentState.loading()) {
@@ -154,7 +165,6 @@ class __GroupDropdownWidgetState extends State<_GroupDropdownWidget> {
   @override
   Widget build(BuildContext context) {
     final groupSelectorBloc = context.watch<MainGroupSelectorBloc>();
-    //TODO: Посмотреть что не так с id
     final groupCubit = context.watch<GroupCubit>();
     final filteredGroups = groupSelectorBloc.selectedCourse.id == -1 ||
             groupSelectorBloc.selectedDepartment.id == -1
@@ -237,7 +247,8 @@ class _CourseSelectionWidget extends StatelessWidget {
           items: courses,
           model: groupSelectorBloc.selectedCourse.id == -1 ||
                   !courses.any(
-                      (element) => element == groupSelectorBloc.selectedCourse,)
+                    (element) => element == groupSelectorBloc.selectedCourse,
+                  )
               ? courses.first
               : groupSelectorBloc.selectedCourse,
           callback: (element) {
@@ -261,7 +272,8 @@ class _CourseSelectionWidget extends StatelessWidget {
           items: courses,
           model: groupSelectorBloc.selectedCourse.id == -1 ||
                   !courses.any(
-                      (element) => element == groupSelectorBloc.selectedCourse,)
+                    (element) => element == groupSelectorBloc.selectedCourse,
+                  )
               ? courses.first
               : groupSelectorBloc.selectedCourse,
           callback: (element) {
@@ -313,8 +325,10 @@ class _DepartmentSelectionWidget extends StatelessWidget {
         return StudendaDropdown<DepartmentEntity>(
           items: departments,
           model: groupSelectorBloc.selectedDepartment.id == -1 ||
-                  !departments.any((element) =>
-                      element == groupSelectorBloc.selectedDepartment,)
+                  !departments.any(
+                    (element) =>
+                        element == groupSelectorBloc.selectedDepartment,
+                  )
               ? departments.first
               : groupSelectorBloc.selectedDepartment,
           callback: (element) {
@@ -337,8 +351,10 @@ class _DepartmentSelectionWidget extends StatelessWidget {
         return StudendaDropdown<DepartmentEntity>(
           items: departments,
           model: groupSelectorBloc.selectedDepartment.id == -1 ||
-                  !departments.any((element) =>
-                      element == groupSelectorBloc.selectedDepartment,)
+                  !departments.any(
+                    (element) =>
+                        element == groupSelectorBloc.selectedDepartment,
+                  )
               ? departments.first
               : groupSelectorBloc.selectedDepartment,
           callback: (element) {

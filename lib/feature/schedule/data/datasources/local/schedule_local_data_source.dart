@@ -13,11 +13,10 @@ class ScheduleLocalDataSource
   @override
   Future<void> add(List<SubjectModel> subjectList) async {
     try {
-      //TODO: Что если из расписания убирается какой-то предмет? Сравнивать то, что пришло и то, что есть, обновляя то, что есть и удаляя, то что было удалено
-      final List<int> subjects = [];
-      subjects.addAll(subjectBox.values.map((e) => e.id));
-      subjects.addAll(subjectList.map((e) => e.id));
-      final ids = {...subjects};
+      final List<SubjectModel> subjects = [];
+      subjects.addAll(subjectBox.values);
+      subjects.addAll(subjectList);
+      final ids = {...subjects.map((e) => e.id)};
       await subjectBox.putAll(
         {
           for (final element
@@ -27,11 +26,16 @@ class ScheduleLocalDataSource
       );
 
       await subjectBox.deleteAll([
-        for (final id in subjectList.where(
-          (element) => !subjectList.map((e) => e.id).contains(element.id),
+        for (final subject in subjects.where(
+          (element) =>
+              !subjectList.map((e) => e.id).contains(element.id) &&
+              element.weekTypeId == subjectList.firstOrNull?.weekTypeId &&
+              element.groupId == subjectList.firstOrNull?.groupId,
+              
         ))
-          id,
+          subject.id,
       ]);
+
     } catch (e) {
       throw CacheException();
     }

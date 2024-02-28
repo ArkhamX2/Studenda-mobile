@@ -6,7 +6,9 @@ import 'package:studenda_mobile_student/core/data/datasource/datasource.dart';
 import 'package:studenda_mobile_student/core/data/error/exception.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/week_type_model.dart';
 
-class WeekTypeLocalDataSource extends LocalDataSource<List<WeekTypeModel>,void> {
+class WeekTypeLocalDataSource
+    extends LocalDataSource<List<WeekTypeModel>, void> {
+      
   Box<WeekTypeModel> weekTypeBox;
   SharedPreferences prefs;
 
@@ -15,25 +17,11 @@ class WeekTypeLocalDataSource extends LocalDataSource<List<WeekTypeModel>,void> 
   @override
   Future<void> add(List<WeekTypeModel> weekTypeList) async {
     try {
-      final List<int> weekTypes = [];
-      weekTypes.addAll(weekTypeBox.values.toList().map((e) => e.id));
-      weekTypes.addAll(weekTypeList.map((e) => e.id));
-      final ids = {...weekTypes};
-      await weekTypeBox.putAll(
-        {
-          for (final element
-              in weekTypeList.where((element) => ids.contains(element.id)))
-            element.id: element,
-        },
+      await updateBox<WeekTypeModel>(
+        {for (final item in weekTypeList) item.id: item},
+        weekTypeBox.values.map((e) => e.id).toList(),
+        weekTypeBox,
       );
-      
-      await weekTypeBox.deleteAll([
-        for (final id in weekTypeList.where(
-          (element) =>
-              !weekTypeList.map((e) => e.id).contains(element.id),
-        ))
-          id,
-      ]);
     } catch (e) {
       throw CacheException();
     }

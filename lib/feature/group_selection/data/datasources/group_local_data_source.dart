@@ -11,24 +11,11 @@ class GroupLocalDataSource extends LocalDataSource<List<GroupModel>, void> {
   @override
   Future<void> add(List<GroupModel> groupList) async {
     try {
-      final List<int> groups = [];
-      groups.addAll(groupBox.values.map((e) => e.id));
-      groups.addAll(groupList.map((e) => e.id));
-      final ids = {...groups};
-      await groupBox.putAll(
-        {
-          for (final element
-              in groupList.where((element) => ids.contains(element.id)))
-            element.id: element,
-        },
+      await updateBox<GroupModel>(
+        {for (final item in groupList) item.id: item},
+        groupBox.values.map((e) => e.id).toList(),
+        groupBox,
       );
-
-      await groupBox.deleteAll([
-        for (final id in groupList.where(
-          (element) => !groupList.map((e) => e.id).contains(element.id),
-        ))
-          id,
-      ]);
     } catch (e) {
       throw CacheException();
     }

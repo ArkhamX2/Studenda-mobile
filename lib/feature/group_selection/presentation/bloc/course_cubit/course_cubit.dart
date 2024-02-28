@@ -13,7 +13,6 @@ class CourseCubit extends Cubit<CourseState> {
 
   CourseCubit({required this.loadCourses}) : super(const CourseState.initial());
   Future<void> load() async {
-    emit(const CourseState.loading());
     final courses = await loadCourses(() {});
     courses.fold(
       (l) => emit(CourseState.fail(l.message)),

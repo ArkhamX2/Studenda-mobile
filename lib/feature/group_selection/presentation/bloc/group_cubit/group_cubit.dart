@@ -12,7 +12,6 @@ class GroupCubit extends Cubit<GroupState> {
 
   GroupCubit({required this.loadGroups}) : super(const GroupState.initial());
   Future<void> load() async {
-    emit(const GroupState.loading());
     final groups = await loadGroups(() {});
     groups.fold(
       (l) => emit(GroupState.fail(l.message)),

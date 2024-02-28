@@ -14,7 +14,6 @@ class DepartmentCubit extends Cubit<DepartmentState> {
   DepartmentCubit({required this.loadDepartments})
       : super(const DepartmentState.initial());
   Future<void> load() async {
-    emit(const DepartmentState.loading());
     final departments = await loadDepartments(() {});
     departments.fold(
       (l) => emit(DepartmentState.fail(l.message)),

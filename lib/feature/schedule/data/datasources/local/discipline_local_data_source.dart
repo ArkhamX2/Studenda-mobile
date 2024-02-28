@@ -8,6 +8,19 @@ class DisciplineLocalDataSource
   Box<DisciplineModel> disciplineBox;
 
   DisciplineLocalDataSource({required this.disciplineBox});
+  
+  @override
+  Future<void> add(List<DisciplineModel> disciplineList) async {
+    try {
+      await updateBox<DisciplineModel>(
+        {for (final item in disciplineList) item.id: item},
+        disciplineBox.values.map((e) => e.id).toList(),
+        disciplineBox,
+      );
+    } catch (e) {
+      throw CacheException();
+    }
+  }
 
   @override
   Future<List<DisciplineModel>> load(List<int> request) async {
@@ -16,31 +29,6 @@ class DisciplineLocalDataSource
       return disciplineBox.values
           .where((element) => request.contains(element.id))
           .toList();
-    } catch (e) {
-      throw CacheException();
-    }
-  }
-
-  @override
-  Future<void> add(List<DisciplineModel> disciplineList) async {
-    try {
-      final List<int> disciplines = [];
-      disciplines.addAll(disciplineBox.values.map((e) => e.id));
-      disciplines.addAll(disciplineList.map((e) => e.id));
-      final ids = {...disciplines};
-      await disciplineBox.putAll(
-        {
-          for (final element
-              in disciplineList.where((element) => ids.contains(element.id)))
-            element.id: element,
-        },
-      );
-      await disciplineBox.deleteAll([
-        for (final id in disciplineList.where(
-          (element) => !disciplineList.map((e) => e.id).contains(element.id),
-        ))
-          id,
-      ]);
     } catch (e) {
       throw CacheException();
     }

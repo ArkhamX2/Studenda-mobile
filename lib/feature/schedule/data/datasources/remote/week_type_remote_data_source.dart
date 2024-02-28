@@ -37,7 +37,7 @@ class WeekTypeRemoteDataSource extends RemoteDataSource<List<WeekTypeModel>,void
         'ids' : [],
       };
       final uri = 
-        SimplifiedUri.uri('http://88.210.3.137/api/schedule/week-type', queryParameters);
+        SimplifiedUri.uri('$BASE_URL/schedule/week-type', queryParameters);
       final response = await client.get(uri);
       if (response.statusCode == 200) {
         final decoded = json.decode(response.body) as List<dynamic>;

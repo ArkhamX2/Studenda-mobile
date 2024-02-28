@@ -3,7 +3,9 @@ import 'package:studenda_mobile_student/core/data/datasource/datasource.dart';
 import 'package:studenda_mobile_student/core/data/error/exception.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/subject_type_model.dart';
 
-class SubjectTypeLocalDataSource extends LocalDataSource<List<SubjectTypeModel>,List<int>> {
+class SubjectTypeLocalDataSource
+    extends LocalDataSource<List<SubjectTypeModel>, List<int>> {
+      
   Box<SubjectTypeModel> subjectTypeBox;
 
   SubjectTypeLocalDataSource({required this.subjectTypeBox});
@@ -11,25 +13,11 @@ class SubjectTypeLocalDataSource extends LocalDataSource<List<SubjectTypeModel>,
   @override
   Future<void> add(List<SubjectTypeModel> subjectTypeList) async {
     try {
-      final List<int> subjectTypes = [];
-      subjectTypes.addAll(subjectTypeBox.values.map((e) => e.id));
-      subjectTypes.addAll(subjectTypeList.map((e) => e.id));
-      final ids = {...subjectTypes};
-      await subjectTypeBox.putAll(
-        {
-          for (final element
-              in subjectTypeList.where((element) => ids.contains(element.id)))
-            element.id: element,
-        },
+      await updateBox<SubjectTypeModel>(
+        {for (final item in subjectTypeList) item.id: item},
+        subjectTypeBox.values.map((e) => e.id).toList(),
+        subjectTypeBox,
       );
-      
-      await subjectTypeBox.deleteAll([
-        for (final id in subjectTypeList.where(
-          (element) =>
-              !subjectTypeList.map((e) => e.id).contains(element.id),
-        ))
-          id,
-      ]);
     } catch (e) {
       throw CacheException();
     }

@@ -5,6 +5,7 @@ import 'package:studenda_mobile_student/feature/schedule/data/models/subject_pos
 
 class SubjectPositionLocalDataSource
     extends LocalDataSource<List<SubjectPositionModel>, void> {
+      
   Box<SubjectPositionModel> subjectPositionBox;
 
   SubjectPositionLocalDataSource({required this.subjectPositionBox});
@@ -12,25 +13,11 @@ class SubjectPositionLocalDataSource
   @override
   Future<void> add(List<SubjectPositionModel> subjectPositionList) async {
     try {
-      final List<int> subjectPositions = [];
-      subjectPositions.addAll(subjectPositionBox.values.map((e) => e.id));
-      subjectPositions.addAll(subjectPositionList.map((e) => e.id));
-      final ids = {...subjectPositions};
-      await subjectPositionBox.putAll(
-        {
-          for (final element in subjectPositionList
-              .where((element) => ids.contains(element.id)))
-            element.id: element,
-        },
+      await updateBox<SubjectPositionModel>(
+        {for (final item in subjectPositionList) item.id: item},
+        subjectPositionBox.values.map((e) => e.id).toList(),
+        subjectPositionBox,
       );
-
-      await subjectPositionBox.deleteAll([
-        for (final id in subjectPositionList.where(
-          (element) =>
-              !subjectPositionList.map((e) => e.id).contains(element.id),
-        ))
-          id,
-      ]);
     } catch (e) {
       throw CacheException();
     }
