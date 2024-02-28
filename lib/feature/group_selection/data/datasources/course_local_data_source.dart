@@ -11,6 +11,11 @@ class CourseLocalDataSource extends LocalDataSource<List<CourseModel>, void> {
   @override
   Future<void> add(List<CourseModel> courseList) async {
     try {
+      if (courseList.isEmpty) {
+        courseBox.clear();
+        return;
+      }
+
       await updateBox<CourseModel>(
         {for (final item in courseList) item.id: item},
         courseBox.values.map((e) => e.id).toList(),

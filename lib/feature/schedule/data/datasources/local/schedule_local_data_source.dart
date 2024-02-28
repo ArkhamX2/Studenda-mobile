@@ -55,4 +55,16 @@ class ScheduleLocalDataSource
       throw CacheException();
     }
   }
+
+  Future<void> clearWeek(ScheduleRequestModel request) async {
+
+    await subjectBox.deleteAll([
+        for (final subject in subjectBox.values.where(
+          (element) =>
+              element.weekTypeId == request.weekTypeId &&
+              element.groupId == request.groupId,
+        ))
+          subject.id,
+      ]);
+  }
 }

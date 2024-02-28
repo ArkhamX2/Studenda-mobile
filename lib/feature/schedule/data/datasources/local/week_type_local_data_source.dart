@@ -8,7 +8,6 @@ import 'package:studenda_mobile_student/feature/schedule/data/models/week_type_m
 
 class WeekTypeLocalDataSource
     extends LocalDataSource<List<WeekTypeModel>, void> {
-      
   Box<WeekTypeModel> weekTypeBox;
   SharedPreferences prefs;
 
@@ -17,6 +16,11 @@ class WeekTypeLocalDataSource
   @override
   Future<void> add(List<WeekTypeModel> weekTypeList) async {
     try {
+      if (weekTypeList.isEmpty) {
+        weekTypeBox.clear();
+        return;
+      }
+
       await updateBox<WeekTypeModel>(
         {for (final item in weekTypeList) item.id: item},
         weekTypeBox.values.map((e) => e.id).toList(),

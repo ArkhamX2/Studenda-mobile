@@ -5,7 +5,6 @@ import 'package:studenda_mobile_student/feature/schedule/data/models/subject_typ
 
 class SubjectTypeLocalDataSource
     extends LocalDataSource<List<SubjectTypeModel>, List<int>> {
-      
   Box<SubjectTypeModel> subjectTypeBox;
 
   SubjectTypeLocalDataSource({required this.subjectTypeBox});
@@ -13,6 +12,11 @@ class SubjectTypeLocalDataSource
   @override
   Future<void> add(List<SubjectTypeModel> subjectTypeList) async {
     try {
+      if (subjectTypeList.isEmpty) {
+        subjectTypeBox.clear();
+        return;
+      }
+
       await updateBox<SubjectTypeModel>(
         {for (final item in subjectTypeList) item.id: item},
         subjectTypeBox.values.map((e) => e.id).toList(),

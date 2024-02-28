@@ -11,6 +11,11 @@ class GroupLocalDataSource extends LocalDataSource<List<GroupModel>, void> {
   @override
   Future<void> add(List<GroupModel> groupList) async {
     try {
+      if (groupList.isEmpty) {
+        groupBox.clear();
+        return;
+      }
+
       await updateBox<GroupModel>(
         {for (final item in groupList) item.id: item},
         groupBox.values.map((e) => e.id).toList(),

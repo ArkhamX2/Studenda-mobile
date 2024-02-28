@@ -5,7 +5,6 @@ import 'package:studenda_mobile_student/feature/schedule/data/models/subject_pos
 
 class SubjectPositionLocalDataSource
     extends LocalDataSource<List<SubjectPositionModel>, void> {
-      
   Box<SubjectPositionModel> subjectPositionBox;
 
   SubjectPositionLocalDataSource({required this.subjectPositionBox});
@@ -13,6 +12,11 @@ class SubjectPositionLocalDataSource
   @override
   Future<void> add(List<SubjectPositionModel> subjectPositionList) async {
     try {
+      if (subjectPositionList.isEmpty) {
+        subjectPositionBox.clear();
+        return;
+      }
+
       await updateBox<SubjectPositionModel>(
         {for (final item in subjectPositionList) item.id: item},
         subjectPositionBox.values.map((e) => e.id).toList(),

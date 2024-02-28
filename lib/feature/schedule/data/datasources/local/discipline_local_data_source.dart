@@ -8,10 +8,15 @@ class DisciplineLocalDataSource
   Box<DisciplineModel> disciplineBox;
 
   DisciplineLocalDataSource({required this.disciplineBox});
-  
+
   @override
   Future<void> add(List<DisciplineModel> disciplineList) async {
     try {
+      if (disciplineList.isEmpty) {
+        disciplineBox.clear();
+        return;
+      }
+
       await updateBox<DisciplineModel>(
         {for (final item in disciplineList) item.id: item},
         disciplineBox.values.map((e) => e.id).toList(),

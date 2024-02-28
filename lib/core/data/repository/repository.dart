@@ -14,7 +14,7 @@ Future<Either<Failure, ResponseType>> loadData<Local extends LocalDataSource,
 ) async {
   if (await networkInfo.isConnected && remote) {
     try {
-      final remoteLoad = await remoteDataSource.load(request);
+      final remoteLoad = await remoteDataSource.load(request) as ResponseType;
       await localDataSource.add(remoteLoad);
       return Right(await localDataSource.load(request) as ResponseType);
     } on ServerException {

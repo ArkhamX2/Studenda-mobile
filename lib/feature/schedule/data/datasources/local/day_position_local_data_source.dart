@@ -12,6 +12,11 @@ class DayPositionLocalDataSource
   @override
   Future<void> add(List<DayPositionModel> dayPositionList) async {
     try {
+      if (dayPositionList.isEmpty) {
+        dayPositionBox.clear();
+        return;
+      }
+
       await updateBox<DayPositionModel>(
         {for (final item in dayPositionList) item.id: item},
         dayPositionBox.values.map((e) => e.id).toList(),

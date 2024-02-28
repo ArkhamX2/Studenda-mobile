@@ -12,6 +12,10 @@ class DepartmentLocalDataSource
   @override
   Future<void> add(List<DepartmentModel> departmentList) async {
     try {
+      if (departmentList.isEmpty) {
+        departmentBox.clear();
+        return;
+      }
       await updateBox<DepartmentModel>(
         {for (final item in departmentList) item.id: item},
         departmentBox.values.map((e) => e.id).toList(),

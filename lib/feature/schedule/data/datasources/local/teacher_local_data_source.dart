@@ -5,7 +5,6 @@ import 'package:studenda_mobile_student/feature/auth/data/models/user_model/user
 
 class TeacherLocalDataSource
     extends LocalDataSource<List<UserModel>, List<int>> {
-      
   Box<UserModel> userBox;
 
   TeacherLocalDataSource({required this.userBox});
@@ -13,6 +12,11 @@ class TeacherLocalDataSource
   @override
   Future<void> add(List<UserModel> teacherList) async {
     try {
+      if (teacherList.isEmpty) {
+        userBox.clear();
+        return;
+      }
+
       await updateBox<UserModel>(
         {for (final item in teacherList) item.id: item},
         userBox.values.map((e) => e.id).toList(),
