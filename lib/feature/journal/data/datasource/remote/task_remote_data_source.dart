@@ -24,7 +24,7 @@ class TaskRemoteDataSource
         'asigneeUserIds': request.asigneeUserIds,
         'disciplineId': request.disciplineId,
         'subjectTypeId': request.subjectTypeId,
-        'academicYear': request.academicYear
+        'academicYear': request.academicYear,
       };
       final uri =
           SimplifiedUri.uri('$BASE_URL/journal/task/asignee', queryParameters);
@@ -46,4 +46,3 @@ class TaskRemoteDataSource
     }
   }
 }
-

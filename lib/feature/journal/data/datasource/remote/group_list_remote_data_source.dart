@@ -9,10 +9,9 @@ import 'package:studenda_mobile_student/feature/auth/data/models/user_model/user
 
 class GroupListRemoteDataSource
     extends RemoteDataSource<List<UserModel>, List<int>> {
-  final http.Client client;
+        final http.Client client;
 
   GroupListRemoteDataSource({required this.client});
-
   @override
   Future<List<UserModel>> load(List<int> request) async {
     try {
