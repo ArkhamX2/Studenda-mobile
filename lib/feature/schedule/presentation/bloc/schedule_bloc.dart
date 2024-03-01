@@ -22,6 +22,8 @@ import 'package:studenda_mobile_student/feature/schedule/domain/usecases/get_sub
 import 'package:studenda_mobile_student/feature/schedule/domain/usecases/get_subject_type_list.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/usecases/get_teacher_list.dart';
 
+import '../../data/models/extended_discipline_model.dart';
+
 part 'schedule_bloc.freezed.dart';
 part 'schedule_event.dart';
 part 'schedule_state.dart';
@@ -38,6 +40,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
   WeekTypeEntity? currentWeekType =
       const WeekTypeEntity(id: -1, name: "name", index: -1);
   List<WeekTypeEntity>? weekTypeList = [];
+  List<ExtendedDisciplineModel> extendedDisciplineList = [];
   DateTime datePointer = DateTime.now();
 
   ScheduleBloc({
@@ -391,42 +394,64 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
             (error) => remote
                 ? emit(ScheduleState.fail(error.message))
                 : emit(ScheduleState.localLoadingFail(error.message)),
-            (succededSubjectPositionList) => remote
-                ? emit(
-                    ScheduleState.success(
-                      ScheduleEntity(
-                        schedule: mapSubjectModelToDayScehduleList(
-                          succededSubjectList,
-                          succededDisciplineList,
-                          succededTeacherList,
-                          succededDayPositionList,
-                          succededSubjectPositionList,
-                          succededSubjectTypeList,
+            (succededSubjectPositionList) {
+              extendedDisciplineList = mapDisciplinesAndTypes(succededSubjectList,
+                  succededDisciplineList, succededSubjectTypeList);
+              remote
+                  ? emit(
+                      ScheduleState.success(
+                        ScheduleEntity(
+                          schedule: mapSubjectModelToDayScehduleList(
+                            succededSubjectList,
+                            succededDisciplineList,
+                            succededTeacherList,
+                            succededDayPositionList,
+                            succededSubjectPositionList,
+                            succededSubjectTypeList,
+                          ),
+                          weekType: currentWeekType,
+                          weekDays: getCurrentWeekDays(currentDate),
                         ),
-                        weekType: currentWeekType,
-                        weekDays: getCurrentWeekDays(currentDate),
                       ),
-                    ),
-                  )
-                : emit(
-                    ScheduleState.localLoadingSuccess(
-                      ScheduleEntity(
-                        schedule: mapSubjectModelToDayScehduleList(
-                          succededSubjectList,
-                          succededDisciplineList,
-                          succededTeacherList,
-                          succededDayPositionList,
-                          succededSubjectPositionList,
-                          succededSubjectTypeList,
+                    )
+                  : emit(
+                      ScheduleState.localLoadingSuccess(
+                        ScheduleEntity(
+                          schedule: mapSubjectModelToDayScehduleList(
+                            succededSubjectList,
+                            succededDisciplineList,
+                            succededTeacherList,
+                            succededDayPositionList,
+                            succededSubjectPositionList,
+                            succededSubjectTypeList,
+                          ),
+                          weekType: currentWeekType,
+                          weekDays: getCurrentWeekDays(currentDate),
                         ),
-                        weekType: currentWeekType,
-                        weekDays: getCurrentWeekDays(currentDate),
                       ),
-                    ),
-                  ),
+                    );
+            },
           ),
         );
   }
+}
+
+List<ExtendedDisciplineModel> mapDisciplinesAndTypes(
+  List<SubjectModel> succededSubjectList,
+  List<DisciplineModel> succededDisciplineList,
+  List<SubjectTypeModel> succededSubjectTypeList,
+) {
+  return succededSubjectList.map(
+    (e) => ExtendedDisciplineModel(
+      discipline: succededDisciplineList.firstWhere(
+        (element) => element.id == e.disciplineId,
+      ),
+      subjectType: succededSubjectTypeList.firstWhere(
+        (element) => element.id == e.subjectTypeId,
+      ),
+    ),
+  ).toList();
+
 }
 
 List<int> _getSubjectTypeIds(List<SubjectModel> succededSubjectList) {

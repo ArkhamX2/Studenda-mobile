@@ -22,8 +22,8 @@ class TaskModelAdapter extends TypeAdapter<_$TaskModelImpl> {
       subjectTypeId: fields[2] as int,
       teacherId: fields[3] as int,
       studentId: fields[4] as int,
-      name: fields[5] as int,
-      description: fields[6] as int,
+      name: fields[5] as String,
+      description: fields[6] as String,
       createdAt: fields[7] as DateTime,
       updatedAt: fields[8] as DateTime,
     );
@@ -75,8 +75,8 @@ _$TaskModelImpl _$$TaskModelImplFromJson(Map<String, dynamic> json) =>
       subjectTypeId: json['subjectTypeId'] as int,
       teacherId: json['teacherId'] as int,
       studentId: json['studentId'] as int,
-      name: json['name'] as int,
-      description: json['description'] as int,
+      name: json['name'] as String,
+      description: json['description'] as String,
       createdAt: DateTime.parse(json['createdAt'] as String),
       updatedAt: DateTime.parse(json['updatedAt'] as String),
     );

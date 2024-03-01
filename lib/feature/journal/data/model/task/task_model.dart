@@ -15,8 +15,8 @@ class TaskModel extends HiveObject with _$TaskModel {
     @JsonKey(name: 'subjectTypeId') @HiveField(2) required int subjectTypeId,
     @JsonKey(name: 'teacherId') @HiveField(3) required int teacherId,
     @JsonKey(name: 'studentId') @HiveField(4) required int studentId,
-    @JsonKey(name: 'name') @HiveField(5) required int name,
-    @JsonKey(name: 'description') @HiveField(6) required int description,
+    @JsonKey(name: 'name') @HiveField(5) required String name,
+    @JsonKey(name: 'description') @HiveField(6) required String description,
     @JsonKey(name: 'createdAt') @HiveField(7) required DateTime createdAt,
     @JsonKey(name: 'updatedAt') @HiveField(8) required DateTime updatedAt,
 

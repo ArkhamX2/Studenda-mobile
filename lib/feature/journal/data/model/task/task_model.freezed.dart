@@ -37,10 +37,10 @@ mixin _$TaskModel {
   int get studentId => throw _privateConstructorUsedError;
   @JsonKey(name: 'name')
   @HiveField(5)
-  int get name => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'description')
   @HiveField(6)
-  int get description => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
   @JsonKey(name: 'createdAt')
   @HiveField(7)
   DateTime get createdAt => throw _privateConstructorUsedError;
@@ -65,8 +65,8 @@ abstract class $TaskModelCopyWith<$Res> {
       @JsonKey(name: 'subjectTypeId') @HiveField(2) int subjectTypeId,
       @JsonKey(name: 'teacherId') @HiveField(3) int teacherId,
       @JsonKey(name: 'studentId') @HiveField(4) int studentId,
-      @JsonKey(name: 'name') @HiveField(5) int name,
-      @JsonKey(name: 'description') @HiveField(6) int description,
+      @JsonKey(name: 'name') @HiveField(5) String name,
+      @JsonKey(name: 'description') @HiveField(6) String description,
       @JsonKey(name: 'createdAt') @HiveField(7) DateTime createdAt,
       @JsonKey(name: 'updatedAt') @HiveField(8) DateTime updatedAt});
 }
@@ -118,11 +118,11 @@ class _$TaskModelCopyWithImpl<$Res, $Val extends TaskModel>
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -149,8 +149,8 @@ abstract class _$$TaskModelImplCopyWith<$Res>
       @JsonKey(name: 'subjectTypeId') @HiveField(2) int subjectTypeId,
       @JsonKey(name: 'teacherId') @HiveField(3) int teacherId,
       @JsonKey(name: 'studentId') @HiveField(4) int studentId,
-      @JsonKey(name: 'name') @HiveField(5) int name,
-      @JsonKey(name: 'description') @HiveField(6) int description,
+      @JsonKey(name: 'name') @HiveField(5) String name,
+      @JsonKey(name: 'description') @HiveField(6) String description,
       @JsonKey(name: 'createdAt') @HiveField(7) DateTime createdAt,
       @JsonKey(name: 'updatedAt') @HiveField(8) DateTime updatedAt});
 }
@@ -200,11 +200,11 @@ class __$$TaskModelImplCopyWithImpl<$Res>
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -259,11 +259,11 @@ class _$TaskModelImpl extends _TaskModel {
   @override
   @JsonKey(name: 'name')
   @HiveField(5)
-  final int name;
+  final String name;
   @override
   @JsonKey(name: 'description')
   @HiveField(6)
-  final int description;
+  final String description;
   @override
   @JsonKey(name: 'createdAt')
   @HiveField(7)
@@ -331,10 +331,10 @@ abstract class _TaskModel extends TaskModel {
       required final int subjectTypeId,
       @JsonKey(name: 'teacherId') @HiveField(3) required final int teacherId,
       @JsonKey(name: 'studentId') @HiveField(4) required final int studentId,
-      @JsonKey(name: 'name') @HiveField(5) required final int name,
+      @JsonKey(name: 'name') @HiveField(5) required final String name,
       @JsonKey(name: 'description')
       @HiveField(6)
-      required final int description,
+      required final String description,
       @JsonKey(name: 'createdAt')
       @HiveField(7)
       required final DateTime createdAt,
@@ -369,11 +369,11 @@ abstract class _TaskModel extends TaskModel {
   @override
   @JsonKey(name: 'name')
   @HiveField(5)
-  int get name;
+  String get name;
   @override
   @JsonKey(name: 'description')
   @HiveField(6)
-  int get description;
+  String get description;
   @override
   @JsonKey(name: 'createdAt')
   @HiveField(7)

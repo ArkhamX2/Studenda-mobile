@@ -10,24 +10,28 @@ part 'auth_bloc.freezed.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final Auth authUseCase;
+  UserEntity user = const UserEntity(id: -1, roleId: -1);
 
   AuthBloc({required this.authUseCase}) : super(const _Initial()) {
-    on<_Auth>((event, emit) async {
-      emit(const AuthState.authLoading());
-      final user = await authUseCase(event.authRequest);
-      user.fold(
-        (l) => emit(
-          AuthState.authFail(l.message),
-        ),
-        (r) => emit(
-          AuthState.authSuccess(
-            UserEntity(
+    on<_Auth>(
+      (event, emit) async {
+        emit(const AuthState.authLoading());
+        final result = await authUseCase(event.authRequest);
+        result.fold(
+          (l) => emit(
+            AuthState.authFail(l.message),
+          ),
+          (r) {
+            user = UserEntity(
               id: r.user.id,
               roleId: r.user.roleId,
-            ),
-          ),
-        ),
-      );
-    });
+            );
+            emit(
+              AuthState.authSuccess(user),
+            );
+          },
+        );
+      },
+    );
   }
 }

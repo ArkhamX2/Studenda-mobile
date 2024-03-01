@@ -1,24 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:studenda_mobile_student/feature/journal/domain/entity/attendancy_mark_entity.dart';
+import 'package:studenda_mobile_student/feature/journal/domain/entity/mark_entity.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/extended_discipline_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/entities/subject_entity.dart';
-import 'package:studenda_mobile_student/model/common/mark.dart';
 import 'package:studenda_mobile_student/resources/colors.dart';
 
-final marks = <Mark>[
-  Mark(0, "12.03 13:15 (неделя: син)", "+"),
-  Mark(1, "19.03 13:15 (неделя: красн)", "-"),
-  Mark(2, "12.03 13:15 (неделя: син)", "-"),
-  Mark(3, "19.03 13:15 (неделя: красн)", "+"),
-  Mark(4, "19.03 13:15 (неделя: красн)", "-"),
-  Mark(5, "12.03 13:15 (неделя: син)", "+"),
-];
-
 class JournalAttendanceScreenWidget extends StatelessWidget {
-  final SubjectEntity subject;
+  final ExtendedDisciplineModel subject;
 
   const JournalAttendanceScreenWidget({super.key, required this.subject});
 
   @override
   Widget build(BuildContext context) {
+    final List<AttendancyMarkEntity> marks = [];
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 240, 241, 245),
       appBar: AppBar(
@@ -33,15 +27,6 @@ class JournalAttendanceScreenWidget extends StatelessWidget {
           "Placeholder",
           style: TextStyle(color: Colors.white, fontSize: 25),
         ),
-        actions: [
-          IconButton(
-            onPressed: () => {Navigator.of(context).pushNamed('/notification')},
-            icon: const Icon(
-              Icons.notifications,
-              color: Colors.white,
-            ),
-          ),
-        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(14.0),
@@ -63,7 +48,7 @@ class JournalAttendanceScreenWidget extends StatelessWidget {
 }
 
 class _MarkItemWidget extends StatelessWidget {
-  final Mark mark;
+  final AttendancyMarkEntity mark;
 
   const _MarkItemWidget({required this.mark});
 
@@ -87,7 +72,7 @@ class _MarkItemWidget extends StatelessWidget {
               children: [
                 Expanded(
                   child: Text(
-                    mark.date,
+                    "${mark.markDateName} ${mark.weekTypeName}",
                     style: const TextStyle(
                       color: mainForegroundColor,
                       fontSize: 18,
@@ -95,7 +80,7 @@ class _MarkItemWidget extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  mark.value,
+                  mark.value.toString(),
                   style: const TextStyle(
                     color: mainForegroundColor,
                     fontSize: 20,
