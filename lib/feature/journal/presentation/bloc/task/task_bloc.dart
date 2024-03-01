@@ -17,12 +17,14 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
 
   TaskBloc({required this.getTaskList}) : super(const _Initial()) {
     on<_Load>((event, emit) async {
-      final result = await getTaskList.call(TaskStudentRequestModel(
-        asigneeUserIds: event.asigneeUserIds,
-        disciplineId: event.disciplineId,
-        subjectTypeId: event.subjectTypeId,
-        academicYear: event.academicYear,
-      ));
+      final result = await getTaskList.call(
+        TaskStudentRequestModel(
+          asigneeUserIds: event.asigneeUserIds,
+          disciplineId: event.disciplineId,
+          subjectTypeId: event.subjectTypeId,
+          academicYear: event.academicYear,
+        ),
+      );
       result.fold(
         (l) => emit(TaskState.fail(l.message)),
         (r) => emit(TaskState.success(mapTaskModelToEntity(r))),

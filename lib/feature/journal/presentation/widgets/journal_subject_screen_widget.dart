@@ -163,11 +163,9 @@ class _TaskScrollWidget extends StatelessWidget {
         },
         child: SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
-          child: WeekScheduleWidget(
-            schedule: widget.schedule,
-            keys: widget.globalKeys,
-            currentWeekDay: widget.currentWeekDay,
-            needHighlight: widget.needHighlight,
+          child: Column(
+            children: tasks.map((e) => _TaskItemWidget(task: e, mark: )).toList(),
+          )
           ),
         ),
       ),
