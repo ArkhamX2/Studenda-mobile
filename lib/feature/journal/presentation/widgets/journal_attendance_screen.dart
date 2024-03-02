@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:studenda_mobile_student/core/presentation/UI/studenda_loading_widget.dart';
+import 'package:studenda_mobile_student/core/presentation/label/studenda_default_label_widget.dart';
+import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/main_group_selection_bloc/main_group_selector_bloc.dart';
 import 'package:studenda_mobile_student/feature/journal/data/model/api/absence_request_model.dart';
 import 'package:studenda_mobile_student/feature/journal/domain/entity/attendancy_mark_entity.dart';
 import 'package:studenda_mobile_student/feature/journal/presentation/cubit/attendancy/attendancy_cubit.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/extended_discipline_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/domain/entities/schedule_entity.dart';
+import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/schedule_bloc.dart';
 import 'package:studenda_mobile_student/injection_container.dart';
 import 'package:studenda_mobile_student/resources/colors.dart';
 
@@ -19,12 +24,60 @@ class JournalAttendanceScreenWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => sl<AttendancyCubit>()
-        ..loadLocally(AbsenceRequestModel(userId: userId, dates: [])),
-      child: const _AttendancyBodyWidget(),
+    final selectedGroupEntity =
+        context.watch<MainGroupSelectorBloc>().selectedGroup;
+    final scheduleBloc = context.watch<ScheduleBloc>();
+    scheduleBloc.add(ScheduleEvent.load(selectedGroupEntity.id));
+    return scheduleBloc.state.when(
+      initial: () => const Center(
+        child: StudendaLoadingWidget(),
+      ),
+      loading: () => const Center(
+        child: StudendaLoadingWidget(),
+      ),
+      success: (schedule) => BlocProvider(
+        create: (context) => sl<AttendancyCubit>()
+          ..loadLocally(
+              AbsenceRequestModel(
+                  userId: userId, dates: getDatesOfSubject(subject, schedule)),
+              scheduleBloc.weekTypeList!),
+        child: const _AttendancyBodyWidget(),
+      ),
+      fail: (message) {
+        scheduleBloc.add(
+          ScheduleEvent.load(
+            selectedGroupEntity.id,
+          ),
+        );
+        return Center(
+          child: StudendaDefaultLabelWidget(text: message, fontSize: 18),
+        );
+      },
+      localLoadingFail: (message) {
+        scheduleBloc.add(
+          ScheduleEvent.loadLocal(
+            selectedGroupEntity.id,
+          ),
+        );
+        return Center(
+          child: StudendaDefaultLabelWidget(text: message, fontSize: 18),
+        );
+      },
+      localLoadingSuccess: (schedule) => BlocProvider(
+        create: (context) => sl<AttendancyCubit>()
+          ..loadLocally(
+              AbsenceRequestModel(
+                  userId: userId, dates: getDatesOfSubject(subject, schedule)),
+              scheduleBloc.weekTypeList!),
+        child: const _AttendancyBodyWidget(),
+      ),
     );
   }
+}
+
+List<DateTime> getDatesOfSubject(
+    ExtendedDisciplineModel subject, ScheduleEntity schedule) {
+  return [];
 }
 
 class _AttendancyBodyWidget extends StatelessWidget {

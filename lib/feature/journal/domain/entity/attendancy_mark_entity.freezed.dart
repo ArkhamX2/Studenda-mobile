@@ -16,7 +16,6 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AttendancyMarkEntity {
-  int get id => throw _privateConstructorUsedError;
   String get markDateName => throw _privateConstructorUsedError;
   String get weekTypeName => throw _privateConstructorUsedError;
   bool get value => throw _privateConstructorUsedError;
@@ -32,7 +31,7 @@ abstract class $AttendancyMarkEntityCopyWith<$Res> {
           $Res Function(AttendancyMarkEntity) then) =
       _$AttendancyMarkEntityCopyWithImpl<$Res, AttendancyMarkEntity>;
   @useResult
-  $Res call({int id, String markDateName, String weekTypeName, bool value});
+  $Res call({String markDateName, String weekTypeName, bool value});
 }
 
 /// @nodoc
@@ -49,16 +48,11 @@ class _$AttendancyMarkEntityCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? markDateName = null,
     Object? weekTypeName = null,
     Object? value = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
       markDateName: null == markDateName
           ? _value.markDateName
           : markDateName // ignore: cast_nullable_to_non_nullable
@@ -83,7 +77,7 @@ abstract class _$$AttendancyMarkEntityImplCopyWith<$Res>
       __$$AttendancyMarkEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String markDateName, String weekTypeName, bool value});
+  $Res call({String markDateName, String weekTypeName, bool value});
 }
 
 /// @nodoc
@@ -97,16 +91,11 @@ class __$$AttendancyMarkEntityImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? markDateName = null,
     Object? weekTypeName = null,
     Object? value = null,
   }) {
     return _then(_$AttendancyMarkEntityImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
       markDateName: null == markDateName
           ? _value.markDateName
           : markDateName // ignore: cast_nullable_to_non_nullable
@@ -127,13 +116,10 @@ class __$$AttendancyMarkEntityImplCopyWithImpl<$Res>
 
 class _$AttendancyMarkEntityImpl implements _AttendancyMarkEntity {
   const _$AttendancyMarkEntityImpl(
-      {required this.id,
-      required this.markDateName,
+      {required this.markDateName,
       required this.weekTypeName,
       required this.value});
 
-  @override
-  final int id;
   @override
   final String markDateName;
   @override
@@ -143,7 +129,7 @@ class _$AttendancyMarkEntityImpl implements _AttendancyMarkEntity {
 
   @override
   String toString() {
-    return 'AttendancyMarkEntity(id: $id, markDateName: $markDateName, weekTypeName: $weekTypeName, value: $value)';
+    return 'AttendancyMarkEntity(markDateName: $markDateName, weekTypeName: $weekTypeName, value: $value)';
   }
 
   @override
@@ -151,7 +137,6 @@ class _$AttendancyMarkEntityImpl implements _AttendancyMarkEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AttendancyMarkEntityImpl &&
-            (identical(other.id, id) || other.id == id) &&
             (identical(other.markDateName, markDateName) ||
                 other.markDateName == markDateName) &&
             (identical(other.weekTypeName, weekTypeName) ||
@@ -161,7 +146,7 @@ class _$AttendancyMarkEntityImpl implements _AttendancyMarkEntity {
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, markDateName, weekTypeName, value);
+      Object.hash(runtimeType, markDateName, weekTypeName, value);
 
   @JsonKey(ignore: true)
   @override
@@ -174,13 +159,10 @@ class _$AttendancyMarkEntityImpl implements _AttendancyMarkEntity {
 
 abstract class _AttendancyMarkEntity implements AttendancyMarkEntity {
   const factory _AttendancyMarkEntity(
-      {required final int id,
-      required final String markDateName,
+      {required final String markDateName,
       required final String weekTypeName,
       required final bool value}) = _$AttendancyMarkEntityImpl;
 
-  @override
-  int get id;
   @override
   String get markDateName;
   @override
