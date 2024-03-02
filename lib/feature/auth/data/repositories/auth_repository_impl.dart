@@ -34,7 +34,8 @@ class AuthRepositoryImpl implements AuthRepository {
       }
     } else {
       return const Left(
-          CacheFailure(message: "Отсутствует подключение к сети"));
+        CacheFailure(message: "Отсутствует подключение к сети"),
+      );
     }
   }
 
@@ -50,7 +51,8 @@ class AuthRepositoryImpl implements AuthRepository {
       }
     } else {
       return const Left(
-          CacheFailure(message: "Отсутствует подключение к сети"));
+        CacheFailure(message: "Отсутствует подключение к сети"),
+      );
     }
   }
 

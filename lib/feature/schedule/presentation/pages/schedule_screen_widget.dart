@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:studenda_mobile_student/core/constant_values/presentation_const_values.dart';
 import 'package:studenda_mobile_student/core/constant_values/routes.dart';
+import 'package:studenda_mobile_student/core/presentation/UI/snack_message.dart';
 import 'package:studenda_mobile_student/core/presentation/UI/studenda_loading_widget.dart';
 import 'package:studenda_mobile_student/core/presentation/label/studenda_default_label_widget.dart';
 import 'package:studenda_mobile_student/core/presentation/label/studenda_weighted_label_widget.dart';
@@ -13,9 +14,6 @@ import 'package:studenda_mobile_student/feature/schedule/presentation/widgets/da
 import 'package:studenda_mobile_student/feature/schedule/presentation/widgets/group_selector_text_style.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/widgets/week_schedule_widget.dart';
 import 'package:studenda_mobile_student/injection_container.dart';
-import 'package:studenda_mobile_student/resources/colors.dart';
-
-import '../../../../core/presentation/UI/snack_message.dart';
 
 class ScheduleScreenPage extends StatefulWidget {
   const ScheduleScreenPage({super.key});
