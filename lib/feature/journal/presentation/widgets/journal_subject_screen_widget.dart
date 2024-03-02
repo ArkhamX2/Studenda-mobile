@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:studenda_mobile_student/core/presentation/UI/studenda_loading_widget.dart';
 import 'package:studenda_mobile_student/core/presentation/label/studenda_default_label_widget.dart';
 import 'package:studenda_mobile_student/core/utils/get_current_academic_year.dart';
+import 'package:studenda_mobile_student/feature/journal/data/model/api/task_student_request_model.dart';
 import 'package:studenda_mobile_student/feature/journal/domain/entity/mark_entity.dart';
 import 'package:studenda_mobile_student/feature/journal/domain/entity/task_entity.dart';
-import 'package:studenda_mobile_student/feature/journal/presentation/bloc/task/task_bloc.dart';
+import 'package:studenda_mobile_student/feature/journal/presentation/cubit/mark/mark_cubit.dart';
+import 'package:studenda_mobile_student/feature/journal/presentation/cubit/task/task_cubit.dart';
 import 'package:studenda_mobile_student/feature/journal/presentation/widgets/journal_attendance_screen.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/extended_discipline_model.dart';
 import 'package:studenda_mobile_student/injection_container.dart';
@@ -16,19 +17,22 @@ class JournalSubjectScreenWidget extends StatelessWidget {
   final ExtendedDisciplineModel subject;
   final int userId;
 
-  const JournalSubjectScreenWidget(
-      {super.key, required this.subject, required this.userId});
+  const JournalSubjectScreenWidget({
+    super.key,
+    required this.subject,
+    required this.userId,
+  });
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => sl<TaskBloc>()
-        ..add(
-          TaskEvent.loadLocal(
-            [userId],
-            subject.discipline.id,
-            subject.subjectType.id,
-            getCurrentAcademicYear(),
+      create: (context) => sl<TaskCubit>()
+        ..loadLocally(
+          TaskStudentRequestModel(
+            asigneeUserIds: [userId],
+            disciplineId: subject.discipline.id,
+            subjectTypeId: subject.subjectType.id,
+            academicYear: getCurrentAcademicYear(),
           ),
         ),
       child: _JournalSubjectBody(subject: subject, userId: userId),
@@ -47,7 +51,7 @@ class _JournalSubjectBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final taskBloc = context.watch<TaskBloc>();
+    final taskBloc = context.watch<TaskCubit>();
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 240, 241, 245),
       appBar: AppBar(
@@ -74,7 +78,7 @@ class _JournalSubjectBody extends StatelessWidget {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) =>
-                          JournalAttendanceScreenWidget(subject: subject),
+                          JournalAttendanceScreenWidget(subject: subject,userId: userId),
                     ),
                   );
                 },
@@ -84,30 +88,32 @@ class _JournalSubjectBody extends StatelessWidget {
                 loading: () => const Center(child: StudendaLoadingWidget()),
                 success: (taskList) => Expanded(
                   child: _TaskScrollWidget(
-                    tasks: taskList,
+                    subject: subject,
+                    userId: userId,
                   ),
                 ),
                 fail: (message) {
-                  taskBloc.add(
-                    TaskEvent.loadLocal(
-                      [userId],
-                      subject.discipline.id,
-                      subject.subjectType.id,
-                      getCurrentAcademicYear(),
+                  taskBloc.loadLocally(
+                    TaskStudentRequestModel(
+                      asigneeUserIds: [userId],
+                      disciplineId: subject.discipline.id,
+                      subjectTypeId: subject.subjectType.id,
+                      academicYear: getCurrentAcademicYear(),
                     ),
                   );
+
                   return Center(
                     child:
                         StudendaDefaultLabelWidget(text: message, fontSize: 18),
                   );
                 },
                 localLoadingFail: (message) {
-                  taskBloc.add(
-                    TaskEvent.load(
-                      [userId],
-                      subject.discipline.id,
-                      subject.subjectType.id,
-                      getCurrentAcademicYear(),
+                  taskBloc.load(
+                    TaskStudentRequestModel(
+                      asigneeUserIds: [userId],
+                      disciplineId: subject.discipline.id,
+                      subjectTypeId: subject.subjectType.id,
+                      academicYear: getCurrentAcademicYear(),
                     ),
                   );
                   return Center(
@@ -117,17 +123,18 @@ class _JournalSubjectBody extends StatelessWidget {
                 },
                 localLoadingSuccess: (taskList) {
                   if (taskList.isEmpty) {
-                    taskBloc.add(
-                      TaskEvent.load(
-                        [userId],
-                        subject.discipline.id,
-                        subject.subjectType.id,
-                        getCurrentAcademicYear(),
+                    taskBloc.load(
+                      TaskStudentRequestModel(
+                        asigneeUserIds: [userId],
+                        disciplineId: subject.discipline.id,
+                        subjectTypeId: subject.subjectType.id,
+                        academicYear: getCurrentAcademicYear(),
                       ),
                     );
                   }
                   return _TaskScrollWidget(
-                    tasks: taskList,
+                    subject: subject,
+                    userId: userId,
                   );
                 },
               ),
@@ -140,32 +147,46 @@ class _JournalSubjectBody extends StatelessWidget {
 }
 
 class _TaskScrollWidget extends StatelessWidget {
-  final List<TaskEntity> tasks;
-
   final ExtendedDisciplineModel subject;
   final int userId;
 
-  const _TaskScrollWidget(
-      {required this.tasks, required this.subject, required this.userId});
+  const _TaskScrollWidget({required this.subject, required this.userId});
 
   @override
   Widget build(BuildContext context) {
-    final taskBloc = context.watch<TaskBloc>();
+    final taskCubit = context.watch<TaskCubit>();
+    final markCubit = context.watch<MarkCubit>();
     return LayoutBuilder(
       builder: (context, constraints) => RefreshIndicator(
         onRefresh: () async {
-          taskBloc.add(TaskEvent.load(
-            [userId],
-            subject.discipline.id,
-            subject.subjectType.id,
-            getCurrentAcademicYear(),
-          ));
+          taskCubit.load(
+            TaskStudentRequestModel(
+              asigneeUserIds: [userId],
+              disciplineId: subject.discipline.id,
+              subjectTypeId: subject.subjectType.id,
+              academicYear: getCurrentAcademicYear(),
+            ),
+          );
+          markCubit.load(taskCubit.taskList.map((e) => e.id).toList());
         },
         child: SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
           child: Column(
-            children: tasks.map((e) => _TaskItemWidget(task: e, mark: )).toList(),
-          )
+            children: taskCubit.taskList
+                .map(
+                  (e) => _TaskItemWidget(
+                    task: e,
+                    mark: MarkEntity(
+                      id: markCubit.markList
+                          .firstWhere((element) => element.taskId == e.id)
+                          .id,
+                      value: markCubit.markList
+                          .firstWhere((element) => element.taskId == e.id)
+                          .value,
+                    ),
+                  ),
+                )
+                .toList(),
           ),
         ),
       ),

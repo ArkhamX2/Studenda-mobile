@@ -4,8 +4,8 @@ import 'package:studenda_mobile_student/core/data/error/exception.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/schedule_request_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/subject_model.dart';
 
-class ScheduleLocalDataSource
-    extends LocalDataSource<List<SubjectModel>, ScheduleRequestModel> {
+class ScheduleLocalDataSource extends LocalDataSource<List<SubjectModel>,
+    ScheduleRequestByWeekTypeModel> {
   Box<SubjectModel> subjectBox;
 
   ScheduleLocalDataSource({required this.subjectBox});
@@ -31,40 +31,48 @@ class ScheduleLocalDataSource
               !subjectList.map((e) => e.id).contains(element.id) &&
               element.weekTypeId == subjectList.firstOrNull?.weekTypeId &&
               element.groupId == subjectList.firstOrNull?.groupId,
-              
         ))
           subject.id,
       ]);
-
     } catch (e) {
       throw CacheException();
     }
   }
 
   @override
-  Future<List<SubjectModel>> load(ScheduleRequestModel request) async {
+  Future<List<SubjectModel>> load(
+    ScheduleRequestByWeekTypeModel request,
+  ) async {
     try {
-      return subjectBox.values
-          .where(
-            (element) =>
-                element.groupId == request.groupId &&
-                element.weekTypeId == request.weekTypeId,
-          )
-          .toList();
+      final List<SubjectModel> subjects = [];
+
+      for (final id in request.weekTypeIds) {
+        subjects.addAll(
+          subjectBox.values
+              .where(
+                (element) =>
+                    element.groupId == request.groupId &&
+                    element.weekTypeId == id,
+              )
+              .toList(),
+        );
+      }
+      return subjects;
     } catch (e) {
       throw CacheException();
     }
   }
 
-  Future<void> clearWeek(ScheduleRequestModel request) async {
-
-    await subjectBox.deleteAll([
+  Future<void> clearWeek(ScheduleRequestByWeekTypeModel request) async {
+    for (final weekType in request.weekTypeIds) {
+      await subjectBox.deleteAll([
         for (final subject in subjectBox.values.where(
           (element) =>
-              element.weekTypeId == request.weekTypeId &&
+              element.weekTypeId == weekType &&
               element.groupId == request.groupId,
         ))
           subject.id,
       ]);
+    }
   }
 }

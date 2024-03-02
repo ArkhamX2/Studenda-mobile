@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:studenda_mobile_student/core/constant_values/routes.dart';
+import 'package:studenda_mobile_student/core/presentation/UI/snack_message.dart';
 import 'package:studenda_mobile_student/core/presentation/UI/studenda_loading_widget.dart';
 import 'package:studenda_mobile_student/core/presentation/button_widget.dart';
 import 'package:studenda_mobile_student/core/presentation/label/studenda_aligned_label_widget.dart';
@@ -11,6 +13,7 @@ import 'package:studenda_mobile_student/feature/auth/data/models/security_reques
 import 'package:studenda_mobile_student/feature/auth/presentation/bloc/bloc/auth_bloc.dart';
 import 'package:studenda_mobile_student/feature/auth/presentation/widgets/auth_app_bar_widget.dart';
 import 'package:studenda_mobile_student/injection_container.dart';
+
 class VerificationAuthPage extends StatefulWidget {
   final String email;
   const VerificationAuthPage({super.key, required this.email});
@@ -64,17 +67,29 @@ class _BodyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final state = context.watch<AuthBloc>().state;
+    final authBloc = context.watch<AuthBloc>();
 
-    return state == const AuthState.authLoading()
-        ? const Center(
-            child: StudendaLoadingWidget(),
-          )
-        : VerificationWidet(
-            formKey: formKey,
-            widget: widget,
-            controller: controller,
-          );
+    return authBloc.state.when(
+      initial: () => VerificationWidet(
+        formKey: formKey,
+        widget: widget,
+        controller: controller,
+        errorMessage: "",
+      ),
+      authSuccess: (token) {
+        Navigator.of(context).pushNamed(mainRoute);
+        return Container();
+      },
+      authLoading: () => const Center(
+        child: StudendaLoadingWidget(),
+      ),
+      authFail: (message) => VerificationWidet(
+        formKey: formKey,
+        widget: widget,
+        controller: controller,
+        errorMessage: message,
+      ),
+    );
   }
 }
 
@@ -84,14 +99,17 @@ class VerificationWidet extends StatelessWidget {
     required this.formKey,
     required this.widget,
     required this.controller,
+    required this.errorMessage,
   });
 
   final GlobalKey<FormState> formKey;
   final VerificationAuthPage widget;
   final TextEditingController controller;
+  final String errorMessage;
 
   @override
   Widget build(BuildContext context) {
+    if (errorMessage.isNotEmpty) snackMessage(context, errorMessage);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 17),
       child: Form(
@@ -150,7 +168,6 @@ class _ButtonContainerWidget extends StatelessWidget {
                   ),
                 ),
               );
-              Navigator.of(context).pushNamed("/main_nav");
             }
           },
         ),

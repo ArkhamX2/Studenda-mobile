@@ -1,22 +1,17 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:studenda_mobile_student/core/data/datasource/datasource.dart';
 import 'package:studenda_mobile_student/core/data/error/exception.dart';
 import 'package:studenda_mobile_student/core/network/api_config.dart';
 import 'package:studenda_mobile_student/feature/auth/data/models/security_request_model.dart';
 import 'package:studenda_mobile_student/feature/auth/data/models/security_response_model.dart';
 import 'package:studenda_mobile_student/feature/auth/data/models/token_model.dart';
 
-abstract class AuthRemoteDataSource {
-  Future<SecurityResponseModel> auth(SecurityRequestModel request);
-  Future<TokenModel> refreshToken(TokenModel request);
-}
-
-class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
+class AuthRemoteDataSource implements RemoteDataSource<SecurityRequestModel,SecurityResponseModel> {
   final http.Client client;
 
-  AuthRemoteDataSourceImpl({required this.client});
+  AuthRemoteDataSource({required this.client});
 
-  @override
   Future<SecurityResponseModel> auth(SecurityRequestModel request) async {
     try {
       final response = await client.post(
@@ -38,7 +33,6 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     }
   }
   
-  @override
   Future<TokenModel> refreshToken(TokenModel request) async {
     try {
       final response = await client.post(
@@ -58,5 +52,11 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     } catch (e) {
       throw ServerException();
     }
+  }
+  
+  @override
+  Future<SecurityRequestModel> load(SecurityResponseModel request) {
+    // TODO: implement load
+    throw UnimplementedError();
   }
 }

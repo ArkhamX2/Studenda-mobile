@@ -1,7 +1,7 @@
-class ScheduleRequestModel {
+class ScheduleRequestByWeekTypeModel {
   final int groupId;
-  final int weekTypeId;
+  final List<int> weekTypeIds;
   final int academicYear;
 
-  ScheduleRequestModel({required this.academicYear, required this.groupId, required this.weekTypeId});
+  ScheduleRequestByWeekTypeModel({required this.academicYear, required this.groupId, required this.weekTypeIds});
 }

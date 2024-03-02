@@ -8,7 +8,7 @@ import 'package:studenda_mobile_student/feature/schedule/data/models/schedule_re
 import 'package:studenda_mobile_student/feature/schedule/data/models/subject_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/repositories/schedule_repository.dart';
 
-class ScheduleRepositoryImpl implements ScheduleRepository {
+class ScheduleRepositoryImpl implements ScheduleByWeekTypeRepository {
   final ScheduleRemoteDataSource remoteDataSource;
   final ScheduleLocalDataSource localDataSource;
   final NetworkInfo networkInfo;
@@ -20,24 +20,49 @@ class ScheduleRepositoryImpl implements ScheduleRepository {
   });
   @override
   Future<Either<Failure, List<SubjectModel>>> load(
-    ScheduleRequestModel request, [
+    ScheduleRequestByWeekTypeModel request, 
+    List<int> weekTypeIds,[
     bool remote = true,
   ]) async {
     if (await networkInfo.isConnected && remote) {
       try {
         final remoteLoad = await remoteDataSource.load(request);
-        if(remoteLoad.isEmpty){
+        if (remoteLoad.isEmpty) {
           await localDataSource.clearWeek(request);
-          return Right(await localDataSource.load(request));
+          return Right(
+            await localDataSource.load(
+              ScheduleRequestByWeekTypeModel(
+                academicYear: request.academicYear,
+                groupId: request.groupId,
+                weekTypeIds: weekTypeIds,
+              ),
+            ),
+          );
         }
-        await localDataSource.add(remoteLoad);
-        return Right(await localDataSource.load(request));
+        await localDataSource.add(
+          await localDataSource.load(
+            ScheduleRequestByWeekTypeModel(
+              academicYear: request.academicYear,
+              groupId: request.groupId,
+              weekTypeIds: weekTypeIds,
+            ),
+          ),
+        );
+        return Right(remoteLoad);
       } on ServerException {
         return const Left(ServerFailure(message: "Ошибка сервера"));
       }
     } else {
       try {
-        return Right(await localDataSource.load(request));
+        return Right(
+          await localDataSource.load(
+            ScheduleRequestByWeekTypeModel(
+              academicYear: request.academicYear,
+              groupId: request.groupId,
+              weekTypeIds: weekTypeIds,
+            ),
+          ),
+        );
       } on CacheException {
         return const Left(
           CacheFailure(message: "Ошибка локального хранилища"),

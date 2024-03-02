@@ -1,18 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:studenda_mobile_student/feature/journal/data/model/api/absence_request_model.dart';
 import 'package:studenda_mobile_student/feature/journal/domain/entity/attendancy_mark_entity.dart';
-import 'package:studenda_mobile_student/feature/journal/domain/entity/mark_entity.dart';
+import 'package:studenda_mobile_student/feature/journal/presentation/cubit/attendancy/attendancy_cubit.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/extended_discipline_model.dart';
-import 'package:studenda_mobile_student/feature/schedule/domain/entities/subject_entity.dart';
+import 'package:studenda_mobile_student/injection_container.dart';
 import 'package:studenda_mobile_student/resources/colors.dart';
 
 class JournalAttendanceScreenWidget extends StatelessWidget {
   final ExtendedDisciplineModel subject;
+  final int userId;
 
-  const JournalAttendanceScreenWidget({super.key, required this.subject});
+  const JournalAttendanceScreenWidget({
+    super.key,
+    required this.subject,
+    required this.userId,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final List<AttendancyMarkEntity> marks = [];
+    return BlocProvider(
+      create: (context) => sl<AttendancyCubit>()
+        ..loadLocally(AbsenceRequestModel(userId: userId, dates: [])),
+      child: const _AttendancyBodyWidget(),
+    );
+  }
+}
+
+class _AttendancyBodyWidget extends StatelessWidget {
+  const _AttendancyBodyWidget();
+
+  @override
+  Widget build(BuildContext context) {
+    final attendancyCubit = context.watch<AttendancyCubit>();
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 240, 241, 245),
       appBar: AppBar(
@@ -33,13 +53,9 @@ class JournalAttendanceScreenWidget extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Column(
-                children: marks
-                    .map((element) => _MarkItemWidget(mark: element))
-                    .toList(),
-              ),
-            ],
+            children: attendancyCubit.markList
+                .map((element) => _MarkItemWidget(mark: element))
+                .toList(),
           ),
         ),
       ),

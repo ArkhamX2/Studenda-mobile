@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:studenda_mobile_student/feature/journal/presentation/widgets/journal_subject_screen_widget.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/extended_discipline_model.dart';
 import 'package:studenda_mobile_student/resources/colors.dart';
 

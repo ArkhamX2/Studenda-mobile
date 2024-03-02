@@ -7,6 +7,8 @@ class ExtendedDisciplineModel {
   final DisciplineModel discipline;
   final SubjectTypeModel subjectType;
 
-  ExtendedDisciplineModel(
-      {required this.discipline, required this.subjectType});
+  ExtendedDisciplineModel({
+    required this.discipline,
+    required this.subjectType,
+  });
 }

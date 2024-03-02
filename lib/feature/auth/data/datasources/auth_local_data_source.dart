@@ -4,13 +4,13 @@ import 'package:studenda_mobile_student/core/data/error/exception.dart';
 import 'package:studenda_mobile_student/feature/auth/data/models/security_response_model.dart';
 import 'package:studenda_mobile_student/feature/auth/data/models/token_model.dart';
 import 'package:studenda_mobile_student/feature/auth/data/models/user_model/user_model.dart';
-
-abstract class AuthLocalDataSource {
-  Future<void> add(SecurityResponseModel remoteAuth);
+abstract class AuthLocalDataSource{
+  Future<TokenModel> loadToken();
   Future<void> updateToken(TokenModel token);
+  Future<void> add(SecurityResponseModel remoteLoad);
 }
 
-class AuthLocalDataSourceImpl implements AuthLocalDataSource {
+class AuthLocalDataSourceImpl implements AuthLocalDataSource{
   FlutterSecureStorage tokenStorage;
   Box<UserModel> userBox;
 
@@ -57,6 +57,17 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
         key: 'jwt_refresh_token',
         value: token.refreshToken,
       );
+    } catch (e) {
+      throw CacheException();
+    }
+  }
+  
+  @override
+  Future<TokenModel> loadToken() async {
+    try {
+      final token = await tokenStorage.read(key: 'jwt_access_token');
+      final refresh = await tokenStorage.read(key: 'jwt_refresh_token');
+      return TokenModel(token: token??"", refreshToken: refresh??"");
     } catch (e) {
       throw CacheException();
     }

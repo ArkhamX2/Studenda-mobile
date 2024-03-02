@@ -11,7 +11,10 @@ import 'package:studenda_mobile_student/feature/auth/data/models/user_model/user
 import 'package:studenda_mobile_student/feature/auth/data/repositories/auth_repository_impl.dart';
 import 'package:studenda_mobile_student/feature/auth/domain/repositories/auth_repository.dart';
 import 'package:studenda_mobile_student/feature/auth/domain/usecases/auth.dart';
+import 'package:studenda_mobile_student/feature/auth/domain/usecases/get_token.dart';
+import 'package:studenda_mobile_student/feature/auth/domain/usecases/refresh_token.dart';
 import 'package:studenda_mobile_student/feature/auth/presentation/bloc/bloc/auth_bloc.dart';
+import 'package:studenda_mobile_student/feature/auth/presentation/bloc/cubit/token_cubit.dart';
 import 'package:studenda_mobile_student/feature/group_selection/data/datasources/course_local_data_source.dart';
 import 'package:studenda_mobile_student/feature/group_selection/data/datasources/course_remote_data_source.dart';
 import 'package:studenda_mobile_student/feature/group_selection/data/datasources/department_local_data_source.dart';
@@ -115,9 +118,26 @@ Future<void> init() async {
     ),
   );
 
+  sl.registerFactory(
+    () => TokenCubit(
+      getTokenUseCase: sl(),
+      refreshTokenUseCase: sl(),
+    ),
+  );
+
   // Use cases
   sl.registerLazySingleton(
     () => Auth(
+      authRepository: sl(),
+    ),
+  );
+  sl.registerLazySingleton(
+    () => GetToken(
+      authRepository: sl(),
+    ),
+  );
+  sl.registerLazySingleton(
+    () => RefreshToken(
       authRepository: sl(),
     ),
   );
@@ -134,16 +154,19 @@ Future<void> init() async {
   //! Data sources
 
   sl.registerLazySingleton<AuthRemoteDataSource>(
-    () => AuthRemoteDataSourceImpl(
+    () => AuthRemoteDataSource(
       client: sl(),
     ),
   );
+
   sl.registerLazySingletonAsync<AuthLocalDataSource>(() async {
     return AuthLocalDataSourceImpl(
       tokenStorage: secureStorage,
       userBox: await Hive.openBox<UserModel>('UserBox'),
     );
   });
+
+  await sl.isReady<AuthLocalDataSource>();
 
   //! Groupselection
   // Bloc
@@ -155,7 +178,8 @@ Future<void> init() async {
       setSelectedDepartment: sl(),
       setSelectedCourse: sl(),
       setSelectedGroup: sl(),
-      selectedGroup: const GroupEntity(id: -1, name: "", courseId: -1,departmentId: -1),
+      selectedGroup:
+          const GroupEntity(id: -1, name: "", courseId: -1, departmentId: -1),
       selectedCourse: const CourseEntity(id: -1, name: "", grade: 0),
       selectedDepartment: const DepartmentEntity(id: -1, name: ""),
     ),
@@ -350,7 +374,7 @@ Future<void> init() async {
   );
 
   sl.registerLazySingleton(
-    () => GetSchedule(scheduleRepository: sl()),
+    () => GetScheduleByWeekType(scheduleRepository: sl()),
   );
 
   sl.registerLazySingleton(
@@ -394,7 +418,7 @@ Future<void> init() async {
     ),
   );
 
-  sl.registerLazySingleton<ScheduleRepository>(
+  sl.registerLazySingleton<ScheduleByWeekTypeRepository>(
     () => ScheduleRepositoryImpl(
       remoteDataSource: sl(),
       localDataSource: sl(),
@@ -530,7 +554,6 @@ Future<void> init() async {
   );
 
   await sl.isReady<DisciplineLocalDataSource>();
-
 
   sl.registerLazySingletonAsync<TeacherLocalDataSource>(
     () async {

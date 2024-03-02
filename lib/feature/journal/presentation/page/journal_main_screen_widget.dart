@@ -4,9 +4,24 @@ import 'package:studenda_mobile_student/feature/auth/presentation/bloc/bloc/auth
 import 'package:studenda_mobile_student/feature/journal/presentation/widgets/journal_subject_screen_widget.dart';
 import 'package:studenda_mobile_student/feature/journal/presentation/widgets/subject_item_widget.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/schedule_bloc.dart';
+import 'package:studenda_mobile_student/injection_container.dart';
 
 class JournalMainScreenPage extends StatelessWidget {
   const JournalMainScreenPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => sl<ScheduleBloc>()),
+      ],
+      child: const _JournalMainBody(),
+    );
+  }
+}
+
+class _JournalMainBody extends StatelessWidget {
+  const _JournalMainBody();
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +49,10 @@ class JournalMainScreenPage extends StatelessWidget {
                     onTap: () => {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) =>
-                              JournalSubjectScreenWidget(subject: element, userId: user.id),
+                          builder: (context) => JournalSubjectScreenWidget(
+                            subject: element,
+                            userId: user.id,
+                          ),
                         ),
                       ),
                     },

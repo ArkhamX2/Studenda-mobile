@@ -33,7 +33,8 @@ class AuthRepositoryImpl implements AuthRepository {
         return const Left(ServerFailure(message: "Ошибка сервера"));
       }
     } else {
-        return const Left(CacheFailure(message: "Отсутствует подключение к сети"));
+      return const Left(
+          CacheFailure(message: "Отсутствует подключение к сети"));
     }
   }
 
@@ -48,7 +49,19 @@ class AuthRepositoryImpl implements AuthRepository {
         return const Left(ServerFailure(message: "Ошибка сервера"));
       }
     } else {
-      return const Left(CacheFailure(message: "Отсутствует подключение к сети"));
+      return const Left(
+          CacheFailure(message: "Отсутствует подключение к сети"));
+    }
+  }
+
+  @override
+  Future<Either<Failure, TokenModel>> getToken() async {
+    try {
+      final token = await localDataSource.loadToken();
+      if (token.token.isEmpty) throw CacheException();
+      return Right(token);
+    } on CacheException {
+      return const Left(ServerFailure(message: "Ошибка сервера"));
     }
   }
 }

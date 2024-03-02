@@ -7,6 +7,8 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:studenda_mobile_student/core/constant_values/routes.dart';
 import 'package:studenda_mobile_student/core/navigator/navigator.dart';
 import 'package:studenda_mobile_student/core/presentation/UI/studenda_loading_widget.dart';
+import 'package:studenda_mobile_student/feature/auth/presentation/bloc/bloc/auth_bloc.dart';
+import 'package:studenda_mobile_student/feature/auth/presentation/bloc/cubit/token_cubit.dart';
 import 'package:studenda_mobile_student/feature/auth/presentation/pages/main_auth_widget.dart';
 import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/main_group_selection_bloc/main_group_selector_bloc.dart';
 import 'package:studenda_mobile_student/feature/group_selection/presentation/pages/guest_group_selector.dart';
@@ -28,9 +30,17 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<MainGroupSelectorBloc>(
-      create: (context) => sl<MainGroupSelectorBloc>()
-        ..add(const MainGroupSelectorEvent.getGroup()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => sl<MainGroupSelectorBloc>()
+            ..add(
+              const MainGroupSelectorEvent.getGroup(),
+            ),
+        ),
+        BlocProvider(create: (context) => sl<TokenCubit>()..getToken()),
+        BlocProvider(create: (context) => sl<AuthBloc>()),
+      ],
       child: MaterialApp(
         title: 'Studenda',
         debugShowCheckedModeBanner: false,
@@ -76,8 +86,9 @@ class __SplashScreenState extends State<_SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: const BoxDecoration(color: Colors.white),
-        child: const Center(child: StudendaLoadingWidget()),);
+      decoration: const BoxDecoration(color: Colors.white),
+      child: const Center(child: StudendaLoadingWidget()),
+    );
   }
 }
 
@@ -96,17 +107,27 @@ class _InitializerState extends State<Initializer> {
 
   @override
   Widget build(BuildContext context) {
-    final selectorBloc = context.watch<MainGroupSelectorBloc>();
-    return selectorBloc.state.when(
+    final tokenCubit = context.watch<TokenCubit>();
+    return tokenCubit.state.when(
       initial: () => const Center(child: StudendaLoadingWidget()),
-      loading: () => const Center(child: StudendaLoadingWidget()),
-      groupSuccess: (group) {
-        return const MainNavigatorWidget();
-      },
-      courseSuccess: (course) => const Center(child: StudendaLoadingWidget()),
-      departmentSuccess: (department) => const Center(child: StudendaLoadingWidget()),
-      fail: (message) {
-        return const GroupSelectorPage();
+      authorized: (token) => const Center(child: StudendaLoadingWidget()),
+      fail: (l) => const MainAuthPage(),
+      tokenSuccess: (token) {
+        final selectorBloc = context.watch<MainGroupSelectorBloc>();
+        return selectorBloc.state.when(
+          initial: () => const Center(child: StudendaLoadingWidget()),
+          loading: () => const Center(child: StudendaLoadingWidget()),
+          groupSuccess: (group) {
+            return const MainNavigatorWidget();
+          },
+          courseSuccess: (course) =>
+              const Center(child: StudendaLoadingWidget()),
+          departmentSuccess: (department) =>
+              const Center(child: StudendaLoadingWidget()),
+          fail: (message) {
+            return const GroupSelectorPage();
+          },
+        );
       },
     );
   }

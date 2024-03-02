@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'task_bloc.dart';
+part of 'task_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -12,609 +12,7 @@ part of 'task_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-mixin _$TaskEvent {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(List<int> asigneeUserIds, int disciplineId,
-            int subjectTypeId, int academicYear)
-        load,
-    required TResult Function(List<int> asigneeUserIds, int disciplineId,
-            int subjectTypeId, int academicYear)
-        loadLocal,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(List<int> asigneeUserIds, int disciplineId,
-            int subjectTypeId, int academicYear)?
-        load,
-    TResult? Function(List<int> asigneeUserIds, int disciplineId,
-            int subjectTypeId, int academicYear)?
-        loadLocal,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(List<int> asigneeUserIds, int disciplineId,
-            int subjectTypeId, int academicYear)?
-        load,
-    TResult Function(List<int> asigneeUserIds, int disciplineId,
-            int subjectTypeId, int academicYear)?
-        loadLocal,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_Load value) load,
-    required TResult Function(_LoadLocal value) loadLocal,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_Load value)? load,
-    TResult? Function(_LoadLocal value)? loadLocal,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_Load value)? load,
-    TResult Function(_LoadLocal value)? loadLocal,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $TaskEventCopyWith<$Res> {
-  factory $TaskEventCopyWith(TaskEvent value, $Res Function(TaskEvent) then) =
-      _$TaskEventCopyWithImpl<$Res, TaskEvent>;
-}
-
-/// @nodoc
-class _$TaskEventCopyWithImpl<$Res, $Val extends TaskEvent>
-    implements $TaskEventCopyWith<$Res> {
-  _$TaskEventCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$TaskEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$StartedImpl implements _Started {
-  const _$StartedImpl();
-
-  @override
-  String toString() {
-    return 'TaskEvent.started()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(List<int> asigneeUserIds, int disciplineId,
-            int subjectTypeId, int academicYear)
-        load,
-    required TResult Function(List<int> asigneeUserIds, int disciplineId,
-            int subjectTypeId, int academicYear)
-        loadLocal,
-  }) {
-    return started();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(List<int> asigneeUserIds, int disciplineId,
-            int subjectTypeId, int academicYear)?
-        load,
-    TResult? Function(List<int> asigneeUserIds, int disciplineId,
-            int subjectTypeId, int academicYear)?
-        loadLocal,
-  }) {
-    return started?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(List<int> asigneeUserIds, int disciplineId,
-            int subjectTypeId, int academicYear)?
-        load,
-    TResult Function(List<int> asigneeUserIds, int disciplineId,
-            int subjectTypeId, int academicYear)?
-        loadLocal,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_Load value) load,
-    required TResult Function(_LoadLocal value) loadLocal,
-  }) {
-    return started(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_Load value)? load,
-    TResult? Function(_LoadLocal value)? loadLocal,
-  }) {
-    return started?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_Load value)? load,
-    TResult Function(_LoadLocal value)? loadLocal,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Started implements TaskEvent {
-  const factory _Started() = _$StartedImpl;
-}
-
-/// @nodoc
-abstract class _$$LoadImplCopyWith<$Res> {
-  factory _$$LoadImplCopyWith(
-          _$LoadImpl value, $Res Function(_$LoadImpl) then) =
-      __$$LoadImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call(
-      {List<int> asigneeUserIds,
-      int disciplineId,
-      int subjectTypeId,
-      int academicYear});
-}
-
-/// @nodoc
-class __$$LoadImplCopyWithImpl<$Res>
-    extends _$TaskEventCopyWithImpl<$Res, _$LoadImpl>
-    implements _$$LoadImplCopyWith<$Res> {
-  __$$LoadImplCopyWithImpl(_$LoadImpl _value, $Res Function(_$LoadImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? asigneeUserIds = null,
-    Object? disciplineId = null,
-    Object? subjectTypeId = null,
-    Object? academicYear = null,
-  }) {
-    return _then(_$LoadImpl(
-      null == asigneeUserIds
-          ? _value._asigneeUserIds
-          : asigneeUserIds // ignore: cast_nullable_to_non_nullable
-              as List<int>,
-      null == disciplineId
-          ? _value.disciplineId
-          : disciplineId // ignore: cast_nullable_to_non_nullable
-              as int,
-      null == subjectTypeId
-          ? _value.subjectTypeId
-          : subjectTypeId // ignore: cast_nullable_to_non_nullable
-              as int,
-      null == academicYear
-          ? _value.academicYear
-          : academicYear // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$LoadImpl implements _Load {
-  const _$LoadImpl(final List<int> asigneeUserIds, this.disciplineId,
-      this.subjectTypeId, this.academicYear)
-      : _asigneeUserIds = asigneeUserIds;
-
-  final List<int> _asigneeUserIds;
-  @override
-  List<int> get asigneeUserIds {
-    if (_asigneeUserIds is EqualUnmodifiableListView) return _asigneeUserIds;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_asigneeUserIds);
-  }
-
-  @override
-  final int disciplineId;
-  @override
-  final int subjectTypeId;
-  @override
-  final int academicYear;
-
-  @override
-  String toString() {
-    return 'TaskEvent.load(asigneeUserIds: $asigneeUserIds, disciplineId: $disciplineId, subjectTypeId: $subjectTypeId, academicYear: $academicYear)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$LoadImpl &&
-            const DeepCollectionEquality()
-                .equals(other._asigneeUserIds, _asigneeUserIds) &&
-            (identical(other.disciplineId, disciplineId) ||
-                other.disciplineId == disciplineId) &&
-            (identical(other.subjectTypeId, subjectTypeId) ||
-                other.subjectTypeId == subjectTypeId) &&
-            (identical(other.academicYear, academicYear) ||
-                other.academicYear == academicYear));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_asigneeUserIds),
-      disciplineId,
-      subjectTypeId,
-      academicYear);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LoadImplCopyWith<_$LoadImpl> get copyWith =>
-      __$$LoadImplCopyWithImpl<_$LoadImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(List<int> asigneeUserIds, int disciplineId,
-            int subjectTypeId, int academicYear)
-        load,
-    required TResult Function(List<int> asigneeUserIds, int disciplineId,
-            int subjectTypeId, int academicYear)
-        loadLocal,
-  }) {
-    return load(asigneeUserIds, disciplineId, subjectTypeId, academicYear);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(List<int> asigneeUserIds, int disciplineId,
-            int subjectTypeId, int academicYear)?
-        load,
-    TResult? Function(List<int> asigneeUserIds, int disciplineId,
-            int subjectTypeId, int academicYear)?
-        loadLocal,
-  }) {
-    return load?.call(
-        asigneeUserIds, disciplineId, subjectTypeId, academicYear);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(List<int> asigneeUserIds, int disciplineId,
-            int subjectTypeId, int academicYear)?
-        load,
-    TResult Function(List<int> asigneeUserIds, int disciplineId,
-            int subjectTypeId, int academicYear)?
-        loadLocal,
-    required TResult orElse(),
-  }) {
-    if (load != null) {
-      return load(asigneeUserIds, disciplineId, subjectTypeId, academicYear);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_Load value) load,
-    required TResult Function(_LoadLocal value) loadLocal,
-  }) {
-    return load(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_Load value)? load,
-    TResult? Function(_LoadLocal value)? loadLocal,
-  }) {
-    return load?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_Load value)? load,
-    TResult Function(_LoadLocal value)? loadLocal,
-    required TResult orElse(),
-  }) {
-    if (load != null) {
-      return load(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Load implements TaskEvent {
-  const factory _Load(final List<int> asigneeUserIds, final int disciplineId,
-      final int subjectTypeId, final int academicYear) = _$LoadImpl;
-
-  List<int> get asigneeUserIds;
-  int get disciplineId;
-  int get subjectTypeId;
-  int get academicYear;
-  @JsonKey(ignore: true)
-  _$$LoadImplCopyWith<_$LoadImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$LoadLocalImplCopyWith<$Res> {
-  factory _$$LoadLocalImplCopyWith(
-          _$LoadLocalImpl value, $Res Function(_$LoadLocalImpl) then) =
-      __$$LoadLocalImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call(
-      {List<int> asigneeUserIds,
-      int disciplineId,
-      int subjectTypeId,
-      int academicYear});
-}
-
-/// @nodoc
-class __$$LoadLocalImplCopyWithImpl<$Res>
-    extends _$TaskEventCopyWithImpl<$Res, _$LoadLocalImpl>
-    implements _$$LoadLocalImplCopyWith<$Res> {
-  __$$LoadLocalImplCopyWithImpl(
-      _$LoadLocalImpl _value, $Res Function(_$LoadLocalImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? asigneeUserIds = null,
-    Object? disciplineId = null,
-    Object? subjectTypeId = null,
-    Object? academicYear = null,
-  }) {
-    return _then(_$LoadLocalImpl(
-      null == asigneeUserIds
-          ? _value._asigneeUserIds
-          : asigneeUserIds // ignore: cast_nullable_to_non_nullable
-              as List<int>,
-      null == disciplineId
-          ? _value.disciplineId
-          : disciplineId // ignore: cast_nullable_to_non_nullable
-              as int,
-      null == subjectTypeId
-          ? _value.subjectTypeId
-          : subjectTypeId // ignore: cast_nullable_to_non_nullable
-              as int,
-      null == academicYear
-          ? _value.academicYear
-          : academicYear // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$LoadLocalImpl implements _LoadLocal {
-  const _$LoadLocalImpl(final List<int> asigneeUserIds, this.disciplineId,
-      this.subjectTypeId, this.academicYear)
-      : _asigneeUserIds = asigneeUserIds;
-
-  final List<int> _asigneeUserIds;
-  @override
-  List<int> get asigneeUserIds {
-    if (_asigneeUserIds is EqualUnmodifiableListView) return _asigneeUserIds;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_asigneeUserIds);
-  }
-
-  @override
-  final int disciplineId;
-  @override
-  final int subjectTypeId;
-  @override
-  final int academicYear;
-
-  @override
-  String toString() {
-    return 'TaskEvent.loadLocal(asigneeUserIds: $asigneeUserIds, disciplineId: $disciplineId, subjectTypeId: $subjectTypeId, academicYear: $academicYear)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$LoadLocalImpl &&
-            const DeepCollectionEquality()
-                .equals(other._asigneeUserIds, _asigneeUserIds) &&
-            (identical(other.disciplineId, disciplineId) ||
-                other.disciplineId == disciplineId) &&
-            (identical(other.subjectTypeId, subjectTypeId) ||
-                other.subjectTypeId == subjectTypeId) &&
-            (identical(other.academicYear, academicYear) ||
-                other.academicYear == academicYear));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_asigneeUserIds),
-      disciplineId,
-      subjectTypeId,
-      academicYear);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LoadLocalImplCopyWith<_$LoadLocalImpl> get copyWith =>
-      __$$LoadLocalImplCopyWithImpl<_$LoadLocalImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(List<int> asigneeUserIds, int disciplineId,
-            int subjectTypeId, int academicYear)
-        load,
-    required TResult Function(List<int> asigneeUserIds, int disciplineId,
-            int subjectTypeId, int academicYear)
-        loadLocal,
-  }) {
-    return loadLocal(asigneeUserIds, disciplineId, subjectTypeId, academicYear);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(List<int> asigneeUserIds, int disciplineId,
-            int subjectTypeId, int academicYear)?
-        load,
-    TResult? Function(List<int> asigneeUserIds, int disciplineId,
-            int subjectTypeId, int academicYear)?
-        loadLocal,
-  }) {
-    return loadLocal?.call(
-        asigneeUserIds, disciplineId, subjectTypeId, academicYear);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(List<int> asigneeUserIds, int disciplineId,
-            int subjectTypeId, int academicYear)?
-        load,
-    TResult Function(List<int> asigneeUserIds, int disciplineId,
-            int subjectTypeId, int academicYear)?
-        loadLocal,
-    required TResult orElse(),
-  }) {
-    if (loadLocal != null) {
-      return loadLocal(
-          asigneeUserIds, disciplineId, subjectTypeId, academicYear);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_Load value) load,
-    required TResult Function(_LoadLocal value) loadLocal,
-  }) {
-    return loadLocal(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_Load value)? load,
-    TResult? Function(_LoadLocal value)? loadLocal,
-  }) {
-    return loadLocal?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_Load value)? load,
-    TResult Function(_LoadLocal value)? loadLocal,
-    required TResult orElse(),
-  }) {
-    if (loadLocal != null) {
-      return loadLocal(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _LoadLocal implements TaskEvent {
-  const factory _LoadLocal(
-      final List<int> asigneeUserIds,
-      final int disciplineId,
-      final int subjectTypeId,
-      final int academicYear) = _$LoadLocalImpl;
-
-  List<int> get asigneeUserIds;
-  int get disciplineId;
-  int get subjectTypeId;
-  int get academicYear;
-  @JsonKey(ignore: true)
-  _$$LoadLocalImplCopyWith<_$LoadLocalImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$TaskState {
@@ -622,30 +20,30 @@ mixin _$TaskState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<TaskEntity> schedule) success,
+    required TResult Function(List<TaskEntity> tasks) success,
     required TResult Function(String message) fail,
     required TResult Function(String message) localLoadingFail,
-    required TResult Function(List<TaskEntity> schedule) localLoadingSuccess,
+    required TResult Function(List<TaskEntity> tasks) localLoadingSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<TaskEntity> schedule)? success,
+    TResult? Function(List<TaskEntity> tasks)? success,
     TResult? Function(String message)? fail,
     TResult? Function(String message)? localLoadingFail,
-    TResult? Function(List<TaskEntity> schedule)? localLoadingSuccess,
+    TResult? Function(List<TaskEntity> tasks)? localLoadingSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<TaskEntity> schedule)? success,
+    TResult Function(List<TaskEntity> tasks)? success,
     TResult Function(String message)? fail,
     TResult Function(String message)? localLoadingFail,
-    TResult Function(List<TaskEntity> schedule)? localLoadingSuccess,
+    TResult Function(List<TaskEntity> tasks)? localLoadingSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -739,10 +137,10 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<TaskEntity> schedule) success,
+    required TResult Function(List<TaskEntity> tasks) success,
     required TResult Function(String message) fail,
     required TResult Function(String message) localLoadingFail,
-    required TResult Function(List<TaskEntity> schedule) localLoadingSuccess,
+    required TResult Function(List<TaskEntity> tasks) localLoadingSuccess,
   }) {
     return initial();
   }
@@ -752,10 +150,10 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<TaskEntity> schedule)? success,
+    TResult? Function(List<TaskEntity> tasks)? success,
     TResult? Function(String message)? fail,
     TResult? Function(String message)? localLoadingFail,
-    TResult? Function(List<TaskEntity> schedule)? localLoadingSuccess,
+    TResult? Function(List<TaskEntity> tasks)? localLoadingSuccess,
   }) {
     return initial?.call();
   }
@@ -765,10 +163,10 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<TaskEntity> schedule)? success,
+    TResult Function(List<TaskEntity> tasks)? success,
     TResult Function(String message)? fail,
     TResult Function(String message)? localLoadingFail,
-    TResult Function(List<TaskEntity> schedule)? localLoadingSuccess,
+    TResult Function(List<TaskEntity> tasks)? localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -865,10 +263,10 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<TaskEntity> schedule) success,
+    required TResult Function(List<TaskEntity> tasks) success,
     required TResult Function(String message) fail,
     required TResult Function(String message) localLoadingFail,
-    required TResult Function(List<TaskEntity> schedule) localLoadingSuccess,
+    required TResult Function(List<TaskEntity> tasks) localLoadingSuccess,
   }) {
     return loading();
   }
@@ -878,10 +276,10 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<TaskEntity> schedule)? success,
+    TResult? Function(List<TaskEntity> tasks)? success,
     TResult? Function(String message)? fail,
     TResult? Function(String message)? localLoadingFail,
-    TResult? Function(List<TaskEntity> schedule)? localLoadingSuccess,
+    TResult? Function(List<TaskEntity> tasks)? localLoadingSuccess,
   }) {
     return loading?.call();
   }
@@ -891,10 +289,10 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<TaskEntity> schedule)? success,
+    TResult Function(List<TaskEntity> tasks)? success,
     TResult Function(String message)? fail,
     TResult Function(String message)? localLoadingFail,
-    TResult Function(List<TaskEntity> schedule)? localLoadingSuccess,
+    TResult Function(List<TaskEntity> tasks)? localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -957,7 +355,7 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<TaskEntity> schedule});
+  $Res call({List<TaskEntity> tasks});
 }
 
 /// @nodoc
@@ -971,12 +369,12 @@ class __$$SuccessImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? schedule = null,
+    Object? tasks = null,
   }) {
     return _then(_$SuccessImpl(
-      null == schedule
-          ? _value._schedule
-          : schedule // ignore: cast_nullable_to_non_nullable
+      null == tasks
+          ? _value._tasks
+          : tasks // ignore: cast_nullable_to_non_nullable
               as List<TaskEntity>,
     ));
   }
@@ -985,19 +383,19 @@ class __$$SuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(final List<TaskEntity> schedule) : _schedule = schedule;
+  const _$SuccessImpl(final List<TaskEntity> tasks) : _tasks = tasks;
 
-  final List<TaskEntity> _schedule;
+  final List<TaskEntity> _tasks;
   @override
-  List<TaskEntity> get schedule {
-    if (_schedule is EqualUnmodifiableListView) return _schedule;
+  List<TaskEntity> get tasks {
+    if (_tasks is EqualUnmodifiableListView) return _tasks;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_schedule);
+    return EqualUnmodifiableListView(_tasks);
   }
 
   @override
   String toString() {
-    return 'TaskState.success(schedule: $schedule)';
+    return 'TaskState.success(tasks: $tasks)';
   }
 
   @override
@@ -1005,12 +403,12 @@ class _$SuccessImpl implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
-            const DeepCollectionEquality().equals(other._schedule, _schedule));
+            const DeepCollectionEquality().equals(other._tasks, _tasks));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_schedule));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_tasks));
 
   @JsonKey(ignore: true)
   @override
@@ -1023,12 +421,12 @@ class _$SuccessImpl implements _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<TaskEntity> schedule) success,
+    required TResult Function(List<TaskEntity> tasks) success,
     required TResult Function(String message) fail,
     required TResult Function(String message) localLoadingFail,
-    required TResult Function(List<TaskEntity> schedule) localLoadingSuccess,
+    required TResult Function(List<TaskEntity> tasks) localLoadingSuccess,
   }) {
-    return success(schedule);
+    return success(tasks);
   }
 
   @override
@@ -1036,12 +434,12 @@ class _$SuccessImpl implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<TaskEntity> schedule)? success,
+    TResult? Function(List<TaskEntity> tasks)? success,
     TResult? Function(String message)? fail,
     TResult? Function(String message)? localLoadingFail,
-    TResult? Function(List<TaskEntity> schedule)? localLoadingSuccess,
+    TResult? Function(List<TaskEntity> tasks)? localLoadingSuccess,
   }) {
-    return success?.call(schedule);
+    return success?.call(tasks);
   }
 
   @override
@@ -1049,14 +447,14 @@ class _$SuccessImpl implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<TaskEntity> schedule)? success,
+    TResult Function(List<TaskEntity> tasks)? success,
     TResult Function(String message)? fail,
     TResult Function(String message)? localLoadingFail,
-    TResult Function(List<TaskEntity> schedule)? localLoadingSuccess,
+    TResult Function(List<TaskEntity> tasks)? localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(schedule);
+      return success(tasks);
     }
     return orElse();
   }
@@ -1106,9 +504,9 @@ class _$SuccessImpl implements _Success {
 }
 
 abstract class _Success implements TaskState {
-  const factory _Success(final List<TaskEntity> schedule) = _$SuccessImpl;
+  const factory _Success(final List<TaskEntity> tasks) = _$SuccessImpl;
 
-  List<TaskEntity> get schedule;
+  List<TaskEntity> get tasks;
   @JsonKey(ignore: true)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1180,10 +578,10 @@ class _$FailImpl implements _Fail {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<TaskEntity> schedule) success,
+    required TResult Function(List<TaskEntity> tasks) success,
     required TResult Function(String message) fail,
     required TResult Function(String message) localLoadingFail,
-    required TResult Function(List<TaskEntity> schedule) localLoadingSuccess,
+    required TResult Function(List<TaskEntity> tasks) localLoadingSuccess,
   }) {
     return fail(message);
   }
@@ -1193,10 +591,10 @@ class _$FailImpl implements _Fail {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<TaskEntity> schedule)? success,
+    TResult? Function(List<TaskEntity> tasks)? success,
     TResult? Function(String message)? fail,
     TResult? Function(String message)? localLoadingFail,
-    TResult? Function(List<TaskEntity> schedule)? localLoadingSuccess,
+    TResult? Function(List<TaskEntity> tasks)? localLoadingSuccess,
   }) {
     return fail?.call(message);
   }
@@ -1206,10 +604,10 @@ class _$FailImpl implements _Fail {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<TaskEntity> schedule)? success,
+    TResult Function(List<TaskEntity> tasks)? success,
     TResult Function(String message)? fail,
     TResult Function(String message)? localLoadingFail,
-    TResult Function(List<TaskEntity> schedule)? localLoadingSuccess,
+    TResult Function(List<TaskEntity> tasks)? localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (fail != null) {
@@ -1339,10 +737,10 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<TaskEntity> schedule) success,
+    required TResult Function(List<TaskEntity> tasks) success,
     required TResult Function(String message) fail,
     required TResult Function(String message) localLoadingFail,
-    required TResult Function(List<TaskEntity> schedule) localLoadingSuccess,
+    required TResult Function(List<TaskEntity> tasks) localLoadingSuccess,
   }) {
     return localLoadingFail(message);
   }
@@ -1352,10 +750,10 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<TaskEntity> schedule)? success,
+    TResult? Function(List<TaskEntity> tasks)? success,
     TResult? Function(String message)? fail,
     TResult? Function(String message)? localLoadingFail,
-    TResult? Function(List<TaskEntity> schedule)? localLoadingSuccess,
+    TResult? Function(List<TaskEntity> tasks)? localLoadingSuccess,
   }) {
     return localLoadingFail?.call(message);
   }
@@ -1365,10 +763,10 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<TaskEntity> schedule)? success,
+    TResult Function(List<TaskEntity> tasks)? success,
     TResult Function(String message)? fail,
     TResult Function(String message)? localLoadingFail,
-    TResult Function(List<TaskEntity> schedule)? localLoadingSuccess,
+    TResult Function(List<TaskEntity> tasks)? localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (localLoadingFail != null) {
@@ -1437,7 +835,7 @@ abstract class _$$LocalLoadingSuccessImplCopyWith<$Res> {
           $Res Function(_$LocalLoadingSuccessImpl) then) =
       __$$LocalLoadingSuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<TaskEntity> schedule});
+  $Res call({List<TaskEntity> tasks});
 }
 
 /// @nodoc
@@ -1451,12 +849,12 @@ class __$$LocalLoadingSuccessImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? schedule = null,
+    Object? tasks = null,
   }) {
     return _then(_$LocalLoadingSuccessImpl(
-      null == schedule
-          ? _value._schedule
-          : schedule // ignore: cast_nullable_to_non_nullable
+      null == tasks
+          ? _value._tasks
+          : tasks // ignore: cast_nullable_to_non_nullable
               as List<TaskEntity>,
     ));
   }
@@ -1465,20 +863,20 @@ class __$$LocalLoadingSuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
-  const _$LocalLoadingSuccessImpl(final List<TaskEntity> schedule)
-      : _schedule = schedule;
+  const _$LocalLoadingSuccessImpl(final List<TaskEntity> tasks)
+      : _tasks = tasks;
 
-  final List<TaskEntity> _schedule;
+  final List<TaskEntity> _tasks;
   @override
-  List<TaskEntity> get schedule {
-    if (_schedule is EqualUnmodifiableListView) return _schedule;
+  List<TaskEntity> get tasks {
+    if (_tasks is EqualUnmodifiableListView) return _tasks;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_schedule);
+    return EqualUnmodifiableListView(_tasks);
   }
 
   @override
   String toString() {
-    return 'TaskState.localLoadingSuccess(schedule: $schedule)';
+    return 'TaskState.localLoadingSuccess(tasks: $tasks)';
   }
 
   @override
@@ -1486,12 +884,12 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LocalLoadingSuccessImpl &&
-            const DeepCollectionEquality().equals(other._schedule, _schedule));
+            const DeepCollectionEquality().equals(other._tasks, _tasks));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_schedule));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_tasks));
 
   @JsonKey(ignore: true)
   @override
@@ -1505,12 +903,12 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<TaskEntity> schedule) success,
+    required TResult Function(List<TaskEntity> tasks) success,
     required TResult Function(String message) fail,
     required TResult Function(String message) localLoadingFail,
-    required TResult Function(List<TaskEntity> schedule) localLoadingSuccess,
+    required TResult Function(List<TaskEntity> tasks) localLoadingSuccess,
   }) {
-    return localLoadingSuccess(schedule);
+    return localLoadingSuccess(tasks);
   }
 
   @override
@@ -1518,12 +916,12 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<TaskEntity> schedule)? success,
+    TResult? Function(List<TaskEntity> tasks)? success,
     TResult? Function(String message)? fail,
     TResult? Function(String message)? localLoadingFail,
-    TResult? Function(List<TaskEntity> schedule)? localLoadingSuccess,
+    TResult? Function(List<TaskEntity> tasks)? localLoadingSuccess,
   }) {
-    return localLoadingSuccess?.call(schedule);
+    return localLoadingSuccess?.call(tasks);
   }
 
   @override
@@ -1531,14 +929,14 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<TaskEntity> schedule)? success,
+    TResult Function(List<TaskEntity> tasks)? success,
     TResult Function(String message)? fail,
     TResult Function(String message)? localLoadingFail,
-    TResult Function(List<TaskEntity> schedule)? localLoadingSuccess,
+    TResult Function(List<TaskEntity> tasks)? localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (localLoadingSuccess != null) {
-      return localLoadingSuccess(schedule);
+      return localLoadingSuccess(tasks);
     }
     return orElse();
   }
@@ -1588,10 +986,10 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
 }
 
 abstract class _LocalLoadingSuccess implements TaskState {
-  const factory _LocalLoadingSuccess(final List<TaskEntity> schedule) =
+  const factory _LocalLoadingSuccess(final List<TaskEntity> tasks) =
       _$LocalLoadingSuccessImpl;
 
-  List<TaskEntity> get schedule;
+  List<TaskEntity> get tasks;
   @JsonKey(ignore: true)
   _$$LocalLoadingSuccessImplCopyWith<_$LocalLoadingSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;

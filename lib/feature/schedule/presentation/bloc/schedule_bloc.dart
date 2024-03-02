@@ -8,6 +8,7 @@ import 'package:studenda_mobile_student/core/utils/map_subject_model_to_day_sceh
 import 'package:studenda_mobile_student/feature/auth/data/models/user_model/user_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/day_position_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/discipline_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/extended_discipline_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/schedule_request_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/subject_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/subject_type_model.dart';
@@ -22,14 +23,12 @@ import 'package:studenda_mobile_student/feature/schedule/domain/usecases/get_sub
 import 'package:studenda_mobile_student/feature/schedule/domain/usecases/get_subject_type_list.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/usecases/get_teacher_list.dart';
 
-import '../../data/models/extended_discipline_model.dart';
-
 part 'schedule_bloc.freezed.dart';
 part 'schedule_event.dart';
 part 'schedule_state.dart';
 
 class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
-  final GetSchedule getSchedule;
+  final GetScheduleByWeekType getSchedule;
   final GetCurrentWeekType getCurrentWeekType;
   final GetAllWeekType getAllWeekType;
   final GetDisciplineList getDisciplineList;
@@ -63,7 +62,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
       datePointer = datePointer.add(const Duration(days: 7));
       await loadSchedule(
         event.groupId,
-        currentWeekType!,
+        weekTypeList!,
         emit,
         datePointer,
         false,
@@ -80,7 +79,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
       datePointer = datePointer.subtract(const Duration(days: 7));
       await loadSchedule(
         event.groupId,
-        currentWeekType!,
+        weekTypeList!,
         emit,
         datePointer,
         false,
@@ -113,7 +112,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
       if (currentWeekType!.id != -1) {
         await loadSchedule(
           event.groupId,
-          currentWeekType!,
+          [currentWeekType!],
           emit,
           DateTime.now(),
         );
@@ -129,7 +128,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
                   );
                   await loadSchedule(
                     event.groupId,
-                    currentWeekType!,
+                    [currentWeekType!],
                     emit,
                     DateTime.now(),
                   );
@@ -165,7 +164,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
       if (currentWeekType!.id != -1) {
         await loadSchedule(
           event.groupId,
-          currentWeekType!,
+          [currentWeekType!],
           emit,
           DateTime.now(),
           false,
@@ -187,7 +186,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
                   );
                   await loadSchedule(
                     event.groupId,
-                    currentWeekType!,
+                    [currentWeekType!],
                     emit,
                     DateTime.now(),
                     false,
@@ -201,18 +200,19 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
 
   Future<void> loadSchedule(
     int groupId,
-    WeekTypeEntity currentWeekType,
+    List<WeekTypeEntity> weekTypes,
     Emitter<ScheduleState> emit,
     DateTime currentDate, [
     bool remote = true,
   ]) async {
     await getSchedule
         .call(
-          ScheduleRequestModel(
+          ScheduleRequestByWeekTypeModel(
             groupId: groupId,
-            weekTypeId: currentWeekType.id,
+            weekTypeIds: weekTypeList!.map((e) => e.id).toList(),
             academicYear: getCurrentAcademicYear(),
           ),
+          weekTypes.map((e) => e.id).toList(),
           remote,
         )
         .then(
@@ -224,7 +224,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
               await _getDiscipline(
                 succededSubjectList,
                 emit,
-                currentWeekType,
+                currentWeekType!,
                 currentDate,
                 remote,
               );
@@ -395,8 +395,11 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
                 ? emit(ScheduleState.fail(error.message))
                 : emit(ScheduleState.localLoadingFail(error.message)),
             (succededSubjectPositionList) {
-              extendedDisciplineList = mapDisciplinesAndTypes(succededSubjectList,
-                  succededDisciplineList, succededSubjectTypeList);
+              extendedDisciplineList = mapDisciplinesAndTypes(
+                succededSubjectList,
+                succededDisciplineList,
+                succededSubjectTypeList,
+              );
               remote
                   ? emit(
                       ScheduleState.success(
@@ -441,17 +444,18 @@ List<ExtendedDisciplineModel> mapDisciplinesAndTypes(
   List<DisciplineModel> succededDisciplineList,
   List<SubjectTypeModel> succededSubjectTypeList,
 ) {
-  return succededSubjectList.map(
-    (e) => ExtendedDisciplineModel(
-      discipline: succededDisciplineList.firstWhere(
-        (element) => element.id == e.disciplineId,
-      ),
-      subjectType: succededSubjectTypeList.firstWhere(
-        (element) => element.id == e.subjectTypeId,
-      ),
-    ),
-  ).toList();
-
+  return succededSubjectList
+      .map(
+        (e) => ExtendedDisciplineModel(
+          discipline: succededDisciplineList.firstWhere(
+            (element) => element.id == e.disciplineId,
+          ),
+          subjectType: succededSubjectTypeList.firstWhere(
+            (element) => element.id == e.subjectTypeId,
+          ),
+        ),
+      )
+      .toList();
 }
 
 List<int> _getSubjectTypeIds(List<SubjectModel> succededSubjectList) {

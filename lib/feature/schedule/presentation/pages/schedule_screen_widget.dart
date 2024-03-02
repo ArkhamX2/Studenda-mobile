@@ -15,6 +15,8 @@ import 'package:studenda_mobile_student/feature/schedule/presentation/widgets/we
 import 'package:studenda_mobile_student/injection_container.dart';
 import 'package:studenda_mobile_student/resources/colors.dart';
 
+import '../../../../core/presentation/UI/snack_message.dart';
+
 class ScheduleScreenPage extends StatefulWidget {
   const ScheduleScreenPage({super.key});
 
@@ -308,18 +310,4 @@ class _ScheduleAppBarWidgetState extends State<_ScheduleAppBarWidget> {
       ),
     );
   }
-}
-
-void snackMessage(BuildContext context, String message) {
-  ScaffoldMessenger.of(context)
-    ..removeCurrentSnackBar()
-    ..showSnackBar(
-      SnackBar(
-        content: Text(
-          message,
-          style: const TextStyle(color: mainForegroundColor),
-        ),
-        backgroundColor: mainButtonBackgroundColor,
-      ),
-    );
 }
