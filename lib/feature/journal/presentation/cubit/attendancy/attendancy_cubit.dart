@@ -5,7 +5,6 @@ import 'package:studenda_mobile_student/feature/journal/data/model/attendancy/ab
 import 'package:studenda_mobile_student/feature/journal/domain/entity/attendancy_mark_entity.dart';
 import 'package:studenda_mobile_student/feature/journal/domain/usecases/get_absences_list.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/entities/week_type_entity.dart';
-import 'package:studenda_mobile_student/feature/schedule/domain/usecases/get_current_week_type.dart';
 
 part 'attendancy_state.dart';
 part 'attendancy_cubit.freezed.dart';
@@ -18,7 +17,7 @@ class AttendancyCubit extends Cubit<AttendancyState> {
   AttendancyCubit(this.loadAbsences) : super(const AttendancyState.initial());
 
   Future<void> load(
-      AbsenceRequestModel request, List<WeekTypeEntity> currentWeekType) async {
+      AbsenceRequestModel request, List<WeekTypeEntity> currentWeekType,) async {
     final courses = await loadAbsences(request);
     courses.fold(
       (l) => emit(AttendancyState.loadingFail(l.message)),
@@ -35,7 +34,7 @@ class AttendancyCubit extends Cubit<AttendancyState> {
   }
 
   Future<void> loadLocally(
-      AbsenceRequestModel request, List<WeekTypeEntity> currentWeekType) async {
+      AbsenceRequestModel request, List<WeekTypeEntity> currentWeekType,) async {
     emit(const AttendancyState.loading());
     final courses = await loadAbsences(request, false);
     courses.fold(
@@ -82,11 +81,11 @@ List<AttendancyMarkEntity> mapAbsencesToAttendancyMarkList(
 }
 
 WeekTypeEntity getWeekTypeByShift(
-    List<WeekTypeEntity> weekTypes, DateTime targetDate) {
+    List<WeekTypeEntity> weekTypes, DateTime targetDate,) {
   var currentWeekType = weekTypes.first;
   final tmpDate = DateTime.now();
   while (tmpDate.isAfter(targetDate)) {
-    tmpDate.subtract(Duration(days: 7));
+    tmpDate.subtract(const Duration(days: 7));
     currentWeekType =
         currentWeekType == weekTypes.first ? weekTypes[1] : weekTypes.first;
   }

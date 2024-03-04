@@ -39,8 +39,8 @@ class JournalAttendanceScreenWidget extends StatelessWidget {
         create: (context) => sl<AttendancyCubit>()
           ..loadLocally(
               AbsenceRequestModel(
-                  userId: userId, dates: getDatesOfSubject(subject, schedule)),
-              scheduleBloc.weekTypeList!),
+                  userId: userId, dates: getDatesOfSubject(subject, schedule),),
+              scheduleBloc.weekTypeList!,),
         child: const _AttendancyBodyWidget(),
       ),
       fail: (message) {
@@ -67,8 +67,8 @@ class JournalAttendanceScreenWidget extends StatelessWidget {
         create: (context) => sl<AttendancyCubit>()
           ..loadLocally(
               AbsenceRequestModel(
-                  userId: userId, dates: getDatesOfSubject(subject, schedule)),
-              scheduleBloc.weekTypeList!),
+                  userId: userId, dates: getDatesOfSubject(subject, schedule),),
+              scheduleBloc.weekTypeList!,),
         child: const _AttendancyBodyWidget(),
       ),
     );
@@ -76,7 +76,7 @@ class JournalAttendanceScreenWidget extends StatelessWidget {
 }
 
 List<DateTime> getDatesOfSubject(
-    ExtendedDisciplineModel subject, ScheduleEntity schedule) {
+    ExtendedDisciplineModel subject, ScheduleEntity schedule,) {
   return [];
 }
 
