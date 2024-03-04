@@ -1,38 +1,38 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'absence_model.dart';
+part of 'session_model.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class AbsenceModelAdapter extends TypeAdapter<_$AbsenceModelImpl> {
+class SessionModelAdapter extends TypeAdapter<_$SessionModelImpl> {
   @override
   final int typeId = 10;
 
   @override
-  _$AbsenceModelImpl read(BinaryReader reader) {
+  _$SessionModelImpl read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$AbsenceModelImpl(
+    return _$SessionModelImpl(
       id: fields[0] as int,
-      accountId: fields[1] as int,
-      sessionId: fields[2] as int,
+      studentId: fields[1] as int,
+      startedAt: fields[2] as DateTime?,
     );
   }
 
   @override
-  void write(BinaryWriter writer, _$AbsenceModelImpl obj) {
+  void write(BinaryWriter writer, _$SessionModelImpl obj) {
     writer
       ..writeByte(3)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.accountId)
+      ..write(obj.studentId)
       ..writeByte(2)
-      ..write(obj.sessionId);
+      ..write(obj.startedAt);
   }
 
   @override
@@ -41,7 +41,7 @@ class AbsenceModelAdapter extends TypeAdapter<_$AbsenceModelImpl> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is AbsenceModelAdapter &&
+      other is SessionModelAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
@@ -50,16 +50,18 @@ class AbsenceModelAdapter extends TypeAdapter<_$AbsenceModelImpl> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AbsenceModelImpl _$$AbsenceModelImplFromJson(Map<String, dynamic> json) =>
-    _$AbsenceModelImpl(
+_$SessionModelImpl _$$SessionModelImplFromJson(Map<String, dynamic> json) =>
+    _$SessionModelImpl(
       id: json['id'] as int,
-      accountId: json['accountId'] as int,
-      sessionId: json['sessionId'] as int,
+      studentId: json['studentId'] as int,
+      startedAt: json['startedAt'] == null
+          ? null
+          : DateTime.parse(json['startedAt'] as String),
     );
 
-Map<String, dynamic> _$$AbsenceModelImplToJson(_$AbsenceModelImpl instance) =>
+Map<String, dynamic> _$$SessionModelImplToJson(_$SessionModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'accountId': instance.accountId,
-      'sessionId': instance.sessionId,
+      'studentId': instance.studentId,
+      'startedAt': instance.startedAt?.toIso8601String(),
     };

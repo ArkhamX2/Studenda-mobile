@@ -23,18 +23,12 @@ mixin _$AbsenceModel {
   @JsonKey(name: 'id')
   @HiveField(0)
   int get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'studentId')
+  @JsonKey(name: 'accountId')
   @HiveField(1)
-  int get studentId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'subjectId')
+  int get accountId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'sessionId')
   @HiveField(2)
-  int get subjectId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'createdAt')
-  @HiveField(3)
-  DateTime get createdAt => throw _privateConstructorUsedError;
-  @JsonKey(name: 'updatedAt')
-  @HiveField(4)
-  DateTime get updatedAt => throw _privateConstructorUsedError;
+  int get sessionId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -50,10 +44,8 @@ abstract class $AbsenceModelCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'id') @HiveField(0) int id,
-      @JsonKey(name: 'studentId') @HiveField(1) int studentId,
-      @JsonKey(name: 'subjectId') @HiveField(2) int subjectId,
-      @JsonKey(name: 'createdAt') @HiveField(3) DateTime createdAt,
-      @JsonKey(name: 'updatedAt') @HiveField(4) DateTime updatedAt});
+      @JsonKey(name: 'accountId') @HiveField(1) int accountId,
+      @JsonKey(name: 'sessionId') @HiveField(2) int sessionId});
 }
 
 /// @nodoc
@@ -70,32 +62,22 @@ class _$AbsenceModelCopyWithImpl<$Res, $Val extends AbsenceModel>
   @override
   $Res call({
     Object? id = null,
-    Object? studentId = null,
-    Object? subjectId = null,
-    Object? createdAt = null,
-    Object? updatedAt = null,
+    Object? accountId = null,
+    Object? sessionId = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      studentId: null == studentId
-          ? _value.studentId
-          : studentId // ignore: cast_nullable_to_non_nullable
+      accountId: null == accountId
+          ? _value.accountId
+          : accountId // ignore: cast_nullable_to_non_nullable
               as int,
-      subjectId: null == subjectId
-          ? _value.subjectId
-          : subjectId // ignore: cast_nullable_to_non_nullable
+      sessionId: null == sessionId
+          ? _value.sessionId
+          : sessionId // ignore: cast_nullable_to_non_nullable
               as int,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
     ) as $Val);
   }
 }
@@ -110,10 +92,8 @@ abstract class _$$AbsenceModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'id') @HiveField(0) int id,
-      @JsonKey(name: 'studentId') @HiveField(1) int studentId,
-      @JsonKey(name: 'subjectId') @HiveField(2) int subjectId,
-      @JsonKey(name: 'createdAt') @HiveField(3) DateTime createdAt,
-      @JsonKey(name: 'updatedAt') @HiveField(4) DateTime updatedAt});
+      @JsonKey(name: 'accountId') @HiveField(1) int accountId,
+      @JsonKey(name: 'sessionId') @HiveField(2) int sessionId});
 }
 
 /// @nodoc
@@ -128,32 +108,22 @@ class __$$AbsenceModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? studentId = null,
-    Object? subjectId = null,
-    Object? createdAt = null,
-    Object? updatedAt = null,
+    Object? accountId = null,
+    Object? sessionId = null,
   }) {
     return _then(_$AbsenceModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      studentId: null == studentId
-          ? _value.studentId
-          : studentId // ignore: cast_nullable_to_non_nullable
+      accountId: null == accountId
+          ? _value.accountId
+          : accountId // ignore: cast_nullable_to_non_nullable
               as int,
-      subjectId: null == subjectId
-          ? _value.subjectId
-          : subjectId // ignore: cast_nullable_to_non_nullable
+      sessionId: null == sessionId
+          ? _value.sessionId
+          : sessionId // ignore: cast_nullable_to_non_nullable
               as int,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
     ));
   }
 }
@@ -164,10 +134,8 @@ class __$$AbsenceModelImplCopyWithImpl<$Res>
 class _$AbsenceModelImpl extends _AbsenceModel {
   _$AbsenceModelImpl(
       {@JsonKey(name: 'id') @HiveField(0) required this.id,
-      @JsonKey(name: 'studentId') @HiveField(1) required this.studentId,
-      @JsonKey(name: 'subjectId') @HiveField(2) required this.subjectId,
-      @JsonKey(name: 'createdAt') @HiveField(3) required this.createdAt,
-      @JsonKey(name: 'updatedAt') @HiveField(4) required this.updatedAt})
+      @JsonKey(name: 'accountId') @HiveField(1) required this.accountId,
+      @JsonKey(name: 'sessionId') @HiveField(2) required this.sessionId})
       : super._();
 
   factory _$AbsenceModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -178,25 +146,17 @@ class _$AbsenceModelImpl extends _AbsenceModel {
   @HiveField(0)
   final int id;
   @override
-  @JsonKey(name: 'studentId')
+  @JsonKey(name: 'accountId')
   @HiveField(1)
-  final int studentId;
+  final int accountId;
   @override
-  @JsonKey(name: 'subjectId')
+  @JsonKey(name: 'sessionId')
   @HiveField(2)
-  final int subjectId;
-  @override
-  @JsonKey(name: 'createdAt')
-  @HiveField(3)
-  final DateTime createdAt;
-  @override
-  @JsonKey(name: 'updatedAt')
-  @HiveField(4)
-  final DateTime updatedAt;
+  final int sessionId;
 
   @override
   String toString() {
-    return 'AbsenceModel(id: $id, studentId: $studentId, subjectId: $subjectId, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'AbsenceModel(id: $id, accountId: $accountId, sessionId: $sessionId)';
   }
 
   @override
@@ -205,20 +165,15 @@ class _$AbsenceModelImpl extends _AbsenceModel {
         (other.runtimeType == runtimeType &&
             other is _$AbsenceModelImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.studentId, studentId) ||
-                other.studentId == studentId) &&
-            (identical(other.subjectId, subjectId) ||
-                other.subjectId == subjectId) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+            (identical(other.accountId, accountId) ||
+                other.accountId == accountId) &&
+            (identical(other.sessionId, sessionId) ||
+                other.sessionId == sessionId));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, studentId, subjectId, createdAt, updatedAt);
+  int get hashCode => Object.hash(runtimeType, id, accountId, sessionId);
 
   @JsonKey(ignore: true)
   @override
@@ -237,14 +192,10 @@ class _$AbsenceModelImpl extends _AbsenceModel {
 abstract class _AbsenceModel extends AbsenceModel {
   factory _AbsenceModel(
       {@JsonKey(name: 'id') @HiveField(0) required final int id,
-      @JsonKey(name: 'studentId') @HiveField(1) required final int studentId,
-      @JsonKey(name: 'subjectId') @HiveField(2) required final int subjectId,
-      @JsonKey(name: 'createdAt')
-      @HiveField(3)
-      required final DateTime createdAt,
-      @JsonKey(name: 'updatedAt')
-      @HiveField(4)
-      required final DateTime updatedAt}) = _$AbsenceModelImpl;
+      @JsonKey(name: 'accountId') @HiveField(1) required final int accountId,
+      @JsonKey(name: 'sessionId')
+      @HiveField(2)
+      required final int sessionId}) = _$AbsenceModelImpl;
   _AbsenceModel._() : super._();
 
   factory _AbsenceModel.fromJson(Map<String, dynamic> json) =
@@ -255,21 +206,13 @@ abstract class _AbsenceModel extends AbsenceModel {
   @HiveField(0)
   int get id;
   @override
-  @JsonKey(name: 'studentId')
+  @JsonKey(name: 'accountId')
   @HiveField(1)
-  int get studentId;
+  int get accountId;
   @override
-  @JsonKey(name: 'subjectId')
+  @JsonKey(name: 'sessionId')
   @HiveField(2)
-  int get subjectId;
-  @override
-  @JsonKey(name: 'createdAt')
-  @HiveField(3)
-  DateTime get createdAt;
-  @override
-  @JsonKey(name: 'updatedAt')
-  @HiveField(4)
-  DateTime get updatedAt;
+  int get sessionId;
   @override
   @JsonKey(ignore: true)
   _$$AbsenceModelImplCopyWith<_$AbsenceModelImpl> get copyWith =>

@@ -16,8 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AbsenceRequestModel {
-  int get userId => throw _privateConstructorUsedError;
-  List<DateTime> get dates => throw _privateConstructorUsedError;
+  int get accountId => throw _privateConstructorUsedError;
+  List<int> get sessionIds => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AbsenceRequestModelCopyWith<AbsenceRequestModel> get copyWith =>
@@ -30,7 +30,7 @@ abstract class $AbsenceRequestModelCopyWith<$Res> {
           AbsenceRequestModel value, $Res Function(AbsenceRequestModel) then) =
       _$AbsenceRequestModelCopyWithImpl<$Res, AbsenceRequestModel>;
   @useResult
-  $Res call({int userId, List<DateTime> dates});
+  $Res call({int accountId, List<int> sessionIds});
 }
 
 /// @nodoc
@@ -46,18 +46,18 @@ class _$AbsenceRequestModelCopyWithImpl<$Res, $Val extends AbsenceRequestModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = null,
-    Object? dates = null,
+    Object? accountId = null,
+    Object? sessionIds = null,
   }) {
     return _then(_value.copyWith(
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
+      accountId: null == accountId
+          ? _value.accountId
+          : accountId // ignore: cast_nullable_to_non_nullable
               as int,
-      dates: null == dates
-          ? _value.dates
-          : dates // ignore: cast_nullable_to_non_nullable
-              as List<DateTime>,
+      sessionIds: null == sessionIds
+          ? _value.sessionIds
+          : sessionIds // ignore: cast_nullable_to_non_nullable
+              as List<int>,
     ) as $Val);
   }
 }
@@ -70,7 +70,7 @@ abstract class _$$AbsenceRequestModelImplCopyWith<$Res>
       __$$AbsenceRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int userId, List<DateTime> dates});
+  $Res call({int accountId, List<int> sessionIds});
 }
 
 /// @nodoc
@@ -84,18 +84,18 @@ class __$$AbsenceRequestModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = null,
-    Object? dates = null,
+    Object? accountId = null,
+    Object? sessionIds = null,
   }) {
     return _then(_$AbsenceRequestModelImpl(
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
+      accountId: null == accountId
+          ? _value.accountId
+          : accountId // ignore: cast_nullable_to_non_nullable
               as int,
-      dates: null == dates
-          ? _value._dates
-          : dates // ignore: cast_nullable_to_non_nullable
-              as List<DateTime>,
+      sessionIds: null == sessionIds
+          ? _value._sessionIds
+          : sessionIds // ignore: cast_nullable_to_non_nullable
+              as List<int>,
     ));
   }
 }
@@ -104,22 +104,22 @@ class __$$AbsenceRequestModelImplCopyWithImpl<$Res>
 
 class _$AbsenceRequestModelImpl implements _AbsenceRequestModel {
   const _$AbsenceRequestModelImpl(
-      {required this.userId, required final List<DateTime> dates})
-      : _dates = dates;
+      {required this.accountId, required final List<int> sessionIds})
+      : _sessionIds = sessionIds;
 
   @override
-  final int userId;
-  final List<DateTime> _dates;
+  final int accountId;
+  final List<int> _sessionIds;
   @override
-  List<DateTime> get dates {
-    if (_dates is EqualUnmodifiableListView) return _dates;
+  List<int> get sessionIds {
+    if (_sessionIds is EqualUnmodifiableListView) return _sessionIds;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_dates);
+    return EqualUnmodifiableListView(_sessionIds);
   }
 
   @override
   String toString() {
-    return 'AbsenceRequestModel(userId: $userId, dates: $dates)';
+    return 'AbsenceRequestModel(accountId: $accountId, sessionIds: $sessionIds)';
   }
 
   @override
@@ -127,13 +127,15 @@ class _$AbsenceRequestModelImpl implements _AbsenceRequestModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AbsenceRequestModelImpl &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            const DeepCollectionEquality().equals(other._dates, _dates));
+            (identical(other.accountId, accountId) ||
+                other.accountId == accountId) &&
+            const DeepCollectionEquality()
+                .equals(other._sessionIds, _sessionIds));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, userId, const DeepCollectionEquality().hash(_dates));
+      runtimeType, accountId, const DeepCollectionEquality().hash(_sessionIds));
 
   @JsonKey(ignore: true)
   @override
@@ -145,13 +147,13 @@ class _$AbsenceRequestModelImpl implements _AbsenceRequestModel {
 
 abstract class _AbsenceRequestModel implements AbsenceRequestModel {
   const factory _AbsenceRequestModel(
-      {required final int userId,
-      required final List<DateTime> dates}) = _$AbsenceRequestModelImpl;
+      {required final int accountId,
+      required final List<int> sessionIds}) = _$AbsenceRequestModelImpl;
 
   @override
-  int get userId;
+  int get accountId;
   @override
-  List<DateTime> get dates;
+  List<int> get sessionIds;
   @override
   @JsonKey(ignore: true)
   _$$AbsenceRequestModelImplCopyWith<_$AbsenceRequestModelImpl> get copyWith =>

@@ -5,7 +5,7 @@ part 'absence_request_model.freezed.dart';
 @freezed
 class AbsenceRequestModel with _$AbsenceRequestModel{
   const factory AbsenceRequestModel({
-    required int userId,
-    required List<DateTime> dates,
+    required int accountId,
+    required List<int> sessionIds,
   }) = _AbsenceRequestModel;
 }

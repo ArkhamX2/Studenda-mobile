@@ -9,12 +9,10 @@ part 'absence_model.g.dart';
 
 class AbsenceModel extends HiveObject with _$AbsenceModel {
   @HiveType(typeId: 10, adapterName: 'AbsenceModelAdapter')
-  factory AbsenceModel({
+  factory AbsenceModel({  
     @JsonKey(name: 'id') @HiveField(0) required int id,
-    @JsonKey(name: 'studentId') @HiveField(1) required int studentId,
-    @JsonKey(name: 'subjectId') @HiveField(2) required int subjectId,
-    @JsonKey(name: 'createdAt') @HiveField(3) required DateTime createdAt,
-    @JsonKey(name: 'updatedAt') @HiveField(4) required DateTime updatedAt,
+    @JsonKey(name: 'accountId') @HiveField(1) required int accountId,
+    @JsonKey(name: 'sessionId') @HiveField(2) required int sessionId,
 
   }) = _AbsenceModel;
 
