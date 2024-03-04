@@ -6,9 +6,11 @@ import 'package:studenda_mobile_student/feature/schedule/data/models/subject_typ
 class ExtendedDisciplineModel {
   final DisciplineModel discipline;
   final SubjectTypeModel subjectType;
+  final int subjectId;
 
   ExtendedDisciplineModel({
     required this.discipline,
     required this.subjectType,
+    required this.subjectId,
   });
 }

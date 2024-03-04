@@ -453,6 +453,7 @@ List<ExtendedDisciplineModel> mapDisciplinesAndTypes(
           subjectType: succededSubjectTypeList.firstWhere(
             (element) => element.id == e.subjectTypeId,
           ),
+          subjectId: e.id,
         ),
       )
       .toList();

@@ -8,4 +8,5 @@ class ScheduleState with _$ScheduleState {
   const factory ScheduleState.fail([@Default("Unknown error") String message]) = _Fail;
   const factory ScheduleState.localLoadingFail([@Default("Unknown error") String message]) = _LocalLoadingFail;
   const factory ScheduleState.localLoadingSuccess(ScheduleEntity schedule) = _LocalLoadingSuccess;
+  
 }
