@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AttendancyRequestModel {
   AbsenceRequestModel get userId => throw _privateConstructorUsedError;
   List<ScheduleEntity> get subject => throw _privateConstructorUsedError;
+  TokenModel get token => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AttendancyRequestModelCopyWith<AttendancyRequestModel> get copyWith =>
@@ -30,9 +31,13 @@ abstract class $AttendancyRequestModelCopyWith<$Res> {
           $Res Function(AttendancyRequestModel) then) =
       _$AttendancyRequestModelCopyWithImpl<$Res, AttendancyRequestModel>;
   @useResult
-  $Res call({AbsenceRequestModel userId, List<ScheduleEntity> subject});
+  $Res call(
+      {AbsenceRequestModel userId,
+      List<ScheduleEntity> subject,
+      TokenModel token});
 
   $AbsenceRequestModelCopyWith<$Res> get userId;
+  $TokenModelCopyWith<$Res> get token;
 }
 
 /// @nodoc
@@ -51,6 +56,7 @@ class _$AttendancyRequestModelCopyWithImpl<$Res,
   $Res call({
     Object? userId = null,
     Object? subject = null,
+    Object? token = null,
   }) {
     return _then(_value.copyWith(
       userId: null == userId
@@ -61,6 +67,10 @@ class _$AttendancyRequestModelCopyWithImpl<$Res,
           ? _value.subject
           : subject // ignore: cast_nullable_to_non_nullable
               as List<ScheduleEntity>,
+      token: null == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as TokenModel,
     ) as $Val);
   }
 
@@ -69,6 +79,14 @@ class _$AttendancyRequestModelCopyWithImpl<$Res,
   $AbsenceRequestModelCopyWith<$Res> get userId {
     return $AbsenceRequestModelCopyWith<$Res>(_value.userId, (value) {
       return _then(_value.copyWith(userId: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TokenModelCopyWith<$Res> get token {
+    return $TokenModelCopyWith<$Res>(_value.token, (value) {
+      return _then(_value.copyWith(token: value) as $Val);
     });
   }
 }
@@ -82,10 +100,15 @@ abstract class _$$AttendancyRequestModelImplCopyWith<$Res>
       __$$AttendancyRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AbsenceRequestModel userId, List<ScheduleEntity> subject});
+  $Res call(
+      {AbsenceRequestModel userId,
+      List<ScheduleEntity> subject,
+      TokenModel token});
 
   @override
   $AbsenceRequestModelCopyWith<$Res> get userId;
+  @override
+  $TokenModelCopyWith<$Res> get token;
 }
 
 /// @nodoc
@@ -103,6 +126,7 @@ class __$$AttendancyRequestModelImplCopyWithImpl<$Res>
   $Res call({
     Object? userId = null,
     Object? subject = null,
+    Object? token = null,
   }) {
     return _then(_$AttendancyRequestModelImpl(
       userId: null == userId
@@ -113,6 +137,10 @@ class __$$AttendancyRequestModelImplCopyWithImpl<$Res>
           ? _value._subject
           : subject // ignore: cast_nullable_to_non_nullable
               as List<ScheduleEntity>,
+      token: null == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as TokenModel,
     ));
   }
 }
@@ -121,7 +149,9 @@ class __$$AttendancyRequestModelImplCopyWithImpl<$Res>
 
 class _$AttendancyRequestModelImpl implements _AttendancyRequestModel {
   const _$AttendancyRequestModelImpl(
-      {required this.userId, required final List<ScheduleEntity> subject})
+      {required this.userId,
+      required final List<ScheduleEntity> subject,
+      required this.token})
       : _subject = subject;
 
   @override
@@ -135,8 +165,11 @@ class _$AttendancyRequestModelImpl implements _AttendancyRequestModel {
   }
 
   @override
+  final TokenModel token;
+
+  @override
   String toString() {
-    return 'AttendancyRequestModel(userId: $userId, subject: $subject)';
+    return 'AttendancyRequestModel(userId: $userId, subject: $subject, token: $token)';
   }
 
   @override
@@ -145,12 +178,13 @@ class _$AttendancyRequestModelImpl implements _AttendancyRequestModel {
         (other.runtimeType == runtimeType &&
             other is _$AttendancyRequestModelImpl &&
             (identical(other.userId, userId) || other.userId == userId) &&
-            const DeepCollectionEquality().equals(other._subject, _subject));
+            const DeepCollectionEquality().equals(other._subject, _subject) &&
+            (identical(other.token, token) || other.token == token));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, userId, const DeepCollectionEquality().hash(_subject));
+  int get hashCode => Object.hash(runtimeType, userId,
+      const DeepCollectionEquality().hash(_subject), token);
 
   @JsonKey(ignore: true)
   @override
@@ -162,14 +196,16 @@ class _$AttendancyRequestModelImpl implements _AttendancyRequestModel {
 
 abstract class _AttendancyRequestModel implements AttendancyRequestModel {
   const factory _AttendancyRequestModel(
-          {required final AbsenceRequestModel userId,
-          required final List<ScheduleEntity> subject}) =
-      _$AttendancyRequestModelImpl;
+      {required final AbsenceRequestModel userId,
+      required final List<ScheduleEntity> subject,
+      required final TokenModel token}) = _$AttendancyRequestModelImpl;
 
   @override
   AbsenceRequestModel get userId;
   @override
   List<ScheduleEntity> get subject;
+  @override
+  TokenModel get token;
   @override
   @JsonKey(ignore: true)
   _$$AttendancyRequestModelImplCopyWith<_$AttendancyRequestModelImpl>

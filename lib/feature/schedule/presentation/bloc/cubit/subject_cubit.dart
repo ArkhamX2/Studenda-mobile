@@ -24,7 +24,7 @@ class SubjectCubit extends Cubit<SubjectState> {
     final result = await getSchedule(
           ScheduleRequestByWeekTypeModel(
             groupId: groupId,
-            weekTypeIds: weekTypes!.map((e) => e.id).toList(),
+            weekTypeIds: weekTypes.map((e) => e.id).toList(),
             academicYear: getCurrentAcademicYear(),
           ),
           weekTypes.map((e) => e.id).toList(),);
@@ -49,7 +49,7 @@ class SubjectCubit extends Cubit<SubjectState> {
      final result = await getSchedule(
           ScheduleRequestByWeekTypeModel(
             groupId: groupId,
-            weekTypeIds: weekTypes!.map((e) => e.id).toList(),
+            weekTypeIds: weekTypes.map((e) => e.id).toList(),
             academicYear: getCurrentAcademicYear(),
           ),
           weekTypes.map((e) => e.id).toList(),);

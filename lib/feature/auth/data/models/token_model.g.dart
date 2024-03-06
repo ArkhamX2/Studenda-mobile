@@ -8,12 +8,10 @@ part of 'token_model.dart';
 
 _$TokenModelImpl _$$TokenModelImplFromJson(Map<String, dynamic> json) =>
     _$TokenModelImpl(
-      token: json['accessToken'] as String,
-      refreshToken: json['RefreshToken'] as String,
+      token: json['token'] as String,
     );
 
 Map<String, dynamic> _$$TokenModelImplToJson(_$TokenModelImpl instance) =>
     <String, dynamic>{
-      'accessToken': instance.token,
-      'RefreshToken': instance.refreshToken,
+      'token': instance.token,
     };

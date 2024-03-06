@@ -6,21 +6,22 @@ import 'package:studenda_mobile_student/core/data/error/exception.dart';
 import 'package:studenda_mobile_student/core/network/api_config.dart';
 import 'package:studenda_mobile_student/core/network/simplified_uri.dart';
 import 'package:studenda_mobile_student/feature/auth/data/models/user_model/user_model.dart';
+import 'package:studenda_mobile_student/feature/journal/data/model/api/group_list_request_model.dart';
 
 class GroupListRemoteDataSource
-    extends RemoteDataSource<List<UserModel>, List<int>> {
+    extends RemoteDataSource<List<UserModel>, GroupListRequestModel> {
         final http.Client client;
 
   GroupListRemoteDataSource({required this.client});
   @override
-  Future<List<UserModel>> load(List<int> request) async {
+  Future<List<UserModel>> load(GroupListRequestModel request) async {
     try {
       final Map<String, dynamic> queryParameters = {
         'ids': request,
       };
       final uri =
           SimplifiedUri.uri('$BASE_URL/security/user', queryParameters);
-      final response = await client.get(uri);
+      final response = await client.get(uri,headers: {"Authorization": "Bearer ${request.token}" } );
       if (response.statusCode == 200) {
         final decoded = json.decode(response.body) as List<dynamic>;
         final responseModel = decoded
@@ -30,7 +31,9 @@ class GroupListRemoteDataSource
             )
             .toList();
         return responseModel;
-      } else {
+      } else if (response.statusCode == 401) {
+        throw AuthException();
+      }else {
         throw ServerException();
       }
     } catch (e) {

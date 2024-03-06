@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:studenda_mobile_student/feature/auth/data/models/token_model.dart';
 import 'package:studenda_mobile_student/feature/journal/data/model/api/absence_request_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/entities/schedule_entity.dart';
 
@@ -9,5 +10,6 @@ class AttendancyRequestModel with _$AttendancyRequestModel{
   const factory AttendancyRequestModel({
     required AbsenceRequestModel userId,
     required List<ScheduleEntity> subject,
+    required TokenModel token,
   }) = _AttendancyRequestModel;
 }

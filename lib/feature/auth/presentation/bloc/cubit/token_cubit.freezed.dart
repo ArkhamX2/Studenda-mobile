@@ -22,6 +22,7 @@ mixin _$TokenState {
     required TResult Function(TokenModel token) authorized,
     required TResult Function(String message) fail,
     required TResult Function(TokenModel token) tokenSuccess,
+    required TResult Function() unauthorized,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$TokenState {
     TResult? Function(TokenModel token)? authorized,
     TResult? Function(String message)? fail,
     TResult? Function(TokenModel token)? tokenSuccess,
+    TResult? Function()? unauthorized,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$TokenState {
     TResult Function(TokenModel token)? authorized,
     TResult Function(String message)? fail,
     TResult Function(TokenModel token)? tokenSuccess,
+    TResult Function()? unauthorized,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$TokenState {
     required TResult Function(_Authorized value) authorized,
     required TResult Function(_Fail value) fail,
     required TResult Function(_TokenSuccess value) tokenSuccess,
+    required TResult Function(_Unauthorized value) unauthorized,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$TokenState {
     TResult? Function(_Authorized value)? authorized,
     TResult? Function(_Fail value)? fail,
     TResult? Function(_TokenSuccess value)? tokenSuccess,
+    TResult? Function(_Unauthorized value)? unauthorized,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$TokenState {
     TResult Function(_Authorized value)? authorized,
     TResult Function(_Fail value)? fail,
     TResult Function(_TokenSuccess value)? tokenSuccess,
+    TResult Function(_Unauthorized value)? unauthorized,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -128,6 +134,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(TokenModel token) authorized,
     required TResult Function(String message) fail,
     required TResult Function(TokenModel token) tokenSuccess,
+    required TResult Function() unauthorized,
   }) {
     return initial();
   }
@@ -139,6 +146,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(TokenModel token)? authorized,
     TResult? Function(String message)? fail,
     TResult? Function(TokenModel token)? tokenSuccess,
+    TResult? Function()? unauthorized,
   }) {
     return initial?.call();
   }
@@ -150,6 +158,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(TokenModel token)? authorized,
     TResult Function(String message)? fail,
     TResult Function(TokenModel token)? tokenSuccess,
+    TResult Function()? unauthorized,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -165,6 +174,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Authorized value) authorized,
     required TResult Function(_Fail value) fail,
     required TResult Function(_TokenSuccess value) tokenSuccess,
+    required TResult Function(_Unauthorized value) unauthorized,
   }) {
     return initial(this);
   }
@@ -176,6 +186,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Authorized value)? authorized,
     TResult? Function(_Fail value)? fail,
     TResult? Function(_TokenSuccess value)? tokenSuccess,
+    TResult? Function(_Unauthorized value)? unauthorized,
   }) {
     return initial?.call(this);
   }
@@ -187,6 +198,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Authorized value)? authorized,
     TResult Function(_Fail value)? fail,
     TResult Function(_TokenSuccess value)? tokenSuccess,
+    TResult Function(_Unauthorized value)? unauthorized,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -278,6 +290,7 @@ class _$AuthorizedImpl implements _Authorized {
     required TResult Function(TokenModel token) authorized,
     required TResult Function(String message) fail,
     required TResult Function(TokenModel token) tokenSuccess,
+    required TResult Function() unauthorized,
   }) {
     return authorized(token);
   }
@@ -289,6 +302,7 @@ class _$AuthorizedImpl implements _Authorized {
     TResult? Function(TokenModel token)? authorized,
     TResult? Function(String message)? fail,
     TResult? Function(TokenModel token)? tokenSuccess,
+    TResult? Function()? unauthorized,
   }) {
     return authorized?.call(token);
   }
@@ -300,6 +314,7 @@ class _$AuthorizedImpl implements _Authorized {
     TResult Function(TokenModel token)? authorized,
     TResult Function(String message)? fail,
     TResult Function(TokenModel token)? tokenSuccess,
+    TResult Function()? unauthorized,
     required TResult orElse(),
   }) {
     if (authorized != null) {
@@ -315,6 +330,7 @@ class _$AuthorizedImpl implements _Authorized {
     required TResult Function(_Authorized value) authorized,
     required TResult Function(_Fail value) fail,
     required TResult Function(_TokenSuccess value) tokenSuccess,
+    required TResult Function(_Unauthorized value) unauthorized,
   }) {
     return authorized(this);
   }
@@ -326,6 +342,7 @@ class _$AuthorizedImpl implements _Authorized {
     TResult? Function(_Authorized value)? authorized,
     TResult? Function(_Fail value)? fail,
     TResult? Function(_TokenSuccess value)? tokenSuccess,
+    TResult? Function(_Unauthorized value)? unauthorized,
   }) {
     return authorized?.call(this);
   }
@@ -337,6 +354,7 @@ class _$AuthorizedImpl implements _Authorized {
     TResult Function(_Authorized value)? authorized,
     TResult Function(_Fail value)? fail,
     TResult Function(_TokenSuccess value)? tokenSuccess,
+    TResult Function(_Unauthorized value)? unauthorized,
     required TResult orElse(),
   }) {
     if (authorized != null) {
@@ -423,6 +441,7 @@ class _$FailImpl implements _Fail {
     required TResult Function(TokenModel token) authorized,
     required TResult Function(String message) fail,
     required TResult Function(TokenModel token) tokenSuccess,
+    required TResult Function() unauthorized,
   }) {
     return fail(message);
   }
@@ -434,6 +453,7 @@ class _$FailImpl implements _Fail {
     TResult? Function(TokenModel token)? authorized,
     TResult? Function(String message)? fail,
     TResult? Function(TokenModel token)? tokenSuccess,
+    TResult? Function()? unauthorized,
   }) {
     return fail?.call(message);
   }
@@ -445,6 +465,7 @@ class _$FailImpl implements _Fail {
     TResult Function(TokenModel token)? authorized,
     TResult Function(String message)? fail,
     TResult Function(TokenModel token)? tokenSuccess,
+    TResult Function()? unauthorized,
     required TResult orElse(),
   }) {
     if (fail != null) {
@@ -460,6 +481,7 @@ class _$FailImpl implements _Fail {
     required TResult Function(_Authorized value) authorized,
     required TResult Function(_Fail value) fail,
     required TResult Function(_TokenSuccess value) tokenSuccess,
+    required TResult Function(_Unauthorized value) unauthorized,
   }) {
     return fail(this);
   }
@@ -471,6 +493,7 @@ class _$FailImpl implements _Fail {
     TResult? Function(_Authorized value)? authorized,
     TResult? Function(_Fail value)? fail,
     TResult? Function(_TokenSuccess value)? tokenSuccess,
+    TResult? Function(_Unauthorized value)? unauthorized,
   }) {
     return fail?.call(this);
   }
@@ -482,6 +505,7 @@ class _$FailImpl implements _Fail {
     TResult Function(_Authorized value)? authorized,
     TResult Function(_Fail value)? fail,
     TResult Function(_TokenSuccess value)? tokenSuccess,
+    TResult Function(_Unauthorized value)? unauthorized,
     required TResult orElse(),
   }) {
     if (fail != null) {
@@ -578,6 +602,7 @@ class _$TokenSuccessImpl implements _TokenSuccess {
     required TResult Function(TokenModel token) authorized,
     required TResult Function(String message) fail,
     required TResult Function(TokenModel token) tokenSuccess,
+    required TResult Function() unauthorized,
   }) {
     return tokenSuccess(token);
   }
@@ -589,6 +614,7 @@ class _$TokenSuccessImpl implements _TokenSuccess {
     TResult? Function(TokenModel token)? authorized,
     TResult? Function(String message)? fail,
     TResult? Function(TokenModel token)? tokenSuccess,
+    TResult? Function()? unauthorized,
   }) {
     return tokenSuccess?.call(token);
   }
@@ -600,6 +626,7 @@ class _$TokenSuccessImpl implements _TokenSuccess {
     TResult Function(TokenModel token)? authorized,
     TResult Function(String message)? fail,
     TResult Function(TokenModel token)? tokenSuccess,
+    TResult Function()? unauthorized,
     required TResult orElse(),
   }) {
     if (tokenSuccess != null) {
@@ -615,6 +642,7 @@ class _$TokenSuccessImpl implements _TokenSuccess {
     required TResult Function(_Authorized value) authorized,
     required TResult Function(_Fail value) fail,
     required TResult Function(_TokenSuccess value) tokenSuccess,
+    required TResult Function(_Unauthorized value) unauthorized,
   }) {
     return tokenSuccess(this);
   }
@@ -626,6 +654,7 @@ class _$TokenSuccessImpl implements _TokenSuccess {
     TResult? Function(_Authorized value)? authorized,
     TResult? Function(_Fail value)? fail,
     TResult? Function(_TokenSuccess value)? tokenSuccess,
+    TResult? Function(_Unauthorized value)? unauthorized,
   }) {
     return tokenSuccess?.call(this);
   }
@@ -637,6 +666,7 @@ class _$TokenSuccessImpl implements _TokenSuccess {
     TResult Function(_Authorized value)? authorized,
     TResult Function(_Fail value)? fail,
     TResult Function(_TokenSuccess value)? tokenSuccess,
+    TResult Function(_Unauthorized value)? unauthorized,
     required TResult orElse(),
   }) {
     if (tokenSuccess != null) {
@@ -653,4 +683,124 @@ abstract class _TokenSuccess implements TokenState {
   @JsonKey(ignore: true)
   _$$TokenSuccessImplCopyWith<_$TokenSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UnauthorizedImplCopyWith<$Res> {
+  factory _$$UnauthorizedImplCopyWith(
+          _$UnauthorizedImpl value, $Res Function(_$UnauthorizedImpl) then) =
+      __$$UnauthorizedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UnauthorizedImplCopyWithImpl<$Res>
+    extends _$TokenStateCopyWithImpl<$Res, _$UnauthorizedImpl>
+    implements _$$UnauthorizedImplCopyWith<$Res> {
+  __$$UnauthorizedImplCopyWithImpl(
+      _$UnauthorizedImpl _value, $Res Function(_$UnauthorizedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$UnauthorizedImpl implements _Unauthorized {
+  const _$UnauthorizedImpl();
+
+  @override
+  String toString() {
+    return 'TokenState.unauthorized()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$UnauthorizedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(TokenModel token) authorized,
+    required TResult Function(String message) fail,
+    required TResult Function(TokenModel token) tokenSuccess,
+    required TResult Function() unauthorized,
+  }) {
+    return unauthorized();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(TokenModel token)? authorized,
+    TResult? Function(String message)? fail,
+    TResult? Function(TokenModel token)? tokenSuccess,
+    TResult? Function()? unauthorized,
+  }) {
+    return unauthorized?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(TokenModel token)? authorized,
+    TResult Function(String message)? fail,
+    TResult Function(TokenModel token)? tokenSuccess,
+    TResult Function()? unauthorized,
+    required TResult orElse(),
+  }) {
+    if (unauthorized != null) {
+      return unauthorized();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Authorized value) authorized,
+    required TResult Function(_Fail value) fail,
+    required TResult Function(_TokenSuccess value) tokenSuccess,
+    required TResult Function(_Unauthorized value) unauthorized,
+  }) {
+    return unauthorized(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Authorized value)? authorized,
+    TResult? Function(_Fail value)? fail,
+    TResult? Function(_TokenSuccess value)? tokenSuccess,
+    TResult? Function(_Unauthorized value)? unauthorized,
+  }) {
+    return unauthorized?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Authorized value)? authorized,
+    TResult Function(_Fail value)? fail,
+    TResult Function(_TokenSuccess value)? tokenSuccess,
+    TResult Function(_Unauthorized value)? unauthorized,
+    required TResult orElse(),
+  }) {
+    if (unauthorized != null) {
+      return unauthorized(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Unauthorized implements TokenState {
+  const factory _Unauthorized() = _$UnauthorizedImpl;
 }

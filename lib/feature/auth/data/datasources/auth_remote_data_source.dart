@@ -33,11 +33,10 @@ class AuthRemoteDataSource implements RemoteDataSource<SecurityRequestModel,Secu
     }
   }
   
-  Future<TokenModel> refreshToken(TokenModel request) async {
+  Future<TokenModel> refreshToken() async {
     try {
       final response = await client.post(
         Uri.parse('http://88.210.3.137/api/token/refresh'),
-        body: json.encode(request.toJson()),
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
         },

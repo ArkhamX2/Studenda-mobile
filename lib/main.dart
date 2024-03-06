@@ -112,6 +112,7 @@ class _InitializerState extends State<Initializer> {
       initial: () => const Center(child: StudendaLoadingWidget()),
       authorized: (token) => const Center(child: StudendaLoadingWidget()),
       fail: (l) => const MainAuthPage(),
+      unauthorized: () => const MainAuthPage(),
       tokenSuccess: (token) {
         final selectorBloc = context.watch<MainGroupSelectorBloc>();
         return selectorBloc.state.when(

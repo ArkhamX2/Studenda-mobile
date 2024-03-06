@@ -20,10 +20,8 @@ TokenModel _$TokenModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TokenModel {
-  @JsonKey(name: 'accessToken')
+  @JsonKey(name: 'token')
   String get token => throw _privateConstructorUsedError;
-  @JsonKey(name: 'RefreshToken')
-  String get refreshToken => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,9 +35,7 @@ abstract class $TokenModelCopyWith<$Res> {
           TokenModel value, $Res Function(TokenModel) then) =
       _$TokenModelCopyWithImpl<$Res, TokenModel>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'accessToken') String token,
-      @JsonKey(name: 'RefreshToken') String refreshToken});
+  $Res call({@JsonKey(name: 'token') String token});
 }
 
 /// @nodoc
@@ -56,16 +52,11 @@ class _$TokenModelCopyWithImpl<$Res, $Val extends TokenModel>
   @override
   $Res call({
     Object? token = null,
-    Object? refreshToken = null,
   }) {
     return _then(_value.copyWith(
       token: null == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
-              as String,
-      refreshToken: null == refreshToken
-          ? _value.refreshToken
-          : refreshToken // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -79,9 +70,7 @@ abstract class _$$TokenModelImplCopyWith<$Res>
       __$$TokenModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'accessToken') String token,
-      @JsonKey(name: 'RefreshToken') String refreshToken});
+  $Res call({@JsonKey(name: 'token') String token});
 }
 
 /// @nodoc
@@ -96,16 +85,11 @@ class __$$TokenModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? token = null,
-    Object? refreshToken = null,
   }) {
     return _then(_$TokenModelImpl(
       token: null == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
-              as String,
-      refreshToken: null == refreshToken
-          ? _value.refreshToken
-          : refreshToken // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -114,23 +98,18 @@ class __$$TokenModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$TokenModelImpl implements _TokenModel {
-  const _$TokenModelImpl(
-      {@JsonKey(name: 'accessToken') required this.token,
-      @JsonKey(name: 'RefreshToken') required this.refreshToken});
+  const _$TokenModelImpl({@JsonKey(name: 'token') required this.token});
 
   factory _$TokenModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$TokenModelImplFromJson(json);
 
   @override
-  @JsonKey(name: 'accessToken')
+  @JsonKey(name: 'token')
   final String token;
-  @override
-  @JsonKey(name: 'RefreshToken')
-  final String refreshToken;
 
   @override
   String toString() {
-    return 'TokenModel(token: $token, refreshToken: $refreshToken)';
+    return 'TokenModel(token: $token)';
   }
 
   @override
@@ -138,14 +117,12 @@ class _$TokenModelImpl implements _TokenModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TokenModelImpl &&
-            (identical(other.token, token) || other.token == token) &&
-            (identical(other.refreshToken, refreshToken) ||
-                other.refreshToken == refreshToken));
+            (identical(other.token, token) || other.token == token));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, token, refreshToken);
+  int get hashCode => Object.hash(runtimeType, token);
 
   @JsonKey(ignore: true)
   @override
@@ -163,19 +140,14 @@ class _$TokenModelImpl implements _TokenModel {
 
 abstract class _TokenModel implements TokenModel {
   const factory _TokenModel(
-          {@JsonKey(name: 'accessToken') required final String token,
-          @JsonKey(name: 'RefreshToken') required final String refreshToken}) =
-      _$TokenModelImpl;
+      {@JsonKey(name: 'token') required final String token}) = _$TokenModelImpl;
 
   factory _TokenModel.fromJson(Map<String, dynamic> json) =
       _$TokenModelImpl.fromJson;
 
   @override
-  @JsonKey(name: 'accessToken')
+  @JsonKey(name: 'token')
   String get token;
-  @override
-  @JsonKey(name: 'RefreshToken')
-  String get refreshToken;
   @override
   @JsonKey(ignore: true)
   _$$TokenModelImplCopyWith<_$TokenModelImpl> get copyWith =>

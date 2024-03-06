@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SessionRequestModel {
   int get subjectId => throw _privateConstructorUsedError;
   List<DateTime> get dates => throw _privateConstructorUsedError;
+  TokenModel get token => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SessionRequestModelCopyWith<SessionRequestModel> get copyWith =>
@@ -30,7 +31,9 @@ abstract class $SessionRequestModelCopyWith<$Res> {
           SessionRequestModel value, $Res Function(SessionRequestModel) then) =
       _$SessionRequestModelCopyWithImpl<$Res, SessionRequestModel>;
   @useResult
-  $Res call({int subjectId, List<DateTime> dates});
+  $Res call({int subjectId, List<DateTime> dates, TokenModel token});
+
+  $TokenModelCopyWith<$Res> get token;
 }
 
 /// @nodoc
@@ -48,6 +51,7 @@ class _$SessionRequestModelCopyWithImpl<$Res, $Val extends SessionRequestModel>
   $Res call({
     Object? subjectId = null,
     Object? dates = null,
+    Object? token = null,
   }) {
     return _then(_value.copyWith(
       subjectId: null == subjectId
@@ -58,7 +62,19 @@ class _$SessionRequestModelCopyWithImpl<$Res, $Val extends SessionRequestModel>
           ? _value.dates
           : dates // ignore: cast_nullable_to_non_nullable
               as List<DateTime>,
+      token: null == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as TokenModel,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TokenModelCopyWith<$Res> get token {
+    return $TokenModelCopyWith<$Res>(_value.token, (value) {
+      return _then(_value.copyWith(token: value) as $Val);
+    });
   }
 }
 
@@ -70,7 +86,10 @@ abstract class _$$SessionRequestModelImplCopyWith<$Res>
       __$$SessionRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int subjectId, List<DateTime> dates});
+  $Res call({int subjectId, List<DateTime> dates, TokenModel token});
+
+  @override
+  $TokenModelCopyWith<$Res> get token;
 }
 
 /// @nodoc
@@ -86,6 +105,7 @@ class __$$SessionRequestModelImplCopyWithImpl<$Res>
   $Res call({
     Object? subjectId = null,
     Object? dates = null,
+    Object? token = null,
   }) {
     return _then(_$SessionRequestModelImpl(
       subjectId: null == subjectId
@@ -96,6 +116,10 @@ class __$$SessionRequestModelImplCopyWithImpl<$Res>
           ? _value._dates
           : dates // ignore: cast_nullable_to_non_nullable
               as List<DateTime>,
+      token: null == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as TokenModel,
     ));
   }
 }
@@ -104,7 +128,9 @@ class __$$SessionRequestModelImplCopyWithImpl<$Res>
 
 class _$SessionRequestModelImpl implements _SessionRequestModel {
   const _$SessionRequestModelImpl(
-      {required this.subjectId, required final List<DateTime> dates})
+      {required this.subjectId,
+      required final List<DateTime> dates,
+      required this.token})
       : _dates = dates;
 
   @override
@@ -118,8 +144,11 @@ class _$SessionRequestModelImpl implements _SessionRequestModel {
   }
 
   @override
+  final TokenModel token;
+
+  @override
   String toString() {
-    return 'SessionRequestModel(subjectId: $subjectId, dates: $dates)';
+    return 'SessionRequestModel(subjectId: $subjectId, dates: $dates, token: $token)';
   }
 
   @override
@@ -129,12 +158,13 @@ class _$SessionRequestModelImpl implements _SessionRequestModel {
             other is _$SessionRequestModelImpl &&
             (identical(other.subjectId, subjectId) ||
                 other.subjectId == subjectId) &&
-            const DeepCollectionEquality().equals(other._dates, _dates));
+            const DeepCollectionEquality().equals(other._dates, _dates) &&
+            (identical(other.token, token) || other.token == token));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, subjectId, const DeepCollectionEquality().hash(_dates));
+  int get hashCode => Object.hash(runtimeType, subjectId,
+      const DeepCollectionEquality().hash(_dates), token);
 
   @JsonKey(ignore: true)
   @override
@@ -147,12 +177,15 @@ class _$SessionRequestModelImpl implements _SessionRequestModel {
 abstract class _SessionRequestModel implements SessionRequestModel {
   const factory _SessionRequestModel(
       {required final int subjectId,
-      required final List<DateTime> dates}) = _$SessionRequestModelImpl;
+      required final List<DateTime> dates,
+      required final TokenModel token}) = _$SessionRequestModelImpl;
 
   @override
   int get subjectId;
   @override
   List<DateTime> get dates;
+  @override
+  TokenModel get token;
   @override
   @JsonKey(ignore: true)
   _$$SessionRequestModelImplCopyWith<_$SessionRequestModelImpl> get copyWith =>

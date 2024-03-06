@@ -8,6 +8,7 @@ abstract class AuthLocalDataSource{
   Future<TokenModel> loadToken();
   Future<void> updateToken(TokenModel token);
   Future<void> add(SecurityResponseModel remoteLoad);
+  Future<void> logout();
 }
 
 class AuthLocalDataSourceImpl implements AuthLocalDataSource{
@@ -20,10 +21,6 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource{
   Future<void> add(SecurityResponseModel response) async {
     try {
       await tokenStorage.write(key: 'jwt_access_token', value: response.token);
-      await tokenStorage.write(
-        key: 'jwt_refresh_token',
-        value: response.refreshToken,
-      );
       final alreadyExists = userBox.values.firstWhere(
         (element) => element.id == response.user.id,
       );
@@ -53,10 +50,6 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource{
   Future<void> updateToken(TokenModel token) async {
     try {
       await tokenStorage.write(key: 'jwt_access_token', value: token.token);
-      await tokenStorage.write(
-        key: 'jwt_refresh_token',
-        value: token.refreshToken,
-      );
     } catch (e) {
       throw CacheException();
     }
@@ -66,10 +59,15 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource{
   Future<TokenModel> loadToken() async {
     try {
       final token = await tokenStorage.read(key: 'jwt_access_token');
-      final refresh = await tokenStorage.read(key: 'jwt_refresh_token');
-      return TokenModel(token: token??"", refreshToken: refresh??"");
+      return TokenModel(token: token??"", );
     } catch (e) {
       throw CacheException();
     }
+  }
+  
+  @override
+  Future<void> logout() async {
+      final token = await tokenStorage.delete(key: 'jwt_access_token');
+      userBox.clear();
   }
 }

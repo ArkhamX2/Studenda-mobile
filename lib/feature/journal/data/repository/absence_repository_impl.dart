@@ -25,7 +25,12 @@ class AbsenceRepositoryImpl implements AbsenceRepository {
     bool remote = true,
   ]) async {
     return await loadData<AbsenceLocalDataSource, AbsenceRemoteDataSource,
-            List<AbsenceModel>, AbsenceRequestModel>(
-        localDataSource, remoteDataSource, remote, request, networkInfo,);
+        List<AbsenceModel>, AbsenceRequestModel>(
+      localDataSource,
+      remoteDataSource,
+      remote,
+      request,
+      networkInfo,
+    );
   }
 }

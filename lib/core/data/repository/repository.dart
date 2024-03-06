@@ -19,6 +19,8 @@ Future<Either<Failure, ResponseType>> loadData<Local extends LocalDataSource,
       return Right(await localDataSource.load(request) as ResponseType);
     } on ServerException {
       return const Left(ServerFailure(message: "Ошибка сервера"));
+    } on AuthException {
+      return const Left(AuthFailure(message: "Ошибка авторизации"));
     }
   } else {
     try {

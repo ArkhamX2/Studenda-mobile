@@ -21,7 +21,7 @@ class SessionRemoteDataSource
       };
       final uri =
           SimplifiedUri.uri('$BASE_URL/journal/session/subject', queryParameters);
-      final response = await client.get(uri);
+      final response = await client.get(uri,headers: {"Authorization": "Bearer ${request.token}" } );
       if (response.statusCode == 200) {
         final decoded = json.decode(response.body) as List<dynamic>;
         final responseModel = decoded
@@ -31,7 +31,9 @@ class SessionRemoteDataSource
             )
             .toList();
         return responseModel;
-      } else {
+      } else if (response.statusCode == 401) {
+        throw AuthException();
+      }else {
         throw ServerException();
       }
     } catch (e) {

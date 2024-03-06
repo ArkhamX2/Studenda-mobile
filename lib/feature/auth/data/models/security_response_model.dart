@@ -12,7 +12,6 @@ class SecurityResponseModel with _$SecurityResponseModel{
 
     @JsonKey(name: 'User') required UserModel user,
     @JsonKey(name: 'Token') required String token,
-    @JsonKey(name: 'RefreshToken') required String refreshToken,
   }) = _SecurityResponseModel;
   
   factory SecurityResponseModel.fromJson(Map<String,dynamic> json) => _$SecurityResponseModelFromJson(json);

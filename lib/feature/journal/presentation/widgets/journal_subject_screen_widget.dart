@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:studenda_mobile_student/core/presentation/UI/studenda_loading_widget.dart';
 import 'package:studenda_mobile_student/core/presentation/label/studenda_default_label_widget.dart';
 import 'package:studenda_mobile_student/core/utils/get_current_academic_year.dart';
+import 'package:studenda_mobile_student/feature/auth/presentation/bloc/cubit/token_cubit.dart';
+import 'package:studenda_mobile_student/feature/journal/data/model/api/mark_request_model.dart';
 import 'package:studenda_mobile_student/feature/journal/data/model/api/task_student_request_model.dart';
 import 'package:studenda_mobile_student/feature/journal/domain/entity/mark_entity.dart';
 import 'package:studenda_mobile_student/feature/journal/domain/entity/task_entity.dart';
@@ -26,15 +28,19 @@ class JournalSubjectScreenWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => sl<TaskCubit>()
-        ..loadLocally(
-          TaskStudentRequestModel(
-            asigneeUserIds: [userId],
-            disciplineId: subject.discipline.id,
-            subjectTypeId: subject.subjectType.id,
-            academicYear: getCurrentAcademicYear(),
-          ),
-        ),
+      create: (context) {
+        final tokenCubit = context.watch<TokenCubit>();
+        return sl<TaskCubit>()
+          ..loadLocally(
+            TaskStudentRequestModel(
+              asigneeUserIds: [userId],
+              disciplineId: subject.discipline.id,
+              subjectTypeId: subject.subjectType.id,
+              academicYear: getCurrentAcademicYear(),
+              token: tokenCubit.token,
+            ),
+          );
+      },
       child: _JournalSubjectBody(subject: subject, userId: userId),
     );
   }
@@ -52,6 +58,7 @@ class _JournalSubjectBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final taskBloc = context.watch<TaskCubit>();
+    final tokenCubit = context.watch<TokenCubit>()..getToken();
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 240, 241, 245),
       appBar: AppBar(
@@ -77,8 +84,10 @@ class _JournalSubjectBody extends StatelessWidget {
                 navigateTo: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) =>
-                          JournalAttendanceScreenWidget(subject: subject,userId: userId),
+                      builder: (context) => JournalAttendanceScreenWidget(
+                        subject: subject,
+                        userId: userId,
+                      ),
                     ),
                   );
                 },
@@ -99,6 +108,7 @@ class _JournalSubjectBody extends StatelessWidget {
                       disciplineId: subject.discipline.id,
                       subjectTypeId: subject.subjectType.id,
                       academicYear: getCurrentAcademicYear(),
+                      token: tokenCubit.token,
                     ),
                   );
 
@@ -114,6 +124,7 @@ class _JournalSubjectBody extends StatelessWidget {
                       disciplineId: subject.discipline.id,
                       subjectTypeId: subject.subjectType.id,
                       academicYear: getCurrentAcademicYear(),
+                      token: tokenCubit.token,
                     ),
                   );
                   return Center(
@@ -129,6 +140,7 @@ class _JournalSubjectBody extends StatelessWidget {
                         disciplineId: subject.discipline.id,
                         subjectTypeId: subject.subjectType.id,
                         academicYear: getCurrentAcademicYear(),
+                        token: tokenCubit.token,
                       ),
                     );
                   }
@@ -156,6 +168,7 @@ class _TaskScrollWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final taskCubit = context.watch<TaskCubit>();
     final markCubit = context.watch<MarkCubit>();
+    final tokenCubit = context.watch<TokenCubit>()..getToken();
     return LayoutBuilder(
       builder: (context, constraints) => RefreshIndicator(
         onRefresh: () async {
@@ -165,9 +178,15 @@ class _TaskScrollWidget extends StatelessWidget {
               disciplineId: subject.discipline.id,
               subjectTypeId: subject.subjectType.id,
               academicYear: getCurrentAcademicYear(),
+              token: tokenCubit.token,
             ),
           );
-          markCubit.load(taskCubit.taskList.map((e) => e.id).toList());
+          markCubit.load(
+            MarkRequestModel(
+              taskIds: taskCubit.taskList.map((e) => e.id).toList(),
+              token: tokenCubit.token,
+            ),
+          );
         },
         child: SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),

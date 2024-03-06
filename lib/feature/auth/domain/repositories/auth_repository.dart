@@ -6,6 +6,6 @@ import 'package:studenda_mobile_student/feature/auth/data/models/token_model.dar
 
 abstract class AuthRepository{
   Future<Either<Failure,SecurityResponseModel>> auth(SecurityRequestModel request);
-  Future<Either<Failure,TokenModel>> refreshToken(TokenModel request);
   Future<Either<Failure,TokenModel>> getToken();
+  Future<Either<Failure,void>> logout();
 }

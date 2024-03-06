@@ -25,7 +25,13 @@ class SessionRepositoryImpl implements SessionRepository {
     bool remote = true,
   ]) async {
     return await loadData<SessionLocalDataSource, SessionRemoteDataSource,
-            List<SessionModel>, SessionRequestModel>(
-        localDataSource, remoteDataSource, remote, request, networkInfo,);
+        List<SessionModel>, SessionRequestModel>(
+      localDataSource,
+      remoteDataSource,
+      remote,
+      request,
+      networkInfo,
+    );
+
   }
 }

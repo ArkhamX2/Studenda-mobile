@@ -20,6 +20,7 @@ mixin _$TaskStudentRequestModel {
   int? get disciplineId => throw _privateConstructorUsedError;
   int? get subjectTypeId => throw _privateConstructorUsedError;
   int? get academicYear => throw _privateConstructorUsedError;
+  TokenModel get token => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TaskStudentRequestModelCopyWith<TaskStudentRequestModel> get copyWith =>
@@ -36,7 +37,10 @@ abstract class $TaskStudentRequestModelCopyWith<$Res> {
       {List<int> asigneeUserIds,
       int? disciplineId,
       int? subjectTypeId,
-      int? academicYear});
+      int? academicYear,
+      TokenModel token});
+
+  $TokenModelCopyWith<$Res> get token;
 }
 
 /// @nodoc
@@ -57,6 +61,7 @@ class _$TaskStudentRequestModelCopyWithImpl<$Res,
     Object? disciplineId = freezed,
     Object? subjectTypeId = freezed,
     Object? academicYear = freezed,
+    Object? token = null,
   }) {
     return _then(_value.copyWith(
       asigneeUserIds: null == asigneeUserIds
@@ -75,7 +80,19 @@ class _$TaskStudentRequestModelCopyWithImpl<$Res,
           ? _value.academicYear
           : academicYear // ignore: cast_nullable_to_non_nullable
               as int?,
+      token: null == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as TokenModel,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TokenModelCopyWith<$Res> get token {
+    return $TokenModelCopyWith<$Res>(_value.token, (value) {
+      return _then(_value.copyWith(token: value) as $Val);
+    });
   }
 }
 
@@ -92,7 +109,11 @@ abstract class _$$TaskStudentRequestModelImplCopyWith<$Res>
       {List<int> asigneeUserIds,
       int? disciplineId,
       int? subjectTypeId,
-      int? academicYear});
+      int? academicYear,
+      TokenModel token});
+
+  @override
+  $TokenModelCopyWith<$Res> get token;
 }
 
 /// @nodoc
@@ -112,6 +133,7 @@ class __$$TaskStudentRequestModelImplCopyWithImpl<$Res>
     Object? disciplineId = freezed,
     Object? subjectTypeId = freezed,
     Object? academicYear = freezed,
+    Object? token = null,
   }) {
     return _then(_$TaskStudentRequestModelImpl(
       asigneeUserIds: null == asigneeUserIds
@@ -130,6 +152,10 @@ class __$$TaskStudentRequestModelImplCopyWithImpl<$Res>
           ? _value.academicYear
           : academicYear // ignore: cast_nullable_to_non_nullable
               as int?,
+      token: null == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as TokenModel,
     ));
   }
 }
@@ -141,7 +167,8 @@ class _$TaskStudentRequestModelImpl implements _TaskStudentRequestModel {
       {required final List<int> asigneeUserIds,
       required this.disciplineId,
       required this.subjectTypeId,
-      required this.academicYear})
+      required this.academicYear,
+      required this.token})
       : _asigneeUserIds = asigneeUserIds;
 
   final List<int> _asigneeUserIds;
@@ -158,10 +185,12 @@ class _$TaskStudentRequestModelImpl implements _TaskStudentRequestModel {
   final int? subjectTypeId;
   @override
   final int? academicYear;
+  @override
+  final TokenModel token;
 
   @override
   String toString() {
-    return 'TaskStudentRequestModel(asigneeUserIds: $asigneeUserIds, disciplineId: $disciplineId, subjectTypeId: $subjectTypeId, academicYear: $academicYear)';
+    return 'TaskStudentRequestModel(asigneeUserIds: $asigneeUserIds, disciplineId: $disciplineId, subjectTypeId: $subjectTypeId, academicYear: $academicYear, token: $token)';
   }
 
   @override
@@ -176,7 +205,8 @@ class _$TaskStudentRequestModelImpl implements _TaskStudentRequestModel {
             (identical(other.subjectTypeId, subjectTypeId) ||
                 other.subjectTypeId == subjectTypeId) &&
             (identical(other.academicYear, academicYear) ||
-                other.academicYear == academicYear));
+                other.academicYear == academicYear) &&
+            (identical(other.token, token) || other.token == token));
   }
 
   @override
@@ -185,7 +215,8 @@ class _$TaskStudentRequestModelImpl implements _TaskStudentRequestModel {
       const DeepCollectionEquality().hash(_asigneeUserIds),
       disciplineId,
       subjectTypeId,
-      academicYear);
+      academicYear,
+      token);
 
   @JsonKey(ignore: true)
   @override
@@ -200,7 +231,8 @@ abstract class _TaskStudentRequestModel implements TaskStudentRequestModel {
       {required final List<int> asigneeUserIds,
       required final int? disciplineId,
       required final int? subjectTypeId,
-      required final int? academicYear}) = _$TaskStudentRequestModelImpl;
+      required final int? academicYear,
+      required final TokenModel token}) = _$TaskStudentRequestModelImpl;
 
   @override
   List<int> get asigneeUserIds;
@@ -210,6 +242,8 @@ abstract class _TaskStudentRequestModel implements TaskStudentRequestModel {
   int? get subjectTypeId;
   @override
   int? get academicYear;
+  @override
+  TokenModel get token;
   @override
   @JsonKey(ignore: true)
   _$$TaskStudentRequestModelImplCopyWith<_$TaskStudentRequestModelImpl>

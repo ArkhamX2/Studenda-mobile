@@ -11,7 +11,6 @@ _$SecurityResponseModelImpl _$$SecurityResponseModelImplFromJson(
     _$SecurityResponseModelImpl(
       user: UserModel.fromJson(json['User'] as Map<String, dynamic>),
       token: json['Token'] as String,
-      refreshToken: json['RefreshToken'] as String,
     );
 
 Map<String, dynamic> _$$SecurityResponseModelImplToJson(
@@ -19,5 +18,4 @@ Map<String, dynamic> _$$SecurityResponseModelImplToJson(
     <String, dynamic>{
       'User': instance.user,
       'Token': instance.token,
-      'RefreshToken': instance.refreshToken,
     };

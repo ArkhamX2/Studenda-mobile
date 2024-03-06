@@ -9,9 +9,8 @@ Future<Either<Failure, TokenModel>> getTokenFromLocalStorage(
 ) async {
   try {
     final token = await storage.read(key: 'jwt_access_token');
-    final refreshToken = await storage.read(key: 'jwt_refresh_token');
-    if (token != null && refreshToken != null) {
-      return Right(TokenModel(token: token, refreshToken: refreshToken));
+    if (token != null) {
+      return Right(TokenModel(token: token,));
     } else {
       throw CacheException();
     }

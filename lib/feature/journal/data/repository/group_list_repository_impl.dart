@@ -5,6 +5,7 @@ import 'package:studenda_mobile_student/core/network/network_info.dart';
 import 'package:studenda_mobile_student/feature/auth/data/models/user_model/user_model.dart';
 import 'package:studenda_mobile_student/feature/journal/data/datasource/local/group_list_local_data_source.dart';
 import 'package:studenda_mobile_student/feature/journal/data/datasource/remote/group_list_remote_data_source.dart';
+import 'package:studenda_mobile_student/feature/journal/data/model/api/group_list_request_model.dart';
 import 'package:studenda_mobile_student/feature/journal/domain/repository/group_list_repository.dart';
 
 class GroupListRepositoryImpl implements GroupListRepository {
@@ -20,11 +21,16 @@ class GroupListRepositoryImpl implements GroupListRepository {
 
   @override
   Future<Either<Failure, List<UserModel>>> load(
-    List<int> request, [
+    GroupListRequestModel request, [
     bool remote = true,
   ]) async {
-    return await loadData<GroupListLocalDataSource, GroupListRemoteDataSource,
-            List<UserModel>, List<int> >(
-        localDataSource, remoteDataSource, remote, request, networkInfo,);
+    return await loadData<GroupListLocalDataSource,
+        GroupListRemoteDataSource, List<UserModel>, GroupListRequestModel>(
+      localDataSource,
+      remoteDataSource,
+      remote,
+      request,
+      networkInfo,
+    );
   }
 }

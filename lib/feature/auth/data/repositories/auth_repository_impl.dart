@@ -40,27 +40,20 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Either<Failure, TokenModel>> refreshToken(TokenModel request) async {
-    if (await networkInfo.isConnected) {
-      try {
-        final token = await remoteDataSource.refreshToken(request);
-        localDataSource.updateToken(token);
-        return Right(token);
-      } on ServerException {
-        return const Left(ServerFailure(message: "Ошибка сервера"));
-      }
-    } else {
-      return const Left(
-        CacheFailure(message: "Отсутствует подключение к сети"),
-      );
-    }
-  }
-
-  @override
   Future<Either<Failure, TokenModel>> getToken() async {
     try {
       final token = await localDataSource.loadToken();
       if (token.token.isEmpty) throw CacheException();
+      return Right(token);
+    } on CacheException {
+      return const Left(ServerFailure(message: "Ошибка сервера"));
+    }
+  }
+  
+  @override
+  Future<Either<Failure, void>> logout() async {
+    try {
+      final token = await localDataSource.logout();
       return Right(token);
     } on CacheException {
       return const Left(ServerFailure(message: "Ошибка сервера"));

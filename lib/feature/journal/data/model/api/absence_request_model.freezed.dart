@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AbsenceRequestModel {
   int get accountId => throw _privateConstructorUsedError;
   List<int> get sessionIds => throw _privateConstructorUsedError;
+  TokenModel get token => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AbsenceRequestModelCopyWith<AbsenceRequestModel> get copyWith =>
@@ -30,7 +31,9 @@ abstract class $AbsenceRequestModelCopyWith<$Res> {
           AbsenceRequestModel value, $Res Function(AbsenceRequestModel) then) =
       _$AbsenceRequestModelCopyWithImpl<$Res, AbsenceRequestModel>;
   @useResult
-  $Res call({int accountId, List<int> sessionIds});
+  $Res call({int accountId, List<int> sessionIds, TokenModel token});
+
+  $TokenModelCopyWith<$Res> get token;
 }
 
 /// @nodoc
@@ -48,6 +51,7 @@ class _$AbsenceRequestModelCopyWithImpl<$Res, $Val extends AbsenceRequestModel>
   $Res call({
     Object? accountId = null,
     Object? sessionIds = null,
+    Object? token = null,
   }) {
     return _then(_value.copyWith(
       accountId: null == accountId
@@ -58,7 +62,19 @@ class _$AbsenceRequestModelCopyWithImpl<$Res, $Val extends AbsenceRequestModel>
           ? _value.sessionIds
           : sessionIds // ignore: cast_nullable_to_non_nullable
               as List<int>,
+      token: null == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as TokenModel,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TokenModelCopyWith<$Res> get token {
+    return $TokenModelCopyWith<$Res>(_value.token, (value) {
+      return _then(_value.copyWith(token: value) as $Val);
+    });
   }
 }
 
@@ -70,7 +86,10 @@ abstract class _$$AbsenceRequestModelImplCopyWith<$Res>
       __$$AbsenceRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int accountId, List<int> sessionIds});
+  $Res call({int accountId, List<int> sessionIds, TokenModel token});
+
+  @override
+  $TokenModelCopyWith<$Res> get token;
 }
 
 /// @nodoc
@@ -86,6 +105,7 @@ class __$$AbsenceRequestModelImplCopyWithImpl<$Res>
   $Res call({
     Object? accountId = null,
     Object? sessionIds = null,
+    Object? token = null,
   }) {
     return _then(_$AbsenceRequestModelImpl(
       accountId: null == accountId
@@ -96,6 +116,10 @@ class __$$AbsenceRequestModelImplCopyWithImpl<$Res>
           ? _value._sessionIds
           : sessionIds // ignore: cast_nullable_to_non_nullable
               as List<int>,
+      token: null == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as TokenModel,
     ));
   }
 }
@@ -104,7 +128,9 @@ class __$$AbsenceRequestModelImplCopyWithImpl<$Res>
 
 class _$AbsenceRequestModelImpl implements _AbsenceRequestModel {
   const _$AbsenceRequestModelImpl(
-      {required this.accountId, required final List<int> sessionIds})
+      {required this.accountId,
+      required final List<int> sessionIds,
+      required this.token})
       : _sessionIds = sessionIds;
 
   @override
@@ -118,8 +144,11 @@ class _$AbsenceRequestModelImpl implements _AbsenceRequestModel {
   }
 
   @override
+  final TokenModel token;
+
+  @override
   String toString() {
-    return 'AbsenceRequestModel(accountId: $accountId, sessionIds: $sessionIds)';
+    return 'AbsenceRequestModel(accountId: $accountId, sessionIds: $sessionIds, token: $token)';
   }
 
   @override
@@ -130,12 +159,13 @@ class _$AbsenceRequestModelImpl implements _AbsenceRequestModel {
             (identical(other.accountId, accountId) ||
                 other.accountId == accountId) &&
             const DeepCollectionEquality()
-                .equals(other._sessionIds, _sessionIds));
+                .equals(other._sessionIds, _sessionIds) &&
+            (identical(other.token, token) || other.token == token));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, accountId, const DeepCollectionEquality().hash(_sessionIds));
+  int get hashCode => Object.hash(runtimeType, accountId,
+      const DeepCollectionEquality().hash(_sessionIds), token);
 
   @JsonKey(ignore: true)
   @override
@@ -148,12 +178,15 @@ class _$AbsenceRequestModelImpl implements _AbsenceRequestModel {
 abstract class _AbsenceRequestModel implements AbsenceRequestModel {
   const factory _AbsenceRequestModel(
       {required final int accountId,
-      required final List<int> sessionIds}) = _$AbsenceRequestModelImpl;
+      required final List<int> sessionIds,
+      required final TokenModel token}) = _$AbsenceRequestModelImpl;
 
   @override
   int get accountId;
   @override
   List<int> get sessionIds;
+  @override
+  TokenModel get token;
   @override
   @JsonKey(ignore: true)
   _$$AbsenceRequestModelImplCopyWith<_$AbsenceRequestModelImpl> get copyWith =>

@@ -1,9 +1,9 @@
-import 'package:dartz/dartz_unsafe.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:studenda_mobile_student/core/presentation/UI/studenda_loading_widget.dart';
 import 'package:studenda_mobile_student/core/presentation/label/studenda_default_label_widget.dart';
 import 'package:studenda_mobile_student/core/utils/get_current_academic_year.dart';
+import 'package:studenda_mobile_student/feature/auth/presentation/bloc/cubit/token_cubit.dart';
 import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/main_group_selection_bloc/main_group_selector_bloc.dart';
 import 'package:studenda_mobile_student/feature/journal/data/model/api/absence_request_model.dart';
 import 'package:studenda_mobile_student/feature/journal/data/model/api/session_request_model.dart';
@@ -12,7 +12,6 @@ import 'package:studenda_mobile_student/feature/journal/presentation/cubit/atten
 import 'package:studenda_mobile_student/feature/journal/presentation/cubit/session/session_cubit.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/extended_discipline_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/subject_model.dart';
-import 'package:studenda_mobile_student/feature/schedule/domain/entities/schedule_entity.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/entities/week_type_entity.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/cubit/subject_cubit.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/schedule_bloc.dart';
@@ -45,8 +44,10 @@ class JournalAttendanceScreenWidget extends StatelessWidget {
 }
 
 class _JournalAttendancyBody extends StatelessWidget {
-  const _JournalAttendancyBody(
-      {super.key, required this.userId, required this.extendedDiscipline});
+  const _JournalAttendancyBody({
+    required this.userId,
+    required this.extendedDiscipline,
+  });
   final int userId;
   final ExtendedDisciplineModel extendedDiscipline;
   @override
@@ -68,8 +69,12 @@ class _JournalAttendancyBody extends StatelessWidget {
         if (subjectList.isEmpty) {
           subjectCubit.load(selectedGroupEntity.id, scheduleBloc.weekTypeList!);
         }
-        return GetSession(subjectList, extendedDiscipline, userId,
-            scheduleBloc.weekTypeList!);
+        return getSession(
+          subjectList,
+          extendedDiscipline,
+          userId,
+          scheduleBloc.weekTypeList!,
+        );
       },
       loadingFail: (message) {
         subjectCubit.load(selectedGroupEntity.id, scheduleBloc.weekTypeList!);
@@ -77,26 +82,36 @@ class _JournalAttendancyBody extends StatelessWidget {
           child: StudendaDefaultLabelWidget(text: message, fontSize: 18),
         );
       },
-      loadingSuccess: (subjectList) => GetSession(
-          subjectList, extendedDiscipline, userId, scheduleBloc.weekTypeList!),
+      loadingSuccess: (subjectList) => getSession(
+        subjectList,
+        extendedDiscipline,
+        userId,
+        scheduleBloc.weekTypeList!,
+      ),
     );
   }
 }
 
-Widget GetSession(
-        List<SubjectModel> subjectList,
-        ExtendedDisciplineModel extendedDiscipline,
-        int userId,
-        List<WeekTypeEntity> weekTypeList) =>
+Widget getSession(
+  List<SubjectModel> subjectList,
+  ExtendedDisciplineModel extendedDiscipline,
+  int userId,
+  List<WeekTypeEntity> weekTypeList,
+) =>
     BlocProvider(
-        create: (context) => sl<SessionCubit>()
+      create: (context) {
+        final tokenCubit = context.watch<TokenCubit>()..getToken();
+        return sl<SessionCubit>()
           ..loadLocally(
             SessionRequestModel(
               dates: getDatesBySubjectList(subjectList, extendedDiscipline),
               subjectId: extendedDiscipline.subjectId,
+              token: tokenCubit.token,
             ),
-          ),
-        child: GetAttendancy(userId, weekTypeList));
+          );
+      },
+      child: getAttendancy(userId, weekTypeList),
+    );
 
 List<DateTime> getDatesBySubjectList(
   List<SubjectModel> subjectList,
@@ -128,18 +143,20 @@ List<DateTime> getDatesBySubjectModel(SubjectModel subject) {
   return [];
 }
 
-Widget GetAttendancy(
+Widget getAttendancy(
   int userId,
   List<WeekTypeEntity> weekTypeList,
 ) =>
     BlocProvider(
       create: (context) {
         final sessionCubit = context.watch<SessionCubit>();
+        final tokenCubit = context.watch<TokenCubit>()..getToken();
         return sl<AttendancyCubit>()
           ..loadLocally(
             AbsenceRequestModel(
               accountId: userId,
-              sessionIds:sessionCubit.sessionList.map((e) => e.id).toList(),
+              sessionIds: sessionCubit.sessionList.map((e) => e.id).toList(),
+              token: tokenCubit.token,
             ),
             sessionCubit.sessionList,
             weekTypeList,

@@ -12,7 +12,7 @@ import 'package:studenda_mobile_student/feature/auth/data/repositories/auth_repo
 import 'package:studenda_mobile_student/feature/auth/domain/repositories/auth_repository.dart';
 import 'package:studenda_mobile_student/feature/auth/domain/usecases/auth.dart';
 import 'package:studenda_mobile_student/feature/auth/domain/usecases/get_token.dart';
-import 'package:studenda_mobile_student/feature/auth/domain/usecases/refresh_token.dart';
+import 'package:studenda_mobile_student/feature/auth/domain/usecases/logout.dart';
 import 'package:studenda_mobile_student/feature/auth/presentation/bloc/bloc/auth_bloc.dart';
 import 'package:studenda_mobile_student/feature/auth/presentation/bloc/cubit/token_cubit.dart';
 import 'package:studenda_mobile_student/feature/group_selection/data/datasources/course_local_data_source.dart';
@@ -121,7 +121,7 @@ Future<void> init() async {
   sl.registerFactory(
     () => TokenCubit(
       getTokenUseCase: sl(),
-      refreshTokenUseCase: sl(),
+      logoutUseCase: sl(),
     ),
   );
 
@@ -136,8 +136,9 @@ Future<void> init() async {
       authRepository: sl(),
     ),
   );
+  
   sl.registerLazySingleton(
-    () => RefreshToken(
+    () => Logout(
       authRepository: sl(),
     ),
   );

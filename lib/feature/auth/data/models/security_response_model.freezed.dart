@@ -25,8 +25,6 @@ mixin _$SecurityResponseModel {
   UserModel get user => throw _privateConstructorUsedError;
   @JsonKey(name: 'Token')
   String get token => throw _privateConstructorUsedError;
-  @JsonKey(name: 'RefreshToken')
-  String get refreshToken => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,8 +40,7 @@ abstract class $SecurityResponseModelCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'User') UserModel user,
-      @JsonKey(name: 'Token') String token,
-      @JsonKey(name: 'RefreshToken') String refreshToken});
+      @JsonKey(name: 'Token') String token});
 
   $UserModelCopyWith<$Res> get user;
 }
@@ -64,7 +61,6 @@ class _$SecurityResponseModelCopyWithImpl<$Res,
   $Res call({
     Object? user = null,
     Object? token = null,
-    Object? refreshToken = null,
   }) {
     return _then(_value.copyWith(
       user: null == user
@@ -74,10 +70,6 @@ class _$SecurityResponseModelCopyWithImpl<$Res,
       token: null == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
-              as String,
-      refreshToken: null == refreshToken
-          ? _value.refreshToken
-          : refreshToken // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -102,8 +94,7 @@ abstract class _$$SecurityResponseModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'User') UserModel user,
-      @JsonKey(name: 'Token') String token,
-      @JsonKey(name: 'RefreshToken') String refreshToken});
+      @JsonKey(name: 'Token') String token});
 
   @override
   $UserModelCopyWith<$Res> get user;
@@ -123,7 +114,6 @@ class __$$SecurityResponseModelImplCopyWithImpl<$Res>
   $Res call({
     Object? user = null,
     Object? token = null,
-    Object? refreshToken = null,
   }) {
     return _then(_$SecurityResponseModelImpl(
       user: null == user
@@ -134,10 +124,6 @@ class __$$SecurityResponseModelImplCopyWithImpl<$Res>
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String,
-      refreshToken: null == refreshToken
-          ? _value.refreshToken
-          : refreshToken // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -147,8 +133,7 @@ class __$$SecurityResponseModelImplCopyWithImpl<$Res>
 class _$SecurityResponseModelImpl implements _SecurityResponseModel {
   const _$SecurityResponseModelImpl(
       {@JsonKey(name: 'User') required this.user,
-      @JsonKey(name: 'Token') required this.token,
-      @JsonKey(name: 'RefreshToken') required this.refreshToken});
+      @JsonKey(name: 'Token') required this.token});
 
   factory _$SecurityResponseModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$SecurityResponseModelImplFromJson(json);
@@ -159,13 +144,10 @@ class _$SecurityResponseModelImpl implements _SecurityResponseModel {
   @override
   @JsonKey(name: 'Token')
   final String token;
-  @override
-  @JsonKey(name: 'RefreshToken')
-  final String refreshToken;
 
   @override
   String toString() {
-    return 'SecurityResponseModel(user: $user, token: $token, refreshToken: $refreshToken)';
+    return 'SecurityResponseModel(user: $user, token: $token)';
   }
 
   @override
@@ -174,14 +156,12 @@ class _$SecurityResponseModelImpl implements _SecurityResponseModel {
         (other.runtimeType == runtimeType &&
             other is _$SecurityResponseModelImpl &&
             (identical(other.user, user) || other.user == user) &&
-            (identical(other.token, token) || other.token == token) &&
-            (identical(other.refreshToken, refreshToken) ||
-                other.refreshToken == refreshToken));
+            (identical(other.token, token) || other.token == token));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, user, token, refreshToken);
+  int get hashCode => Object.hash(runtimeType, user, token);
 
   @JsonKey(ignore: true)
   @override
@@ -201,8 +181,7 @@ class _$SecurityResponseModelImpl implements _SecurityResponseModel {
 abstract class _SecurityResponseModel implements SecurityResponseModel {
   const factory _SecurityResponseModel(
           {@JsonKey(name: 'User') required final UserModel user,
-          @JsonKey(name: 'Token') required final String token,
-          @JsonKey(name: 'RefreshToken') required final String refreshToken}) =
+          @JsonKey(name: 'Token') required final String token}) =
       _$SecurityResponseModelImpl;
 
   factory _SecurityResponseModel.fromJson(Map<String, dynamic> json) =
@@ -214,9 +193,6 @@ abstract class _SecurityResponseModel implements SecurityResponseModel {
   @override
   @JsonKey(name: 'Token')
   String get token;
-  @override
-  @JsonKey(name: 'RefreshToken')
-  String get refreshToken;
   @override
   @JsonKey(ignore: true)
   _$$SecurityResponseModelImplCopyWith<_$SecurityResponseModelImpl>

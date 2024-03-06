@@ -25,7 +25,13 @@ class TaskRepositoryImpl implements TaskRepository {
     bool remote = true,
   ]) async {
     return await loadData<TaskLocalDataSource, TaskRemoteDataSource,
-            List<TaskModel>, TaskStudentRequestModel >(
-        localDataSource, remoteDataSource, remote, request, networkInfo,);
+        List<TaskModel>, TaskStudentRequestModel>(
+      localDataSource,
+      remoteDataSource,
+      remote,
+      request,
+      networkInfo,
+    );
+
   }
 }

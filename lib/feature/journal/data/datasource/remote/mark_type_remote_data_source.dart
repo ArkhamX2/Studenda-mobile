@@ -33,7 +33,9 @@ class MarkTypeRemoteDataSource
             )
             .toList();
         return responseModel;
-      } else {
+      } else if (response.statusCode == 401) {
+        throw AuthException();
+      }else {
         throw ServerException();
       }
     } catch (e) {

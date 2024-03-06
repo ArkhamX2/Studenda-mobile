@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:studenda_mobile_student/feature/journal/data/model/api/mark_request_model.dart';
 import 'package:studenda_mobile_student/feature/journal/data/model/task/mark_model.dart';
 import 'package:studenda_mobile_student/feature/journal/domain/usecases/get_mark_list.dart';
 
@@ -13,8 +14,8 @@ class MarkCubit extends Cubit<MarkState> {
 
   MarkCubit(this.loadMarkTypes) : super(const MarkState.initial());
 
-  Future<void> load(List<int> taskIds) async {
-    final courses = await loadMarkTypes(taskIds);
+  Future<void> load(MarkRequestModel request) async {
+    final courses = await loadMarkTypes(request);
     courses.fold(
       (l) => emit(MarkState.loadingFail(l.message)),
       (r) {
@@ -28,9 +29,9 @@ class MarkCubit extends Cubit<MarkState> {
     );
   }
 
-  Future<void> loadLocally(List<int> taskIds) async {
+  Future<void> loadLocally(MarkRequestModel request) async {
     emit(const MarkState.loading());
-    final courses = await loadMarkTypes(taskIds, false);
+    final courses = await loadMarkTypes(request, false);
     courses.fold(
       (l) => emit(MarkState.localLoadingFail(l.message)),
       (r) {
