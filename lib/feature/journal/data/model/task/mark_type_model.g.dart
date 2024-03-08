@@ -21,15 +21,13 @@ class AssessmentTypeModelAdapter extends TypeAdapter<_$MarkTypeModelImpl> {
       name: fields[1] as String,
       minValue: fields[2] as int,
       maxValue: fields[3] as int,
-      createdAt: fields[4] as DateTime,
-      updatedAt: fields[5] as DateTime,
     );
   }
 
   @override
   void write(BinaryWriter writer, _$MarkTypeModelImpl obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -37,11 +35,7 @@ class AssessmentTypeModelAdapter extends TypeAdapter<_$MarkTypeModelImpl> {
       ..writeByte(2)
       ..write(obj.minValue)
       ..writeByte(3)
-      ..write(obj.maxValue)
-      ..writeByte(4)
-      ..write(obj.createdAt)
-      ..writeByte(5)
-      ..write(obj.updatedAt);
+      ..write(obj.maxValue);
   }
 
   @override
@@ -65,8 +59,6 @@ _$MarkTypeModelImpl _$$MarkTypeModelImplFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       minValue: json['minValue'] as int,
       maxValue: json['maxValue'] as int,
-      createdAt: DateTime.parse(json['createdAt'] as String),
-      updatedAt: DateTime.parse(json['updatedAt'] as String),
     );
 
 Map<String, dynamic> _$$MarkTypeModelImplToJson(_$MarkTypeModelImpl instance) =>
@@ -75,6 +67,4 @@ Map<String, dynamic> _$$MarkTypeModelImplToJson(_$MarkTypeModelImpl instance) =>
       'name': instance.name,
       'minValue': instance.minValue,
       'maxValue': instance.maxValue,
-      'createdAt': instance.createdAt.toIso8601String(),
-      'updatedAt': instance.updatedAt.toIso8601String(),
     };

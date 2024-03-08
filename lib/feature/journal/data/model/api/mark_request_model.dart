@@ -6,7 +6,7 @@ part 'mark_request_model.freezed.dart';
 @freezed
 class MarkRequestModel with _$MarkRequestModel{
   const factory MarkRequestModel({
-    required List<int> taskIds,
+    required List<int> markIds,
     required TokenModel token,
   }) = _MarkRequestModel;
 }

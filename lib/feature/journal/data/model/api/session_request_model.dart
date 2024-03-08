@@ -11,4 +11,3 @@ class SessionRequestModel with _$SessionRequestModel{
     required TokenModel token,
   }) = _SessionRequestModel;
 }
-

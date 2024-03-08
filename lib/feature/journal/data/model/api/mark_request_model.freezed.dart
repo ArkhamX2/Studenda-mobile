@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$MarkRequestModel {
-  List<int> get taskIds => throw _privateConstructorUsedError;
+  List<int> get markIds => throw _privateConstructorUsedError;
   TokenModel get token => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +30,7 @@ abstract class $MarkRequestModelCopyWith<$Res> {
           MarkRequestModel value, $Res Function(MarkRequestModel) then) =
       _$MarkRequestModelCopyWithImpl<$Res, MarkRequestModel>;
   @useResult
-  $Res call({List<int> taskIds, TokenModel token});
+  $Res call({List<int> markIds, TokenModel token});
 
   $TokenModelCopyWith<$Res> get token;
 }
@@ -48,13 +48,13 @@ class _$MarkRequestModelCopyWithImpl<$Res, $Val extends MarkRequestModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? taskIds = null,
+    Object? markIds = null,
     Object? token = null,
   }) {
     return _then(_value.copyWith(
-      taskIds: null == taskIds
-          ? _value.taskIds
-          : taskIds // ignore: cast_nullable_to_non_nullable
+      markIds: null == markIds
+          ? _value.markIds
+          : markIds // ignore: cast_nullable_to_non_nullable
               as List<int>,
       token: null == token
           ? _value.token
@@ -80,7 +80,7 @@ abstract class _$$MarkRequestModelImplCopyWith<$Res>
       __$$MarkRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<int> taskIds, TokenModel token});
+  $Res call({List<int> markIds, TokenModel token});
 
   @override
   $TokenModelCopyWith<$Res> get token;
@@ -97,13 +97,13 @@ class __$$MarkRequestModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? taskIds = null,
+    Object? markIds = null,
     Object? token = null,
   }) {
     return _then(_$MarkRequestModelImpl(
-      taskIds: null == taskIds
-          ? _value._taskIds
-          : taskIds // ignore: cast_nullable_to_non_nullable
+      markIds: null == markIds
+          ? _value._markIds
+          : markIds // ignore: cast_nullable_to_non_nullable
               as List<int>,
       token: null == token
           ? _value.token
@@ -117,15 +117,15 @@ class __$$MarkRequestModelImplCopyWithImpl<$Res>
 
 class _$MarkRequestModelImpl implements _MarkRequestModel {
   const _$MarkRequestModelImpl(
-      {required final List<int> taskIds, required this.token})
-      : _taskIds = taskIds;
+      {required final List<int> markIds, required this.token})
+      : _markIds = markIds;
 
-  final List<int> _taskIds;
+  final List<int> _markIds;
   @override
-  List<int> get taskIds {
-    if (_taskIds is EqualUnmodifiableListView) return _taskIds;
+  List<int> get markIds {
+    if (_markIds is EqualUnmodifiableListView) return _markIds;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_taskIds);
+    return EqualUnmodifiableListView(_markIds);
   }
 
   @override
@@ -133,7 +133,7 @@ class _$MarkRequestModelImpl implements _MarkRequestModel {
 
   @override
   String toString() {
-    return 'MarkRequestModel(taskIds: $taskIds, token: $token)';
+    return 'MarkRequestModel(markIds: $markIds, token: $token)';
   }
 
   @override
@@ -141,13 +141,13 @@ class _$MarkRequestModelImpl implements _MarkRequestModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MarkRequestModelImpl &&
-            const DeepCollectionEquality().equals(other._taskIds, _taskIds) &&
+            const DeepCollectionEquality().equals(other._markIds, _markIds) &&
             (identical(other.token, token) || other.token == token));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_taskIds), token);
+      runtimeType, const DeepCollectionEquality().hash(_markIds), token);
 
   @JsonKey(ignore: true)
   @override
@@ -159,11 +159,11 @@ class _$MarkRequestModelImpl implements _MarkRequestModel {
 
 abstract class _MarkRequestModel implements MarkRequestModel {
   const factory _MarkRequestModel(
-      {required final List<int> taskIds,
+      {required final List<int> markIds,
       required final TokenModel token}) = _$MarkRequestModelImpl;
 
   @override
-  List<int> get taskIds;
+  List<int> get markIds;
   @override
   TokenModel get token;
   @override

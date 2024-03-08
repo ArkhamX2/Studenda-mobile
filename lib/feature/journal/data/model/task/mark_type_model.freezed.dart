@@ -32,12 +32,6 @@ mixin _$MarkTypeModel {
   @JsonKey(name: 'maxValue')
   @HiveField(3)
   int get maxValue => throw _privateConstructorUsedError;
-  @JsonKey(name: 'createdAt')
-  @HiveField(4)
-  DateTime get createdAt => throw _privateConstructorUsedError;
-  @JsonKey(name: 'updatedAt')
-  @HiveField(5)
-  DateTime get updatedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -55,9 +49,7 @@ abstract class $MarkTypeModelCopyWith<$Res> {
       {@JsonKey(name: 'id') @HiveField(0) int id,
       @JsonKey(name: 'name') @HiveField(1) String name,
       @JsonKey(name: 'minValue') @HiveField(2) int minValue,
-      @JsonKey(name: 'maxValue') @HiveField(3) int maxValue,
-      @JsonKey(name: 'createdAt') @HiveField(4) DateTime createdAt,
-      @JsonKey(name: 'updatedAt') @HiveField(5) DateTime updatedAt});
+      @JsonKey(name: 'maxValue') @HiveField(3) int maxValue});
 }
 
 /// @nodoc
@@ -77,8 +69,6 @@ class _$MarkTypeModelCopyWithImpl<$Res, $Val extends MarkTypeModel>
     Object? name = null,
     Object? minValue = null,
     Object? maxValue = null,
-    Object? createdAt = null,
-    Object? updatedAt = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -97,14 +87,6 @@ class _$MarkTypeModelCopyWithImpl<$Res, $Val extends MarkTypeModel>
           ? _value.maxValue
           : maxValue // ignore: cast_nullable_to_non_nullable
               as int,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
     ) as $Val);
   }
 }
@@ -121,9 +103,7 @@ abstract class _$$MarkTypeModelImplCopyWith<$Res>
       {@JsonKey(name: 'id') @HiveField(0) int id,
       @JsonKey(name: 'name') @HiveField(1) String name,
       @JsonKey(name: 'minValue') @HiveField(2) int minValue,
-      @JsonKey(name: 'maxValue') @HiveField(3) int maxValue,
-      @JsonKey(name: 'createdAt') @HiveField(4) DateTime createdAt,
-      @JsonKey(name: 'updatedAt') @HiveField(5) DateTime updatedAt});
+      @JsonKey(name: 'maxValue') @HiveField(3) int maxValue});
 }
 
 /// @nodoc
@@ -141,8 +121,6 @@ class __$$MarkTypeModelImplCopyWithImpl<$Res>
     Object? name = null,
     Object? minValue = null,
     Object? maxValue = null,
-    Object? createdAt = null,
-    Object? updatedAt = null,
   }) {
     return _then(_$MarkTypeModelImpl(
       id: null == id
@@ -161,14 +139,6 @@ class __$$MarkTypeModelImplCopyWithImpl<$Res>
           ? _value.maxValue
           : maxValue // ignore: cast_nullable_to_non_nullable
               as int,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
     ));
   }
 }
@@ -181,9 +151,7 @@ class _$MarkTypeModelImpl extends _MarkTypeModel {
       {@JsonKey(name: 'id') @HiveField(0) required this.id,
       @JsonKey(name: 'name') @HiveField(1) required this.name,
       @JsonKey(name: 'minValue') @HiveField(2) required this.minValue,
-      @JsonKey(name: 'maxValue') @HiveField(3) required this.maxValue,
-      @JsonKey(name: 'createdAt') @HiveField(4) required this.createdAt,
-      @JsonKey(name: 'updatedAt') @HiveField(5) required this.updatedAt})
+      @JsonKey(name: 'maxValue') @HiveField(3) required this.maxValue})
       : super._();
 
   factory _$MarkTypeModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -205,18 +173,10 @@ class _$MarkTypeModelImpl extends _MarkTypeModel {
   @JsonKey(name: 'maxValue')
   @HiveField(3)
   final int maxValue;
-  @override
-  @JsonKey(name: 'createdAt')
-  @HiveField(4)
-  final DateTime createdAt;
-  @override
-  @JsonKey(name: 'updatedAt')
-  @HiveField(5)
-  final DateTime updatedAt;
 
   @override
   String toString() {
-    return 'MarkTypeModel(id: $id, name: $name, minValue: $minValue, maxValue: $maxValue, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'MarkTypeModel(id: $id, name: $name, minValue: $minValue, maxValue: $maxValue)';
   }
 
   @override
@@ -229,17 +189,12 @@ class _$MarkTypeModelImpl extends _MarkTypeModel {
             (identical(other.minValue, minValue) ||
                 other.minValue == minValue) &&
             (identical(other.maxValue, maxValue) ||
-                other.maxValue == maxValue) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+                other.maxValue == maxValue));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, name, minValue, maxValue, createdAt, updatedAt);
+  int get hashCode => Object.hash(runtimeType, id, name, minValue, maxValue);
 
   @JsonKey(ignore: true)
   @override
@@ -260,13 +215,9 @@ abstract class _MarkTypeModel extends MarkTypeModel {
       {@JsonKey(name: 'id') @HiveField(0) required final int id,
       @JsonKey(name: 'name') @HiveField(1) required final String name,
       @JsonKey(name: 'minValue') @HiveField(2) required final int minValue,
-      @JsonKey(name: 'maxValue') @HiveField(3) required final int maxValue,
-      @JsonKey(name: 'createdAt')
-      @HiveField(4)
-      required final DateTime createdAt,
-      @JsonKey(name: 'updatedAt')
-      @HiveField(5)
-      required final DateTime updatedAt}) = _$MarkTypeModelImpl;
+      @JsonKey(name: 'maxValue')
+      @HiveField(3)
+      required final int maxValue}) = _$MarkTypeModelImpl;
   _MarkTypeModel._() : super._();
 
   factory _MarkTypeModel.fromJson(Map<String, dynamic> json) =
@@ -288,14 +239,6 @@ abstract class _MarkTypeModel extends MarkTypeModel {
   @JsonKey(name: 'maxValue')
   @HiveField(3)
   int get maxValue;
-  @override
-  @JsonKey(name: 'createdAt')
-  @HiveField(4)
-  DateTime get createdAt;
-  @override
-  @JsonKey(name: 'updatedAt')
-  @HiveField(5)
-  DateTime get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$MarkTypeModelImplCopyWith<_$MarkTypeModelImpl> get copyWith =>

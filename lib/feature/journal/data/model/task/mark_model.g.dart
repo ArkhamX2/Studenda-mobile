@@ -19,29 +19,20 @@ class MarkModelAdapter extends TypeAdapter<_$MarkModelImpl> {
     return _$MarkModelImpl(
       id: fields[0] as int,
       markTypeId: fields[1] as int,
-      taskId: fields[2] as int,
-      value: fields[3] as int,
-      createdAt: fields[4] as DateTime,
-      updatedAt: fields[5] as DateTime,
+      value: fields[2] as int,
     );
   }
 
   @override
   void write(BinaryWriter writer, _$MarkModelImpl obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(3)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
       ..write(obj.markTypeId)
       ..writeByte(2)
-      ..write(obj.taskId)
-      ..writeByte(3)
-      ..write(obj.value)
-      ..writeByte(4)
-      ..write(obj.createdAt)
-      ..writeByte(5)
-      ..write(obj.updatedAt);
+      ..write(obj.value);
   }
 
   @override
@@ -63,18 +54,12 @@ _$MarkModelImpl _$$MarkModelImplFromJson(Map<String, dynamic> json) =>
     _$MarkModelImpl(
       id: json['id'] as int,
       markTypeId: json['markTypeId'] as int,
-      taskId: json['taskId'] as int,
       value: json['value'] as int,
-      createdAt: DateTime.parse(json['createdAt'] as String),
-      updatedAt: DateTime.parse(json['updatedAt'] as String),
     );
 
 Map<String, dynamic> _$$MarkModelImplToJson(_$MarkModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'markTypeId': instance.markTypeId,
-      'taskId': instance.taskId,
       'value': instance.value,
-      'createdAt': instance.createdAt.toIso8601String(),
-      'updatedAt': instance.updatedAt.toIso8601String(),
     };

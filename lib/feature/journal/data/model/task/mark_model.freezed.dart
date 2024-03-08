@@ -26,18 +26,9 @@ mixin _$MarkModel {
   @JsonKey(name: 'markTypeId')
   @HiveField(1)
   int get markTypeId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'taskId')
-  @HiveField(2)
-  int get taskId => throw _privateConstructorUsedError;
   @JsonKey(name: 'value')
-  @HiveField(3)
+  @HiveField(2)
   int get value => throw _privateConstructorUsedError;
-  @JsonKey(name: 'createdAt')
-  @HiveField(4)
-  DateTime get createdAt => throw _privateConstructorUsedError;
-  @JsonKey(name: 'updatedAt')
-  @HiveField(5)
-  DateTime get updatedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,10 +44,7 @@ abstract class $MarkModelCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id') @HiveField(0) int id,
       @JsonKey(name: 'markTypeId') @HiveField(1) int markTypeId,
-      @JsonKey(name: 'taskId') @HiveField(2) int taskId,
-      @JsonKey(name: 'value') @HiveField(3) int value,
-      @JsonKey(name: 'createdAt') @HiveField(4) DateTime createdAt,
-      @JsonKey(name: 'updatedAt') @HiveField(5) DateTime updatedAt});
+      @JsonKey(name: 'value') @HiveField(2) int value});
 }
 
 /// @nodoc
@@ -74,10 +62,7 @@ class _$MarkModelCopyWithImpl<$Res, $Val extends MarkModel>
   $Res call({
     Object? id = null,
     Object? markTypeId = null,
-    Object? taskId = null,
     Object? value = null,
-    Object? createdAt = null,
-    Object? updatedAt = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -88,22 +73,10 @@ class _$MarkModelCopyWithImpl<$Res, $Val extends MarkModel>
           ? _value.markTypeId
           : markTypeId // ignore: cast_nullable_to_non_nullable
               as int,
-      taskId: null == taskId
-          ? _value.taskId
-          : taskId // ignore: cast_nullable_to_non_nullable
-              as int,
       value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as int,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
     ) as $Val);
   }
 }
@@ -119,10 +92,7 @@ abstract class _$$MarkModelImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'id') @HiveField(0) int id,
       @JsonKey(name: 'markTypeId') @HiveField(1) int markTypeId,
-      @JsonKey(name: 'taskId') @HiveField(2) int taskId,
-      @JsonKey(name: 'value') @HiveField(3) int value,
-      @JsonKey(name: 'createdAt') @HiveField(4) DateTime createdAt,
-      @JsonKey(name: 'updatedAt') @HiveField(5) DateTime updatedAt});
+      @JsonKey(name: 'value') @HiveField(2) int value});
 }
 
 /// @nodoc
@@ -138,10 +108,7 @@ class __$$MarkModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? markTypeId = null,
-    Object? taskId = null,
     Object? value = null,
-    Object? createdAt = null,
-    Object? updatedAt = null,
   }) {
     return _then(_$MarkModelImpl(
       id: null == id
@@ -152,22 +119,10 @@ class __$$MarkModelImplCopyWithImpl<$Res>
           ? _value.markTypeId
           : markTypeId // ignore: cast_nullable_to_non_nullable
               as int,
-      taskId: null == taskId
-          ? _value.taskId
-          : taskId // ignore: cast_nullable_to_non_nullable
-              as int,
       value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as int,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
     ));
   }
 }
@@ -179,10 +134,7 @@ class _$MarkModelImpl extends _MarkModel {
   _$MarkModelImpl(
       {@JsonKey(name: 'id') @HiveField(0) required this.id,
       @JsonKey(name: 'markTypeId') @HiveField(1) required this.markTypeId,
-      @JsonKey(name: 'taskId') @HiveField(2) required this.taskId,
-      @JsonKey(name: 'value') @HiveField(3) required this.value,
-      @JsonKey(name: 'createdAt') @HiveField(4) required this.createdAt,
-      @JsonKey(name: 'updatedAt') @HiveField(5) required this.updatedAt})
+      @JsonKey(name: 'value') @HiveField(2) required this.value})
       : super._();
 
   factory _$MarkModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -197,25 +149,13 @@ class _$MarkModelImpl extends _MarkModel {
   @HiveField(1)
   final int markTypeId;
   @override
-  @JsonKey(name: 'taskId')
-  @HiveField(2)
-  final int taskId;
-  @override
   @JsonKey(name: 'value')
-  @HiveField(3)
+  @HiveField(2)
   final int value;
-  @override
-  @JsonKey(name: 'createdAt')
-  @HiveField(4)
-  final DateTime createdAt;
-  @override
-  @JsonKey(name: 'updatedAt')
-  @HiveField(5)
-  final DateTime updatedAt;
 
   @override
   String toString() {
-    return 'MarkModel(id: $id, markTypeId: $markTypeId, taskId: $taskId, value: $value, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'MarkModel(id: $id, markTypeId: $markTypeId, value: $value)';
   }
 
   @override
@@ -226,18 +166,12 @@ class _$MarkModelImpl extends _MarkModel {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.markTypeId, markTypeId) ||
                 other.markTypeId == markTypeId) &&
-            (identical(other.taskId, taskId) || other.taskId == taskId) &&
-            (identical(other.value, value) || other.value == value) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+            (identical(other.value, value) || other.value == value));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, markTypeId, taskId, value, createdAt, updatedAt);
+  int get hashCode => Object.hash(runtimeType, id, markTypeId, value);
 
   @JsonKey(ignore: true)
   @override
@@ -257,14 +191,9 @@ abstract class _MarkModel extends MarkModel {
   factory _MarkModel(
       {@JsonKey(name: 'id') @HiveField(0) required final int id,
       @JsonKey(name: 'markTypeId') @HiveField(1) required final int markTypeId,
-      @JsonKey(name: 'taskId') @HiveField(2) required final int taskId,
-      @JsonKey(name: 'value') @HiveField(3) required final int value,
-      @JsonKey(name: 'createdAt')
-      @HiveField(4)
-      required final DateTime createdAt,
-      @JsonKey(name: 'updatedAt')
-      @HiveField(5)
-      required final DateTime updatedAt}) = _$MarkModelImpl;
+      @JsonKey(name: 'value')
+      @HiveField(2)
+      required final int value}) = _$MarkModelImpl;
   _MarkModel._() : super._();
 
   factory _MarkModel.fromJson(Map<String, dynamic> json) =
@@ -279,21 +208,9 @@ abstract class _MarkModel extends MarkModel {
   @HiveField(1)
   int get markTypeId;
   @override
-  @JsonKey(name: 'taskId')
-  @HiveField(2)
-  int get taskId;
-  @override
   @JsonKey(name: 'value')
-  @HiveField(3)
+  @HiveField(2)
   int get value;
-  @override
-  @JsonKey(name: 'createdAt')
-  @HiveField(4)
-  DateTime get createdAt;
-  @override
-  @JsonKey(name: 'updatedAt')
-  @HiveField(5)
-  DateTime get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$MarkModelImplCopyWith<_$MarkModelImpl> get copyWith =>

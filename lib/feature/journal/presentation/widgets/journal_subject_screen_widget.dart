@@ -183,7 +183,7 @@ class _TaskScrollWidget extends StatelessWidget {
           );
           markCubit.load(
             MarkRequestModel(
-              taskIds: taskCubit.taskList.map((e) => e.id).toList(),
+              markIds: taskCubit.taskList.map((e) => e.id).toList(),
               token: tokenCubit.token,
             ),
           );
@@ -197,10 +197,10 @@ class _TaskScrollWidget extends StatelessWidget {
                     task: e,
                     mark: MarkEntity(
                       id: markCubit.markList
-                          .firstWhere((element) => element.taskId == e.id)
+                          .firstWhere((element) => element.id == e.markId)
                           .id,
                       value: markCubit.markList
-                          .firstWhere((element) => element.taskId == e.id)
+                          .firstWhere((element) => element.id == e.markId)
                           .value,
                     ),
                   ),

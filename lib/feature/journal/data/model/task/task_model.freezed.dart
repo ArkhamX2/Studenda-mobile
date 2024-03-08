@@ -29,24 +29,27 @@ mixin _$TaskModel {
   @JsonKey(name: 'subjectTypeId')
   @HiveField(2)
   int get subjectTypeId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'teacherId')
+  @JsonKey(name: 'issuerAccountId')
   @HiveField(3)
-  int get teacherId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'studentId')
+  int get issuerAccountId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'asigneeAccountId')
   @HiveField(4)
-  int get studentId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'name')
+  int get asigneeAccountId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'markId')
   @HiveField(5)
+  int get markId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'name')
+  @HiveField(6)
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'description')
-  @HiveField(6)
-  String get description => throw _privateConstructorUsedError;
-  @JsonKey(name: 'createdAt')
   @HiveField(7)
-  DateTime get createdAt => throw _privateConstructorUsedError;
-  @JsonKey(name: 'updatedAt')
+  String get description => throw _privateConstructorUsedError;
+  @JsonKey(name: 'startedAt')
   @HiveField(8)
-  DateTime get updatedAt => throw _privateConstructorUsedError;
+  DateTime get startedAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'endedAt')
+  @HiveField(9)
+  DateTime? get endedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -63,12 +66,13 @@ abstract class $TaskModelCopyWith<$Res> {
       {@JsonKey(name: 'id') @HiveField(0) int id,
       @JsonKey(name: 'disciplineId') @HiveField(1) int disciplineId,
       @JsonKey(name: 'subjectTypeId') @HiveField(2) int subjectTypeId,
-      @JsonKey(name: 'teacherId') @HiveField(3) int teacherId,
-      @JsonKey(name: 'studentId') @HiveField(4) int studentId,
-      @JsonKey(name: 'name') @HiveField(5) String name,
-      @JsonKey(name: 'description') @HiveField(6) String description,
-      @JsonKey(name: 'createdAt') @HiveField(7) DateTime createdAt,
-      @JsonKey(name: 'updatedAt') @HiveField(8) DateTime updatedAt});
+      @JsonKey(name: 'issuerAccountId') @HiveField(3) int issuerAccountId,
+      @JsonKey(name: 'asigneeAccountId') @HiveField(4) int asigneeAccountId,
+      @JsonKey(name: 'markId') @HiveField(5) int markId,
+      @JsonKey(name: 'name') @HiveField(6) String name,
+      @JsonKey(name: 'description') @HiveField(7) String description,
+      @JsonKey(name: 'startedAt') @HiveField(8) DateTime startedAt,
+      @JsonKey(name: 'endedAt') @HiveField(9) DateTime? endedAt});
 }
 
 /// @nodoc
@@ -87,12 +91,13 @@ class _$TaskModelCopyWithImpl<$Res, $Val extends TaskModel>
     Object? id = null,
     Object? disciplineId = null,
     Object? subjectTypeId = null,
-    Object? teacherId = null,
-    Object? studentId = null,
+    Object? issuerAccountId = null,
+    Object? asigneeAccountId = null,
+    Object? markId = null,
     Object? name = null,
     Object? description = null,
-    Object? createdAt = null,
-    Object? updatedAt = null,
+    Object? startedAt = null,
+    Object? endedAt = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -107,13 +112,17 @@ class _$TaskModelCopyWithImpl<$Res, $Val extends TaskModel>
           ? _value.subjectTypeId
           : subjectTypeId // ignore: cast_nullable_to_non_nullable
               as int,
-      teacherId: null == teacherId
-          ? _value.teacherId
-          : teacherId // ignore: cast_nullable_to_non_nullable
+      issuerAccountId: null == issuerAccountId
+          ? _value.issuerAccountId
+          : issuerAccountId // ignore: cast_nullable_to_non_nullable
               as int,
-      studentId: null == studentId
-          ? _value.studentId
-          : studentId // ignore: cast_nullable_to_non_nullable
+      asigneeAccountId: null == asigneeAccountId
+          ? _value.asigneeAccountId
+          : asigneeAccountId // ignore: cast_nullable_to_non_nullable
+              as int,
+      markId: null == markId
+          ? _value.markId
+          : markId // ignore: cast_nullable_to_non_nullable
               as int,
       name: null == name
           ? _value.name
@@ -123,14 +132,14 @@ class _$TaskModelCopyWithImpl<$Res, $Val extends TaskModel>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
+      startedAt: null == startedAt
+          ? _value.startedAt
+          : startedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      endedAt: freezed == endedAt
+          ? _value.endedAt
+          : endedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -147,12 +156,13 @@ abstract class _$$TaskModelImplCopyWith<$Res>
       {@JsonKey(name: 'id') @HiveField(0) int id,
       @JsonKey(name: 'disciplineId') @HiveField(1) int disciplineId,
       @JsonKey(name: 'subjectTypeId') @HiveField(2) int subjectTypeId,
-      @JsonKey(name: 'teacherId') @HiveField(3) int teacherId,
-      @JsonKey(name: 'studentId') @HiveField(4) int studentId,
-      @JsonKey(name: 'name') @HiveField(5) String name,
-      @JsonKey(name: 'description') @HiveField(6) String description,
-      @JsonKey(name: 'createdAt') @HiveField(7) DateTime createdAt,
-      @JsonKey(name: 'updatedAt') @HiveField(8) DateTime updatedAt});
+      @JsonKey(name: 'issuerAccountId') @HiveField(3) int issuerAccountId,
+      @JsonKey(name: 'asigneeAccountId') @HiveField(4) int asigneeAccountId,
+      @JsonKey(name: 'markId') @HiveField(5) int markId,
+      @JsonKey(name: 'name') @HiveField(6) String name,
+      @JsonKey(name: 'description') @HiveField(7) String description,
+      @JsonKey(name: 'startedAt') @HiveField(8) DateTime startedAt,
+      @JsonKey(name: 'endedAt') @HiveField(9) DateTime? endedAt});
 }
 
 /// @nodoc
@@ -169,12 +179,13 @@ class __$$TaskModelImplCopyWithImpl<$Res>
     Object? id = null,
     Object? disciplineId = null,
     Object? subjectTypeId = null,
-    Object? teacherId = null,
-    Object? studentId = null,
+    Object? issuerAccountId = null,
+    Object? asigneeAccountId = null,
+    Object? markId = null,
     Object? name = null,
     Object? description = null,
-    Object? createdAt = null,
-    Object? updatedAt = null,
+    Object? startedAt = null,
+    Object? endedAt = freezed,
   }) {
     return _then(_$TaskModelImpl(
       id: null == id
@@ -189,13 +200,17 @@ class __$$TaskModelImplCopyWithImpl<$Res>
           ? _value.subjectTypeId
           : subjectTypeId // ignore: cast_nullable_to_non_nullable
               as int,
-      teacherId: null == teacherId
-          ? _value.teacherId
-          : teacherId // ignore: cast_nullable_to_non_nullable
+      issuerAccountId: null == issuerAccountId
+          ? _value.issuerAccountId
+          : issuerAccountId // ignore: cast_nullable_to_non_nullable
               as int,
-      studentId: null == studentId
-          ? _value.studentId
-          : studentId // ignore: cast_nullable_to_non_nullable
+      asigneeAccountId: null == asigneeAccountId
+          ? _value.asigneeAccountId
+          : asigneeAccountId // ignore: cast_nullable_to_non_nullable
+              as int,
+      markId: null == markId
+          ? _value.markId
+          : markId // ignore: cast_nullable_to_non_nullable
               as int,
       name: null == name
           ? _value.name
@@ -205,14 +220,14 @@ class __$$TaskModelImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
+      startedAt: null == startedAt
+          ? _value.startedAt
+          : startedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      endedAt: freezed == endedAt
+          ? _value.endedAt
+          : endedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -225,12 +240,17 @@ class _$TaskModelImpl extends _TaskModel {
       {@JsonKey(name: 'id') @HiveField(0) required this.id,
       @JsonKey(name: 'disciplineId') @HiveField(1) required this.disciplineId,
       @JsonKey(name: 'subjectTypeId') @HiveField(2) required this.subjectTypeId,
-      @JsonKey(name: 'teacherId') @HiveField(3) required this.teacherId,
-      @JsonKey(name: 'studentId') @HiveField(4) required this.studentId,
-      @JsonKey(name: 'name') @HiveField(5) required this.name,
-      @JsonKey(name: 'description') @HiveField(6) required this.description,
-      @JsonKey(name: 'createdAt') @HiveField(7) required this.createdAt,
-      @JsonKey(name: 'updatedAt') @HiveField(8) required this.updatedAt})
+      @JsonKey(name: 'issuerAccountId')
+      @HiveField(3)
+      required this.issuerAccountId,
+      @JsonKey(name: 'asigneeAccountId')
+      @HiveField(4)
+      required this.asigneeAccountId,
+      @JsonKey(name: 'markId') @HiveField(5) required this.markId,
+      @JsonKey(name: 'name') @HiveField(6) required this.name,
+      @JsonKey(name: 'description') @HiveField(7) required this.description,
+      @JsonKey(name: 'startedAt') @HiveField(8) required this.startedAt,
+      @JsonKey(name: 'endedAt') @HiveField(9) required this.endedAt})
       : super._();
 
   factory _$TaskModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -249,33 +269,37 @@ class _$TaskModelImpl extends _TaskModel {
   @HiveField(2)
   final int subjectTypeId;
   @override
-  @JsonKey(name: 'teacherId')
+  @JsonKey(name: 'issuerAccountId')
   @HiveField(3)
-  final int teacherId;
+  final int issuerAccountId;
   @override
-  @JsonKey(name: 'studentId')
+  @JsonKey(name: 'asigneeAccountId')
   @HiveField(4)
-  final int studentId;
+  final int asigneeAccountId;
+  @override
+  @JsonKey(name: 'markId')
+  @HiveField(5)
+  final int markId;
   @override
   @JsonKey(name: 'name')
-  @HiveField(5)
+  @HiveField(6)
   final String name;
   @override
   @JsonKey(name: 'description')
-  @HiveField(6)
+  @HiveField(7)
   final String description;
   @override
-  @JsonKey(name: 'createdAt')
-  @HiveField(7)
-  final DateTime createdAt;
-  @override
-  @JsonKey(name: 'updatedAt')
+  @JsonKey(name: 'startedAt')
   @HiveField(8)
-  final DateTime updatedAt;
+  final DateTime startedAt;
+  @override
+  @JsonKey(name: 'endedAt')
+  @HiveField(9)
+  final DateTime? endedAt;
 
   @override
   String toString() {
-    return 'TaskModel(id: $id, disciplineId: $disciplineId, subjectTypeId: $subjectTypeId, teacherId: $teacherId, studentId: $studentId, name: $name, description: $description, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'TaskModel(id: $id, disciplineId: $disciplineId, subjectTypeId: $subjectTypeId, issuerAccountId: $issuerAccountId, asigneeAccountId: $asigneeAccountId, markId: $markId, name: $name, description: $description, startedAt: $startedAt, endedAt: $endedAt)';
   }
 
   @override
@@ -288,23 +312,33 @@ class _$TaskModelImpl extends _TaskModel {
                 other.disciplineId == disciplineId) &&
             (identical(other.subjectTypeId, subjectTypeId) ||
                 other.subjectTypeId == subjectTypeId) &&
-            (identical(other.teacherId, teacherId) ||
-                other.teacherId == teacherId) &&
-            (identical(other.studentId, studentId) ||
-                other.studentId == studentId) &&
+            (identical(other.issuerAccountId, issuerAccountId) ||
+                other.issuerAccountId == issuerAccountId) &&
+            (identical(other.asigneeAccountId, asigneeAccountId) ||
+                other.asigneeAccountId == asigneeAccountId) &&
+            (identical(other.markId, markId) || other.markId == markId) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+            (identical(other.startedAt, startedAt) ||
+                other.startedAt == startedAt) &&
+            (identical(other.endedAt, endedAt) || other.endedAt == endedAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, disciplineId, subjectTypeId,
-      teacherId, studentId, name, description, createdAt, updatedAt);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      disciplineId,
+      subjectTypeId,
+      issuerAccountId,
+      asigneeAccountId,
+      markId,
+      name,
+      description,
+      startedAt,
+      endedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -329,18 +363,23 @@ abstract class _TaskModel extends TaskModel {
       @JsonKey(name: 'subjectTypeId')
       @HiveField(2)
       required final int subjectTypeId,
-      @JsonKey(name: 'teacherId') @HiveField(3) required final int teacherId,
-      @JsonKey(name: 'studentId') @HiveField(4) required final int studentId,
-      @JsonKey(name: 'name') @HiveField(5) required final String name,
+      @JsonKey(name: 'issuerAccountId')
+      @HiveField(3)
+      required final int issuerAccountId,
+      @JsonKey(name: 'asigneeAccountId')
+      @HiveField(4)
+      required final int asigneeAccountId,
+      @JsonKey(name: 'markId') @HiveField(5) required final int markId,
+      @JsonKey(name: 'name') @HiveField(6) required final String name,
       @JsonKey(name: 'description')
-      @HiveField(6)
-      required final String description,
-      @JsonKey(name: 'createdAt')
       @HiveField(7)
-      required final DateTime createdAt,
-      @JsonKey(name: 'updatedAt')
+      required final String description,
+      @JsonKey(name: 'startedAt')
       @HiveField(8)
-      required final DateTime updatedAt}) = _$TaskModelImpl;
+      required final DateTime startedAt,
+      @JsonKey(name: 'endedAt')
+      @HiveField(9)
+      required final DateTime? endedAt}) = _$TaskModelImpl;
   _TaskModel._() : super._();
 
   factory _TaskModel.fromJson(Map<String, dynamic> json) =
@@ -359,29 +398,33 @@ abstract class _TaskModel extends TaskModel {
   @HiveField(2)
   int get subjectTypeId;
   @override
-  @JsonKey(name: 'teacherId')
+  @JsonKey(name: 'issuerAccountId')
   @HiveField(3)
-  int get teacherId;
+  int get issuerAccountId;
   @override
-  @JsonKey(name: 'studentId')
+  @JsonKey(name: 'asigneeAccountId')
   @HiveField(4)
-  int get studentId;
+  int get asigneeAccountId;
+  @override
+  @JsonKey(name: 'markId')
+  @HiveField(5)
+  int get markId;
   @override
   @JsonKey(name: 'name')
-  @HiveField(5)
+  @HiveField(6)
   String get name;
   @override
   @JsonKey(name: 'description')
-  @HiveField(6)
+  @HiveField(7)
   String get description;
   @override
-  @JsonKey(name: 'createdAt')
-  @HiveField(7)
-  DateTime get createdAt;
-  @override
-  @JsonKey(name: 'updatedAt')
+  @JsonKey(name: 'startedAt')
   @HiveField(8)
-  DateTime get updatedAt;
+  DateTime get startedAt;
+  @override
+  @JsonKey(name: 'endedAt')
+  @HiveField(9)
+  DateTime? get endedAt;
   @override
   @JsonKey(ignore: true)
   _$$TaskModelImplCopyWith<_$TaskModelImpl> get copyWith =>

@@ -14,9 +14,6 @@ class MarkTypeModel extends HiveObject with _$MarkTypeModel {
     @JsonKey(name: 'name') @HiveField(1) required String name,
     @JsonKey(name: 'minValue') @HiveField(2) required int minValue,
     @JsonKey(name: 'maxValue') @HiveField(3) required int maxValue,
-    @JsonKey(name: 'createdAt') @HiveField(4) required DateTime createdAt,
-    @JsonKey(name: 'updatedAt') @HiveField(5) required DateTime updatedAt,
-
   }) = _MarkTypeModel;
 
   MarkTypeModel._();

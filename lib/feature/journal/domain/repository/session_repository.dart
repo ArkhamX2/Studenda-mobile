@@ -9,4 +9,3 @@ abstract class SessionRepository {
     bool remote = true,
   ]);
 }
-

@@ -67,7 +67,7 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource{
   
   @override
   Future<void> logout() async {
-      final token = await tokenStorage.delete(key: 'jwt_access_token');
+      await tokenStorage.delete(key: 'jwt_access_token');
       userBox.clear();
   }
 }

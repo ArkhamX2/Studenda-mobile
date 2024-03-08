@@ -20,19 +20,20 @@ class TaskModelAdapter extends TypeAdapter<_$TaskModelImpl> {
       id: fields[0] as int,
       disciplineId: fields[1] as int,
       subjectTypeId: fields[2] as int,
-      teacherId: fields[3] as int,
-      studentId: fields[4] as int,
-      name: fields[5] as String,
-      description: fields[6] as String,
-      createdAt: fields[7] as DateTime,
-      updatedAt: fields[8] as DateTime,
+      issuerAccountId: fields[3] as int,
+      asigneeAccountId: fields[4] as int,
+      markId: fields[5] as int,
+      name: fields[6] as String,
+      description: fields[7] as String,
+      startedAt: fields[8] as DateTime,
+      endedAt: fields[9] as DateTime?,
     );
   }
 
   @override
   void write(BinaryWriter writer, _$TaskModelImpl obj) {
     writer
-      ..writeByte(9)
+      ..writeByte(10)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -40,17 +41,19 @@ class TaskModelAdapter extends TypeAdapter<_$TaskModelImpl> {
       ..writeByte(2)
       ..write(obj.subjectTypeId)
       ..writeByte(3)
-      ..write(obj.teacherId)
+      ..write(obj.issuerAccountId)
       ..writeByte(4)
-      ..write(obj.studentId)
+      ..write(obj.asigneeAccountId)
       ..writeByte(5)
-      ..write(obj.name)
+      ..write(obj.markId)
       ..writeByte(6)
-      ..write(obj.description)
+      ..write(obj.name)
       ..writeByte(7)
-      ..write(obj.createdAt)
+      ..write(obj.description)
       ..writeByte(8)
-      ..write(obj.updatedAt);
+      ..write(obj.startedAt)
+      ..writeByte(9)
+      ..write(obj.endedAt);
   }
 
   @override
@@ -73,12 +76,15 @@ _$TaskModelImpl _$$TaskModelImplFromJson(Map<String, dynamic> json) =>
       id: json['id'] as int,
       disciplineId: json['disciplineId'] as int,
       subjectTypeId: json['subjectTypeId'] as int,
-      teacherId: json['teacherId'] as int,
-      studentId: json['studentId'] as int,
+      issuerAccountId: json['issuerAccountId'] as int,
+      asigneeAccountId: json['asigneeAccountId'] as int,
+      markId: json['markId'] as int,
       name: json['name'] as String,
       description: json['description'] as String,
-      createdAt: DateTime.parse(json['createdAt'] as String),
-      updatedAt: DateTime.parse(json['updatedAt'] as String),
+      startedAt: DateTime.parse(json['startedAt'] as String),
+      endedAt: json['endedAt'] == null
+          ? null
+          : DateTime.parse(json['endedAt'] as String),
     );
 
 Map<String, dynamic> _$$TaskModelImplToJson(_$TaskModelImpl instance) =>
@@ -86,10 +92,11 @@ Map<String, dynamic> _$$TaskModelImplToJson(_$TaskModelImpl instance) =>
       'id': instance.id,
       'disciplineId': instance.disciplineId,
       'subjectTypeId': instance.subjectTypeId,
-      'teacherId': instance.teacherId,
-      'studentId': instance.studentId,
+      'issuerAccountId': instance.issuerAccountId,
+      'asigneeAccountId': instance.asigneeAccountId,
+      'markId': instance.markId,
       'name': instance.name,
       'description': instance.description,
-      'createdAt': instance.createdAt.toIso8601String(),
-      'updatedAt': instance.updatedAt.toIso8601String(),
+      'startedAt': instance.startedAt.toIso8601String(),
+      'endedAt': instance.endedAt?.toIso8601String(),
     };

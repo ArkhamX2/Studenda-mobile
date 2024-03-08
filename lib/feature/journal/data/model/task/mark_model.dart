@@ -12,10 +12,7 @@ class MarkModel extends HiveObject with _$MarkModel {
   factory MarkModel({
     @JsonKey(name: 'id') @HiveField(0) required int id,
     @JsonKey(name: 'markTypeId') @HiveField(1) required int markTypeId,
-    @JsonKey(name: 'taskId') @HiveField(2) required int taskId,
-    @JsonKey(name: 'value') @HiveField(3) required int value,
-    @JsonKey(name: 'createdAt') @HiveField(4) required DateTime createdAt,
-    @JsonKey(name: 'updatedAt') @HiveField(5) required DateTime updatedAt,
+    @JsonKey(name: 'value') @HiveField(2) required int value,
 
   }) = _MarkModel;
 

@@ -19,6 +19,7 @@ mixin _$TaskEntity {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
+  int get markId => throw _privateConstructorUsedError;
   String get endDateName => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -32,7 +33,12 @@ abstract class $TaskEntityCopyWith<$Res> {
           TaskEntity value, $Res Function(TaskEntity) then) =
       _$TaskEntityCopyWithImpl<$Res, TaskEntity>;
   @useResult
-  $Res call({int id, String name, String description, String endDateName});
+  $Res call(
+      {int id,
+      String name,
+      String description,
+      int markId,
+      String endDateName});
 }
 
 /// @nodoc
@@ -51,6 +57,7 @@ class _$TaskEntityCopyWithImpl<$Res, $Val extends TaskEntity>
     Object? id = null,
     Object? name = null,
     Object? description = null,
+    Object? markId = null,
     Object? endDateName = null,
   }) {
     return _then(_value.copyWith(
@@ -66,6 +73,10 @@ class _$TaskEntityCopyWithImpl<$Res, $Val extends TaskEntity>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
+      markId: null == markId
+          ? _value.markId
+          : markId // ignore: cast_nullable_to_non_nullable
+              as int,
       endDateName: null == endDateName
           ? _value.endDateName
           : endDateName // ignore: cast_nullable_to_non_nullable
@@ -82,7 +93,12 @@ abstract class _$$TaskEntityImplCopyWith<$Res>
       __$$TaskEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String name, String description, String endDateName});
+  $Res call(
+      {int id,
+      String name,
+      String description,
+      int markId,
+      String endDateName});
 }
 
 /// @nodoc
@@ -99,6 +115,7 @@ class __$$TaskEntityImplCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? description = null,
+    Object? markId = null,
     Object? endDateName = null,
   }) {
     return _then(_$TaskEntityImpl(
@@ -114,6 +131,10 @@ class __$$TaskEntityImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
+      markId: null == markId
+          ? _value.markId
+          : markId // ignore: cast_nullable_to_non_nullable
+              as int,
       endDateName: null == endDateName
           ? _value.endDateName
           : endDateName // ignore: cast_nullable_to_non_nullable
@@ -129,6 +150,7 @@ class _$TaskEntityImpl implements _TaskEntity {
       {required this.id,
       required this.name,
       required this.description,
+      required this.markId,
       required this.endDateName});
 
   @override
@@ -138,11 +160,13 @@ class _$TaskEntityImpl implements _TaskEntity {
   @override
   final String description;
   @override
+  final int markId;
+  @override
   final String endDateName;
 
   @override
   String toString() {
-    return 'TaskEntity(id: $id, name: $name, description: $description, endDateName: $endDateName)';
+    return 'TaskEntity(id: $id, name: $name, description: $description, markId: $markId, endDateName: $endDateName)';
   }
 
   @override
@@ -154,13 +178,14 @@ class _$TaskEntityImpl implements _TaskEntity {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
+            (identical(other.markId, markId) || other.markId == markId) &&
             (identical(other.endDateName, endDateName) ||
                 other.endDateName == endDateName));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, name, description, endDateName);
+      Object.hash(runtimeType, id, name, description, markId, endDateName);
 
   @JsonKey(ignore: true)
   @override
@@ -174,6 +199,7 @@ abstract class _TaskEntity implements TaskEntity {
       {required final int id,
       required final String name,
       required final String description,
+      required final int markId,
       required final String endDateName}) = _$TaskEntityImpl;
 
   @override
@@ -182,6 +208,8 @@ abstract class _TaskEntity implements TaskEntity {
   String get name;
   @override
   String get description;
+  @override
+  int get markId;
   @override
   String get endDateName;
   @override
