@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:studenda_mobile_student/feature/journal/domain/entity/mark_entity.dart';
 
 part 'task_entity.freezed.dart';
 

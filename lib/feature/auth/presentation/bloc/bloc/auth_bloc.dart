@@ -23,7 +23,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           ),
           (r) {
             user = AccountEntity(
-              id: r.user.id
+              id: r.user.id,
             );
             emit(
               AuthState.authSuccess(user),

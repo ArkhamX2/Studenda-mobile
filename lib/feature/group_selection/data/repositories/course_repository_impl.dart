@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:studenda_mobile_student/core/data/error/exception.dart';
 import 'package:studenda_mobile_student/core/data/error/failure.dart';
 import 'package:studenda_mobile_student/core/data/repository/repository.dart';
 import 'package:studenda_mobile_student/core/network/network_info.dart';

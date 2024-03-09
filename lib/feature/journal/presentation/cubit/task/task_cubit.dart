@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:studenda_mobile_student/feature/journal/data/model/api/task_student_request_model.dart';
 import 'package:studenda_mobile_student/feature/journal/data/model/task/task_model.dart';
-import 'package:studenda_mobile_student/feature/journal/domain/entity/mark_entity.dart';
 import 'package:studenda_mobile_student/feature/journal/domain/entity/task_entity.dart';
 import 'package:studenda_mobile_student/feature/journal/domain/usecases/get_task_list.dart';
 
@@ -24,7 +23,7 @@ class TaskCubit extends Cubit<TaskState> {
       (l) => emit(TaskState.fail(l.message)),
       (r) => emit(TaskState.success(mapTaskModelToEntity(
         r,
-      ))),
+      ),),),
     );
   }
 
