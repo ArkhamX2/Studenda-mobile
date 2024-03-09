@@ -77,7 +77,7 @@ class _BodyWidget extends StatelessWidget {
         errorMessage: "",
       ),
       authSuccess: (token) {
-        Navigator.of(context).pushNamed(mainRoute);
+        Navigator.of(context).pushReplacementNamed(mainRoute);
         return Container();
       },
       authLoading: () => const Center(

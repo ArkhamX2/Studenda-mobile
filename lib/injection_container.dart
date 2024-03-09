@@ -16,10 +16,10 @@ import 'package:studenda_mobile_student/feature/auth/domain/usecases/logout.dart
 import 'package:studenda_mobile_student/feature/auth/presentation/bloc/bloc/auth_bloc.dart';
 import 'package:studenda_mobile_student/feature/auth/presentation/bloc/cubit/token_cubit.dart';
 import 'package:studenda_mobile_student/feature/group_selection/data/datasources/local/course_local_data_source.dart';
-import 'package:studenda_mobile_student/feature/group_selection/data/datasources/remote/course_remote_data_source.dart';
 import 'package:studenda_mobile_student/feature/group_selection/data/datasources/local/department_local_data_source.dart';
-import 'package:studenda_mobile_student/feature/group_selection/data/datasources/remote/department_remote_data_source.dart';
 import 'package:studenda_mobile_student/feature/group_selection/data/datasources/local/group_local_data_source.dart';
+import 'package:studenda_mobile_student/feature/group_selection/data/datasources/remote/course_remote_data_source.dart';
+import 'package:studenda_mobile_student/feature/group_selection/data/datasources/remote/department_remote_data_source.dart';
 import 'package:studenda_mobile_student/feature/group_selection/data/datasources/remote/group_remote_data_source.dart';
 import 'package:studenda_mobile_student/feature/group_selection/data/datasources/selected_items_datasource.dart';
 import 'package:studenda_mobile_student/feature/group_selection/data/models/course_model.dart';

@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:studenda_mobile_student/feature/journal/data/model/api/mark_request_model.dart';
-import 'package:studenda_mobile_student/feature/journal/data/model/task/mark_model.dart';
 import 'package:studenda_mobile_student/feature/journal/domain/entity/mark_entity.dart';
 import 'package:studenda_mobile_student/feature/journal/domain/usecases/get_mark_list.dart';
 
