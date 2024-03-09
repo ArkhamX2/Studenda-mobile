@@ -22,7 +22,7 @@ SecurityResponseModel _$SecurityResponseModelFromJson(
 /// @nodoc
 mixin _$SecurityResponseModel {
   @JsonKey(name: 'User')
-  UserModel get user => throw _privateConstructorUsedError;
+  AccountModel get user => throw _privateConstructorUsedError;
   @JsonKey(name: 'Token')
   String get token => throw _privateConstructorUsedError;
 
@@ -39,10 +39,10 @@ abstract class $SecurityResponseModelCopyWith<$Res> {
       _$SecurityResponseModelCopyWithImpl<$Res, SecurityResponseModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'User') UserModel user,
+      {@JsonKey(name: 'User') AccountModel user,
       @JsonKey(name: 'Token') String token});
 
-  $UserModelCopyWith<$Res> get user;
+  $AccountModelCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -66,7 +66,7 @@ class _$SecurityResponseModelCopyWithImpl<$Res,
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as UserModel,
+              as AccountModel,
       token: null == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
@@ -76,8 +76,8 @@ class _$SecurityResponseModelCopyWithImpl<$Res,
 
   @override
   @pragma('vm:prefer-inline')
-  $UserModelCopyWith<$Res> get user {
-    return $UserModelCopyWith<$Res>(_value.user, (value) {
+  $AccountModelCopyWith<$Res> get user {
+    return $AccountModelCopyWith<$Res>(_value.user, (value) {
       return _then(_value.copyWith(user: value) as $Val);
     });
   }
@@ -93,11 +93,11 @@ abstract class _$$SecurityResponseModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'User') UserModel user,
+      {@JsonKey(name: 'User') AccountModel user,
       @JsonKey(name: 'Token') String token});
 
   @override
-  $UserModelCopyWith<$Res> get user;
+  $AccountModelCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -119,7 +119,7 @@ class __$$SecurityResponseModelImplCopyWithImpl<$Res>
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as UserModel,
+              as AccountModel,
       token: null == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
@@ -140,7 +140,7 @@ class _$SecurityResponseModelImpl implements _SecurityResponseModel {
 
   @override
   @JsonKey(name: 'User')
-  final UserModel user;
+  final AccountModel user;
   @override
   @JsonKey(name: 'Token')
   final String token;
@@ -180,7 +180,7 @@ class _$SecurityResponseModelImpl implements _SecurityResponseModel {
 
 abstract class _SecurityResponseModel implements SecurityResponseModel {
   const factory _SecurityResponseModel(
-          {@JsonKey(name: 'User') required final UserModel user,
+          {@JsonKey(name: 'User') required final AccountModel user,
           @JsonKey(name: 'Token') required final String token}) =
       _$SecurityResponseModelImpl;
 
@@ -189,7 +189,7 @@ abstract class _SecurityResponseModel implements SecurityResponseModel {
 
   @override
   @JsonKey(name: 'User')
-  UserModel get user;
+  AccountModel get user;
   @override
   @JsonKey(name: 'Token')
   String get token;

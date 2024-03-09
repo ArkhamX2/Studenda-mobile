@@ -1,4 +1,4 @@
-import 'package:studenda_mobile_student/feature/auth/data/models/user_model/user_model.dart';
+import 'package:studenda_mobile_student/feature/auth/data/models/user_model/account_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/day_position_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/discipline_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/subject_model.dart';
@@ -10,7 +10,7 @@ import 'package:studenda_mobile_student/feature/schedule/domain/entities/subject
 List<DayScheduleEntity> mapSubjectModelToDayScehduleList(
   List<SubjectModel> subjects,
   List<DisciplineModel> disciplines,
-  List<UserModel> teachers,
+  List<AccountModel> teachers,
   List<DayPositionModel> dayPositionList,
   List<SubjectPositionModel> subjectPositionList,
   List<SubjectTypeModel> subjectTypeList,
@@ -25,16 +25,16 @@ List<DayScheduleEntity> mapSubjectModelToDayScehduleList(
   final Map<int, List<SubjectEntity>> dayScheduleEntityMap = {};
 
   subjects.sort((a, b) {
-    final comparisonResult = a.dayPositionId.compareTo(b.dayPositionId);
+    final comparisonResult = a.dayPositionId!.compareTo(b.dayPositionId!);
     if (comparisonResult != 0) {
       return comparisonResult;
     }
-    return a.subjectPositionId.compareTo(b.subjectPositionId);
+    return a.subjectPositionId!.compareTo(b.subjectPositionId!);
   });
 
   for (var i = 0; i < subjects.length; i++) {
     final teacher =
-        teachers.firstWhere((element) => element.id == subjects[i].userId);
+        teachers.firstWhere((element) => element.id == subjects[i].accountId);
     if (dayScheduleEntityMap.containsKey(
       dayPositionList
               .firstWhere((element) => element.id == subjects[i].dayPositionId)
@@ -53,7 +53,7 @@ List<DayScheduleEntity> mapSubjectModelToDayScehduleList(
           title: disciplines
               .firstWhere((element) => element.id == subjects[i].disciplineId)
               .name,
-          classroom: subjects[i].classroom,
+          classroom: subjects[i].classroom??"",
           teacher:
               "${teacher.surname ?? ""} ${teacher.name ?? ""} ${teacher.patronymic ?? ""}",
           subjectPosition: subjectPositionList
@@ -77,7 +77,7 @@ List<DayScheduleEntity> mapSubjectModelToDayScehduleList(
           title: disciplines
               .firstWhere((element) => element.id == subjects[i].disciplineId)
               .name,
-          classroom: subjects[i].classroom,
+          classroom: subjects[i].classroom??"",
           teacher:
               "${teacher.surname ?? ""} ${teacher.name ?? ""} ${teacher.patronymic ?? ""}",
           subjectPosition: subjectPositionList

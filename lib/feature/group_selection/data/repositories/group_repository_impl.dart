@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:studenda_mobile_student/core/data/error/exception.dart';
 import 'package:studenda_mobile_student/core/data/error/failure.dart';
+import 'package:studenda_mobile_student/core/data/repository/repository.dart';
 import 'package:studenda_mobile_student/core/network/network_info.dart';
 import 'package:studenda_mobile_student/feature/group_selection/data/datasources/group_local_data_source.dart';
 import 'package:studenda_mobile_student/feature/group_selection/data/datasources/group_remote_data_source.dart';
@@ -23,20 +24,10 @@ class GroupRepositoryImpl implements GroupRepository {
     void request, [
     bool remote = true,
   ]) async {
-    if (await networkInfo.isConnected && remote) {
-      try {
-        final remoteLoad = await remoteDataSource.load(request);
-        await localDataSource.add(remoteLoad);
-        return Right(await localDataSource.load(request));
-      } on ServerException {
-        return const Left(ServerFailure(message: "Ошибка сервера"));
-      }
-    } else {
-      try {
-        return Right(await localDataSource.load(request));
-      } on CacheException {
-        return const Left(CacheFailure(message: "Ошибка локального хранилища"));
-      }
-    }
+    return await loadData<
+        GroupLocalDataSource,
+        GroupRemoteDataSource,
+        List<GroupModel>,
+        void>(localDataSource, remoteDataSource, remote, request, networkInfo);
   }
 }

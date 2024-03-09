@@ -1,23 +1,23 @@
 import 'package:hive/hive.dart';
 import 'package:studenda_mobile_student/core/data/datasource/datasource.dart';
 import 'package:studenda_mobile_student/core/data/error/exception.dart';
-import 'package:studenda_mobile_student/feature/auth/data/models/user_model/user_model.dart';
+import 'package:studenda_mobile_student/feature/auth/data/models/user_model/account_model.dart';
 
 class TeacherLocalDataSource
-    extends LocalDataSource<List<UserModel>, List<int>> {
-  Box<UserModel> userBox;
+    extends LocalDataSource<List<AccountModel>, List<int>> {
+  Box<AccountModel> userBox;
 
   TeacherLocalDataSource({required this.userBox});
 
   @override
-  Future<void> add(List<UserModel> teacherList) async {
+  Future<void> add(List<AccountModel> teacherList) async {
     try {
       if (teacherList.isEmpty) {
         userBox.clear();
         return;
       }
 
-      await updateBox<UserModel>(
+      await updateBox<AccountModel>(
         {for (final item in teacherList) item.id: item},
         userBox.values.map((e) => e.id).toList(),
         userBox,
@@ -28,7 +28,7 @@ class TeacherLocalDataSource
   }
 
   @override
-  Future<List<UserModel>> load(List<int> request) async {
+  Future<List<AccountModel>> load(List<int> request) async {
     try {
       if (request.isEmpty) return userBox.values.toList();
       return userBox.values

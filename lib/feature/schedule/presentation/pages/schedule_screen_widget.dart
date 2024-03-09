@@ -104,11 +104,6 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
                 );
               },
               fail: (message) {
-                scheduleBloc.add(
-                  ScheduleEvent.loadLocal(
-                    groupSelectorBloc.selectedGroup.id,
-                  ),
-                );
                 return Center(
                   child:
                       StudendaDefaultLabelWidget(text: message, fontSize: 18),

@@ -5,7 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:studenda_mobile_student/core/utils/get_current_academic_year.dart';
 import 'package:studenda_mobile_student/core/utils/get_current_week_days.dart';
 import 'package:studenda_mobile_student/core/utils/map_subject_model_to_day_scehdule_list.dart';
-import 'package:studenda_mobile_student/feature/auth/data/models/user_model/user_model.dart';
+import 'package:studenda_mobile_student/feature/auth/data/models/user_model/account_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/day_position_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/discipline_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/extended_discipline_model.dart';
@@ -303,7 +303,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
     List<SubjectModel> succededSubjectList,
     Emitter<ScheduleState> emit,
     List<DisciplineModel> succededDisciplineList,
-    List<UserModel> succededTeacherList,
+    List<AccountModel> succededTeacherList,
     WeekTypeEntity currentWeekType,
     DateTime currentDate, [
     bool remote = true,
@@ -340,7 +340,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
     Emitter<ScheduleState> emit,
     List<SubjectModel> succededSubjectList,
     List<DisciplineModel> succededDisciplineList,
-    List<UserModel> succededTeacherList,
+    List<AccountModel> succededTeacherList,
     List<SubjectTypeModel> succededSubjectTypeList,
     WeekTypeEntity currentWeekType,
     DateTime currentDate, [
@@ -377,7 +377,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
     Emitter<ScheduleState> emit,
     List<SubjectModel> succededSubjectList,
     List<DisciplineModel> succededDisciplineList,
-    List<UserModel> succededTeacherList,
+    List<AccountModel> succededTeacherList,
     List<DayPositionModel> succededDayPositionList,
     List<SubjectTypeModel> succededSubjectTypeList,
     WeekTypeEntity currentWeekType,
@@ -460,13 +460,13 @@ List<ExtendedDisciplineModel> mapDisciplinesAndTypes(
 }
 
 List<int> _getSubjectTypeIds(List<SubjectModel> succededSubjectList) {
-  return succededSubjectList.map((e) => e.subjectTypeId).toSet().toList();
+  return succededSubjectList.map((e) => e.subjectTypeId ?? -1).toSet().toList();
 }
 
 List<int> _getTeacherIds(List<SubjectModel> succededSubjectList) {
-  return succededSubjectList.map((e) => e.userId).toSet().toList();
+  return succededSubjectList.map((e) => e.accountId ?? -1).toSet().toList();
 }
 
 List<int> _getDisciplineIds(List<SubjectModel> succededSubjectList) {
-  return succededSubjectList.map((e) => e.disciplineId).toSet().toList();
+  return succededSubjectList.map((e) => e.disciplineId ?? -1).toSet().toList();
 }

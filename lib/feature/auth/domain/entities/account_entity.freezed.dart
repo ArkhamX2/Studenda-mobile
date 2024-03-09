@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'user_entity.dart';
+part of 'account_entity.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,28 +15,27 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$UserEntity {
+mixin _$AccountEntity {
   int get id => throw _privateConstructorUsedError;
-  int get roleId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $UserEntityCopyWith<UserEntity> get copyWith =>
+  $AccountEntityCopyWith<AccountEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserEntityCopyWith<$Res> {
-  factory $UserEntityCopyWith(
-          UserEntity value, $Res Function(UserEntity) then) =
-      _$UserEntityCopyWithImpl<$Res, UserEntity>;
+abstract class $AccountEntityCopyWith<$Res> {
+  factory $AccountEntityCopyWith(
+          AccountEntity value, $Res Function(AccountEntity) then) =
+      _$AccountEntityCopyWithImpl<$Res, AccountEntity>;
   @useResult
-  $Res call({int id, int roleId});
+  $Res call({int id});
 }
 
 /// @nodoc
-class _$UserEntityCopyWithImpl<$Res, $Val extends UserEntity>
-    implements $UserEntityCopyWith<$Res> {
-  _$UserEntityCopyWithImpl(this._value, this._then);
+class _$AccountEntityCopyWithImpl<$Res, $Val extends AccountEntity>
+    implements $AccountEntityCopyWith<$Res> {
+  _$AccountEntityCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -47,54 +46,44 @@ class _$UserEntityCopyWithImpl<$Res, $Val extends UserEntity>
   @override
   $Res call({
     Object? id = null,
-    Object? roleId = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      roleId: null == roleId
-          ? _value.roleId
-          : roleId // ignore: cast_nullable_to_non_nullable
-              as int,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$UserEntityImplCopyWith<$Res>
-    implements $UserEntityCopyWith<$Res> {
-  factory _$$UserEntityImplCopyWith(
-          _$UserEntityImpl value, $Res Function(_$UserEntityImpl) then) =
-      __$$UserEntityImplCopyWithImpl<$Res>;
+abstract class _$$AccountEntityImplCopyWith<$Res>
+    implements $AccountEntityCopyWith<$Res> {
+  factory _$$AccountEntityImplCopyWith(
+          _$AccountEntityImpl value, $Res Function(_$AccountEntityImpl) then) =
+      __$$AccountEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, int roleId});
+  $Res call({int id});
 }
 
 /// @nodoc
-class __$$UserEntityImplCopyWithImpl<$Res>
-    extends _$UserEntityCopyWithImpl<$Res, _$UserEntityImpl>
-    implements _$$UserEntityImplCopyWith<$Res> {
-  __$$UserEntityImplCopyWithImpl(
-      _$UserEntityImpl _value, $Res Function(_$UserEntityImpl) _then)
+class __$$AccountEntityImplCopyWithImpl<$Res>
+    extends _$AccountEntityCopyWithImpl<$Res, _$AccountEntityImpl>
+    implements _$$AccountEntityImplCopyWith<$Res> {
+  __$$AccountEntityImplCopyWithImpl(
+      _$AccountEntityImpl _value, $Res Function(_$AccountEntityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = null,
-    Object? roleId = null,
   }) {
-    return _then(_$UserEntityImpl(
+    return _then(_$AccountEntityImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      roleId: null == roleId
-          ? _value.roleId
-          : roleId // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -102,48 +91,42 @@ class __$$UserEntityImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$UserEntityImpl implements _UserEntity {
-  const _$UserEntityImpl({required this.id, required this.roleId});
+class _$AccountEntityImpl implements _AccountEntity {
+  const _$AccountEntityImpl({required this.id});
 
   @override
   final int id;
-  @override
-  final int roleId;
 
   @override
   String toString() {
-    return 'UserEntity(id: $id, roleId: $roleId)';
+    return 'AccountEntity(id: $id)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UserEntityImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.roleId, roleId) || other.roleId == roleId));
+            other is _$AccountEntityImpl &&
+            (identical(other.id, id) || other.id == id));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, roleId);
+  int get hashCode => Object.hash(runtimeType, id);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$UserEntityImplCopyWith<_$UserEntityImpl> get copyWith =>
-      __$$UserEntityImplCopyWithImpl<_$UserEntityImpl>(this, _$identity);
+  _$$AccountEntityImplCopyWith<_$AccountEntityImpl> get copyWith =>
+      __$$AccountEntityImplCopyWithImpl<_$AccountEntityImpl>(this, _$identity);
 }
 
-abstract class _UserEntity implements UserEntity {
-  const factory _UserEntity(
-      {required final int id, required final int roleId}) = _$UserEntityImpl;
+abstract class _AccountEntity implements AccountEntity {
+  const factory _AccountEntity({required final int id}) = _$AccountEntityImpl;
 
   @override
   int get id;
   @override
-  int get roleId;
-  @override
   @JsonKey(ignore: true)
-  _$$UserEntityImplCopyWith<_$UserEntityImpl> get copyWith =>
+  _$$AccountEntityImplCopyWith<_$AccountEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

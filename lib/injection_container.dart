@@ -7,7 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:studenda_mobile_student/core/network/network_info.dart';
 import 'package:studenda_mobile_student/feature/auth/data/datasources/auth_local_data_source.dart';
 import 'package:studenda_mobile_student/feature/auth/data/datasources/auth_remote_data_source.dart';
-import 'package:studenda_mobile_student/feature/auth/data/models/user_model/user_model.dart';
+import 'package:studenda_mobile_student/feature/auth/data/models/user_model/account_model.dart';
 import 'package:studenda_mobile_student/feature/auth/data/repositories/auth_repository_impl.dart';
 import 'package:studenda_mobile_student/feature/auth/domain/repositories/auth_repository.dart';
 import 'package:studenda_mobile_student/feature/auth/domain/usecases/auth.dart';
@@ -97,7 +97,7 @@ final sl = GetIt.instance;
 
 Future<void> init() async {
   const secureStorage = FlutterSecureStorage();
-  Hive.registerAdapter(UserModelAdapter());
+  Hive.registerAdapter(AccountModelAdapter());
   Hive.registerAdapter(GroupModelAdapter());
   Hive.registerAdapter(CourseModelAdapter());
   Hive.registerAdapter(DepartmentModelAdapter());
@@ -163,7 +163,7 @@ Future<void> init() async {
   sl.registerLazySingletonAsync<AuthLocalDataSource>(() async {
     return AuthLocalDataSourceImpl(
       tokenStorage: secureStorage,
-      userBox: await Hive.openBox<UserModel>('UserBox'),
+      userBox: await Hive.openBox<AccountModel>('UserBox'),
     );
   });
 
@@ -559,7 +559,7 @@ Future<void> init() async {
   sl.registerLazySingletonAsync<TeacherLocalDataSource>(
     () async {
       return TeacherLocalDataSource(
-        userBox: await Hive.openBox<UserModel>("TeacherBox"),
+        userBox: await Hive.openBox<AccountModel>("TeacherBox"),
       );
     },
   );

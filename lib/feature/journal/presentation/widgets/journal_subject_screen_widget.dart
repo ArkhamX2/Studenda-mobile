@@ -102,16 +102,6 @@ class _JournalSubjectBody extends StatelessWidget {
                   ),
                 ),
                 fail: (message) {
-                  taskBloc.loadLocally(
-                    TaskStudentRequestModel(
-                      asigneeUserIds: [userId],
-                      disciplineId: subject.discipline.id,
-                      subjectTypeId: subject.subjectType.id,
-                      academicYear: getCurrentAcademicYear(),
-                      token: tokenCubit.token,
-                    ),
-                  );
-
                   return Center(
                     child:
                         StudendaDefaultLabelWidget(text: message, fontSize: 18),

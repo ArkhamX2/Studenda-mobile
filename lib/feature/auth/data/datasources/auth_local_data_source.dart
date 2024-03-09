@@ -3,7 +3,7 @@ import 'package:hive/hive.dart';
 import 'package:studenda_mobile_student/core/data/error/exception.dart';
 import 'package:studenda_mobile_student/feature/auth/data/models/security_response_model.dart';
 import 'package:studenda_mobile_student/feature/auth/data/models/token_model.dart';
-import 'package:studenda_mobile_student/feature/auth/data/models/user_model/user_model.dart';
+import 'package:studenda_mobile_student/feature/auth/data/models/user_model/account_model.dart';
 abstract class AuthLocalDataSource{
   Future<TokenModel> loadToken();
   Future<void> updateToken(TokenModel token);
@@ -13,7 +13,7 @@ abstract class AuthLocalDataSource{
 
 class AuthLocalDataSourceImpl implements AuthLocalDataSource{
   FlutterSecureStorage tokenStorage;
-  Box<UserModel> userBox;
+  Box<AccountModel> userBox;
 
   AuthLocalDataSourceImpl({required this.tokenStorage, required this.userBox});
 
@@ -29,9 +29,10 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource{
       if (alreadyExists == -1) {
         try {
           userBox.add(
-            UserModel(
+            AccountModel(
               id: response.user.id,
-              roleId: response.user.roleId,
+              groupId: response.user.groupId,
+              identityId: response.user.identityId,
               name: response.user.name,
               patronymic: response.user.patronymic,
               surname: response.user.surname,

@@ -18,14 +18,14 @@ class SubjectModelAdapter extends TypeAdapter<_$SubjectModelImpl> {
     };
     return _$SubjectModelImpl(
       id: fields[0] as int,
-      disciplineId: fields[1] as int,
-      subjectTypeId: fields[2] as int,
-      userId: fields[3] as int,
-      classroom: fields[4] as String,
-      subjectPositionId: fields[5] as int,
-      dayPositionId: fields[6] as int,
-      groupId: fields[7] as int,
-      weekTypeId: fields[8] as int,
+      disciplineId: fields[1] as int?,
+      subjectTypeId: fields[2] as int?,
+      accountId: fields[3] as int?,
+      classroom: fields[4] as String?,
+      subjectPositionId: fields[5] as int?,
+      dayPositionId: fields[6] as int?,
+      groupId: fields[7] as int?,
+      weekTypeId: fields[8] as int?,
     );
   }
 
@@ -40,7 +40,7 @@ class SubjectModelAdapter extends TypeAdapter<_$SubjectModelImpl> {
       ..writeByte(2)
       ..write(obj.subjectTypeId)
       ..writeByte(3)
-      ..write(obj.userId)
+      ..write(obj.accountId)
       ..writeByte(4)
       ..write(obj.classroom)
       ..writeByte(5)
@@ -71,14 +71,14 @@ class SubjectModelAdapter extends TypeAdapter<_$SubjectModelImpl> {
 _$SubjectModelImpl _$$SubjectModelImplFromJson(Map<String, dynamic> json) =>
     _$SubjectModelImpl(
       id: json['id'] as int,
-      disciplineId: json['disciplineId'] as int,
-      subjectTypeId: json['subjectTypeId'] as int,
-      userId: json['userId'] as int,
-      classroom: json['classroom'] as String,
-      subjectPositionId: json['subjectPositionId'] as int,
-      dayPositionId: json['dayPositionId'] as int,
-      groupId: json['groupId'] as int,
-      weekTypeId: json['weekTypeId'] as int,
+      disciplineId: json['disciplineId'] as int?,
+      subjectTypeId: json['subjectTypeId'] as int?,
+      accountId: json['accountId'] as int?,
+      classroom: json['classroom'] as String?,
+      subjectPositionId: json['subjectPositionId'] as int?,
+      dayPositionId: json['dayPositionId'] as int?,
+      groupId: json['groupId'] as int?,
+      weekTypeId: json['weekTypeId'] as int?,
     );
 
 Map<String, dynamic> _$$SubjectModelImplToJson(_$SubjectModelImpl instance) =>
@@ -86,7 +86,7 @@ Map<String, dynamic> _$$SubjectModelImplToJson(_$SubjectModelImpl instance) =>
       'id': instance.id,
       'disciplineId': instance.disciplineId,
       'subjectTypeId': instance.subjectTypeId,
-      'userId': instance.userId,
+      'accountId': instance.accountId,
       'classroom': instance.classroom,
       'subjectPositionId': instance.subjectPositionId,
       'dayPositionId': instance.dayPositionId,

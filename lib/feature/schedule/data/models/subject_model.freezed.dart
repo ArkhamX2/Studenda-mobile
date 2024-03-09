@@ -25,28 +25,28 @@ mixin _$SubjectModel {
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'disciplineId')
   @HiveField(1)
-  int get disciplineId => throw _privateConstructorUsedError;
+  int? get disciplineId => throw _privateConstructorUsedError;
   @JsonKey(name: 'subjectTypeId')
   @HiveField(2)
-  int get subjectTypeId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'userId')
+  int? get subjectTypeId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'accountId')
   @HiveField(3)
-  int get userId => throw _privateConstructorUsedError;
+  int? get accountId => throw _privateConstructorUsedError;
   @JsonKey(name: 'classroom')
   @HiveField(4)
-  String get classroom => throw _privateConstructorUsedError;
+  String? get classroom => throw _privateConstructorUsedError;
   @JsonKey(name: 'subjectPositionId')
   @HiveField(5)
-  int get subjectPositionId => throw _privateConstructorUsedError;
+  int? get subjectPositionId => throw _privateConstructorUsedError;
   @JsonKey(name: 'dayPositionId')
   @HiveField(6)
-  int get dayPositionId => throw _privateConstructorUsedError;
+  int? get dayPositionId => throw _privateConstructorUsedError;
   @JsonKey(name: 'groupId')
   @HiveField(7)
-  int get groupId => throw _privateConstructorUsedError;
+  int? get groupId => throw _privateConstructorUsedError;
   @JsonKey(name: 'weekTypeId')
   @HiveField(8)
-  int get weekTypeId => throw _privateConstructorUsedError;
+  int? get weekTypeId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -62,14 +62,14 @@ abstract class $SubjectModelCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'id') @HiveField(0) int id,
-      @JsonKey(name: 'disciplineId') @HiveField(1) int disciplineId,
-      @JsonKey(name: 'subjectTypeId') @HiveField(2) int subjectTypeId,
-      @JsonKey(name: 'userId') @HiveField(3) int userId,
-      @JsonKey(name: 'classroom') @HiveField(4) String classroom,
-      @JsonKey(name: 'subjectPositionId') @HiveField(5) int subjectPositionId,
-      @JsonKey(name: 'dayPositionId') @HiveField(6) int dayPositionId,
-      @JsonKey(name: 'groupId') @HiveField(7) int groupId,
-      @JsonKey(name: 'weekTypeId') @HiveField(8) int weekTypeId});
+      @JsonKey(name: 'disciplineId') @HiveField(1) int? disciplineId,
+      @JsonKey(name: 'subjectTypeId') @HiveField(2) int? subjectTypeId,
+      @JsonKey(name: 'accountId') @HiveField(3) int? accountId,
+      @JsonKey(name: 'classroom') @HiveField(4) String? classroom,
+      @JsonKey(name: 'subjectPositionId') @HiveField(5) int? subjectPositionId,
+      @JsonKey(name: 'dayPositionId') @HiveField(6) int? dayPositionId,
+      @JsonKey(name: 'groupId') @HiveField(7) int? groupId,
+      @JsonKey(name: 'weekTypeId') @HiveField(8) int? weekTypeId});
 }
 
 /// @nodoc
@@ -86,52 +86,52 @@ class _$SubjectModelCopyWithImpl<$Res, $Val extends SubjectModel>
   @override
   $Res call({
     Object? id = null,
-    Object? disciplineId = null,
-    Object? subjectTypeId = null,
-    Object? userId = null,
-    Object? classroom = null,
-    Object? subjectPositionId = null,
-    Object? dayPositionId = null,
-    Object? groupId = null,
-    Object? weekTypeId = null,
+    Object? disciplineId = freezed,
+    Object? subjectTypeId = freezed,
+    Object? accountId = freezed,
+    Object? classroom = freezed,
+    Object? subjectPositionId = freezed,
+    Object? dayPositionId = freezed,
+    Object? groupId = freezed,
+    Object? weekTypeId = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      disciplineId: null == disciplineId
+      disciplineId: freezed == disciplineId
           ? _value.disciplineId
           : disciplineId // ignore: cast_nullable_to_non_nullable
-              as int,
-      subjectTypeId: null == subjectTypeId
+              as int?,
+      subjectTypeId: freezed == subjectTypeId
           ? _value.subjectTypeId
           : subjectTypeId // ignore: cast_nullable_to_non_nullable
-              as int,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as int,
-      classroom: null == classroom
+              as int?,
+      accountId: freezed == accountId
+          ? _value.accountId
+          : accountId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      classroom: freezed == classroom
           ? _value.classroom
           : classroom // ignore: cast_nullable_to_non_nullable
-              as String,
-      subjectPositionId: null == subjectPositionId
+              as String?,
+      subjectPositionId: freezed == subjectPositionId
           ? _value.subjectPositionId
           : subjectPositionId // ignore: cast_nullable_to_non_nullable
-              as int,
-      dayPositionId: null == dayPositionId
+              as int?,
+      dayPositionId: freezed == dayPositionId
           ? _value.dayPositionId
           : dayPositionId // ignore: cast_nullable_to_non_nullable
-              as int,
-      groupId: null == groupId
+              as int?,
+      groupId: freezed == groupId
           ? _value.groupId
           : groupId // ignore: cast_nullable_to_non_nullable
-              as int,
-      weekTypeId: null == weekTypeId
+              as int?,
+      weekTypeId: freezed == weekTypeId
           ? _value.weekTypeId
           : weekTypeId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ) as $Val);
   }
 }
@@ -146,14 +146,14 @@ abstract class _$$SubjectModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'id') @HiveField(0) int id,
-      @JsonKey(name: 'disciplineId') @HiveField(1) int disciplineId,
-      @JsonKey(name: 'subjectTypeId') @HiveField(2) int subjectTypeId,
-      @JsonKey(name: 'userId') @HiveField(3) int userId,
-      @JsonKey(name: 'classroom') @HiveField(4) String classroom,
-      @JsonKey(name: 'subjectPositionId') @HiveField(5) int subjectPositionId,
-      @JsonKey(name: 'dayPositionId') @HiveField(6) int dayPositionId,
-      @JsonKey(name: 'groupId') @HiveField(7) int groupId,
-      @JsonKey(name: 'weekTypeId') @HiveField(8) int weekTypeId});
+      @JsonKey(name: 'disciplineId') @HiveField(1) int? disciplineId,
+      @JsonKey(name: 'subjectTypeId') @HiveField(2) int? subjectTypeId,
+      @JsonKey(name: 'accountId') @HiveField(3) int? accountId,
+      @JsonKey(name: 'classroom') @HiveField(4) String? classroom,
+      @JsonKey(name: 'subjectPositionId') @HiveField(5) int? subjectPositionId,
+      @JsonKey(name: 'dayPositionId') @HiveField(6) int? dayPositionId,
+      @JsonKey(name: 'groupId') @HiveField(7) int? groupId,
+      @JsonKey(name: 'weekTypeId') @HiveField(8) int? weekTypeId});
 }
 
 /// @nodoc
@@ -168,52 +168,52 @@ class __$$SubjectModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? disciplineId = null,
-    Object? subjectTypeId = null,
-    Object? userId = null,
-    Object? classroom = null,
-    Object? subjectPositionId = null,
-    Object? dayPositionId = null,
-    Object? groupId = null,
-    Object? weekTypeId = null,
+    Object? disciplineId = freezed,
+    Object? subjectTypeId = freezed,
+    Object? accountId = freezed,
+    Object? classroom = freezed,
+    Object? subjectPositionId = freezed,
+    Object? dayPositionId = freezed,
+    Object? groupId = freezed,
+    Object? weekTypeId = freezed,
   }) {
     return _then(_$SubjectModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      disciplineId: null == disciplineId
+      disciplineId: freezed == disciplineId
           ? _value.disciplineId
           : disciplineId // ignore: cast_nullable_to_non_nullable
-              as int,
-      subjectTypeId: null == subjectTypeId
+              as int?,
+      subjectTypeId: freezed == subjectTypeId
           ? _value.subjectTypeId
           : subjectTypeId // ignore: cast_nullable_to_non_nullable
-              as int,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as int,
-      classroom: null == classroom
+              as int?,
+      accountId: freezed == accountId
+          ? _value.accountId
+          : accountId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      classroom: freezed == classroom
           ? _value.classroom
           : classroom // ignore: cast_nullable_to_non_nullable
-              as String,
-      subjectPositionId: null == subjectPositionId
+              as String?,
+      subjectPositionId: freezed == subjectPositionId
           ? _value.subjectPositionId
           : subjectPositionId // ignore: cast_nullable_to_non_nullable
-              as int,
-      dayPositionId: null == dayPositionId
+              as int?,
+      dayPositionId: freezed == dayPositionId
           ? _value.dayPositionId
           : dayPositionId // ignore: cast_nullable_to_non_nullable
-              as int,
-      groupId: null == groupId
+              as int?,
+      groupId: freezed == groupId
           ? _value.groupId
           : groupId // ignore: cast_nullable_to_non_nullable
-              as int,
-      weekTypeId: null == weekTypeId
+              as int?,
+      weekTypeId: freezed == weekTypeId
           ? _value.weekTypeId
           : weekTypeId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -226,7 +226,7 @@ class _$SubjectModelImpl extends _SubjectModel {
       {@JsonKey(name: 'id') @HiveField(0) required this.id,
       @JsonKey(name: 'disciplineId') @HiveField(1) required this.disciplineId,
       @JsonKey(name: 'subjectTypeId') @HiveField(2) required this.subjectTypeId,
-      @JsonKey(name: 'userId') @HiveField(3) required this.userId,
+      @JsonKey(name: 'accountId') @HiveField(3) required this.accountId,
       @JsonKey(name: 'classroom') @HiveField(4) required this.classroom,
       @JsonKey(name: 'subjectPositionId')
       @HiveField(5)
@@ -246,39 +246,39 @@ class _$SubjectModelImpl extends _SubjectModel {
   @override
   @JsonKey(name: 'disciplineId')
   @HiveField(1)
-  final int disciplineId;
+  final int? disciplineId;
   @override
   @JsonKey(name: 'subjectTypeId')
   @HiveField(2)
-  final int subjectTypeId;
+  final int? subjectTypeId;
   @override
-  @JsonKey(name: 'userId')
+  @JsonKey(name: 'accountId')
   @HiveField(3)
-  final int userId;
+  final int? accountId;
   @override
   @JsonKey(name: 'classroom')
   @HiveField(4)
-  final String classroom;
+  final String? classroom;
   @override
   @JsonKey(name: 'subjectPositionId')
   @HiveField(5)
-  final int subjectPositionId;
+  final int? subjectPositionId;
   @override
   @JsonKey(name: 'dayPositionId')
   @HiveField(6)
-  final int dayPositionId;
+  final int? dayPositionId;
   @override
   @JsonKey(name: 'groupId')
   @HiveField(7)
-  final int groupId;
+  final int? groupId;
   @override
   @JsonKey(name: 'weekTypeId')
   @HiveField(8)
-  final int weekTypeId;
+  final int? weekTypeId;
 
   @override
   String toString() {
-    return 'SubjectModel(id: $id, disciplineId: $disciplineId, subjectTypeId: $subjectTypeId, userId: $userId, classroom: $classroom, subjectPositionId: $subjectPositionId, dayPositionId: $dayPositionId, groupId: $groupId, weekTypeId: $weekTypeId)';
+    return 'SubjectModel(id: $id, disciplineId: $disciplineId, subjectTypeId: $subjectTypeId, accountId: $accountId, classroom: $classroom, subjectPositionId: $subjectPositionId, dayPositionId: $dayPositionId, groupId: $groupId, weekTypeId: $weekTypeId)';
   }
 
   @override
@@ -291,7 +291,8 @@ class _$SubjectModelImpl extends _SubjectModel {
                 other.disciplineId == disciplineId) &&
             (identical(other.subjectTypeId, subjectTypeId) ||
                 other.subjectTypeId == subjectTypeId) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.accountId, accountId) ||
+                other.accountId == accountId) &&
             (identical(other.classroom, classroom) ||
                 other.classroom == classroom) &&
             (identical(other.subjectPositionId, subjectPositionId) ||
@@ -305,8 +306,17 @@ class _$SubjectModelImpl extends _SubjectModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, disciplineId, subjectTypeId,
-      userId, classroom, subjectPositionId, dayPositionId, groupId, weekTypeId);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      disciplineId,
+      subjectTypeId,
+      accountId,
+      classroom,
+      subjectPositionId,
+      dayPositionId,
+      groupId,
+      weekTypeId);
 
   @JsonKey(ignore: true)
   @override
@@ -327,22 +337,24 @@ abstract class _SubjectModel extends SubjectModel {
       {@JsonKey(name: 'id') @HiveField(0) required final int id,
       @JsonKey(name: 'disciplineId')
       @HiveField(1)
-      required final int disciplineId,
+      required final int? disciplineId,
       @JsonKey(name: 'subjectTypeId')
       @HiveField(2)
-      required final int subjectTypeId,
-      @JsonKey(name: 'userId') @HiveField(3) required final int userId,
-      @JsonKey(name: 'classroom') @HiveField(4) required final String classroom,
+      required final int? subjectTypeId,
+      @JsonKey(name: 'accountId') @HiveField(3) required final int? accountId,
+      @JsonKey(name: 'classroom')
+      @HiveField(4)
+      required final String? classroom,
       @JsonKey(name: 'subjectPositionId')
       @HiveField(5)
-      required final int subjectPositionId,
+      required final int? subjectPositionId,
       @JsonKey(name: 'dayPositionId')
       @HiveField(6)
-      required final int dayPositionId,
-      @JsonKey(name: 'groupId') @HiveField(7) required final int groupId,
+      required final int? dayPositionId,
+      @JsonKey(name: 'groupId') @HiveField(7) required final int? groupId,
       @JsonKey(name: 'weekTypeId')
       @HiveField(8)
-      required final int weekTypeId}) = _$SubjectModelImpl;
+      required final int? weekTypeId}) = _$SubjectModelImpl;
   _SubjectModel._() : super._();
 
   factory _SubjectModel.fromJson(Map<String, dynamic> json) =
@@ -355,35 +367,35 @@ abstract class _SubjectModel extends SubjectModel {
   @override
   @JsonKey(name: 'disciplineId')
   @HiveField(1)
-  int get disciplineId;
+  int? get disciplineId;
   @override
   @JsonKey(name: 'subjectTypeId')
   @HiveField(2)
-  int get subjectTypeId;
+  int? get subjectTypeId;
   @override
-  @JsonKey(name: 'userId')
+  @JsonKey(name: 'accountId')
   @HiveField(3)
-  int get userId;
+  int? get accountId;
   @override
   @JsonKey(name: 'classroom')
   @HiveField(4)
-  String get classroom;
+  String? get classroom;
   @override
   @JsonKey(name: 'subjectPositionId')
   @HiveField(5)
-  int get subjectPositionId;
+  int? get subjectPositionId;
   @override
   @JsonKey(name: 'dayPositionId')
   @HiveField(6)
-  int get dayPositionId;
+  int? get dayPositionId;
   @override
   @JsonKey(name: 'groupId')
   @HiveField(7)
-  int get groupId;
+  int? get groupId;
   @override
   @JsonKey(name: 'weekTypeId')
   @HiveField(8)
-  int get weekTypeId;
+  int? get weekTypeId;
   @override
   @JsonKey(ignore: true)
   _$$SubjectModelImplCopyWith<_$SubjectModelImpl> get copyWith =>

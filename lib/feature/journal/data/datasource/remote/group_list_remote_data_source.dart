@@ -5,16 +5,16 @@ import 'package:studenda_mobile_student/core/data/datasource/datasource.dart';
 import 'package:studenda_mobile_student/core/data/error/exception.dart';
 import 'package:studenda_mobile_student/core/network/api_config.dart';
 import 'package:studenda_mobile_student/core/network/simplified_uri.dart';
-import 'package:studenda_mobile_student/feature/auth/data/models/user_model/user_model.dart';
+import 'package:studenda_mobile_student/feature/auth/data/models/user_model/account_model.dart';
 import 'package:studenda_mobile_student/feature/journal/data/model/api/group_list_request_model.dart';
 
 class GroupListRemoteDataSource
-    extends RemoteDataSource<List<UserModel>, GroupListRequestModel> {
+    extends RemoteDataSource<List<AccountModel>, GroupListRequestModel> {
         final http.Client client;
 
   GroupListRemoteDataSource({required this.client});
   @override
-  Future<List<UserModel>> load(GroupListRequestModel request) async {
+  Future<List<AccountModel>> load(GroupListRequestModel request) async {
     try {
       final Map<String, dynamic> queryParameters = {
         'ids': request,
@@ -27,7 +27,7 @@ class GroupListRemoteDataSource
         final responseModel = decoded
             .map(
               (dynamic value) =>
-                  UserModel.fromJson(value as Map<String, dynamic>),
+                  AccountModel.fromJson(value as Map<String, dynamic>),
             )
             .toList();
         return responseModel;
