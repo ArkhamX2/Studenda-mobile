@@ -15,17 +15,10 @@ class CourseCubit extends Cubit<CourseState> {
   Future<void> load() async {
     final courses = await loadCourses(() {});
     courses.fold(
-      (l) => emit(CourseState.fail(l.message)),
-      (r) {
-        courseList = r
-            .map(
-              (element) => CourseEntity(
-                id: element.id,
-                name: element.name,
-                grade: element.grade,
-              ),
-            )
-            .toList();
+      (error) => emit(CourseState.fail(error.message)),
+      (succededCourseList) {
+        courseList =
+            succededCourseList.map((e) => CourseEntity.fromModel(e)).toList();
         emit(
           CourseState.success(
             courseList,
@@ -39,17 +32,10 @@ class CourseCubit extends Cubit<CourseState> {
     emit(const CourseState.loading());
     final courses = await loadCourses(() {});
     courses.fold(
-      (l) => emit(CourseState.fail(l.message)),
-      (r) {
-        courseList = r
-            .map(
-              (element) => CourseEntity(
-                id: element.id,
-                name: element.name,
-                grade: element.grade,
-              ),
-            )
-            .toList();
+      (error) => emit(CourseState.fail(error.message)),
+      (succededCourseList) {
+        courseList =
+            succededCourseList.map((e) => CourseEntity.fromModel(e)).toList();
         emit(
           CourseState.success(
             courseList,

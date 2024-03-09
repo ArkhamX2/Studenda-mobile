@@ -67,23 +67,11 @@ class MainGroupSelectorBloc
     on<_getGroup>((event, emit) async {
       final result = await getSelectedGroup.call(() {});
       result.fold(
-        (l) => emit(MainGroupSelectorState.fail(l.message)),
-        (r) {
-          selectedGroup = GroupEntity(
-            id: r.id,
-            name: r.name,
-            courseId: r.courseId,
-            departmentId: r.departmentId,
-          );
+        (error) => emit(MainGroupSelectorState.fail(error.message)),
+        (successedGroup) {
+          selectedGroup = GroupEntity.fromModel(successedGroup);
           emit(
-            MainGroupSelectorState.groupSuccess(
-              GroupEntity(
-                id: r.id,
-                name: r.name,
-                courseId: r.courseId,
-                departmentId: r.departmentId,
-              ),
-            ),
+            MainGroupSelectorState.groupSuccess(selectedGroup),
           );
         },
       );
@@ -91,17 +79,11 @@ class MainGroupSelectorBloc
     on<_getCourse>((event, emit) async {
       final result = await getSelectedCourse.call(() {});
       result.fold(
-        (l) => emit(MainGroupSelectorState.fail(l.message)),
-        (r) {
-          selectedCourse = CourseEntity(
-            id: r.id,
-            name: r.name,
-            grade: r.grade,
-          );
+        (error) => emit(MainGroupSelectorState.fail(error.message)),
+        (successedCourse) {
+          selectedCourse = CourseEntity.fromModel(successedCourse);
           emit(
-            MainGroupSelectorState.courseSuccess(
-              CourseEntity(id: r.id, name: r.name, grade: r.grade),
-            ),
+            MainGroupSelectorState.courseSuccess(selectedCourse),
           );
         },
       );
@@ -109,19 +91,11 @@ class MainGroupSelectorBloc
     on<_getDepartment>((event, emit) async {
       final result = await getSelectedDepartment.call(() {});
       result.fold(
-        (l) => emit(MainGroupSelectorState.fail(l.message)),
-        (r) {
-          selectedDepartment = DepartmentEntity(
-            id: r.id,
-            name: r.name,
-          );
+        (error) => emit(MainGroupSelectorState.fail(error.message)),
+        (successedDepartment) {
+          selectedDepartment = DepartmentEntity.fromModel(successedDepartment);
           emit(
-            MainGroupSelectorState.departmentSuccess(
-              DepartmentEntity(
-                id: r.id,
-                name: r.name,
-              ),
-            ),
+            MainGroupSelectorState.departmentSuccess(selectedDepartment),
           );
         },
       );

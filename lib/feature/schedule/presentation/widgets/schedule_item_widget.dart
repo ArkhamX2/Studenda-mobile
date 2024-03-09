@@ -162,7 +162,7 @@ class _MainSubjectInfoRowWidget extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      widget.subject.classroom,
+                      widget.subject.classroom??"",
                       style: const TextStyle(
                         color: mainForegroundColor,
                         fontSize: 16,

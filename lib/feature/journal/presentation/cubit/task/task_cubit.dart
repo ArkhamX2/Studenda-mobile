@@ -20,10 +20,14 @@ class TaskCubit extends Cubit<TaskState> {
   ) async {
     final result = await loadTasks.call(request);
     result.fold(
-      (l) => emit(TaskState.fail(l.message)),
-      (r) => emit(TaskState.success(mapTaskModelToEntity(
-        r,
-      ),),),
+      (error) => emit(TaskState.fail(error.message)),
+      (succededTaskList) => emit(
+        TaskState.success(
+          mapTaskModelToEntity(
+            succededTaskList,
+          ),
+        ),
+      ),
     );
   }
 
@@ -33,8 +37,8 @@ class TaskCubit extends Cubit<TaskState> {
     emit(const TaskState.loading());
     final result = await loadTasks.call(request);
     result.fold(
-      (l) => emit(TaskState.localLoadingFail(l.message)),
-      (r) => emit(TaskState.localLoadingSuccess(mapTaskModelToEntity(r))),
+      (error) => emit(TaskState.localLoadingFail(error.message)),
+      (succededTaskList) => emit(TaskState.localLoadingSuccess(mapTaskModelToEntity(succededTaskList))),
     );
   }
 }
@@ -42,15 +46,5 @@ class TaskCubit extends Cubit<TaskState> {
 List<TaskEntity> mapTaskModelToEntity(
   List<TaskModel> modelList,
 ) {
-  return modelList
-      .map(
-        (e) => TaskEntity(
-          id: e.id,
-          name: e.name,
-          description: e.description,
-          endDateName: e.endedAt.toString(),
-          markId: e.markId,
-        ),
-      )
-      .toList();
+  return modelList.map((e) => TaskEntity.fromModel(e)).toList();
 }

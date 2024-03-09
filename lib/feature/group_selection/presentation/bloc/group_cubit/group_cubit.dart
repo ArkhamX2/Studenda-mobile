@@ -16,16 +16,8 @@ class GroupCubit extends Cubit<GroupState> {
     groups.fold(
       (l) => emit(GroupState.fail(l.message)),
       (succededGroupList) {
-        groupList = succededGroupList
-            .map(
-              (e) => GroupEntity(
-                id: e.id,
-                name: e.name,
-                courseId: e.courseId,
-                departmentId: e.departmentId,
-              ),
-            )
-            .toList();
+        groupList =
+            succededGroupList.map((e) => GroupEntity.fromModel(e)).toList();
         emit(
           GroupState.success(groupList),
         );
@@ -39,16 +31,8 @@ class GroupCubit extends Cubit<GroupState> {
     groups.fold(
       (l) => emit(GroupState.localLoadingFail(l.message)),
       (succededGroupList) {
-        groupList = succededGroupList
-            .map(
-              (e) => GroupEntity(
-                id: e.id,
-                name: e.name,
-                courseId: e.courseId,
-                departmentId: e.departmentId,
-              ),
-            )
-            .toList();
+        groupList =
+            succededGroupList.map((e) => GroupEntity.fromModel(e)).toList();
         emit(
           GroupState.localLoadingSuccess(groupList),
         );

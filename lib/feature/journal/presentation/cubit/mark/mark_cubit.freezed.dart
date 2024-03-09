@@ -21,9 +21,9 @@ mixin _$MarkState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) localLoadingFail,
-    required TResult Function(List<MarkModel> marks) localLoadingSuccess,
+    required TResult Function(List<MarkEntity> marks) localLoadingSuccess,
     required TResult Function(String message) loadingFail,
-    required TResult Function(List<MarkModel> marks) loadingSuccess,
+    required TResult Function(List<MarkEntity> marks) loadingSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,9 +31,9 @@ mixin _$MarkState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? localLoadingFail,
-    TResult? Function(List<MarkModel> marks)? localLoadingSuccess,
+    TResult? Function(List<MarkEntity> marks)? localLoadingSuccess,
     TResult? Function(String message)? loadingFail,
-    TResult? Function(List<MarkModel> marks)? loadingSuccess,
+    TResult? Function(List<MarkEntity> marks)? loadingSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,9 +41,9 @@ mixin _$MarkState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? localLoadingFail,
-    TResult Function(List<MarkModel> marks)? localLoadingSuccess,
+    TResult Function(List<MarkEntity> marks)? localLoadingSuccess,
     TResult Function(String message)? loadingFail,
-    TResult Function(List<MarkModel> marks)? loadingSuccess,
+    TResult Function(List<MarkEntity> marks)? loadingSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -138,9 +138,9 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) localLoadingFail,
-    required TResult Function(List<MarkModel> marks) localLoadingSuccess,
+    required TResult Function(List<MarkEntity> marks) localLoadingSuccess,
     required TResult Function(String message) loadingFail,
-    required TResult Function(List<MarkModel> marks) loadingSuccess,
+    required TResult Function(List<MarkEntity> marks) loadingSuccess,
   }) {
     return initial();
   }
@@ -151,9 +151,9 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? localLoadingFail,
-    TResult? Function(List<MarkModel> marks)? localLoadingSuccess,
+    TResult? Function(List<MarkEntity> marks)? localLoadingSuccess,
     TResult? Function(String message)? loadingFail,
-    TResult? Function(List<MarkModel> marks)? loadingSuccess,
+    TResult? Function(List<MarkEntity> marks)? loadingSuccess,
   }) {
     return initial?.call();
   }
@@ -164,9 +164,9 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? localLoadingFail,
-    TResult Function(List<MarkModel> marks)? localLoadingSuccess,
+    TResult Function(List<MarkEntity> marks)? localLoadingSuccess,
     TResult Function(String message)? loadingFail,
-    TResult Function(List<MarkModel> marks)? loadingSuccess,
+    TResult Function(List<MarkEntity> marks)? loadingSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -264,9 +264,9 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) localLoadingFail,
-    required TResult Function(List<MarkModel> marks) localLoadingSuccess,
+    required TResult Function(List<MarkEntity> marks) localLoadingSuccess,
     required TResult Function(String message) loadingFail,
-    required TResult Function(List<MarkModel> marks) loadingSuccess,
+    required TResult Function(List<MarkEntity> marks) loadingSuccess,
   }) {
     return loading();
   }
@@ -277,9 +277,9 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? localLoadingFail,
-    TResult? Function(List<MarkModel> marks)? localLoadingSuccess,
+    TResult? Function(List<MarkEntity> marks)? localLoadingSuccess,
     TResult? Function(String message)? loadingFail,
-    TResult? Function(List<MarkModel> marks)? loadingSuccess,
+    TResult? Function(List<MarkEntity> marks)? loadingSuccess,
   }) {
     return loading?.call();
   }
@@ -290,9 +290,9 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? localLoadingFail,
-    TResult Function(List<MarkModel> marks)? localLoadingSuccess,
+    TResult Function(List<MarkEntity> marks)? localLoadingSuccess,
     TResult Function(String message)? loadingFail,
-    TResult Function(List<MarkModel> marks)? loadingSuccess,
+    TResult Function(List<MarkEntity> marks)? loadingSuccess,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -418,9 +418,9 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) localLoadingFail,
-    required TResult Function(List<MarkModel> marks) localLoadingSuccess,
+    required TResult Function(List<MarkEntity> marks) localLoadingSuccess,
     required TResult Function(String message) loadingFail,
-    required TResult Function(List<MarkModel> marks) loadingSuccess,
+    required TResult Function(List<MarkEntity> marks) loadingSuccess,
   }) {
     return localLoadingFail(message);
   }
@@ -431,9 +431,9 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? localLoadingFail,
-    TResult? Function(List<MarkModel> marks)? localLoadingSuccess,
+    TResult? Function(List<MarkEntity> marks)? localLoadingSuccess,
     TResult? Function(String message)? loadingFail,
-    TResult? Function(List<MarkModel> marks)? loadingSuccess,
+    TResult? Function(List<MarkEntity> marks)? loadingSuccess,
   }) {
     return localLoadingFail?.call(message);
   }
@@ -444,9 +444,9 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? localLoadingFail,
-    TResult Function(List<MarkModel> marks)? localLoadingSuccess,
+    TResult Function(List<MarkEntity> marks)? localLoadingSuccess,
     TResult Function(String message)? loadingFail,
-    TResult Function(List<MarkModel> marks)? loadingSuccess,
+    TResult Function(List<MarkEntity> marks)? loadingSuccess,
     required TResult orElse(),
   }) {
     if (localLoadingFail != null) {
@@ -515,7 +515,7 @@ abstract class _$$LocalLoadingSuccessImplCopyWith<$Res> {
           $Res Function(_$LocalLoadingSuccessImpl) then) =
       __$$LocalLoadingSuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<MarkModel> marks});
+  $Res call({List<MarkEntity> marks});
 }
 
 /// @nodoc
@@ -535,7 +535,7 @@ class __$$LocalLoadingSuccessImplCopyWithImpl<$Res>
       null == marks
           ? _value._marks
           : marks // ignore: cast_nullable_to_non_nullable
-              as List<MarkModel>,
+              as List<MarkEntity>,
     ));
   }
 }
@@ -543,11 +543,12 @@ class __$$LocalLoadingSuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
-  const _$LocalLoadingSuccessImpl(final List<MarkModel> marks) : _marks = marks;
+  const _$LocalLoadingSuccessImpl(final List<MarkEntity> marks)
+      : _marks = marks;
 
-  final List<MarkModel> _marks;
+  final List<MarkEntity> _marks;
   @override
-  List<MarkModel> get marks {
+  List<MarkEntity> get marks {
     if (_marks is EqualUnmodifiableListView) return _marks;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_marks);
@@ -583,9 +584,9 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) localLoadingFail,
-    required TResult Function(List<MarkModel> marks) localLoadingSuccess,
+    required TResult Function(List<MarkEntity> marks) localLoadingSuccess,
     required TResult Function(String message) loadingFail,
-    required TResult Function(List<MarkModel> marks) loadingSuccess,
+    required TResult Function(List<MarkEntity> marks) loadingSuccess,
   }) {
     return localLoadingSuccess(marks);
   }
@@ -596,9 +597,9 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? localLoadingFail,
-    TResult? Function(List<MarkModel> marks)? localLoadingSuccess,
+    TResult? Function(List<MarkEntity> marks)? localLoadingSuccess,
     TResult? Function(String message)? loadingFail,
-    TResult? Function(List<MarkModel> marks)? loadingSuccess,
+    TResult? Function(List<MarkEntity> marks)? loadingSuccess,
   }) {
     return localLoadingSuccess?.call(marks);
   }
@@ -609,9 +610,9 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? localLoadingFail,
-    TResult Function(List<MarkModel> marks)? localLoadingSuccess,
+    TResult Function(List<MarkEntity> marks)? localLoadingSuccess,
     TResult Function(String message)? loadingFail,
-    TResult Function(List<MarkModel> marks)? loadingSuccess,
+    TResult Function(List<MarkEntity> marks)? loadingSuccess,
     required TResult orElse(),
   }) {
     if (localLoadingSuccess != null) {
@@ -665,10 +666,10 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
 }
 
 abstract class _LocalLoadingSuccess implements MarkState {
-  const factory _LocalLoadingSuccess(final List<MarkModel> marks) =
+  const factory _LocalLoadingSuccess(final List<MarkEntity> marks) =
       _$LocalLoadingSuccessImpl;
 
-  List<MarkModel> get marks;
+  List<MarkEntity> get marks;
   @JsonKey(ignore: true)
   _$$LocalLoadingSuccessImplCopyWith<_$LocalLoadingSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -742,9 +743,9 @@ class _$LoadingFailImpl implements _LoadingFail {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) localLoadingFail,
-    required TResult Function(List<MarkModel> marks) localLoadingSuccess,
+    required TResult Function(List<MarkEntity> marks) localLoadingSuccess,
     required TResult Function(String message) loadingFail,
-    required TResult Function(List<MarkModel> marks) loadingSuccess,
+    required TResult Function(List<MarkEntity> marks) loadingSuccess,
   }) {
     return loadingFail(message);
   }
@@ -755,9 +756,9 @@ class _$LoadingFailImpl implements _LoadingFail {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? localLoadingFail,
-    TResult? Function(List<MarkModel> marks)? localLoadingSuccess,
+    TResult? Function(List<MarkEntity> marks)? localLoadingSuccess,
     TResult? Function(String message)? loadingFail,
-    TResult? Function(List<MarkModel> marks)? loadingSuccess,
+    TResult? Function(List<MarkEntity> marks)? loadingSuccess,
   }) {
     return loadingFail?.call(message);
   }
@@ -768,9 +769,9 @@ class _$LoadingFailImpl implements _LoadingFail {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? localLoadingFail,
-    TResult Function(List<MarkModel> marks)? localLoadingSuccess,
+    TResult Function(List<MarkEntity> marks)? localLoadingSuccess,
     TResult Function(String message)? loadingFail,
-    TResult Function(List<MarkModel> marks)? loadingSuccess,
+    TResult Function(List<MarkEntity> marks)? loadingSuccess,
     required TResult orElse(),
   }) {
     if (loadingFail != null) {
@@ -838,7 +839,7 @@ abstract class _$$LoadingSuccessImplCopyWith<$Res> {
           $Res Function(_$LoadingSuccessImpl) then) =
       __$$LoadingSuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<MarkModel> marks});
+  $Res call({List<MarkEntity> marks});
 }
 
 /// @nodoc
@@ -858,7 +859,7 @@ class __$$LoadingSuccessImplCopyWithImpl<$Res>
       null == marks
           ? _value._marks
           : marks // ignore: cast_nullable_to_non_nullable
-              as List<MarkModel>,
+              as List<MarkEntity>,
     ));
   }
 }
@@ -866,11 +867,11 @@ class __$$LoadingSuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadingSuccessImpl implements _LoadingSuccess {
-  const _$LoadingSuccessImpl(final List<MarkModel> marks) : _marks = marks;
+  const _$LoadingSuccessImpl(final List<MarkEntity> marks) : _marks = marks;
 
-  final List<MarkModel> _marks;
+  final List<MarkEntity> _marks;
   @override
-  List<MarkModel> get marks {
+  List<MarkEntity> get marks {
     if (_marks is EqualUnmodifiableListView) return _marks;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_marks);
@@ -906,9 +907,9 @@ class _$LoadingSuccessImpl implements _LoadingSuccess {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) localLoadingFail,
-    required TResult Function(List<MarkModel> marks) localLoadingSuccess,
+    required TResult Function(List<MarkEntity> marks) localLoadingSuccess,
     required TResult Function(String message) loadingFail,
-    required TResult Function(List<MarkModel> marks) loadingSuccess,
+    required TResult Function(List<MarkEntity> marks) loadingSuccess,
   }) {
     return loadingSuccess(marks);
   }
@@ -919,9 +920,9 @@ class _$LoadingSuccessImpl implements _LoadingSuccess {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? localLoadingFail,
-    TResult? Function(List<MarkModel> marks)? localLoadingSuccess,
+    TResult? Function(List<MarkEntity> marks)? localLoadingSuccess,
     TResult? Function(String message)? loadingFail,
-    TResult? Function(List<MarkModel> marks)? loadingSuccess,
+    TResult? Function(List<MarkEntity> marks)? loadingSuccess,
   }) {
     return loadingSuccess?.call(marks);
   }
@@ -932,9 +933,9 @@ class _$LoadingSuccessImpl implements _LoadingSuccess {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? localLoadingFail,
-    TResult Function(List<MarkModel> marks)? localLoadingSuccess,
+    TResult Function(List<MarkEntity> marks)? localLoadingSuccess,
     TResult Function(String message)? loadingFail,
-    TResult Function(List<MarkModel> marks)? loadingSuccess,
+    TResult Function(List<MarkEntity> marks)? loadingSuccess,
     required TResult orElse(),
   }) {
     if (loadingSuccess != null) {
@@ -988,10 +989,10 @@ class _$LoadingSuccessImpl implements _LoadingSuccess {
 }
 
 abstract class _LoadingSuccess implements MarkState {
-  const factory _LoadingSuccess(final List<MarkModel> marks) =
+  const factory _LoadingSuccess(final List<MarkEntity> marks) =
       _$LoadingSuccessImpl;
 
-  List<MarkModel> get marks;
+  List<MarkEntity> get marks;
   @JsonKey(ignore: true)
   _$$LoadingSuccessImplCopyWith<_$LoadingSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;

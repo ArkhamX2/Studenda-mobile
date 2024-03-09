@@ -16,15 +16,10 @@ class DepartmentCubit extends Cubit<DepartmentState> {
   Future<void> load() async {
     final departments = await loadDepartments(() {});
     departments.fold(
-      (l) => emit(DepartmentState.fail(l.message)),
-      (r) {
-        departmentList = r
-            .map(
-              (element) => DepartmentEntity(
-                id: element.id,
-                name: element.name,
-              ),
-            )
+      (error) => emit(DepartmentState.fail(error.message)),
+      (succededDepartmentList) {
+        departmentList = succededDepartmentList
+            .map((e) => DepartmentEntity.fromModel(e))
             .toList();
         emit(
           DepartmentState.success(
@@ -39,15 +34,10 @@ class DepartmentCubit extends Cubit<DepartmentState> {
     emit(const DepartmentState.loading());
     final departments = await loadDepartments(() {});
     departments.fold(
-      (l) => emit(DepartmentState.fail(l.message)),
-      (r) {
-        departmentList = r
-            .map(
-              (element) => DepartmentEntity(
-                id: element.id,
-                name: element.name,
-              ),
-            )
+      (error) => emit(DepartmentState.fail(error.message)),
+      (succededDepartmentList) {
+        departmentList = succededDepartmentList
+            .map((e) => DepartmentEntity.fromModel(e))
             .toList();
         emit(
           DepartmentState.success(

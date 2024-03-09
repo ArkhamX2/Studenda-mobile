@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SubjectEntity {
   int get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
-  String get classroom => throw _privateConstructorUsedError;
+  String? get classroom => throw _privateConstructorUsedError;
   String? get teacher => throw _privateConstructorUsedError;
   String get subjectTypeName => throw _privateConstructorUsedError;
   int get subjectPosition => throw _privateConstructorUsedError;
@@ -37,7 +37,7 @@ abstract class $SubjectEntityCopyWith<$Res> {
   $Res call(
       {int id,
       String title,
-      String classroom,
+      String? classroom,
       String? teacher,
       String subjectTypeName,
       int subjectPosition});
@@ -58,7 +58,7 @@ class _$SubjectEntityCopyWithImpl<$Res, $Val extends SubjectEntity>
   $Res call({
     Object? id = null,
     Object? title = null,
-    Object? classroom = null,
+    Object? classroom = freezed,
     Object? teacher = freezed,
     Object? subjectTypeName = null,
     Object? subjectPosition = null,
@@ -72,10 +72,10 @@ class _$SubjectEntityCopyWithImpl<$Res, $Val extends SubjectEntity>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      classroom: null == classroom
+      classroom: freezed == classroom
           ? _value.classroom
           : classroom // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       teacher: freezed == teacher
           ? _value.teacher
           : teacher // ignore: cast_nullable_to_non_nullable
@@ -103,7 +103,7 @@ abstract class _$$SubjectEntityImplCopyWith<$Res>
   $Res call(
       {int id,
       String title,
-      String classroom,
+      String? classroom,
       String? teacher,
       String subjectTypeName,
       int subjectPosition});
@@ -122,7 +122,7 @@ class __$$SubjectEntityImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? title = null,
-    Object? classroom = null,
+    Object? classroom = freezed,
     Object? teacher = freezed,
     Object? subjectTypeName = null,
     Object? subjectPosition = null,
@@ -136,10 +136,10 @@ class __$$SubjectEntityImplCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      classroom: null == classroom
+      classroom: freezed == classroom
           ? _value.classroom
           : classroom // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       teacher: freezed == teacher
           ? _value.teacher
           : teacher // ignore: cast_nullable_to_non_nullable
@@ -172,7 +172,7 @@ class _$SubjectEntityImpl implements _SubjectEntity {
   @override
   final String title;
   @override
-  final String classroom;
+  final String? classroom;
   @override
   final String? teacher;
   @override
@@ -216,7 +216,7 @@ abstract class _SubjectEntity implements SubjectEntity {
   const factory _SubjectEntity(
       {required final int id,
       required final String title,
-      required final String classroom,
+      required final String? classroom,
       required final String? teacher,
       required final String subjectTypeName,
       required final int subjectPosition}) = _$SubjectEntityImpl;
@@ -226,7 +226,7 @@ abstract class _SubjectEntity implements SubjectEntity {
   @override
   String get title;
   @override
-  String get classroom;
+  String? get classroom;
   @override
   String? get teacher;
   @override

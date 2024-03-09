@@ -2,8 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:studenda_mobile_student/core/data/error/failure.dart';
 import 'package:studenda_mobile_student/core/data/repository/repository.dart';
 import 'package:studenda_mobile_student/core/network/network_info.dart';
-import 'package:studenda_mobile_student/feature/group_selection/data/datasources/department_local_data_source.dart';
-import 'package:studenda_mobile_student/feature/group_selection/data/datasources/department_remote_data_source.dart';
+import 'package:studenda_mobile_student/feature/group_selection/data/datasources/local/department_local_data_source.dart';
+import 'package:studenda_mobile_student/feature/group_selection/data/datasources/remote/department_remote_data_source.dart';
 import 'package:studenda_mobile_student/feature/group_selection/data/models/department_model.dart';
 import 'package:studenda_mobile_student/feature/group_selection/domain/repositories/department_repository.dart';
 
