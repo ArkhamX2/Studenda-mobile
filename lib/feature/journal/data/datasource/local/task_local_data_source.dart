@@ -26,11 +26,17 @@ class TaskLocalDataSource extends LocalDataSource<List<TaskModel>, void> {
   }
 
   @override
-  Future<List<TaskModel>> load(void request) async {
+  Future<List<TaskModel>> studentLoad(void request) async {
     try {
       return markTypeBox.values.toList();
     } catch (e) {
       throw CacheException();
     }
+  }
+  
+  @override
+  Future<List<TaskModel>> teacherLoad(void request) {
+    // TODO: implement teacherLoad
+    throw UnimplementedError();
   }
 }

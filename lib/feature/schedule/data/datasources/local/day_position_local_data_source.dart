@@ -28,11 +28,17 @@ class DayPositionLocalDataSource
   }
 
   @override
-  Future<List<DayPositionModel>> load(void request) async {
+  Future<List<DayPositionModel>> studentLoad(void request) async {
     try {
       return dayPositionBox.values.toList();
     } catch (e) {
       throw CacheException();
     }
+  }
+  
+  @override
+  Future<List<DayPositionModel>> teacherLoad(void request) {
+    // TODO: implement teacherLoad
+    throw UnimplementedError();
   }
 }

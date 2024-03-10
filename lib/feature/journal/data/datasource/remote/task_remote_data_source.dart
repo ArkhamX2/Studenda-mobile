@@ -17,7 +17,7 @@ class TaskRemoteDataSource
 
   TaskRemoteDataSource({required this.client});
   @override
-  Future<List<TaskModel>> load(TaskStudentRequestModel request)async  {
+  Future<List<TaskModel>> studentLoad(TaskStudentRequestModel request)async  {
     try {
       
       final Map<String, dynamic> queryParameters = {
@@ -46,5 +46,11 @@ class TaskRemoteDataSource
     } catch (e) {
       throw ServerException();
     }
+  }
+  
+  @override
+  Future<List<TaskModel>> teacherLoad(TaskStudentRequestModel request) {
+    // TODO: implement teacherLoad
+    throw UnimplementedError();
   }
 }

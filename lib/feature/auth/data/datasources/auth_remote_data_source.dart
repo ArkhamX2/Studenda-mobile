@@ -54,8 +54,14 @@ class AuthRemoteDataSource implements RemoteDataSource<SecurityRequestModel,Secu
   }
   
   @override
-  Future<SecurityRequestModel> load(SecurityResponseModel request) {
+  Future<SecurityRequestModel> studentLoad(SecurityResponseModel request) {
     // TODO: implement load
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<SecurityRequestModel> teacherLoad(SecurityResponseModel request) {
+    // TODO: implement teacherLoad
     throw UnimplementedError();
   }
 }

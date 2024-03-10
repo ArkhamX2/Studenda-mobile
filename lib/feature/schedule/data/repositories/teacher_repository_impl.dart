@@ -22,7 +22,7 @@ class TeacherRepositoryImpl implements TeacherRepository {
     void request, [
     bool remote = true,
   ]) async {
-    return await loadData<
+    return await loadStudentData<
         TeacherLocalDataSource,
         TeacherRemoteDataSource,
         List<AccountModel>,

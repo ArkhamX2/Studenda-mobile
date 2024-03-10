@@ -11,7 +11,7 @@ class CourseRemoteDataSource extends RemoteDataSource<List<CourseModel>, void> {
   CourseRemoteDataSource({required this.client});
 
   @override
-  Future<List<CourseModel>> load(void request) async {
+  Future<List<CourseModel>> studentLoad(void request) async {
     try {
       final response = await client.get(
         Uri.parse('$BASE_URL/course'),
@@ -29,5 +29,11 @@ class CourseRemoteDataSource extends RemoteDataSource<List<CourseModel>, void> {
     } catch (e) {
       throw ServerException();
     }
+  }
+  
+  @override
+  Future<List<CourseModel>> teacherLoad(void request) {
+    // TODO: implement teacherLoad
+    throw UnimplementedError();
   }
 }

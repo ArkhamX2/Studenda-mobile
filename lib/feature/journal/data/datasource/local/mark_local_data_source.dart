@@ -26,11 +26,17 @@ class MarkLocalDataSource extends LocalDataSource<List<MarkModel>,void> {
   }
 
   @override
-  Future<List<MarkModel>> load(void request) async {
+  Future<List<MarkModel>> studentLoad(void request) async {
     try {
       return groupListBox.values.toList();
     } catch (e) {
       throw CacheException();
     }
+  }
+  
+  @override
+  Future<List<MarkModel>> teacherLoad(void request) {
+    // TODO: implement teacherLoad
+    throw UnimplementedError();
   }
 }

@@ -5,11 +5,11 @@ import 'package:studenda_mobile_student/feature/schedule/data/models/schedule_re
 import 'package:studenda_mobile_student/feature/schedule/data/models/subject_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/repositories/schedule_repository.dart';
 
-class GetScheduleByWeekType
+class GetStudentScheduleByWeekType
     extends Usecase<List<SubjectModel>, ScheduleRequestByWeekTypeModel> {
   final ScheduleByWeekTypeRepository scheduleRepository;
 
-  GetScheduleByWeekType({required this.scheduleRepository});
+  GetStudentScheduleByWeekType({required this.scheduleRepository});
 
   @override
   Future<Either<Failure, List<SubjectModel>>> call(
@@ -17,6 +17,6 @@ class GetScheduleByWeekType
     List<int> weekTypeIds = const [],
     bool remote = true,
   ]) async {
-    return await scheduleRepository.load(request, weekTypeIds, remote);
+    return await scheduleRepository.loadStudent(request, weekTypeIds, remote);
   }
 }

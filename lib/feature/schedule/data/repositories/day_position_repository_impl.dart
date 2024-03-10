@@ -22,7 +22,7 @@ class DayPositionRepositoryImpl implements DayPositionRepository {
     void request, [
     bool remote = true,
   ]) async {
-    return await loadData<
+    return await loadStudentData<
         DayPositionLocalDataSource,
         DayPositionRemoteDataSource,
         List<DayPositionModel>,

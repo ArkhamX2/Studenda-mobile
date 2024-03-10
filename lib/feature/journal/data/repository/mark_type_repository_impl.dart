@@ -23,7 +23,7 @@ class MarkTypeRepositoryImpl implements MarkTypeRepository {
     void request, [
     bool remote = true,
   ]) async {
-    return await loadData<MarkTypeLocalDataSource,
+    return await loadStudentData<MarkTypeLocalDataSource,
         MarkTypeRemoteDataSource, List<MarkTypeModel>, void>(
       localDataSource,
       remoteDataSource,

@@ -8,7 +8,7 @@ part 'session_state.dart';
 part 'session_cubit.freezed.dart';
 
 class SessionCubit extends Cubit<SessionState> {
-  final GetSessionList loadSession;
+  final GetStudentSessionList loadSession;
 
   List<SessionModel> sessionList = [];
 

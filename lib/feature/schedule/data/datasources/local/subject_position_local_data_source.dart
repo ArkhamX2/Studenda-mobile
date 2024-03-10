@@ -28,11 +28,17 @@ class SubjectPositionLocalDataSource
   }
 
   @override
-  Future<List<SubjectPositionModel>> load(void request) async {
+  Future<List<SubjectPositionModel>> studentLoad(void request) async {
     try {
       return subjectPositionBox.values.toList();
     } catch (e) {
       throw CacheException();
     }
+  }
+  
+  @override
+  Future<List<SubjectPositionModel>> teacherLoad(void request) {
+    // TODO: implement teacherLoad
+    throw UnimplementedError();
   }
 }

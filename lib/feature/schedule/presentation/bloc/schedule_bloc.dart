@@ -28,7 +28,7 @@ part 'schedule_event.dart';
 part 'schedule_state.dart';
 
 class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
-  final GetScheduleByWeekType getSchedule;
+  final GetStudentScheduleByWeekType getSchedule;
   final GetCurrentWeekType getCurrentWeekType;
   final GetAllWeekType getAllWeekType;
   final GetDisciplineList getDisciplineList;

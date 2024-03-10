@@ -13,7 +13,7 @@ class DisciplineRemoteDataSource
   DisciplineRemoteDataSource({required this.client});
 
   @override
-  Future<List<DisciplineModel>> load(List<int> request) async {
+  Future<List<DisciplineModel>> studentLoad(List<int> request) async {
     try {
       final Map<String, dynamic> queryParameters = {
         'ids': request,
@@ -36,5 +36,11 @@ class DisciplineRemoteDataSource
     } catch (e) {
       throw ServerException();
     }
+  }
+  
+  @override
+  Future<List<DisciplineModel>> teacherLoad(List<int> request) {
+    // TODO: implement teacherLoad
+    throw UnimplementedError();
   }
 }

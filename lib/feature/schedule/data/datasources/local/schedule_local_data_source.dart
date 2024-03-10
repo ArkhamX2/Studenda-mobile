@@ -40,7 +40,7 @@ class ScheduleLocalDataSource extends LocalDataSource<List<SubjectModel>,
   }
 
   @override
-  Future<List<SubjectModel>> load(
+  Future<List<SubjectModel>> studentLoad(
     ScheduleRequestByWeekTypeModel request,
   ) async {
     try {
@@ -74,5 +74,11 @@ class ScheduleLocalDataSource extends LocalDataSource<List<SubjectModel>,
           subject.id,
       ]);
     }
+  }
+  
+  @override
+  Future<List<SubjectModel>> teacherLoad(ScheduleRequestByWeekTypeModel request) {
+    // TODO: implement teacherLoad
+    throw UnimplementedError();
   }
 }

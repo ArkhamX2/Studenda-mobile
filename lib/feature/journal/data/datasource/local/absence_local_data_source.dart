@@ -26,11 +26,17 @@ class AbsenceLocalDataSource extends LocalDataSource<List<AbsenceModel>,void> {
   }
 
   @override
-  Future<List<AbsenceModel>> load(void request) async {
+  Future<List<AbsenceModel>> studentLoad(void request) async {
     try {
       return absenceBox.values.toList();
     } catch (e) {
       throw CacheException();
     }
+  }
+  
+  @override
+  Future<List<AbsenceModel>> teacherLoad(void request) {
+    // TODO: implement teacherLoad
+    throw UnimplementedError();
   }
 }

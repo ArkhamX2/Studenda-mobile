@@ -14,7 +14,7 @@ class AbsenceRemoteDataSource
 
   AbsenceRemoteDataSource({required this.client});
   @override
-  Future<List<AbsenceModel>> load(AbsenceRequestModel request) async {
+  Future<List<AbsenceModel>> studentLoad(AbsenceRequestModel request) async {
     try {
       final Map<String, dynamic> queryParameters = {
         'accountId': request.accountId,
@@ -41,5 +41,11 @@ class AbsenceRemoteDataSource
     } catch (e) {
       throw ServerException();
     }
+  }
+  
+  @override
+  Future<List<AbsenceModel>> teacherLoad(AbsenceRequestModel request) {
+    // TODO: implement teacherLoad
+    throw UnimplementedError();
   }
 }

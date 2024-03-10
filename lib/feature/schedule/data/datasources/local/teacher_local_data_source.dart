@@ -28,7 +28,7 @@ class TeacherLocalDataSource
   }
 
   @override
-  Future<List<AccountModel>> load(List<int> request) async {
+  Future<List<AccountModel>> studentLoad(List<int> request) async {
     try {
       if (request.isEmpty) return userBox.values.toList();
       return userBox.values
@@ -37,5 +37,11 @@ class TeacherLocalDataSource
     } catch (e) {
       throw CacheException();
     }
+  }
+  
+  @override
+  Future<List<AccountModel>> teacherLoad(List<int> request) {
+    // TODO: implement teacherLoad
+    throw UnimplementedError();
   }
 }

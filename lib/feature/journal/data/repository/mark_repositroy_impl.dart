@@ -24,7 +24,7 @@ class MarkRepositoryImpl implements MarkRepository {
     MarkRequestModel request, [
     bool remote = true,
   ]) async {
-    return await loadData<MarkLocalDataSource, MarkRemoteDataSource,
+    return await loadStudentData<MarkLocalDataSource, MarkRemoteDataSource,
         List<MarkModel>, MarkRequestModel>(
       localDataSource,
       remoteDataSource,

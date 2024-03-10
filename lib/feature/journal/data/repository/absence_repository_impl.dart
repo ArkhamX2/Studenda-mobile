@@ -20,11 +20,11 @@ class AbsenceRepositoryImpl implements AbsenceRepository {
   });
 
   @override
-  Future<Either<Failure, List<AbsenceModel>>> load(
+  Future<Either<Failure, List<AbsenceModel>>> loadStudent(
     AbsenceRequestModel request, [
     bool remote = true,
   ]) async {
-    return await loadData<AbsenceLocalDataSource, AbsenceRemoteDataSource,
+    return await loadStudentData<AbsenceLocalDataSource, AbsenceRemoteDataSource,
         List<AbsenceModel>, AbsenceRequestModel>(
       localDataSource,
       remoteDataSource,

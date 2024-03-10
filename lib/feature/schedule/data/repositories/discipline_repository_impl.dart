@@ -22,7 +22,7 @@ class DisciplineRepositoryImpl implements DisciplineRepository {
     void request, [
     bool remote = true,
   ]) async {
-    return await loadData<
+    return await loadStudentData<
         DisciplineLocalDataSource,
         DisciplineRemoteDataSource,
         List<DisciplineModel>,

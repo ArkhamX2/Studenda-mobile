@@ -375,7 +375,7 @@ Future<void> init() async {
   );
 
   sl.registerLazySingleton(
-    () => GetScheduleByWeekType(scheduleRepository: sl()),
+    () => GetStudentScheduleByWeekType(scheduleRepository: sl()),
   );
 
   sl.registerLazySingleton(

@@ -4,7 +4,12 @@ import 'package:studenda_mobile_student/feature/journal/data/model/api/absence_r
 import 'package:studenda_mobile_student/feature/journal/data/model/attendancy/absence_model.dart';
 
 abstract class AbsenceRepository {
-  Future<Either<Failure, List<AbsenceModel>>> load(
+  Future<Either<Failure, List<AbsenceModel>>> loadStudent(
+    AbsenceRequestModel request, [
+    bool remote = true,
+  ]);
+  
+  Future<Either<Failure, List<AbsenceModel>>> loadTeacher(
     AbsenceRequestModel request, [
     bool remote = true,
   ]);

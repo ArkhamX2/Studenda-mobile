@@ -5,16 +5,16 @@ import 'package:studenda_mobile_student/feature/journal/data/model/api/session_r
 import 'package:studenda_mobile_student/feature/journal/data/model/attendancy/session_model.dart';
 import 'package:studenda_mobile_student/feature/journal/domain/repository/session_repository.dart';
 
-class GetSessionList extends Usecase<List<SessionModel>, SessionRequestModel> {
+class GetStudentSessionList extends Usecase<List<SessionModel>, SessionRequestModel> {
   final SessionRepository sessionListRepository;
 
-  GetSessionList({required this.sessionListRepository});
+  GetStudentSessionList({required this.sessionListRepository});
 
   @override
   Future<Either<Failure, List<SessionModel>>> call(
     SessionRequestModel request, [
     bool remote = true,
   ]) async {
-    return await sessionListRepository.load(request, remote);
+    return await sessionListRepository.loadStudent(request, remote);
   }
 }

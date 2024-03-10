@@ -12,7 +12,7 @@ class DepartmentRemoteDataSource
   DepartmentRemoteDataSource({required this.client});
 
   @override
-  Future<List<DepartmentModel>> load(void request) async {
+  Future<List<DepartmentModel>> studentLoad(void request) async {
     try {
       final response = await client.get(
         Uri.parse('$BASE_URL/department'),
@@ -30,5 +30,11 @@ class DepartmentRemoteDataSource
     } catch (e) {
       throw ServerException();
     }
+  }
+  
+  @override
+  Future<List<DepartmentModel>> teacherLoad(void request) {
+    // TODO: implement teacherLoad
+    throw UnimplementedError();
   }
 }

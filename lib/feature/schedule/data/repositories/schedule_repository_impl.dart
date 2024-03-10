@@ -26,11 +26,11 @@ class ScheduleRepositoryImpl implements ScheduleByWeekTypeRepository {
   ]) async {
     if (await networkInfo.isConnected && remote) {
       try {
-        final remoteLoad = await remoteDataSource.load(request);
+        final remoteLoad = await remoteDataSource.studentLoad(request);
         if (remoteLoad.isEmpty) {
           await localDataSource.clearWeek(request);
           return Right(
-            await localDataSource.load(
+            await localDataSource.studentLoad(
               ScheduleRequestByWeekTypeModel(
                 academicYear: request.academicYear,
                 groupId: request.groupId,
@@ -40,7 +40,7 @@ class ScheduleRepositoryImpl implements ScheduleByWeekTypeRepository {
           );
         }
         await localDataSource.add(
-          await localDataSource.load(
+          await localDataSource.studentLoad(
             ScheduleRequestByWeekTypeModel(
               academicYear: request.academicYear,
               groupId: request.groupId,
@@ -55,7 +55,7 @@ class ScheduleRepositoryImpl implements ScheduleByWeekTypeRepository {
     } else {
       try {
         return Right(
-          await localDataSource.load(
+          await localDataSource.studentLoad(
             ScheduleRequestByWeekTypeModel(
               academicYear: request.academicYear,
               groupId: request.groupId,

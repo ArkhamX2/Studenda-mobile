@@ -13,7 +13,7 @@ class SessionRemoteDataSource
 
   SessionRemoteDataSource({required this.client});
   @override
-  Future<List<SessionModel>> load(SessionRequestModel request) async {
+  Future<List<SessionModel>> studentLoad(SessionRequestModel request) async {
     try {
       final Map<String, dynamic> queryParameters = {
         'subjectId': request.subjectId,
@@ -39,5 +39,11 @@ class SessionRemoteDataSource
     } catch (e) {
       throw ServerException();
     }
+  }
+  
+  @override
+  Future<List<SessionModel>> teacherLoad(SessionRequestModel request) {
+    // TODO: implement teacherLoad
+    throw UnimplementedError();
   }
 }

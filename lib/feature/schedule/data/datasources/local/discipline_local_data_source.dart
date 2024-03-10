@@ -28,7 +28,7 @@ class DisciplineLocalDataSource
   }
 
   @override
-  Future<List<DisciplineModel>> load(List<int> request) async {
+  Future<List<DisciplineModel>> studentLoad(List<int> request) async {
     try {
       if (request.isEmpty) return disciplineBox.values.toList();
       return disciplineBox.values
@@ -37,5 +37,11 @@ class DisciplineLocalDataSource
     } catch (e) {
       throw CacheException();
     }
+  }
+  
+  @override
+  Future<List<DisciplineModel>> teacherLoad(List<int> request) {
+    // TODO: implement teacherLoad
+    throw UnimplementedError();
   }
 }

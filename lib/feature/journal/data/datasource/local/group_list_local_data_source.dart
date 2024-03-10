@@ -26,11 +26,17 @@ class GroupListLocalDataSource extends LocalDataSource<List<AccountModel>,void> 
   }
 
   @override
-  Future<List<AccountModel>> load(void request) async {
+  Future<List<AccountModel>> studentLoad(void request) async {
     try {
       return groupListBox.values.toList();
     } catch (e) {
       throw CacheException();
     }
+  }
+  
+  @override
+  Future<List<AccountModel>> teacherLoad(void request) {
+    // TODO: implement teacherLoad
+    throw UnimplementedError();
   }
 }

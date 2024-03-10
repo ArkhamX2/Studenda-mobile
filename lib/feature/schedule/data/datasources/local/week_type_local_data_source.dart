@@ -32,7 +32,7 @@ class WeekTypeLocalDataSource
   }
 
   @override
-  Future<List<WeekTypeModel>> load(void request) async {
+  Future<List<WeekTypeModel>> studentLoad(void request) async {
     try {
       return weekTypeBox.values.toList();
     } catch (e) {
@@ -67,5 +67,11 @@ class WeekTypeLocalDataSource
     } catch (e) {
       throw CacheException();
     }
+  }
+  
+  @override
+  Future<List<WeekTypeModel>> teacherLoad(void request) {
+    // TODO: implement teacherLoad
+    throw UnimplementedError();
   }
 }

@@ -47,7 +47,7 @@ class WeekTypeRepositoryImpl implements WeekTypeRepository {
     void request, [
     bool remote = true,
   ]) async {
-    return await loadData<
+    return await loadStudentData<
         WeekTypeLocalDataSource,
         WeekTypeRemoteDataSource,
         List<WeekTypeModel>,

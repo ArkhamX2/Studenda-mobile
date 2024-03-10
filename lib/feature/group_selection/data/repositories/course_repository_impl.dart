@@ -23,7 +23,7 @@ class CourseRepositoryImpl implements CourseRepository {
     void request, [
     bool remote = true,
   ]) async {
-    return await loadData<
+    return await loadStudentData<
         CourseLocalDataSource,
         CourseRemoteDataSource,
         List<CourseModel>,

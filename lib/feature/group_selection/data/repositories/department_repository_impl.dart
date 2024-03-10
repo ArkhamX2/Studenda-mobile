@@ -23,7 +23,7 @@ class DepartmentRepositoryImpl implements DepartmentRepository {
     void request, [
     bool remote = true,
   ]) async {
-    return await loadData<
+    return await loadStudentData<
         DepartmentLocalDataSource,
         DepartmentRemoteDataSource,
         List<DepartmentModel>,

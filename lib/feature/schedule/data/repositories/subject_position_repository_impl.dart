@@ -22,7 +22,7 @@ class SubjectPositionRepositoryImpl implements SubjectPositionRepository {
     void request, [
     bool remote = true,
   ]) async {
-    return await loadData<
+    return await loadStudentData<
         SubjectPositionLocalDataSource,
         SubjectPositionRemoteDataSource,
         List<SubjectPositionModel>,

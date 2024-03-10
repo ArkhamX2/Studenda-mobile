@@ -5,16 +5,16 @@ import 'package:studenda_mobile_student/feature/journal/data/model/api/task_stud
 import 'package:studenda_mobile_student/feature/journal/data/model/task/task_model.dart';
 import 'package:studenda_mobile_student/feature/journal/domain/repository/task_repository.dart';
 
-class GetTaskList extends Usecase<List<TaskModel>, TaskStudentRequestModel> {
+class GetStudentTaskList extends Usecase<List<TaskModel>, TaskStudentRequestModel> {
   final TaskRepository taskRepository;
 
-  GetTaskList({required this.taskRepository});
+  GetStudentTaskList({required this.taskRepository});
 
   @override
   Future<Either<Failure, List<TaskModel>>> call(
     TaskStudentRequestModel request, [
     bool remote = true,
   ]) async {
-    return await taskRepository.load(request, remote);
+    return await taskRepository.loadStudent(request, remote);
   }
 }

@@ -15,6 +15,6 @@ class GetAbsenceList extends Usecase<List<AbsenceModel>, AbsenceRequestModel> {
     AbsenceRequestModel request, [
     bool remote = true,
   ]) async {
-    return await groupListRepository.load(request, remote);
+    return await groupListRepository.loadStudent(request, remote);
   }
 }

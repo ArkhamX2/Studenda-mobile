@@ -13,7 +13,7 @@ class SubjectPositionRemoteDataSource extends RemoteDataSource<List<SubjectPosit
   SubjectPositionRemoteDataSource({required this.client});
 
   @override
-  Future<List<SubjectPositionModel>> load(void request) async {
+  Future<List<SubjectPositionModel>> studentLoad(void request) async {
     try {
       final Map<String,dynamic> queryParameters = {
         'ids' : [],
@@ -34,5 +34,11 @@ class SubjectPositionRemoteDataSource extends RemoteDataSource<List<SubjectPosit
     } catch (e) {
       throw ServerException();
     }
+  }
+  
+  @override
+  Future<List<SubjectPositionModel>> teacherLoad(void request) {
+    // TODO: implement teacherLoad
+    throw UnimplementedError();
   }
 }

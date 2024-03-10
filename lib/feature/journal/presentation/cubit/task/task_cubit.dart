@@ -9,7 +9,7 @@ part 'task_state.dart';
 part 'task_cubit.freezed.dart';
 
 class TaskCubit extends Cubit<TaskState> {
-  final GetTaskList loadTasks;
+  final GetStudentTaskList loadTasks;
 
   List<TaskEntity> taskList = [];
 

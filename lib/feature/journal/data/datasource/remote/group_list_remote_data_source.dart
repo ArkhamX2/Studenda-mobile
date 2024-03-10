@@ -14,7 +14,7 @@ class GroupListRemoteDataSource
 
   GroupListRemoteDataSource({required this.client});
   @override
-  Future<List<AccountModel>> load(GroupListRequestModel request) async {
+  Future<List<AccountModel>> studentLoad(GroupListRequestModel request) async {
     try {
       final Map<String, dynamic> queryParameters = {
         'ids': request,
@@ -39,5 +39,11 @@ class GroupListRemoteDataSource
     } catch (e) {
       throw ServerException();
     }
+  }
+  
+  @override
+  Future<List<AccountModel>> teacherLoad(GroupListRequestModel request) {
+    // TODO: implement teacherLoad
+    throw UnimplementedError();
   }
 }

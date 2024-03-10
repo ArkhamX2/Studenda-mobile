@@ -27,11 +27,17 @@ class SessionLocalDataSource extends LocalDataSource<List<SessionModel>,void> {
   }
 
   @override
-  Future<List<SessionModel>> load(void request) async {
+  Future<List<SessionModel>> studentLoad(void request) async {
     try {
       return sessionBox.values.toList();
     } catch (e) {
       throw CacheException();
     }
+  }
+  
+  @override
+  Future<List<SessionModel>> teacherLoad(void request) {
+    // TODO: implement teacherLoad
+    throw UnimplementedError();
   }
 }

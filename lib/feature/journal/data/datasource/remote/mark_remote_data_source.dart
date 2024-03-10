@@ -16,7 +16,7 @@ class MarkRemoteDataSource
 
   MarkRemoteDataSource({required this.client});
   @override
-  Future<List<MarkModel>> load(MarkRequestModel request) async {
+  Future<List<MarkModel>> studentLoad(MarkRequestModel request) async {
     try {
       final Map<String, dynamic> queryParameters = {
         'taskIds': request,
@@ -41,5 +41,11 @@ class MarkRemoteDataSource
     } catch (e) {
       throw ServerException();
     }
+  }
+  
+  @override
+  Future<List<MarkModel>> teacherLoad(MarkRequestModel request) {
+    // TODO: implement teacherLoad
+    throw UnimplementedError();
   }
 }

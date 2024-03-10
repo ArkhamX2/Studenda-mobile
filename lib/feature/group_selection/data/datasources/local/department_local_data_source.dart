@@ -27,11 +27,17 @@ class DepartmentLocalDataSource
   }
 
   @override
-  Future<List<DepartmentModel>> load(void request) async {
+  Future<List<DepartmentModel>> studentLoad(void request) async {
     try {
       return departmentBox.values.toList();
     } catch (e) {
       throw CacheException();
     }
+  }
+  
+  @override
+  Future<List<DepartmentModel>> teacherLoad(void request) {
+    // TODO: implement teacherLoad
+    throw UnimplementedError();
   }
 }

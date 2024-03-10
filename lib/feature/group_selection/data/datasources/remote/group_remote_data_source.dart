@@ -11,7 +11,7 @@ class GroupRemoteDataSource extends RemoteDataSource<List<GroupModel>, void> {
   GroupRemoteDataSource({required this.client});
 
   @override
-  Future<List<GroupModel>> load(void request) async {
+  Future<List<GroupModel>> studentLoad(void request) async {
     try {
       final response = await client.get(
         Uri.parse('$BASE_URL/group'),
@@ -29,5 +29,11 @@ class GroupRemoteDataSource extends RemoteDataSource<List<GroupModel>, void> {
     } catch (e) {
       throw ServerException();
     }
+  }
+  
+  @override
+  Future<List<GroupModel>> teacherLoad(void request) {
+    // TODO: implement teacherLoad
+    throw UnimplementedError();
   }
 }

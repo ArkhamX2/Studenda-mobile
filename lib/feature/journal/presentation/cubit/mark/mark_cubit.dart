@@ -8,7 +8,7 @@ part 'mark_state.dart';
 part 'mark_cubit.freezed.dart';
 
 class MarkCubit extends Cubit<MarkState> {
-  final GetMarkList loadMarkTypes;
+  final GetStudentMarkList loadMarkTypes;
 
   List<MarkEntity> markList = [];
 

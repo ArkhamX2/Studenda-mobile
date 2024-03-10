@@ -14,7 +14,7 @@ class ScheduleRemoteDataSource extends RemoteDataSource<List<SubjectModel>,
   ScheduleRemoteDataSource({required this.client});
 
   @override
-  Future<List<SubjectModel>> load(
+  Future<List<SubjectModel>> studentLoad(
     ScheduleRequestByWeekTypeModel request,
   ) async {
     try {
@@ -43,5 +43,11 @@ class ScheduleRemoteDataSource extends RemoteDataSource<List<SubjectModel>,
     } catch (e) {
       throw ServerException();
     }
+  }
+  
+  @override
+  Future<List<SubjectModel>> teacherLoad(ScheduleRequestByWeekTypeModel request) {
+    // TODO: implement teacherLoad
+    throw UnimplementedError();
   }
 }

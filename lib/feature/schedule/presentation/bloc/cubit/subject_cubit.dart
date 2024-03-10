@@ -11,7 +11,7 @@ part 'subject_cubit.freezed.dart';
 
 class SubjectCubit extends Cubit<SubjectState> {
 
-  final GetScheduleByWeekType getSchedule;
+  final GetStudentScheduleByWeekType getSchedule;
 
   List<SubjectModel> subjectList = [];
 

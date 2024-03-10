@@ -23,7 +23,7 @@ class GroupRepositoryImpl implements GroupRepository {
     void request, [
     bool remote = true,
   ]) async {
-    return await loadData<
+    return await loadStudentData<
         GroupLocalDataSource,
         GroupRemoteDataSource,
         List<GroupModel>,

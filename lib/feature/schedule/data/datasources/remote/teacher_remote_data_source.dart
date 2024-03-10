@@ -14,7 +14,7 @@ class TeacherRemoteDataSource extends RemoteDataSource<List<AccountModel>,List<i
   TeacherRemoteDataSource({required this.client});
 
   @override
-  Future<List<AccountModel>> load(List<int> request) async {
+  Future<List<AccountModel>> studentLoad(List<int> request) async {
     try {
       
       final Map<String,dynamic> queryParameters = {
@@ -36,5 +36,11 @@ class TeacherRemoteDataSource extends RemoteDataSource<List<AccountModel>,List<i
     } catch (e) {
       throw ServerException();
     }
+  }
+  
+  @override
+  Future<List<AccountModel>> teacherLoad(List<int> request) {
+    // TODO: implement teacherLoad
+    throw UnimplementedError();
   }
 }

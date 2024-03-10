@@ -5,16 +5,16 @@ import 'package:studenda_mobile_student/feature/journal/data/model/api/mark_requ
 import 'package:studenda_mobile_student/feature/journal/data/model/task/mark_model.dart';
 import 'package:studenda_mobile_student/feature/journal/domain/repository/mark_repository.dart';
 
-class GetMarkList extends Usecase<List<MarkModel>, MarkRequestModel> {
+class GetStudentMarkList extends Usecase<List<MarkModel>, MarkRequestModel> {
   final MarkRepository markRepository;
 
-  GetMarkList({required this.markRepository});
+  GetStudentMarkList({required this.markRepository});
 
   @override
   Future<Either<Failure, List<MarkModel>>> call(
     MarkRequestModel request, [
     bool remote = true,
   ]) async {
-    return await markRepository.load(request, remote);
+    return await markRepository.loadStudent(request, remote);
   }
 }

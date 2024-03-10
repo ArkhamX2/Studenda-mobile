@@ -24,7 +24,7 @@ class GroupListRepositoryImpl implements GroupListRepository {
     GroupListRequestModel request, [
     bool remote = true,
   ]) async {
-    return await loadData<GroupListLocalDataSource,
+    return await loadStudentData<GroupListLocalDataSource,
         GroupListRemoteDataSource, List<AccountModel>, GroupListRequestModel>(
       localDataSource,
       remoteDataSource,

@@ -22,7 +22,7 @@ class SubjectTypeRepositoryImpl implements SubjectTypeRepository {
     void request, [
     bool remote = true,
   ]) async {
-    return await loadData<
+    return await loadStudentData<
         SubjectTypeLocalDataSource,
         SubjectTypeRemoteDataSource,
         List<SubjectTypeModel>,

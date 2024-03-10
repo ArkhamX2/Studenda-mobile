@@ -27,11 +27,17 @@ class CourseLocalDataSource extends LocalDataSource<List<CourseModel>, void> {
   }
 
   @override
-  Future<List<CourseModel>> load(void request) async {
+  Future<List<CourseModel>> studentLoad(void request) async {
     try {
       return courseBox.values.toList();
     } catch (e) {
       throw CacheException();
     }
+  }
+  
+  @override
+  Future<List<CourseModel>> teacherLoad(void request) {
+    // TODO: implement teacherLoad
+    throw UnimplementedError();
   }
 }

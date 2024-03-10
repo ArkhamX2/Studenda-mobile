@@ -31,7 +31,7 @@ class WeekTypeRemoteDataSource extends RemoteDataSource<List<WeekTypeModel>,void
   }
   
   @override
-  Future<List<WeekTypeModel>> load(void request) async {try {
+  Future<List<WeekTypeModel>> studentLoad(void request) async {try {
       
       final Map<String,dynamic> queryParameters = {
         'ids' : [],
@@ -52,6 +52,12 @@ class WeekTypeRemoteDataSource extends RemoteDataSource<List<WeekTypeModel>,void
     } catch (e) {
       throw ServerException();
     }
+  }
+  
+  @override
+  Future<List<WeekTypeModel>> teacherLoad(void request) {
+    // TODO: implement teacherLoad
+    throw UnimplementedError();
   }
 
 }
