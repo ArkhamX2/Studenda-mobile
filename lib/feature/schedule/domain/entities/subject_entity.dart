@@ -5,8 +5,6 @@ part 'subject_entity.freezed.dart';
 
 @freezed
 class SubjectEntity with _$SubjectEntity {
-
-
   const factory SubjectEntity({
     required int id,
     required String title,

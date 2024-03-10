@@ -13,7 +13,7 @@ import 'package:studenda_mobile_student/feature/auth/presentation/pages/main_aut
 import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/main_group_selection_bloc/main_group_selector_bloc.dart';
 import 'package:studenda_mobile_student/feature/group_selection/presentation/pages/guest_group_selector.dart';
 import 'package:studenda_mobile_student/feature/journal/presentation/page/journal_main_screen_widget.dart';
-import 'package:studenda_mobile_student/feature/schedule/presentation/pages/schedule_screen_widget.dart';
+import 'package:studenda_mobile_student/feature/schedule/presentation/pages/student_schedule_screen_widget.dart';
 import 'package:studenda_mobile_student/injection_container.dart' as di;
 import 'package:studenda_mobile_student/injection_container.dart';
 
@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
         home: const _SplashScreen(),
         routes: {
           mainRoute: (context) => const MainNavigatorWidget(),
-          scheduleRoute: (context) => const ScheduleScreenPage(),
+          scheduleRoute: (context) => const StudentScheduleScreenPage(),
           journalRoute: (context) => const JournalMainScreenPage(),
           selectorRoute: (context) => const GroupSelectorPage(),
           authRoute: (context) => const MainAuthPage(),

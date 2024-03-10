@@ -1,4 +1,5 @@
 import 'package:studenda_mobile_student/feature/auth/data/models/user_model/account_model.dart';
+import 'package:studenda_mobile_student/feature/auth/domain/entities/account_entity.dart';
 import 'package:studenda_mobile_student/feature/group_selection/domain/entities/group_entity.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/day_position_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/discipline_model.dart';
@@ -11,7 +12,7 @@ import 'package:studenda_mobile_student/feature/schedule/domain/entities/subject
 List<DayScheduleEntity> mapSubjectModelToStudentDayScheduleList(
   List<SubjectModel> subjects,
   List<DisciplineModel> disciplines,
-  List<AccountModel> teachers,
+  List<AccountEntity> teachers,
   List<DayPositionModel> dayPositionList,
   List<SubjectPositionModel> subjectPositionList,
   List<SubjectTypeModel> subjectTypeList,

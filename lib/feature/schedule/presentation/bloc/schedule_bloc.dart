@@ -555,7 +555,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
                           schedule: mapSubjectModelToStudentDayScheduleList(
                             succededSubjectList,
                             succededDisciplineList,
-                            succededTeacherList,
+                            [],
                             succededDayPositionList,
                             succededSubjectPositionList,
                             succededSubjectTypeList,
@@ -572,7 +572,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
                           schedule: mapSubjectModelToStudentDayScheduleList(
                             succededSubjectList,
                             succededDisciplineList,
-                            succededTeacherList,
+                            [],
                             succededDayPositionList,
                             succededSubjectPositionList,
                             succededSubjectTypeList,

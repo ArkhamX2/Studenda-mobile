@@ -48,29 +48,31 @@ mixin _$DisciplineState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Fail value) fail,
-    required TResult Function(_LocalLoadingFail value) localLoadingFail,
-    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
+    required TResult Function(DisciplineInitial value) initial,
+    required TResult Function(DisciplineSuccess value) success,
+    required TResult Function(DisciplineFail value) fail,
+    required TResult Function(DisciplineLocalLoadingFail value)
+        localLoadingFail,
+    required TResult Function(DisciplineLocalLoadingSuccess value)
+        localLoadingSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Fail value)? fail,
-    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult? Function(DisciplineInitial value)? initial,
+    TResult? Function(DisciplineSuccess value)? success,
+    TResult? Function(DisciplineFail value)? fail,
+    TResult? Function(DisciplineLocalLoadingFail value)? localLoadingFail,
+    TResult? Function(DisciplineLocalLoadingSuccess value)? localLoadingSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Success value)? success,
-    TResult Function(_Fail value)? fail,
-    TResult Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult Function(DisciplineInitial value)? initial,
+    TResult Function(DisciplineSuccess value)? success,
+    TResult Function(DisciplineFail value)? fail,
+    TResult Function(DisciplineLocalLoadingFail value)? localLoadingFail,
+    TResult Function(DisciplineLocalLoadingSuccess value)? localLoadingSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -95,25 +97,25 @@ class _$DisciplineStateCopyWithImpl<$Res, $Val extends DisciplineState>
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
+abstract class _$$DisciplineInitialImplCopyWith<$Res> {
+  factory _$$DisciplineInitialImplCopyWith(_$DisciplineInitialImpl value,
+          $Res Function(_$DisciplineInitialImpl) then) =
+      __$$DisciplineInitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$DisciplineStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+class __$$DisciplineInitialImplCopyWithImpl<$Res>
+    extends _$DisciplineStateCopyWithImpl<$Res, _$DisciplineInitialImpl>
+    implements _$$DisciplineInitialImplCopyWith<$Res> {
+  __$$DisciplineInitialImplCopyWithImpl(_$DisciplineInitialImpl _value,
+      $Res Function(_$DisciplineInitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
+class _$DisciplineInitialImpl implements DisciplineInitial {
+  const _$DisciplineInitialImpl();
 
   @override
   String toString() {
@@ -123,7 +125,7 @@ class _$InitialImpl implements _Initial {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType && other is _$DisciplineInitialImpl);
   }
 
   @override
@@ -174,11 +176,13 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Fail value) fail,
-    required TResult Function(_LocalLoadingFail value) localLoadingFail,
-    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
+    required TResult Function(DisciplineInitial value) initial,
+    required TResult Function(DisciplineSuccess value) success,
+    required TResult Function(DisciplineFail value) fail,
+    required TResult Function(DisciplineLocalLoadingFail value)
+        localLoadingFail,
+    required TResult Function(DisciplineLocalLoadingSuccess value)
+        localLoadingSuccess,
   }) {
     return initial(this);
   }
@@ -186,11 +190,11 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Fail value)? fail,
-    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult? Function(DisciplineInitial value)? initial,
+    TResult? Function(DisciplineSuccess value)? success,
+    TResult? Function(DisciplineFail value)? fail,
+    TResult? Function(DisciplineLocalLoadingFail value)? localLoadingFail,
+    TResult? Function(DisciplineLocalLoadingSuccess value)? localLoadingSuccess,
   }) {
     return initial?.call(this);
   }
@@ -198,11 +202,11 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Success value)? success,
-    TResult Function(_Fail value)? fail,
-    TResult Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult Function(DisciplineInitial value)? initial,
+    TResult Function(DisciplineSuccess value)? success,
+    TResult Function(DisciplineFail value)? fail,
+    TResult Function(DisciplineLocalLoadingFail value)? localLoadingFail,
+    TResult Function(DisciplineLocalLoadingSuccess value)? localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -212,25 +216,25 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements DisciplineState {
-  const factory _Initial() = _$InitialImpl;
+abstract class DisciplineInitial implements DisciplineState {
+  const factory DisciplineInitial() = _$DisciplineInitialImpl;
 }
 
 /// @nodoc
-abstract class _$$SuccessImplCopyWith<$Res> {
-  factory _$$SuccessImplCopyWith(
-          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
-      __$$SuccessImplCopyWithImpl<$Res>;
+abstract class _$$DisciplineSuccessImplCopyWith<$Res> {
+  factory _$$DisciplineSuccessImplCopyWith(_$DisciplineSuccessImpl value,
+          $Res Function(_$DisciplineSuccessImpl) then) =
+      __$$DisciplineSuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<DisciplineModel> disciplineList});
 }
 
 /// @nodoc
-class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$DisciplineStateCopyWithImpl<$Res, _$SuccessImpl>
-    implements _$$SuccessImplCopyWith<$Res> {
-  __$$SuccessImplCopyWithImpl(
-      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
+class __$$DisciplineSuccessImplCopyWithImpl<$Res>
+    extends _$DisciplineStateCopyWithImpl<$Res, _$DisciplineSuccessImpl>
+    implements _$$DisciplineSuccessImplCopyWith<$Res> {
+  __$$DisciplineSuccessImplCopyWithImpl(_$DisciplineSuccessImpl _value,
+      $Res Function(_$DisciplineSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -238,7 +242,7 @@ class __$$SuccessImplCopyWithImpl<$Res>
   $Res call({
     Object? disciplineList = null,
   }) {
-    return _then(_$SuccessImpl(
+    return _then(_$DisciplineSuccessImpl(
       null == disciplineList
           ? _value._disciplineList
           : disciplineList // ignore: cast_nullable_to_non_nullable
@@ -249,8 +253,8 @@ class __$$SuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(final List<DisciplineModel> disciplineList)
+class _$DisciplineSuccessImpl implements DisciplineSuccess {
+  const _$DisciplineSuccessImpl(final List<DisciplineModel> disciplineList)
       : _disciplineList = disciplineList;
 
   final List<DisciplineModel> _disciplineList;
@@ -270,7 +274,7 @@ class _$SuccessImpl implements _Success {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SuccessImpl &&
+            other is _$DisciplineSuccessImpl &&
             const DeepCollectionEquality()
                 .equals(other._disciplineList, _disciplineList));
   }
@@ -282,8 +286,9 @@ class _$SuccessImpl implements _Success {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
+  _$$DisciplineSuccessImplCopyWith<_$DisciplineSuccessImpl> get copyWith =>
+      __$$DisciplineSuccessImplCopyWithImpl<_$DisciplineSuccessImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -330,11 +335,13 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Fail value) fail,
-    required TResult Function(_LocalLoadingFail value) localLoadingFail,
-    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
+    required TResult Function(DisciplineInitial value) initial,
+    required TResult Function(DisciplineSuccess value) success,
+    required TResult Function(DisciplineFail value) fail,
+    required TResult Function(DisciplineLocalLoadingFail value)
+        localLoadingFail,
+    required TResult Function(DisciplineLocalLoadingSuccess value)
+        localLoadingSuccess,
   }) {
     return success(this);
   }
@@ -342,11 +349,11 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Fail value)? fail,
-    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult? Function(DisciplineInitial value)? initial,
+    TResult? Function(DisciplineSuccess value)? success,
+    TResult? Function(DisciplineFail value)? fail,
+    TResult? Function(DisciplineLocalLoadingFail value)? localLoadingFail,
+    TResult? Function(DisciplineLocalLoadingSuccess value)? localLoadingSuccess,
   }) {
     return success?.call(this);
   }
@@ -354,11 +361,11 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Success value)? success,
-    TResult Function(_Fail value)? fail,
-    TResult Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult Function(DisciplineInitial value)? initial,
+    TResult Function(DisciplineSuccess value)? success,
+    TResult Function(DisciplineFail value)? fail,
+    TResult Function(DisciplineLocalLoadingFail value)? localLoadingFail,
+    TResult Function(DisciplineLocalLoadingSuccess value)? localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -368,30 +375,31 @@ class _$SuccessImpl implements _Success {
   }
 }
 
-abstract class _Success implements DisciplineState {
-  const factory _Success(final List<DisciplineModel> disciplineList) =
-      _$SuccessImpl;
+abstract class DisciplineSuccess implements DisciplineState {
+  const factory DisciplineSuccess(final List<DisciplineModel> disciplineList) =
+      _$DisciplineSuccessImpl;
 
   List<DisciplineModel> get disciplineList;
   @JsonKey(ignore: true)
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+  _$$DisciplineSuccessImplCopyWith<_$DisciplineSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$FailImplCopyWith<$Res> {
-  factory _$$FailImplCopyWith(
-          _$FailImpl value, $Res Function(_$FailImpl) then) =
-      __$$FailImplCopyWithImpl<$Res>;
+abstract class _$$DisciplineFailImplCopyWith<$Res> {
+  factory _$$DisciplineFailImplCopyWith(_$DisciplineFailImpl value,
+          $Res Function(_$DisciplineFailImpl) then) =
+      __$$DisciplineFailImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$FailImplCopyWithImpl<$Res>
-    extends _$DisciplineStateCopyWithImpl<$Res, _$FailImpl>
-    implements _$$FailImplCopyWith<$Res> {
-  __$$FailImplCopyWithImpl(_$FailImpl _value, $Res Function(_$FailImpl) _then)
+class __$$DisciplineFailImplCopyWithImpl<$Res>
+    extends _$DisciplineStateCopyWithImpl<$Res, _$DisciplineFailImpl>
+    implements _$$DisciplineFailImplCopyWith<$Res> {
+  __$$DisciplineFailImplCopyWithImpl(
+      _$DisciplineFailImpl _value, $Res Function(_$DisciplineFailImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -399,7 +407,7 @@ class __$$FailImplCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$FailImpl(
+    return _then(_$DisciplineFailImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -410,8 +418,8 @@ class __$$FailImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FailImpl implements _Fail {
-  const _$FailImpl([this.message = "Unknown error"]);
+class _$DisciplineFailImpl implements DisciplineFail {
+  const _$DisciplineFailImpl([this.message = "Unknown error"]);
 
   @override
   @JsonKey()
@@ -426,7 +434,7 @@ class _$FailImpl implements _Fail {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FailImpl &&
+            other is _$DisciplineFailImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -436,8 +444,9 @@ class _$FailImpl implements _Fail {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$FailImplCopyWith<_$FailImpl> get copyWith =>
-      __$$FailImplCopyWithImpl<_$FailImpl>(this, _$identity);
+  _$$DisciplineFailImplCopyWith<_$DisciplineFailImpl> get copyWith =>
+      __$$DisciplineFailImplCopyWithImpl<_$DisciplineFailImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -484,11 +493,13 @@ class _$FailImpl implements _Fail {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Fail value) fail,
-    required TResult Function(_LocalLoadingFail value) localLoadingFail,
-    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
+    required TResult Function(DisciplineInitial value) initial,
+    required TResult Function(DisciplineSuccess value) success,
+    required TResult Function(DisciplineFail value) fail,
+    required TResult Function(DisciplineLocalLoadingFail value)
+        localLoadingFail,
+    required TResult Function(DisciplineLocalLoadingSuccess value)
+        localLoadingSuccess,
   }) {
     return fail(this);
   }
@@ -496,11 +507,11 @@ class _$FailImpl implements _Fail {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Fail value)? fail,
-    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult? Function(DisciplineInitial value)? initial,
+    TResult? Function(DisciplineSuccess value)? success,
+    TResult? Function(DisciplineFail value)? fail,
+    TResult? Function(DisciplineLocalLoadingFail value)? localLoadingFail,
+    TResult? Function(DisciplineLocalLoadingSuccess value)? localLoadingSuccess,
   }) {
     return fail?.call(this);
   }
@@ -508,11 +519,11 @@ class _$FailImpl implements _Fail {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Success value)? success,
-    TResult Function(_Fail value)? fail,
-    TResult Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult Function(DisciplineInitial value)? initial,
+    TResult Function(DisciplineSuccess value)? success,
+    TResult Function(DisciplineFail value)? fail,
+    TResult Function(DisciplineLocalLoadingFail value)? localLoadingFail,
+    TResult Function(DisciplineLocalLoadingSuccess value)? localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (fail != null) {
@@ -522,30 +533,33 @@ class _$FailImpl implements _Fail {
   }
 }
 
-abstract class _Fail implements DisciplineState {
-  const factory _Fail([final String message]) = _$FailImpl;
+abstract class DisciplineFail implements DisciplineState {
+  const factory DisciplineFail([final String message]) = _$DisciplineFailImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$FailImplCopyWith<_$FailImpl> get copyWith =>
+  _$$DisciplineFailImplCopyWith<_$DisciplineFailImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LocalLoadingFailImplCopyWith<$Res> {
-  factory _$$LocalLoadingFailImplCopyWith(_$LocalLoadingFailImpl value,
-          $Res Function(_$LocalLoadingFailImpl) then) =
-      __$$LocalLoadingFailImplCopyWithImpl<$Res>;
+abstract class _$$DisciplineLocalLoadingFailImplCopyWith<$Res> {
+  factory _$$DisciplineLocalLoadingFailImplCopyWith(
+          _$DisciplineLocalLoadingFailImpl value,
+          $Res Function(_$DisciplineLocalLoadingFailImpl) then) =
+      __$$DisciplineLocalLoadingFailImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$LocalLoadingFailImplCopyWithImpl<$Res>
-    extends _$DisciplineStateCopyWithImpl<$Res, _$LocalLoadingFailImpl>
-    implements _$$LocalLoadingFailImplCopyWith<$Res> {
-  __$$LocalLoadingFailImplCopyWithImpl(_$LocalLoadingFailImpl _value,
-      $Res Function(_$LocalLoadingFailImpl) _then)
+class __$$DisciplineLocalLoadingFailImplCopyWithImpl<$Res>
+    extends _$DisciplineStateCopyWithImpl<$Res,
+        _$DisciplineLocalLoadingFailImpl>
+    implements _$$DisciplineLocalLoadingFailImplCopyWith<$Res> {
+  __$$DisciplineLocalLoadingFailImplCopyWithImpl(
+      _$DisciplineLocalLoadingFailImpl _value,
+      $Res Function(_$DisciplineLocalLoadingFailImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -553,7 +567,7 @@ class __$$LocalLoadingFailImplCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$LocalLoadingFailImpl(
+    return _then(_$DisciplineLocalLoadingFailImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -564,8 +578,8 @@ class __$$LocalLoadingFailImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LocalLoadingFailImpl implements _LocalLoadingFail {
-  const _$LocalLoadingFailImpl([this.message = "Unknown error"]);
+class _$DisciplineLocalLoadingFailImpl implements DisciplineLocalLoadingFail {
+  const _$DisciplineLocalLoadingFailImpl([this.message = "Unknown error"]);
 
   @override
   @JsonKey()
@@ -580,7 +594,7 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LocalLoadingFailImpl &&
+            other is _$DisciplineLocalLoadingFailImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -590,9 +604,9 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LocalLoadingFailImplCopyWith<_$LocalLoadingFailImpl> get copyWith =>
-      __$$LocalLoadingFailImplCopyWithImpl<_$LocalLoadingFailImpl>(
-          this, _$identity);
+  _$$DisciplineLocalLoadingFailImplCopyWith<_$DisciplineLocalLoadingFailImpl>
+      get copyWith => __$$DisciplineLocalLoadingFailImplCopyWithImpl<
+          _$DisciplineLocalLoadingFailImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -639,11 +653,13 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Fail value) fail,
-    required TResult Function(_LocalLoadingFail value) localLoadingFail,
-    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
+    required TResult Function(DisciplineInitial value) initial,
+    required TResult Function(DisciplineSuccess value) success,
+    required TResult Function(DisciplineFail value) fail,
+    required TResult Function(DisciplineLocalLoadingFail value)
+        localLoadingFail,
+    required TResult Function(DisciplineLocalLoadingSuccess value)
+        localLoadingSuccess,
   }) {
     return localLoadingFail(this);
   }
@@ -651,11 +667,11 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Fail value)? fail,
-    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult? Function(DisciplineInitial value)? initial,
+    TResult? Function(DisciplineSuccess value)? success,
+    TResult? Function(DisciplineFail value)? fail,
+    TResult? Function(DisciplineLocalLoadingFail value)? localLoadingFail,
+    TResult? Function(DisciplineLocalLoadingSuccess value)? localLoadingSuccess,
   }) {
     return localLoadingFail?.call(this);
   }
@@ -663,11 +679,11 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Success value)? success,
-    TResult Function(_Fail value)? fail,
-    TResult Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult Function(DisciplineInitial value)? initial,
+    TResult Function(DisciplineSuccess value)? success,
+    TResult Function(DisciplineFail value)? fail,
+    TResult Function(DisciplineLocalLoadingFail value)? localLoadingFail,
+    TResult Function(DisciplineLocalLoadingSuccess value)? localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (localLoadingFail != null) {
@@ -677,31 +693,34 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
   }
 }
 
-abstract class _LocalLoadingFail implements DisciplineState {
-  const factory _LocalLoadingFail([final String message]) =
-      _$LocalLoadingFailImpl;
+abstract class DisciplineLocalLoadingFail implements DisciplineState {
+  const factory DisciplineLocalLoadingFail([final String message]) =
+      _$DisciplineLocalLoadingFailImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$LocalLoadingFailImplCopyWith<_$LocalLoadingFailImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$DisciplineLocalLoadingFailImplCopyWith<_$DisciplineLocalLoadingFailImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LocalLoadingSuccessImplCopyWith<$Res> {
-  factory _$$LocalLoadingSuccessImplCopyWith(_$LocalLoadingSuccessImpl value,
-          $Res Function(_$LocalLoadingSuccessImpl) then) =
-      __$$LocalLoadingSuccessImplCopyWithImpl<$Res>;
+abstract class _$$DisciplineLocalLoadingSuccessImplCopyWith<$Res> {
+  factory _$$DisciplineLocalLoadingSuccessImplCopyWith(
+          _$DisciplineLocalLoadingSuccessImpl value,
+          $Res Function(_$DisciplineLocalLoadingSuccessImpl) then) =
+      __$$DisciplineLocalLoadingSuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<DisciplineModel> disciplineList});
 }
 
 /// @nodoc
-class __$$LocalLoadingSuccessImplCopyWithImpl<$Res>
-    extends _$DisciplineStateCopyWithImpl<$Res, _$LocalLoadingSuccessImpl>
-    implements _$$LocalLoadingSuccessImplCopyWith<$Res> {
-  __$$LocalLoadingSuccessImplCopyWithImpl(_$LocalLoadingSuccessImpl _value,
-      $Res Function(_$LocalLoadingSuccessImpl) _then)
+class __$$DisciplineLocalLoadingSuccessImplCopyWithImpl<$Res>
+    extends _$DisciplineStateCopyWithImpl<$Res,
+        _$DisciplineLocalLoadingSuccessImpl>
+    implements _$$DisciplineLocalLoadingSuccessImplCopyWith<$Res> {
+  __$$DisciplineLocalLoadingSuccessImplCopyWithImpl(
+      _$DisciplineLocalLoadingSuccessImpl _value,
+      $Res Function(_$DisciplineLocalLoadingSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -709,7 +728,7 @@ class __$$LocalLoadingSuccessImplCopyWithImpl<$Res>
   $Res call({
     Object? disciplineList = null,
   }) {
-    return _then(_$LocalLoadingSuccessImpl(
+    return _then(_$DisciplineLocalLoadingSuccessImpl(
       null == disciplineList
           ? _value._disciplineList
           : disciplineList // ignore: cast_nullable_to_non_nullable
@@ -720,8 +739,10 @@ class __$$LocalLoadingSuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
-  const _$LocalLoadingSuccessImpl(final List<DisciplineModel> disciplineList)
+class _$DisciplineLocalLoadingSuccessImpl
+    implements DisciplineLocalLoadingSuccess {
+  const _$DisciplineLocalLoadingSuccessImpl(
+      final List<DisciplineModel> disciplineList)
       : _disciplineList = disciplineList;
 
   final List<DisciplineModel> _disciplineList;
@@ -741,7 +762,7 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LocalLoadingSuccessImpl &&
+            other is _$DisciplineLocalLoadingSuccessImpl &&
             const DeepCollectionEquality()
                 .equals(other._disciplineList, _disciplineList));
   }
@@ -753,9 +774,10 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LocalLoadingSuccessImplCopyWith<_$LocalLoadingSuccessImpl> get copyWith =>
-      __$$LocalLoadingSuccessImplCopyWithImpl<_$LocalLoadingSuccessImpl>(
-          this, _$identity);
+  _$$DisciplineLocalLoadingSuccessImplCopyWith<
+          _$DisciplineLocalLoadingSuccessImpl>
+      get copyWith => __$$DisciplineLocalLoadingSuccessImplCopyWithImpl<
+          _$DisciplineLocalLoadingSuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -802,11 +824,13 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Fail value) fail,
-    required TResult Function(_LocalLoadingFail value) localLoadingFail,
-    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
+    required TResult Function(DisciplineInitial value) initial,
+    required TResult Function(DisciplineSuccess value) success,
+    required TResult Function(DisciplineFail value) fail,
+    required TResult Function(DisciplineLocalLoadingFail value)
+        localLoadingFail,
+    required TResult Function(DisciplineLocalLoadingSuccess value)
+        localLoadingSuccess,
   }) {
     return localLoadingSuccess(this);
   }
@@ -814,11 +838,11 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Fail value)? fail,
-    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult? Function(DisciplineInitial value)? initial,
+    TResult? Function(DisciplineSuccess value)? success,
+    TResult? Function(DisciplineFail value)? fail,
+    TResult? Function(DisciplineLocalLoadingFail value)? localLoadingFail,
+    TResult? Function(DisciplineLocalLoadingSuccess value)? localLoadingSuccess,
   }) {
     return localLoadingSuccess?.call(this);
   }
@@ -826,11 +850,11 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Success value)? success,
-    TResult Function(_Fail value)? fail,
-    TResult Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult Function(DisciplineInitial value)? initial,
+    TResult Function(DisciplineSuccess value)? success,
+    TResult Function(DisciplineFail value)? fail,
+    TResult Function(DisciplineLocalLoadingFail value)? localLoadingFail,
+    TResult Function(DisciplineLocalLoadingSuccess value)? localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (localLoadingSuccess != null) {
@@ -840,12 +864,14 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
   }
 }
 
-abstract class _LocalLoadingSuccess implements DisciplineState {
-  const factory _LocalLoadingSuccess(
-      final List<DisciplineModel> disciplineList) = _$LocalLoadingSuccessImpl;
+abstract class DisciplineLocalLoadingSuccess implements DisciplineState {
+  const factory DisciplineLocalLoadingSuccess(
+          final List<DisciplineModel> disciplineList) =
+      _$DisciplineLocalLoadingSuccessImpl;
 
   List<DisciplineModel> get disciplineList;
   @JsonKey(ignore: true)
-  _$$LocalLoadingSuccessImplCopyWith<_$LocalLoadingSuccessImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$DisciplineLocalLoadingSuccessImplCopyWith<
+          _$DisciplineLocalLoadingSuccessImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

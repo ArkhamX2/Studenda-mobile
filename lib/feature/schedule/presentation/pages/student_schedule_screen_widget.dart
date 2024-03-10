@@ -7,36 +7,61 @@ import 'package:studenda_mobile_student/core/presentation/UI/studenda_loading_wi
 import 'package:studenda_mobile_student/core/presentation/label/studenda_default_label_widget.dart';
 import 'package:studenda_mobile_student/core/presentation/label/studenda_weighted_label_widget.dart';
 import 'package:studenda_mobile_student/core/utils/get_current_week_days.dart';
+import 'package:studenda_mobile_student/core/utils/map_subject_model_to_day_scehdule_list.dart';
 import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/main_group_selection_bloc/main_group_selector_bloc.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/subject_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/entities/day_schedule_entity.dart';
+import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/day_position/day_position_cubit.dart';
+import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/discipline/discipline_cubit.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/schedule_bloc.dart';
+import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/subject/subject_cubit.dart';
+import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/subject_position/subject_position_cubit.dart';
+import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/subject_type/subject_type_cubit.dart';
+import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/teacher/teacher_cubit.dart';
+import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/week_type/week_type_cubit.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/widgets/date_carousel_widget.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/widgets/group_selector_text_style.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/widgets/week_schedule_widget.dart';
 import 'package:studenda_mobile_student/injection_container.dart';
 
-class ScheduleScreenPage extends StatefulWidget {
-  const ScheduleScreenPage({super.key});
+class StudentScheduleScreenPage extends StatefulWidget {
+  const StudentScheduleScreenPage({super.key});
 
   @override
-  State<ScheduleScreenPage> createState() => _ScheduleScreenPageState();
+  State<StudentScheduleScreenPage> createState() =>
+      _StudentScheduleScreenPageState();
 }
 
-class _ScheduleScreenPageState extends State<ScheduleScreenPage> {
+class _StudentScheduleScreenPageState extends State<StudentScheduleScreenPage> {
   @override
   Widget build(BuildContext context) {
-    final groupSelectorBloc = context.watch<MainGroupSelectorBloc>();
-    return BlocProvider<ScheduleBloc>(
-      create: (context) {
-        sl<MainGroupSelectorBloc>()
-            .add(const MainGroupSelectorEvent.getGroup());
-        return sl<ScheduleBloc>()
-          ..add(
-            ScheduleEvent.loadLocal(
-              groupSelectorBloc.selectedGroup.id,
-            ),
-          );
-      },
+    context
+        .watch<MainGroupSelectorBloc>()
+        .add(const MainGroupSelectorEvent.getGroup());
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<DayPositionCubit>(
+          create: (context) => sl<DayPositionCubit>()..loadLocally(),
+        ),
+        BlocProvider<DisciplineCubit>(
+          create: (context) => sl<DisciplineCubit>(),
+        ),
+        BlocProvider<SubjectCubit>(
+          create: (context) => sl<SubjectCubit>(),
+        ),
+        BlocProvider<SubjectPositionCubit>(
+          create: (context) => sl<SubjectPositionCubit>()..loadLocally(),
+        ),
+        BlocProvider<SubjectTypeCubit>(
+          create: (context) => sl<SubjectTypeCubit>()..loadLocally(),
+        ),
+        BlocProvider<TeacherCubit>(
+          create: (context) => sl<TeacherCubit>(),
+        ),
+        BlocProvider<WeekTypeCubit>(
+          create: (context) => sl<WeekTypeCubit>()..loadLocally(),
+        ),
+      ],
       child: const Scaffold(
         backgroundColor: Color.fromARGB(255, 240, 241, 245),
         appBar: _ScheduleAppBarWidget(),
@@ -61,108 +86,125 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final scheduleBloc = context.watch<ScheduleBloc>();
     final groupSelectorBloc = context.watch<MainGroupSelectorBloc>();
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(14.0, 14.0, 14.0, 0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: StudendaWeightedLabelWidget(
-              text: scheduleBloc.currentWeekType!.name! == "name"
-                  ? ""
-                  : "${scheduleBloc.currentWeekType!.name!.toUpperCase()} НЕДЕЛЯ",
-              fontSize: 16,
-              weight: FontWeight.w500,
-            ),
-          ),
-          const SizedBox(height: 10),
-          _DateCarouselWrapperWidget(
-            globalKeys: keys,
-            scheduleBloc: scheduleBloc,
-            groupId: groupSelectorBloc.selectedGroup.id,
-          ),
-          const SizedBox(height: 10),
-          Expanded(
-            child: scheduleBloc.state.when(
-              initial: () => const Center(
-                child: StudendaLoadingWidget(),
-              ),
-              loading: () => const Center(
-                child: StudendaLoadingWidget(),
-              ),
-              localLoadingFail: (message) {
-                scheduleBloc.add(
-                  ScheduleEvent.load(
-                    groupSelectorBloc.selectedGroup.id,
-                  ),
-                );
-                return Center(
-                  child:
-                      StudendaDefaultLabelWidget(text: message, fontSize: 18),
-                );
-              },
-              fail: (message) {
-                return Center(
-                  child:
-                      StudendaDefaultLabelWidget(text: message, fontSize: 18),
-                );
-              },
-              localLoadingSuccess: (schedule) {
-                if (schedule.schedule.isEmpty) {
-                  scheduleBloc.add(
-                    ScheduleEvent.load(
-                      groupSelectorBloc.selectedGroup.id,
-                    ),
-                  );
-                }
-                return _ScheduleScrollWidget(
-                  schedule: schedule.schedule,
-                  globalKeys: keys,
-                  currentWeekDay: getCurrentWeekDay(),
-                  needHighlight:
-                      getCurrentWeekDaysWithMonth(scheduleBloc.datePointer).any(
-                    (element) =>
-                        element ==
-                        "${DateTime.now().day} ${monthNames[DateTime.now().month - 1]}",
-                  ),
-                );
-              },
-              success: (schedule) {
-                return Expanded(
-                  child: _ScheduleScrollWidget(
-                    schedule: schedule.schedule,
-                    globalKeys: keys,
-                    currentWeekDay: getCurrentWeekDay(),
-                    needHighlight:
-                        getCurrentWeekDays(scheduleBloc.datePointer).any(
-                      (element) => int.parse(element) == DateTime.now().day,
-                    ),
-                  ),
-                );
-              },
-            ),
-          ),
-        ],
+    final dayPositionCubit = context.watch<DayPositionCubit>();
+    final disciplineCubit = context.watch<DisciplineCubit>();
+    final subjectCubit = context.watch<SubjectCubit>();
+    final subjectPositionCubit = context.watch<SubjectPositionCubit>();
+    final subjectTypeCubit = context.watch<SubjectTypeCubit>();
+    final teacherCubit = context.watch<TeacherCubit>();
+    final weekTypeCubit = context.watch<WeekTypeCubit>()..getCurrent();
+
+    if (weekTypeCubit.state is CurrentWeekTypeSuccess) {
+      subjectCubit.loadLocally(
+        groupSelectorBloc.selectedGroup.id,
+        [weekTypeCubit.currentWeekType!],
+      );
+    }
+
+    if (subjectCubit.state is SubjectLocalLoadingFail) {
+      subjectCubit.load(
+        groupSelectorBloc.selectedGroup.id,
+        [weekTypeCubit.currentWeekType!],
+      );
+    }
+
+    return subjectCubit.state.when(
+      initial: () => const Center(
+        child: StudendaLoadingWidget(),
       ),
+      loading: () => const Center(
+        child: StudendaLoadingWidget(),
+      ),
+      localLoadingFail: (message) {
+        subjectCubit.load(
+          groupSelectorBloc.selectedGroup.id,
+          [weekTypeCubit.currentWeekType!],
+        );
+        return Center(
+          child: StudendaDefaultLabelWidget(text: message, fontSize: 18),
+        );
+      },
+      loadingFail: (message) => Center(
+        child: StudendaDefaultLabelWidget(text: message, fontSize: 18),
+      ),
+      localLoadingSuccess: (schedule) {
+        if (schedule.isEmpty) {
+          subjectCubit.load(
+            groupSelectorBloc.selectedGroup.id,
+            [weekTypeCubit.currentWeekType!],
+          );
+        }
+
+        disciplineCubit.loadLocally(_getDisciplineIds(schedule));
+        teacherCubit.loadLocally(_getTeacherIds(schedule));
+
+        if (disciplineCubit.state is DisciplineSuccess &&
+            teacherCubit.state is TeacherSuccess) {
+          return disciplineCubit.state.maybeWhen(
+            success: (disciplineList) => teacherCubit.state.maybeWhen(
+              success: (teacherList) => _ScheduleScrollWidget(
+                schedule: mapSubjectModelToStudentDayScheduleList(
+                  schedule,
+                  disciplineList,
+                  teacherList,
+                  dayPositionCubit.state.maybeWhen(
+                    success: (dayPositionList) => dayPositionList,
+                    orElse: () => [],
+                  ),
+                  subjectPositionCubit.state.maybeWhen(
+                    success: (subjectPositionList) => subjectPositionList,
+                    orElse: () => [],
+                  ),
+                  subjectTypeCubit.state.maybeWhen(
+                    success: (subjectTypeList) => subjectTypeList,
+                    orElse: () => [],
+                  ),
+                  [],
+                ),
+                globalKeys: keys,
+                currentWeekDay: getCurrentWeekDay(),
+                needHighlight:
+                    getCurrentWeekDaysWithMonth(weekTypeCubit.datePointer).any(
+                  (element) =>
+                      element ==
+                      "${DateTime.now().day} ${monthNames[DateTime.now().month - 1]}",
+                ),
+              ),
+              orElse: () => Container(),
+            ),
+            orElse: () => Container(),
+          );
+        } else {
+          return Container();
+        }
+      },
+      loadingSuccess: (subjectList) => Container(),
     );
   }
 }
 
+List<int> _getTeacherIds(List<SubjectModel> succededSubjectList) {
+  return succededSubjectList.map((e) => e.accountId ?? -1).toSet().toList();
+}
+
+List<int> _getDisciplineIds(List<SubjectModel> succededSubjectList) {
+  return succededSubjectList.map((e) => e.disciplineId ?? -1).toSet().toList();
+}
+
 class _DateCarouselWrapperWidget extends StatelessWidget {
   final List<GlobalObjectKey> globalKeys;
-  final ScheduleBloc scheduleBloc;
   final int groupId;
 
   const _DateCarouselWrapperWidget({
     required this.globalKeys,
-    required this.scheduleBloc,
     required this.groupId,
   });
 
   @override
   Widget build(BuildContext context) {
+    final weekTypeCubit = context.watch<WeekTypeCubit>();
+    final subjectCubit = context.watch<SubjectCubit>();
     return DateCarouselWidget(
       onDateTap: (int index) {
         final destination = globalKeys.where((key) => key.value == index);
@@ -176,9 +218,18 @@ class _DateCarouselWrapperWidget extends StatelessWidget {
           snackMessage(context, noLessonOnChosenDay);
         }
       },
-      onPrevTap: () =>
-          scheduleBloc.add(ScheduleEvent.subtractWeekType(groupId)),
-      onNextTap: () => scheduleBloc.add(ScheduleEvent.addWeekType(groupId)),
+      onPrevTap: () async {
+        await weekTypeCubit.subtractWeekType();
+        if (weekTypeCubit.state is CurrentWeekTypeSuccess) {
+          subjectCubit.loadLocally(groupId, [weekTypeCubit.currentWeekType!]);
+        }
+      },
+      onNextTap: () async {
+        await weekTypeCubit.addWeekType();
+        if (weekTypeCubit.state is CurrentWeekTypeSuccess) {
+          subjectCubit.loadLocally(groupId, [weekTypeCubit.currentWeekType!]);
+        }
+      },
     );
   }
 }

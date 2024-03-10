@@ -50,29 +50,33 @@ mixin _$SubjectPositionState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Fail value) fail,
-    required TResult Function(_LocalLoadingFail value) localLoadingFail,
-    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
+    required TResult Function(SubjectPositionInitial value) initial,
+    required TResult Function(SubjectPositionSuccess value) success,
+    required TResult Function(SubjectPositionFail value) fail,
+    required TResult Function(SubjectPositionLocalLoadingFail value)
+        localLoadingFail,
+    required TResult Function(SubjectPositionLocalLoadingSuccess value)
+        localLoadingSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Fail value)? fail,
-    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult? Function(SubjectPositionInitial value)? initial,
+    TResult? Function(SubjectPositionSuccess value)? success,
+    TResult? Function(SubjectPositionFail value)? fail,
+    TResult? Function(SubjectPositionLocalLoadingFail value)? localLoadingFail,
+    TResult? Function(SubjectPositionLocalLoadingSuccess value)?
+        localLoadingSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Success value)? success,
-    TResult Function(_Fail value)? fail,
-    TResult Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult Function(SubjectPositionInitial value)? initial,
+    TResult Function(SubjectPositionSuccess value)? success,
+    TResult Function(SubjectPositionFail value)? fail,
+    TResult Function(SubjectPositionLocalLoadingFail value)? localLoadingFail,
+    TResult Function(SubjectPositionLocalLoadingSuccess value)?
+        localLoadingSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -98,25 +102,28 @@ class _$SubjectPositionStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
+abstract class _$$SubjectPositionInitialImplCopyWith<$Res> {
+  factory _$$SubjectPositionInitialImplCopyWith(
+          _$SubjectPositionInitialImpl value,
+          $Res Function(_$SubjectPositionInitialImpl) then) =
+      __$$SubjectPositionInitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$SubjectPositionStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+class __$$SubjectPositionInitialImplCopyWithImpl<$Res>
+    extends _$SubjectPositionStateCopyWithImpl<$Res,
+        _$SubjectPositionInitialImpl>
+    implements _$$SubjectPositionInitialImplCopyWith<$Res> {
+  __$$SubjectPositionInitialImplCopyWithImpl(
+      _$SubjectPositionInitialImpl _value,
+      $Res Function(_$SubjectPositionInitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
+class _$SubjectPositionInitialImpl implements SubjectPositionInitial {
+  const _$SubjectPositionInitialImpl();
 
   @override
   String toString() {
@@ -126,7 +133,8 @@ class _$InitialImpl implements _Initial {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$SubjectPositionInitialImpl);
   }
 
   @override
@@ -179,11 +187,13 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Fail value) fail,
-    required TResult Function(_LocalLoadingFail value) localLoadingFail,
-    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
+    required TResult Function(SubjectPositionInitial value) initial,
+    required TResult Function(SubjectPositionSuccess value) success,
+    required TResult Function(SubjectPositionFail value) fail,
+    required TResult Function(SubjectPositionLocalLoadingFail value)
+        localLoadingFail,
+    required TResult Function(SubjectPositionLocalLoadingSuccess value)
+        localLoadingSuccess,
   }) {
     return initial(this);
   }
@@ -191,11 +201,12 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Fail value)? fail,
-    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult? Function(SubjectPositionInitial value)? initial,
+    TResult? Function(SubjectPositionSuccess value)? success,
+    TResult? Function(SubjectPositionFail value)? fail,
+    TResult? Function(SubjectPositionLocalLoadingFail value)? localLoadingFail,
+    TResult? Function(SubjectPositionLocalLoadingSuccess value)?
+        localLoadingSuccess,
   }) {
     return initial?.call(this);
   }
@@ -203,11 +214,12 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Success value)? success,
-    TResult Function(_Fail value)? fail,
-    TResult Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult Function(SubjectPositionInitial value)? initial,
+    TResult Function(SubjectPositionSuccess value)? success,
+    TResult Function(SubjectPositionFail value)? fail,
+    TResult Function(SubjectPositionLocalLoadingFail value)? localLoadingFail,
+    TResult Function(SubjectPositionLocalLoadingSuccess value)?
+        localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -217,25 +229,28 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements SubjectPositionState {
-  const factory _Initial() = _$InitialImpl;
+abstract class SubjectPositionInitial implements SubjectPositionState {
+  const factory SubjectPositionInitial() = _$SubjectPositionInitialImpl;
 }
 
 /// @nodoc
-abstract class _$$SuccessImplCopyWith<$Res> {
-  factory _$$SuccessImplCopyWith(
-          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
-      __$$SuccessImplCopyWithImpl<$Res>;
+abstract class _$$SubjectPositionSuccessImplCopyWith<$Res> {
+  factory _$$SubjectPositionSuccessImplCopyWith(
+          _$SubjectPositionSuccessImpl value,
+          $Res Function(_$SubjectPositionSuccessImpl) then) =
+      __$$SubjectPositionSuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<SubjectPositionModel> subjectPositionList});
 }
 
 /// @nodoc
-class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$SubjectPositionStateCopyWithImpl<$Res, _$SuccessImpl>
-    implements _$$SuccessImplCopyWith<$Res> {
-  __$$SuccessImplCopyWithImpl(
-      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
+class __$$SubjectPositionSuccessImplCopyWithImpl<$Res>
+    extends _$SubjectPositionStateCopyWithImpl<$Res,
+        _$SubjectPositionSuccessImpl>
+    implements _$$SubjectPositionSuccessImplCopyWith<$Res> {
+  __$$SubjectPositionSuccessImplCopyWithImpl(
+      _$SubjectPositionSuccessImpl _value,
+      $Res Function(_$SubjectPositionSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -243,7 +258,7 @@ class __$$SuccessImplCopyWithImpl<$Res>
   $Res call({
     Object? subjectPositionList = null,
   }) {
-    return _then(_$SuccessImpl(
+    return _then(_$SubjectPositionSuccessImpl(
       null == subjectPositionList
           ? _value._subjectPositionList
           : subjectPositionList // ignore: cast_nullable_to_non_nullable
@@ -254,8 +269,9 @@ class __$$SuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(final List<SubjectPositionModel> subjectPositionList)
+class _$SubjectPositionSuccessImpl implements SubjectPositionSuccess {
+  const _$SubjectPositionSuccessImpl(
+      final List<SubjectPositionModel> subjectPositionList)
       : _subjectPositionList = subjectPositionList;
 
   final List<SubjectPositionModel> _subjectPositionList;
@@ -276,7 +292,7 @@ class _$SuccessImpl implements _Success {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SuccessImpl &&
+            other is _$SubjectPositionSuccessImpl &&
             const DeepCollectionEquality()
                 .equals(other._subjectPositionList, _subjectPositionList));
   }
@@ -288,8 +304,9 @@ class _$SuccessImpl implements _Success {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
+  _$$SubjectPositionSuccessImplCopyWith<_$SubjectPositionSuccessImpl>
+      get copyWith => __$$SubjectPositionSuccessImplCopyWithImpl<
+          _$SubjectPositionSuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -338,11 +355,13 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Fail value) fail,
-    required TResult Function(_LocalLoadingFail value) localLoadingFail,
-    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
+    required TResult Function(SubjectPositionInitial value) initial,
+    required TResult Function(SubjectPositionSuccess value) success,
+    required TResult Function(SubjectPositionFail value) fail,
+    required TResult Function(SubjectPositionLocalLoadingFail value)
+        localLoadingFail,
+    required TResult Function(SubjectPositionLocalLoadingSuccess value)
+        localLoadingSuccess,
   }) {
     return success(this);
   }
@@ -350,11 +369,12 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Fail value)? fail,
-    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult? Function(SubjectPositionInitial value)? initial,
+    TResult? Function(SubjectPositionSuccess value)? success,
+    TResult? Function(SubjectPositionFail value)? fail,
+    TResult? Function(SubjectPositionLocalLoadingFail value)? localLoadingFail,
+    TResult? Function(SubjectPositionLocalLoadingSuccess value)?
+        localLoadingSuccess,
   }) {
     return success?.call(this);
   }
@@ -362,11 +382,12 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Success value)? success,
-    TResult Function(_Fail value)? fail,
-    TResult Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult Function(SubjectPositionInitial value)? initial,
+    TResult Function(SubjectPositionSuccess value)? success,
+    TResult Function(SubjectPositionFail value)? fail,
+    TResult Function(SubjectPositionLocalLoadingFail value)? localLoadingFail,
+    TResult Function(SubjectPositionLocalLoadingSuccess value)?
+        localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -376,30 +397,32 @@ class _$SuccessImpl implements _Success {
   }
 }
 
-abstract class _Success implements SubjectPositionState {
-  const factory _Success(final List<SubjectPositionModel> subjectPositionList) =
-      _$SuccessImpl;
+abstract class SubjectPositionSuccess implements SubjectPositionState {
+  const factory SubjectPositionSuccess(
+          final List<SubjectPositionModel> subjectPositionList) =
+      _$SubjectPositionSuccessImpl;
 
   List<SubjectPositionModel> get subjectPositionList;
   @JsonKey(ignore: true)
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SubjectPositionSuccessImplCopyWith<_$SubjectPositionSuccessImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$FailImplCopyWith<$Res> {
-  factory _$$FailImplCopyWith(
-          _$FailImpl value, $Res Function(_$FailImpl) then) =
-      __$$FailImplCopyWithImpl<$Res>;
+abstract class _$$SubjectPositionFailImplCopyWith<$Res> {
+  factory _$$SubjectPositionFailImplCopyWith(_$SubjectPositionFailImpl value,
+          $Res Function(_$SubjectPositionFailImpl) then) =
+      __$$SubjectPositionFailImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$FailImplCopyWithImpl<$Res>
-    extends _$SubjectPositionStateCopyWithImpl<$Res, _$FailImpl>
-    implements _$$FailImplCopyWith<$Res> {
-  __$$FailImplCopyWithImpl(_$FailImpl _value, $Res Function(_$FailImpl) _then)
+class __$$SubjectPositionFailImplCopyWithImpl<$Res>
+    extends _$SubjectPositionStateCopyWithImpl<$Res, _$SubjectPositionFailImpl>
+    implements _$$SubjectPositionFailImplCopyWith<$Res> {
+  __$$SubjectPositionFailImplCopyWithImpl(_$SubjectPositionFailImpl _value,
+      $Res Function(_$SubjectPositionFailImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -407,7 +430,7 @@ class __$$FailImplCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$FailImpl(
+    return _then(_$SubjectPositionFailImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -418,8 +441,8 @@ class __$$FailImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FailImpl implements _Fail {
-  const _$FailImpl([this.message = "Unknown error"]);
+class _$SubjectPositionFailImpl implements SubjectPositionFail {
+  const _$SubjectPositionFailImpl([this.message = "Unknown error"]);
 
   @override
   @JsonKey()
@@ -434,7 +457,7 @@ class _$FailImpl implements _Fail {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FailImpl &&
+            other is _$SubjectPositionFailImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -444,8 +467,9 @@ class _$FailImpl implements _Fail {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$FailImplCopyWith<_$FailImpl> get copyWith =>
-      __$$FailImplCopyWithImpl<_$FailImpl>(this, _$identity);
+  _$$SubjectPositionFailImplCopyWith<_$SubjectPositionFailImpl> get copyWith =>
+      __$$SubjectPositionFailImplCopyWithImpl<_$SubjectPositionFailImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -494,11 +518,13 @@ class _$FailImpl implements _Fail {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Fail value) fail,
-    required TResult Function(_LocalLoadingFail value) localLoadingFail,
-    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
+    required TResult Function(SubjectPositionInitial value) initial,
+    required TResult Function(SubjectPositionSuccess value) success,
+    required TResult Function(SubjectPositionFail value) fail,
+    required TResult Function(SubjectPositionLocalLoadingFail value)
+        localLoadingFail,
+    required TResult Function(SubjectPositionLocalLoadingSuccess value)
+        localLoadingSuccess,
   }) {
     return fail(this);
   }
@@ -506,11 +532,12 @@ class _$FailImpl implements _Fail {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Fail value)? fail,
-    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult? Function(SubjectPositionInitial value)? initial,
+    TResult? Function(SubjectPositionSuccess value)? success,
+    TResult? Function(SubjectPositionFail value)? fail,
+    TResult? Function(SubjectPositionLocalLoadingFail value)? localLoadingFail,
+    TResult? Function(SubjectPositionLocalLoadingSuccess value)?
+        localLoadingSuccess,
   }) {
     return fail?.call(this);
   }
@@ -518,11 +545,12 @@ class _$FailImpl implements _Fail {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Success value)? success,
-    TResult Function(_Fail value)? fail,
-    TResult Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult Function(SubjectPositionInitial value)? initial,
+    TResult Function(SubjectPositionSuccess value)? success,
+    TResult Function(SubjectPositionFail value)? fail,
+    TResult Function(SubjectPositionLocalLoadingFail value)? localLoadingFail,
+    TResult Function(SubjectPositionLocalLoadingSuccess value)?
+        localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (fail != null) {
@@ -532,30 +560,34 @@ class _$FailImpl implements _Fail {
   }
 }
 
-abstract class _Fail implements SubjectPositionState {
-  const factory _Fail([final String message]) = _$FailImpl;
+abstract class SubjectPositionFail implements SubjectPositionState {
+  const factory SubjectPositionFail([final String message]) =
+      _$SubjectPositionFailImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$FailImplCopyWith<_$FailImpl> get copyWith =>
+  _$$SubjectPositionFailImplCopyWith<_$SubjectPositionFailImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LocalLoadingFailImplCopyWith<$Res> {
-  factory _$$LocalLoadingFailImplCopyWith(_$LocalLoadingFailImpl value,
-          $Res Function(_$LocalLoadingFailImpl) then) =
-      __$$LocalLoadingFailImplCopyWithImpl<$Res>;
+abstract class _$$SubjectPositionLocalLoadingFailImplCopyWith<$Res> {
+  factory _$$SubjectPositionLocalLoadingFailImplCopyWith(
+          _$SubjectPositionLocalLoadingFailImpl value,
+          $Res Function(_$SubjectPositionLocalLoadingFailImpl) then) =
+      __$$SubjectPositionLocalLoadingFailImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$LocalLoadingFailImplCopyWithImpl<$Res>
-    extends _$SubjectPositionStateCopyWithImpl<$Res, _$LocalLoadingFailImpl>
-    implements _$$LocalLoadingFailImplCopyWith<$Res> {
-  __$$LocalLoadingFailImplCopyWithImpl(_$LocalLoadingFailImpl _value,
-      $Res Function(_$LocalLoadingFailImpl) _then)
+class __$$SubjectPositionLocalLoadingFailImplCopyWithImpl<$Res>
+    extends _$SubjectPositionStateCopyWithImpl<$Res,
+        _$SubjectPositionLocalLoadingFailImpl>
+    implements _$$SubjectPositionLocalLoadingFailImplCopyWith<$Res> {
+  __$$SubjectPositionLocalLoadingFailImplCopyWithImpl(
+      _$SubjectPositionLocalLoadingFailImpl _value,
+      $Res Function(_$SubjectPositionLocalLoadingFailImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -563,7 +595,7 @@ class __$$LocalLoadingFailImplCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$LocalLoadingFailImpl(
+    return _then(_$SubjectPositionLocalLoadingFailImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -574,8 +606,9 @@ class __$$LocalLoadingFailImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LocalLoadingFailImpl implements _LocalLoadingFail {
-  const _$LocalLoadingFailImpl([this.message = "Unknown error"]);
+class _$SubjectPositionLocalLoadingFailImpl
+    implements SubjectPositionLocalLoadingFail {
+  const _$SubjectPositionLocalLoadingFailImpl([this.message = "Unknown error"]);
 
   @override
   @JsonKey()
@@ -590,7 +623,7 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LocalLoadingFailImpl &&
+            other is _$SubjectPositionLocalLoadingFailImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -600,9 +633,10 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LocalLoadingFailImplCopyWith<_$LocalLoadingFailImpl> get copyWith =>
-      __$$LocalLoadingFailImplCopyWithImpl<_$LocalLoadingFailImpl>(
-          this, _$identity);
+  _$$SubjectPositionLocalLoadingFailImplCopyWith<
+          _$SubjectPositionLocalLoadingFailImpl>
+      get copyWith => __$$SubjectPositionLocalLoadingFailImplCopyWithImpl<
+          _$SubjectPositionLocalLoadingFailImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -651,11 +685,13 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Fail value) fail,
-    required TResult Function(_LocalLoadingFail value) localLoadingFail,
-    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
+    required TResult Function(SubjectPositionInitial value) initial,
+    required TResult Function(SubjectPositionSuccess value) success,
+    required TResult Function(SubjectPositionFail value) fail,
+    required TResult Function(SubjectPositionLocalLoadingFail value)
+        localLoadingFail,
+    required TResult Function(SubjectPositionLocalLoadingSuccess value)
+        localLoadingSuccess,
   }) {
     return localLoadingFail(this);
   }
@@ -663,11 +699,12 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Fail value)? fail,
-    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult? Function(SubjectPositionInitial value)? initial,
+    TResult? Function(SubjectPositionSuccess value)? success,
+    TResult? Function(SubjectPositionFail value)? fail,
+    TResult? Function(SubjectPositionLocalLoadingFail value)? localLoadingFail,
+    TResult? Function(SubjectPositionLocalLoadingSuccess value)?
+        localLoadingSuccess,
   }) {
     return localLoadingFail?.call(this);
   }
@@ -675,11 +712,12 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Success value)? success,
-    TResult Function(_Fail value)? fail,
-    TResult Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult Function(SubjectPositionInitial value)? initial,
+    TResult Function(SubjectPositionSuccess value)? success,
+    TResult Function(SubjectPositionFail value)? fail,
+    TResult Function(SubjectPositionLocalLoadingFail value)? localLoadingFail,
+    TResult Function(SubjectPositionLocalLoadingSuccess value)?
+        localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (localLoadingFail != null) {
@@ -689,31 +727,35 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
   }
 }
 
-abstract class _LocalLoadingFail implements SubjectPositionState {
-  const factory _LocalLoadingFail([final String message]) =
-      _$LocalLoadingFailImpl;
+abstract class SubjectPositionLocalLoadingFail implements SubjectPositionState {
+  const factory SubjectPositionLocalLoadingFail([final String message]) =
+      _$SubjectPositionLocalLoadingFailImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$LocalLoadingFailImplCopyWith<_$LocalLoadingFailImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SubjectPositionLocalLoadingFailImplCopyWith<
+          _$SubjectPositionLocalLoadingFailImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LocalLoadingSuccessImplCopyWith<$Res> {
-  factory _$$LocalLoadingSuccessImplCopyWith(_$LocalLoadingSuccessImpl value,
-          $Res Function(_$LocalLoadingSuccessImpl) then) =
-      __$$LocalLoadingSuccessImplCopyWithImpl<$Res>;
+abstract class _$$SubjectPositionLocalLoadingSuccessImplCopyWith<$Res> {
+  factory _$$SubjectPositionLocalLoadingSuccessImplCopyWith(
+          _$SubjectPositionLocalLoadingSuccessImpl value,
+          $Res Function(_$SubjectPositionLocalLoadingSuccessImpl) then) =
+      __$$SubjectPositionLocalLoadingSuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<SubjectPositionModel> subjectPositionList});
 }
 
 /// @nodoc
-class __$$LocalLoadingSuccessImplCopyWithImpl<$Res>
-    extends _$SubjectPositionStateCopyWithImpl<$Res, _$LocalLoadingSuccessImpl>
-    implements _$$LocalLoadingSuccessImplCopyWith<$Res> {
-  __$$LocalLoadingSuccessImplCopyWithImpl(_$LocalLoadingSuccessImpl _value,
-      $Res Function(_$LocalLoadingSuccessImpl) _then)
+class __$$SubjectPositionLocalLoadingSuccessImplCopyWithImpl<$Res>
+    extends _$SubjectPositionStateCopyWithImpl<$Res,
+        _$SubjectPositionLocalLoadingSuccessImpl>
+    implements _$$SubjectPositionLocalLoadingSuccessImplCopyWith<$Res> {
+  __$$SubjectPositionLocalLoadingSuccessImplCopyWithImpl(
+      _$SubjectPositionLocalLoadingSuccessImpl _value,
+      $Res Function(_$SubjectPositionLocalLoadingSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -721,7 +763,7 @@ class __$$LocalLoadingSuccessImplCopyWithImpl<$Res>
   $Res call({
     Object? subjectPositionList = null,
   }) {
-    return _then(_$LocalLoadingSuccessImpl(
+    return _then(_$SubjectPositionLocalLoadingSuccessImpl(
       null == subjectPositionList
           ? _value._subjectPositionList
           : subjectPositionList // ignore: cast_nullable_to_non_nullable
@@ -732,8 +774,9 @@ class __$$LocalLoadingSuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
-  const _$LocalLoadingSuccessImpl(
+class _$SubjectPositionLocalLoadingSuccessImpl
+    implements SubjectPositionLocalLoadingSuccess {
+  const _$SubjectPositionLocalLoadingSuccessImpl(
       final List<SubjectPositionModel> subjectPositionList)
       : _subjectPositionList = subjectPositionList;
 
@@ -755,7 +798,7 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LocalLoadingSuccessImpl &&
+            other is _$SubjectPositionLocalLoadingSuccessImpl &&
             const DeepCollectionEquality()
                 .equals(other._subjectPositionList, _subjectPositionList));
   }
@@ -767,9 +810,10 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LocalLoadingSuccessImplCopyWith<_$LocalLoadingSuccessImpl> get copyWith =>
-      __$$LocalLoadingSuccessImplCopyWithImpl<_$LocalLoadingSuccessImpl>(
-          this, _$identity);
+  _$$SubjectPositionLocalLoadingSuccessImplCopyWith<
+          _$SubjectPositionLocalLoadingSuccessImpl>
+      get copyWith => __$$SubjectPositionLocalLoadingSuccessImplCopyWithImpl<
+          _$SubjectPositionLocalLoadingSuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -818,11 +862,13 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Fail value) fail,
-    required TResult Function(_LocalLoadingFail value) localLoadingFail,
-    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
+    required TResult Function(SubjectPositionInitial value) initial,
+    required TResult Function(SubjectPositionSuccess value) success,
+    required TResult Function(SubjectPositionFail value) fail,
+    required TResult Function(SubjectPositionLocalLoadingFail value)
+        localLoadingFail,
+    required TResult Function(SubjectPositionLocalLoadingSuccess value)
+        localLoadingSuccess,
   }) {
     return localLoadingSuccess(this);
   }
@@ -830,11 +876,12 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Fail value)? fail,
-    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult? Function(SubjectPositionInitial value)? initial,
+    TResult? Function(SubjectPositionSuccess value)? success,
+    TResult? Function(SubjectPositionFail value)? fail,
+    TResult? Function(SubjectPositionLocalLoadingFail value)? localLoadingFail,
+    TResult? Function(SubjectPositionLocalLoadingSuccess value)?
+        localLoadingSuccess,
   }) {
     return localLoadingSuccess?.call(this);
   }
@@ -842,11 +889,12 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Success value)? success,
-    TResult Function(_Fail value)? fail,
-    TResult Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult Function(SubjectPositionInitial value)? initial,
+    TResult Function(SubjectPositionSuccess value)? success,
+    TResult Function(SubjectPositionFail value)? fail,
+    TResult Function(SubjectPositionLocalLoadingFail value)? localLoadingFail,
+    TResult Function(SubjectPositionLocalLoadingSuccess value)?
+        localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (localLoadingSuccess != null) {
@@ -856,13 +904,15 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
   }
 }
 
-abstract class _LocalLoadingSuccess implements SubjectPositionState {
-  const factory _LocalLoadingSuccess(
+abstract class SubjectPositionLocalLoadingSuccess
+    implements SubjectPositionState {
+  const factory SubjectPositionLocalLoadingSuccess(
           final List<SubjectPositionModel> subjectPositionList) =
-      _$LocalLoadingSuccessImpl;
+      _$SubjectPositionLocalLoadingSuccessImpl;
 
   List<SubjectPositionModel> get subjectPositionList;
   @JsonKey(ignore: true)
-  _$$LocalLoadingSuccessImplCopyWith<_$LocalLoadingSuccessImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SubjectPositionLocalLoadingSuccessImplCopyWith<
+          _$SubjectPositionLocalLoadingSuccessImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

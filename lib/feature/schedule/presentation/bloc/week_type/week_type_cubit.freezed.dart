@@ -25,6 +25,8 @@ mixin _$WeekTypeState {
     required TResult Function(String message) localLoadFail,
     required TResult Function(List<WeekTypeEntity> weekTypeList)
         localLoadSuccess,
+    required TResult Function(WeekTypeEntity weekType) currentWeekTypeSuccess,
+    required TResult Function(String message) currentWeekTypeFail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,8 @@ mixin _$WeekTypeState {
     TResult? Function(String message)? fail,
     TResult? Function(String message)? localLoadFail,
     TResult? Function(List<WeekTypeEntity> weekTypeList)? localLoadSuccess,
+    TResult? Function(WeekTypeEntity weekType)? currentWeekTypeSuccess,
+    TResult? Function(String message)? currentWeekTypeFail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -45,37 +49,46 @@ mixin _$WeekTypeState {
     TResult Function(String message)? fail,
     TResult Function(String message)? localLoadFail,
     TResult Function(List<WeekTypeEntity> weekTypeList)? localLoadSuccess,
+    TResult Function(WeekTypeEntity weekType)? currentWeekTypeSuccess,
+    TResult Function(String message)? currentWeekTypeFail,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_LoadSuccess value) loadSuccess,
-    required TResult Function(_Fail value) fail,
-    required TResult Function(_LocalLoadFail value) localLoadFail,
-    required TResult Function(_LocalLoadSuccess value) localLoadSuccess,
+    required TResult Function(WeekTypeInitial value) initial,
+    required TResult Function(WeekTypeLoading value) loading,
+    required TResult Function(WeekTypeLoadSuccess value) loadSuccess,
+    required TResult Function(WeekTypeFail value) fail,
+    required TResult Function(WeekTypeLocalLoadFail value) localLoadFail,
+    required TResult Function(WeekTypeLocalLoadSuccess value) localLoadSuccess,
+    required TResult Function(CurrentWeekTypeSuccess value)
+        currentWeekTypeSuccess,
+    required TResult Function(CurrentWeekTypeFail value) currentWeekTypeFail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_LoadSuccess value)? loadSuccess,
-    TResult? Function(_Fail value)? fail,
-    TResult? Function(_LocalLoadFail value)? localLoadFail,
-    TResult? Function(_LocalLoadSuccess value)? localLoadSuccess,
+    TResult? Function(WeekTypeInitial value)? initial,
+    TResult? Function(WeekTypeLoading value)? loading,
+    TResult? Function(WeekTypeLoadSuccess value)? loadSuccess,
+    TResult? Function(WeekTypeFail value)? fail,
+    TResult? Function(WeekTypeLocalLoadFail value)? localLoadFail,
+    TResult? Function(WeekTypeLocalLoadSuccess value)? localLoadSuccess,
+    TResult? Function(CurrentWeekTypeSuccess value)? currentWeekTypeSuccess,
+    TResult? Function(CurrentWeekTypeFail value)? currentWeekTypeFail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_LoadSuccess value)? loadSuccess,
-    TResult Function(_Fail value)? fail,
-    TResult Function(_LocalLoadFail value)? localLoadFail,
-    TResult Function(_LocalLoadSuccess value)? localLoadSuccess,
+    TResult Function(WeekTypeInitial value)? initial,
+    TResult Function(WeekTypeLoading value)? loading,
+    TResult Function(WeekTypeLoadSuccess value)? loadSuccess,
+    TResult Function(WeekTypeFail value)? fail,
+    TResult Function(WeekTypeLocalLoadFail value)? localLoadFail,
+    TResult Function(WeekTypeLocalLoadSuccess value)? localLoadSuccess,
+    TResult Function(CurrentWeekTypeSuccess value)? currentWeekTypeSuccess,
+    TResult Function(CurrentWeekTypeFail value)? currentWeekTypeFail,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -100,25 +113,25 @@ class _$WeekTypeStateCopyWithImpl<$Res, $Val extends WeekTypeState>
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
+abstract class _$$WeekTypeInitialImplCopyWith<$Res> {
+  factory _$$WeekTypeInitialImplCopyWith(_$WeekTypeInitialImpl value,
+          $Res Function(_$WeekTypeInitialImpl) then) =
+      __$$WeekTypeInitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$WeekTypeStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+class __$$WeekTypeInitialImplCopyWithImpl<$Res>
+    extends _$WeekTypeStateCopyWithImpl<$Res, _$WeekTypeInitialImpl>
+    implements _$$WeekTypeInitialImplCopyWith<$Res> {
+  __$$WeekTypeInitialImplCopyWithImpl(
+      _$WeekTypeInitialImpl _value, $Res Function(_$WeekTypeInitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
+class _$WeekTypeInitialImpl implements WeekTypeInitial {
+  const _$WeekTypeInitialImpl();
 
   @override
   String toString() {
@@ -128,7 +141,7 @@ class _$InitialImpl implements _Initial {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType && other is _$WeekTypeInitialImpl);
   }
 
   @override
@@ -144,6 +157,8 @@ class _$InitialImpl implements _Initial {
     required TResult Function(String message) localLoadFail,
     required TResult Function(List<WeekTypeEntity> weekTypeList)
         localLoadSuccess,
+    required TResult Function(WeekTypeEntity weekType) currentWeekTypeSuccess,
+    required TResult Function(String message) currentWeekTypeFail,
   }) {
     return initial();
   }
@@ -157,6 +172,8 @@ class _$InitialImpl implements _Initial {
     TResult? Function(String message)? fail,
     TResult? Function(String message)? localLoadFail,
     TResult? Function(List<WeekTypeEntity> weekTypeList)? localLoadSuccess,
+    TResult? Function(WeekTypeEntity weekType)? currentWeekTypeSuccess,
+    TResult? Function(String message)? currentWeekTypeFail,
   }) {
     return initial?.call();
   }
@@ -170,6 +187,8 @@ class _$InitialImpl implements _Initial {
     TResult Function(String message)? fail,
     TResult Function(String message)? localLoadFail,
     TResult Function(List<WeekTypeEntity> weekTypeList)? localLoadSuccess,
+    TResult Function(WeekTypeEntity weekType)? currentWeekTypeSuccess,
+    TResult Function(String message)? currentWeekTypeFail,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -181,12 +200,15 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_LoadSuccess value) loadSuccess,
-    required TResult Function(_Fail value) fail,
-    required TResult Function(_LocalLoadFail value) localLoadFail,
-    required TResult Function(_LocalLoadSuccess value) localLoadSuccess,
+    required TResult Function(WeekTypeInitial value) initial,
+    required TResult Function(WeekTypeLoading value) loading,
+    required TResult Function(WeekTypeLoadSuccess value) loadSuccess,
+    required TResult Function(WeekTypeFail value) fail,
+    required TResult Function(WeekTypeLocalLoadFail value) localLoadFail,
+    required TResult Function(WeekTypeLocalLoadSuccess value) localLoadSuccess,
+    required TResult Function(CurrentWeekTypeSuccess value)
+        currentWeekTypeSuccess,
+    required TResult Function(CurrentWeekTypeFail value) currentWeekTypeFail,
   }) {
     return initial(this);
   }
@@ -194,12 +216,14 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_LoadSuccess value)? loadSuccess,
-    TResult? Function(_Fail value)? fail,
-    TResult? Function(_LocalLoadFail value)? localLoadFail,
-    TResult? Function(_LocalLoadSuccess value)? localLoadSuccess,
+    TResult? Function(WeekTypeInitial value)? initial,
+    TResult? Function(WeekTypeLoading value)? loading,
+    TResult? Function(WeekTypeLoadSuccess value)? loadSuccess,
+    TResult? Function(WeekTypeFail value)? fail,
+    TResult? Function(WeekTypeLocalLoadFail value)? localLoadFail,
+    TResult? Function(WeekTypeLocalLoadSuccess value)? localLoadSuccess,
+    TResult? Function(CurrentWeekTypeSuccess value)? currentWeekTypeSuccess,
+    TResult? Function(CurrentWeekTypeFail value)? currentWeekTypeFail,
   }) {
     return initial?.call(this);
   }
@@ -207,12 +231,14 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_LoadSuccess value)? loadSuccess,
-    TResult Function(_Fail value)? fail,
-    TResult Function(_LocalLoadFail value)? localLoadFail,
-    TResult Function(_LocalLoadSuccess value)? localLoadSuccess,
+    TResult Function(WeekTypeInitial value)? initial,
+    TResult Function(WeekTypeLoading value)? loading,
+    TResult Function(WeekTypeLoadSuccess value)? loadSuccess,
+    TResult Function(WeekTypeFail value)? fail,
+    TResult Function(WeekTypeLocalLoadFail value)? localLoadFail,
+    TResult Function(WeekTypeLocalLoadSuccess value)? localLoadSuccess,
+    TResult Function(CurrentWeekTypeSuccess value)? currentWeekTypeSuccess,
+    TResult Function(CurrentWeekTypeFail value)? currentWeekTypeFail,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -222,30 +248,30 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements WeekTypeState {
-  const factory _Initial() = _$InitialImpl;
+abstract class WeekTypeInitial implements WeekTypeState {
+  const factory WeekTypeInitial() = _$WeekTypeInitialImpl;
 }
 
 /// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res> {
-  factory _$$LoadingImplCopyWith(
-          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
-      __$$LoadingImplCopyWithImpl<$Res>;
+abstract class _$$WeekTypeLoadingImplCopyWith<$Res> {
+  factory _$$WeekTypeLoadingImplCopyWith(_$WeekTypeLoadingImpl value,
+          $Res Function(_$WeekTypeLoadingImpl) then) =
+      __$$WeekTypeLoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$WeekTypeStateCopyWithImpl<$Res, _$LoadingImpl>
-    implements _$$LoadingImplCopyWith<$Res> {
-  __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+class __$$WeekTypeLoadingImplCopyWithImpl<$Res>
+    extends _$WeekTypeStateCopyWithImpl<$Res, _$WeekTypeLoadingImpl>
+    implements _$$WeekTypeLoadingImplCopyWith<$Res> {
+  __$$WeekTypeLoadingImplCopyWithImpl(
+      _$WeekTypeLoadingImpl _value, $Res Function(_$WeekTypeLoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$LoadingImpl implements _Loading {
-  const _$LoadingImpl();
+class _$WeekTypeLoadingImpl implements WeekTypeLoading {
+  const _$WeekTypeLoadingImpl();
 
   @override
   String toString() {
@@ -255,7 +281,7 @@ class _$LoadingImpl implements _Loading {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl);
+        (other.runtimeType == runtimeType && other is _$WeekTypeLoadingImpl);
   }
 
   @override
@@ -271,6 +297,8 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(String message) localLoadFail,
     required TResult Function(List<WeekTypeEntity> weekTypeList)
         localLoadSuccess,
+    required TResult Function(WeekTypeEntity weekType) currentWeekTypeSuccess,
+    required TResult Function(String message) currentWeekTypeFail,
   }) {
     return loading();
   }
@@ -284,6 +312,8 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(String message)? fail,
     TResult? Function(String message)? localLoadFail,
     TResult? Function(List<WeekTypeEntity> weekTypeList)? localLoadSuccess,
+    TResult? Function(WeekTypeEntity weekType)? currentWeekTypeSuccess,
+    TResult? Function(String message)? currentWeekTypeFail,
   }) {
     return loading?.call();
   }
@@ -297,6 +327,8 @@ class _$LoadingImpl implements _Loading {
     TResult Function(String message)? fail,
     TResult Function(String message)? localLoadFail,
     TResult Function(List<WeekTypeEntity> weekTypeList)? localLoadSuccess,
+    TResult Function(WeekTypeEntity weekType)? currentWeekTypeSuccess,
+    TResult Function(String message)? currentWeekTypeFail,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -308,12 +340,15 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_LoadSuccess value) loadSuccess,
-    required TResult Function(_Fail value) fail,
-    required TResult Function(_LocalLoadFail value) localLoadFail,
-    required TResult Function(_LocalLoadSuccess value) localLoadSuccess,
+    required TResult Function(WeekTypeInitial value) initial,
+    required TResult Function(WeekTypeLoading value) loading,
+    required TResult Function(WeekTypeLoadSuccess value) loadSuccess,
+    required TResult Function(WeekTypeFail value) fail,
+    required TResult Function(WeekTypeLocalLoadFail value) localLoadFail,
+    required TResult Function(WeekTypeLocalLoadSuccess value) localLoadSuccess,
+    required TResult Function(CurrentWeekTypeSuccess value)
+        currentWeekTypeSuccess,
+    required TResult Function(CurrentWeekTypeFail value) currentWeekTypeFail,
   }) {
     return loading(this);
   }
@@ -321,12 +356,14 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_LoadSuccess value)? loadSuccess,
-    TResult? Function(_Fail value)? fail,
-    TResult? Function(_LocalLoadFail value)? localLoadFail,
-    TResult? Function(_LocalLoadSuccess value)? localLoadSuccess,
+    TResult? Function(WeekTypeInitial value)? initial,
+    TResult? Function(WeekTypeLoading value)? loading,
+    TResult? Function(WeekTypeLoadSuccess value)? loadSuccess,
+    TResult? Function(WeekTypeFail value)? fail,
+    TResult? Function(WeekTypeLocalLoadFail value)? localLoadFail,
+    TResult? Function(WeekTypeLocalLoadSuccess value)? localLoadSuccess,
+    TResult? Function(CurrentWeekTypeSuccess value)? currentWeekTypeSuccess,
+    TResult? Function(CurrentWeekTypeFail value)? currentWeekTypeFail,
   }) {
     return loading?.call(this);
   }
@@ -334,12 +371,14 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_LoadSuccess value)? loadSuccess,
-    TResult Function(_Fail value)? fail,
-    TResult Function(_LocalLoadFail value)? localLoadFail,
-    TResult Function(_LocalLoadSuccess value)? localLoadSuccess,
+    TResult Function(WeekTypeInitial value)? initial,
+    TResult Function(WeekTypeLoading value)? loading,
+    TResult Function(WeekTypeLoadSuccess value)? loadSuccess,
+    TResult Function(WeekTypeFail value)? fail,
+    TResult Function(WeekTypeLocalLoadFail value)? localLoadFail,
+    TResult Function(WeekTypeLocalLoadSuccess value)? localLoadSuccess,
+    TResult Function(CurrentWeekTypeSuccess value)? currentWeekTypeSuccess,
+    TResult Function(CurrentWeekTypeFail value)? currentWeekTypeFail,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -349,25 +388,25 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements WeekTypeState {
-  const factory _Loading() = _$LoadingImpl;
+abstract class WeekTypeLoading implements WeekTypeState {
+  const factory WeekTypeLoading() = _$WeekTypeLoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$LoadSuccessImplCopyWith<$Res> {
-  factory _$$LoadSuccessImplCopyWith(
-          _$LoadSuccessImpl value, $Res Function(_$LoadSuccessImpl) then) =
-      __$$LoadSuccessImplCopyWithImpl<$Res>;
+abstract class _$$WeekTypeLoadSuccessImplCopyWith<$Res> {
+  factory _$$WeekTypeLoadSuccessImplCopyWith(_$WeekTypeLoadSuccessImpl value,
+          $Res Function(_$WeekTypeLoadSuccessImpl) then) =
+      __$$WeekTypeLoadSuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<WeekTypeEntity> weekTypeList});
 }
 
 /// @nodoc
-class __$$LoadSuccessImplCopyWithImpl<$Res>
-    extends _$WeekTypeStateCopyWithImpl<$Res, _$LoadSuccessImpl>
-    implements _$$LoadSuccessImplCopyWith<$Res> {
-  __$$LoadSuccessImplCopyWithImpl(
-      _$LoadSuccessImpl _value, $Res Function(_$LoadSuccessImpl) _then)
+class __$$WeekTypeLoadSuccessImplCopyWithImpl<$Res>
+    extends _$WeekTypeStateCopyWithImpl<$Res, _$WeekTypeLoadSuccessImpl>
+    implements _$$WeekTypeLoadSuccessImplCopyWith<$Res> {
+  __$$WeekTypeLoadSuccessImplCopyWithImpl(_$WeekTypeLoadSuccessImpl _value,
+      $Res Function(_$WeekTypeLoadSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -375,7 +414,7 @@ class __$$LoadSuccessImplCopyWithImpl<$Res>
   $Res call({
     Object? weekTypeList = null,
   }) {
-    return _then(_$LoadSuccessImpl(
+    return _then(_$WeekTypeLoadSuccessImpl(
       null == weekTypeList
           ? _value._weekTypeList
           : weekTypeList // ignore: cast_nullable_to_non_nullable
@@ -386,8 +425,8 @@ class __$$LoadSuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadSuccessImpl implements _LoadSuccess {
-  const _$LoadSuccessImpl(final List<WeekTypeEntity> weekTypeList)
+class _$WeekTypeLoadSuccessImpl implements WeekTypeLoadSuccess {
+  const _$WeekTypeLoadSuccessImpl(final List<WeekTypeEntity> weekTypeList)
       : _weekTypeList = weekTypeList;
 
   final List<WeekTypeEntity> _weekTypeList;
@@ -407,7 +446,7 @@ class _$LoadSuccessImpl implements _LoadSuccess {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LoadSuccessImpl &&
+            other is _$WeekTypeLoadSuccessImpl &&
             const DeepCollectionEquality()
                 .equals(other._weekTypeList, _weekTypeList));
   }
@@ -419,8 +458,9 @@ class _$LoadSuccessImpl implements _LoadSuccess {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LoadSuccessImplCopyWith<_$LoadSuccessImpl> get copyWith =>
-      __$$LoadSuccessImplCopyWithImpl<_$LoadSuccessImpl>(this, _$identity);
+  _$$WeekTypeLoadSuccessImplCopyWith<_$WeekTypeLoadSuccessImpl> get copyWith =>
+      __$$WeekTypeLoadSuccessImplCopyWithImpl<_$WeekTypeLoadSuccessImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -432,6 +472,8 @@ class _$LoadSuccessImpl implements _LoadSuccess {
     required TResult Function(String message) localLoadFail,
     required TResult Function(List<WeekTypeEntity> weekTypeList)
         localLoadSuccess,
+    required TResult Function(WeekTypeEntity weekType) currentWeekTypeSuccess,
+    required TResult Function(String message) currentWeekTypeFail,
   }) {
     return loadSuccess(weekTypeList);
   }
@@ -445,6 +487,8 @@ class _$LoadSuccessImpl implements _LoadSuccess {
     TResult? Function(String message)? fail,
     TResult? Function(String message)? localLoadFail,
     TResult? Function(List<WeekTypeEntity> weekTypeList)? localLoadSuccess,
+    TResult? Function(WeekTypeEntity weekType)? currentWeekTypeSuccess,
+    TResult? Function(String message)? currentWeekTypeFail,
   }) {
     return loadSuccess?.call(weekTypeList);
   }
@@ -458,6 +502,8 @@ class _$LoadSuccessImpl implements _LoadSuccess {
     TResult Function(String message)? fail,
     TResult Function(String message)? localLoadFail,
     TResult Function(List<WeekTypeEntity> weekTypeList)? localLoadSuccess,
+    TResult Function(WeekTypeEntity weekType)? currentWeekTypeSuccess,
+    TResult Function(String message)? currentWeekTypeFail,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
@@ -469,12 +515,15 @@ class _$LoadSuccessImpl implements _LoadSuccess {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_LoadSuccess value) loadSuccess,
-    required TResult Function(_Fail value) fail,
-    required TResult Function(_LocalLoadFail value) localLoadFail,
-    required TResult Function(_LocalLoadSuccess value) localLoadSuccess,
+    required TResult Function(WeekTypeInitial value) initial,
+    required TResult Function(WeekTypeLoading value) loading,
+    required TResult Function(WeekTypeLoadSuccess value) loadSuccess,
+    required TResult Function(WeekTypeFail value) fail,
+    required TResult Function(WeekTypeLocalLoadFail value) localLoadFail,
+    required TResult Function(WeekTypeLocalLoadSuccess value) localLoadSuccess,
+    required TResult Function(CurrentWeekTypeSuccess value)
+        currentWeekTypeSuccess,
+    required TResult Function(CurrentWeekTypeFail value) currentWeekTypeFail,
   }) {
     return loadSuccess(this);
   }
@@ -482,12 +531,14 @@ class _$LoadSuccessImpl implements _LoadSuccess {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_LoadSuccess value)? loadSuccess,
-    TResult? Function(_Fail value)? fail,
-    TResult? Function(_LocalLoadFail value)? localLoadFail,
-    TResult? Function(_LocalLoadSuccess value)? localLoadSuccess,
+    TResult? Function(WeekTypeInitial value)? initial,
+    TResult? Function(WeekTypeLoading value)? loading,
+    TResult? Function(WeekTypeLoadSuccess value)? loadSuccess,
+    TResult? Function(WeekTypeFail value)? fail,
+    TResult? Function(WeekTypeLocalLoadFail value)? localLoadFail,
+    TResult? Function(WeekTypeLocalLoadSuccess value)? localLoadSuccess,
+    TResult? Function(CurrentWeekTypeSuccess value)? currentWeekTypeSuccess,
+    TResult? Function(CurrentWeekTypeFail value)? currentWeekTypeFail,
   }) {
     return loadSuccess?.call(this);
   }
@@ -495,12 +546,14 @@ class _$LoadSuccessImpl implements _LoadSuccess {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_LoadSuccess value)? loadSuccess,
-    TResult Function(_Fail value)? fail,
-    TResult Function(_LocalLoadFail value)? localLoadFail,
-    TResult Function(_LocalLoadSuccess value)? localLoadSuccess,
+    TResult Function(WeekTypeInitial value)? initial,
+    TResult Function(WeekTypeLoading value)? loading,
+    TResult Function(WeekTypeLoadSuccess value)? loadSuccess,
+    TResult Function(WeekTypeFail value)? fail,
+    TResult Function(WeekTypeLocalLoadFail value)? localLoadFail,
+    TResult Function(WeekTypeLocalLoadSuccess value)? localLoadSuccess,
+    TResult Function(CurrentWeekTypeSuccess value)? currentWeekTypeSuccess,
+    TResult Function(CurrentWeekTypeFail value)? currentWeekTypeFail,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
@@ -510,30 +563,31 @@ class _$LoadSuccessImpl implements _LoadSuccess {
   }
 }
 
-abstract class _LoadSuccess implements WeekTypeState {
-  const factory _LoadSuccess(final List<WeekTypeEntity> weekTypeList) =
-      _$LoadSuccessImpl;
+abstract class WeekTypeLoadSuccess implements WeekTypeState {
+  const factory WeekTypeLoadSuccess(final List<WeekTypeEntity> weekTypeList) =
+      _$WeekTypeLoadSuccessImpl;
 
   List<WeekTypeEntity> get weekTypeList;
   @JsonKey(ignore: true)
-  _$$LoadSuccessImplCopyWith<_$LoadSuccessImpl> get copyWith =>
+  _$$WeekTypeLoadSuccessImplCopyWith<_$WeekTypeLoadSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$FailImplCopyWith<$Res> {
-  factory _$$FailImplCopyWith(
-          _$FailImpl value, $Res Function(_$FailImpl) then) =
-      __$$FailImplCopyWithImpl<$Res>;
+abstract class _$$WeekTypeFailImplCopyWith<$Res> {
+  factory _$$WeekTypeFailImplCopyWith(
+          _$WeekTypeFailImpl value, $Res Function(_$WeekTypeFailImpl) then) =
+      __$$WeekTypeFailImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$FailImplCopyWithImpl<$Res>
-    extends _$WeekTypeStateCopyWithImpl<$Res, _$FailImpl>
-    implements _$$FailImplCopyWith<$Res> {
-  __$$FailImplCopyWithImpl(_$FailImpl _value, $Res Function(_$FailImpl) _then)
+class __$$WeekTypeFailImplCopyWithImpl<$Res>
+    extends _$WeekTypeStateCopyWithImpl<$Res, _$WeekTypeFailImpl>
+    implements _$$WeekTypeFailImplCopyWith<$Res> {
+  __$$WeekTypeFailImplCopyWithImpl(
+      _$WeekTypeFailImpl _value, $Res Function(_$WeekTypeFailImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -541,7 +595,7 @@ class __$$FailImplCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$FailImpl(
+    return _then(_$WeekTypeFailImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -552,8 +606,8 @@ class __$$FailImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FailImpl implements _Fail {
-  const _$FailImpl([this.message = "Unknown error"]);
+class _$WeekTypeFailImpl implements WeekTypeFail {
+  const _$WeekTypeFailImpl([this.message = "Unknown error"]);
 
   @override
   @JsonKey()
@@ -568,7 +622,7 @@ class _$FailImpl implements _Fail {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FailImpl &&
+            other is _$WeekTypeFailImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -578,8 +632,8 @@ class _$FailImpl implements _Fail {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$FailImplCopyWith<_$FailImpl> get copyWith =>
-      __$$FailImplCopyWithImpl<_$FailImpl>(this, _$identity);
+  _$$WeekTypeFailImplCopyWith<_$WeekTypeFailImpl> get copyWith =>
+      __$$WeekTypeFailImplCopyWithImpl<_$WeekTypeFailImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -591,6 +645,8 @@ class _$FailImpl implements _Fail {
     required TResult Function(String message) localLoadFail,
     required TResult Function(List<WeekTypeEntity> weekTypeList)
         localLoadSuccess,
+    required TResult Function(WeekTypeEntity weekType) currentWeekTypeSuccess,
+    required TResult Function(String message) currentWeekTypeFail,
   }) {
     return fail(message);
   }
@@ -604,6 +660,8 @@ class _$FailImpl implements _Fail {
     TResult? Function(String message)? fail,
     TResult? Function(String message)? localLoadFail,
     TResult? Function(List<WeekTypeEntity> weekTypeList)? localLoadSuccess,
+    TResult? Function(WeekTypeEntity weekType)? currentWeekTypeSuccess,
+    TResult? Function(String message)? currentWeekTypeFail,
   }) {
     return fail?.call(message);
   }
@@ -617,6 +675,8 @@ class _$FailImpl implements _Fail {
     TResult Function(String message)? fail,
     TResult Function(String message)? localLoadFail,
     TResult Function(List<WeekTypeEntity> weekTypeList)? localLoadSuccess,
+    TResult Function(WeekTypeEntity weekType)? currentWeekTypeSuccess,
+    TResult Function(String message)? currentWeekTypeFail,
     required TResult orElse(),
   }) {
     if (fail != null) {
@@ -628,12 +688,15 @@ class _$FailImpl implements _Fail {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_LoadSuccess value) loadSuccess,
-    required TResult Function(_Fail value) fail,
-    required TResult Function(_LocalLoadFail value) localLoadFail,
-    required TResult Function(_LocalLoadSuccess value) localLoadSuccess,
+    required TResult Function(WeekTypeInitial value) initial,
+    required TResult Function(WeekTypeLoading value) loading,
+    required TResult Function(WeekTypeLoadSuccess value) loadSuccess,
+    required TResult Function(WeekTypeFail value) fail,
+    required TResult Function(WeekTypeLocalLoadFail value) localLoadFail,
+    required TResult Function(WeekTypeLocalLoadSuccess value) localLoadSuccess,
+    required TResult Function(CurrentWeekTypeSuccess value)
+        currentWeekTypeSuccess,
+    required TResult Function(CurrentWeekTypeFail value) currentWeekTypeFail,
   }) {
     return fail(this);
   }
@@ -641,12 +704,14 @@ class _$FailImpl implements _Fail {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_LoadSuccess value)? loadSuccess,
-    TResult? Function(_Fail value)? fail,
-    TResult? Function(_LocalLoadFail value)? localLoadFail,
-    TResult? Function(_LocalLoadSuccess value)? localLoadSuccess,
+    TResult? Function(WeekTypeInitial value)? initial,
+    TResult? Function(WeekTypeLoading value)? loading,
+    TResult? Function(WeekTypeLoadSuccess value)? loadSuccess,
+    TResult? Function(WeekTypeFail value)? fail,
+    TResult? Function(WeekTypeLocalLoadFail value)? localLoadFail,
+    TResult? Function(WeekTypeLocalLoadSuccess value)? localLoadSuccess,
+    TResult? Function(CurrentWeekTypeSuccess value)? currentWeekTypeSuccess,
+    TResult? Function(CurrentWeekTypeFail value)? currentWeekTypeFail,
   }) {
     return fail?.call(this);
   }
@@ -654,12 +719,14 @@ class _$FailImpl implements _Fail {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_LoadSuccess value)? loadSuccess,
-    TResult Function(_Fail value)? fail,
-    TResult Function(_LocalLoadFail value)? localLoadFail,
-    TResult Function(_LocalLoadSuccess value)? localLoadSuccess,
+    TResult Function(WeekTypeInitial value)? initial,
+    TResult Function(WeekTypeLoading value)? loading,
+    TResult Function(WeekTypeLoadSuccess value)? loadSuccess,
+    TResult Function(WeekTypeFail value)? fail,
+    TResult Function(WeekTypeLocalLoadFail value)? localLoadFail,
+    TResult Function(WeekTypeLocalLoadSuccess value)? localLoadSuccess,
+    TResult Function(CurrentWeekTypeSuccess value)? currentWeekTypeSuccess,
+    TResult Function(CurrentWeekTypeFail value)? currentWeekTypeFail,
     required TResult orElse(),
   }) {
     if (fail != null) {
@@ -669,30 +736,31 @@ class _$FailImpl implements _Fail {
   }
 }
 
-abstract class _Fail implements WeekTypeState {
-  const factory _Fail([final String message]) = _$FailImpl;
+abstract class WeekTypeFail implements WeekTypeState {
+  const factory WeekTypeFail([final String message]) = _$WeekTypeFailImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$FailImplCopyWith<_$FailImpl> get copyWith =>
+  _$$WeekTypeFailImplCopyWith<_$WeekTypeFailImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LocalLoadFailImplCopyWith<$Res> {
-  factory _$$LocalLoadFailImplCopyWith(
-          _$LocalLoadFailImpl value, $Res Function(_$LocalLoadFailImpl) then) =
-      __$$LocalLoadFailImplCopyWithImpl<$Res>;
+abstract class _$$WeekTypeLocalLoadFailImplCopyWith<$Res> {
+  factory _$$WeekTypeLocalLoadFailImplCopyWith(
+          _$WeekTypeLocalLoadFailImpl value,
+          $Res Function(_$WeekTypeLocalLoadFailImpl) then) =
+      __$$WeekTypeLocalLoadFailImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$LocalLoadFailImplCopyWithImpl<$Res>
-    extends _$WeekTypeStateCopyWithImpl<$Res, _$LocalLoadFailImpl>
-    implements _$$LocalLoadFailImplCopyWith<$Res> {
-  __$$LocalLoadFailImplCopyWithImpl(
-      _$LocalLoadFailImpl _value, $Res Function(_$LocalLoadFailImpl) _then)
+class __$$WeekTypeLocalLoadFailImplCopyWithImpl<$Res>
+    extends _$WeekTypeStateCopyWithImpl<$Res, _$WeekTypeLocalLoadFailImpl>
+    implements _$$WeekTypeLocalLoadFailImplCopyWith<$Res> {
+  __$$WeekTypeLocalLoadFailImplCopyWithImpl(_$WeekTypeLocalLoadFailImpl _value,
+      $Res Function(_$WeekTypeLocalLoadFailImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -700,7 +768,7 @@ class __$$LocalLoadFailImplCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$LocalLoadFailImpl(
+    return _then(_$WeekTypeLocalLoadFailImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -711,8 +779,8 @@ class __$$LocalLoadFailImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LocalLoadFailImpl implements _LocalLoadFail {
-  const _$LocalLoadFailImpl([this.message = "Unknown error"]);
+class _$WeekTypeLocalLoadFailImpl implements WeekTypeLocalLoadFail {
+  const _$WeekTypeLocalLoadFailImpl([this.message = "Unknown error"]);
 
   @override
   @JsonKey()
@@ -727,7 +795,7 @@ class _$LocalLoadFailImpl implements _LocalLoadFail {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LocalLoadFailImpl &&
+            other is _$WeekTypeLocalLoadFailImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -737,8 +805,9 @@ class _$LocalLoadFailImpl implements _LocalLoadFail {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LocalLoadFailImplCopyWith<_$LocalLoadFailImpl> get copyWith =>
-      __$$LocalLoadFailImplCopyWithImpl<_$LocalLoadFailImpl>(this, _$identity);
+  _$$WeekTypeLocalLoadFailImplCopyWith<_$WeekTypeLocalLoadFailImpl>
+      get copyWith => __$$WeekTypeLocalLoadFailImplCopyWithImpl<
+          _$WeekTypeLocalLoadFailImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -750,6 +819,8 @@ class _$LocalLoadFailImpl implements _LocalLoadFail {
     required TResult Function(String message) localLoadFail,
     required TResult Function(List<WeekTypeEntity> weekTypeList)
         localLoadSuccess,
+    required TResult Function(WeekTypeEntity weekType) currentWeekTypeSuccess,
+    required TResult Function(String message) currentWeekTypeFail,
   }) {
     return localLoadFail(message);
   }
@@ -763,6 +834,8 @@ class _$LocalLoadFailImpl implements _LocalLoadFail {
     TResult? Function(String message)? fail,
     TResult? Function(String message)? localLoadFail,
     TResult? Function(List<WeekTypeEntity> weekTypeList)? localLoadSuccess,
+    TResult? Function(WeekTypeEntity weekType)? currentWeekTypeSuccess,
+    TResult? Function(String message)? currentWeekTypeFail,
   }) {
     return localLoadFail?.call(message);
   }
@@ -776,6 +849,8 @@ class _$LocalLoadFailImpl implements _LocalLoadFail {
     TResult Function(String message)? fail,
     TResult Function(String message)? localLoadFail,
     TResult Function(List<WeekTypeEntity> weekTypeList)? localLoadSuccess,
+    TResult Function(WeekTypeEntity weekType)? currentWeekTypeSuccess,
+    TResult Function(String message)? currentWeekTypeFail,
     required TResult orElse(),
   }) {
     if (localLoadFail != null) {
@@ -787,12 +862,15 @@ class _$LocalLoadFailImpl implements _LocalLoadFail {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_LoadSuccess value) loadSuccess,
-    required TResult Function(_Fail value) fail,
-    required TResult Function(_LocalLoadFail value) localLoadFail,
-    required TResult Function(_LocalLoadSuccess value) localLoadSuccess,
+    required TResult Function(WeekTypeInitial value) initial,
+    required TResult Function(WeekTypeLoading value) loading,
+    required TResult Function(WeekTypeLoadSuccess value) loadSuccess,
+    required TResult Function(WeekTypeFail value) fail,
+    required TResult Function(WeekTypeLocalLoadFail value) localLoadFail,
+    required TResult Function(WeekTypeLocalLoadSuccess value) localLoadSuccess,
+    required TResult Function(CurrentWeekTypeSuccess value)
+        currentWeekTypeSuccess,
+    required TResult Function(CurrentWeekTypeFail value) currentWeekTypeFail,
   }) {
     return localLoadFail(this);
   }
@@ -800,12 +878,14 @@ class _$LocalLoadFailImpl implements _LocalLoadFail {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_LoadSuccess value)? loadSuccess,
-    TResult? Function(_Fail value)? fail,
-    TResult? Function(_LocalLoadFail value)? localLoadFail,
-    TResult? Function(_LocalLoadSuccess value)? localLoadSuccess,
+    TResult? Function(WeekTypeInitial value)? initial,
+    TResult? Function(WeekTypeLoading value)? loading,
+    TResult? Function(WeekTypeLoadSuccess value)? loadSuccess,
+    TResult? Function(WeekTypeFail value)? fail,
+    TResult? Function(WeekTypeLocalLoadFail value)? localLoadFail,
+    TResult? Function(WeekTypeLocalLoadSuccess value)? localLoadSuccess,
+    TResult? Function(CurrentWeekTypeSuccess value)? currentWeekTypeSuccess,
+    TResult? Function(CurrentWeekTypeFail value)? currentWeekTypeFail,
   }) {
     return localLoadFail?.call(this);
   }
@@ -813,12 +893,14 @@ class _$LocalLoadFailImpl implements _LocalLoadFail {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_LoadSuccess value)? loadSuccess,
-    TResult Function(_Fail value)? fail,
-    TResult Function(_LocalLoadFail value)? localLoadFail,
-    TResult Function(_LocalLoadSuccess value)? localLoadSuccess,
+    TResult Function(WeekTypeInitial value)? initial,
+    TResult Function(WeekTypeLoading value)? loading,
+    TResult Function(WeekTypeLoadSuccess value)? loadSuccess,
+    TResult Function(WeekTypeFail value)? fail,
+    TResult Function(WeekTypeLocalLoadFail value)? localLoadFail,
+    TResult Function(WeekTypeLocalLoadSuccess value)? localLoadSuccess,
+    TResult Function(CurrentWeekTypeSuccess value)? currentWeekTypeSuccess,
+    TResult Function(CurrentWeekTypeFail value)? currentWeekTypeFail,
     required TResult orElse(),
   }) {
     if (localLoadFail != null) {
@@ -828,30 +910,33 @@ class _$LocalLoadFailImpl implements _LocalLoadFail {
   }
 }
 
-abstract class _LocalLoadFail implements WeekTypeState {
-  const factory _LocalLoadFail([final String message]) = _$LocalLoadFailImpl;
+abstract class WeekTypeLocalLoadFail implements WeekTypeState {
+  const factory WeekTypeLocalLoadFail([final String message]) =
+      _$WeekTypeLocalLoadFailImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$LocalLoadFailImplCopyWith<_$LocalLoadFailImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$WeekTypeLocalLoadFailImplCopyWith<_$WeekTypeLocalLoadFailImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LocalLoadSuccessImplCopyWith<$Res> {
-  factory _$$LocalLoadSuccessImplCopyWith(_$LocalLoadSuccessImpl value,
-          $Res Function(_$LocalLoadSuccessImpl) then) =
-      __$$LocalLoadSuccessImplCopyWithImpl<$Res>;
+abstract class _$$WeekTypeLocalLoadSuccessImplCopyWith<$Res> {
+  factory _$$WeekTypeLocalLoadSuccessImplCopyWith(
+          _$WeekTypeLocalLoadSuccessImpl value,
+          $Res Function(_$WeekTypeLocalLoadSuccessImpl) then) =
+      __$$WeekTypeLocalLoadSuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<WeekTypeEntity> weekTypeList});
 }
 
 /// @nodoc
-class __$$LocalLoadSuccessImplCopyWithImpl<$Res>
-    extends _$WeekTypeStateCopyWithImpl<$Res, _$LocalLoadSuccessImpl>
-    implements _$$LocalLoadSuccessImplCopyWith<$Res> {
-  __$$LocalLoadSuccessImplCopyWithImpl(_$LocalLoadSuccessImpl _value,
-      $Res Function(_$LocalLoadSuccessImpl) _then)
+class __$$WeekTypeLocalLoadSuccessImplCopyWithImpl<$Res>
+    extends _$WeekTypeStateCopyWithImpl<$Res, _$WeekTypeLocalLoadSuccessImpl>
+    implements _$$WeekTypeLocalLoadSuccessImplCopyWith<$Res> {
+  __$$WeekTypeLocalLoadSuccessImplCopyWithImpl(
+      _$WeekTypeLocalLoadSuccessImpl _value,
+      $Res Function(_$WeekTypeLocalLoadSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -859,7 +944,7 @@ class __$$LocalLoadSuccessImplCopyWithImpl<$Res>
   $Res call({
     Object? weekTypeList = null,
   }) {
-    return _then(_$LocalLoadSuccessImpl(
+    return _then(_$WeekTypeLocalLoadSuccessImpl(
       null == weekTypeList
           ? _value._weekTypeList
           : weekTypeList // ignore: cast_nullable_to_non_nullable
@@ -870,8 +955,8 @@ class __$$LocalLoadSuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LocalLoadSuccessImpl implements _LocalLoadSuccess {
-  const _$LocalLoadSuccessImpl(final List<WeekTypeEntity> weekTypeList)
+class _$WeekTypeLocalLoadSuccessImpl implements WeekTypeLocalLoadSuccess {
+  const _$WeekTypeLocalLoadSuccessImpl(final List<WeekTypeEntity> weekTypeList)
       : _weekTypeList = weekTypeList;
 
   final List<WeekTypeEntity> _weekTypeList;
@@ -891,7 +976,7 @@ class _$LocalLoadSuccessImpl implements _LocalLoadSuccess {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LocalLoadSuccessImpl &&
+            other is _$WeekTypeLocalLoadSuccessImpl &&
             const DeepCollectionEquality()
                 .equals(other._weekTypeList, _weekTypeList));
   }
@@ -903,9 +988,9 @@ class _$LocalLoadSuccessImpl implements _LocalLoadSuccess {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LocalLoadSuccessImplCopyWith<_$LocalLoadSuccessImpl> get copyWith =>
-      __$$LocalLoadSuccessImplCopyWithImpl<_$LocalLoadSuccessImpl>(
-          this, _$identity);
+  _$$WeekTypeLocalLoadSuccessImplCopyWith<_$WeekTypeLocalLoadSuccessImpl>
+      get copyWith => __$$WeekTypeLocalLoadSuccessImplCopyWithImpl<
+          _$WeekTypeLocalLoadSuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -917,6 +1002,8 @@ class _$LocalLoadSuccessImpl implements _LocalLoadSuccess {
     required TResult Function(String message) localLoadFail,
     required TResult Function(List<WeekTypeEntity> weekTypeList)
         localLoadSuccess,
+    required TResult Function(WeekTypeEntity weekType) currentWeekTypeSuccess,
+    required TResult Function(String message) currentWeekTypeFail,
   }) {
     return localLoadSuccess(weekTypeList);
   }
@@ -930,6 +1017,8 @@ class _$LocalLoadSuccessImpl implements _LocalLoadSuccess {
     TResult? Function(String message)? fail,
     TResult? Function(String message)? localLoadFail,
     TResult? Function(List<WeekTypeEntity> weekTypeList)? localLoadSuccess,
+    TResult? Function(WeekTypeEntity weekType)? currentWeekTypeSuccess,
+    TResult? Function(String message)? currentWeekTypeFail,
   }) {
     return localLoadSuccess?.call(weekTypeList);
   }
@@ -943,6 +1032,8 @@ class _$LocalLoadSuccessImpl implements _LocalLoadSuccess {
     TResult Function(String message)? fail,
     TResult Function(String message)? localLoadFail,
     TResult Function(List<WeekTypeEntity> weekTypeList)? localLoadSuccess,
+    TResult Function(WeekTypeEntity weekType)? currentWeekTypeSuccess,
+    TResult Function(String message)? currentWeekTypeFail,
     required TResult orElse(),
   }) {
     if (localLoadSuccess != null) {
@@ -954,12 +1045,15 @@ class _$LocalLoadSuccessImpl implements _LocalLoadSuccess {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_LoadSuccess value) loadSuccess,
-    required TResult Function(_Fail value) fail,
-    required TResult Function(_LocalLoadFail value) localLoadFail,
-    required TResult Function(_LocalLoadSuccess value) localLoadSuccess,
+    required TResult Function(WeekTypeInitial value) initial,
+    required TResult Function(WeekTypeLoading value) loading,
+    required TResult Function(WeekTypeLoadSuccess value) loadSuccess,
+    required TResult Function(WeekTypeFail value) fail,
+    required TResult Function(WeekTypeLocalLoadFail value) localLoadFail,
+    required TResult Function(WeekTypeLocalLoadSuccess value) localLoadSuccess,
+    required TResult Function(CurrentWeekTypeSuccess value)
+        currentWeekTypeSuccess,
+    required TResult Function(CurrentWeekTypeFail value) currentWeekTypeFail,
   }) {
     return localLoadSuccess(this);
   }
@@ -967,12 +1061,14 @@ class _$LocalLoadSuccessImpl implements _LocalLoadSuccess {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_LoadSuccess value)? loadSuccess,
-    TResult? Function(_Fail value)? fail,
-    TResult? Function(_LocalLoadFail value)? localLoadFail,
-    TResult? Function(_LocalLoadSuccess value)? localLoadSuccess,
+    TResult? Function(WeekTypeInitial value)? initial,
+    TResult? Function(WeekTypeLoading value)? loading,
+    TResult? Function(WeekTypeLoadSuccess value)? loadSuccess,
+    TResult? Function(WeekTypeFail value)? fail,
+    TResult? Function(WeekTypeLocalLoadFail value)? localLoadFail,
+    TResult? Function(WeekTypeLocalLoadSuccess value)? localLoadSuccess,
+    TResult? Function(CurrentWeekTypeSuccess value)? currentWeekTypeSuccess,
+    TResult? Function(CurrentWeekTypeFail value)? currentWeekTypeFail,
   }) {
     return localLoadSuccess?.call(this);
   }
@@ -980,12 +1076,14 @@ class _$LocalLoadSuccessImpl implements _LocalLoadSuccess {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_LoadSuccess value)? loadSuccess,
-    TResult Function(_Fail value)? fail,
-    TResult Function(_LocalLoadFail value)? localLoadFail,
-    TResult Function(_LocalLoadSuccess value)? localLoadSuccess,
+    TResult Function(WeekTypeInitial value)? initial,
+    TResult Function(WeekTypeLoading value)? loading,
+    TResult Function(WeekTypeLoadSuccess value)? loadSuccess,
+    TResult Function(WeekTypeFail value)? fail,
+    TResult Function(WeekTypeLocalLoadFail value)? localLoadFail,
+    TResult Function(WeekTypeLocalLoadSuccess value)? localLoadSuccess,
+    TResult Function(CurrentWeekTypeSuccess value)? currentWeekTypeSuccess,
+    TResult Function(CurrentWeekTypeFail value)? currentWeekTypeFail,
     required TResult orElse(),
   }) {
     if (localLoadSuccess != null) {
@@ -995,12 +1093,372 @@ class _$LocalLoadSuccessImpl implements _LocalLoadSuccess {
   }
 }
 
-abstract class _LocalLoadSuccess implements WeekTypeState {
-  const factory _LocalLoadSuccess(final List<WeekTypeEntity> weekTypeList) =
-      _$LocalLoadSuccessImpl;
+abstract class WeekTypeLocalLoadSuccess implements WeekTypeState {
+  const factory WeekTypeLocalLoadSuccess(
+      final List<WeekTypeEntity> weekTypeList) = _$WeekTypeLocalLoadSuccessImpl;
 
   List<WeekTypeEntity> get weekTypeList;
   @JsonKey(ignore: true)
-  _$$LocalLoadSuccessImplCopyWith<_$LocalLoadSuccessImpl> get copyWith =>
+  _$$WeekTypeLocalLoadSuccessImplCopyWith<_$WeekTypeLocalLoadSuccessImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CurrentWeekTypeSuccessImplCopyWith<$Res> {
+  factory _$$CurrentWeekTypeSuccessImplCopyWith(
+          _$CurrentWeekTypeSuccessImpl value,
+          $Res Function(_$CurrentWeekTypeSuccessImpl) then) =
+      __$$CurrentWeekTypeSuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({WeekTypeEntity weekType});
+
+  $WeekTypeEntityCopyWith<$Res> get weekType;
+}
+
+/// @nodoc
+class __$$CurrentWeekTypeSuccessImplCopyWithImpl<$Res>
+    extends _$WeekTypeStateCopyWithImpl<$Res, _$CurrentWeekTypeSuccessImpl>
+    implements _$$CurrentWeekTypeSuccessImplCopyWith<$Res> {
+  __$$CurrentWeekTypeSuccessImplCopyWithImpl(
+      _$CurrentWeekTypeSuccessImpl _value,
+      $Res Function(_$CurrentWeekTypeSuccessImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? weekType = null,
+  }) {
+    return _then(_$CurrentWeekTypeSuccessImpl(
+      null == weekType
+          ? _value.weekType
+          : weekType // ignore: cast_nullable_to_non_nullable
+              as WeekTypeEntity,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $WeekTypeEntityCopyWith<$Res> get weekType {
+    return $WeekTypeEntityCopyWith<$Res>(_value.weekType, (value) {
+      return _then(_value.copyWith(weekType: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$CurrentWeekTypeSuccessImpl implements CurrentWeekTypeSuccess {
+  const _$CurrentWeekTypeSuccessImpl(this.weekType);
+
+  @override
+  final WeekTypeEntity weekType;
+
+  @override
+  String toString() {
+    return 'WeekTypeState.currentWeekTypeSuccess(weekType: $weekType)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CurrentWeekTypeSuccessImpl &&
+            (identical(other.weekType, weekType) ||
+                other.weekType == weekType));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, weekType);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CurrentWeekTypeSuccessImplCopyWith<_$CurrentWeekTypeSuccessImpl>
+      get copyWith => __$$CurrentWeekTypeSuccessImplCopyWithImpl<
+          _$CurrentWeekTypeSuccessImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<WeekTypeEntity> weekTypeList) loadSuccess,
+    required TResult Function(String message) fail,
+    required TResult Function(String message) localLoadFail,
+    required TResult Function(List<WeekTypeEntity> weekTypeList)
+        localLoadSuccess,
+    required TResult Function(WeekTypeEntity weekType) currentWeekTypeSuccess,
+    required TResult Function(String message) currentWeekTypeFail,
+  }) {
+    return currentWeekTypeSuccess(weekType);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<WeekTypeEntity> weekTypeList)? loadSuccess,
+    TResult? Function(String message)? fail,
+    TResult? Function(String message)? localLoadFail,
+    TResult? Function(List<WeekTypeEntity> weekTypeList)? localLoadSuccess,
+    TResult? Function(WeekTypeEntity weekType)? currentWeekTypeSuccess,
+    TResult? Function(String message)? currentWeekTypeFail,
+  }) {
+    return currentWeekTypeSuccess?.call(weekType);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<WeekTypeEntity> weekTypeList)? loadSuccess,
+    TResult Function(String message)? fail,
+    TResult Function(String message)? localLoadFail,
+    TResult Function(List<WeekTypeEntity> weekTypeList)? localLoadSuccess,
+    TResult Function(WeekTypeEntity weekType)? currentWeekTypeSuccess,
+    TResult Function(String message)? currentWeekTypeFail,
+    required TResult orElse(),
+  }) {
+    if (currentWeekTypeSuccess != null) {
+      return currentWeekTypeSuccess(weekType);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(WeekTypeInitial value) initial,
+    required TResult Function(WeekTypeLoading value) loading,
+    required TResult Function(WeekTypeLoadSuccess value) loadSuccess,
+    required TResult Function(WeekTypeFail value) fail,
+    required TResult Function(WeekTypeLocalLoadFail value) localLoadFail,
+    required TResult Function(WeekTypeLocalLoadSuccess value) localLoadSuccess,
+    required TResult Function(CurrentWeekTypeSuccess value)
+        currentWeekTypeSuccess,
+    required TResult Function(CurrentWeekTypeFail value) currentWeekTypeFail,
+  }) {
+    return currentWeekTypeSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(WeekTypeInitial value)? initial,
+    TResult? Function(WeekTypeLoading value)? loading,
+    TResult? Function(WeekTypeLoadSuccess value)? loadSuccess,
+    TResult? Function(WeekTypeFail value)? fail,
+    TResult? Function(WeekTypeLocalLoadFail value)? localLoadFail,
+    TResult? Function(WeekTypeLocalLoadSuccess value)? localLoadSuccess,
+    TResult? Function(CurrentWeekTypeSuccess value)? currentWeekTypeSuccess,
+    TResult? Function(CurrentWeekTypeFail value)? currentWeekTypeFail,
+  }) {
+    return currentWeekTypeSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(WeekTypeInitial value)? initial,
+    TResult Function(WeekTypeLoading value)? loading,
+    TResult Function(WeekTypeLoadSuccess value)? loadSuccess,
+    TResult Function(WeekTypeFail value)? fail,
+    TResult Function(WeekTypeLocalLoadFail value)? localLoadFail,
+    TResult Function(WeekTypeLocalLoadSuccess value)? localLoadSuccess,
+    TResult Function(CurrentWeekTypeSuccess value)? currentWeekTypeSuccess,
+    TResult Function(CurrentWeekTypeFail value)? currentWeekTypeFail,
+    required TResult orElse(),
+  }) {
+    if (currentWeekTypeSuccess != null) {
+      return currentWeekTypeSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CurrentWeekTypeSuccess implements WeekTypeState {
+  const factory CurrentWeekTypeSuccess(final WeekTypeEntity weekType) =
+      _$CurrentWeekTypeSuccessImpl;
+
+  WeekTypeEntity get weekType;
+  @JsonKey(ignore: true)
+  _$$CurrentWeekTypeSuccessImplCopyWith<_$CurrentWeekTypeSuccessImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CurrentWeekTypeFailImplCopyWith<$Res> {
+  factory _$$CurrentWeekTypeFailImplCopyWith(_$CurrentWeekTypeFailImpl value,
+          $Res Function(_$CurrentWeekTypeFailImpl) then) =
+      __$$CurrentWeekTypeFailImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$CurrentWeekTypeFailImplCopyWithImpl<$Res>
+    extends _$WeekTypeStateCopyWithImpl<$Res, _$CurrentWeekTypeFailImpl>
+    implements _$$CurrentWeekTypeFailImplCopyWith<$Res> {
+  __$$CurrentWeekTypeFailImplCopyWithImpl(_$CurrentWeekTypeFailImpl _value,
+      $Res Function(_$CurrentWeekTypeFailImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$CurrentWeekTypeFailImpl(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CurrentWeekTypeFailImpl implements CurrentWeekTypeFail {
+  const _$CurrentWeekTypeFailImpl([this.message = "Unknown error"]);
+
+  @override
+  @JsonKey()
+  final String message;
+
+  @override
+  String toString() {
+    return 'WeekTypeState.currentWeekTypeFail(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CurrentWeekTypeFailImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CurrentWeekTypeFailImplCopyWith<_$CurrentWeekTypeFailImpl> get copyWith =>
+      __$$CurrentWeekTypeFailImplCopyWithImpl<_$CurrentWeekTypeFailImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<WeekTypeEntity> weekTypeList) loadSuccess,
+    required TResult Function(String message) fail,
+    required TResult Function(String message) localLoadFail,
+    required TResult Function(List<WeekTypeEntity> weekTypeList)
+        localLoadSuccess,
+    required TResult Function(WeekTypeEntity weekType) currentWeekTypeSuccess,
+    required TResult Function(String message) currentWeekTypeFail,
+  }) {
+    return currentWeekTypeFail(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<WeekTypeEntity> weekTypeList)? loadSuccess,
+    TResult? Function(String message)? fail,
+    TResult? Function(String message)? localLoadFail,
+    TResult? Function(List<WeekTypeEntity> weekTypeList)? localLoadSuccess,
+    TResult? Function(WeekTypeEntity weekType)? currentWeekTypeSuccess,
+    TResult? Function(String message)? currentWeekTypeFail,
+  }) {
+    return currentWeekTypeFail?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<WeekTypeEntity> weekTypeList)? loadSuccess,
+    TResult Function(String message)? fail,
+    TResult Function(String message)? localLoadFail,
+    TResult Function(List<WeekTypeEntity> weekTypeList)? localLoadSuccess,
+    TResult Function(WeekTypeEntity weekType)? currentWeekTypeSuccess,
+    TResult Function(String message)? currentWeekTypeFail,
+    required TResult orElse(),
+  }) {
+    if (currentWeekTypeFail != null) {
+      return currentWeekTypeFail(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(WeekTypeInitial value) initial,
+    required TResult Function(WeekTypeLoading value) loading,
+    required TResult Function(WeekTypeLoadSuccess value) loadSuccess,
+    required TResult Function(WeekTypeFail value) fail,
+    required TResult Function(WeekTypeLocalLoadFail value) localLoadFail,
+    required TResult Function(WeekTypeLocalLoadSuccess value) localLoadSuccess,
+    required TResult Function(CurrentWeekTypeSuccess value)
+        currentWeekTypeSuccess,
+    required TResult Function(CurrentWeekTypeFail value) currentWeekTypeFail,
+  }) {
+    return currentWeekTypeFail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(WeekTypeInitial value)? initial,
+    TResult? Function(WeekTypeLoading value)? loading,
+    TResult? Function(WeekTypeLoadSuccess value)? loadSuccess,
+    TResult? Function(WeekTypeFail value)? fail,
+    TResult? Function(WeekTypeLocalLoadFail value)? localLoadFail,
+    TResult? Function(WeekTypeLocalLoadSuccess value)? localLoadSuccess,
+    TResult? Function(CurrentWeekTypeSuccess value)? currentWeekTypeSuccess,
+    TResult? Function(CurrentWeekTypeFail value)? currentWeekTypeFail,
+  }) {
+    return currentWeekTypeFail?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(WeekTypeInitial value)? initial,
+    TResult Function(WeekTypeLoading value)? loading,
+    TResult Function(WeekTypeLoadSuccess value)? loadSuccess,
+    TResult Function(WeekTypeFail value)? fail,
+    TResult Function(WeekTypeLocalLoadFail value)? localLoadFail,
+    TResult Function(WeekTypeLocalLoadSuccess value)? localLoadSuccess,
+    TResult Function(CurrentWeekTypeSuccess value)? currentWeekTypeSuccess,
+    TResult Function(CurrentWeekTypeFail value)? currentWeekTypeFail,
+    required TResult orElse(),
+  }) {
+    if (currentWeekTypeFail != null) {
+      return currentWeekTypeFail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CurrentWeekTypeFail implements WeekTypeState {
+  const factory CurrentWeekTypeFail([final String message]) =
+      _$CurrentWeekTypeFailImpl;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$CurrentWeekTypeFailImplCopyWith<_$CurrentWeekTypeFailImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

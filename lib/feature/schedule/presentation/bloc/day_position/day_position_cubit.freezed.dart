@@ -49,29 +49,32 @@ mixin _$DayPositionState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Fail value) fail,
-    required TResult Function(_LocalLoadingFail value) localLoadingFail,
-    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
+    required TResult Function(DayPositionInitial value) initial,
+    required TResult Function(DayPositionSuccess value) success,
+    required TResult Function(DayPositionFail value) fail,
+    required TResult Function(DayPositionLocalLoadingFail value)
+        localLoadingFail,
+    required TResult Function(DayPositionLocalLoadingSuccess value)
+        localLoadingSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Fail value)? fail,
-    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult? Function(DayPositionInitial value)? initial,
+    TResult? Function(DayPositionSuccess value)? success,
+    TResult? Function(DayPositionFail value)? fail,
+    TResult? Function(DayPositionLocalLoadingFail value)? localLoadingFail,
+    TResult? Function(DayPositionLocalLoadingSuccess value)?
+        localLoadingSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Success value)? success,
-    TResult Function(_Fail value)? fail,
-    TResult Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult Function(DayPositionInitial value)? initial,
+    TResult Function(DayPositionSuccess value)? success,
+    TResult Function(DayPositionFail value)? fail,
+    TResult Function(DayPositionLocalLoadingFail value)? localLoadingFail,
+    TResult Function(DayPositionLocalLoadingSuccess value)? localLoadingSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -96,25 +99,25 @@ class _$DayPositionStateCopyWithImpl<$Res, $Val extends DayPositionState>
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
+abstract class _$$DayPositionInitialImplCopyWith<$Res> {
+  factory _$$DayPositionInitialImplCopyWith(_$DayPositionInitialImpl value,
+          $Res Function(_$DayPositionInitialImpl) then) =
+      __$$DayPositionInitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$DayPositionStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+class __$$DayPositionInitialImplCopyWithImpl<$Res>
+    extends _$DayPositionStateCopyWithImpl<$Res, _$DayPositionInitialImpl>
+    implements _$$DayPositionInitialImplCopyWith<$Res> {
+  __$$DayPositionInitialImplCopyWithImpl(_$DayPositionInitialImpl _value,
+      $Res Function(_$DayPositionInitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
+class _$DayPositionInitialImpl implements DayPositionInitial {
+  const _$DayPositionInitialImpl();
 
   @override
   String toString() {
@@ -124,7 +127,7 @@ class _$InitialImpl implements _Initial {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType && other is _$DayPositionInitialImpl);
   }
 
   @override
@@ -176,11 +179,13 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Fail value) fail,
-    required TResult Function(_LocalLoadingFail value) localLoadingFail,
-    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
+    required TResult Function(DayPositionInitial value) initial,
+    required TResult Function(DayPositionSuccess value) success,
+    required TResult Function(DayPositionFail value) fail,
+    required TResult Function(DayPositionLocalLoadingFail value)
+        localLoadingFail,
+    required TResult Function(DayPositionLocalLoadingSuccess value)
+        localLoadingSuccess,
   }) {
     return initial(this);
   }
@@ -188,11 +193,12 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Fail value)? fail,
-    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult? Function(DayPositionInitial value)? initial,
+    TResult? Function(DayPositionSuccess value)? success,
+    TResult? Function(DayPositionFail value)? fail,
+    TResult? Function(DayPositionLocalLoadingFail value)? localLoadingFail,
+    TResult? Function(DayPositionLocalLoadingSuccess value)?
+        localLoadingSuccess,
   }) {
     return initial?.call(this);
   }
@@ -200,11 +206,11 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Success value)? success,
-    TResult Function(_Fail value)? fail,
-    TResult Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult Function(DayPositionInitial value)? initial,
+    TResult Function(DayPositionSuccess value)? success,
+    TResult Function(DayPositionFail value)? fail,
+    TResult Function(DayPositionLocalLoadingFail value)? localLoadingFail,
+    TResult Function(DayPositionLocalLoadingSuccess value)? localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -214,25 +220,25 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements DayPositionState {
-  const factory _Initial() = _$InitialImpl;
+abstract class DayPositionInitial implements DayPositionState {
+  const factory DayPositionInitial() = _$DayPositionInitialImpl;
 }
 
 /// @nodoc
-abstract class _$$SuccessImplCopyWith<$Res> {
-  factory _$$SuccessImplCopyWith(
-          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
-      __$$SuccessImplCopyWithImpl<$Res>;
+abstract class _$$DayPositionSuccessImplCopyWith<$Res> {
+  factory _$$DayPositionSuccessImplCopyWith(_$DayPositionSuccessImpl value,
+          $Res Function(_$DayPositionSuccessImpl) then) =
+      __$$DayPositionSuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<DayPositionModel> dayPositionList});
 }
 
 /// @nodoc
-class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$DayPositionStateCopyWithImpl<$Res, _$SuccessImpl>
-    implements _$$SuccessImplCopyWith<$Res> {
-  __$$SuccessImplCopyWithImpl(
-      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
+class __$$DayPositionSuccessImplCopyWithImpl<$Res>
+    extends _$DayPositionStateCopyWithImpl<$Res, _$DayPositionSuccessImpl>
+    implements _$$DayPositionSuccessImplCopyWith<$Res> {
+  __$$DayPositionSuccessImplCopyWithImpl(_$DayPositionSuccessImpl _value,
+      $Res Function(_$DayPositionSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -240,7 +246,7 @@ class __$$SuccessImplCopyWithImpl<$Res>
   $Res call({
     Object? dayPositionList = null,
   }) {
-    return _then(_$SuccessImpl(
+    return _then(_$DayPositionSuccessImpl(
       null == dayPositionList
           ? _value._dayPositionList
           : dayPositionList // ignore: cast_nullable_to_non_nullable
@@ -251,8 +257,8 @@ class __$$SuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(final List<DayPositionModel> dayPositionList)
+class _$DayPositionSuccessImpl implements DayPositionSuccess {
+  const _$DayPositionSuccessImpl(final List<DayPositionModel> dayPositionList)
       : _dayPositionList = dayPositionList;
 
   final List<DayPositionModel> _dayPositionList;
@@ -272,7 +278,7 @@ class _$SuccessImpl implements _Success {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SuccessImpl &&
+            other is _$DayPositionSuccessImpl &&
             const DeepCollectionEquality()
                 .equals(other._dayPositionList, _dayPositionList));
   }
@@ -284,8 +290,9 @@ class _$SuccessImpl implements _Success {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
+  _$$DayPositionSuccessImplCopyWith<_$DayPositionSuccessImpl> get copyWith =>
+      __$$DayPositionSuccessImplCopyWithImpl<_$DayPositionSuccessImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -333,11 +340,13 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Fail value) fail,
-    required TResult Function(_LocalLoadingFail value) localLoadingFail,
-    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
+    required TResult Function(DayPositionInitial value) initial,
+    required TResult Function(DayPositionSuccess value) success,
+    required TResult Function(DayPositionFail value) fail,
+    required TResult Function(DayPositionLocalLoadingFail value)
+        localLoadingFail,
+    required TResult Function(DayPositionLocalLoadingSuccess value)
+        localLoadingSuccess,
   }) {
     return success(this);
   }
@@ -345,11 +354,12 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Fail value)? fail,
-    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult? Function(DayPositionInitial value)? initial,
+    TResult? Function(DayPositionSuccess value)? success,
+    TResult? Function(DayPositionFail value)? fail,
+    TResult? Function(DayPositionLocalLoadingFail value)? localLoadingFail,
+    TResult? Function(DayPositionLocalLoadingSuccess value)?
+        localLoadingSuccess,
   }) {
     return success?.call(this);
   }
@@ -357,11 +367,11 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Success value)? success,
-    TResult Function(_Fail value)? fail,
-    TResult Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult Function(DayPositionInitial value)? initial,
+    TResult Function(DayPositionSuccess value)? success,
+    TResult Function(DayPositionFail value)? fail,
+    TResult Function(DayPositionLocalLoadingFail value)? localLoadingFail,
+    TResult Function(DayPositionLocalLoadingSuccess value)? localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -371,30 +381,31 @@ class _$SuccessImpl implements _Success {
   }
 }
 
-abstract class _Success implements DayPositionState {
-  const factory _Success(final List<DayPositionModel> dayPositionList) =
-      _$SuccessImpl;
+abstract class DayPositionSuccess implements DayPositionState {
+  const factory DayPositionSuccess(
+      final List<DayPositionModel> dayPositionList) = _$DayPositionSuccessImpl;
 
   List<DayPositionModel> get dayPositionList;
   @JsonKey(ignore: true)
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+  _$$DayPositionSuccessImplCopyWith<_$DayPositionSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$FailImplCopyWith<$Res> {
-  factory _$$FailImplCopyWith(
-          _$FailImpl value, $Res Function(_$FailImpl) then) =
-      __$$FailImplCopyWithImpl<$Res>;
+abstract class _$$DayPositionFailImplCopyWith<$Res> {
+  factory _$$DayPositionFailImplCopyWith(_$DayPositionFailImpl value,
+          $Res Function(_$DayPositionFailImpl) then) =
+      __$$DayPositionFailImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$FailImplCopyWithImpl<$Res>
-    extends _$DayPositionStateCopyWithImpl<$Res, _$FailImpl>
-    implements _$$FailImplCopyWith<$Res> {
-  __$$FailImplCopyWithImpl(_$FailImpl _value, $Res Function(_$FailImpl) _then)
+class __$$DayPositionFailImplCopyWithImpl<$Res>
+    extends _$DayPositionStateCopyWithImpl<$Res, _$DayPositionFailImpl>
+    implements _$$DayPositionFailImplCopyWith<$Res> {
+  __$$DayPositionFailImplCopyWithImpl(
+      _$DayPositionFailImpl _value, $Res Function(_$DayPositionFailImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -402,7 +413,7 @@ class __$$FailImplCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$FailImpl(
+    return _then(_$DayPositionFailImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -413,8 +424,8 @@ class __$$FailImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FailImpl implements _Fail {
-  const _$FailImpl([this.message = "Unknown error"]);
+class _$DayPositionFailImpl implements DayPositionFail {
+  const _$DayPositionFailImpl([this.message = "Unknown error"]);
 
   @override
   @JsonKey()
@@ -429,7 +440,7 @@ class _$FailImpl implements _Fail {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FailImpl &&
+            other is _$DayPositionFailImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -439,8 +450,9 @@ class _$FailImpl implements _Fail {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$FailImplCopyWith<_$FailImpl> get copyWith =>
-      __$$FailImplCopyWithImpl<_$FailImpl>(this, _$identity);
+  _$$DayPositionFailImplCopyWith<_$DayPositionFailImpl> get copyWith =>
+      __$$DayPositionFailImplCopyWithImpl<_$DayPositionFailImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -488,11 +500,13 @@ class _$FailImpl implements _Fail {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Fail value) fail,
-    required TResult Function(_LocalLoadingFail value) localLoadingFail,
-    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
+    required TResult Function(DayPositionInitial value) initial,
+    required TResult Function(DayPositionSuccess value) success,
+    required TResult Function(DayPositionFail value) fail,
+    required TResult Function(DayPositionLocalLoadingFail value)
+        localLoadingFail,
+    required TResult Function(DayPositionLocalLoadingSuccess value)
+        localLoadingSuccess,
   }) {
     return fail(this);
   }
@@ -500,11 +514,12 @@ class _$FailImpl implements _Fail {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Fail value)? fail,
-    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult? Function(DayPositionInitial value)? initial,
+    TResult? Function(DayPositionSuccess value)? success,
+    TResult? Function(DayPositionFail value)? fail,
+    TResult? Function(DayPositionLocalLoadingFail value)? localLoadingFail,
+    TResult? Function(DayPositionLocalLoadingSuccess value)?
+        localLoadingSuccess,
   }) {
     return fail?.call(this);
   }
@@ -512,11 +527,11 @@ class _$FailImpl implements _Fail {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Success value)? success,
-    TResult Function(_Fail value)? fail,
-    TResult Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult Function(DayPositionInitial value)? initial,
+    TResult Function(DayPositionSuccess value)? success,
+    TResult Function(DayPositionFail value)? fail,
+    TResult Function(DayPositionLocalLoadingFail value)? localLoadingFail,
+    TResult Function(DayPositionLocalLoadingSuccess value)? localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (fail != null) {
@@ -526,30 +541,33 @@ class _$FailImpl implements _Fail {
   }
 }
 
-abstract class _Fail implements DayPositionState {
-  const factory _Fail([final String message]) = _$FailImpl;
+abstract class DayPositionFail implements DayPositionState {
+  const factory DayPositionFail([final String message]) = _$DayPositionFailImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$FailImplCopyWith<_$FailImpl> get copyWith =>
+  _$$DayPositionFailImplCopyWith<_$DayPositionFailImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LocalLoadingFailImplCopyWith<$Res> {
-  factory _$$LocalLoadingFailImplCopyWith(_$LocalLoadingFailImpl value,
-          $Res Function(_$LocalLoadingFailImpl) then) =
-      __$$LocalLoadingFailImplCopyWithImpl<$Res>;
+abstract class _$$DayPositionLocalLoadingFailImplCopyWith<$Res> {
+  factory _$$DayPositionLocalLoadingFailImplCopyWith(
+          _$DayPositionLocalLoadingFailImpl value,
+          $Res Function(_$DayPositionLocalLoadingFailImpl) then) =
+      __$$DayPositionLocalLoadingFailImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$LocalLoadingFailImplCopyWithImpl<$Res>
-    extends _$DayPositionStateCopyWithImpl<$Res, _$LocalLoadingFailImpl>
-    implements _$$LocalLoadingFailImplCopyWith<$Res> {
-  __$$LocalLoadingFailImplCopyWithImpl(_$LocalLoadingFailImpl _value,
-      $Res Function(_$LocalLoadingFailImpl) _then)
+class __$$DayPositionLocalLoadingFailImplCopyWithImpl<$Res>
+    extends _$DayPositionStateCopyWithImpl<$Res,
+        _$DayPositionLocalLoadingFailImpl>
+    implements _$$DayPositionLocalLoadingFailImplCopyWith<$Res> {
+  __$$DayPositionLocalLoadingFailImplCopyWithImpl(
+      _$DayPositionLocalLoadingFailImpl _value,
+      $Res Function(_$DayPositionLocalLoadingFailImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -557,7 +575,7 @@ class __$$LocalLoadingFailImplCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$LocalLoadingFailImpl(
+    return _then(_$DayPositionLocalLoadingFailImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -568,8 +586,8 @@ class __$$LocalLoadingFailImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LocalLoadingFailImpl implements _LocalLoadingFail {
-  const _$LocalLoadingFailImpl([this.message = "Unknown error"]);
+class _$DayPositionLocalLoadingFailImpl implements DayPositionLocalLoadingFail {
+  const _$DayPositionLocalLoadingFailImpl([this.message = "Unknown error"]);
 
   @override
   @JsonKey()
@@ -584,7 +602,7 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LocalLoadingFailImpl &&
+            other is _$DayPositionLocalLoadingFailImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -594,9 +612,9 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LocalLoadingFailImplCopyWith<_$LocalLoadingFailImpl> get copyWith =>
-      __$$LocalLoadingFailImplCopyWithImpl<_$LocalLoadingFailImpl>(
-          this, _$identity);
+  _$$DayPositionLocalLoadingFailImplCopyWith<_$DayPositionLocalLoadingFailImpl>
+      get copyWith => __$$DayPositionLocalLoadingFailImplCopyWithImpl<
+          _$DayPositionLocalLoadingFailImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -644,11 +662,13 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Fail value) fail,
-    required TResult Function(_LocalLoadingFail value) localLoadingFail,
-    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
+    required TResult Function(DayPositionInitial value) initial,
+    required TResult Function(DayPositionSuccess value) success,
+    required TResult Function(DayPositionFail value) fail,
+    required TResult Function(DayPositionLocalLoadingFail value)
+        localLoadingFail,
+    required TResult Function(DayPositionLocalLoadingSuccess value)
+        localLoadingSuccess,
   }) {
     return localLoadingFail(this);
   }
@@ -656,11 +676,12 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Fail value)? fail,
-    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult? Function(DayPositionInitial value)? initial,
+    TResult? Function(DayPositionSuccess value)? success,
+    TResult? Function(DayPositionFail value)? fail,
+    TResult? Function(DayPositionLocalLoadingFail value)? localLoadingFail,
+    TResult? Function(DayPositionLocalLoadingSuccess value)?
+        localLoadingSuccess,
   }) {
     return localLoadingFail?.call(this);
   }
@@ -668,11 +689,11 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Success value)? success,
-    TResult Function(_Fail value)? fail,
-    TResult Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult Function(DayPositionInitial value)? initial,
+    TResult Function(DayPositionSuccess value)? success,
+    TResult Function(DayPositionFail value)? fail,
+    TResult Function(DayPositionLocalLoadingFail value)? localLoadingFail,
+    TResult Function(DayPositionLocalLoadingSuccess value)? localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (localLoadingFail != null) {
@@ -682,31 +703,34 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
   }
 }
 
-abstract class _LocalLoadingFail implements DayPositionState {
-  const factory _LocalLoadingFail([final String message]) =
-      _$LocalLoadingFailImpl;
+abstract class DayPositionLocalLoadingFail implements DayPositionState {
+  const factory DayPositionLocalLoadingFail([final String message]) =
+      _$DayPositionLocalLoadingFailImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$LocalLoadingFailImplCopyWith<_$LocalLoadingFailImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$DayPositionLocalLoadingFailImplCopyWith<_$DayPositionLocalLoadingFailImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LocalLoadingSuccessImplCopyWith<$Res> {
-  factory _$$LocalLoadingSuccessImplCopyWith(_$LocalLoadingSuccessImpl value,
-          $Res Function(_$LocalLoadingSuccessImpl) then) =
-      __$$LocalLoadingSuccessImplCopyWithImpl<$Res>;
+abstract class _$$DayPositionLocalLoadingSuccessImplCopyWith<$Res> {
+  factory _$$DayPositionLocalLoadingSuccessImplCopyWith(
+          _$DayPositionLocalLoadingSuccessImpl value,
+          $Res Function(_$DayPositionLocalLoadingSuccessImpl) then) =
+      __$$DayPositionLocalLoadingSuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<DayPositionModel> dayPositionList});
 }
 
 /// @nodoc
-class __$$LocalLoadingSuccessImplCopyWithImpl<$Res>
-    extends _$DayPositionStateCopyWithImpl<$Res, _$LocalLoadingSuccessImpl>
-    implements _$$LocalLoadingSuccessImplCopyWith<$Res> {
-  __$$LocalLoadingSuccessImplCopyWithImpl(_$LocalLoadingSuccessImpl _value,
-      $Res Function(_$LocalLoadingSuccessImpl) _then)
+class __$$DayPositionLocalLoadingSuccessImplCopyWithImpl<$Res>
+    extends _$DayPositionStateCopyWithImpl<$Res,
+        _$DayPositionLocalLoadingSuccessImpl>
+    implements _$$DayPositionLocalLoadingSuccessImplCopyWith<$Res> {
+  __$$DayPositionLocalLoadingSuccessImplCopyWithImpl(
+      _$DayPositionLocalLoadingSuccessImpl _value,
+      $Res Function(_$DayPositionLocalLoadingSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -714,7 +738,7 @@ class __$$LocalLoadingSuccessImplCopyWithImpl<$Res>
   $Res call({
     Object? dayPositionList = null,
   }) {
-    return _then(_$LocalLoadingSuccessImpl(
+    return _then(_$DayPositionLocalLoadingSuccessImpl(
       null == dayPositionList
           ? _value._dayPositionList
           : dayPositionList // ignore: cast_nullable_to_non_nullable
@@ -725,8 +749,10 @@ class __$$LocalLoadingSuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
-  const _$LocalLoadingSuccessImpl(final List<DayPositionModel> dayPositionList)
+class _$DayPositionLocalLoadingSuccessImpl
+    implements DayPositionLocalLoadingSuccess {
+  const _$DayPositionLocalLoadingSuccessImpl(
+      final List<DayPositionModel> dayPositionList)
       : _dayPositionList = dayPositionList;
 
   final List<DayPositionModel> _dayPositionList;
@@ -746,7 +772,7 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LocalLoadingSuccessImpl &&
+            other is _$DayPositionLocalLoadingSuccessImpl &&
             const DeepCollectionEquality()
                 .equals(other._dayPositionList, _dayPositionList));
   }
@@ -758,9 +784,10 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LocalLoadingSuccessImplCopyWith<_$LocalLoadingSuccessImpl> get copyWith =>
-      __$$LocalLoadingSuccessImplCopyWithImpl<_$LocalLoadingSuccessImpl>(
-          this, _$identity);
+  _$$DayPositionLocalLoadingSuccessImplCopyWith<
+          _$DayPositionLocalLoadingSuccessImpl>
+      get copyWith => __$$DayPositionLocalLoadingSuccessImplCopyWithImpl<
+          _$DayPositionLocalLoadingSuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -808,11 +835,13 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Fail value) fail,
-    required TResult Function(_LocalLoadingFail value) localLoadingFail,
-    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
+    required TResult Function(DayPositionInitial value) initial,
+    required TResult Function(DayPositionSuccess value) success,
+    required TResult Function(DayPositionFail value) fail,
+    required TResult Function(DayPositionLocalLoadingFail value)
+        localLoadingFail,
+    required TResult Function(DayPositionLocalLoadingSuccess value)
+        localLoadingSuccess,
   }) {
     return localLoadingSuccess(this);
   }
@@ -820,11 +849,12 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Fail value)? fail,
-    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult? Function(DayPositionInitial value)? initial,
+    TResult? Function(DayPositionSuccess value)? success,
+    TResult? Function(DayPositionFail value)? fail,
+    TResult? Function(DayPositionLocalLoadingFail value)? localLoadingFail,
+    TResult? Function(DayPositionLocalLoadingSuccess value)?
+        localLoadingSuccess,
   }) {
     return localLoadingSuccess?.call(this);
   }
@@ -832,11 +862,11 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Success value)? success,
-    TResult Function(_Fail value)? fail,
-    TResult Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult Function(DayPositionInitial value)? initial,
+    TResult Function(DayPositionSuccess value)? success,
+    TResult Function(DayPositionFail value)? fail,
+    TResult Function(DayPositionLocalLoadingFail value)? localLoadingFail,
+    TResult Function(DayPositionLocalLoadingSuccess value)? localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (localLoadingSuccess != null) {
@@ -846,12 +876,14 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
   }
 }
 
-abstract class _LocalLoadingSuccess implements DayPositionState {
-  const factory _LocalLoadingSuccess(
-      final List<DayPositionModel> dayPositionList) = _$LocalLoadingSuccessImpl;
+abstract class DayPositionLocalLoadingSuccess implements DayPositionState {
+  const factory DayPositionLocalLoadingSuccess(
+          final List<DayPositionModel> dayPositionList) =
+      _$DayPositionLocalLoadingSuccessImpl;
 
   List<DayPositionModel> get dayPositionList;
   @JsonKey(ignore: true)
-  _$$LocalLoadingSuccessImplCopyWith<_$LocalLoadingSuccessImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$DayPositionLocalLoadingSuccessImplCopyWith<
+          _$DayPositionLocalLoadingSuccessImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

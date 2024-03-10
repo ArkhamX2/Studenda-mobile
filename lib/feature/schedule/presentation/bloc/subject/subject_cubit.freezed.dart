@@ -50,32 +50,33 @@ mixin _$SubjectState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_LocalLoadingFail value) localLoadingFail,
-    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
-    required TResult Function(_LoadingFail value) loadingFail,
-    required TResult Function(_LoadingSuccess value) loadingSuccess,
+    required TResult Function(SubjectInitial value) initial,
+    required TResult Function(SubjectLoading value) loading,
+    required TResult Function(SubjectLocalLoadingFail value) localLoadingFail,
+    required TResult Function(SubjectLocalLoadingSuccess value)
+        localLoadingSuccess,
+    required TResult Function(SubjectLoadingFail value) loadingFail,
+    required TResult Function(SubjectLoadingSuccess value) loadingSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
-    TResult? Function(_LoadingFail value)? loadingFail,
-    TResult? Function(_LoadingSuccess value)? loadingSuccess,
+    TResult? Function(SubjectInitial value)? initial,
+    TResult? Function(SubjectLoading value)? loading,
+    TResult? Function(SubjectLocalLoadingFail value)? localLoadingFail,
+    TResult? Function(SubjectLocalLoadingSuccess value)? localLoadingSuccess,
+    TResult? Function(SubjectLoadingFail value)? loadingFail,
+    TResult? Function(SubjectLoadingSuccess value)? loadingSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
-    TResult Function(_LoadingFail value)? loadingFail,
-    TResult Function(_LoadingSuccess value)? loadingSuccess,
+    TResult Function(SubjectInitial value)? initial,
+    TResult Function(SubjectLoading value)? loading,
+    TResult Function(SubjectLocalLoadingFail value)? localLoadingFail,
+    TResult Function(SubjectLocalLoadingSuccess value)? localLoadingSuccess,
+    TResult Function(SubjectLoadingFail value)? loadingFail,
+    TResult Function(SubjectLoadingSuccess value)? loadingSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -100,25 +101,25 @@ class _$SubjectStateCopyWithImpl<$Res, $Val extends SubjectState>
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
+abstract class _$$SubjectInitialImplCopyWith<$Res> {
+  factory _$$SubjectInitialImplCopyWith(_$SubjectInitialImpl value,
+          $Res Function(_$SubjectInitialImpl) then) =
+      __$$SubjectInitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$SubjectStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+class __$$SubjectInitialImplCopyWithImpl<$Res>
+    extends _$SubjectStateCopyWithImpl<$Res, _$SubjectInitialImpl>
+    implements _$$SubjectInitialImplCopyWith<$Res> {
+  __$$SubjectInitialImplCopyWithImpl(
+      _$SubjectInitialImpl _value, $Res Function(_$SubjectInitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
+class _$SubjectInitialImpl implements SubjectInitial {
+  const _$SubjectInitialImpl();
 
   @override
   String toString() {
@@ -128,7 +129,7 @@ class _$InitialImpl implements _Initial {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType && other is _$SubjectInitialImpl);
   }
 
   @override
@@ -181,12 +182,13 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_LocalLoadingFail value) localLoadingFail,
-    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
-    required TResult Function(_LoadingFail value) loadingFail,
-    required TResult Function(_LoadingSuccess value) loadingSuccess,
+    required TResult Function(SubjectInitial value) initial,
+    required TResult Function(SubjectLoading value) loading,
+    required TResult Function(SubjectLocalLoadingFail value) localLoadingFail,
+    required TResult Function(SubjectLocalLoadingSuccess value)
+        localLoadingSuccess,
+    required TResult Function(SubjectLoadingFail value) loadingFail,
+    required TResult Function(SubjectLoadingSuccess value) loadingSuccess,
   }) {
     return initial(this);
   }
@@ -194,12 +196,12 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
-    TResult? Function(_LoadingFail value)? loadingFail,
-    TResult? Function(_LoadingSuccess value)? loadingSuccess,
+    TResult? Function(SubjectInitial value)? initial,
+    TResult? Function(SubjectLoading value)? loading,
+    TResult? Function(SubjectLocalLoadingFail value)? localLoadingFail,
+    TResult? Function(SubjectLocalLoadingSuccess value)? localLoadingSuccess,
+    TResult? Function(SubjectLoadingFail value)? loadingFail,
+    TResult? Function(SubjectLoadingSuccess value)? loadingSuccess,
   }) {
     return initial?.call(this);
   }
@@ -207,12 +209,12 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
-    TResult Function(_LoadingFail value)? loadingFail,
-    TResult Function(_LoadingSuccess value)? loadingSuccess,
+    TResult Function(SubjectInitial value)? initial,
+    TResult Function(SubjectLoading value)? loading,
+    TResult Function(SubjectLocalLoadingFail value)? localLoadingFail,
+    TResult Function(SubjectLocalLoadingSuccess value)? localLoadingSuccess,
+    TResult Function(SubjectLoadingFail value)? loadingFail,
+    TResult Function(SubjectLoadingSuccess value)? loadingSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -222,30 +224,30 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements SubjectState {
-  const factory _Initial() = _$InitialImpl;
+abstract class SubjectInitial implements SubjectState {
+  const factory SubjectInitial() = _$SubjectInitialImpl;
 }
 
 /// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res> {
-  factory _$$LoadingImplCopyWith(
-          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
-      __$$LoadingImplCopyWithImpl<$Res>;
+abstract class _$$SubjectLoadingImplCopyWith<$Res> {
+  factory _$$SubjectLoadingImplCopyWith(_$SubjectLoadingImpl value,
+          $Res Function(_$SubjectLoadingImpl) then) =
+      __$$SubjectLoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$SubjectStateCopyWithImpl<$Res, _$LoadingImpl>
-    implements _$$LoadingImplCopyWith<$Res> {
-  __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+class __$$SubjectLoadingImplCopyWithImpl<$Res>
+    extends _$SubjectStateCopyWithImpl<$Res, _$SubjectLoadingImpl>
+    implements _$$SubjectLoadingImplCopyWith<$Res> {
+  __$$SubjectLoadingImplCopyWithImpl(
+      _$SubjectLoadingImpl _value, $Res Function(_$SubjectLoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$LoadingImpl implements _Loading {
-  const _$LoadingImpl();
+class _$SubjectLoadingImpl implements SubjectLoading {
+  const _$SubjectLoadingImpl();
 
   @override
   String toString() {
@@ -255,7 +257,7 @@ class _$LoadingImpl implements _Loading {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl);
+        (other.runtimeType == runtimeType && other is _$SubjectLoadingImpl);
   }
 
   @override
@@ -308,12 +310,13 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_LocalLoadingFail value) localLoadingFail,
-    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
-    required TResult Function(_LoadingFail value) loadingFail,
-    required TResult Function(_LoadingSuccess value) loadingSuccess,
+    required TResult Function(SubjectInitial value) initial,
+    required TResult Function(SubjectLoading value) loading,
+    required TResult Function(SubjectLocalLoadingFail value) localLoadingFail,
+    required TResult Function(SubjectLocalLoadingSuccess value)
+        localLoadingSuccess,
+    required TResult Function(SubjectLoadingFail value) loadingFail,
+    required TResult Function(SubjectLoadingSuccess value) loadingSuccess,
   }) {
     return loading(this);
   }
@@ -321,12 +324,12 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
-    TResult? Function(_LoadingFail value)? loadingFail,
-    TResult? Function(_LoadingSuccess value)? loadingSuccess,
+    TResult? Function(SubjectInitial value)? initial,
+    TResult? Function(SubjectLoading value)? loading,
+    TResult? Function(SubjectLocalLoadingFail value)? localLoadingFail,
+    TResult? Function(SubjectLocalLoadingSuccess value)? localLoadingSuccess,
+    TResult? Function(SubjectLoadingFail value)? loadingFail,
+    TResult? Function(SubjectLoadingSuccess value)? loadingSuccess,
   }) {
     return loading?.call(this);
   }
@@ -334,12 +337,12 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
-    TResult Function(_LoadingFail value)? loadingFail,
-    TResult Function(_LoadingSuccess value)? loadingSuccess,
+    TResult Function(SubjectInitial value)? initial,
+    TResult Function(SubjectLoading value)? loading,
+    TResult Function(SubjectLocalLoadingFail value)? localLoadingFail,
+    TResult Function(SubjectLocalLoadingSuccess value)? localLoadingSuccess,
+    TResult Function(SubjectLoadingFail value)? loadingFail,
+    TResult Function(SubjectLoadingSuccess value)? loadingSuccess,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -349,25 +352,27 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements SubjectState {
-  const factory _Loading() = _$LoadingImpl;
+abstract class SubjectLoading implements SubjectState {
+  const factory SubjectLoading() = _$SubjectLoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$LocalLoadingFailImplCopyWith<$Res> {
-  factory _$$LocalLoadingFailImplCopyWith(_$LocalLoadingFailImpl value,
-          $Res Function(_$LocalLoadingFailImpl) then) =
-      __$$LocalLoadingFailImplCopyWithImpl<$Res>;
+abstract class _$$SubjectLocalLoadingFailImplCopyWith<$Res> {
+  factory _$$SubjectLocalLoadingFailImplCopyWith(
+          _$SubjectLocalLoadingFailImpl value,
+          $Res Function(_$SubjectLocalLoadingFailImpl) then) =
+      __$$SubjectLocalLoadingFailImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$LocalLoadingFailImplCopyWithImpl<$Res>
-    extends _$SubjectStateCopyWithImpl<$Res, _$LocalLoadingFailImpl>
-    implements _$$LocalLoadingFailImplCopyWith<$Res> {
-  __$$LocalLoadingFailImplCopyWithImpl(_$LocalLoadingFailImpl _value,
-      $Res Function(_$LocalLoadingFailImpl) _then)
+class __$$SubjectLocalLoadingFailImplCopyWithImpl<$Res>
+    extends _$SubjectStateCopyWithImpl<$Res, _$SubjectLocalLoadingFailImpl>
+    implements _$$SubjectLocalLoadingFailImplCopyWith<$Res> {
+  __$$SubjectLocalLoadingFailImplCopyWithImpl(
+      _$SubjectLocalLoadingFailImpl _value,
+      $Res Function(_$SubjectLocalLoadingFailImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -375,7 +380,7 @@ class __$$LocalLoadingFailImplCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$LocalLoadingFailImpl(
+    return _then(_$SubjectLocalLoadingFailImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -386,8 +391,8 @@ class __$$LocalLoadingFailImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LocalLoadingFailImpl implements _LocalLoadingFail {
-  const _$LocalLoadingFailImpl([this.message = "Unknown error"]);
+class _$SubjectLocalLoadingFailImpl implements SubjectLocalLoadingFail {
+  const _$SubjectLocalLoadingFailImpl([this.message = "Unknown error"]);
 
   @override
   @JsonKey()
@@ -402,7 +407,7 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LocalLoadingFailImpl &&
+            other is _$SubjectLocalLoadingFailImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -412,9 +417,9 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LocalLoadingFailImplCopyWith<_$LocalLoadingFailImpl> get copyWith =>
-      __$$LocalLoadingFailImplCopyWithImpl<_$LocalLoadingFailImpl>(
-          this, _$identity);
+  _$$SubjectLocalLoadingFailImplCopyWith<_$SubjectLocalLoadingFailImpl>
+      get copyWith => __$$SubjectLocalLoadingFailImplCopyWithImpl<
+          _$SubjectLocalLoadingFailImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -463,12 +468,13 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_LocalLoadingFail value) localLoadingFail,
-    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
-    required TResult Function(_LoadingFail value) loadingFail,
-    required TResult Function(_LoadingSuccess value) loadingSuccess,
+    required TResult Function(SubjectInitial value) initial,
+    required TResult Function(SubjectLoading value) loading,
+    required TResult Function(SubjectLocalLoadingFail value) localLoadingFail,
+    required TResult Function(SubjectLocalLoadingSuccess value)
+        localLoadingSuccess,
+    required TResult Function(SubjectLoadingFail value) loadingFail,
+    required TResult Function(SubjectLoadingSuccess value) loadingSuccess,
   }) {
     return localLoadingFail(this);
   }
@@ -476,12 +482,12 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
-    TResult? Function(_LoadingFail value)? loadingFail,
-    TResult? Function(_LoadingSuccess value)? loadingSuccess,
+    TResult? Function(SubjectInitial value)? initial,
+    TResult? Function(SubjectLoading value)? loading,
+    TResult? Function(SubjectLocalLoadingFail value)? localLoadingFail,
+    TResult? Function(SubjectLocalLoadingSuccess value)? localLoadingSuccess,
+    TResult? Function(SubjectLoadingFail value)? loadingFail,
+    TResult? Function(SubjectLoadingSuccess value)? loadingSuccess,
   }) {
     return localLoadingFail?.call(this);
   }
@@ -489,12 +495,12 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
-    TResult Function(_LoadingFail value)? loadingFail,
-    TResult Function(_LoadingSuccess value)? loadingSuccess,
+    TResult Function(SubjectInitial value)? initial,
+    TResult Function(SubjectLoading value)? loading,
+    TResult Function(SubjectLocalLoadingFail value)? localLoadingFail,
+    TResult Function(SubjectLocalLoadingSuccess value)? localLoadingSuccess,
+    TResult Function(SubjectLoadingFail value)? loadingFail,
+    TResult Function(SubjectLoadingSuccess value)? loadingSuccess,
     required TResult orElse(),
   }) {
     if (localLoadingFail != null) {
@@ -504,31 +510,33 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
   }
 }
 
-abstract class _LocalLoadingFail implements SubjectState {
-  const factory _LocalLoadingFail([final String message]) =
-      _$LocalLoadingFailImpl;
+abstract class SubjectLocalLoadingFail implements SubjectState {
+  const factory SubjectLocalLoadingFail([final String message]) =
+      _$SubjectLocalLoadingFailImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$LocalLoadingFailImplCopyWith<_$LocalLoadingFailImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SubjectLocalLoadingFailImplCopyWith<_$SubjectLocalLoadingFailImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LocalLoadingSuccessImplCopyWith<$Res> {
-  factory _$$LocalLoadingSuccessImplCopyWith(_$LocalLoadingSuccessImpl value,
-          $Res Function(_$LocalLoadingSuccessImpl) then) =
-      __$$LocalLoadingSuccessImplCopyWithImpl<$Res>;
+abstract class _$$SubjectLocalLoadingSuccessImplCopyWith<$Res> {
+  factory _$$SubjectLocalLoadingSuccessImplCopyWith(
+          _$SubjectLocalLoadingSuccessImpl value,
+          $Res Function(_$SubjectLocalLoadingSuccessImpl) then) =
+      __$$SubjectLocalLoadingSuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<SubjectModel> subjectList});
 }
 
 /// @nodoc
-class __$$LocalLoadingSuccessImplCopyWithImpl<$Res>
-    extends _$SubjectStateCopyWithImpl<$Res, _$LocalLoadingSuccessImpl>
-    implements _$$LocalLoadingSuccessImplCopyWith<$Res> {
-  __$$LocalLoadingSuccessImplCopyWithImpl(_$LocalLoadingSuccessImpl _value,
-      $Res Function(_$LocalLoadingSuccessImpl) _then)
+class __$$SubjectLocalLoadingSuccessImplCopyWithImpl<$Res>
+    extends _$SubjectStateCopyWithImpl<$Res, _$SubjectLocalLoadingSuccessImpl>
+    implements _$$SubjectLocalLoadingSuccessImplCopyWith<$Res> {
+  __$$SubjectLocalLoadingSuccessImplCopyWithImpl(
+      _$SubjectLocalLoadingSuccessImpl _value,
+      $Res Function(_$SubjectLocalLoadingSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -536,7 +544,7 @@ class __$$LocalLoadingSuccessImplCopyWithImpl<$Res>
   $Res call({
     Object? subjectList = null,
   }) {
-    return _then(_$LocalLoadingSuccessImpl(
+    return _then(_$SubjectLocalLoadingSuccessImpl(
       null == subjectList
           ? _value._subjectList
           : subjectList // ignore: cast_nullable_to_non_nullable
@@ -547,8 +555,8 @@ class __$$LocalLoadingSuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
-  const _$LocalLoadingSuccessImpl(final List<SubjectModel> subjectList)
+class _$SubjectLocalLoadingSuccessImpl implements SubjectLocalLoadingSuccess {
+  const _$SubjectLocalLoadingSuccessImpl(final List<SubjectModel> subjectList)
       : _subjectList = subjectList;
 
   final List<SubjectModel> _subjectList;
@@ -568,7 +576,7 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LocalLoadingSuccessImpl &&
+            other is _$SubjectLocalLoadingSuccessImpl &&
             const DeepCollectionEquality()
                 .equals(other._subjectList, _subjectList));
   }
@@ -580,9 +588,9 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LocalLoadingSuccessImplCopyWith<_$LocalLoadingSuccessImpl> get copyWith =>
-      __$$LocalLoadingSuccessImplCopyWithImpl<_$LocalLoadingSuccessImpl>(
-          this, _$identity);
+  _$$SubjectLocalLoadingSuccessImplCopyWith<_$SubjectLocalLoadingSuccessImpl>
+      get copyWith => __$$SubjectLocalLoadingSuccessImplCopyWithImpl<
+          _$SubjectLocalLoadingSuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -631,12 +639,13 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_LocalLoadingFail value) localLoadingFail,
-    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
-    required TResult Function(_LoadingFail value) loadingFail,
-    required TResult Function(_LoadingSuccess value) loadingSuccess,
+    required TResult Function(SubjectInitial value) initial,
+    required TResult Function(SubjectLoading value) loading,
+    required TResult Function(SubjectLocalLoadingFail value) localLoadingFail,
+    required TResult Function(SubjectLocalLoadingSuccess value)
+        localLoadingSuccess,
+    required TResult Function(SubjectLoadingFail value) loadingFail,
+    required TResult Function(SubjectLoadingSuccess value) loadingSuccess,
   }) {
     return localLoadingSuccess(this);
   }
@@ -644,12 +653,12 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
-    TResult? Function(_LoadingFail value)? loadingFail,
-    TResult? Function(_LoadingSuccess value)? loadingSuccess,
+    TResult? Function(SubjectInitial value)? initial,
+    TResult? Function(SubjectLoading value)? loading,
+    TResult? Function(SubjectLocalLoadingFail value)? localLoadingFail,
+    TResult? Function(SubjectLocalLoadingSuccess value)? localLoadingSuccess,
+    TResult? Function(SubjectLoadingFail value)? loadingFail,
+    TResult? Function(SubjectLoadingSuccess value)? loadingSuccess,
   }) {
     return localLoadingSuccess?.call(this);
   }
@@ -657,12 +666,12 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
-    TResult Function(_LoadingFail value)? loadingFail,
-    TResult Function(_LoadingSuccess value)? loadingSuccess,
+    TResult Function(SubjectInitial value)? initial,
+    TResult Function(SubjectLoading value)? loading,
+    TResult Function(SubjectLocalLoadingFail value)? localLoadingFail,
+    TResult Function(SubjectLocalLoadingSuccess value)? localLoadingSuccess,
+    TResult Function(SubjectLoadingFail value)? loadingFail,
+    TResult Function(SubjectLoadingSuccess value)? loadingSuccess,
     required TResult orElse(),
   }) {
     if (localLoadingSuccess != null) {
@@ -672,31 +681,31 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
   }
 }
 
-abstract class _LocalLoadingSuccess implements SubjectState {
-  const factory _LocalLoadingSuccess(final List<SubjectModel> subjectList) =
-      _$LocalLoadingSuccessImpl;
+abstract class SubjectLocalLoadingSuccess implements SubjectState {
+  const factory SubjectLocalLoadingSuccess(
+      final List<SubjectModel> subjectList) = _$SubjectLocalLoadingSuccessImpl;
 
   List<SubjectModel> get subjectList;
   @JsonKey(ignore: true)
-  _$$LocalLoadingSuccessImplCopyWith<_$LocalLoadingSuccessImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SubjectLocalLoadingSuccessImplCopyWith<_$SubjectLocalLoadingSuccessImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LoadingFailImplCopyWith<$Res> {
-  factory _$$LoadingFailImplCopyWith(
-          _$LoadingFailImpl value, $Res Function(_$LoadingFailImpl) then) =
-      __$$LoadingFailImplCopyWithImpl<$Res>;
+abstract class _$$SubjectLoadingFailImplCopyWith<$Res> {
+  factory _$$SubjectLoadingFailImplCopyWith(_$SubjectLoadingFailImpl value,
+          $Res Function(_$SubjectLoadingFailImpl) then) =
+      __$$SubjectLoadingFailImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$LoadingFailImplCopyWithImpl<$Res>
-    extends _$SubjectStateCopyWithImpl<$Res, _$LoadingFailImpl>
-    implements _$$LoadingFailImplCopyWith<$Res> {
-  __$$LoadingFailImplCopyWithImpl(
-      _$LoadingFailImpl _value, $Res Function(_$LoadingFailImpl) _then)
+class __$$SubjectLoadingFailImplCopyWithImpl<$Res>
+    extends _$SubjectStateCopyWithImpl<$Res, _$SubjectLoadingFailImpl>
+    implements _$$SubjectLoadingFailImplCopyWith<$Res> {
+  __$$SubjectLoadingFailImplCopyWithImpl(_$SubjectLoadingFailImpl _value,
+      $Res Function(_$SubjectLoadingFailImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -704,7 +713,7 @@ class __$$LoadingFailImplCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$LoadingFailImpl(
+    return _then(_$SubjectLoadingFailImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -715,8 +724,8 @@ class __$$LoadingFailImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadingFailImpl implements _LoadingFail {
-  const _$LoadingFailImpl([this.message = "Unknown error"]);
+class _$SubjectLoadingFailImpl implements SubjectLoadingFail {
+  const _$SubjectLoadingFailImpl([this.message = "Unknown error"]);
 
   @override
   @JsonKey()
@@ -731,7 +740,7 @@ class _$LoadingFailImpl implements _LoadingFail {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LoadingFailImpl &&
+            other is _$SubjectLoadingFailImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -741,8 +750,9 @@ class _$LoadingFailImpl implements _LoadingFail {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LoadingFailImplCopyWith<_$LoadingFailImpl> get copyWith =>
-      __$$LoadingFailImplCopyWithImpl<_$LoadingFailImpl>(this, _$identity);
+  _$$SubjectLoadingFailImplCopyWith<_$SubjectLoadingFailImpl> get copyWith =>
+      __$$SubjectLoadingFailImplCopyWithImpl<_$SubjectLoadingFailImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -791,12 +801,13 @@ class _$LoadingFailImpl implements _LoadingFail {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_LocalLoadingFail value) localLoadingFail,
-    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
-    required TResult Function(_LoadingFail value) loadingFail,
-    required TResult Function(_LoadingSuccess value) loadingSuccess,
+    required TResult Function(SubjectInitial value) initial,
+    required TResult Function(SubjectLoading value) loading,
+    required TResult Function(SubjectLocalLoadingFail value) localLoadingFail,
+    required TResult Function(SubjectLocalLoadingSuccess value)
+        localLoadingSuccess,
+    required TResult Function(SubjectLoadingFail value) loadingFail,
+    required TResult Function(SubjectLoadingSuccess value) loadingSuccess,
   }) {
     return loadingFail(this);
   }
@@ -804,12 +815,12 @@ class _$LoadingFailImpl implements _LoadingFail {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
-    TResult? Function(_LoadingFail value)? loadingFail,
-    TResult? Function(_LoadingSuccess value)? loadingSuccess,
+    TResult? Function(SubjectInitial value)? initial,
+    TResult? Function(SubjectLoading value)? loading,
+    TResult? Function(SubjectLocalLoadingFail value)? localLoadingFail,
+    TResult? Function(SubjectLocalLoadingSuccess value)? localLoadingSuccess,
+    TResult? Function(SubjectLoadingFail value)? loadingFail,
+    TResult? Function(SubjectLoadingSuccess value)? loadingSuccess,
   }) {
     return loadingFail?.call(this);
   }
@@ -817,12 +828,12 @@ class _$LoadingFailImpl implements _LoadingFail {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
-    TResult Function(_LoadingFail value)? loadingFail,
-    TResult Function(_LoadingSuccess value)? loadingSuccess,
+    TResult Function(SubjectInitial value)? initial,
+    TResult Function(SubjectLoading value)? loading,
+    TResult Function(SubjectLocalLoadingFail value)? localLoadingFail,
+    TResult Function(SubjectLocalLoadingSuccess value)? localLoadingSuccess,
+    TResult Function(SubjectLoadingFail value)? loadingFail,
+    TResult Function(SubjectLoadingSuccess value)? loadingSuccess,
     required TResult orElse(),
   }) {
     if (loadingFail != null) {
@@ -832,30 +843,32 @@ class _$LoadingFailImpl implements _LoadingFail {
   }
 }
 
-abstract class _LoadingFail implements SubjectState {
-  const factory _LoadingFail([final String message]) = _$LoadingFailImpl;
+abstract class SubjectLoadingFail implements SubjectState {
+  const factory SubjectLoadingFail([final String message]) =
+      _$SubjectLoadingFailImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$LoadingFailImplCopyWith<_$LoadingFailImpl> get copyWith =>
+  _$$SubjectLoadingFailImplCopyWith<_$SubjectLoadingFailImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LoadingSuccessImplCopyWith<$Res> {
-  factory _$$LoadingSuccessImplCopyWith(_$LoadingSuccessImpl value,
-          $Res Function(_$LoadingSuccessImpl) then) =
-      __$$LoadingSuccessImplCopyWithImpl<$Res>;
+abstract class _$$SubjectLoadingSuccessImplCopyWith<$Res> {
+  factory _$$SubjectLoadingSuccessImplCopyWith(
+          _$SubjectLoadingSuccessImpl value,
+          $Res Function(_$SubjectLoadingSuccessImpl) then) =
+      __$$SubjectLoadingSuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<SubjectModel> subjectList});
 }
 
 /// @nodoc
-class __$$LoadingSuccessImplCopyWithImpl<$Res>
-    extends _$SubjectStateCopyWithImpl<$Res, _$LoadingSuccessImpl>
-    implements _$$LoadingSuccessImplCopyWith<$Res> {
-  __$$LoadingSuccessImplCopyWithImpl(
-      _$LoadingSuccessImpl _value, $Res Function(_$LoadingSuccessImpl) _then)
+class __$$SubjectLoadingSuccessImplCopyWithImpl<$Res>
+    extends _$SubjectStateCopyWithImpl<$Res, _$SubjectLoadingSuccessImpl>
+    implements _$$SubjectLoadingSuccessImplCopyWith<$Res> {
+  __$$SubjectLoadingSuccessImplCopyWithImpl(_$SubjectLoadingSuccessImpl _value,
+      $Res Function(_$SubjectLoadingSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -863,7 +876,7 @@ class __$$LoadingSuccessImplCopyWithImpl<$Res>
   $Res call({
     Object? subjectList = null,
   }) {
-    return _then(_$LoadingSuccessImpl(
+    return _then(_$SubjectLoadingSuccessImpl(
       null == subjectList
           ? _value._subjectList
           : subjectList // ignore: cast_nullable_to_non_nullable
@@ -874,8 +887,8 @@ class __$$LoadingSuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadingSuccessImpl implements _LoadingSuccess {
-  const _$LoadingSuccessImpl(final List<SubjectModel> subjectList)
+class _$SubjectLoadingSuccessImpl implements SubjectLoadingSuccess {
+  const _$SubjectLoadingSuccessImpl(final List<SubjectModel> subjectList)
       : _subjectList = subjectList;
 
   final List<SubjectModel> _subjectList;
@@ -895,7 +908,7 @@ class _$LoadingSuccessImpl implements _LoadingSuccess {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LoadingSuccessImpl &&
+            other is _$SubjectLoadingSuccessImpl &&
             const DeepCollectionEquality()
                 .equals(other._subjectList, _subjectList));
   }
@@ -907,9 +920,9 @@ class _$LoadingSuccessImpl implements _LoadingSuccess {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LoadingSuccessImplCopyWith<_$LoadingSuccessImpl> get copyWith =>
-      __$$LoadingSuccessImplCopyWithImpl<_$LoadingSuccessImpl>(
-          this, _$identity);
+  _$$SubjectLoadingSuccessImplCopyWith<_$SubjectLoadingSuccessImpl>
+      get copyWith => __$$SubjectLoadingSuccessImplCopyWithImpl<
+          _$SubjectLoadingSuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -958,12 +971,13 @@ class _$LoadingSuccessImpl implements _LoadingSuccess {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_LocalLoadingFail value) localLoadingFail,
-    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
-    required TResult Function(_LoadingFail value) loadingFail,
-    required TResult Function(_LoadingSuccess value) loadingSuccess,
+    required TResult Function(SubjectInitial value) initial,
+    required TResult Function(SubjectLoading value) loading,
+    required TResult Function(SubjectLocalLoadingFail value) localLoadingFail,
+    required TResult Function(SubjectLocalLoadingSuccess value)
+        localLoadingSuccess,
+    required TResult Function(SubjectLoadingFail value) loadingFail,
+    required TResult Function(SubjectLoadingSuccess value) loadingSuccess,
   }) {
     return loadingSuccess(this);
   }
@@ -971,12 +985,12 @@ class _$LoadingSuccessImpl implements _LoadingSuccess {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
-    TResult? Function(_LoadingFail value)? loadingFail,
-    TResult? Function(_LoadingSuccess value)? loadingSuccess,
+    TResult? Function(SubjectInitial value)? initial,
+    TResult? Function(SubjectLoading value)? loading,
+    TResult? Function(SubjectLocalLoadingFail value)? localLoadingFail,
+    TResult? Function(SubjectLocalLoadingSuccess value)? localLoadingSuccess,
+    TResult? Function(SubjectLoadingFail value)? loadingFail,
+    TResult? Function(SubjectLoadingSuccess value)? loadingSuccess,
   }) {
     return loadingSuccess?.call(this);
   }
@@ -984,12 +998,12 @@ class _$LoadingSuccessImpl implements _LoadingSuccess {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
-    TResult Function(_LoadingFail value)? loadingFail,
-    TResult Function(_LoadingSuccess value)? loadingSuccess,
+    TResult Function(SubjectInitial value)? initial,
+    TResult Function(SubjectLoading value)? loading,
+    TResult Function(SubjectLocalLoadingFail value)? localLoadingFail,
+    TResult Function(SubjectLocalLoadingSuccess value)? localLoadingSuccess,
+    TResult Function(SubjectLoadingFail value)? loadingFail,
+    TResult Function(SubjectLoadingSuccess value)? loadingSuccess,
     required TResult orElse(),
   }) {
     if (loadingSuccess != null) {
@@ -999,12 +1013,12 @@ class _$LoadingSuccessImpl implements _LoadingSuccess {
   }
 }
 
-abstract class _LoadingSuccess implements SubjectState {
-  const factory _LoadingSuccess(final List<SubjectModel> subjectList) =
-      _$LoadingSuccessImpl;
+abstract class SubjectLoadingSuccess implements SubjectState {
+  const factory SubjectLoadingSuccess(final List<SubjectModel> subjectList) =
+      _$SubjectLoadingSuccessImpl;
 
   List<SubjectModel> get subjectList;
   @JsonKey(ignore: true)
-  _$$LoadingSuccessImplCopyWith<_$LoadingSuccessImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SubjectLoadingSuccessImplCopyWith<_$SubjectLoadingSuccessImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

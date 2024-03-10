@@ -12,9 +12,6 @@ part 'subject_cubit.freezed.dart';
 class SubjectCubit extends Cubit<SubjectState> {
 
   final GetStudentScheduleByWeekType getSchedule;
-
-  List<SubjectModel> subjectList = [];
-
   SubjectCubit(this.getSchedule) : super(const SubjectState.initial());
 
   Future<void> load(
@@ -31,10 +28,9 @@ class SubjectCubit extends Cubit<SubjectState> {
     result.fold(
       (l) => emit(SubjectState.loadingFail(l.message)),
       (r) {
-        subjectList = r;
         emit(
           SubjectState.loadingSuccess(
-            subjectList,
+            r,
           ),
         );
       },
@@ -56,10 +52,9 @@ class SubjectCubit extends Cubit<SubjectState> {
     result.fold(
       (l) => emit(SubjectState.loadingFail(l.message)),
       (r) {
-        subjectList = r;
         emit(
           SubjectState.loadingSuccess(
-            subjectList,
+            r,
           ),
         );
       },
