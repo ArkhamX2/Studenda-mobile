@@ -10,7 +10,7 @@ part 'auth_bloc.freezed.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final Auth authUseCase;
-  AccountEntity user = const AccountEntity(id: -1);
+  AccountEntity user = const AccountEntity(id: -1, name: "",patronymic: "",surname: "");
 
   AuthBloc({required this.authUseCase}) : super(const _Initial()) {
     on<_Auth>(
@@ -22,9 +22,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             AuthState.authFail(l.message),
           ),
           (r) {
-            user = AccountEntity(
-              id: r.user.id,
-            );
+            user = AccountEntity.fromModel(r.user);
             emit(
               AuthState.authSuccess(user),
             );

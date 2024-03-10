@@ -1,3 +1,5 @@
+// ignore_for_file: void_checks
+
 import 'package:dartz/dartz.dart';
 import 'package:studenda_mobile_student/core/data/error/failure.dart';
 import 'package:studenda_mobile_student/core/data/repository/repository.dart';
@@ -18,14 +20,13 @@ class SubjectTypeRepositoryImpl implements SubjectTypeRepository {
     required this.networkInfo,
   });
   @override
-  Future<Either<Failure, List<SubjectTypeModel>>> load(
-    void request, [
+  Future<Either<Failure, List<SubjectTypeModel>>> load([
     bool remote = true,
   ]) async {
     return await loadStudentData<
         SubjectTypeLocalDataSource,
         SubjectTypeRemoteDataSource,
         List<SubjectTypeModel>,
-        void>(localDataSource, remoteDataSource, remote, request, networkInfo);
+        void>(localDataSource, remoteDataSource, remote, () {}, networkInfo);
   }
 }

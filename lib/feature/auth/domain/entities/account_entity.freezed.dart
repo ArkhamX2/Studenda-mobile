@@ -17,6 +17,9 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AccountEntity {
   int get id => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  String? get surname => throw _privateConstructorUsedError;
+  String? get patronymic => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AccountEntityCopyWith<AccountEntity> get copyWith =>
@@ -29,7 +32,7 @@ abstract class $AccountEntityCopyWith<$Res> {
           AccountEntity value, $Res Function(AccountEntity) then) =
       _$AccountEntityCopyWithImpl<$Res, AccountEntity>;
   @useResult
-  $Res call({int id});
+  $Res call({int id, String? name, String? surname, String? patronymic});
 }
 
 /// @nodoc
@@ -46,12 +49,27 @@ class _$AccountEntityCopyWithImpl<$Res, $Val extends AccountEntity>
   @override
   $Res call({
     Object? id = null,
+    Object? name = freezed,
+    Object? surname = freezed,
+    Object? patronymic = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      surname: freezed == surname
+          ? _value.surname
+          : surname // ignore: cast_nullable_to_non_nullable
+              as String?,
+      patronymic: freezed == patronymic
+          ? _value.patronymic
+          : patronymic // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -64,7 +82,7 @@ abstract class _$$AccountEntityImplCopyWith<$Res>
       __$$AccountEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id});
+  $Res call({int id, String? name, String? surname, String? patronymic});
 }
 
 /// @nodoc
@@ -79,12 +97,27 @@ class __$$AccountEntityImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
+    Object? name = freezed,
+    Object? surname = freezed,
+    Object? patronymic = freezed,
   }) {
     return _then(_$AccountEntityImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      surname: freezed == surname
+          ? _value.surname
+          : surname // ignore: cast_nullable_to_non_nullable
+              as String?,
+      patronymic: freezed == patronymic
+          ? _value.patronymic
+          : patronymic // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -92,14 +125,24 @@ class __$$AccountEntityImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AccountEntityImpl implements _AccountEntity {
-  const _$AccountEntityImpl({required this.id});
+  const _$AccountEntityImpl(
+      {required this.id,
+      required this.name,
+      required this.surname,
+      required this.patronymic});
 
   @override
   final int id;
+  @override
+  final String? name;
+  @override
+  final String? surname;
+  @override
+  final String? patronymic;
 
   @override
   String toString() {
-    return 'AccountEntity(id: $id)';
+    return 'AccountEntity(id: $id, name: $name, surname: $surname, patronymic: $patronymic)';
   }
 
   @override
@@ -107,11 +150,15 @@ class _$AccountEntityImpl implements _AccountEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AccountEntityImpl &&
-            (identical(other.id, id) || other.id == id));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.surname, surname) || other.surname == surname) &&
+            (identical(other.patronymic, patronymic) ||
+                other.patronymic == patronymic));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id);
+  int get hashCode => Object.hash(runtimeType, id, name, surname, patronymic);
 
   @JsonKey(ignore: true)
   @override
@@ -121,10 +168,20 @@ class _$AccountEntityImpl implements _AccountEntity {
 }
 
 abstract class _AccountEntity implements AccountEntity {
-  const factory _AccountEntity({required final int id}) = _$AccountEntityImpl;
+  const factory _AccountEntity(
+      {required final int id,
+      required final String? name,
+      required final String? surname,
+      required final String? patronymic}) = _$AccountEntityImpl;
 
   @override
   int get id;
+  @override
+  String? get name;
+  @override
+  String? get surname;
+  @override
+  String? get patronymic;
   @override
   @JsonKey(ignore: true)
   _$$AccountEntityImplCopyWith<_$AccountEntityImpl> get copyWith =>

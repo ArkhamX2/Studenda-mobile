@@ -20,6 +20,7 @@ mixin _$SubjectEntity {
   String get title => throw _privateConstructorUsedError;
   String? get classroom => throw _privateConstructorUsedError;
   String? get teacher => throw _privateConstructorUsedError;
+  List<GroupEntity> get groups => throw _privateConstructorUsedError;
   String get subjectTypeName => throw _privateConstructorUsedError;
   int get subjectPosition => throw _privateConstructorUsedError;
 
@@ -39,6 +40,7 @@ abstract class $SubjectEntityCopyWith<$Res> {
       String title,
       String? classroom,
       String? teacher,
+      List<GroupEntity> groups,
       String subjectTypeName,
       int subjectPosition});
 }
@@ -60,6 +62,7 @@ class _$SubjectEntityCopyWithImpl<$Res, $Val extends SubjectEntity>
     Object? title = null,
     Object? classroom = freezed,
     Object? teacher = freezed,
+    Object? groups = null,
     Object? subjectTypeName = null,
     Object? subjectPosition = null,
   }) {
@@ -80,6 +83,10 @@ class _$SubjectEntityCopyWithImpl<$Res, $Val extends SubjectEntity>
           ? _value.teacher
           : teacher // ignore: cast_nullable_to_non_nullable
               as String?,
+      groups: null == groups
+          ? _value.groups
+          : groups // ignore: cast_nullable_to_non_nullable
+              as List<GroupEntity>,
       subjectTypeName: null == subjectTypeName
           ? _value.subjectTypeName
           : subjectTypeName // ignore: cast_nullable_to_non_nullable
@@ -105,6 +112,7 @@ abstract class _$$SubjectEntityImplCopyWith<$Res>
       String title,
       String? classroom,
       String? teacher,
+      List<GroupEntity> groups,
       String subjectTypeName,
       int subjectPosition});
 }
@@ -124,6 +132,7 @@ class __$$SubjectEntityImplCopyWithImpl<$Res>
     Object? title = null,
     Object? classroom = freezed,
     Object? teacher = freezed,
+    Object? groups = null,
     Object? subjectTypeName = null,
     Object? subjectPosition = null,
   }) {
@@ -144,6 +153,10 @@ class __$$SubjectEntityImplCopyWithImpl<$Res>
           ? _value.teacher
           : teacher // ignore: cast_nullable_to_non_nullable
               as String?,
+      groups: null == groups
+          ? _value._groups
+          : groups // ignore: cast_nullable_to_non_nullable
+              as List<GroupEntity>,
       subjectTypeName: null == subjectTypeName
           ? _value.subjectTypeName
           : subjectTypeName // ignore: cast_nullable_to_non_nullable
@@ -164,8 +177,10 @@ class _$SubjectEntityImpl implements _SubjectEntity {
       required this.title,
       required this.classroom,
       required this.teacher,
+      required final List<GroupEntity> groups,
       required this.subjectTypeName,
-      required this.subjectPosition});
+      required this.subjectPosition})
+      : _groups = groups;
 
   @override
   final int id;
@@ -175,6 +190,14 @@ class _$SubjectEntityImpl implements _SubjectEntity {
   final String? classroom;
   @override
   final String? teacher;
+  final List<GroupEntity> _groups;
+  @override
+  List<GroupEntity> get groups {
+    if (_groups is EqualUnmodifiableListView) return _groups;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_groups);
+  }
+
   @override
   final String subjectTypeName;
   @override
@@ -182,7 +205,7 @@ class _$SubjectEntityImpl implements _SubjectEntity {
 
   @override
   String toString() {
-    return 'SubjectEntity(id: $id, title: $title, classroom: $classroom, teacher: $teacher, subjectTypeName: $subjectTypeName, subjectPosition: $subjectPosition)';
+    return 'SubjectEntity(id: $id, title: $title, classroom: $classroom, teacher: $teacher, groups: $groups, subjectTypeName: $subjectTypeName, subjectPosition: $subjectPosition)';
   }
 
   @override
@@ -195,6 +218,7 @@ class _$SubjectEntityImpl implements _SubjectEntity {
             (identical(other.classroom, classroom) ||
                 other.classroom == classroom) &&
             (identical(other.teacher, teacher) || other.teacher == teacher) &&
+            const DeepCollectionEquality().equals(other._groups, _groups) &&
             (identical(other.subjectTypeName, subjectTypeName) ||
                 other.subjectTypeName == subjectTypeName) &&
             (identical(other.subjectPosition, subjectPosition) ||
@@ -202,8 +226,15 @@ class _$SubjectEntityImpl implements _SubjectEntity {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, classroom, teacher,
-      subjectTypeName, subjectPosition);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      title,
+      classroom,
+      teacher,
+      const DeepCollectionEquality().hash(_groups),
+      subjectTypeName,
+      subjectPosition);
 
   @JsonKey(ignore: true)
   @override
@@ -218,6 +249,7 @@ abstract class _SubjectEntity implements SubjectEntity {
       required final String title,
       required final String? classroom,
       required final String? teacher,
+      required final List<GroupEntity> groups,
       required final String subjectTypeName,
       required final int subjectPosition}) = _$SubjectEntityImpl;
 
@@ -229,6 +261,8 @@ abstract class _SubjectEntity implements SubjectEntity {
   String? get classroom;
   @override
   String? get teacher;
+  @override
+  List<GroupEntity> get groups;
   @override
   String get subjectTypeName;
   @override

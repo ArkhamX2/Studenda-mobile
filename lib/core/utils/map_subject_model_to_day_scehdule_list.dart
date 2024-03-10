@@ -1,4 +1,5 @@
 import 'package:studenda_mobile_student/feature/auth/data/models/user_model/account_model.dart';
+import 'package:studenda_mobile_student/feature/group_selection/domain/entities/group_entity.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/day_position_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/discipline_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/subject_model.dart';
@@ -7,13 +8,14 @@ import 'package:studenda_mobile_student/feature/schedule/data/models/subject_typ
 import 'package:studenda_mobile_student/feature/schedule/domain/entities/day_schedule_entity.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/entities/subject_entity.dart';
 
-List<DayScheduleEntity> mapSubjectModelToDayScehduleList(
+List<DayScheduleEntity> mapSubjectModelToStudentDayScheduleList(
   List<SubjectModel> subjects,
   List<DisciplineModel> disciplines,
   List<AccountModel> teachers,
   List<DayPositionModel> dayPositionList,
   List<SubjectPositionModel> subjectPositionList,
   List<SubjectTypeModel> subjectTypeList,
+  List<GroupEntity> groupList,
 ) {
   if (subjects.isEmpty ||
       disciplines.isEmpty ||
@@ -53,7 +55,7 @@ List<DayScheduleEntity> mapSubjectModelToDayScehduleList(
           title: disciplines
               .firstWhere((element) => element.id == subjects[i].disciplineId)
               .name,
-          classroom: subjects[i].classroom??"",
+          classroom: subjects[i].classroom ?? "",
           teacher:
               "${teacher.surname ?? ""} ${teacher.name ?? ""} ${teacher.patronymic ?? ""}",
           subjectPosition: subjectPositionList
@@ -65,6 +67,7 @@ List<DayScheduleEntity> mapSubjectModelToDayScehduleList(
           subjectTypeName: subjectTypeList
               .firstWhere((element) => element.id == subjects[i].subjectTypeId)
               .name,
+          groups: groupList,
         ),
       );
     } else {
@@ -77,7 +80,7 @@ List<DayScheduleEntity> mapSubjectModelToDayScehduleList(
           title: disciplines
               .firstWhere((element) => element.id == subjects[i].disciplineId)
               .name,
-          classroom: subjects[i].classroom??"",
+          classroom: subjects[i].classroom ?? "",
           teacher:
               "${teacher.surname ?? ""} ${teacher.name ?? ""} ${teacher.patronymic ?? ""}",
           subjectPosition: subjectPositionList
@@ -89,6 +92,7 @@ List<DayScheduleEntity> mapSubjectModelToDayScehduleList(
           subjectTypeName: subjectTypeList
               .firstWhere((element) => element.id == subjects[i].subjectTypeId)
               .name,
+          groups: groupList,
         ),
       ];
     }

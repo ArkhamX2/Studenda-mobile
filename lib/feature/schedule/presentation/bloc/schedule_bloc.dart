@@ -89,8 +89,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
       );
     });
 
-
- on<_AddTeacherWeekType>((event, emit) async {
+    on<_AddTeacherWeekType>((event, emit) async {
       emit(const ScheduleState.loading());
 
       currentWeekType = currentWeekType!.index == 1
@@ -235,7 +234,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
       }
     });
 
- on<_LoadTeacher>((event, emit) async {
+    on<_LoadTeacher>((event, emit) async {
       await getAllWeekType.call(() {}).then(
             (value) => value.fold(
               (error) => emit(ScheduleState.fail(error.message)),
@@ -346,7 +345,6 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
       }
     });
   }
-
 
   Future<void> loadSchedule(
     int groupId,
@@ -554,13 +552,14 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
                   ? emit(
                       ScheduleState.success(
                         ScheduleEntity(
-                          schedule: mapSubjectModelToDayScehduleList(
+                          schedule: mapSubjectModelToStudentDayScheduleList(
                             succededSubjectList,
                             succededDisciplineList,
                             succededTeacherList,
                             succededDayPositionList,
                             succededSubjectPositionList,
                             succededSubjectTypeList,
+                            [],
                           ),
                           weekType: currentWeekType,
                           weekDays: getCurrentWeekDays(currentDate),
@@ -570,13 +569,14 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
                   : emit(
                       ScheduleState.localLoadingSuccess(
                         ScheduleEntity(
-                          schedule: mapSubjectModelToDayScehduleList(
+                          schedule: mapSubjectModelToStudentDayScheduleList(
                             succededSubjectList,
                             succededDisciplineList,
                             succededTeacherList,
                             succededDayPositionList,
                             succededSubjectPositionList,
                             succededSubjectTypeList,
+                            [],
                           ),
                           weekType: currentWeekType,
                           weekDays: getCurrentWeekDays(currentDate),
