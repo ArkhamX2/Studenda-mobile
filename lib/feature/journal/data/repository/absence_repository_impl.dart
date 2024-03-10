@@ -33,4 +33,10 @@ class AbsenceRepositoryImpl implements AbsenceRepository {
       networkInfo,
     );
   }
+  
+  @override
+  Future<Either<Failure, List<AbsenceModel>>> loadTeacher(AbsenceRequestModel request, [bool remote = true]) {
+    // TODO: implement loadTeacher
+    throw UnimplementedError();
+  }
 }

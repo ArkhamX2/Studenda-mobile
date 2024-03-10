@@ -18,17 +18,19 @@ import 'package:studenda_mobile_student/feature/schedule/domain/usecases/get_all
 import 'package:studenda_mobile_student/feature/schedule/domain/usecases/get_current_week_type.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/usecases/get_day_position.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/usecases/get_discipline_list.dart';
-import 'package:studenda_mobile_student/feature/schedule/domain/usecases/get_schedule.dart';
+import 'package:studenda_mobile_student/feature/schedule/domain/usecases/get_student_schedule.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/usecases/get_subject_position.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/usecases/get_subject_type_list.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/usecases/get_teacher_list.dart';
+import 'package:studenda_mobile_student/feature/schedule/domain/usecases/get_teacher_schedule.dart';
 
 part 'schedule_bloc.freezed.dart';
 part 'schedule_event.dart';
 part 'schedule_state.dart';
 
 class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
-  final GetStudentScheduleByWeekType getSchedule;
+  final GetStudentScheduleByWeekType getStudentSchedule;
+  final GetTeacherScheduleByWeekType getTeacherSchedule;
   final GetCurrentWeekType getCurrentWeekType;
   final GetAllWeekType getAllWeekType;
   final GetDisciplineList getDisciplineList;
@@ -43,9 +45,10 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
   DateTime datePointer = DateTime.now();
 
   ScheduleBloc({
+    required this.getTeacherSchedule,
     required this.getDisciplineList,
     required this.getTeacherList,
-    required this.getSchedule,
+    required this.getStudentSchedule,
     required this.getCurrentWeekType,
     required this.getAllWeekType,
     required this.getDayPosition,
@@ -70,6 +73,41 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
     });
 
     on<_SubtractWeekType>((event, emit) async {
+      emit(const ScheduleState.loading());
+
+      currentWeekType = currentWeekType!.index == 1
+          ? weekTypeList!.last
+          : weekTypeList!.first;
+
+      datePointer = datePointer.subtract(const Duration(days: 7));
+      await loadSchedule(
+        event.groupId,
+        weekTypeList!,
+        emit,
+        datePointer,
+        false,
+      );
+    });
+
+
+ on<_AddTeacherWeekType>((event, emit) async {
+      emit(const ScheduleState.loading());
+
+      currentWeekType = currentWeekType!.index == 1
+          ? weekTypeList!.last
+          : weekTypeList!.first;
+
+      datePointer = datePointer.add(const Duration(days: 7));
+      await loadSchedule(
+        event.groupId,
+        weekTypeList!,
+        emit,
+        datePointer,
+        false,
+      );
+    });
+
+    on<_SubtractTeacherWeekType>((event, emit) async {
       emit(const ScheduleState.loading());
 
       currentWeekType = currentWeekType!.index == 1
@@ -196,7 +234,119 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
             );
       }
     });
+
+ on<_LoadTeacher>((event, emit) async {
+      await getAllWeekType.call(() {}).then(
+            (value) => value.fold(
+              (error) => emit(ScheduleState.fail(error.message)),
+              (succededWeekType) async {
+                weekTypeList = succededWeekType
+                    .map(
+                      (e) => WeekTypeEntity(
+                        id: e.id,
+                        name: e.name,
+                        index: e.index,
+                      ),
+                    )
+                    .toList();
+                if (weekTypeList!.isNotEmpty) {
+                  weekTypeList!.sort(
+                    (a, b) => a.index.compareTo(b.index),
+                  );
+                }
+              },
+            ),
+          );
+
+      if (currentWeekType!.id != -1) {
+        await loadSchedule(
+          event.accountId,
+          [currentWeekType!],
+          emit,
+          DateTime.now(),
+        );
+      } else {
+        await getCurrentWeekType.call(() {}).then(
+              (value) => value.fold(
+                (error) => emit(ScheduleState.fail(error.message)),
+                (succededWeekType) async {
+                  currentWeekType = WeekTypeEntity(
+                    id: succededWeekType.id,
+                    name: succededWeekType.name,
+                    index: succededWeekType.index,
+                  );
+                  await loadSchedule(
+                    event.accountId,
+                    [currentWeekType!],
+                    emit,
+                    DateTime.now(),
+                  );
+                },
+              ),
+            );
+      }
+    });
+
+    on<_LoadTeacherLocal>((event, emit) async {
+      emit(const ScheduleState.loading());
+      await getAllWeekType.call(() {}, false).then(
+            (value) => value.fold(
+              (error) => emit(ScheduleState.localLoadingFail(error.message)),
+              (succededWeekType) async {
+                weekTypeList = succededWeekType
+                    .map(
+                      (e) => WeekTypeEntity(
+                        id: e.id,
+                        name: e.name,
+                        index: e.index,
+                      ),
+                    )
+                    .toList();
+                if (weekTypeList!.isNotEmpty) {
+                  weekTypeList!.sort(
+                    (a, b) => a.index.compareTo(b.index),
+                  );
+                }
+              },
+            ),
+          );
+      if (currentWeekType!.id != -1) {
+        await loadSchedule(
+          event.accountId,
+          [currentWeekType!],
+          emit,
+          DateTime.now(),
+          false,
+        );
+      } else {
+        await getCurrentWeekType
+            .call(
+              () {},
+              false,
+            )
+            .then(
+              (value) => value.fold(
+                (error) => emit(ScheduleState.localLoadingFail(error.message)),
+                (succededWeekType) async {
+                  currentWeekType = WeekTypeEntity(
+                    id: succededWeekType.id,
+                    name: succededWeekType.name,
+                    index: succededWeekType.index,
+                  );
+                  await loadSchedule(
+                    event.accountId,
+                    [currentWeekType!],
+                    emit,
+                    DateTime.now(),
+                    false,
+                  );
+                },
+              ),
+            );
+      }
+    });
   }
+
 
   Future<void> loadSchedule(
     int groupId,
@@ -205,7 +355,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
     DateTime currentDate, [
     bool remote = true,
   ]) async {
-    await getSchedule
+    await getStudentSchedule
         .call(
           ScheduleRequestByWeekTypeModel(
             groupId: groupId,

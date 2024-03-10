@@ -20,7 +20,7 @@ class SessionRepositoryImpl implements SessionRepository {
   });
 
   @override
-  Future<Either<Failure, List<SessionModel>>> load(
+  Future<Either<Failure, List<SessionModel>>> loadStudent(
     SessionRequestModel request, [
     bool remote = true,
   ]) async {
@@ -33,5 +33,11 @@ class SessionRepositoryImpl implements SessionRepository {
       networkInfo,
     );
 
+  }
+  
+  @override
+  Future<Either<Failure, List<SessionModel>>> loadTeacher(SessionRequestModel request, [bool remote = true]) {
+    // TODO: implement loadTeacher
+    throw UnimplementedError();
   }
 }

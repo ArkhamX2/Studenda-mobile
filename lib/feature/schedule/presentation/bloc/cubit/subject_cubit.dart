@@ -4,7 +4,7 @@ import 'package:studenda_mobile_student/core/utils/get_current_academic_year.dar
 import 'package:studenda_mobile_student/feature/schedule/data/models/schedule_request_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/subject_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/entities/week_type_entity.dart';
-import 'package:studenda_mobile_student/feature/schedule/domain/usecases/get_schedule.dart';
+import 'package:studenda_mobile_student/feature/schedule/domain/usecases/get_student_schedule.dart';
 
 part 'subject_state.dart';
 part 'subject_cubit.freezed.dart';

@@ -23,6 +23,10 @@ mixin _$ScheduleEvent {
     required TResult Function(int groupId) loadLocal,
     required TResult Function(int groupId) addWeekType,
     required TResult Function(int groupId) subtractWeekType,
+    required TResult Function(int accountId) loadTeacher,
+    required TResult Function(int accountId) loadTeacherLocal,
+    required TResult Function(int groupId) addTeacherWeekType,
+    required TResult Function(int groupId) subtractTeacherWeekType,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +36,10 @@ mixin _$ScheduleEvent {
     TResult? Function(int groupId)? loadLocal,
     TResult? Function(int groupId)? addWeekType,
     TResult? Function(int groupId)? subtractWeekType,
+    TResult? Function(int accountId)? loadTeacher,
+    TResult? Function(int accountId)? loadTeacherLocal,
+    TResult? Function(int groupId)? addTeacherWeekType,
+    TResult? Function(int groupId)? subtractTeacherWeekType,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +49,10 @@ mixin _$ScheduleEvent {
     TResult Function(int groupId)? loadLocal,
     TResult Function(int groupId)? addWeekType,
     TResult Function(int groupId)? subtractWeekType,
+    TResult Function(int accountId)? loadTeacher,
+    TResult Function(int accountId)? loadTeacherLocal,
+    TResult Function(int groupId)? addTeacherWeekType,
+    TResult Function(int groupId)? subtractTeacherWeekType,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +63,11 @@ mixin _$ScheduleEvent {
     required TResult Function(_LoadLocal value) loadLocal,
     required TResult Function(_AddWeekType value) addWeekType,
     required TResult Function(_SubtractWeekType value) subtractWeekType,
+    required TResult Function(_LoadTeacher value) loadTeacher,
+    required TResult Function(_LoadTeacherLocal value) loadTeacherLocal,
+    required TResult Function(_AddTeacherWeekType value) addTeacherWeekType,
+    required TResult Function(_SubtractTeacherWeekType value)
+        subtractTeacherWeekType,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +77,10 @@ mixin _$ScheduleEvent {
     TResult? Function(_LoadLocal value)? loadLocal,
     TResult? Function(_AddWeekType value)? addWeekType,
     TResult? Function(_SubtractWeekType value)? subtractWeekType,
+    TResult? Function(_LoadTeacher value)? loadTeacher,
+    TResult? Function(_LoadTeacherLocal value)? loadTeacherLocal,
+    TResult? Function(_AddTeacherWeekType value)? addTeacherWeekType,
+    TResult? Function(_SubtractTeacherWeekType value)? subtractTeacherWeekType,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +90,10 @@ mixin _$ScheduleEvent {
     TResult Function(_LoadLocal value)? loadLocal,
     TResult Function(_AddWeekType value)? addWeekType,
     TResult Function(_SubtractWeekType value)? subtractWeekType,
+    TResult Function(_LoadTeacher value)? loadTeacher,
+    TResult Function(_LoadTeacherLocal value)? loadTeacherLocal,
+    TResult Function(_AddTeacherWeekType value)? addTeacherWeekType,
+    TResult Function(_SubtractTeacherWeekType value)? subtractTeacherWeekType,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -135,6 +160,10 @@ class _$StartedImpl implements _Started {
     required TResult Function(int groupId) loadLocal,
     required TResult Function(int groupId) addWeekType,
     required TResult Function(int groupId) subtractWeekType,
+    required TResult Function(int accountId) loadTeacher,
+    required TResult Function(int accountId) loadTeacherLocal,
+    required TResult Function(int groupId) addTeacherWeekType,
+    required TResult Function(int groupId) subtractTeacherWeekType,
   }) {
     return started();
   }
@@ -147,6 +176,10 @@ class _$StartedImpl implements _Started {
     TResult? Function(int groupId)? loadLocal,
     TResult? Function(int groupId)? addWeekType,
     TResult? Function(int groupId)? subtractWeekType,
+    TResult? Function(int accountId)? loadTeacher,
+    TResult? Function(int accountId)? loadTeacherLocal,
+    TResult? Function(int groupId)? addTeacherWeekType,
+    TResult? Function(int groupId)? subtractTeacherWeekType,
   }) {
     return started?.call();
   }
@@ -159,6 +192,10 @@ class _$StartedImpl implements _Started {
     TResult Function(int groupId)? loadLocal,
     TResult Function(int groupId)? addWeekType,
     TResult Function(int groupId)? subtractWeekType,
+    TResult Function(int accountId)? loadTeacher,
+    TResult Function(int accountId)? loadTeacherLocal,
+    TResult Function(int groupId)? addTeacherWeekType,
+    TResult Function(int groupId)? subtractTeacherWeekType,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -175,6 +212,11 @@ class _$StartedImpl implements _Started {
     required TResult Function(_LoadLocal value) loadLocal,
     required TResult Function(_AddWeekType value) addWeekType,
     required TResult Function(_SubtractWeekType value) subtractWeekType,
+    required TResult Function(_LoadTeacher value) loadTeacher,
+    required TResult Function(_LoadTeacherLocal value) loadTeacherLocal,
+    required TResult Function(_AddTeacherWeekType value) addTeacherWeekType,
+    required TResult Function(_SubtractTeacherWeekType value)
+        subtractTeacherWeekType,
   }) {
     return started(this);
   }
@@ -187,6 +229,10 @@ class _$StartedImpl implements _Started {
     TResult? Function(_LoadLocal value)? loadLocal,
     TResult? Function(_AddWeekType value)? addWeekType,
     TResult? Function(_SubtractWeekType value)? subtractWeekType,
+    TResult? Function(_LoadTeacher value)? loadTeacher,
+    TResult? Function(_LoadTeacherLocal value)? loadTeacherLocal,
+    TResult? Function(_AddTeacherWeekType value)? addTeacherWeekType,
+    TResult? Function(_SubtractTeacherWeekType value)? subtractTeacherWeekType,
   }) {
     return started?.call(this);
   }
@@ -199,6 +245,10 @@ class _$StartedImpl implements _Started {
     TResult Function(_LoadLocal value)? loadLocal,
     TResult Function(_AddWeekType value)? addWeekType,
     TResult Function(_SubtractWeekType value)? subtractWeekType,
+    TResult Function(_LoadTeacher value)? loadTeacher,
+    TResult Function(_LoadTeacherLocal value)? loadTeacherLocal,
+    TResult Function(_AddTeacherWeekType value)? addTeacherWeekType,
+    TResult Function(_SubtractTeacherWeekType value)? subtractTeacherWeekType,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -280,6 +330,10 @@ class _$LoadImpl implements _Load {
     required TResult Function(int groupId) loadLocal,
     required TResult Function(int groupId) addWeekType,
     required TResult Function(int groupId) subtractWeekType,
+    required TResult Function(int accountId) loadTeacher,
+    required TResult Function(int accountId) loadTeacherLocal,
+    required TResult Function(int groupId) addTeacherWeekType,
+    required TResult Function(int groupId) subtractTeacherWeekType,
   }) {
     return load(groupId);
   }
@@ -292,6 +346,10 @@ class _$LoadImpl implements _Load {
     TResult? Function(int groupId)? loadLocal,
     TResult? Function(int groupId)? addWeekType,
     TResult? Function(int groupId)? subtractWeekType,
+    TResult? Function(int accountId)? loadTeacher,
+    TResult? Function(int accountId)? loadTeacherLocal,
+    TResult? Function(int groupId)? addTeacherWeekType,
+    TResult? Function(int groupId)? subtractTeacherWeekType,
   }) {
     return load?.call(groupId);
   }
@@ -304,6 +362,10 @@ class _$LoadImpl implements _Load {
     TResult Function(int groupId)? loadLocal,
     TResult Function(int groupId)? addWeekType,
     TResult Function(int groupId)? subtractWeekType,
+    TResult Function(int accountId)? loadTeacher,
+    TResult Function(int accountId)? loadTeacherLocal,
+    TResult Function(int groupId)? addTeacherWeekType,
+    TResult Function(int groupId)? subtractTeacherWeekType,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -320,6 +382,11 @@ class _$LoadImpl implements _Load {
     required TResult Function(_LoadLocal value) loadLocal,
     required TResult Function(_AddWeekType value) addWeekType,
     required TResult Function(_SubtractWeekType value) subtractWeekType,
+    required TResult Function(_LoadTeacher value) loadTeacher,
+    required TResult Function(_LoadTeacherLocal value) loadTeacherLocal,
+    required TResult Function(_AddTeacherWeekType value) addTeacherWeekType,
+    required TResult Function(_SubtractTeacherWeekType value)
+        subtractTeacherWeekType,
   }) {
     return load(this);
   }
@@ -332,6 +399,10 @@ class _$LoadImpl implements _Load {
     TResult? Function(_LoadLocal value)? loadLocal,
     TResult? Function(_AddWeekType value)? addWeekType,
     TResult? Function(_SubtractWeekType value)? subtractWeekType,
+    TResult? Function(_LoadTeacher value)? loadTeacher,
+    TResult? Function(_LoadTeacherLocal value)? loadTeacherLocal,
+    TResult? Function(_AddTeacherWeekType value)? addTeacherWeekType,
+    TResult? Function(_SubtractTeacherWeekType value)? subtractTeacherWeekType,
   }) {
     return load?.call(this);
   }
@@ -344,6 +415,10 @@ class _$LoadImpl implements _Load {
     TResult Function(_LoadLocal value)? loadLocal,
     TResult Function(_AddWeekType value)? addWeekType,
     TResult Function(_SubtractWeekType value)? subtractWeekType,
+    TResult Function(_LoadTeacher value)? loadTeacher,
+    TResult Function(_LoadTeacherLocal value)? loadTeacherLocal,
+    TResult Function(_AddTeacherWeekType value)? addTeacherWeekType,
+    TResult Function(_SubtractTeacherWeekType value)? subtractTeacherWeekType,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -431,6 +506,10 @@ class _$LoadLocalImpl implements _LoadLocal {
     required TResult Function(int groupId) loadLocal,
     required TResult Function(int groupId) addWeekType,
     required TResult Function(int groupId) subtractWeekType,
+    required TResult Function(int accountId) loadTeacher,
+    required TResult Function(int accountId) loadTeacherLocal,
+    required TResult Function(int groupId) addTeacherWeekType,
+    required TResult Function(int groupId) subtractTeacherWeekType,
   }) {
     return loadLocal(groupId);
   }
@@ -443,6 +522,10 @@ class _$LoadLocalImpl implements _LoadLocal {
     TResult? Function(int groupId)? loadLocal,
     TResult? Function(int groupId)? addWeekType,
     TResult? Function(int groupId)? subtractWeekType,
+    TResult? Function(int accountId)? loadTeacher,
+    TResult? Function(int accountId)? loadTeacherLocal,
+    TResult? Function(int groupId)? addTeacherWeekType,
+    TResult? Function(int groupId)? subtractTeacherWeekType,
   }) {
     return loadLocal?.call(groupId);
   }
@@ -455,6 +538,10 @@ class _$LoadLocalImpl implements _LoadLocal {
     TResult Function(int groupId)? loadLocal,
     TResult Function(int groupId)? addWeekType,
     TResult Function(int groupId)? subtractWeekType,
+    TResult Function(int accountId)? loadTeacher,
+    TResult Function(int accountId)? loadTeacherLocal,
+    TResult Function(int groupId)? addTeacherWeekType,
+    TResult Function(int groupId)? subtractTeacherWeekType,
     required TResult orElse(),
   }) {
     if (loadLocal != null) {
@@ -471,6 +558,11 @@ class _$LoadLocalImpl implements _LoadLocal {
     required TResult Function(_LoadLocal value) loadLocal,
     required TResult Function(_AddWeekType value) addWeekType,
     required TResult Function(_SubtractWeekType value) subtractWeekType,
+    required TResult Function(_LoadTeacher value) loadTeacher,
+    required TResult Function(_LoadTeacherLocal value) loadTeacherLocal,
+    required TResult Function(_AddTeacherWeekType value) addTeacherWeekType,
+    required TResult Function(_SubtractTeacherWeekType value)
+        subtractTeacherWeekType,
   }) {
     return loadLocal(this);
   }
@@ -483,6 +575,10 @@ class _$LoadLocalImpl implements _LoadLocal {
     TResult? Function(_LoadLocal value)? loadLocal,
     TResult? Function(_AddWeekType value)? addWeekType,
     TResult? Function(_SubtractWeekType value)? subtractWeekType,
+    TResult? Function(_LoadTeacher value)? loadTeacher,
+    TResult? Function(_LoadTeacherLocal value)? loadTeacherLocal,
+    TResult? Function(_AddTeacherWeekType value)? addTeacherWeekType,
+    TResult? Function(_SubtractTeacherWeekType value)? subtractTeacherWeekType,
   }) {
     return loadLocal?.call(this);
   }
@@ -495,6 +591,10 @@ class _$LoadLocalImpl implements _LoadLocal {
     TResult Function(_LoadLocal value)? loadLocal,
     TResult Function(_AddWeekType value)? addWeekType,
     TResult Function(_SubtractWeekType value)? subtractWeekType,
+    TResult Function(_LoadTeacher value)? loadTeacher,
+    TResult Function(_LoadTeacherLocal value)? loadTeacherLocal,
+    TResult Function(_AddTeacherWeekType value)? addTeacherWeekType,
+    TResult Function(_SubtractTeacherWeekType value)? subtractTeacherWeekType,
     required TResult orElse(),
   }) {
     if (loadLocal != null) {
@@ -582,6 +682,10 @@ class _$AddWeekTypeImpl implements _AddWeekType {
     required TResult Function(int groupId) loadLocal,
     required TResult Function(int groupId) addWeekType,
     required TResult Function(int groupId) subtractWeekType,
+    required TResult Function(int accountId) loadTeacher,
+    required TResult Function(int accountId) loadTeacherLocal,
+    required TResult Function(int groupId) addTeacherWeekType,
+    required TResult Function(int groupId) subtractTeacherWeekType,
   }) {
     return addWeekType(groupId);
   }
@@ -594,6 +698,10 @@ class _$AddWeekTypeImpl implements _AddWeekType {
     TResult? Function(int groupId)? loadLocal,
     TResult? Function(int groupId)? addWeekType,
     TResult? Function(int groupId)? subtractWeekType,
+    TResult? Function(int accountId)? loadTeacher,
+    TResult? Function(int accountId)? loadTeacherLocal,
+    TResult? Function(int groupId)? addTeacherWeekType,
+    TResult? Function(int groupId)? subtractTeacherWeekType,
   }) {
     return addWeekType?.call(groupId);
   }
@@ -606,6 +714,10 @@ class _$AddWeekTypeImpl implements _AddWeekType {
     TResult Function(int groupId)? loadLocal,
     TResult Function(int groupId)? addWeekType,
     TResult Function(int groupId)? subtractWeekType,
+    TResult Function(int accountId)? loadTeacher,
+    TResult Function(int accountId)? loadTeacherLocal,
+    TResult Function(int groupId)? addTeacherWeekType,
+    TResult Function(int groupId)? subtractTeacherWeekType,
     required TResult orElse(),
   }) {
     if (addWeekType != null) {
@@ -622,6 +734,11 @@ class _$AddWeekTypeImpl implements _AddWeekType {
     required TResult Function(_LoadLocal value) loadLocal,
     required TResult Function(_AddWeekType value) addWeekType,
     required TResult Function(_SubtractWeekType value) subtractWeekType,
+    required TResult Function(_LoadTeacher value) loadTeacher,
+    required TResult Function(_LoadTeacherLocal value) loadTeacherLocal,
+    required TResult Function(_AddTeacherWeekType value) addTeacherWeekType,
+    required TResult Function(_SubtractTeacherWeekType value)
+        subtractTeacherWeekType,
   }) {
     return addWeekType(this);
   }
@@ -634,6 +751,10 @@ class _$AddWeekTypeImpl implements _AddWeekType {
     TResult? Function(_LoadLocal value)? loadLocal,
     TResult? Function(_AddWeekType value)? addWeekType,
     TResult? Function(_SubtractWeekType value)? subtractWeekType,
+    TResult? Function(_LoadTeacher value)? loadTeacher,
+    TResult? Function(_LoadTeacherLocal value)? loadTeacherLocal,
+    TResult? Function(_AddTeacherWeekType value)? addTeacherWeekType,
+    TResult? Function(_SubtractTeacherWeekType value)? subtractTeacherWeekType,
   }) {
     return addWeekType?.call(this);
   }
@@ -646,6 +767,10 @@ class _$AddWeekTypeImpl implements _AddWeekType {
     TResult Function(_LoadLocal value)? loadLocal,
     TResult Function(_AddWeekType value)? addWeekType,
     TResult Function(_SubtractWeekType value)? subtractWeekType,
+    TResult Function(_LoadTeacher value)? loadTeacher,
+    TResult Function(_LoadTeacherLocal value)? loadTeacherLocal,
+    TResult Function(_AddTeacherWeekType value)? addTeacherWeekType,
+    TResult Function(_SubtractTeacherWeekType value)? subtractTeacherWeekType,
     required TResult orElse(),
   }) {
     if (addWeekType != null) {
@@ -734,6 +859,10 @@ class _$SubtractWeekTypeImpl implements _SubtractWeekType {
     required TResult Function(int groupId) loadLocal,
     required TResult Function(int groupId) addWeekType,
     required TResult Function(int groupId) subtractWeekType,
+    required TResult Function(int accountId) loadTeacher,
+    required TResult Function(int accountId) loadTeacherLocal,
+    required TResult Function(int groupId) addTeacherWeekType,
+    required TResult Function(int groupId) subtractTeacherWeekType,
   }) {
     return subtractWeekType(groupId);
   }
@@ -746,6 +875,10 @@ class _$SubtractWeekTypeImpl implements _SubtractWeekType {
     TResult? Function(int groupId)? loadLocal,
     TResult? Function(int groupId)? addWeekType,
     TResult? Function(int groupId)? subtractWeekType,
+    TResult? Function(int accountId)? loadTeacher,
+    TResult? Function(int accountId)? loadTeacherLocal,
+    TResult? Function(int groupId)? addTeacherWeekType,
+    TResult? Function(int groupId)? subtractTeacherWeekType,
   }) {
     return subtractWeekType?.call(groupId);
   }
@@ -758,6 +891,10 @@ class _$SubtractWeekTypeImpl implements _SubtractWeekType {
     TResult Function(int groupId)? loadLocal,
     TResult Function(int groupId)? addWeekType,
     TResult Function(int groupId)? subtractWeekType,
+    TResult Function(int accountId)? loadTeacher,
+    TResult Function(int accountId)? loadTeacherLocal,
+    TResult Function(int groupId)? addTeacherWeekType,
+    TResult Function(int groupId)? subtractTeacherWeekType,
     required TResult orElse(),
   }) {
     if (subtractWeekType != null) {
@@ -774,6 +911,11 @@ class _$SubtractWeekTypeImpl implements _SubtractWeekType {
     required TResult Function(_LoadLocal value) loadLocal,
     required TResult Function(_AddWeekType value) addWeekType,
     required TResult Function(_SubtractWeekType value) subtractWeekType,
+    required TResult Function(_LoadTeacher value) loadTeacher,
+    required TResult Function(_LoadTeacherLocal value) loadTeacherLocal,
+    required TResult Function(_AddTeacherWeekType value) addTeacherWeekType,
+    required TResult Function(_SubtractTeacherWeekType value)
+        subtractTeacherWeekType,
   }) {
     return subtractWeekType(this);
   }
@@ -786,6 +928,10 @@ class _$SubtractWeekTypeImpl implements _SubtractWeekType {
     TResult? Function(_LoadLocal value)? loadLocal,
     TResult? Function(_AddWeekType value)? addWeekType,
     TResult? Function(_SubtractWeekType value)? subtractWeekType,
+    TResult? Function(_LoadTeacher value)? loadTeacher,
+    TResult? Function(_LoadTeacherLocal value)? loadTeacherLocal,
+    TResult? Function(_AddTeacherWeekType value)? addTeacherWeekType,
+    TResult? Function(_SubtractTeacherWeekType value)? subtractTeacherWeekType,
   }) {
     return subtractWeekType?.call(this);
   }
@@ -798,6 +944,10 @@ class _$SubtractWeekTypeImpl implements _SubtractWeekType {
     TResult Function(_LoadLocal value)? loadLocal,
     TResult Function(_AddWeekType value)? addWeekType,
     TResult Function(_SubtractWeekType value)? subtractWeekType,
+    TResult Function(_LoadTeacher value)? loadTeacher,
+    TResult Function(_LoadTeacherLocal value)? loadTeacherLocal,
+    TResult Function(_AddTeacherWeekType value)? addTeacherWeekType,
+    TResult Function(_SubtractTeacherWeekType value)? subtractTeacherWeekType,
     required TResult orElse(),
   }) {
     if (subtractWeekType != null) {
@@ -814,6 +964,719 @@ abstract class _SubtractWeekType implements ScheduleEvent {
   @JsonKey(ignore: true)
   _$$SubtractWeekTypeImplCopyWith<_$SubtractWeekTypeImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoadTeacherImplCopyWith<$Res> {
+  factory _$$LoadTeacherImplCopyWith(
+          _$LoadTeacherImpl value, $Res Function(_$LoadTeacherImpl) then) =
+      __$$LoadTeacherImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int accountId});
+}
+
+/// @nodoc
+class __$$LoadTeacherImplCopyWithImpl<$Res>
+    extends _$ScheduleEventCopyWithImpl<$Res, _$LoadTeacherImpl>
+    implements _$$LoadTeacherImplCopyWith<$Res> {
+  __$$LoadTeacherImplCopyWithImpl(
+      _$LoadTeacherImpl _value, $Res Function(_$LoadTeacherImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? accountId = null,
+  }) {
+    return _then(_$LoadTeacherImpl(
+      null == accountId
+          ? _value.accountId
+          : accountId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoadTeacherImpl implements _LoadTeacher {
+  const _$LoadTeacherImpl(this.accountId);
+
+  @override
+  final int accountId;
+
+  @override
+  String toString() {
+    return 'ScheduleEvent.loadTeacher(accountId: $accountId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadTeacherImpl &&
+            (identical(other.accountId, accountId) ||
+                other.accountId == accountId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, accountId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadTeacherImplCopyWith<_$LoadTeacherImpl> get copyWith =>
+      __$$LoadTeacherImplCopyWithImpl<_$LoadTeacherImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(int groupId) load,
+    required TResult Function(int groupId) loadLocal,
+    required TResult Function(int groupId) addWeekType,
+    required TResult Function(int groupId) subtractWeekType,
+    required TResult Function(int accountId) loadTeacher,
+    required TResult Function(int accountId) loadTeacherLocal,
+    required TResult Function(int groupId) addTeacherWeekType,
+    required TResult Function(int groupId) subtractTeacherWeekType,
+  }) {
+    return loadTeacher(accountId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(int groupId)? load,
+    TResult? Function(int groupId)? loadLocal,
+    TResult? Function(int groupId)? addWeekType,
+    TResult? Function(int groupId)? subtractWeekType,
+    TResult? Function(int accountId)? loadTeacher,
+    TResult? Function(int accountId)? loadTeacherLocal,
+    TResult? Function(int groupId)? addTeacherWeekType,
+    TResult? Function(int groupId)? subtractTeacherWeekType,
+  }) {
+    return loadTeacher?.call(accountId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(int groupId)? load,
+    TResult Function(int groupId)? loadLocal,
+    TResult Function(int groupId)? addWeekType,
+    TResult Function(int groupId)? subtractWeekType,
+    TResult Function(int accountId)? loadTeacher,
+    TResult Function(int accountId)? loadTeacherLocal,
+    TResult Function(int groupId)? addTeacherWeekType,
+    TResult Function(int groupId)? subtractTeacherWeekType,
+    required TResult orElse(),
+  }) {
+    if (loadTeacher != null) {
+      return loadTeacher(accountId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_Load value) load,
+    required TResult Function(_LoadLocal value) loadLocal,
+    required TResult Function(_AddWeekType value) addWeekType,
+    required TResult Function(_SubtractWeekType value) subtractWeekType,
+    required TResult Function(_LoadTeacher value) loadTeacher,
+    required TResult Function(_LoadTeacherLocal value) loadTeacherLocal,
+    required TResult Function(_AddTeacherWeekType value) addTeacherWeekType,
+    required TResult Function(_SubtractTeacherWeekType value)
+        subtractTeacherWeekType,
+  }) {
+    return loadTeacher(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_Load value)? load,
+    TResult? Function(_LoadLocal value)? loadLocal,
+    TResult? Function(_AddWeekType value)? addWeekType,
+    TResult? Function(_SubtractWeekType value)? subtractWeekType,
+    TResult? Function(_LoadTeacher value)? loadTeacher,
+    TResult? Function(_LoadTeacherLocal value)? loadTeacherLocal,
+    TResult? Function(_AddTeacherWeekType value)? addTeacherWeekType,
+    TResult? Function(_SubtractTeacherWeekType value)? subtractTeacherWeekType,
+  }) {
+    return loadTeacher?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Load value)? load,
+    TResult Function(_LoadLocal value)? loadLocal,
+    TResult Function(_AddWeekType value)? addWeekType,
+    TResult Function(_SubtractWeekType value)? subtractWeekType,
+    TResult Function(_LoadTeacher value)? loadTeacher,
+    TResult Function(_LoadTeacherLocal value)? loadTeacherLocal,
+    TResult Function(_AddTeacherWeekType value)? addTeacherWeekType,
+    TResult Function(_SubtractTeacherWeekType value)? subtractTeacherWeekType,
+    required TResult orElse(),
+  }) {
+    if (loadTeacher != null) {
+      return loadTeacher(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadTeacher implements ScheduleEvent {
+  const factory _LoadTeacher(final int accountId) = _$LoadTeacherImpl;
+
+  int get accountId;
+  @JsonKey(ignore: true)
+  _$$LoadTeacherImplCopyWith<_$LoadTeacherImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoadTeacherLocalImplCopyWith<$Res> {
+  factory _$$LoadTeacherLocalImplCopyWith(_$LoadTeacherLocalImpl value,
+          $Res Function(_$LoadTeacherLocalImpl) then) =
+      __$$LoadTeacherLocalImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int accountId});
+}
+
+/// @nodoc
+class __$$LoadTeacherLocalImplCopyWithImpl<$Res>
+    extends _$ScheduleEventCopyWithImpl<$Res, _$LoadTeacherLocalImpl>
+    implements _$$LoadTeacherLocalImplCopyWith<$Res> {
+  __$$LoadTeacherLocalImplCopyWithImpl(_$LoadTeacherLocalImpl _value,
+      $Res Function(_$LoadTeacherLocalImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? accountId = null,
+  }) {
+    return _then(_$LoadTeacherLocalImpl(
+      null == accountId
+          ? _value.accountId
+          : accountId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoadTeacherLocalImpl implements _LoadTeacherLocal {
+  const _$LoadTeacherLocalImpl(this.accountId);
+
+  @override
+  final int accountId;
+
+  @override
+  String toString() {
+    return 'ScheduleEvent.loadTeacherLocal(accountId: $accountId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadTeacherLocalImpl &&
+            (identical(other.accountId, accountId) ||
+                other.accountId == accountId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, accountId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadTeacherLocalImplCopyWith<_$LoadTeacherLocalImpl> get copyWith =>
+      __$$LoadTeacherLocalImplCopyWithImpl<_$LoadTeacherLocalImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(int groupId) load,
+    required TResult Function(int groupId) loadLocal,
+    required TResult Function(int groupId) addWeekType,
+    required TResult Function(int groupId) subtractWeekType,
+    required TResult Function(int accountId) loadTeacher,
+    required TResult Function(int accountId) loadTeacherLocal,
+    required TResult Function(int groupId) addTeacherWeekType,
+    required TResult Function(int groupId) subtractTeacherWeekType,
+  }) {
+    return loadTeacherLocal(accountId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(int groupId)? load,
+    TResult? Function(int groupId)? loadLocal,
+    TResult? Function(int groupId)? addWeekType,
+    TResult? Function(int groupId)? subtractWeekType,
+    TResult? Function(int accountId)? loadTeacher,
+    TResult? Function(int accountId)? loadTeacherLocal,
+    TResult? Function(int groupId)? addTeacherWeekType,
+    TResult? Function(int groupId)? subtractTeacherWeekType,
+  }) {
+    return loadTeacherLocal?.call(accountId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(int groupId)? load,
+    TResult Function(int groupId)? loadLocal,
+    TResult Function(int groupId)? addWeekType,
+    TResult Function(int groupId)? subtractWeekType,
+    TResult Function(int accountId)? loadTeacher,
+    TResult Function(int accountId)? loadTeacherLocal,
+    TResult Function(int groupId)? addTeacherWeekType,
+    TResult Function(int groupId)? subtractTeacherWeekType,
+    required TResult orElse(),
+  }) {
+    if (loadTeacherLocal != null) {
+      return loadTeacherLocal(accountId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_Load value) load,
+    required TResult Function(_LoadLocal value) loadLocal,
+    required TResult Function(_AddWeekType value) addWeekType,
+    required TResult Function(_SubtractWeekType value) subtractWeekType,
+    required TResult Function(_LoadTeacher value) loadTeacher,
+    required TResult Function(_LoadTeacherLocal value) loadTeacherLocal,
+    required TResult Function(_AddTeacherWeekType value) addTeacherWeekType,
+    required TResult Function(_SubtractTeacherWeekType value)
+        subtractTeacherWeekType,
+  }) {
+    return loadTeacherLocal(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_Load value)? load,
+    TResult? Function(_LoadLocal value)? loadLocal,
+    TResult? Function(_AddWeekType value)? addWeekType,
+    TResult? Function(_SubtractWeekType value)? subtractWeekType,
+    TResult? Function(_LoadTeacher value)? loadTeacher,
+    TResult? Function(_LoadTeacherLocal value)? loadTeacherLocal,
+    TResult? Function(_AddTeacherWeekType value)? addTeacherWeekType,
+    TResult? Function(_SubtractTeacherWeekType value)? subtractTeacherWeekType,
+  }) {
+    return loadTeacherLocal?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Load value)? load,
+    TResult Function(_LoadLocal value)? loadLocal,
+    TResult Function(_AddWeekType value)? addWeekType,
+    TResult Function(_SubtractWeekType value)? subtractWeekType,
+    TResult Function(_LoadTeacher value)? loadTeacher,
+    TResult Function(_LoadTeacherLocal value)? loadTeacherLocal,
+    TResult Function(_AddTeacherWeekType value)? addTeacherWeekType,
+    TResult Function(_SubtractTeacherWeekType value)? subtractTeacherWeekType,
+    required TResult orElse(),
+  }) {
+    if (loadTeacherLocal != null) {
+      return loadTeacherLocal(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadTeacherLocal implements ScheduleEvent {
+  const factory _LoadTeacherLocal(final int accountId) = _$LoadTeacherLocalImpl;
+
+  int get accountId;
+  @JsonKey(ignore: true)
+  _$$LoadTeacherLocalImplCopyWith<_$LoadTeacherLocalImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AddTeacherWeekTypeImplCopyWith<$Res> {
+  factory _$$AddTeacherWeekTypeImplCopyWith(_$AddTeacherWeekTypeImpl value,
+          $Res Function(_$AddTeacherWeekTypeImpl) then) =
+      __$$AddTeacherWeekTypeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int groupId});
+}
+
+/// @nodoc
+class __$$AddTeacherWeekTypeImplCopyWithImpl<$Res>
+    extends _$ScheduleEventCopyWithImpl<$Res, _$AddTeacherWeekTypeImpl>
+    implements _$$AddTeacherWeekTypeImplCopyWith<$Res> {
+  __$$AddTeacherWeekTypeImplCopyWithImpl(_$AddTeacherWeekTypeImpl _value,
+      $Res Function(_$AddTeacherWeekTypeImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? groupId = null,
+  }) {
+    return _then(_$AddTeacherWeekTypeImpl(
+      null == groupId
+          ? _value.groupId
+          : groupId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AddTeacherWeekTypeImpl implements _AddTeacherWeekType {
+  const _$AddTeacherWeekTypeImpl(this.groupId);
+
+  @override
+  final int groupId;
+
+  @override
+  String toString() {
+    return 'ScheduleEvent.addTeacherWeekType(groupId: $groupId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddTeacherWeekTypeImpl &&
+            (identical(other.groupId, groupId) || other.groupId == groupId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, groupId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddTeacherWeekTypeImplCopyWith<_$AddTeacherWeekTypeImpl> get copyWith =>
+      __$$AddTeacherWeekTypeImplCopyWithImpl<_$AddTeacherWeekTypeImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(int groupId) load,
+    required TResult Function(int groupId) loadLocal,
+    required TResult Function(int groupId) addWeekType,
+    required TResult Function(int groupId) subtractWeekType,
+    required TResult Function(int accountId) loadTeacher,
+    required TResult Function(int accountId) loadTeacherLocal,
+    required TResult Function(int groupId) addTeacherWeekType,
+    required TResult Function(int groupId) subtractTeacherWeekType,
+  }) {
+    return addTeacherWeekType(groupId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(int groupId)? load,
+    TResult? Function(int groupId)? loadLocal,
+    TResult? Function(int groupId)? addWeekType,
+    TResult? Function(int groupId)? subtractWeekType,
+    TResult? Function(int accountId)? loadTeacher,
+    TResult? Function(int accountId)? loadTeacherLocal,
+    TResult? Function(int groupId)? addTeacherWeekType,
+    TResult? Function(int groupId)? subtractTeacherWeekType,
+  }) {
+    return addTeacherWeekType?.call(groupId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(int groupId)? load,
+    TResult Function(int groupId)? loadLocal,
+    TResult Function(int groupId)? addWeekType,
+    TResult Function(int groupId)? subtractWeekType,
+    TResult Function(int accountId)? loadTeacher,
+    TResult Function(int accountId)? loadTeacherLocal,
+    TResult Function(int groupId)? addTeacherWeekType,
+    TResult Function(int groupId)? subtractTeacherWeekType,
+    required TResult orElse(),
+  }) {
+    if (addTeacherWeekType != null) {
+      return addTeacherWeekType(groupId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_Load value) load,
+    required TResult Function(_LoadLocal value) loadLocal,
+    required TResult Function(_AddWeekType value) addWeekType,
+    required TResult Function(_SubtractWeekType value) subtractWeekType,
+    required TResult Function(_LoadTeacher value) loadTeacher,
+    required TResult Function(_LoadTeacherLocal value) loadTeacherLocal,
+    required TResult Function(_AddTeacherWeekType value) addTeacherWeekType,
+    required TResult Function(_SubtractTeacherWeekType value)
+        subtractTeacherWeekType,
+  }) {
+    return addTeacherWeekType(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_Load value)? load,
+    TResult? Function(_LoadLocal value)? loadLocal,
+    TResult? Function(_AddWeekType value)? addWeekType,
+    TResult? Function(_SubtractWeekType value)? subtractWeekType,
+    TResult? Function(_LoadTeacher value)? loadTeacher,
+    TResult? Function(_LoadTeacherLocal value)? loadTeacherLocal,
+    TResult? Function(_AddTeacherWeekType value)? addTeacherWeekType,
+    TResult? Function(_SubtractTeacherWeekType value)? subtractTeacherWeekType,
+  }) {
+    return addTeacherWeekType?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Load value)? load,
+    TResult Function(_LoadLocal value)? loadLocal,
+    TResult Function(_AddWeekType value)? addWeekType,
+    TResult Function(_SubtractWeekType value)? subtractWeekType,
+    TResult Function(_LoadTeacher value)? loadTeacher,
+    TResult Function(_LoadTeacherLocal value)? loadTeacherLocal,
+    TResult Function(_AddTeacherWeekType value)? addTeacherWeekType,
+    TResult Function(_SubtractTeacherWeekType value)? subtractTeacherWeekType,
+    required TResult orElse(),
+  }) {
+    if (addTeacherWeekType != null) {
+      return addTeacherWeekType(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddTeacherWeekType implements ScheduleEvent {
+  const factory _AddTeacherWeekType(final int groupId) =
+      _$AddTeacherWeekTypeImpl;
+
+  int get groupId;
+  @JsonKey(ignore: true)
+  _$$AddTeacherWeekTypeImplCopyWith<_$AddTeacherWeekTypeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SubtractTeacherWeekTypeImplCopyWith<$Res> {
+  factory _$$SubtractTeacherWeekTypeImplCopyWith(
+          _$SubtractTeacherWeekTypeImpl value,
+          $Res Function(_$SubtractTeacherWeekTypeImpl) then) =
+      __$$SubtractTeacherWeekTypeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int groupId});
+}
+
+/// @nodoc
+class __$$SubtractTeacherWeekTypeImplCopyWithImpl<$Res>
+    extends _$ScheduleEventCopyWithImpl<$Res, _$SubtractTeacherWeekTypeImpl>
+    implements _$$SubtractTeacherWeekTypeImplCopyWith<$Res> {
+  __$$SubtractTeacherWeekTypeImplCopyWithImpl(
+      _$SubtractTeacherWeekTypeImpl _value,
+      $Res Function(_$SubtractTeacherWeekTypeImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? groupId = null,
+  }) {
+    return _then(_$SubtractTeacherWeekTypeImpl(
+      null == groupId
+          ? _value.groupId
+          : groupId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SubtractTeacherWeekTypeImpl implements _SubtractTeacherWeekType {
+  const _$SubtractTeacherWeekTypeImpl(this.groupId);
+
+  @override
+  final int groupId;
+
+  @override
+  String toString() {
+    return 'ScheduleEvent.subtractTeacherWeekType(groupId: $groupId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SubtractTeacherWeekTypeImpl &&
+            (identical(other.groupId, groupId) || other.groupId == groupId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, groupId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SubtractTeacherWeekTypeImplCopyWith<_$SubtractTeacherWeekTypeImpl>
+      get copyWith => __$$SubtractTeacherWeekTypeImplCopyWithImpl<
+          _$SubtractTeacherWeekTypeImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(int groupId) load,
+    required TResult Function(int groupId) loadLocal,
+    required TResult Function(int groupId) addWeekType,
+    required TResult Function(int groupId) subtractWeekType,
+    required TResult Function(int accountId) loadTeacher,
+    required TResult Function(int accountId) loadTeacherLocal,
+    required TResult Function(int groupId) addTeacherWeekType,
+    required TResult Function(int groupId) subtractTeacherWeekType,
+  }) {
+    return subtractTeacherWeekType(groupId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(int groupId)? load,
+    TResult? Function(int groupId)? loadLocal,
+    TResult? Function(int groupId)? addWeekType,
+    TResult? Function(int groupId)? subtractWeekType,
+    TResult? Function(int accountId)? loadTeacher,
+    TResult? Function(int accountId)? loadTeacherLocal,
+    TResult? Function(int groupId)? addTeacherWeekType,
+    TResult? Function(int groupId)? subtractTeacherWeekType,
+  }) {
+    return subtractTeacherWeekType?.call(groupId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(int groupId)? load,
+    TResult Function(int groupId)? loadLocal,
+    TResult Function(int groupId)? addWeekType,
+    TResult Function(int groupId)? subtractWeekType,
+    TResult Function(int accountId)? loadTeacher,
+    TResult Function(int accountId)? loadTeacherLocal,
+    TResult Function(int groupId)? addTeacherWeekType,
+    TResult Function(int groupId)? subtractTeacherWeekType,
+    required TResult orElse(),
+  }) {
+    if (subtractTeacherWeekType != null) {
+      return subtractTeacherWeekType(groupId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_Load value) load,
+    required TResult Function(_LoadLocal value) loadLocal,
+    required TResult Function(_AddWeekType value) addWeekType,
+    required TResult Function(_SubtractWeekType value) subtractWeekType,
+    required TResult Function(_LoadTeacher value) loadTeacher,
+    required TResult Function(_LoadTeacherLocal value) loadTeacherLocal,
+    required TResult Function(_AddTeacherWeekType value) addTeacherWeekType,
+    required TResult Function(_SubtractTeacherWeekType value)
+        subtractTeacherWeekType,
+  }) {
+    return subtractTeacherWeekType(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_Load value)? load,
+    TResult? Function(_LoadLocal value)? loadLocal,
+    TResult? Function(_AddWeekType value)? addWeekType,
+    TResult? Function(_SubtractWeekType value)? subtractWeekType,
+    TResult? Function(_LoadTeacher value)? loadTeacher,
+    TResult? Function(_LoadTeacherLocal value)? loadTeacherLocal,
+    TResult? Function(_AddTeacherWeekType value)? addTeacherWeekType,
+    TResult? Function(_SubtractTeacherWeekType value)? subtractTeacherWeekType,
+  }) {
+    return subtractTeacherWeekType?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Load value)? load,
+    TResult Function(_LoadLocal value)? loadLocal,
+    TResult Function(_AddWeekType value)? addWeekType,
+    TResult Function(_SubtractWeekType value)? subtractWeekType,
+    TResult Function(_LoadTeacher value)? loadTeacher,
+    TResult Function(_LoadTeacherLocal value)? loadTeacherLocal,
+    TResult Function(_AddTeacherWeekType value)? addTeacherWeekType,
+    TResult Function(_SubtractTeacherWeekType value)? subtractTeacherWeekType,
+    required TResult orElse(),
+  }) {
+    if (subtractTeacherWeekType != null) {
+      return subtractTeacherWeekType(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SubtractTeacherWeekType implements ScheduleEvent {
+  const factory _SubtractTeacherWeekType(final int groupId) =
+      _$SubtractTeacherWeekTypeImpl;
+
+  int get groupId;
+  @JsonKey(ignore: true)
+  _$$SubtractTeacherWeekTypeImplCopyWith<_$SubtractTeacherWeekTypeImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

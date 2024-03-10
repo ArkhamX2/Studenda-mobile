@@ -20,7 +20,7 @@ class TaskRepositoryImpl implements TaskRepository {
   });
 
   @override
-  Future<Either<Failure, List<TaskModel>>> load(
+  Future<Either<Failure, List<TaskModel>>> loadStudent(
     TaskStudentRequestModel request, [
     bool remote = true,
   ]) async {
@@ -33,5 +33,12 @@ class TaskRepositoryImpl implements TaskRepository {
       networkInfo,
     );
 
+  }
+  
+  
+  @override
+  Future<Either<Failure, List<TaskModel>>> loadTeacher(TaskStudentRequestModel request, [bool remote = true]) {
+    // TODO: implement loadTeacher
+    throw UnimplementedError();
   }
 }

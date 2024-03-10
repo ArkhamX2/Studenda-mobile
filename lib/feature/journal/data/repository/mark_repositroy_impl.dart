@@ -20,7 +20,7 @@ class MarkRepositoryImpl implements MarkRepository {
   });
 
   @override
-  Future<Either<Failure, List<MarkModel>>> load(
+  Future<Either<Failure, List<MarkModel>>> loadStudent(
     MarkRequestModel request, [
     bool remote = true,
   ]) async {
@@ -33,5 +33,11 @@ class MarkRepositoryImpl implements MarkRepository {
       networkInfo,
     );
 
+  }
+  
+  @override
+  Future<Either<Failure, List<MarkModel>>> loadTeacher(MarkRequestModel request, [bool remote = true]) {
+    // TODO: implement loadTeacher
+    throw UnimplementedError();
   }
 }

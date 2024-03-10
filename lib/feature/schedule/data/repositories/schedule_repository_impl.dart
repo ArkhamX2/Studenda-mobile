@@ -19,7 +19,7 @@ class ScheduleRepositoryImpl implements ScheduleByWeekTypeRepository {
     required this.networkInfo,
   });
   @override
-  Future<Either<Failure, List<SubjectModel>>> load(
+  Future<Either<Failure, List<SubjectModel>>> loadStudent(
     ScheduleRequestByWeekTypeModel request, 
     List<int> weekTypeIds,[
     bool remote = true,
@@ -69,5 +69,11 @@ class ScheduleRepositoryImpl implements ScheduleByWeekTypeRepository {
         );
       }
     }
+  }
+  
+  @override
+  Future<Either<Failure, List<SubjectModel>>> loadTeacher(ScheduleRequestByWeekTypeModel request, List<int> weekTypeIds, [bool remote = true]) {
+    // TODO: implement loadTeacher
+    throw UnimplementedError();
   }
 }
