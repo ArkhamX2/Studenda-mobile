@@ -11,7 +11,7 @@ import 'package:studenda_mobile_student/feature/journal/domain/entity/task_entit
 import 'package:studenda_mobile_student/feature/journal/presentation/cubit/mark/mark_cubit.dart';
 import 'package:studenda_mobile_student/feature/journal/presentation/cubit/task/task_cubit.dart';
 import 'package:studenda_mobile_student/feature/journal/presentation/widgets/journal_attendance_screen.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/models/extended_discipline_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/discipline/extended_discipline_model.dart';
 import 'package:studenda_mobile_student/injection_container.dart';
 import 'package:studenda_mobile_student/resources/colors.dart';
 

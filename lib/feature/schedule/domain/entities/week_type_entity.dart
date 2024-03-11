@@ -1,6 +1,6 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/models/week_type_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/week_type/week_type_model.dart';
 
 part 'week_type_entity.freezed.dart';
 

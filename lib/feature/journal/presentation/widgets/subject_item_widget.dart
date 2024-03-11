@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/models/extended_discipline_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/discipline/extended_discipline_model.dart';
 import 'package:studenda_mobile_student/resources/colors.dart';
 
 class SubjectItemWidget extends StatelessWidget {

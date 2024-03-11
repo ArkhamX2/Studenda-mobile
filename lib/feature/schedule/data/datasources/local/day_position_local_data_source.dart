@@ -1,7 +1,7 @@
 import 'package:hive/hive.dart';
 import 'package:studenda_mobile_student/core/data/datasource/datasource.dart';
 import 'package:studenda_mobile_student/core/data/error/exception.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/models/day_position_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/day_position/day_position_model.dart';
 
 class DayPositionLocalDataSource
     extends LocalDataSource<List<DayPositionModel>, void> {

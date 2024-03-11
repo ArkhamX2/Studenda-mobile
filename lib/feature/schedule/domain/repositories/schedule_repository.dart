@@ -1,7 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:studenda_mobile_student/core/data/error/failure.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/models/schedule_request_model.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/models/subject_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/api/schedule_request_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/api/teacher_scheduke_request.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/subject/subject_model.dart';
 
 abstract class ScheduleByWeekTypeRepository {
   Future<Either<Failure, List<SubjectModel>>> loadStudent(
@@ -12,7 +13,7 @@ abstract class ScheduleByWeekTypeRepository {
 
   
   Future<Either<Failure, List<SubjectModel>>> loadTeacher(
-    ScheduleRequestByWeekTypeModel request, 
+    TeacherRequestByWeekTypeModel request, 
     List<int> weekTypeIds,[
     bool remote = true,
   ]);

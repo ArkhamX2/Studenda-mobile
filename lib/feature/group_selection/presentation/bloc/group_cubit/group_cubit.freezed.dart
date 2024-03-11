@@ -50,32 +50,33 @@ mixin _$GroupState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Fail value) fail,
-    required TResult Function(_LocalLoadingFail value) localLoadingFail,
-    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
+    required TResult Function(GroupInitial value) initial,
+    required TResult Function(GroupLoading value) loading,
+    required TResult Function(GroupSuccess value) success,
+    required TResult Function(GroupFail value) fail,
+    required TResult Function(GroupLocalLoadingFail value) localLoadingFail,
+    required TResult Function(GroupLocalLoadingSuccess value)
+        localLoadingSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Fail value)? fail,
-    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult? Function(GroupInitial value)? initial,
+    TResult? Function(GroupLoading value)? loading,
+    TResult? Function(GroupSuccess value)? success,
+    TResult? Function(GroupFail value)? fail,
+    TResult? Function(GroupLocalLoadingFail value)? localLoadingFail,
+    TResult? Function(GroupLocalLoadingSuccess value)? localLoadingSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Fail value)? fail,
-    TResult Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult Function(GroupInitial value)? initial,
+    TResult Function(GroupLoading value)? loading,
+    TResult Function(GroupSuccess value)? success,
+    TResult Function(GroupFail value)? fail,
+    TResult Function(GroupLocalLoadingFail value)? localLoadingFail,
+    TResult Function(GroupLocalLoadingSuccess value)? localLoadingSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -100,25 +101,25 @@ class _$GroupStateCopyWithImpl<$Res, $Val extends GroupState>
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
+abstract class _$$GroupInitialImplCopyWith<$Res> {
+  factory _$$GroupInitialImplCopyWith(
+          _$GroupInitialImpl value, $Res Function(_$GroupInitialImpl) then) =
+      __$$GroupInitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$GroupStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+class __$$GroupInitialImplCopyWithImpl<$Res>
+    extends _$GroupStateCopyWithImpl<$Res, _$GroupInitialImpl>
+    implements _$$GroupInitialImplCopyWith<$Res> {
+  __$$GroupInitialImplCopyWithImpl(
+      _$GroupInitialImpl _value, $Res Function(_$GroupInitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
+class _$GroupInitialImpl implements GroupInitial {
+  const _$GroupInitialImpl();
 
   @override
   String toString() {
@@ -128,7 +129,7 @@ class _$InitialImpl implements _Initial {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType && other is _$GroupInitialImpl);
   }
 
   @override
@@ -181,12 +182,13 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Fail value) fail,
-    required TResult Function(_LocalLoadingFail value) localLoadingFail,
-    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
+    required TResult Function(GroupInitial value) initial,
+    required TResult Function(GroupLoading value) loading,
+    required TResult Function(GroupSuccess value) success,
+    required TResult Function(GroupFail value) fail,
+    required TResult Function(GroupLocalLoadingFail value) localLoadingFail,
+    required TResult Function(GroupLocalLoadingSuccess value)
+        localLoadingSuccess,
   }) {
     return initial(this);
   }
@@ -194,12 +196,12 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Fail value)? fail,
-    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult? Function(GroupInitial value)? initial,
+    TResult? Function(GroupLoading value)? loading,
+    TResult? Function(GroupSuccess value)? success,
+    TResult? Function(GroupFail value)? fail,
+    TResult? Function(GroupLocalLoadingFail value)? localLoadingFail,
+    TResult? Function(GroupLocalLoadingSuccess value)? localLoadingSuccess,
   }) {
     return initial?.call(this);
   }
@@ -207,12 +209,12 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Fail value)? fail,
-    TResult Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult Function(GroupInitial value)? initial,
+    TResult Function(GroupLoading value)? loading,
+    TResult Function(GroupSuccess value)? success,
+    TResult Function(GroupFail value)? fail,
+    TResult Function(GroupLocalLoadingFail value)? localLoadingFail,
+    TResult Function(GroupLocalLoadingSuccess value)? localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -222,30 +224,30 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements GroupState {
-  const factory _Initial() = _$InitialImpl;
+abstract class GroupInitial implements GroupState {
+  const factory GroupInitial() = _$GroupInitialImpl;
 }
 
 /// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res> {
-  factory _$$LoadingImplCopyWith(
-          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
-      __$$LoadingImplCopyWithImpl<$Res>;
+abstract class _$$GroupLoadingImplCopyWith<$Res> {
+  factory _$$GroupLoadingImplCopyWith(
+          _$GroupLoadingImpl value, $Res Function(_$GroupLoadingImpl) then) =
+      __$$GroupLoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$GroupStateCopyWithImpl<$Res, _$LoadingImpl>
-    implements _$$LoadingImplCopyWith<$Res> {
-  __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+class __$$GroupLoadingImplCopyWithImpl<$Res>
+    extends _$GroupStateCopyWithImpl<$Res, _$GroupLoadingImpl>
+    implements _$$GroupLoadingImplCopyWith<$Res> {
+  __$$GroupLoadingImplCopyWithImpl(
+      _$GroupLoadingImpl _value, $Res Function(_$GroupLoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$LoadingImpl implements _Loading {
-  const _$LoadingImpl();
+class _$GroupLoadingImpl implements GroupLoading {
+  const _$GroupLoadingImpl();
 
   @override
   String toString() {
@@ -255,7 +257,7 @@ class _$LoadingImpl implements _Loading {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl);
+        (other.runtimeType == runtimeType && other is _$GroupLoadingImpl);
   }
 
   @override
@@ -308,12 +310,13 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Fail value) fail,
-    required TResult Function(_LocalLoadingFail value) localLoadingFail,
-    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
+    required TResult Function(GroupInitial value) initial,
+    required TResult Function(GroupLoading value) loading,
+    required TResult Function(GroupSuccess value) success,
+    required TResult Function(GroupFail value) fail,
+    required TResult Function(GroupLocalLoadingFail value) localLoadingFail,
+    required TResult Function(GroupLocalLoadingSuccess value)
+        localLoadingSuccess,
   }) {
     return loading(this);
   }
@@ -321,12 +324,12 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Fail value)? fail,
-    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult? Function(GroupInitial value)? initial,
+    TResult? Function(GroupLoading value)? loading,
+    TResult? Function(GroupSuccess value)? success,
+    TResult? Function(GroupFail value)? fail,
+    TResult? Function(GroupLocalLoadingFail value)? localLoadingFail,
+    TResult? Function(GroupLocalLoadingSuccess value)? localLoadingSuccess,
   }) {
     return loading?.call(this);
   }
@@ -334,12 +337,12 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Fail value)? fail,
-    TResult Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult Function(GroupInitial value)? initial,
+    TResult Function(GroupLoading value)? loading,
+    TResult Function(GroupSuccess value)? success,
+    TResult Function(GroupFail value)? fail,
+    TResult Function(GroupLocalLoadingFail value)? localLoadingFail,
+    TResult Function(GroupLocalLoadingSuccess value)? localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -349,25 +352,25 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements GroupState {
-  const factory _Loading() = _$LoadingImpl;
+abstract class GroupLoading implements GroupState {
+  const factory GroupLoading() = _$GroupLoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$SuccessImplCopyWith<$Res> {
-  factory _$$SuccessImplCopyWith(
-          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
-      __$$SuccessImplCopyWithImpl<$Res>;
+abstract class _$$GroupSuccessImplCopyWith<$Res> {
+  factory _$$GroupSuccessImplCopyWith(
+          _$GroupSuccessImpl value, $Res Function(_$GroupSuccessImpl) then) =
+      __$$GroupSuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<GroupEntity> departments});
 }
 
 /// @nodoc
-class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$GroupStateCopyWithImpl<$Res, _$SuccessImpl>
-    implements _$$SuccessImplCopyWith<$Res> {
-  __$$SuccessImplCopyWithImpl(
-      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
+class __$$GroupSuccessImplCopyWithImpl<$Res>
+    extends _$GroupStateCopyWithImpl<$Res, _$GroupSuccessImpl>
+    implements _$$GroupSuccessImplCopyWith<$Res> {
+  __$$GroupSuccessImplCopyWithImpl(
+      _$GroupSuccessImpl _value, $Res Function(_$GroupSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -375,7 +378,7 @@ class __$$SuccessImplCopyWithImpl<$Res>
   $Res call({
     Object? departments = null,
   }) {
-    return _then(_$SuccessImpl(
+    return _then(_$GroupSuccessImpl(
       null == departments
           ? _value._departments
           : departments // ignore: cast_nullable_to_non_nullable
@@ -386,8 +389,8 @@ class __$$SuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(final List<GroupEntity> departments)
+class _$GroupSuccessImpl implements GroupSuccess {
+  const _$GroupSuccessImpl(final List<GroupEntity> departments)
       : _departments = departments;
 
   final List<GroupEntity> _departments;
@@ -407,7 +410,7 @@ class _$SuccessImpl implements _Success {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SuccessImpl &&
+            other is _$GroupSuccessImpl &&
             const DeepCollectionEquality()
                 .equals(other._departments, _departments));
   }
@@ -419,8 +422,8 @@ class _$SuccessImpl implements _Success {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
+  _$$GroupSuccessImplCopyWith<_$GroupSuccessImpl> get copyWith =>
+      __$$GroupSuccessImplCopyWithImpl<_$GroupSuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -469,12 +472,13 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Fail value) fail,
-    required TResult Function(_LocalLoadingFail value) localLoadingFail,
-    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
+    required TResult Function(GroupInitial value) initial,
+    required TResult Function(GroupLoading value) loading,
+    required TResult Function(GroupSuccess value) success,
+    required TResult Function(GroupFail value) fail,
+    required TResult Function(GroupLocalLoadingFail value) localLoadingFail,
+    required TResult Function(GroupLocalLoadingSuccess value)
+        localLoadingSuccess,
   }) {
     return success(this);
   }
@@ -482,12 +486,12 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Fail value)? fail,
-    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult? Function(GroupInitial value)? initial,
+    TResult? Function(GroupLoading value)? loading,
+    TResult? Function(GroupSuccess value)? success,
+    TResult? Function(GroupFail value)? fail,
+    TResult? Function(GroupLocalLoadingFail value)? localLoadingFail,
+    TResult? Function(GroupLocalLoadingSuccess value)? localLoadingSuccess,
   }) {
     return success?.call(this);
   }
@@ -495,12 +499,12 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Fail value)? fail,
-    TResult Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult Function(GroupInitial value)? initial,
+    TResult Function(GroupLoading value)? loading,
+    TResult Function(GroupSuccess value)? success,
+    TResult Function(GroupFail value)? fail,
+    TResult Function(GroupLocalLoadingFail value)? localLoadingFail,
+    TResult Function(GroupLocalLoadingSuccess value)? localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -510,29 +514,31 @@ class _$SuccessImpl implements _Success {
   }
 }
 
-abstract class _Success implements GroupState {
-  const factory _Success(final List<GroupEntity> departments) = _$SuccessImpl;
+abstract class GroupSuccess implements GroupState {
+  const factory GroupSuccess(final List<GroupEntity> departments) =
+      _$GroupSuccessImpl;
 
   List<GroupEntity> get departments;
   @JsonKey(ignore: true)
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+  _$$GroupSuccessImplCopyWith<_$GroupSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$FailImplCopyWith<$Res> {
-  factory _$$FailImplCopyWith(
-          _$FailImpl value, $Res Function(_$FailImpl) then) =
-      __$$FailImplCopyWithImpl<$Res>;
+abstract class _$$GroupFailImplCopyWith<$Res> {
+  factory _$$GroupFailImplCopyWith(
+          _$GroupFailImpl value, $Res Function(_$GroupFailImpl) then) =
+      __$$GroupFailImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$FailImplCopyWithImpl<$Res>
-    extends _$GroupStateCopyWithImpl<$Res, _$FailImpl>
-    implements _$$FailImplCopyWith<$Res> {
-  __$$FailImplCopyWithImpl(_$FailImpl _value, $Res Function(_$FailImpl) _then)
+class __$$GroupFailImplCopyWithImpl<$Res>
+    extends _$GroupStateCopyWithImpl<$Res, _$GroupFailImpl>
+    implements _$$GroupFailImplCopyWith<$Res> {
+  __$$GroupFailImplCopyWithImpl(
+      _$GroupFailImpl _value, $Res Function(_$GroupFailImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -540,7 +546,7 @@ class __$$FailImplCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$FailImpl(
+    return _then(_$GroupFailImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -551,8 +557,8 @@ class __$$FailImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FailImpl implements _Fail {
-  const _$FailImpl([this.message = "Unknown error"]);
+class _$GroupFailImpl implements GroupFail {
+  const _$GroupFailImpl([this.message = "Unknown error"]);
 
   @override
   @JsonKey()
@@ -567,7 +573,7 @@ class _$FailImpl implements _Fail {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FailImpl &&
+            other is _$GroupFailImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -577,8 +583,8 @@ class _$FailImpl implements _Fail {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$FailImplCopyWith<_$FailImpl> get copyWith =>
-      __$$FailImplCopyWithImpl<_$FailImpl>(this, _$identity);
+  _$$GroupFailImplCopyWith<_$GroupFailImpl> get copyWith =>
+      __$$GroupFailImplCopyWithImpl<_$GroupFailImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -627,12 +633,13 @@ class _$FailImpl implements _Fail {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Fail value) fail,
-    required TResult Function(_LocalLoadingFail value) localLoadingFail,
-    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
+    required TResult Function(GroupInitial value) initial,
+    required TResult Function(GroupLoading value) loading,
+    required TResult Function(GroupSuccess value) success,
+    required TResult Function(GroupFail value) fail,
+    required TResult Function(GroupLocalLoadingFail value) localLoadingFail,
+    required TResult Function(GroupLocalLoadingSuccess value)
+        localLoadingSuccess,
   }) {
     return fail(this);
   }
@@ -640,12 +647,12 @@ class _$FailImpl implements _Fail {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Fail value)? fail,
-    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult? Function(GroupInitial value)? initial,
+    TResult? Function(GroupLoading value)? loading,
+    TResult? Function(GroupSuccess value)? success,
+    TResult? Function(GroupFail value)? fail,
+    TResult? Function(GroupLocalLoadingFail value)? localLoadingFail,
+    TResult? Function(GroupLocalLoadingSuccess value)? localLoadingSuccess,
   }) {
     return fail?.call(this);
   }
@@ -653,12 +660,12 @@ class _$FailImpl implements _Fail {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Fail value)? fail,
-    TResult Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult Function(GroupInitial value)? initial,
+    TResult Function(GroupLoading value)? loading,
+    TResult Function(GroupSuccess value)? success,
+    TResult Function(GroupFail value)? fail,
+    TResult Function(GroupLocalLoadingFail value)? localLoadingFail,
+    TResult Function(GroupLocalLoadingSuccess value)? localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (fail != null) {
@@ -668,30 +675,31 @@ class _$FailImpl implements _Fail {
   }
 }
 
-abstract class _Fail implements GroupState {
-  const factory _Fail([final String message]) = _$FailImpl;
+abstract class GroupFail implements GroupState {
+  const factory GroupFail([final String message]) = _$GroupFailImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$FailImplCopyWith<_$FailImpl> get copyWith =>
+  _$$GroupFailImplCopyWith<_$GroupFailImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LocalLoadingFailImplCopyWith<$Res> {
-  factory _$$LocalLoadingFailImplCopyWith(_$LocalLoadingFailImpl value,
-          $Res Function(_$LocalLoadingFailImpl) then) =
-      __$$LocalLoadingFailImplCopyWithImpl<$Res>;
+abstract class _$$GroupLocalLoadingFailImplCopyWith<$Res> {
+  factory _$$GroupLocalLoadingFailImplCopyWith(
+          _$GroupLocalLoadingFailImpl value,
+          $Res Function(_$GroupLocalLoadingFailImpl) then) =
+      __$$GroupLocalLoadingFailImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$LocalLoadingFailImplCopyWithImpl<$Res>
-    extends _$GroupStateCopyWithImpl<$Res, _$LocalLoadingFailImpl>
-    implements _$$LocalLoadingFailImplCopyWith<$Res> {
-  __$$LocalLoadingFailImplCopyWithImpl(_$LocalLoadingFailImpl _value,
-      $Res Function(_$LocalLoadingFailImpl) _then)
+class __$$GroupLocalLoadingFailImplCopyWithImpl<$Res>
+    extends _$GroupStateCopyWithImpl<$Res, _$GroupLocalLoadingFailImpl>
+    implements _$$GroupLocalLoadingFailImplCopyWith<$Res> {
+  __$$GroupLocalLoadingFailImplCopyWithImpl(_$GroupLocalLoadingFailImpl _value,
+      $Res Function(_$GroupLocalLoadingFailImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -699,7 +707,7 @@ class __$$LocalLoadingFailImplCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$LocalLoadingFailImpl(
+    return _then(_$GroupLocalLoadingFailImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -710,8 +718,8 @@ class __$$LocalLoadingFailImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LocalLoadingFailImpl implements _LocalLoadingFail {
-  const _$LocalLoadingFailImpl([this.message = "Unknown error"]);
+class _$GroupLocalLoadingFailImpl implements GroupLocalLoadingFail {
+  const _$GroupLocalLoadingFailImpl([this.message = "Unknown error"]);
 
   @override
   @JsonKey()
@@ -726,7 +734,7 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LocalLoadingFailImpl &&
+            other is _$GroupLocalLoadingFailImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -736,9 +744,9 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LocalLoadingFailImplCopyWith<_$LocalLoadingFailImpl> get copyWith =>
-      __$$LocalLoadingFailImplCopyWithImpl<_$LocalLoadingFailImpl>(
-          this, _$identity);
+  _$$GroupLocalLoadingFailImplCopyWith<_$GroupLocalLoadingFailImpl>
+      get copyWith => __$$GroupLocalLoadingFailImplCopyWithImpl<
+          _$GroupLocalLoadingFailImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -787,12 +795,13 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Fail value) fail,
-    required TResult Function(_LocalLoadingFail value) localLoadingFail,
-    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
+    required TResult Function(GroupInitial value) initial,
+    required TResult Function(GroupLoading value) loading,
+    required TResult Function(GroupSuccess value) success,
+    required TResult Function(GroupFail value) fail,
+    required TResult Function(GroupLocalLoadingFail value) localLoadingFail,
+    required TResult Function(GroupLocalLoadingSuccess value)
+        localLoadingSuccess,
   }) {
     return localLoadingFail(this);
   }
@@ -800,12 +809,12 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Fail value)? fail,
-    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult? Function(GroupInitial value)? initial,
+    TResult? Function(GroupLoading value)? loading,
+    TResult? Function(GroupSuccess value)? success,
+    TResult? Function(GroupFail value)? fail,
+    TResult? Function(GroupLocalLoadingFail value)? localLoadingFail,
+    TResult? Function(GroupLocalLoadingSuccess value)? localLoadingSuccess,
   }) {
     return localLoadingFail?.call(this);
   }
@@ -813,12 +822,12 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Fail value)? fail,
-    TResult Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult Function(GroupInitial value)? initial,
+    TResult Function(GroupLoading value)? loading,
+    TResult Function(GroupSuccess value)? success,
+    TResult Function(GroupFail value)? fail,
+    TResult Function(GroupLocalLoadingFail value)? localLoadingFail,
+    TResult Function(GroupLocalLoadingSuccess value)? localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (localLoadingFail != null) {
@@ -828,31 +837,33 @@ class _$LocalLoadingFailImpl implements _LocalLoadingFail {
   }
 }
 
-abstract class _LocalLoadingFail implements GroupState {
-  const factory _LocalLoadingFail([final String message]) =
-      _$LocalLoadingFailImpl;
+abstract class GroupLocalLoadingFail implements GroupState {
+  const factory GroupLocalLoadingFail([final String message]) =
+      _$GroupLocalLoadingFailImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$LocalLoadingFailImplCopyWith<_$LocalLoadingFailImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$GroupLocalLoadingFailImplCopyWith<_$GroupLocalLoadingFailImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LocalLoadingSuccessImplCopyWith<$Res> {
-  factory _$$LocalLoadingSuccessImplCopyWith(_$LocalLoadingSuccessImpl value,
-          $Res Function(_$LocalLoadingSuccessImpl) then) =
-      __$$LocalLoadingSuccessImplCopyWithImpl<$Res>;
+abstract class _$$GroupLocalLoadingSuccessImplCopyWith<$Res> {
+  factory _$$GroupLocalLoadingSuccessImplCopyWith(
+          _$GroupLocalLoadingSuccessImpl value,
+          $Res Function(_$GroupLocalLoadingSuccessImpl) then) =
+      __$$GroupLocalLoadingSuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<GroupEntity> departments});
 }
 
 /// @nodoc
-class __$$LocalLoadingSuccessImplCopyWithImpl<$Res>
-    extends _$GroupStateCopyWithImpl<$Res, _$LocalLoadingSuccessImpl>
-    implements _$$LocalLoadingSuccessImplCopyWith<$Res> {
-  __$$LocalLoadingSuccessImplCopyWithImpl(_$LocalLoadingSuccessImpl _value,
-      $Res Function(_$LocalLoadingSuccessImpl) _then)
+class __$$GroupLocalLoadingSuccessImplCopyWithImpl<$Res>
+    extends _$GroupStateCopyWithImpl<$Res, _$GroupLocalLoadingSuccessImpl>
+    implements _$$GroupLocalLoadingSuccessImplCopyWith<$Res> {
+  __$$GroupLocalLoadingSuccessImplCopyWithImpl(
+      _$GroupLocalLoadingSuccessImpl _value,
+      $Res Function(_$GroupLocalLoadingSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -860,7 +871,7 @@ class __$$LocalLoadingSuccessImplCopyWithImpl<$Res>
   $Res call({
     Object? departments = null,
   }) {
-    return _then(_$LocalLoadingSuccessImpl(
+    return _then(_$GroupLocalLoadingSuccessImpl(
       null == departments
           ? _value._departments
           : departments // ignore: cast_nullable_to_non_nullable
@@ -871,8 +882,8 @@ class __$$LocalLoadingSuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
-  const _$LocalLoadingSuccessImpl(final List<GroupEntity> departments)
+class _$GroupLocalLoadingSuccessImpl implements GroupLocalLoadingSuccess {
+  const _$GroupLocalLoadingSuccessImpl(final List<GroupEntity> departments)
       : _departments = departments;
 
   final List<GroupEntity> _departments;
@@ -892,7 +903,7 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LocalLoadingSuccessImpl &&
+            other is _$GroupLocalLoadingSuccessImpl &&
             const DeepCollectionEquality()
                 .equals(other._departments, _departments));
   }
@@ -904,9 +915,9 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LocalLoadingSuccessImplCopyWith<_$LocalLoadingSuccessImpl> get copyWith =>
-      __$$LocalLoadingSuccessImplCopyWithImpl<_$LocalLoadingSuccessImpl>(
-          this, _$identity);
+  _$$GroupLocalLoadingSuccessImplCopyWith<_$GroupLocalLoadingSuccessImpl>
+      get copyWith => __$$GroupLocalLoadingSuccessImplCopyWithImpl<
+          _$GroupLocalLoadingSuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -955,12 +966,13 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Fail value) fail,
-    required TResult Function(_LocalLoadingFail value) localLoadingFail,
-    required TResult Function(_LocalLoadingSuccess value) localLoadingSuccess,
+    required TResult Function(GroupInitial value) initial,
+    required TResult Function(GroupLoading value) loading,
+    required TResult Function(GroupSuccess value) success,
+    required TResult Function(GroupFail value) fail,
+    required TResult Function(GroupLocalLoadingFail value) localLoadingFail,
+    required TResult Function(GroupLocalLoadingSuccess value)
+        localLoadingSuccess,
   }) {
     return localLoadingSuccess(this);
   }
@@ -968,12 +980,12 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Fail value)? fail,
-    TResult? Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult? Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult? Function(GroupInitial value)? initial,
+    TResult? Function(GroupLoading value)? loading,
+    TResult? Function(GroupSuccess value)? success,
+    TResult? Function(GroupFail value)? fail,
+    TResult? Function(GroupLocalLoadingFail value)? localLoadingFail,
+    TResult? Function(GroupLocalLoadingSuccess value)? localLoadingSuccess,
   }) {
     return localLoadingSuccess?.call(this);
   }
@@ -981,12 +993,12 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Fail value)? fail,
-    TResult Function(_LocalLoadingFail value)? localLoadingFail,
-    TResult Function(_LocalLoadingSuccess value)? localLoadingSuccess,
+    TResult Function(GroupInitial value)? initial,
+    TResult Function(GroupLoading value)? loading,
+    TResult Function(GroupSuccess value)? success,
+    TResult Function(GroupFail value)? fail,
+    TResult Function(GroupLocalLoadingFail value)? localLoadingFail,
+    TResult Function(GroupLocalLoadingSuccess value)? localLoadingSuccess,
     required TResult orElse(),
   }) {
     if (localLoadingSuccess != null) {
@@ -996,12 +1008,12 @@ class _$LocalLoadingSuccessImpl implements _LocalLoadingSuccess {
   }
 }
 
-abstract class _LocalLoadingSuccess implements GroupState {
-  const factory _LocalLoadingSuccess(final List<GroupEntity> departments) =
-      _$LocalLoadingSuccessImpl;
+abstract class GroupLocalLoadingSuccess implements GroupState {
+  const factory GroupLocalLoadingSuccess(final List<GroupEntity> departments) =
+      _$GroupLocalLoadingSuccessImpl;
 
   List<GroupEntity> get departments;
   @JsonKey(ignore: true)
-  _$$LocalLoadingSuccessImplCopyWith<_$LocalLoadingSuccessImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$GroupLocalLoadingSuccessImplCopyWith<_$GroupLocalLoadingSuccessImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

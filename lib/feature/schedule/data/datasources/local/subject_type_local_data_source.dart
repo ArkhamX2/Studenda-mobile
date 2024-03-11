@@ -1,7 +1,7 @@
 import 'package:hive/hive.dart';
 import 'package:studenda_mobile_student/core/data/datasource/datasource.dart';
 import 'package:studenda_mobile_student/core/data/error/exception.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/models/subject_type_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/subject_type/subject_type_model.dart';
 
 class SubjectTypeLocalDataSource
     extends LocalDataSource<List<SubjectTypeModel>, List<int>> {

@@ -63,12 +63,12 @@ import 'package:studenda_mobile_student/feature/schedule/data/datasources/remote
 import 'package:studenda_mobile_student/feature/schedule/data/datasources/remote/subject_type_remote_data_source.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/datasources/remote/teacher_remote_data_source.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/datasources/remote/week_type_remote_data_source.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/models/day_position_model.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/models/discipline_model.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/models/subject_model.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/models/subject_position_model.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/models/subject_type_model.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/models/week_type_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/day_position/day_position_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/discipline/discipline_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/subject/subject_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/subject_position/subject_position_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/subject_type/subject_type_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/week_type/week_type_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/repositories/day_position_repository_impl.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/repositories/discipline_repository_impl.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/repositories/schedule_repository_impl.dart';
@@ -137,7 +137,7 @@ Future<void> init() async {
       authRepository: sl(),
     ),
   );
-  
+
   sl.registerLazySingleton(
     () => Logout(
       authRepository: sl(),

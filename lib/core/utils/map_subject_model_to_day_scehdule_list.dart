@@ -1,11 +1,10 @@
-import 'package:studenda_mobile_student/feature/auth/data/models/user_model/account_model.dart';
 import 'package:studenda_mobile_student/feature/auth/domain/entities/account_entity.dart';
 import 'package:studenda_mobile_student/feature/group_selection/domain/entities/group_entity.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/models/day_position_model.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/models/discipline_model.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/models/subject_model.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/models/subject_position_model.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/models/subject_type_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/day_position/day_position_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/discipline/discipline_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/subject/subject_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/subject_position/subject_position_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/subject_type/subject_type_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/entities/day_schedule_entity.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/entities/subject_entity.dart';
 

@@ -4,7 +4,7 @@ import 'package:hive/hive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:studenda_mobile_student/core/data/datasource/datasource.dart';
 import 'package:studenda_mobile_student/core/data/error/exception.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/models/week_type_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/week_type/week_type_model.dart';
 
 class WeekTypeLocalDataSource
     extends LocalDataSource<List<WeekTypeModel>, void> {
@@ -68,7 +68,7 @@ class WeekTypeLocalDataSource
       throw CacheException();
     }
   }
-  
+
   @override
   Future<List<WeekTypeModel>> teacherLoad(void request) {
     // TODO: implement teacherLoad

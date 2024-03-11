@@ -4,7 +4,7 @@ import 'package:studenda_mobile_student/core/data/repository/repository.dart';
 import 'package:studenda_mobile_student/core/network/network_info.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/datasources/local/day_position_local_data_source.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/datasources/remote/day_position_remote_data_source.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/models/day_position_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/day_position/day_position_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/repositories/day_position_repository.dart';
 
 class DayPositionRepositoryImpl implements DayPositionRepository {

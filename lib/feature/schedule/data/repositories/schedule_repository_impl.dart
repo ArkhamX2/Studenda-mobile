@@ -4,8 +4,9 @@ import 'package:studenda_mobile_student/core/data/error/failure.dart';
 import 'package:studenda_mobile_student/core/network/network_info.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/datasources/local/schedule_local_data_source.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/datasources/remote/schedule_remote_data_source.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/models/schedule_request_model.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/models/subject_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/api/schedule_request_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/api/teacher_scheduke_request.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/subject/subject_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/repositories/schedule_repository.dart';
 
 class ScheduleRepositoryImpl implements ScheduleByWeekTypeRepository {
@@ -70,10 +71,11 @@ class ScheduleRepositoryImpl implements ScheduleByWeekTypeRepository {
       }
     }
   }
-  
+
   @override
-  Future<Either<Failure, List<SubjectModel>>> loadTeacher(ScheduleRequestByWeekTypeModel request, List<int> weekTypeIds, [bool remote = true]) {
+  Future<Either<Failure, List<SubjectModel>>> loadTeacher(TeacherRequestByWeekTypeModel request, List<int> weekTypeIds, [bool remote = true]) {
     // TODO: implement loadTeacher
     throw UnimplementedError();
   }
+  
 }

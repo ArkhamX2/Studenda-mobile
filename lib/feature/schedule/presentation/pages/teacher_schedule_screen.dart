@@ -7,6 +7,7 @@ import 'package:studenda_mobile_student/core/presentation/UI/studenda_loading_wi
 import 'package:studenda_mobile_student/core/presentation/label/studenda_default_label_widget.dart';
 import 'package:studenda_mobile_student/core/utils/get_current_week_days.dart';
 import 'package:studenda_mobile_student/core/utils/map_subject_model_to_day_scehdule_list.dart';
+import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/group_cubit/group_cubit.dart';
 import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/main_group_selection_bloc/main_group_selector_bloc.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/subject/subject_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/entities/day_schedule_entity.dart';
@@ -23,22 +24,22 @@ import 'package:studenda_mobile_student/feature/schedule/presentation/widgets/gr
 import 'package:studenda_mobile_student/feature/schedule/presentation/widgets/week_schedule_widget.dart';
 import 'package:studenda_mobile_student/injection_container.dart';
 
-class StudentScheduleScreenPage extends StatefulWidget {
-  const StudentScheduleScreenPage({super.key});
+class TeacherScheduleScreenPage extends StatefulWidget {
+  const TeacherScheduleScreenPage({super.key});
 
   @override
-  State<StudentScheduleScreenPage> createState() =>
-      _StudentScheduleScreenPageState();
+  State<TeacherScheduleScreenPage> createState() =>
+      _TeacherScheduleScreenPageState();
 }
 
-class _StudentScheduleScreenPageState extends State<StudentScheduleScreenPage> {
+class _TeacherScheduleScreenPageState extends State<TeacherScheduleScreenPage> {
   @override
   Widget build(BuildContext context) {
-    context
-        .watch<MainGroupSelectorBloc>()
-        .add(const MainGroupSelectorEvent.getGroup());
     return MultiBlocProvider(
       providers: [
+        BlocProvider<GroupCubit>(
+          create: (context) => sl<GroupCubit>()..loadLocally(),
+        ),
         BlocProvider<DayPositionCubit>(
           create: (context) => sl<DayPositionCubit>()..loadLocally(),
         ),
@@ -86,6 +87,7 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
   @override
   Widget build(BuildContext context) {
     final groupSelectorBloc = context.watch<MainGroupSelectorBloc>();
+    final groupCubit = context.watch<GroupCubit>();
     final dayPositionCubit = context.watch<DayPositionCubit>();
     final disciplineCubit = context.watch<DisciplineCubit>();
     final subjectCubit = context.watch<SubjectCubit>();
@@ -106,6 +108,10 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
         groupSelectorBloc.selectedGroup.id,
         [weekTypeCubit.currentWeekType!],
       );
+    }
+
+    if(groupCubit.state is GroupLocalLoadingFail || (groupCubit.state is GroupLocalLoadingSuccess && groupCubit.groupList.isEmpty) ){
+      groupCubit.load();
     }
 
     return Column(
@@ -168,7 +174,7 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
                         success: (subjectTypeList) => subjectTypeList,
                         orElse: () => [],
                       ),
-                      [],
+                      groupCubit.groupList,
                     ),
                     globalKeys: keys,
                     currentWeekDay: getCurrentWeekDay(),
@@ -219,7 +225,7 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
                         success: (subjectTypeList) => subjectTypeList,
                         orElse: () => [],
                       ),
-                      [],
+                      groupCubit.groupList,
                     ),
                     globalKeys: keys,
                     currentWeekDay: getCurrentWeekDay(),

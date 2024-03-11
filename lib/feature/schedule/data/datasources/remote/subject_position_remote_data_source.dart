@@ -5,7 +5,7 @@ import 'package:studenda_mobile_student/core/data/datasource/datasource.dart';
 import 'package:studenda_mobile_student/core/data/error/exception.dart';
 import 'package:studenda_mobile_student/core/network/api_config.dart';
 import 'package:studenda_mobile_student/core/network/simplified_uri.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/models/subject_position_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/subject_position/subject_position_model.dart';
 
 class SubjectPositionRemoteDataSource extends RemoteDataSource<List<SubjectPositionModel>,void> {
   final http.Client client;

@@ -2,7 +2,7 @@
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/models/subject_type_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/subject_type/subject_type_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/usecases/get_subject_type_list.dart';
 
 part 'subject_type_state.dart';

@@ -1,8 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:studenda_mobile_student/core/data/datasource/datasource.dart';
 import 'package:studenda_mobile_student/core/data/error/exception.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/models/schedule_request_model.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/models/subject_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/api/schedule_request_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/subject/subject_model.dart';
 
 class ScheduleLocalDataSource extends LocalDataSource<List<SubjectModel>,
     ScheduleRequestByWeekTypeModel> {

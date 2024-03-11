@@ -10,8 +10,8 @@ import 'package:studenda_mobile_student/feature/journal/data/model/api/session_r
 import 'package:studenda_mobile_student/feature/journal/domain/entity/attendancy_mark_entity.dart';
 import 'package:studenda_mobile_student/feature/journal/presentation/cubit/attendancy/attendancy_cubit.dart';
 import 'package:studenda_mobile_student/feature/journal/presentation/cubit/session/session_cubit.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/models/extended_discipline_model.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/models/subject_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/discipline/extended_discipline_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/subject/subject_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/entities/week_type_entity.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/schedule_bloc.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/subject/subject_cubit.dart';
