@@ -13,7 +13,9 @@ import 'package:studenda_mobile_student/feature/group_selection/presentation/blo
 import 'package:studenda_mobile_student/resources/colors.dart';
 
 class LoginAuthPage extends StatefulWidget {
-  const LoginAuthPage({super.key});
+  const LoginAuthPage({super.key, required this.route});
+
+  final String route;
 
   @override
   State<LoginAuthPage> createState() => _LoginAuthPageState();
@@ -50,7 +52,7 @@ class _LoginAuthPageState extends State<LoginAuthPage> {
               initial: () => const Center(child: StudendaLoadingWidget()),
               loading: () => const Center(child: StudendaLoadingWidget()),
               groupSuccess: (group) {
-                Navigator.of(context).pushReplacementNamed(scheduleRoute);
+                Navigator.of(context).pushReplacementNamed(widget.route);
                 return Container();
               },
               courseSuccess: (course) =>
@@ -58,7 +60,7 @@ class _LoginAuthPageState extends State<LoginAuthPage> {
               departmentSuccess: (department) =>
                   const Center(child: StudendaLoadingWidget()),
               fail: (message) {
-                Navigator.of(context).pushReplacementNamed(scheduleRoute);
+                Navigator.of(context).pushReplacementNamed(widget.route);
                 return Container();
               },
             );

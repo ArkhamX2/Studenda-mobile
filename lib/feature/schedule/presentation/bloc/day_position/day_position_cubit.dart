@@ -9,7 +9,7 @@ part 'day_position_cubit.freezed.dart';
 
 class DayPositionCubit extends Cubit<DayPositionState> {
   final GetDayPositionList getDayPosition;
-  DayPositionCubit(this.getDayPosition)
+  DayPositionCubit({required this.getDayPosition})
       : super(const DayPositionState.initial());
 
   Future<void> load() async {

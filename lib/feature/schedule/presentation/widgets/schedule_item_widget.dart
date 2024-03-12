@@ -31,7 +31,7 @@ class _ScheduleItemWidgetState extends State<ScheduleItemWidget> {
         AnimatedSize(
           duration: const Duration(milliseconds: 200),
           child: isVisible
-              ? _TeacherSubjectInfoRowWidget(
+              ? _SubjectInfoRowWidget(
                   widget: widget,
                 )
               : Container(),
@@ -41,8 +41,8 @@ class _ScheduleItemWidgetState extends State<ScheduleItemWidget> {
   }
 }
 
-class _TeacherSubjectInfoRowWidget extends StatelessWidget {
-  const _TeacherSubjectInfoRowWidget({
+class _SubjectInfoRowWidget extends StatelessWidget {
+  const _SubjectInfoRowWidget({
     required this.widget,
   });
 
@@ -74,15 +74,33 @@ class _TeacherSubjectInfoRowWidget extends StatelessWidget {
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsets.all(12.0),
-                        child: Center(
-                          child: Text(
-                            widget.subject.teacher == null ? "" : widget.subject.teacher!,
-                            style: const TextStyle(
-                              color: mainForegroundColor,
-                              fontSize: 16,
-                            ),
-                          ),
-                        ),
+                        child: widget.subject.groups.isEmpty
+                            ? Text(
+                                widget.subject.teacher == null
+                                    ? ""
+                                    : widget.subject.teacher!,
+                                style: const TextStyle(
+                                  color: mainForegroundColor,
+                                  fontSize: 16,
+                                ),
+                              )
+                            : Column(
+                                children: widget.subject.groups
+                                    .map(
+                                      (e) => Row(
+                                        children: [
+                                          Text(e.name),
+                                          FloatingActionButton(
+                                            onPressed: () {},
+                                            child: const Icon(
+                                              Icons.menu_book_rounded,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                    .toList(),
+                              ),
                       ),
                     ),
                   ],
@@ -162,7 +180,7 @@ class _MainSubjectInfoRowWidget extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      widget.subject.classroom??"",
+                      widget.subject.classroom ?? "",
                       style: const TextStyle(
                         color: mainForegroundColor,
                         fontSize: 16,

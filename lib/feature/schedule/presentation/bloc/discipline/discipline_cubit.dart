@@ -8,7 +8,7 @@ part 'discipline_cubit.freezed.dart';
 
 class DisciplineCubit extends Cubit<DisciplineState> {
   final GetDisciplineList getSubjectPosition;
-  DisciplineCubit(this.getSubjectPosition)
+  DisciplineCubit({required this.getSubjectPosition})
       : super(const DisciplineState.initial());
 
   Future<void> load(List<int> disciplineIds) async {

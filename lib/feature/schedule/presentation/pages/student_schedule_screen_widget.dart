@@ -8,11 +8,13 @@ import 'package:studenda_mobile_student/core/presentation/label/studenda_default
 import 'package:studenda_mobile_student/core/utils/get_current_week_days.dart';
 import 'package:studenda_mobile_student/core/utils/map_subject_model_to_day_scehdule_list.dart';
 import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/main_group_selection_bloc/main_group_selector_bloc.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/discipline/discipline_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/discipline/extended_discipline_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/subject/subject_model.dart';
+import 'package:studenda_mobile_student/feature/schedule/data/models/subject_type/subject_type_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/entities/day_schedule_entity.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/day_position/day_position_cubit.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/discipline/discipline_cubit.dart';
-import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/schedule_bloc.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/subject/subject_cubit.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/subject_position/subject_position_cubit.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/subject_type/subject_type_cubit.dart';
@@ -22,6 +24,9 @@ import 'package:studenda_mobile_student/feature/schedule/presentation/widgets/da
 import 'package:studenda_mobile_student/feature/schedule/presentation/widgets/group_selector_text_style.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/widgets/week_schedule_widget.dart';
 import 'package:studenda_mobile_student/injection_container.dart';
+
+import '../../../../core/utils/get_discipline_ids.dart';
+import '../../../../core/utils/get_teacher_ids.dart';
 
 class StudentScheduleScreenPage extends StatefulWidget {
   const StudentScheduleScreenPage({super.key});
@@ -144,15 +149,15 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
               );
             }
 
-            disciplineCubit.loadLocally(_getDisciplineIds(subjectList));
-            teacherCubit.loadLocally(_getTeacherIds(subjectList));
+            disciplineCubit.loadLocally(getDisciplineIds(subjectList));
+            teacherCubit.loadLocally(getTeacherIds(subjectList));
 
             if (disciplineCubit.state is DisciplineSuccess &&
                 teacherCubit.state is TeacherSuccess) {
               return disciplineCubit.state.maybeWhen(
                 success: (disciplineList) => teacherCubit.state.maybeWhen(
                   success: (teacherList) => _ScheduleScrollWidget(
-                    schedule: mapSubjectModelToStudentDayScheduleList(
+                    schedule: mapSubjectModelToDayScheduleList(
                       subjectList,
                       disciplineList,
                       teacherList,
@@ -195,15 +200,15 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
             }
           },
           loadingSuccess: (subjectList) {
-            disciplineCubit.loadLocally(_getDisciplineIds(subjectList));
-            teacherCubit.loadLocally(_getTeacherIds(subjectList));
+            disciplineCubit.loadLocally(getDisciplineIds(subjectList));
+            teacherCubit.loadLocally(getTeacherIds(subjectList));
 
             if (disciplineCubit.state is DisciplineSuccess &&
                 teacherCubit.state is TeacherSuccess) {
               return disciplineCubit.state.maybeWhen(
                 success: (disciplineList) => teacherCubit.state.maybeWhen(
                   success: (teacherList) => _ScheduleScrollWidget(
-                    schedule: mapSubjectModelToStudentDayScheduleList(
+                    schedule: mapSubjectModelToDayScheduleList(
                       subjectList,
                       disciplineList,
                       teacherList,
@@ -249,14 +254,6 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
       ],
     );
   }
-}
-
-List<int> _getTeacherIds(List<SubjectModel> succededSubjectList) {
-  return succededSubjectList.map((e) => e.accountId ?? -1).toSet().toList();
-}
-
-List<int> _getDisciplineIds(List<SubjectModel> succededSubjectList) {
-  return succededSubjectList.map((e) => e.disciplineId ?? -1).toSet().toList();
 }
 
 class _DateCarouselWrapperWidget extends StatelessWidget {
@@ -364,12 +361,13 @@ class _ScheduleScrollWidgetState extends State<_ScheduleScrollWidget> {
   @override
   Widget build(BuildContext context) {
     final groupSelectorBloc = context.watch<MainGroupSelectorBloc>();
-    final scheduleBloc = context.watch<ScheduleBloc>();
+    final subjectCubit = context.watch<SubjectCubit>();
+    final weekTypeCubit = context.watch<WeekTypeCubit>();
     return LayoutBuilder(
       builder: (context, constraints) => RefreshIndicator(
         onRefresh: () async {
-          scheduleBloc
-              .add(ScheduleEvent.load(groupSelectorBloc.selectedGroup.id));
+          subjectCubit.load(
+              groupSelectorBloc.selectedGroup.id, weekTypeCubit.weekTypeList!);
         },
         child: SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),

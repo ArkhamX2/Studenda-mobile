@@ -6,8 +6,8 @@ import 'package:studenda_mobile_student/feature/journal/presentation/widgets/sub
 import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/schedule_bloc.dart';
 import 'package:studenda_mobile_student/injection_container.dart';
 
-class JournalMainScreenPage extends StatelessWidget {
-  const JournalMainScreenPage({super.key});
+class TeacherJournalMainScreenPage extends StatelessWidget {
+  const TeacherJournalMainScreenPage({super.key});
 
   @override
   Widget build(BuildContext context) {

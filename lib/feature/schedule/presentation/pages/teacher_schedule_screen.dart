@@ -13,11 +13,9 @@ import 'package:studenda_mobile_student/feature/schedule/data/models/subject/sub
 import 'package:studenda_mobile_student/feature/schedule/domain/entities/day_schedule_entity.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/day_position/day_position_cubit.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/discipline/discipline_cubit.dart';
-import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/schedule_bloc.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/subject/subject_cubit.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/subject_position/subject_position_cubit.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/subject_type/subject_type_cubit.dart';
-import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/teacher/teacher_cubit.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/week_type/week_type_cubit.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/widgets/date_carousel_widget.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/widgets/group_selector_text_style.dart';
@@ -55,9 +53,6 @@ class _TeacherScheduleScreenPageState extends State<TeacherScheduleScreenPage> {
         BlocProvider<SubjectTypeCubit>(
           create: (context) => sl<SubjectTypeCubit>()..loadLocally(),
         ),
-        BlocProvider<TeacherCubit>(
-          create: (context) => sl<TeacherCubit>(),
-        ),
         BlocProvider<WeekTypeCubit>(
           create: (context) => sl<WeekTypeCubit>()..loadLocally(),
         ),
@@ -93,24 +88,25 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
     final subjectCubit = context.watch<SubjectCubit>();
     final subjectPositionCubit = context.watch<SubjectPositionCubit>();
     final subjectTypeCubit = context.watch<SubjectTypeCubit>();
-    final teacherCubit = context.watch<TeacherCubit>();
     final weekTypeCubit = context.watch<WeekTypeCubit>()..getCurrent();
 
     if (weekTypeCubit.state is CurrentWeekTypeSuccess) {
-      subjectCubit.loadLocally(
+      subjectCubit.loadTeacherLocally(
         groupSelectorBloc.selectedGroup.id,
         [weekTypeCubit.currentWeekType!],
       );
     }
 
     if (subjectCubit.state is SubjectLocalLoadingFail) {
-      subjectCubit.load(
+      subjectCubit.loadTeacher(
         groupSelectorBloc.selectedGroup.id,
         [weekTypeCubit.currentWeekType!],
       );
     }
 
-    if(groupCubit.state is GroupLocalLoadingFail || (groupCubit.state is GroupLocalLoadingSuccess && groupCubit.groupList.isEmpty) ){
+    if (groupCubit.state is GroupLocalLoadingFail ||
+        (groupCubit.state is GroupLocalLoadingSuccess &&
+            groupCubit.groupList.isEmpty)) {
       groupCubit.load();
     }
 
@@ -131,7 +127,7 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
             child: StudendaLoadingWidget(),
           ),
           localLoadingFail: (message) {
-            subjectCubit.load(
+            subjectCubit.loadTeacher(
               groupSelectorBloc.selectedGroup.id,
               [weekTypeCubit.currentWeekType!],
             );
@@ -144,50 +140,43 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
           ),
           localLoadingSuccess: (subjectList) {
             if (subjectList.isEmpty) {
-              subjectCubit.load(
+              subjectCubit.loadTeacher(
                 groupSelectorBloc.selectedGroup.id,
                 [weekTypeCubit.currentWeekType!],
               );
             }
 
             disciplineCubit.loadLocally(_getDisciplineIds(subjectList));
-            teacherCubit.loadLocally(_getTeacherIds(subjectList));
 
-            if (disciplineCubit.state is DisciplineSuccess &&
-                teacherCubit.state is TeacherSuccess) {
+            if (disciplineCubit.state is DisciplineSuccess) {
               return disciplineCubit.state.maybeWhen(
-                success: (disciplineList) => teacherCubit.state.maybeWhen(
-                  success: (teacherList) => _ScheduleScrollWidget(
-                    schedule: mapSubjectModelToStudentDayScheduleList(
-                      subjectList,
-                      disciplineList,
-                      teacherList,
-                      dayPositionCubit.state.maybeWhen(
-                        success: (dayPositionList) => dayPositionList,
-                        orElse: () => [],
-                      ),
-                      subjectPositionCubit.state.maybeWhen(
-                        success: (subjectPositionList) => subjectPositionList,
-                        orElse: () => [],
-                      ),
-                      subjectTypeCubit.state.maybeWhen(
-                        success: (subjectTypeList) => subjectTypeList,
-                        orElse: () => [],
-                      ),
-                      groupCubit.groupList,
+                success: (disciplineList) => _ScheduleScrollWidget(
+                  schedule: mapSubjectModelToDayScheduleList(
+                    subjectList,
+                    disciplineList,
+                    [],
+                    dayPositionCubit.state.maybeWhen(
+                      success: (dayPositionList) => dayPositionList,
+                      orElse: () => [],
                     ),
-                    globalKeys: keys,
-                    currentWeekDay: getCurrentWeekDay(),
-                    needHighlight:
-                        getCurrentWeekDaysWithMonth(weekTypeCubit.datePointer)
-                            .any(
-                      (element) =>
-                          element ==
-                          "${DateTime.now().day} ${monthNames[DateTime.now().month - 1]}",
+                    subjectPositionCubit.state.maybeWhen(
+                      success: (subjectPositionList) => subjectPositionList,
+                      orElse: () => [],
                     ),
+                    subjectTypeCubit.state.maybeWhen(
+                      success: (subjectTypeList) => subjectTypeList,
+                      orElse: () => [],
+                    ),
+                    groupCubit.groupList,
                   ),
-                  orElse: () => const Center(
-                    child: StudendaLoadingWidget(),
+                  globalKeys: keys,
+                  currentWeekDay: getCurrentWeekDay(),
+                  needHighlight:
+                      getCurrentWeekDaysWithMonth(weekTypeCubit.datePointer)
+                          .any(
+                    (element) =>
+                        element ==
+                        "${DateTime.now().day} ${monthNames[DateTime.now().month - 1]}",
                   ),
                 ),
                 orElse: () => const Center(
@@ -202,43 +191,36 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
           },
           loadingSuccess: (subjectList) {
             disciplineCubit.loadLocally(_getDisciplineIds(subjectList));
-            teacherCubit.loadLocally(_getTeacherIds(subjectList));
 
-            if (disciplineCubit.state is DisciplineSuccess &&
-                teacherCubit.state is TeacherSuccess) {
+            if (disciplineCubit.state is DisciplineSuccess) {
               return disciplineCubit.state.maybeWhen(
-                success: (disciplineList) => teacherCubit.state.maybeWhen(
-                  success: (teacherList) => _ScheduleScrollWidget(
-                    schedule: mapSubjectModelToStudentDayScheduleList(
-                      subjectList,
-                      disciplineList,
-                      teacherList,
-                      dayPositionCubit.state.maybeWhen(
-                        success: (dayPositionList) => dayPositionList,
-                        orElse: () => [],
-                      ),
-                      subjectPositionCubit.state.maybeWhen(
-                        success: (subjectPositionList) => subjectPositionList,
-                        orElse: () => [],
-                      ),
-                      subjectTypeCubit.state.maybeWhen(
-                        success: (subjectTypeList) => subjectTypeList,
-                        orElse: () => [],
-                      ),
-                      groupCubit.groupList,
+                success: (disciplineList) => _ScheduleScrollWidget(
+                  schedule: mapSubjectModelToDayScheduleList(
+                    subjectList,
+                    disciplineList,
+                    [],
+                    dayPositionCubit.state.maybeWhen(
+                      success: (dayPositionList) => dayPositionList,
+                      orElse: () => [],
                     ),
-                    globalKeys: keys,
-                    currentWeekDay: getCurrentWeekDay(),
-                    needHighlight:
-                        getCurrentWeekDaysWithMonth(weekTypeCubit.datePointer)
-                            .any(
-                      (element) =>
-                          element ==
-                          "${DateTime.now().day} ${monthNames[DateTime.now().month - 1]}",
+                    subjectPositionCubit.state.maybeWhen(
+                      success: (subjectPositionList) => subjectPositionList,
+                      orElse: () => [],
                     ),
+                    subjectTypeCubit.state.maybeWhen(
+                      success: (subjectTypeList) => subjectTypeList,
+                      orElse: () => [],
+                    ),
+                    groupCubit.groupList,
                   ),
-                  orElse: () => const Center(
-                    child: StudendaLoadingWidget(),
+                  globalKeys: keys,
+                  currentWeekDay: getCurrentWeekDay(),
+                  needHighlight:
+                      getCurrentWeekDaysWithMonth(weekTypeCubit.datePointer)
+                          .any(
+                    (element) =>
+                        element ==
+                        "${DateTime.now().day} ${monthNames[DateTime.now().month - 1]}",
                   ),
                 ),
                 orElse: () => const Center(
@@ -255,10 +237,6 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
       ],
     );
   }
-}
-
-List<int> _getTeacherIds(List<SubjectModel> succededSubjectList) {
-  return succededSubjectList.map((e) => e.accountId ?? -1).toSet().toList();
 }
 
 List<int> _getDisciplineIds(List<SubjectModel> succededSubjectList) {
@@ -294,13 +272,13 @@ class _DateCarouselWrapperWidget extends StatelessWidget {
       onPrevTap: () async {
         await weekTypeCubit.subtractWeekType();
         if (weekTypeCubit.state is CurrentWeekTypeSuccess) {
-          subjectCubit.loadLocally(groupId, [weekTypeCubit.currentWeekType!]);
+          subjectCubit.loadTeacherLocally(groupId, [weekTypeCubit.currentWeekType!]);
         }
       },
       onNextTap: () async {
         await weekTypeCubit.addWeekType();
         if (weekTypeCubit.state is CurrentWeekTypeSuccess) {
-          subjectCubit.loadLocally(groupId, [weekTypeCubit.currentWeekType!]);
+          subjectCubit.loadTeacherLocally(groupId, [weekTypeCubit.currentWeekType!]);
         }
       },
     );
@@ -370,12 +348,13 @@ class _ScheduleScrollWidgetState extends State<_ScheduleScrollWidget> {
   @override
   Widget build(BuildContext context) {
     final groupSelectorBloc = context.watch<MainGroupSelectorBloc>();
-    final scheduleBloc = context.watch<ScheduleBloc>();
+    final subjectCubit = context.watch<SubjectCubit>();
+    final weekTypeCubit = context.watch<WeekTypeCubit>();
     return LayoutBuilder(
       builder: (context, constraints) => RefreshIndicator(
         onRefresh: () async {
-          scheduleBloc
-              .add(ScheduleEvent.load(groupSelectorBloc.selectedGroup.id));
+          subjectCubit.loadTeacher(
+              groupSelectorBloc.selectedGroup.id, weekTypeCubit.weekTypeList!);
         },
         child: SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),

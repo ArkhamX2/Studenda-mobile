@@ -8,7 +8,7 @@ import 'package:studenda_mobile_student/feature/schedule/data/models/subject_typ
 import 'package:studenda_mobile_student/feature/schedule/domain/entities/day_schedule_entity.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/entities/subject_entity.dart';
 
-List<DayScheduleEntity> mapSubjectModelToStudentDayScheduleList(
+List<DayScheduleEntity> mapSubjectModelToDayScheduleList(
   List<SubjectModel> subjects,
   List<DisciplineModel> disciplines,
   List<AccountEntity> teachers,

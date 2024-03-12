@@ -9,12 +9,12 @@ part 'subject_type_state.dart';
 part 'subject_type_cubit.freezed.dart';
 
 class SubjectTypeCubit extends Cubit<SubjectTypeState> {
-  final GetSubjectTypeList getSubjectPosition;
-  SubjectTypeCubit(this.getSubjectPosition)
+  final GetSubjectTypeList getSubjectType;
+  SubjectTypeCubit({required this.getSubjectType})
       : super(const SubjectTypeState.initial());
 
   Future<void> load() async {
-    final result = await getSubjectPosition.call(() {});
+    final result = await getSubjectType.call(() {});
     result.fold(
       (l) => emit(SubjectTypeState.fail(l.message)),
       (r) => emit(SubjectTypeState.success(r)),
@@ -22,7 +22,7 @@ class SubjectTypeCubit extends Cubit<SubjectTypeState> {
   }
 
   Future<void> loadLocally() async {
-    final result = await getSubjectPosition.call(() {}, false);
+    final result = await getSubjectType.call(() {}, false);
     result.fold(
       (l) => emit(SubjectTypeState.localLoadingFail(l.message)),
       (r) => emit(SubjectTypeState.localLoadingSuccess(r)),

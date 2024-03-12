@@ -8,7 +8,7 @@ part 'teacher_cubit.freezed.dart';
 
 class TeacherCubit extends Cubit<TeacherState> {
   final GetTeacherList getSubjectPosition;
-  TeacherCubit(this.getSubjectPosition)
+  TeacherCubit({required this.getSubjectPosition})
       : super(const TeacherState.initial());
 
   Future<void> load(List<int> teacherIds) async {

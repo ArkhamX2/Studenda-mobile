@@ -92,7 +92,13 @@ import 'package:studenda_mobile_student/feature/schedule/domain/usecases/get_sub
 import 'package:studenda_mobile_student/feature/schedule/domain/usecases/get_subject_type_list.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/usecases/get_teacher_list.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/usecases/get_teacher_schedule.dart';
-import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/schedule_bloc.dart';
+import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/day_position/day_position_cubit.dart';
+import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/discipline/discipline_cubit.dart';
+import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/subject/subject_cubit.dart';
+import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/subject_position/subject_position_cubit.dart';
+import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/subject_type/subject_type_cubit.dart';
+import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/teacher/teacher_cubit.dart';
+import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/week_type/week_type_cubit.dart';
 
 final sl = GetIt.instance;
 
@@ -343,20 +349,28 @@ Future<void> init() async {
   await sl.isReady<DepartmentLocalDataSource>();
   //! Auth
   // Bloc
-
   sl.registerFactory(
-    () => ScheduleBloc(
-      getTeacherSchedule: sl(),
-      getStudentSchedule: sl(),
-      getCurrentWeekType: sl(),
-      getAllWeekType: sl(),
-      getDisciplineList: sl(),
-      getTeacherList: sl(),
-      getDayPosition: sl(),
-      getSubjectPosition: sl(),
-      getSubjectType: sl(),
-    ),
+    () => DayPositionCubit(getDayPosition: sl()),
   );
+  sl.registerFactory(
+    () => DisciplineCubit(getSubjectPosition: sl()),
+  );
+  sl.registerFactory(
+    () => SubjectCubit(getSchedule: sl(), getTeacherSchedule: sl()),
+  );
+  sl.registerFactory(
+    () => SubjectPositionCubit(getSubjectPosition: sl()),
+  );
+  sl.registerFactory(
+    () => SubjectTypeCubit(getSubjectType: sl()),
+  );
+  sl.registerFactory(
+    () => TeacherCubit(getSubjectPosition: sl()),
+  );
+  sl.registerFactory(
+    () => WeekTypeCubit(getAllWeekTypes: sl(), getCurrentWeekType: sl()),
+  );
+
   // Use cases
   sl.registerLazySingleton(
     () => GetSubjectTypeList(

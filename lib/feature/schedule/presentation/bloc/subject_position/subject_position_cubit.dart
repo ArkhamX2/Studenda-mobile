@@ -10,7 +10,7 @@ part 'subject_position_cubit.freezed.dart';
 
 class SubjectPositionCubit extends Cubit<SubjectPositionState> {
   final GetSubjectPositionList getSubjectPosition;
-  SubjectPositionCubit(this.getSubjectPosition)
+  SubjectPositionCubit({required this.getSubjectPosition})
       : super(const SubjectPositionState.initial());
 
   Future<void> load() async {

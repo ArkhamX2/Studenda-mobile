@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:studenda_mobile_student/feature/journal/presentation/page/journal_main_screen_widget.dart';
+import 'package:studenda_mobile_student/feature/journal/presentation/page/student_journal_main_screen_page.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/pages/student_schedule_screen_widget.dart';
 
 class MainNavigatorWidget extends StatefulWidget {
@@ -14,7 +14,7 @@ class _MainNavigatorWidgetState extends State<MainNavigatorWidget> {
   int _selectedIndex = 0;
   final List<Widget> _widgetOptions = <Widget>[
     const StudentScheduleScreenPage(),
-    const JournalMainScreenPage(),
+    const StudentJournalMainScreenPage(),
   ];
 
   void _onItemTap(int index) {

@@ -17,9 +17,10 @@ class WeekTypeCubit extends Cubit<WeekTypeState> {
 
   final GetAllWeekType getAllWeekTypes;
   final GetCurrentWeekType getCurrentWeekType;
-  WeekTypeCubit(
-      {required this.getAllWeekTypes, required this.getCurrentWeekType})
-      : super(const WeekTypeState.initial());
+  WeekTypeCubit({
+    required this.getAllWeekTypes,
+    required this.getCurrentWeekType,
+  }) : super(const WeekTypeState.initial());
 
   Future<void> load() async {
     emit(const WeekTypeState.loading());

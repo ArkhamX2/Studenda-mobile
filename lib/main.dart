@@ -12,8 +12,9 @@ import 'package:studenda_mobile_student/feature/auth/presentation/bloc/cubit/tok
 import 'package:studenda_mobile_student/feature/auth/presentation/pages/main_auth_widget.dart';
 import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/main_group_selection_bloc/main_group_selector_bloc.dart';
 import 'package:studenda_mobile_student/feature/group_selection/presentation/pages/guest_group_selector.dart';
-import 'package:studenda_mobile_student/feature/journal/presentation/page/journal_main_screen_widget.dart';
+import 'package:studenda_mobile_student/feature/journal/presentation/page/student_journal_main_screen_page.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/pages/student_schedule_screen_widget.dart';
+import 'package:studenda_mobile_student/feature/schedule/presentation/pages/teacher_schedule_screen.dart';
 import 'package:studenda_mobile_student/injection_container.dart' as di;
 import 'package:studenda_mobile_student/injection_container.dart';
 
@@ -54,9 +55,11 @@ class MyApp extends StatelessWidget {
         routes: {
           mainRoute: (context) => const MainNavigatorWidget(),
           scheduleRoute: (context) => const StudentScheduleScreenPage(),
-          journalRoute: (context) => const JournalMainScreenPage(),
+          journalRoute: (context) => const StudentJournalMainScreenPage(),
           selectorRoute: (context) => const GroupSelectorPage(),
           authRoute: (context) => const MainAuthPage(),
+          teacherScheduleRoute: (context) => const TeacherScheduleScreenPage(),
+          teacherJournalRoute: (context) => Container(),
         },
       ),
     );

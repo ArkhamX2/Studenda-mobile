@@ -13,8 +13,8 @@ import 'package:studenda_mobile_student/feature/journal/presentation/cubit/sessi
 import 'package:studenda_mobile_student/feature/schedule/data/models/discipline/extended_discipline_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/subject/subject_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/entities/week_type_entity.dart';
-import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/schedule_bloc.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/subject/subject_cubit.dart';
+import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/week_type/week_type_cubit.dart';
 import 'package:studenda_mobile_student/injection_container.dart';
 import 'package:studenda_mobile_student/resources/colors.dart';
 
@@ -32,10 +32,10 @@ class JournalAttendanceScreenWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final selectedGroupEntity =
         context.watch<MainGroupSelectorBloc>().selectedGroup;
-    final scheduleBloc = context.watch<ScheduleBloc>();
+    final weekTypeCubit = context.watch<WeekTypeCubit>();
     return BlocProvider(
       create: (context) => sl<SubjectCubit>()
-        ..loadLocally(selectedGroupEntity.id, scheduleBloc.weekTypeList!),
+        ..loadLocally(selectedGroupEntity.id, weekTypeCubit.weekTypeList!),
       child:
           _JournalAttendancyBody(userId: userId, extendedDiscipline: subject),
     );
@@ -53,31 +53,31 @@ class _JournalAttendancyBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final subjectCubit = context.watch<SubjectCubit>();
-    final scheduleBloc = context.watch<ScheduleBloc>();
+    final weekTypeCubit = context.watch<WeekTypeCubit>();
     final selectedGroupEntity =
         context.watch<MainGroupSelectorBloc>().selectedGroup;
     return subjectCubit.state.when(
       initial: () => const Center(child: StudendaLoadingWidget()),
       loading: () => const Center(child: StudendaLoadingWidget()),
       localLoadingFail: (message) {
-        subjectCubit.load(selectedGroupEntity.id, scheduleBloc.weekTypeList!);
+        subjectCubit.load(selectedGroupEntity.id, weekTypeCubit.weekTypeList!);
         return Center(
           child: StudendaDefaultLabelWidget(text: message, fontSize: 18),
         );
       },
       localLoadingSuccess: (subjectList) {
         if (subjectList.isEmpty) {
-          subjectCubit.load(selectedGroupEntity.id, scheduleBloc.weekTypeList!);
+          subjectCubit.load(selectedGroupEntity.id, weekTypeCubit.weekTypeList!);
         }
         return getSession(
           subjectList,
           extendedDiscipline,
           userId,
-          scheduleBloc.weekTypeList!,
+          weekTypeCubit.weekTypeList!,
         );
       },
       loadingFail: (message) {
-        subjectCubit.load(selectedGroupEntity.id, scheduleBloc.weekTypeList!);
+        subjectCubit.load(selectedGroupEntity.id, weekTypeCubit.weekTypeList!);
         return Center(
           child: StudendaDefaultLabelWidget(text: message, fontSize: 18),
         );
@@ -86,7 +86,7 @@ class _JournalAttendancyBody extends StatelessWidget {
         subjectList,
         extendedDiscipline,
         userId,
-        scheduleBloc.weekTypeList!,
+        weekTypeCubit.weekTypeList!,
       ),
     );
   }

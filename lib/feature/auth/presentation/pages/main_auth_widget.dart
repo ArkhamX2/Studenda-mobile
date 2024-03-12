@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:studenda_mobile_student/core/constant_values/routes.dart';
 import 'package:studenda_mobile_student/core/presentation/button_widget.dart';
-import 'package:studenda_mobile_student/feature/auth/presentation/pages/email_auth_widget.dart';
+import 'package:studenda_mobile_student/feature/auth/presentation/pages/login_auth_page.dart';
 import 'package:studenda_mobile_student/feature/group_selection/presentation/pages/guest_group_selector.dart';
 import 'package:studenda_mobile_student/resources/colors.dart';
 
@@ -40,7 +41,7 @@ class _BodyWidget extends StatelessWidget {
             event: () {
               Navigator.of(context).push(
                 MaterialPageRoute<void>(
-                  builder: (context) => const EmailAuthPage(),
+                  builder: (context) => const LoginAuthPage(route: scheduleRoute),
                 ),
               );
             },
