@@ -6,12 +6,10 @@ import 'package:studenda_mobile_student/core/presentation/UI/snack_message.dart'
 import 'package:studenda_mobile_student/core/presentation/UI/studenda_loading_widget.dart';
 import 'package:studenda_mobile_student/core/presentation/label/studenda_default_label_widget.dart';
 import 'package:studenda_mobile_student/core/utils/get_current_week_days.dart';
+import 'package:studenda_mobile_student/core/utils/get_discipline_ids.dart';
+import 'package:studenda_mobile_student/core/utils/get_teacher_ids.dart';
 import 'package:studenda_mobile_student/core/utils/map_subject_model_to_day_scehdule_list.dart';
 import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/main_group_selection_bloc/main_group_selector_bloc.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/models/discipline/discipline_model.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/models/discipline/extended_discipline_model.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/models/subject/subject_model.dart';
-import 'package:studenda_mobile_student/feature/schedule/data/models/subject_type/subject_type_model.dart';
 import 'package:studenda_mobile_student/feature/schedule/domain/entities/day_schedule_entity.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/day_position/day_position_cubit.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/bloc/discipline/discipline_cubit.dart';
@@ -24,9 +22,6 @@ import 'package:studenda_mobile_student/feature/schedule/presentation/widgets/da
 import 'package:studenda_mobile_student/feature/schedule/presentation/widgets/group_selector_text_style.dart';
 import 'package:studenda_mobile_student/feature/schedule/presentation/widgets/week_schedule_widget.dart';
 import 'package:studenda_mobile_student/injection_container.dart';
-
-import '../../../../core/utils/get_discipline_ids.dart';
-import '../../../../core/utils/get_teacher_ids.dart';
 
 class StudentScheduleScreenPage extends StatefulWidget {
   const StudentScheduleScreenPage({super.key});

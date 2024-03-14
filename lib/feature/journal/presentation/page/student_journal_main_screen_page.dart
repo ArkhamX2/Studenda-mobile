@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:studenda_mobile_student/core/presentation/UI/studenda_loading_widget.dart';
 import 'package:studenda_mobile_student/core/presentation/label/studenda_default_label_widget.dart';
 import 'package:studenda_mobile_student/core/utils/get_discipline_ids.dart';
-import 'package:studenda_mobile_student/feature/auth/domain/entities/account_entity.dart';
 import 'package:studenda_mobile_student/feature/auth/presentation/bloc/bloc/auth_bloc.dart';
 import 'package:studenda_mobile_student/feature/group_selection/presentation/bloc/main_group_selection_bloc/main_group_selector_bloc.dart';
 import 'package:studenda_mobile_student/feature/journal/presentation/widgets/journal_subject_screen_widget.dart';
@@ -27,7 +26,7 @@ class StudentJournalMainScreenPage extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => sl<SubjectCubit>()),
       ],
-      child: const _JournalBodyBuilder(),
+      child: const _JournalBody(),
     );
   }
 }
@@ -52,14 +51,16 @@ List<ExtendedDisciplineModel> mapDisciplinesAndTypes(
   final names =
       disciplines.map((e) => e.discipline.name + e.subjectType.name).toSet();
   return names
-      .map((e) => disciplines.firstWhere(
-          (element) => element.discipline.name + element.subjectType.name == e))
+      .map(
+        (e) => disciplines.firstWhere(
+          (element) => element.discipline.name + element.subjectType.name == e,
+        ),
+      )
       .toList();
 }
 
-class _JournalBodyBuilder extends StatelessWidget {
-  const _JournalBodyBuilder();
-
+class _JournalBody extends StatelessWidget {
+  const _JournalBody();
   @override
   Widget build(BuildContext context) {
     final groupSelectorBloc = context.watch<MainGroupSelectorBloc>();
@@ -69,7 +70,8 @@ class _JournalBodyBuilder extends StatelessWidget {
     final weekTypeCubit = context.watch<WeekTypeCubit>()..getCurrent();
     final user = context.watch<AuthBloc>().user;
 
-    if (weekTypeCubit.state is CurrentWeekTypeSuccess && subjectTypeCubit.state is SubjectTypeLocalLoadingSuccess) {
+    if (weekTypeCubit.state is CurrentWeekTypeSuccess &&
+        subjectTypeCubit.state is SubjectTypeLocalLoadingSuccess) {
       subjectCubit.loadLocally(
         groupSelectorBloc.selectedGroup.id,
         [weekTypeCubit.currentWeekType!],
@@ -82,78 +84,6 @@ class _JournalBodyBuilder extends StatelessWidget {
         [weekTypeCubit.currentWeekType!],
       );
     }
-    subjectCubit.state.when(
-      initial: () => const Center(
-        child: StudendaLoadingWidget(),
-      ),
-      loading: () => const Center(
-        child: StudendaLoadingWidget(),
-      ),
-      localLoadingFail: (message) {
-        subjectCubit.load(
-          groupSelectorBloc.selectedGroup.id,
-          [weekTypeCubit.currentWeekType!],
-        );
-        return Center(
-          child: StudendaDefaultLabelWidget(text: message, fontSize: 18),
-        );
-      },
-      loadingFail: (message) => Center(
-        child: StudendaDefaultLabelWidget(text: message, fontSize: 18),
-      ),
-      localLoadingSuccess: (subjectList) {
-        if (subjectList.isEmpty) {
-          subjectCubit.load(
-            groupSelectorBloc.selectedGroup.id,
-            [weekTypeCubit.currentWeekType!],
-          );
-        }
-        disciplineCubit.loadLocally(getDisciplineIds(subjectList));
-        if (disciplineCubit.state is DisciplineSuccess) {
-          return disciplineCubit.state.maybeWhen(
-            success: (disciplineList) => Container(),
-            orElse: () => const Center(
-              child: StudendaLoadingWidget(),
-            ),
-          );
-        } else {
-          return const Center(
-            child: StudendaLoadingWidget(),
-          );
-        }
-      },
-      loadingSuccess: (subjectList) {
-        disciplineCubit.loadLocally(getDisciplineIds(subjectList));
-        if (disciplineCubit.state is DisciplineSuccess) {
-          return disciplineCubit.state.maybeWhen(
-            success: (disciplineList) => Container(),
-            orElse: () => const Center(
-              child: StudendaLoadingWidget(),
-            ),
-          );
-        } else {
-          return const Center(
-            child: StudendaLoadingWidget(),
-          );
-        }
-      },
-    );
-
-    return _JournalBody(user: user);
-  }
-}
-
-class _JournalBody extends StatelessWidget {
-  const _JournalBody({
-    required this.extendedDisciplineList,
-    required this.user,
-  });
-
-  final List<ExtendedDisciplineModel> extendedDisciplineList;
-  final AccountEntity user;
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 240, 241, 245),
       appBar: AppBar(
@@ -167,25 +97,92 @@ class _JournalBody extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(14.0),
         child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: extendedDisciplineList
-                .map(
-                  (element) => GestureDetector(
-                    onTap: () => {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => JournalSubjectScreenWidget(
-                            subject: element,
-                            userId: user.id,
-                          ),
-                        ),
-                      ),
-                    },
-                    child: SubjectItemWidget(subject: element),
+          child: subjectCubit.state.when(
+            initial: () => const Center(
+              child: StudendaLoadingWidget(),
+            ),
+            loading: () => const Center(
+              child: StudendaLoadingWidget(),
+            ),
+            localLoadingFail: (message) {
+              subjectCubit.load(
+                groupSelectorBloc.selectedGroup.id,
+                [weekTypeCubit.currentWeekType!],
+              );
+              return Center(
+                child: StudendaDefaultLabelWidget(text: message, fontSize: 18),
+              );
+            },
+            loadingFail: (message) => Center(
+              child: StudendaDefaultLabelWidget(text: message, fontSize: 18),
+            ),
+            localLoadingSuccess: (subjectList) {
+              if (subjectList.isEmpty) {
+                subjectCubit.load(
+                  groupSelectorBloc.selectedGroup.id,
+                  [weekTypeCubit.currentWeekType!],
+                );
+              }
+              disciplineCubit.loadLocally(getDisciplineIds(subjectList));
+              if (disciplineCubit.state is DisciplineSuccess) {
+                return disciplineCubit.state.maybeWhen(
+                  success: (disciplineList) => Container(),
+                  orElse: () => const Center(
+                    child: StudendaLoadingWidget(),
                   ),
-                )
-                .toList(),
+                );
+              } else {
+                return const Center(
+                  child: StudendaLoadingWidget(),
+                );
+              }
+            },
+            loadingSuccess: (subjectList) {
+              disciplineCubit.loadLocally(getDisciplineIds(subjectList));
+              if (disciplineCubit.state is DisciplineSuccess) {
+                return disciplineCubit.state.maybeWhen(
+                  success: (disciplineList) {
+                    final extendedDisciplines = mapDisciplinesAndTypes(
+                      subjectList,
+                      disciplineList,
+                      subjectTypeCubit.state.maybeWhen(
+                        localLoadingSuccess: (subjectTypeList) =>
+                            subjectTypeList,
+                        orElse: () => [],
+                      ),
+                    );
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: extendedDisciplines
+                          .map(
+                            (element) => GestureDetector(
+                              onTap: () => {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        JournalSubjectScreenWidget(
+                                      subject: element,
+                                      userId: user.id,
+                                    ),
+                                  ),
+                                ),
+                              },
+                              child: SubjectItemWidget(subject: element),
+                            ),
+                          )
+                          .toList(),
+                    );
+                  },
+                  orElse: () => const Center(
+                    child: StudendaLoadingWidget(),
+                  ),
+                );
+              } else {
+                return const Center(
+                  child: StudendaLoadingWidget(),
+                );
+              }
+            },
           ),
         ),
       ),
