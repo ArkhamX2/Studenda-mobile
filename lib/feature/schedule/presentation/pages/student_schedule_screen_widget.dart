@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:multi_bloc_builder/builders/multi_bloc_builder.dart';
 import 'package:studenda_mobile_student/core/constant_values/presentation_const_values.dart';
 import 'package:studenda_mobile_student/core/constant_values/routes.dart';
 import 'package:studenda_mobile_student/core/presentation/UI/snack_message.dart';
@@ -58,7 +59,9 @@ class _StudentScheduleScreenPageState extends State<StudentScheduleScreenPage> {
           create: (context) => sl<TeacherCubit>(),
         ),
         BlocProvider<WeekTypeCubit>(
-          create: (context) => sl<WeekTypeCubit>()..loadLocally(),
+          create: (context) => sl<WeekTypeCubit>()
+            ..loadLocally()
+            ..getCurrent(),
         ),
       ],
       child: const Scaffold(
@@ -92,17 +95,10 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
     final subjectPositionCubit = context.watch<SubjectPositionCubit>();
     final subjectTypeCubit = context.watch<SubjectTypeCubit>();
     final teacherCubit = context.watch<TeacherCubit>();
-    final weekTypeCubit = context.watch<WeekTypeCubit>()..getCurrent();
+    final weekTypeCubit = context.watch<WeekTypeCubit>();
 
-    if (weekTypeCubit.state is CurrentWeekTypeSuccess) {
+    if (weekTypeCubit.state is CurrentWeekTypeSuccess && subjectCubit.state is SubjectInitial) {
       subjectCubit.loadLocally(
-        groupSelectorBloc.selectedGroup.id,
-        [weekTypeCubit.currentWeekType!],
-      );
-    }
-
-    if (subjectCubit.state is SubjectLocalLoadingFail) {
-      subjectCubit.load(
         groupSelectorBloc.selectedGroup.id,
         [weekTypeCubit.currentWeekType!],
       );
@@ -172,9 +168,9 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
                     ),
                     globalKeys: keys,
                     currentWeekDay: getCurrentWeekDay(),
-                    needHighlight:
-                        getCurrentWeekDaysWithMonth(weekTypeCubit.datePointer)
-                            .any(
+                    needHighlight: getCurrentWeekSixDaysWithMonth(
+                            weekTypeCubit.datePointer)
+                        .any(
                       (element) =>
                           element ==
                           "${DateTime.now().day} ${monthNames[DateTime.now().month - 1]}",
@@ -223,9 +219,9 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
                     ),
                     globalKeys: keys,
                     currentWeekDay: getCurrentWeekDay(),
-                    needHighlight:
-                        getCurrentWeekDaysWithMonth(weekTypeCubit.datePointer)
-                            .any(
+                    needHighlight: getCurrentWeekSixDaysWithMonth(
+                            weekTypeCubit.datePointer)
+                        .any(
                       (element) =>
                           element ==
                           "${DateTime.now().day} ${monthNames[DateTime.now().month - 1]}",

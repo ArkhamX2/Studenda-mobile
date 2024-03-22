@@ -1,4 +1,4 @@
-List<String> getCurrentWeekDays(DateTime date) {
+List<String> getCurrentWeekSixDays(DateTime date) {
 
   final int monOffset = date.weekday - 1;
 
@@ -28,7 +28,7 @@ const monthNames =[
   'декабря',
 ];
 
-List<String> getCurrentWeekDaysWithMonth(DateTime date) {
+List<String> getCurrentWeekSixDaysWithMonth(DateTime date) {
   final int monOffset = date.weekday - 1;
 
   final daysDates = List.generate(

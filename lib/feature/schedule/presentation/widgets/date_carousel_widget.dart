@@ -51,7 +51,7 @@ class _DateCarouselWidgetState extends State<DateCarouselWidget> {
           padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 5),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: getCurrentWeekDays(
+            children: getCurrentWeekSixDays(
               initialDate.add(Duration(days: 7 * (index - 99))),
             )
                 .asMap()

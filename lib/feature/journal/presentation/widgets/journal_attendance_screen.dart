@@ -133,7 +133,7 @@ List<DateTime> getDatesBySubjectList(
 List<DateTime> getDatesBySubjectModel(SubjectModel subject) {
   final subjectDates = <DateTime>[];
   final datePointer = DateTime.now();
-  final academicYear = getCurrentAcademicYear();
+  final academicYear = getCurrentAcademicYear(DateTime.now());
 
   while (datePointer.isAfter(DateTime(academicYear, 9))) {
     subjectDates.add(datePointer.copyWith());

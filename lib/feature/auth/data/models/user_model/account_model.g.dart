@@ -61,20 +61,20 @@ class AccountModelAdapter extends TypeAdapter<_$AccountModelImpl> {
 
 _$AccountModelImpl _$$AccountModelImplFromJson(Map<String, dynamic> json) =>
     _$AccountModelImpl(
-      id: json['id'] as int,
-      groupId: json['groupId'] as int?,
-      name: json['name'] as String?,
-      surname: json['surname'] as String?,
-      patronymic: json['patronymic'] as String?,
-      identityId: json['identityId'] as String?,
+      id: json['Id'] as int,
+      groupId: json['GroupId'] as int?,
+      name: json['Name'] as String?,
+      surname: json['Surname'] as String?,
+      patronymic: json['Patronymic'] as String?,
+      identityId: json['IdentityId'] as String?,
     );
 
 Map<String, dynamic> _$$AccountModelImplToJson(_$AccountModelImpl instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'groupId': instance.groupId,
-      'name': instance.name,
-      'surname': instance.surname,
-      'patronymic': instance.patronymic,
-      'identityId': instance.identityId,
+      'Id': instance.id,
+      'GroupId': instance.groupId,
+      'Name': instance.name,
+      'Surname': instance.surname,
+      'Patronymic': instance.patronymic,
+      'IdentityId': instance.identityId,
     };

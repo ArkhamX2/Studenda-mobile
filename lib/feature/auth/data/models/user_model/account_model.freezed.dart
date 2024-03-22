@@ -20,22 +20,22 @@ AccountModel _$AccountModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AccountModel {
-  @JsonKey(name: 'id')
+  @JsonKey(name: 'Id')
   @HiveField(0)
   int get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'groupId')
+  @JsonKey(name: 'GroupId')
   @HiveField(1)
   int? get groupId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'name')
+  @JsonKey(name: 'Name')
   @HiveField(2)
   String? get name => throw _privateConstructorUsedError;
-  @JsonKey(name: 'surname')
+  @JsonKey(name: 'Surname')
   @HiveField(3)
   String? get surname => throw _privateConstructorUsedError;
-  @JsonKey(name: 'patronymic')
+  @JsonKey(name: 'Patronymic')
   @HiveField(4)
   String? get patronymic => throw _privateConstructorUsedError;
-  @JsonKey(name: 'identityId')
+  @JsonKey(name: 'IdentityId')
   @HiveField(5)
   String? get identityId => throw _privateConstructorUsedError;
 
@@ -52,12 +52,12 @@ abstract class $AccountModelCopyWith<$Res> {
       _$AccountModelCopyWithImpl<$Res, AccountModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'id') @HiveField(0) int id,
-      @JsonKey(name: 'groupId') @HiveField(1) int? groupId,
-      @JsonKey(name: 'name') @HiveField(2) String? name,
-      @JsonKey(name: 'surname') @HiveField(3) String? surname,
-      @JsonKey(name: 'patronymic') @HiveField(4) String? patronymic,
-      @JsonKey(name: 'identityId') @HiveField(5) String? identityId});
+      {@JsonKey(name: 'Id') @HiveField(0) int id,
+      @JsonKey(name: 'GroupId') @HiveField(1) int? groupId,
+      @JsonKey(name: 'Name') @HiveField(2) String? name,
+      @JsonKey(name: 'Surname') @HiveField(3) String? surname,
+      @JsonKey(name: 'Patronymic') @HiveField(4) String? patronymic,
+      @JsonKey(name: 'IdentityId') @HiveField(5) String? identityId});
 }
 
 /// @nodoc
@@ -118,12 +118,12 @@ abstract class _$$AccountModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'id') @HiveField(0) int id,
-      @JsonKey(name: 'groupId') @HiveField(1) int? groupId,
-      @JsonKey(name: 'name') @HiveField(2) String? name,
-      @JsonKey(name: 'surname') @HiveField(3) String? surname,
-      @JsonKey(name: 'patronymic') @HiveField(4) String? patronymic,
-      @JsonKey(name: 'identityId') @HiveField(5) String? identityId});
+      {@JsonKey(name: 'Id') @HiveField(0) int id,
+      @JsonKey(name: 'GroupId') @HiveField(1) int? groupId,
+      @JsonKey(name: 'Name') @HiveField(2) String? name,
+      @JsonKey(name: 'Surname') @HiveField(3) String? surname,
+      @JsonKey(name: 'Patronymic') @HiveField(4) String? patronymic,
+      @JsonKey(name: 'IdentityId') @HiveField(5) String? identityId});
 }
 
 /// @nodoc
@@ -178,39 +178,39 @@ class __$$AccountModelImplCopyWithImpl<$Res>
 @HiveType(typeId: 0, adapterName: 'AccountModelAdapter')
 class _$AccountModelImpl extends _AccountModel {
   _$AccountModelImpl(
-      {@JsonKey(name: 'id') @HiveField(0) required this.id,
-      @JsonKey(name: 'groupId') @HiveField(1) required this.groupId,
-      @JsonKey(name: 'name') @HiveField(2) required this.name,
-      @JsonKey(name: 'surname') @HiveField(3) required this.surname,
-      @JsonKey(name: 'patronymic') @HiveField(4) required this.patronymic,
-      @JsonKey(name: 'identityId') @HiveField(5) required this.identityId})
+      {@JsonKey(name: 'Id') @HiveField(0) required this.id,
+      @JsonKey(name: 'GroupId') @HiveField(1) required this.groupId,
+      @JsonKey(name: 'Name') @HiveField(2) required this.name,
+      @JsonKey(name: 'Surname') @HiveField(3) required this.surname,
+      @JsonKey(name: 'Patronymic') @HiveField(4) required this.patronymic,
+      @JsonKey(name: 'IdentityId') @HiveField(5) required this.identityId})
       : super._();
 
   factory _$AccountModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$AccountModelImplFromJson(json);
 
   @override
-  @JsonKey(name: 'id')
+  @JsonKey(name: 'Id')
   @HiveField(0)
   final int id;
   @override
-  @JsonKey(name: 'groupId')
+  @JsonKey(name: 'GroupId')
   @HiveField(1)
   final int? groupId;
   @override
-  @JsonKey(name: 'name')
+  @JsonKey(name: 'Name')
   @HiveField(2)
   final String? name;
   @override
-  @JsonKey(name: 'surname')
+  @JsonKey(name: 'Surname')
   @HiveField(3)
   final String? surname;
   @override
-  @JsonKey(name: 'patronymic')
+  @JsonKey(name: 'Patronymic')
   @HiveField(4)
   final String? patronymic;
   @override
-  @JsonKey(name: 'identityId')
+  @JsonKey(name: 'IdentityId')
   @HiveField(5)
   final String? identityId;
 
@@ -255,14 +255,14 @@ class _$AccountModelImpl extends _AccountModel {
 
 abstract class _AccountModel extends AccountModel {
   factory _AccountModel(
-      {@JsonKey(name: 'id') @HiveField(0) required final int id,
-      @JsonKey(name: 'groupId') @HiveField(1) required final int? groupId,
-      @JsonKey(name: 'name') @HiveField(2) required final String? name,
-      @JsonKey(name: 'surname') @HiveField(3) required final String? surname,
-      @JsonKey(name: 'patronymic')
+      {@JsonKey(name: 'Id') @HiveField(0) required final int id,
+      @JsonKey(name: 'GroupId') @HiveField(1) required final int? groupId,
+      @JsonKey(name: 'Name') @HiveField(2) required final String? name,
+      @JsonKey(name: 'Surname') @HiveField(3) required final String? surname,
+      @JsonKey(name: 'Patronymic')
       @HiveField(4)
       required final String? patronymic,
-      @JsonKey(name: 'identityId')
+      @JsonKey(name: 'IdentityId')
       @HiveField(5)
       required final String? identityId}) = _$AccountModelImpl;
   _AccountModel._() : super._();
@@ -271,27 +271,27 @@ abstract class _AccountModel extends AccountModel {
       _$AccountModelImpl.fromJson;
 
   @override
-  @JsonKey(name: 'id')
+  @JsonKey(name: 'Id')
   @HiveField(0)
   int get id;
   @override
-  @JsonKey(name: 'groupId')
+  @JsonKey(name: 'GroupId')
   @HiveField(1)
   int? get groupId;
   @override
-  @JsonKey(name: 'name')
+  @JsonKey(name: 'Name')
   @HiveField(2)
   String? get name;
   @override
-  @JsonKey(name: 'surname')
+  @JsonKey(name: 'Surname')
   @HiveField(3)
   String? get surname;
   @override
-  @JsonKey(name: 'patronymic')
+  @JsonKey(name: 'Patronymic')
   @HiveField(4)
   String? get patronymic;
   @override
-  @JsonKey(name: 'identityId')
+  @JsonKey(name: 'IdentityId')
   @HiveField(5)
   String? get identityId;
   @override

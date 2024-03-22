@@ -25,7 +25,7 @@ class SubjectCubit extends Cubit<SubjectState> {
       ScheduleRequestByWeekTypeModel(
         groupId: groupId,
         weekTypeIds: weekTypes.map((e) => e.id).toList(),
-        academicYear: getCurrentAcademicYear(),
+        academicYear: getCurrentAcademicYear(DateTime.now()),
       ),
       weekTypes.map((e) => e.id).toList(),
     );
@@ -50,7 +50,7 @@ class SubjectCubit extends Cubit<SubjectState> {
       ScheduleRequestByWeekTypeModel(
         groupId: groupId,
         weekTypeIds: weekTypes.map((e) => e.id).toList(),
-        academicYear: getCurrentAcademicYear(),
+        academicYear: getCurrentAcademicYear(DateTime.now()),
       ),
       weekTypes.map((e) => e.id).toList(),
     );
@@ -74,7 +74,7 @@ class SubjectCubit extends Cubit<SubjectState> {
       TeacherRequestByWeekTypeModel(
         teacherId: teacherId,
         weekTypeIds: weekTypes.map((e) => e.id).toList(),
-        academicYear: getCurrentAcademicYear(),
+        academicYear: getCurrentAcademicYear(DateTime.now()),
       ),
       weekTypes.map((e) => e.id).toList(),
     );
@@ -99,7 +99,7 @@ class SubjectCubit extends Cubit<SubjectState> {
       TeacherRequestByWeekTypeModel(
         teacherId: teacherId,
         weekTypeIds: weekTypes.map((e) => e.id).toList(),
-        academicYear: getCurrentAcademicYear(),
+        academicYear: getCurrentAcademicYear(DateTime.now()),
       ),
       weekTypes.map((e) => e.id).toList(),
     );

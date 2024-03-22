@@ -7,17 +7,17 @@ import 'package:studenda_mobile_student/core/network/api_config.dart';
 import 'package:studenda_mobile_student/core/network/simplified_uri.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/subject_type/subject_type_model.dart';
 
-class SubjectTypeRemoteDataSource extends RemoteDataSource<List<SubjectTypeModel>,List<int>> {
+class SubjectTypeRemoteDataSource extends RemoteDataSource<List<SubjectTypeModel>,void> {
   final http.Client client;
 
   SubjectTypeRemoteDataSource({required this.client});
 
   @override
-  Future<List<SubjectTypeModel>> studentLoad(List<int> request) async {
+  Future<List<SubjectTypeModel>> studentLoad(void request) async {
     try {
       
       final Map<String,dynamic> queryParameters = {
-        'ids' : request,
+        'ids' : [],
       };
       final uri = 
         SimplifiedUri.uri('$BASE_URL/schedule/subject-type', queryParameters);
@@ -39,7 +39,7 @@ class SubjectTypeRemoteDataSource extends RemoteDataSource<List<SubjectTypeModel
   }
   
   @override
-  Future<List<SubjectTypeModel>> teacherLoad(List<int> request) {
+  Future<List<SubjectTypeModel>> teacherLoad(void request) {
     // TODO: implement teacherLoad
     throw UnimplementedError();
   }

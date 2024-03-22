@@ -4,7 +4,7 @@ import 'package:studenda_mobile_student/core/data/error/exception.dart';
 import 'package:studenda_mobile_student/feature/schedule/data/models/subject_type/subject_type_model.dart';
 
 class SubjectTypeLocalDataSource
-    extends LocalDataSource<List<SubjectTypeModel>, List<int>> {
+    extends LocalDataSource<List<SubjectTypeModel>, void> {
   Box<SubjectTypeModel> subjectTypeBox;
 
   SubjectTypeLocalDataSource({required this.subjectTypeBox});
@@ -28,19 +28,16 @@ class SubjectTypeLocalDataSource
   }
 
   @override
-  Future<List<SubjectTypeModel>> studentLoad(List<int> request) async {
+  Future<List<SubjectTypeModel>> studentLoad(void request) async {
     try {
-      if (request.isEmpty) return subjectTypeBox.values.toList();
-      return subjectTypeBox.values
-          .where((element) => request.contains(element.id))
-          .toList();
+      return subjectTypeBox.values.toList();
     } catch (e) {
       throw CacheException();
     }
   }
   
   @override
-  Future<List<SubjectTypeModel>> teacherLoad(List<int> request) {
+  Future<List<SubjectTypeModel>> teacherLoad(void request) {
     // TODO: implement teacherLoad
     throw UnimplementedError();
   }

@@ -19,7 +19,6 @@ List<DayScheduleEntity> mapSubjectModelToDayScheduleList(
 ) {
   if (subjects.isEmpty ||
       disciplines.isEmpty ||
-      teachers.isEmpty ||
       dayPositionList.isEmpty ||
       subjectPositionList.isEmpty ||
       subjectTypeList.isEmpty) return [];
@@ -36,7 +35,7 @@ List<DayScheduleEntity> mapSubjectModelToDayScheduleList(
 
   for (var i = 0; i < subjects.length; i++) {
     final teacher =
-        teachers.firstWhere((element) => element.id == subjects[i].accountId);
+        teachers.isNotEmpty? teachers.firstWhere((element) => element.id == subjects[i].accountId) : null;
     if (dayScheduleEntityMap.containsKey(
       dayPositionList
               .firstWhere((element) => element.id == subjects[i].dayPositionId)
@@ -57,7 +56,7 @@ List<DayScheduleEntity> mapSubjectModelToDayScheduleList(
               .name,
           classroom: subjects[i].classroom ?? "",
           teacher:
-              "${teacher.surname ?? ""} ${teacher.name ?? ""} ${teacher.patronymic ?? ""}",
+              "${teacher != null ? teacher.surname : ""} ${teacher != null ? teacher.name : ""} ${teacher != null ? teacher.patronymic : ""}",
           subjectPosition: subjectPositionList
                   .firstWhere(
                     (element) => element.id == subjects[i].subjectPositionId,
@@ -82,7 +81,7 @@ List<DayScheduleEntity> mapSubjectModelToDayScheduleList(
               .name,
           classroom: subjects[i].classroom ?? "",
           teacher:
-              "${teacher.surname ?? ""} ${teacher.name ?? ""} ${teacher.patronymic ?? ""}",
+              "${teacher != null ? teacher.surname : ""} ${teacher != null ? teacher.name : ""} ${teacher != null ? teacher.patronymic : ""}",
           subjectPosition: subjectPositionList
                   .firstWhere(
                     (element) => element.id == subjects[i].subjectPositionId,

@@ -21,7 +21,7 @@ SecurityResponseModel _$SecurityResponseModelFromJson(
 
 /// @nodoc
 mixin _$SecurityResponseModel {
-  @JsonKey(name: 'User')
+  @JsonKey(name: 'Account')
   AccountModel get user => throw _privateConstructorUsedError;
   @JsonKey(name: 'Token')
   String get token => throw _privateConstructorUsedError;
@@ -39,7 +39,7 @@ abstract class $SecurityResponseModelCopyWith<$Res> {
       _$SecurityResponseModelCopyWithImpl<$Res, SecurityResponseModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'User') AccountModel user,
+      {@JsonKey(name: 'Account') AccountModel user,
       @JsonKey(name: 'Token') String token});
 
   $AccountModelCopyWith<$Res> get user;
@@ -93,7 +93,7 @@ abstract class _$$SecurityResponseModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'User') AccountModel user,
+      {@JsonKey(name: 'Account') AccountModel user,
       @JsonKey(name: 'Token') String token});
 
   @override
@@ -132,14 +132,14 @@ class __$$SecurityResponseModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$SecurityResponseModelImpl implements _SecurityResponseModel {
   const _$SecurityResponseModelImpl(
-      {@JsonKey(name: 'User') required this.user,
+      {@JsonKey(name: 'Account') required this.user,
       @JsonKey(name: 'Token') required this.token});
 
   factory _$SecurityResponseModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$SecurityResponseModelImplFromJson(json);
 
   @override
-  @JsonKey(name: 'User')
+  @JsonKey(name: 'Account')
   final AccountModel user;
   @override
   @JsonKey(name: 'Token')
@@ -180,7 +180,7 @@ class _$SecurityResponseModelImpl implements _SecurityResponseModel {
 
 abstract class _SecurityResponseModel implements SecurityResponseModel {
   const factory _SecurityResponseModel(
-          {@JsonKey(name: 'User') required final AccountModel user,
+          {@JsonKey(name: 'Account') required final AccountModel user,
           @JsonKey(name: 'Token') required final String token}) =
       _$SecurityResponseModelImpl;
 
@@ -188,7 +188,7 @@ abstract class _SecurityResponseModel implements SecurityResponseModel {
       _$SecurityResponseModelImpl.fromJson;
 
   @override
-  @JsonKey(name: 'User')
+  @JsonKey(name: 'Account')
   AccountModel get user;
   @override
   @JsonKey(name: 'Token')

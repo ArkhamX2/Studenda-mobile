@@ -172,7 +172,7 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
                   globalKeys: keys,
                   currentWeekDay: getCurrentWeekDay(),
                   needHighlight:
-                      getCurrentWeekDaysWithMonth(weekTypeCubit.datePointer)
+                      getCurrentWeekSixDaysWithMonth(weekTypeCubit.datePointer)
                           .any(
                     (element) =>
                         element ==
@@ -216,7 +216,7 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
                   globalKeys: keys,
                   currentWeekDay: getCurrentWeekDay(),
                   needHighlight:
-                      getCurrentWeekDaysWithMonth(weekTypeCubit.datePointer)
+                      getCurrentWeekSixDaysWithMonth(weekTypeCubit.datePointer)
                           .any(
                     (element) =>
                         element ==

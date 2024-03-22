@@ -36,7 +36,7 @@ class JournalSubjectScreenWidget extends StatelessWidget {
               asigneeUserIds: [userId],
               disciplineId: subject.discipline.id,
               subjectTypeId: subject.subjectType.id,
-              academicYear: getCurrentAcademicYear(),
+              academicYear: getCurrentAcademicYear(DateTime.now()),
               token: tokenCubit.token,
             ),
           );
@@ -113,7 +113,7 @@ class _JournalSubjectBody extends StatelessWidget {
                       asigneeUserIds: [userId],
                       disciplineId: subject.discipline.id,
                       subjectTypeId: subject.subjectType.id,
-                      academicYear: getCurrentAcademicYear(),
+                      academicYear: getCurrentAcademicYear(DateTime.now()),
                       token: tokenCubit.token,
                     ),
                   );
@@ -129,7 +129,7 @@ class _JournalSubjectBody extends StatelessWidget {
                         asigneeUserIds: [userId],
                         disciplineId: subject.discipline.id,
                         subjectTypeId: subject.subjectType.id,
-                        academicYear: getCurrentAcademicYear(),
+                        academicYear: getCurrentAcademicYear(DateTime.now()),
                         token: tokenCubit.token,
                       ),
                     );
@@ -167,7 +167,7 @@ class _TaskScrollWidget extends StatelessWidget {
               asigneeUserIds: [userId],
               disciplineId: subject.discipline.id,
               subjectTypeId: subject.subjectType.id,
-              academicYear: getCurrentAcademicYear(),
+              academicYear: getCurrentAcademicYear(DateTime.now()),
               token: tokenCubit.token,
             ),
           );

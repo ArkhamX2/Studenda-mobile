@@ -22,7 +22,7 @@ class WeekScheduleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final weekTypeCubit = context.watch<WeekTypeCubit>();
-    final weekDays = getCurrentWeekDaysWithMonth(weekTypeCubit.datePointer);
+    final weekDays = getCurrentWeekSixDaysWithMonth(weekTypeCubit.datePointer);
     if(schedule.isEmpty) return const Center(child: StudendaDefaultLabelWidget(text: "Занятий нет", fontSize: 20));
     return Column(
       children: schedule

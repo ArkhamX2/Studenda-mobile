@@ -9,13 +9,13 @@ part of 'security_response_model.dart';
 _$SecurityResponseModelImpl _$$SecurityResponseModelImplFromJson(
         Map<String, dynamic> json) =>
     _$SecurityResponseModelImpl(
-      user: AccountModel.fromJson(json['User'] as Map<String, dynamic>),
+      user: AccountModel.fromJson(json['Account'] as Map<String, dynamic>),
       token: json['Token'] as String,
     );
 
 Map<String, dynamic> _$$SecurityResponseModelImplToJson(
         _$SecurityResponseModelImpl instance) =>
     <String, dynamic>{
-      'User': instance.user,
+      'Account': instance.user,
       'Token': instance.token,
     };

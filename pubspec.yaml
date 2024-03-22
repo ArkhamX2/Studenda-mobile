@@ -50,6 +50,8 @@ dependencies:
   injectable: ^2.3.2
   internet_connection_checker: ^1.0.0+1
   json_annotation: ^4.8.1
+  mockito: ^5.4.4
+  multi_bloc_builder: ^1.0.0
   shared_preferences: ^2.2.2
 
 dev_dependencies:
