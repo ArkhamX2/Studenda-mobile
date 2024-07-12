@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:multi_bloc_builder/builders/multi_bloc_builder.dart';
 import 'package:studenda_mobile_student/core/constant_values/presentation_const_values.dart';
 import 'package:studenda_mobile_student/core/constant_values/routes.dart';
 import 'package:studenda_mobile_student/core/presentation/UI/snack_message.dart';
@@ -169,7 +168,7 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
                     globalKeys: keys,
                     currentWeekDay: getCurrentWeekDay(),
                     needHighlight: getCurrentWeekSixDaysWithMonth(
-                            weekTypeCubit.datePointer)
+                            weekTypeCubit.datePointer,)
                         .any(
                       (element) =>
                           element ==
@@ -220,7 +219,7 @@ class _ScheduleBodyWidgetState extends State<_ScheduleBodyWidget> {
                     globalKeys: keys,
                     currentWeekDay: getCurrentWeekDay(),
                     needHighlight: getCurrentWeekSixDaysWithMonth(
-                            weekTypeCubit.datePointer)
+                            weekTypeCubit.datePointer,)
                         .any(
                       (element) =>
                           element ==
@@ -358,7 +357,7 @@ class _ScheduleScrollWidgetState extends State<_ScheduleScrollWidget> {
       builder: (context, constraints) => RefreshIndicator(
         onRefresh: () async {
           subjectCubit.load(
-              groupSelectorBloc.selectedGroup.id, weekTypeCubit.weekTypeList!);
+              groupSelectorBloc.selectedGroup.id, weekTypeCubit.weekTypeList!,);
         },
         child: SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),

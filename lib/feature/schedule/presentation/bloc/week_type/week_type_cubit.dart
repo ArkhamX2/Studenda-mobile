@@ -65,7 +65,7 @@ class WeekTypeCubit extends Cubit<WeekTypeState> {
     result.fold(
       (l) => emit(WeekTypeState.currentWeekTypeFail(l.message)),
       (r) => emit(
-          WeekTypeState.currentWeekTypeSuccess(WeekTypeEntity.fromModel(r))),
+          WeekTypeState.currentWeekTypeSuccess(WeekTypeEntity.fromModel(r)),),
     );
   }
 }

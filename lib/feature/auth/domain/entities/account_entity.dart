@@ -9,11 +9,11 @@ class AccountEntity with _$AccountEntity {
       {required int id,
       required String? name,
       required String? surname,
-      required String? patronymic}) = _AccountEntity;
+      required String? patronymic,}) = _AccountEntity;
 
   factory AccountEntity.fromModel(AccountModel model) => AccountEntity(
       id: model.id,
       name: model.name,
       surname: model.surname,
-      patronymic: model.patronymic);
+      patronymic: model.patronymic,);
 }

@@ -11,16 +11,16 @@ class StudendaButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: event,
       style: ButtonStyle(
-        minimumSize: const MaterialStatePropertyAll(Size(300, 50)),
-        shape: MaterialStatePropertyAll(
+        minimumSize: const WidgetStatePropertyAll(Size(300, 50)),
+        shape: WidgetStatePropertyAll(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(9),
           ),
         ),
-        backgroundColor: const MaterialStatePropertyAll(
+        backgroundColor: const WidgetStatePropertyAll(
           mainButtonBackgroundColor,
         ),
-        elevation: const MaterialStatePropertyAll(0),
+        elevation: const WidgetStatePropertyAll(0),
       ),
       child: Text(
         title,

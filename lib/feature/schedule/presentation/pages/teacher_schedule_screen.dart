@@ -354,7 +354,7 @@ class _ScheduleScrollWidgetState extends State<_ScheduleScrollWidget> {
       builder: (context, constraints) => RefreshIndicator(
         onRefresh: () async {
           subjectCubit.loadTeacher(
-              groupSelectorBloc.selectedGroup.id, weekTypeCubit.weekTypeList!);
+              groupSelectorBloc.selectedGroup.id, weekTypeCubit.weekTypeList!,);
         },
         child: SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),

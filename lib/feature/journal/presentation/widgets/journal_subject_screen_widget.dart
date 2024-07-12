@@ -262,15 +262,15 @@ class _AttendanceButtonWidget extends StatelessWidget {
     return ElevatedButton(
       onPressed: navigateTo,
       style: ButtonStyle(
-        shape: MaterialStatePropertyAll(
+        shape: WidgetStatePropertyAll(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5),
           ),
         ),
-        backgroundColor: const MaterialStatePropertyAll(
+        backgroundColor: const WidgetStatePropertyAll(
           mainButtonBackgroundColor,
         ),
-        padding: const MaterialStatePropertyAll(
+        padding: const WidgetStatePropertyAll(
           EdgeInsets.symmetric(horizontal: 16),
         ),
       ),
